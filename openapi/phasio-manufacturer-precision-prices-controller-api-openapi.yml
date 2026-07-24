@@ -1,0 +1,197 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Precision Prices Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Precision Prices Controller
+  description: Endpoints for managing precision prices for manufacturing operations
+paths:
+  /api/manufacturer/v1/precision-prices/create:
+    post:
+      tags:
+      - Manufacturer Precision Prices Controller
+      summary: Create precision prices
+      description: Creates a new precision price entry for manufacturing operations
+      operationId: createPrecisionPrices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePrecisionPricesDto'
+        required: true
+      responses:
+        '200':
+          description: Precision prices created successfully
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        '400':
+          description: Invalid data or duplicate name
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/precision-prices/{precisionPricesId}/select:
+    patch:
+      tags:
+      - Manufacturer Precision Prices Controller
+      summary: Select default precision price
+      description: Sets a precision price entry as the default option
+      operationId: selectDefaultPrecisionPrice
+      parameters:
+      - name: precisionPricesId
+        in: path
+        description: ID of the precision prices to set as default
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '204':
+          description: Default precision price selected successfully
+        '400':
+          description: Selection failed or precision prices not found
+        '401':
+          description: Unauthorized
+  /api/manufacturer/v1/precision-prices/update:
+    patch:
+      tags:
+      - Manufacturer Precision Prices Controller
+      summary: Update precision prices
+      description: Updates an existing precision price entry
+      operationId: updatePrecisionPrices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePrecisionPricesDto'
+        required: true
+      responses:
+        '204':
+          description: Precision prices updated successfully
+        '400':
+          description: Invalid data or precision prices not found
+        '401':
+          description: Unauthorized
+  /api/manufacturer/v1/precision-prices/{precisionPricesId}:
+    get:
+      tags:
+      - Manufacturer Precision Prices Controller
+      summary: Get precision prices by ID
+      description: Retrieves a specific precision price entry by its unique identifier
+      operationId: getById_3
+      parameters:
+      - name: precisionPricesId
+        in: path
+        description: ID of the precision prices to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Precision prices found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrecisionPricesDto'
+        '404':
+          description: Precision prices not found
+  /api/manufacturer/v1/precision-prices/{precisionPricesId}/delete:
+    delete:
+      tags:
+      - Manufacturer Precision Prices Controller
+      summary: Delete precision prices
+      description: Marks a precision price entry as deleted (soft delete)
+      operationId: deletePrecisionPrices
+      parameters:
+      - name: precisionPricesId
+        in: path
+        description: ID of the precision prices to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '204':
+          description: Precision prices deleted successfully
+        '400':
+          description: Deletion failed or precision prices not found
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    UpdatePrecisionPricesDto:
+      type: object
+      description: Precision prices data to update
+      properties:
+        precisionPricesId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        price:
+          type: number
+        effectiveFrom:
+          type: string
+          format: date
+      required:
+      - effectiveFrom
+      - name
+      - precisionPricesId
+      - price
+    PrecisionPricesDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        price:
+          type: number
+        isActive:
+          type: boolean
+      required:
+      - id
+      - isActive
+      - name
+      - price
+    CreatePrecisionPricesDto:
+      type: object
+      description: Precision prices data to create
+      properties:
+        technology:
+          type: string
+        pricingGroupId:
+          type: string
+          format: uuid
+        organisationId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        price:
+          type: number
+        effectiveFrom:
+          type: string
+          format: date
+      required:
+      - effectiveFrom
+      - name
+      - price
+      - pricingGroupId
+      - technology
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

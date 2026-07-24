@@ -1,0 +1,208 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Activity Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Activity Controller
+  description: Endpoints for managing manufacturer activities and conversations
+paths:
+  /api/manufacturer/v1/activity:
+    post:
+      tags:
+      - Manufacturer Activity Controller
+      summary: Create a new activity
+      description: Creates a new activity associated with the current manufacturer
+      operationId: create_17
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateConversationDto'
+        required: true
+      responses:
+        '200':
+          description: Activity successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityDto'
+        '400':
+          description: Invalid activity data or operator not found
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/manufacturer/v1/activity/{id}:
+    get:
+      tags:
+      - Manufacturer Activity Controller
+      summary: Get activity by ID
+      description: Retrieves a specific activity by its unique identifier
+      operationId: get_26
+      parameters:
+      - name: id
+        in: path
+        description: Activity ID to retrieve
+        required: true
+        schema:
+          type: string
+          format: uuid
+        example: 123e4567-e89b-12d3-a456-426614174000
+      responses:
+        '200':
+          description: Successfully retrieved activity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityDto'
+        '400':
+          description: Invalid activity ID or operator not found
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Activity not found
+  /api/manufacturer/v1/activity/thread/{threadId}:
+    get:
+      tags:
+      - Manufacturer Activity Controller
+      summary: Get activities by thread ID
+      description: Retrieves all activities associated with the specified thread
+      operationId: getByThread_1
+      parameters:
+      - name: threadId
+        in: path
+        description: Thread ID to retrieve activities for
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      - name: excludeArchivedAndVoided
+        in: query
+        description: Exclude activities from archived or voided orders
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Successfully retrieved thread activities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ActivityDto'
+        '400':
+          description: Invalid thread ID or operator not found
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Thread not found
+components:
+  schemas:
+    CreateActivityDto:
+      type: object
+      properties:
+        activityType:
+          type: string
+        threadId:
+          type: integer
+          format: int64
+      required:
+      - activityType
+      - threadId
+    RequisitionTaggedDto:
+      type: object
+      properties:
+        requisitionId:
+          type: integer
+          format: int64
+      required:
+      - requisitionId
+    LocationTaggedDto:
+      type: object
+      properties:
+        requisitionId:
+          type: integer
+          format: int64
+        locationX:
+          type: number
+        locationY:
+          type: number
+        locationZ:
+          type: number
+        cameraPositionX:
+          type: number
+        cameraPositionY:
+          type: number
+        cameraPositionZ:
+          type: number
+        cameraRotationX:
+          type: number
+        cameraRotationY:
+          type: number
+        cameraRotationZ:
+          type: number
+      required:
+      - cameraPositionX
+      - cameraPositionY
+      - cameraPositionZ
+      - cameraRotationX
+      - cameraRotationY
+      - cameraRotationZ
+      - locationX
+      - locationY
+      - locationZ
+      - requisitionId
+    ActivityDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        threadId:
+          type: integer
+          format: int64
+        activityType:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+      - activityType
+      - createdAt
+      - id
+      - threadId
+    CreateConversationDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateActivityDto'
+      - type: object
+        properties:
+          conversationType:
+            type: string
+          message:
+            type: string
+          requisitionTagged:
+            $ref: '#/components/schemas/RequisitionTaggedDto'
+          locationTagged:
+            $ref: '#/components/schemas/LocationTaggedDto'
+          orderId:
+            type: integer
+            format: int64
+      required:
+      - activityType
+      - conversationType
+      - message
+      - threadId
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

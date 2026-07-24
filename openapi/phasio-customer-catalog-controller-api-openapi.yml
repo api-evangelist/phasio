@@ -1,0 +1,458 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Customer Catalog Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Customer Catalog Controller
+  description: Endpoints for accessing manufacturing capabilities catalog
+paths:
+  /api/customer/v1/catalog:
+    get:
+      tags:
+      - Customer Catalog Controller
+      summary: Get manufacturing catalog
+      description: Retrieves the complete catalog of available manufacturing capabilities, materials, and processes
+      operationId: getCatalog
+      responses:
+        '200':
+          description: Successfully retrieved catalog
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/customer/v1/catalog/{catalogItemId}/thumbnail:
+    get:
+      tags:
+      - Customer Catalog Controller
+      summary: Get thumbnail by catalog item id
+      description: Downloads the thumbnail image for a specific catalog item
+      operationId: getThumbnail
+      parameters:
+      - name: catalogItemId
+        in: path
+        description: ID of the catalog item
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Thumbnail successfully downloaded
+          content:
+            image/png: {}
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Thumbnail not found
+  /api/customer/v1/catalog/{catalogItemId}/part-revision:
+    get:
+      tags:
+      - Customer Catalog Controller
+      summary: Get part revision dto by catalog item id
+      description: Retrieves the part revision data for a specific catalog item
+      operationId: getPartRevision
+      parameters:
+      - name: catalogItemId
+        in: path
+        description: ID of the catalog item
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Part revision successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartRevisionDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Part revision not found
+  /api/customer/v1/catalog/{catalogItemId}/download/{type}:
+    get:
+      tags:
+      - Customer Catalog Controller
+      summary: Get Accessory file by catalog item id
+      description: Get Accessory File and accepts an Accessory File Type
+      operationId: getCadFile
+      parameters:
+      - name: catalogItemId
+        in: path
+        description: ID of the catalog item
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: type
+        in: path
+        description: Type of Accessory file to download (STL, STEP, etc.)
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Accessory file successfully downloaded
+          content:
+            application/octet-stream: {}
+        '400':
+          description: Invalid file type or catalog item ID
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Accessory file not found
+components:
+  schemas:
+    FixedOrientationConstraintDto:
+      allOf:
+      - $ref: '#/components/schemas/ConstraintDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - rotationMatrix
+      - updatedAt
+    InfillDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        value:
+          type: number
+        default:
+          type: boolean
+      required:
+      - default
+      - id
+      - name
+      - value
+    PartRevisionDto:
+      type: object
+      properties:
+        partRevisionId:
+          type: string
+          format: uuid
+        designName:
+          type: string
+        designId:
+          type: string
+          format: uuid
+        availableAccessories:
+          type: array
+          items:
+            type: string
+            enum:
+            - ORIGINAL_CAD_FILE
+            - CORE_GEOMETRY
+            - THUMBNAIL
+            - PDF_DESIGN_FILE
+            - WALL_THICKNESS_ANALYSIS
+        volume:
+          type: number
+        area:
+          type: number
+        height:
+          type: number
+        width:
+          type: number
+        depth:
+          type: number
+        minimumWallThickness:
+          type: number
+        minBoundingBoxVolume:
+          type: number
+        convexHullVolume:
+          type: number
+        shrinkWrapVolume:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+        versionNumber:
+          type: integer
+          format: int64
+        isLatestRevision:
+          type: boolean
+        repaired:
+          type: boolean
+        watertight:
+          type: boolean
+        originalCADFileType:
+          type: string
+          enum:
+          - STL
+          - OBJ
+          - WRL
+          - STEP
+          - STP
+          - IGES
+          - IGS
+          - THREEMF
+          - DXF
+          - ZIP
+          - THREEDS
+          - BLEND
+          - DAE
+          - FBX
+          - BREP
+          - BDF
+          - MSH
+          - INP
+          - DIFF
+          - MESH
+          - CTM
+          - PLY
+          - 'OFF'
+          - COLLADA
+          - GLTF
+          - XAML
+          - THREEDXML
+          - XYZ
+        conflictOnHash:
+          type: string
+        baseRotationMatrix:
+          type: array
+          items:
+            type: number
+        deleted:
+          type: boolean
+      required:
+      - availableAccessories
+      - deleted
+      - designName
+    CatalogDto:
+      type: object
+      properties:
+        parts:
+          type: array
+          items:
+            $ref: '#/components/schemas/CatalogItemDto'
+        assemblies:
+          type: array
+          items:
+            $ref: '#/components/schemas/CatalogAssemblyDto'
+      required:
+      - assemblies
+      - parts
+    ColorDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - id
+      - name
+    CatalogAssemblyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        assemblyId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        reference:
+          type: string
+        assemblyPrice:
+          type: number
+        price:
+          type: number
+        currency:
+          type: string
+        partCount:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+      required:
+      - assemblyId
+      - assemblyPrice
+      - createdAt
+      - currency
+      - id
+      - lastUpdated
+      - name
+      - partCount
+      - price
+      - reference
+    PostProcessingDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        purchasable:
+          type: boolean
+        isDefault:
+          type: boolean
+        colors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColorDto'
+        incompatibleMaterialIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        mutuallyExclusiveGroup:
+          type: string
+      required:
+      - colors
+      - incompatibleMaterialIds
+      - isDefault
+      - name
+      - purchasable
+    CatalogItemDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        partRevisionId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        reference:
+          type: string
+        units:
+          type: string
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        processPricesId:
+          type: string
+          format: uuid
+        materialId:
+          type: integer
+          format: int64
+        materialName:
+          type: string
+        color:
+          $ref: '#/components/schemas/ColorDto'
+        precisionPrices:
+          $ref: '#/components/schemas/PrecisionPricesDto'
+        infill:
+          $ref: '#/components/schemas/InfillDto'
+        postProcessings:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostProcessingDto'
+        price:
+          type: number
+        currency:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+        constraints:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/ConstraintDto'
+            - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+      required:
+      - constraints
+      - createdAt
+      - currency
+      - id
+      - lastUpdated
+      - materialId
+      - materialName
+      - name
+      - partRevisionId
+      - postProcessings
+      - price
+      - processPricesId
+      - reference
+      - units
+    PrecisionPricesDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        price:
+          type: number
+        isActive:
+          type: boolean
+      required:
+      - id
+      - isActive
+      - name
+      - price
+    ConstraintDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        id:
+          type: string
+          format: uuid
+        constraintType:
+          type: string
+        partSpecificationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - updatedAt
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

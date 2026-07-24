@@ -1,0 +1,472 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Assembly Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Assembly Controller
+  description: Endpoints for managing assemblies
+paths:
+  /api/manufacturer/v1/assemblies/{id}:
+    get:
+      tags:
+      - Manufacturer Assembly Controller
+      summary: Get assembly by ID
+      description: Retrieves a specific assembly by its ID
+      operationId: getAssembly
+      parameters:
+      - name: id
+        in: path
+        description: Assembly ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Successfully retrieved assembly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssemblyDto'
+        '404':
+          description: Assembly not found
+    put:
+      tags:
+      - Manufacturer Assembly Controller
+      summary: Update assembly
+      description: Updates an existing assembly
+      operationId: updateAssembly
+      parameters:
+      - name: id
+        in: path
+        description: Assembly ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAssemblyDto'
+        required: true
+      responses:
+        '200':
+          description: Assembly successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssemblyDto'
+        '400':
+          description: Invalid request data
+        '404':
+          description: Assembly not found
+    delete:
+      tags:
+      - Manufacturer Assembly Controller
+      summary: Delete assembly
+      description: Deletes an assembly
+      operationId: deleteAssembly
+      parameters:
+      - name: id
+        in: path
+        description: Assembly ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: Assembly successfully deleted
+        '404':
+          description: Assembly not found
+  /api/manufacturer/v1/assemblies/{id}/customer-reference:
+    put:
+      tags:
+      - Manufacturer Assembly Controller
+      summary: Update customer article reference
+      description: Updates the customer's article reference for a specific assembly
+      operationId: updateCustomerReference_1
+      parameters:
+      - name: id
+        in: path
+        description: Assembly ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerArticleReferenceDto'
+        required: true
+      responses:
+        '200':
+          description: Customer reference successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssemblyDto'
+        '400':
+          description: Invalid request data
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/assemblies:
+    get:
+      tags:
+      - Manufacturer Assembly Controller
+      summary: List assemblies
+      description: Retrieves a paginated list of assemblies with optional filtering and search
+      operationId: listAssemblies
+      parameters:
+      - name: filter
+        in: query
+        description: filter specification
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        schema:
+          type: array
+          default:
+          - createdAt,DESC
+          items:
+            type: string
+      - name: search
+        in: query
+        description: Optional search term
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved assemblies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paginated'
+        '400':
+          description: Invalid filter specification
+    post:
+      tags:
+      - Manufacturer Assembly Controller
+      summary: Create assembly
+      description: Creates a new assembly with items
+      operationId: createAssembly
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAssemblyDto'
+        required: true
+      responses:
+        '200':
+          description: Assembly successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssemblyDto'
+        '400':
+          description: Invalid request data or referenced entities not found
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/assemblies/{id}/catalog:
+    post:
+      tags:
+      - Manufacturer Assembly Controller
+      summary: Add assembly to catalog
+      description: Adds an assembly to a customer's catalog
+      operationId: addAssemblyToCatalog
+      parameters:
+      - name: id
+        in: path
+        description: Assembly ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: customerOrganisationId
+        in: query
+        description: Customer organisation ID
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: reference
+        in: query
+        description: Customer reference
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Assembly successfully added to catalog
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssemblyDto'
+        '400':
+          description: Invalid request data
+        '404':
+          description: Assembly or customer organisation not found
+  /api/manufacturer/v1/assemblies/{id}/customer-reference/{customerOrganisationId}:
+    delete:
+      tags:
+      - Manufacturer Assembly Controller
+      summary: Delete customer article reference
+      description: Removes the customer's article reference from a specific assembly
+      operationId: deleteCustomerReference_1
+      parameters:
+      - name: id
+        in: path
+        description: Assembly ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: customerOrganisationId
+        in: path
+        description: ID of the customer organization whose reference should be deleted
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Customer reference successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssemblyDto'
+        '404':
+          description: Assembly or customer reference not found
+        '401':
+          description: Unauthorized - operator not found
+components:
+  schemas:
+    UpdateAssemblyDto:
+      type: object
+      description: Assembly update request
+      properties:
+        name:
+          type: string
+          minLength: 1
+        assemblyPrice:
+          type: number
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateAssemblyItemDto'
+          minItems: 1
+      required:
+      - assemblyPrice
+      - items
+      - name
+    CustomerArticleReferenceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        customerOrganisationId:
+          type: integer
+          format: int64
+        customerOrganisationName:
+          type: string
+        reference:
+          type: string
+        pricingTiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
+        showInCatalog:
+          type: boolean
+      required:
+      - customerOrganisationId
+      - pricingTiers
+      - reference
+    CreateAssemblyItemDto:
+      type: object
+      properties:
+        partSpecificationId:
+          type: string
+          format: uuid
+        positionX:
+          type: number
+        positionY:
+          type: number
+        positionZ:
+          type: number
+        rotationX:
+          type: number
+        rotationY:
+          type: number
+        rotationZ:
+          type: number
+      required:
+      - partSpecificationId
+      - positionX
+      - positionY
+      - positionZ
+      - rotationX
+      - rotationY
+      - rotationZ
+    Paginated:
+      type: object
+      properties:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
+    AssemblyItemDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        partSpecificationId:
+          type: string
+          format: uuid
+        partRevisionId:
+          type: string
+          format: uuid
+        partName:
+          type: string
+        positionX:
+          type: number
+        positionY:
+          type: number
+        positionZ:
+          type: number
+        rotationX:
+          type: number
+        rotationY:
+          type: number
+        rotationZ:
+          type: number
+      required:
+      - id
+      - partSpecificationId
+      - positionX
+      - positionY
+      - positionZ
+      - rotationX
+      - rotationY
+      - rotationZ
+    CreateAssemblyDto:
+      type: object
+      description: Assembly creation request
+      properties:
+        name:
+          type: string
+          minLength: 1
+        assemblyPrice:
+          type: number
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateAssemblyItemDto'
+          minItems: 1
+      required:
+      - assemblyPrice
+      - items
+      - name
+    CustomerArticleReferencePricingTierDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+          format: int32
+        price:
+          type: number
+      required:
+      - price
+      - quantity
+    AssemblyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        assemblyPrice:
+          type: number
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssemblyItemDto'
+        customerReferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferenceDto'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - assemblyPrice
+      - customerReferences
+      - id
+      - items
+      - name
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

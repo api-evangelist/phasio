@@ -1,0 +1,155 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Customer Addresses API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Customer Addresses
+  description: Endpoints for managing customer shipping and billing addresses
+paths:
+  /api/customer/v1/address:
+    get:
+      tags:
+      - Customer Addresses
+      summary: Get all addresses for current customer
+      description: Retrieves all addresses associated with the current customer organization
+      operationId: getByCustomerOrganisation
+      responses:
+        '200':
+          description: Successfully retrieved addresses
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerAddressDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+    post:
+      tags:
+      - Customer Addresses
+      summary: Create a new address
+      description: Creates a new shipping or billing address for the current customer organization
+      operationId: create_23
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerAddressDto'
+        required: true
+      responses:
+        '200':
+          description: Successfully created address
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerAddressDto'
+        '400':
+          description: Invalid address data
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/customer/v1/address/{addressId}:
+    get:
+      tags:
+      - Customer Addresses
+      summary: Get address by ID
+      description: Retrieves an address by its unique identifier
+      operationId: getById_14
+      parameters:
+      - name: addressId
+        in: path
+        description: ID of the address to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      responses:
+        '200':
+          description: Successfully retrieved address
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerAddressDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Address not found
+    delete:
+      tags:
+      - Customer Addresses
+      summary: Delete address
+      description: Deletes an address by its unique identifier
+      operationId: delete_14
+      parameters:
+      - name: addressId
+        in: path
+        description: ID of the address to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      responses:
+        '204':
+          description: Successfully deleted address
+        '400':
+          description: Invalid request or address cannot be deleted
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Address not found
+components:
+  schemas:
+    CustomerAddressDto:
+      type: object
+      properties:
+        addressId:
+          type: integer
+          format: int64
+        isBillingAddress:
+          type: boolean
+        isShippingAddress:
+          type: boolean
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        countryAlpha2Code:
+          type: string
+        countryAlpha3Code:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        taxId:
+          type: string
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

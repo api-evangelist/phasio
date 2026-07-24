@@ -1,0 +1,127 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal payment-term-resource API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: payment-term-resource
+paths:
+  /api/manufacturer/v1/payment-term:
+    get:
+      tags:
+      - payment-term-resource
+      operationId: list
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentTermDto'
+    post:
+      tags:
+      - payment-term-resource
+      operationId: create_8
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePaymentTermDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PaymentTermDto'
+  /api/manufacturer/v1/payment-term/{id}:
+    delete:
+      tags:
+      - payment-term-resource
+      operationId: delete_8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+    patch:
+      tags:
+      - payment-term-resource
+      operationId: update_10
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePaymentTermDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PaymentTermDto'
+components:
+  schemas:
+    CreatePaymentTermDto:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+      required:
+      - name
+    UpdatePaymentTermDto:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        accountingSystemTermId:
+          type: string
+      required:
+      - name
+    PaymentTermDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        accountingSystemTermId:
+          type: string
+      required:
+      - id
+      - name
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

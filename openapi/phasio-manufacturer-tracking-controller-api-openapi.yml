@@ -1,0 +1,145 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Tracking Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Tracking Controller
+  description: Endpoints for managing shipment tracking information
+paths:
+  /api/manufacturer/v1/tracking:
+    get:
+      tags:
+      - Manufacturer Tracking Controller
+      summary: Get tracking information by shipment ID
+      description: Retrieves tracking information for a specific shipment
+      operationId: getTracking
+      parameters:
+      - name: shipmentId
+        in: query
+        description: ID of the shipment to get tracking for
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Tracking information retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackingDto'
+        '404':
+          description: Tracking information not found
+    post:
+      tags:
+      - Manufacturer Tracking Controller
+      summary: Create tracking information
+      description: Creates tracking information for a shipment
+      operationId: createTracking
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTrackingDto'
+        required: true
+      responses:
+        '200':
+          description: Tracking information created successfully
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        '400':
+          description: Invalid tracking data or shipment not found
+    patch:
+      tags:
+      - Manufacturer Tracking Controller
+      summary: Update tracking information
+      description: Updates existing tracking information
+      operationId: updateTracking
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTrackingDto'
+        required: true
+      responses:
+        '204':
+          description: Tracking information updated successfully
+        '400':
+          description: Invalid update data or tracking not found
+  /api/manufacturer/v1/tracking/{trackingId}:
+    delete:
+      tags:
+      - Manufacturer Tracking Controller
+      summary: Delete tracking information
+      description: Deletes existing tracking information
+      operationId: deleteTracking
+      parameters:
+      - name: trackingId
+        in: path
+        description: ID of the tracking information to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '204':
+          description: Tracking information deleted successfully
+        '400':
+          description: Delete failed or tracking not found
+components:
+  schemas:
+    CreateTrackingDto:
+      type: object
+      description: Tracking information to create
+      properties:
+        shipmentId:
+          type: integer
+          format: int64
+        trackingNumber:
+          type: string
+      required:
+      - shipmentId
+      - trackingNumber
+    UpdateTrackingDto:
+      type: object
+      description: Updated tracking information
+      properties:
+        trackingId:
+          type: integer
+          format: int64
+        trackingNumber:
+          type: string
+      required:
+      - trackingId
+      - trackingNumber
+    TrackingDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        shipmentId:
+          type: integer
+          format: int64
+        trackingNumber:
+          type: string
+      required:
+      - id
+      - shipmentId
+      - trackingNumber
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

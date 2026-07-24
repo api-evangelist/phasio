@@ -1,0 +1,1349 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Analytics Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Analytics Controller
+  description: Programmatic analytics endpoints for retrieving manufacturer dashboard metrics, funnel performance, revenue, production, customer and material insights.
+paths:
+  /api/manufacturer/v1/analytics/operator/website-visits:
+    get:
+      tags:
+      - Manufacturer Analytics Controller
+      summary: Get website visit statistics for the current month
+      description: Retrieves website traffic and visitor data for the current month
+      operationId: getWebsiteVisitsOfCurrentMonth
+      responses:
+        '200':
+          description: Website visit statistics retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebsiteVisitsDto'
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/analytics/operator/revenue:
+    get:
+      tags:
+      - Manufacturer Analytics Controller
+      summary: Get revenue analytics for the current month
+      description: Retrieves revenue data for the current month
+      operationId: getRevenueOfCurrentMonth
+      responses:
+        '200':
+          description: Revenue data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RevenueDto'
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/analytics/operator/overview:
+    get:
+      tags:
+      - Manufacturer Analytics Controller
+      summary: Get overview analytics for the current month
+      description: Retrieves a comprehensive overview of key analytics metrics for the current month
+      operationId: getOverviewOfCurrentMonth
+      responses:
+        '200':
+          description: Overview analytics retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsOverviewDto'
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/analytics/operator/orders/payment-status:
+    get:
+      tags:
+      - Manufacturer Analytics Controller
+      summary: Get orders by payment status for the current month
+      description: Retrieves order information categorized by payment status for the current month
+      operationId: getOrdersOfCurrentMonthByPaymentStatus
+      responses:
+        '200':
+          description: Orders by payment status retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdersByPaymentStatusDto'
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/analytics/operator/metrics:
+    get:
+      tags:
+      - Manufacturer Analytics Controller
+      summary: Get time series metrics for the operator
+      description: Retrieves a collection of time-based metrics for the operator
+      operationId: getOperatorMetrics
+      responses:
+        '200':
+          description: Operator metrics retrieved successfully
+          content:
+            application/json: {}
+        '401':
+          description: Unauthorized - missing operator context
+        '429':
+          description: Too many requests - per-operator analytics rate limit exceeded
+  /api/manufacturer/v1/analytics/operator/generated-quotes:
+    get:
+      tags:
+      - Manufacturer Analytics Controller
+      summary: Get quotes generated in the current month
+      description: Retrieves data on quotes generated during the current month
+      operationId: getGeneratedQuotesOfCurrentMonth
+      responses:
+        '200':
+          description: Quote generation data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneratedQuotesDto'
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/analytics/dashboard:
+    get:
+      tags:
+      - Manufacturer Analytics Controller
+      summary: Get dashboard analytics
+      description: Returns the manufacturer analytics dashboard in one call, including revenue, funnel, production, customer and material insights. Use this endpoint for reporting dashboards and external BI syncs that need the same aggregates shown in the manufacturer app. The response is scoped to the authenticated operator. Supply a `period` preset or an explicit `from`/`to` range, which wins over `period`. Aggregation is computed at the database level. All period math is in UTC. The `funnel` section returns three stage lists over the quotes-created-in-window cohort - `acquisition` (visits -> sign-ups -> first order), `quoteToOrder` (quote opened -> accepted -> order created) and `fulfillment` (order created -> production started -> production completed -> order completed) - each stage carrying drop-off counts/conversions and median/p95 days from the previous stage, so you can see where flow is lost and where it slows down. Transition times come from the audit trail, so later edits do not rewrite history; order completion is a kanban state and is reported count-only.
+      operationId: getDashboard
+      parameters:
+      - name: period
+        in: query
+        description: Preset reporting window. Defaults to `last_30_days` when omitted. Ignored when both `from` and `to` are supplied.
+        required: false
+        schema:
+          type: string
+          enum:
+          - today
+          - last_7_days
+          - last_30_days
+          - last_90_days
+          - this_month
+          - last_month
+          - this_year
+          - last_year
+          - all_time
+        example: last_30_days
+      - name: from
+        in: query
+        description: Explicit reporting window start date in `yyyy-MM-dd` format. Together with `to`, overrides `period`.
+        required: false
+        schema:
+          type: string
+          format: date
+        example: '2026-01-01'
+      - name: to
+        in: query
+        description: Explicit reporting window end date in `yyyy-MM-dd` format, inclusive. Together with `from`, overrides `period`.
+        required: false
+        schema:
+          type: string
+          format: date
+        example: '2026-01-31'
+      - name: granularity
+        in: query
+        description: Time-series bucket granularity. Auto-derived from the requested window when omitted.
+        required: false
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+        example: day
+      - name: sections
+        in: query
+        description: Dashboard sections to compute. Repeat the query parameter for multiple sections, e.g. `sections=revenue&sections=funnel`. All sections are returned when omitted.
+        required: false
+        schema:
+          type: string
+          enum:
+          - revenue
+          - funnel
+          - production
+          - customers
+          - materials
+        example: revenue
+      - name: customerType
+        in: query
+        description: Optional dimension filter by customer type.
+        required: false
+        schema:
+          type: string
+          enum:
+          - PRO_FORMA
+          - ACCOUNT
+        example: ACCOUNT
+      - name: source
+        in: query
+        description: Optional dimension filter by order source.
+        required: false
+        schema:
+          type: string
+          enum:
+          - INBOUND
+          - OUTBOUND
+        example: INBOUND
+      - name: compare
+        in: query
+        description: When true, include a compact `previous` block (equal-length prior window) of KPI scalars for period-over-period deltas. Ignored for all_time.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: includeArchived
+        in: query
+        description: When true, include archived orders in every count/sum. Defaults to false so the dashboard reflects only live, active orders.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Dashboard analytics retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardAnalyticsDto'
+        '400':
+          description: Invalid range (e.g. too many buckets, or `to` before `from`)
+        '401':
+          description: Unauthorized - missing operator context
+        '429':
+          description: Too many requests - per-operator analytics rate limit exceeded
+components:
+  schemas:
+    PreviousCustomersDto:
+      type: object
+      description: Prior-window customer KPI totals.
+      properties:
+        new:
+          type: integer
+          format: int64
+          description: New customers created in the prior window.
+          example: 12
+        payingCustomers:
+          type: integer
+          format: int64
+          description: Customers with at least one paid or confirmed order in the prior window.
+          example: 31
+        avgOrderValue:
+          type: number
+          description: Average order value for the prior window.
+          example: '395.50'
+        repeatRate:
+          type: number
+          format: double
+          description: Prior-window repeat-customer rate, returned as a ratio from 0 to 1.
+          example: '0.24'
+      required:
+      - avgOrderValue
+      - new
+      - payingCustomers
+      - repeatRate
+    PreviousProductionDto:
+      type: object
+      description: Prior-window production KPI totals.
+      properties:
+        openRequisitions:
+          type: integer
+          format: int64
+          description: Open requisitions at the end of the prior window.
+          example: 18
+        avgLeadTimeDays:
+          type: number
+          format: double
+          description: Average lead time in days for completed production in the prior window.
+          example: '5.8'
+        onTimePct:
+          type: number
+          format: double
+          description: On-time completion percentage. Currently null until requisition due-date signal is available.
+        scrapRate:
+          type: number
+          format: double
+          description: Prior-window scrap rate, returned as a ratio from 0 to 1.
+          example: '0.03'
+      required:
+      - openRequisitions
+      - scrapRate
+    TopCustomerDto:
+      type: object
+      description: Customer revenue ranking row.
+      properties:
+        customerOrganisationId:
+          type: integer
+          format: int64
+          description: Customer organisation ID.
+          example: 123
+        name:
+          type: string
+          description: Customer organisation name.
+          example: Acme Manufacturing
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: USD
+        paid:
+          type: number
+          description: Paid revenue for this customer.
+          example: '8200.00'
+        confirmed:
+          type: number
+          description: Confirmed but unpaid revenue for this customer.
+          example: '1500.00'
+      required:
+      - confirmed
+      - currency
+      - customerOrganisationId
+      - paid
+    CustomersSectionDto:
+      type: object
+      description: Customer analytics section.
+      properties:
+        new:
+          type: integer
+          format: int64
+          description: New customer organisations created in the reporting window.
+          example: 15
+        byType:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int64
+          description: Customer counts keyed by customer type.
+          example:
+            ACCOUNT: 8
+            PRO_FORMA: 7
+        topByRevenue:
+          type: array
+          description: Top customers ranked by paid and confirmed revenue.
+          items:
+            $ref: '#/components/schemas/TopCustomerDto'
+        value:
+          type: array
+          description: Customer value metrics grouped by currency.
+          items:
+            $ref: '#/components/schemas/CustomerValueDto'
+        retention:
+          $ref: '#/components/schemas/RetentionDto'
+          description: Repeat, at-risk and churned customer metrics.
+        acquisition:
+          type: array
+          description: Customer acquisition metrics grouped by source.
+          items:
+            $ref: '#/components/schemas/AcquisitionSourceDto'
+        geography:
+          type: array
+          description: Customer revenue grouped by country.
+          items:
+            $ref: '#/components/schemas/CountryRevenueDto'
+        paymentBehaviour:
+          type: array
+          description: Payment timing and outstanding balance metrics grouped by currency.
+          items:
+            $ref: '#/components/schemas/PaymentBehaviourDto'
+        cartConversion:
+          $ref: '#/components/schemas/CartConversionDto'
+          description: Cart creation to order conversion metrics.
+        discountUsage:
+          $ref: '#/components/schemas/DiscountUsageDto'
+          description: Discount usage metrics for orders in the reporting window.
+      required:
+      - byType
+      - new
+      - topByRevenue
+    DiscountUsageDto:
+      type: object
+      description: Discount usage metrics.
+      properties:
+        ordersWithDiscount:
+          type: integer
+          format: int64
+          description: Orders that include a discount.
+          example: 12
+        totalOrders:
+          type: integer
+          format: int64
+          description: Total orders considered for discount usage.
+          example: 68
+        usageRate:
+          type: number
+          format: double
+          description: Share of orders using discounts, returned as a ratio from 0 to 1.
+          example: '0.176'
+        avgDiscountPercentage:
+          type: number
+          format: double
+          description: Average discount percentage across discounted orders.
+          example: '8.5'
+      required:
+      - ordersWithDiscount
+      - totalOrders
+      - usageRate
+    CountryRevenueDto:
+      type: object
+      description: Revenue grouped by customer country.
+      properties:
+        country:
+          type: string
+          description: ISO country code or country label.
+          example: US
+        orders:
+          type: integer
+          format: int64
+          description: Order count for this country.
+          example: 17
+        paid:
+          type: number
+          description: Paid revenue for this country.
+          example: '6200.00'
+        confirmed:
+          type: number
+          description: Confirmed but unpaid revenue for this country.
+          example: '2100.00'
+      required:
+      - confirmed
+      - country
+      - orders
+      - paid
+    WipStageDto:
+      type: object
+      description: Current work-in-progress count for an operation.
+      properties:
+        operation:
+          type: string
+          description: Operation name. Null when no operation grouping is available.
+          example: Finishing
+        count:
+          type: integer
+          format: int64
+          description: Open WIP count.
+          example: 9
+      required:
+      - count
+    WebsiteVisitsDto:
+      type: object
+      properties:
+        numberOfWebsiteVisits:
+          type: integer
+          format: int64
+      required:
+      - numberOfWebsiteVisits
+    GeneratedQuotesDto:
+      type: object
+      properties:
+        numberOfGeneratedQuotes:
+          type: integer
+          format: int64
+      required:
+      - numberOfGeneratedQuotes
+    AnalyticsOverviewDto:
+      type: object
+      properties:
+        earnedRevenue:
+          type: integer
+        unearnedRevenue:
+          type: integer
+        currency:
+          type: string
+        numberOfOrders:
+          type: integer
+          format: int32
+        numberOfPaidOrders:
+          type: integer
+          format: int32
+        numberOfUnpaidOrders:
+          type: integer
+          format: int32
+        numberOfGeneratedQuotes:
+          type: integer
+          format: int64
+        numberOfWebsiteVisits:
+          type: integer
+          format: int64
+      required:
+      - currency
+      - earnedRevenue
+      - numberOfGeneratedQuotes
+      - numberOfOrders
+      - numberOfPaidOrders
+      - numberOfUnpaidOrders
+      - numberOfWebsiteVisits
+      - unearnedRevenue
+    CartConversionDto:
+      type: object
+      description: Cart conversion metrics.
+      properties:
+        carts:
+          type: integer
+          format: int64
+          description: Carts created in the reporting window.
+          example: 96
+        converted:
+          type: integer
+          format: int64
+          description: Carts converted into orders.
+          example: 34
+        abandoned:
+          type: integer
+          format: int64
+          description: Carts not converted into orders.
+          example: 62
+        conversionRate:
+          type: number
+          format: double
+          description: Cart conversion rate, returned as a ratio from 0 to 1.
+          example: '0.354'
+      required:
+      - abandoned
+      - carts
+      - conversionRate
+      - converted
+    OrdersByPaymentStatusDto:
+      type: object
+      properties:
+        numberOfOrders:
+          type: integer
+          format: int32
+        numberOfPaidOrders:
+          type: integer
+          format: int32
+        numberOfUnpaidOrders:
+          type: integer
+          format: int32
+      required:
+      - numberOfOrders
+      - numberOfPaidOrders
+      - numberOfUnpaidOrders
+    MaterialsSectionDto:
+      type: object
+      description: Material and manufacturing-process analytics section.
+      properties:
+        topMaterials:
+          type: array
+          description: Most-used materials ranked by requisition and quantity.
+          items:
+            $ref: '#/components/schemas/MaterialUsageDto'
+        topTechnologies:
+          type: array
+          description: Most-used technologies ranked by requisition and quantity.
+          items:
+            $ref: '#/components/schemas/TechnologyUsageDto'
+        materialProcessMatrix:
+          type: array
+          description: Revenue grouped by material and technology.
+          items:
+            $ref: '#/components/schemas/MaterialProcessDto'
+        postProcessing:
+          type: array
+          description: Most-used post-processing options.
+          items:
+            $ref: '#/components/schemas/PostProcessingUsageDto'
+        scrapByMaterial:
+          type: array
+          description: Scrapped units grouped by material.
+          items:
+            $ref: '#/components/schemas/ScrapByMaterialDto'
+      required:
+      - materialProcessMatrix
+      - postProcessing
+      - scrapByMaterial
+      - topMaterials
+      - topTechnologies
+    MaterialProcessDto:
+      type: object
+      description: Revenue grouped by material and technology.
+      properties:
+        material:
+          type: string
+          description: Material name.
+          example: Aluminium 6061
+        technology:
+          type: string
+          description: Technology name.
+          example: CNC
+        requisitions:
+          type: integer
+          format: int64
+          description: Requisitions for this material/technology pair.
+          example: 8
+        revenue:
+          type: number
+          description: Revenue for this material/technology pair.
+          example: '3200.00'
+      required:
+      - material
+      - requisitions
+      - revenue
+      - technology
+    RetentionDto:
+      type: object
+      description: Customer retention metrics.
+      properties:
+        customersWithOrders:
+          type: integer
+          format: int64
+          description: Customers with at least one order.
+          example: 80
+        repeatCustomers:
+          type: integer
+          format: int64
+          description: Customers with more than one order.
+          example: 22
+        repeatRate:
+          type: number
+          format: double
+          description: Repeat-customer rate, returned as a ratio from 0 to 1.
+          example: '0.275'
+        atRiskCustomers:
+          type: integer
+          format: int64
+          description: Customers considered at risk based on inactivity threshold.
+          example: 9
+        churnedCustomers:
+          type: integer
+          format: int64
+          description: Customers considered churned based on inactivity threshold.
+          example: 4
+        atRiskThresholdDays:
+          type: integer
+          format: int32
+          description: Inactivity threshold in days used for at-risk classification.
+          example: 90
+      required:
+      - atRiskCustomers
+      - atRiskThresholdDays
+      - churnedCustomers
+      - customersWithOrders
+      - repeatCustomers
+      - repeatRate
+    RevenueDto:
+      type: object
+      properties:
+        earnedRevenue:
+          type: integer
+        unearnedRevenue:
+          type: integer
+        currency:
+          type: string
+      required:
+      - currency
+      - earnedRevenue
+      - unearnedRevenue
+    ProductionSectionDto:
+      type: object
+      description: Production analytics section.
+      properties:
+        openRequisitions:
+          type: integer
+          format: int64
+          description: Number of open requisitions.
+          example: 24
+        avgLeadTimeDays:
+          type: number
+          format: double
+          description: Average lead time in days for completed production.
+          example: '5.4'
+        onTimePct:
+          type: number
+          format: double
+          description: On-time completion percentage. Currently null until requisition due-date signal is available.
+        throughput:
+          type: array
+          description: Produced quantity grouped by operation and date bucket.
+          items:
+            $ref: '#/components/schemas/ThroughputBucketDto'
+        wip:
+          type: array
+          description: Work-in-progress counts grouped by operation.
+          items:
+            $ref: '#/components/schemas/WipStageDto'
+        cycleTime:
+          type: array
+          description: Average and p95 cycle-time metrics grouped by operation.
+          items:
+            $ref: '#/components/schemas/CycleTimeDto'
+        scrap:
+          $ref: '#/components/schemas/ScrapSummaryDto'
+          description: Scrap totals and scrap-by-operation breakdown.
+        kanban:
+          type: array
+          description: Current order counts grouped by kanban column.
+          items:
+            $ref: '#/components/schemas/KanbanStageDto'
+      required:
+      - openRequisitions
+    PreviousRevenueDto:
+      type: object
+      description: Prior-window revenue KPI totals.
+      properties:
+        paid:
+          type: number
+          description: Revenue from paid orders in the prior window.
+          example: '12500.00'
+        confirmed:
+          type: number
+          description: Revenue from confirmed but unpaid orders in the prior window.
+          example: '4100.00'
+        outstanding:
+          type: number
+          description: Outstanding revenue in the prior window.
+          example: '2250.00'
+        orders:
+          type: integer
+          format: int64
+          description: Number of orders in the prior window.
+          example: 42
+      required:
+      - confirmed
+      - orders
+      - outstanding
+      - paid
+    ThroughputBucketDto:
+      type: object
+      description: Produced quantity for an operation and date bucket.
+      properties:
+        operation:
+          type: string
+          description: Operation name. Null when no operation grouping is available.
+          example: FDM Printing
+        bucket:
+          type: string
+          format: date
+          description: Start date of the bucket.
+          example: '2026-01-01'
+        quantity:
+          type: integer
+          format: int64
+          description: Produced quantity in the bucket.
+          example: 35
+      required:
+      - bucket
+      - quantity
+    ScrapByMaterialDto:
+      type: object
+      description: Scrapped units grouped by material.
+      properties:
+        material:
+          type: string
+          description: Material name.
+          example: PLA
+        scrappedUnits:
+          type: integer
+          format: int64
+          description: Scrapped units for this material.
+          example: 5
+      required:
+      - material
+      - scrappedUnits
+    PreviousTotalsDto:
+      type: object
+      description: Prior-window KPI totals used for period-over-period comparisons.
+      properties:
+        from:
+          type: string
+          format: date
+          description: Inclusive start date of the prior comparison window.
+          example: '2025-12-01'
+        to:
+          type: string
+          format: date
+          description: Inclusive end date of the prior comparison window.
+          example: '2025-12-31'
+        revenue:
+          $ref: '#/components/schemas/PreviousRevenueDto'
+          description: Prior-window revenue KPI totals.
+        funnel:
+          $ref: '#/components/schemas/PreviousFunnelDto'
+          description: Prior-window funnel KPI totals.
+        customers:
+          $ref: '#/components/schemas/PreviousCustomersDto'
+          description: Prior-window customer KPI totals.
+        production:
+          $ref: '#/components/schemas/PreviousProductionDto'
+          description: Prior-window production KPI totals.
+      required:
+      - from
+      - to
+    FunnelStageDto:
+      type: object
+      description: One stage in a funnel sequence.
+      properties:
+        stage:
+          type: string
+          description: Stable machine-readable stage key.
+          example: order_created
+        label:
+          type: string
+          description: Human-readable stage label.
+          example: Order created
+        count:
+          type: integer
+          format: int64
+          description: Number of records that reached this stage.
+          example: 48
+        dropOff:
+          type: integer
+          format: int64
+          description: Number of records lost between the previous stage and this stage.
+          example: 12
+        conversionFromPrevious:
+          type: number
+          format: double
+          description: Conversion from the previous stage, returned as a ratio from 0 to 1.
+          example: '0.8'
+        conversionFromStart:
+          type: number
+          format: double
+          description: Conversion from the first stage, returned as a ratio from 0 to 1.
+          example: '0.4'
+        medianDaysFromPrevious:
+          type: number
+          format: double
+          description: Median number of days from the previous stage to this stage.
+          example: '2.0'
+        p95DaysFromPrevious:
+          type: number
+          format: double
+          description: 95th percentile number of days from the previous stage to this stage.
+          example: '7.5'
+      required:
+      - count
+      - label
+      - stage
+    MaterialUsageDto:
+      type: object
+      description: Material usage metrics.
+      properties:
+        materialId:
+          type: integer
+          format: int64
+          description: Material ID.
+          example: 42
+        name:
+          type: string
+          description: Material name.
+          example: PLA
+        requisitions:
+          type: integer
+          format: int64
+          description: Requisitions using this material.
+          example: 26
+        quantity:
+          type: integer
+          format: int64
+          description: Total produced/requested quantity using this material.
+          example: 210
+        estimatedVolume:
+          type: number
+          description: Estimated volume for this material.
+          example: '1250.75'
+      required:
+      - estimatedVolume
+      - materialId
+      - name
+      - quantity
+      - requisitions
+    PostProcessingUsageDto:
+      type: object
+      description: Post-processing usage count.
+      properties:
+        name:
+          type: string
+          description: Post-processing option name.
+          example: Anodising
+        count:
+          type: integer
+          format: int64
+          description: Number of times this option was used.
+          example: 14
+      required:
+      - count
+      - name
+    CurrencyRevenueDto:
+      type: object
+      description: Revenue totals for a single currency.
+      properties:
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: USD
+        total:
+          type: number
+          description: Total paid, confirmed and outstanding revenue for this currency.
+          example: '18850.00'
+        paid:
+          type: number
+          description: Revenue from paid orders.
+          example: '12500.00'
+        confirmed:
+          type: number
+          description: Revenue from confirmed but unpaid orders.
+          example: '4100.00'
+        outstanding:
+          type: number
+          description: Outstanding revenue not yet paid or confirmed.
+          example: '2250.00'
+        orders:
+          type: integer
+          format: int64
+          description: Number of orders contributing to this currency total.
+          example: 42
+      required:
+      - confirmed
+      - currency
+      - orders
+      - outstanding
+      - paid
+      - total
+    PaymentBehaviourDto:
+      type: object
+      description: Customer payment behavior metrics grouped by currency.
+      properties:
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: USD
+        daysSalesOutstanding:
+          type: number
+          format: double
+          description: Days sales outstanding. Null when there is not enough paid/confirmed data.
+          example: '14.2'
+        latePaymentRate:
+          type: number
+          format: double
+          description: Late payment rate, returned as a ratio from 0 to 1.
+          example: '0.12'
+        outstanding:
+          type: number
+          description: Outstanding confirmed-but-unpaid balance.
+          example: '4100.00'
+        paidOrders:
+          type: integer
+          format: int64
+          description: Paid order count.
+          example: 18
+        confirmedOrders:
+          type: integer
+          format: int64
+          description: Confirmed order count.
+          example: 11
+      required:
+      - confirmedOrders
+      - currency
+      - latePaymentRate
+      - outstanding
+      - paidOrders
+    RevenueSectionDto:
+      type: object
+      description: Revenue analytics section.
+      properties:
+        byCurrency:
+          type: array
+          description: Revenue totals split by order currency.
+          items:
+            $ref: '#/components/schemas/CurrencyRevenueDto'
+        byBucket:
+          type: array
+          description: Paid and confirmed revenue grouped by date bucket and currency.
+          items:
+            $ref: '#/components/schemas/RevenueBucketDto'
+        byPaymentStatus:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int64
+          description: Order counts keyed by payment status name.
+          example:
+            PAID: 12
+            CONFIRMED: 8
+      required:
+      - byBucket
+      - byCurrency
+      - byPaymentStatus
+    RangeDto:
+      type: object
+      description: Resolved analytics reporting window.
+      properties:
+        period:
+          type: string
+          description: Resolved period preset. `custom` is returned when explicit `from` and `to` dates are used.
+          example: last_30_days
+        from:
+          type: string
+          format: date
+          description: Inclusive start date of the resolved reporting window.
+          example: '2026-01-01'
+        to:
+          type: string
+          format: date
+          description: Inclusive end date of the resolved reporting window.
+          example: '2026-01-31'
+        granularity:
+          type: string
+          description: Resolved bucket granularity used by time-series arrays.
+          enum:
+          - day
+          - week
+          - month
+          example: day
+        primaryCurrency:
+          type: string
+          description: Operator primary currency used as the default dashboard currency.
+          example: USD
+      required:
+      - from
+      - granularity
+      - period
+      - primaryCurrency
+      - to
+    CustomerValueDto:
+      type: object
+      description: Customer value metrics grouped by currency.
+      properties:
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: USD
+        totalPaid:
+          type: number
+          description: Total paid revenue.
+          example: '25000.00'
+        totalConfirmed:
+          type: number
+          description: Total confirmed but unpaid revenue.
+          example: '8000.00'
+        payingCustomers:
+          type: integer
+          format: int64
+          description: Customers with paid or confirmed orders.
+          example: 31
+        orders:
+          type: integer
+          format: int64
+          description: Order count for this currency.
+          example: 68
+        avgOrderValue:
+          type: number
+          description: Average order value.
+          example: '485.29'
+        avgLifetimeValue:
+          type: number
+          description: Average lifetime value per paying customer.
+          example: '1064.52'
+      required:
+      - avgLifetimeValue
+      - avgOrderValue
+      - currency
+      - orders
+      - payingCustomers
+      - totalConfirmed
+      - totalPaid
+    ScrapSummaryDto:
+      type: object
+      description: Scrap analytics summary.
+      properties:
+        scrappedUnits:
+          type: integer
+          format: int64
+          description: Total scrapped units in the reporting window.
+          example: 7
+        producedUnits:
+          type: integer
+          format: int64
+          description: Total produced units in the reporting window.
+          example: 240
+        scrapRate:
+          type: number
+          format: double
+          description: Scrap rate, returned as a ratio from 0 to 1.
+          example: '0.029'
+        byOperation:
+          type: array
+          description: Scrapped units grouped by operation.
+          items:
+            $ref: '#/components/schemas/ScrapOperationDto'
+      required:
+      - byOperation
+      - producedUnits
+      - scrapRate
+      - scrappedUnits
+    PreviousFunnelDto:
+      type: object
+      description: Prior-window funnel KPI totals.
+      properties:
+        conversion:
+          type: number
+          format: double
+          description: Prior-window quote-to-order conversion rate, returned as a ratio from 0 to 1.
+          example: '0.38'
+        completionRate:
+          type: number
+          format: double
+          description: Prior-window fulfillment completion rate, returned as a ratio from 0 to 1.
+          example: '0.72'
+        medianDaysToCompletion:
+          type: number
+          format: double
+          description: Median number of days from order creation to completion in the prior window.
+          example: '6.5'
+      required:
+      - completionRate
+    FunnelSectionDto:
+      type: object
+      description: Funnel analytics section for quote, order and fulfillment conversion.
+      properties:
+        quotesGenerated:
+          type: integer
+          format: int64
+          description: Non-draft quotes created in the reporting window. Customer type and source filters apply.
+          example: 120
+        ordersCreated:
+          type: integer
+          format: int64
+          description: Orders created from the reporting-window quote cohort.
+          example: 48
+        accepted:
+          type: integer
+          format: int64
+          description: Quotes accepted from the reporting-window quote cohort.
+          example: 51
+        confirmed:
+          type: integer
+          format: int64
+          description: Orders confirmed by the manufacturer, usually pay-by-PO or invoice outcomes.
+          example: 30
+        paid:
+          type: integer
+          format: int64
+          description: Orders paid directly by the customer.
+          example: 18
+        conversion:
+          type: number
+          format: double
+          description: Quote-to-order conversion rate for the cohort, returned as a ratio from 0 to 1.
+          example: '0.4'
+        acquisition:
+          type: array
+          description: Acquisition stages from visit to sign-up to first order.
+          items:
+            $ref: '#/components/schemas/FunnelStageDto'
+        quoteToOrder:
+          type: array
+          description: Combined quote-to-order stage list for the reporting-window quote cohort.
+          items:
+            $ref: '#/components/schemas/FunnelStageDto'
+        quoteToOrderInbound:
+          type: array
+          description: Inbound/storefront quote-to-order funnel. Present only when no source filter is active.
+          items:
+            $ref: '#/components/schemas/FunnelStageDto'
+        quoteToOrderOutbound:
+          type: array
+          description: Outbound/manufacturer-sent quote-to-order funnel. Present only when no source filter is active.
+          items:
+            $ref: '#/components/schemas/FunnelStageDto'
+        fulfillment:
+          type: array
+          description: Fulfillment stages from order creation to production and completion.
+          items:
+            $ref: '#/components/schemas/FunnelStageDto'
+      required:
+      - accepted
+      - confirmed
+      - ordersCreated
+      - paid
+      - quotesGenerated
+    TechnologyUsageDto:
+      type: object
+      description: Technology usage metrics.
+      properties:
+        technology:
+          type: string
+          description: Technology name.
+          example: FDM
+        requisitions:
+          type: integer
+          format: int64
+          description: Requisitions using this technology.
+          example: 31
+        quantity:
+          type: integer
+          format: int64
+          description: Total produced/requested quantity using this technology.
+          example: 280
+        estimatedVolume:
+          type: number
+          description: Estimated volume for this technology.
+          example: '1540.50'
+      required:
+      - estimatedVolume
+      - quantity
+      - requisitions
+      - technology
+    ScrapOperationDto:
+      type: object
+      description: Scrapped units grouped by operation.
+      properties:
+        operation:
+          type: string
+          description: Operation name. Null when no operation grouping is available.
+          example: FDM Printing
+        scrappedUnits:
+          type: integer
+          format: int64
+          description: Scrapped units for this operation.
+          example: 4
+      required:
+      - scrappedUnits
+    KanbanStageDto:
+      type: object
+      description: Current order count for a kanban stage.
+      properties:
+        name:
+          type: string
+          description: Kanban column name.
+          example: In Production
+        sequence:
+          type: integer
+          format: int32
+          description: Kanban column sequence order.
+          example: 3
+        count:
+          type: integer
+          format: int64
+          description: Orders currently in this column.
+          example: 14
+      required:
+      - count
+      - name
+      - sequence
+    AcquisitionSourceDto:
+      type: object
+      description: Customer acquisition source metrics.
+      properties:
+        source:
+          type: string
+          description: Acquisition source label.
+          example: STORE_FRONT
+        customers:
+          type: integer
+          format: int64
+          description: Customer count for this source.
+          example: 18
+        paid:
+          type: number
+          description: Paid revenue from customers in this source.
+          example: '5200.00'
+        confirmed:
+          type: number
+          description: Confirmed but unpaid revenue from customers in this source.
+          example: '1400.00'
+      required:
+      - confirmed
+      - customers
+      - paid
+      - source
+    RevenueBucketDto:
+      type: object
+      description: Bucketed revenue total for a date and currency.
+      properties:
+        bucket:
+          type: string
+          format: date
+          description: Start date of the bucket.
+          example: '2026-01-01'
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: USD
+        paid:
+          type: number
+          description: Paid revenue in this bucket.
+          example: '1200.00'
+        confirmed:
+          type: number
+          description: Confirmed but unpaid revenue in this bucket.
+          example: '450.00'
+        orders:
+          type: integer
+          format: int64
+          description: Order count in this bucket.
+          example: 5
+      required:
+      - bucket
+      - confirmed
+      - currency
+      - orders
+      - paid
+    DashboardAnalyticsDto:
+      type: object
+      description: Consolidated manufacturer analytics dashboard for a requested reporting window.
+      properties:
+        range:
+          $ref: '#/components/schemas/RangeDto'
+          description: Resolved reporting window and primary currency metadata.
+        previous:
+          $ref: '#/components/schemas/PreviousTotalsDto'
+          description: Prior equal-length window totals. Present only when `compare=true` and the selected period supports comparison.
+        revenue:
+          $ref: '#/components/schemas/RevenueSectionDto'
+          description: Revenue totals, bucketed revenue and order counts by payment status. Present when the revenue section is requested.
+        funnel:
+          $ref: '#/components/schemas/FunnelSectionDto'
+          description: Quote, order, acquisition and fulfillment funnel metrics. Present when the funnel section is requested.
+        production:
+          $ref: '#/components/schemas/ProductionSectionDto'
+          description: Production throughput, work-in-progress, cycle time, scrap and kanban metrics. Present when the production section is requested.
+        customers:
+          $ref: '#/components/schemas/CustomersSectionDto'
+          description: Customer acquisition, revenue, retention, geography, payment and cart-conversion metrics. Present when the customers section is requested.
+        materials:
+          $ref: '#/components/schemas/MaterialsSectionDto'
+          description: Material, technology, post-processing and material scrap metrics. Present when the materials section is requested.
+      required:
+      - range
+    CycleTimeDto:
+      type: object
+      description: Cycle-time metrics for an operation.
+      properties:
+        operation:
+          type: string
+          description: Operation name. Null when no operation grouping is available.
+          example: CNC Milling
+        avgDays:
+          type: number
+          format: double
+          description: Average cycle time in days.
+          example: '2.4'
+        p95Days:
+          type: number
+          format: double
+          description: 95th percentile cycle time in days.
+          example: '6.8'
+        samples:
+          type: integer
+          format: int64
+          description: Number of completed samples used for the metric.
+          example: 22
+      required:
+      - avgDays
+      - p95Days
+      - samples
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

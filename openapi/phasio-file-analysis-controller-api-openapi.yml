@@ -1,0 +1,217 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal File Analysis Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: File Analysis Controller
+  description: Endpoints for managing 3D file analysis and processing
+paths:
+  /api/internal/v1/file-analysis/results/{analysisId}:
+    put:
+      tags:
+      - File Analysis Controller
+      summary: Save file analysis results
+      description: Accepts a fully-encrypted msgpack payload from Gina-Three
+      operationId: saveResults
+      parameters:
+      - name: analysisId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/msgpack:
+            schema:
+              $ref: '#/components/schemas/AnalysisResults'
+        required: true
+      responses:
+        '204':
+          description: Analysis results saved
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+  /api/internal/v1/file-analysis/status/{analysisId}/{status}:
+    post:
+      tags:
+      - File Analysis Controller
+      summary: Update analysis status
+      description: Receives status callbacks from Gina during processing
+      operationId: updateStatus
+      parameters:
+      - name: analysisId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: status
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - SENT_FOR_ANALYSIS
+          - ANALYSIS_STARTED
+          - REPAIR_STARTED
+          - REPAIR_COMPLETED
+          - ANALYSIS_COMPLETED
+          - ANALYSIS_FAILED
+          - DESIGN_DOES_NOT_EXIST
+          - RESULT_READY
+      responses:
+        '204':
+          description: Status updated
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+  /api/internal/v1/file-analysis/pre-analysis/{analysisId}:
+    get:
+      tags:
+      - File Analysis Controller
+      summary: Get pre-analysis file
+      description: Retrieves a file prepared for analysis based on the analysis ID
+      operationId: getPreAnalysisFile
+      parameters:
+      - name: analysisId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Successfully retrieved pre-analysis file
+          content:
+            application/octet-stream: {}
+        '400':
+          description: Invalid analysis ID
+        '401':
+          description: Unauthorized
+        '404':
+          description: Pre-analysis file not found
+components:
+  schemas:
+    ThumbnailPayload:
+      type: object
+      properties:
+        direction:
+          type: string
+        data:
+          type: string
+          format: byte
+        similarityVector:
+          type: array
+          items:
+            type: number
+      required:
+      - data
+      - direction
+    AnalysisResults:
+      type: object
+      properties:
+        stl:
+          type: string
+          format: byte
+        thumbnails:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThumbnailPayload'
+        wallThickness:
+          type: string
+          format: byte
+        volume:
+          type: number
+        area:
+          type: number
+        width:
+          type: number
+        height:
+          type: number
+        length:
+          type: number
+        minBoundingBoxVolume:
+          type: number
+        minimumWallThickness:
+          type: number
+        convexHullVolume:
+          type: number
+        shrinkWrapVolume:
+          type: number
+        repaired:
+          type: boolean
+        watertight:
+          type: boolean
+        fileHash:
+          type: string
+        similarityVector:
+          type: array
+          items:
+            type: number
+        baseRotation:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+        baseTranslation:
+          type: array
+          items:
+            type: number
+        analysisVersion:
+          type: integer
+          format: int32
+        partRevisionId:
+          type: string
+          format: uuid
+        creationMethod:
+          type: string
+        fileName:
+          type: string
+        analysisId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+        originalCadFileType:
+          type: string
+        availableAccessories:
+          type: array
+          items:
+            type: string
+        versionNumber:
+          type: integer
+          format: int64
+      required:
+      - analysisVersion
+      - area
+      - baseRotation
+      - baseTranslation
+      - convexHullVolume
+      - fileHash
+      - height
+      - length
+      - minBoundingBoxVolume
+      - repaired
+      - shrinkWrapVolume
+      - stl
+      - thumbnails
+      - volume
+      - watertight
+      - width
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,151 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Customer Assembly Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Customer Assembly Controller
+  description: Endpoints for viewing assemblies
+paths:
+  /api/customer/v1/assemblies/{id}:
+    get:
+      tags:
+      - Customer Assembly Controller
+      summary: Get assembly by ID
+      description: Retrieves a specific assembly by its ID
+      operationId: getAssembly_1
+      parameters:
+      - name: id
+        in: path
+        description: Assembly ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Successfully retrieved assembly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssemblyDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Assembly not found
+components:
+  schemas:
+    CustomerArticleReferencePricingTierDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+          format: int32
+        price:
+          type: number
+      required:
+      - price
+      - quantity
+    AssemblyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        assemblyPrice:
+          type: number
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssemblyItemDto'
+        customerReferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferenceDto'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - assemblyPrice
+      - customerReferences
+      - id
+      - items
+      - name
+    AssemblyItemDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        partSpecificationId:
+          type: string
+          format: uuid
+        partRevisionId:
+          type: string
+          format: uuid
+        partName:
+          type: string
+        positionX:
+          type: number
+        positionY:
+          type: number
+        positionZ:
+          type: number
+        rotationX:
+          type: number
+        rotationY:
+          type: number
+        rotationZ:
+          type: number
+      required:
+      - id
+      - partSpecificationId
+      - positionX
+      - positionY
+      - positionZ
+      - rotationX
+      - rotationY
+      - rotationZ
+    CustomerArticleReferenceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        customerOrganisationId:
+          type: integer
+          format: int64
+        customerOrganisationName:
+          type: string
+        reference:
+          type: string
+        pricingTiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
+        showInCatalog:
+          type: boolean
+      required:
+      - customerOrganisationId
+      - pricingTiers
+      - reference
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

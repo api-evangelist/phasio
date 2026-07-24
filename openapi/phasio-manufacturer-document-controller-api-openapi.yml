@@ -1,0 +1,262 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Document Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Document Controller
+  description: API for generating and downloading various document types
+paths:
+  /api/manufacturer/v1/document/{orderId}/traveller-sheet:
+    get:
+      tags:
+      - Manufacturer Document Controller
+      summary: Generate traveller sheet PDF
+      description: Generates a traveller sheet PDF document for the specified order
+      operationId: getTravellerSheetForOperator
+      parameters:
+      - name: orderId
+        in: path
+        description: ID of the order to generate traveller sheet for
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: PDF generated successfully
+          content:
+            application/pdf: {}
+        '400':
+          description: Invalid order ID or generation failed
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/document/{orderId}/order-traveller:
+    get:
+      tags:
+      - Manufacturer Document Controller
+      summary: Generate order traveller PDF
+      description: Generates an order-level traveller PDF for the specified order, optionally using a custom named template
+      operationId: getOrderTraveller
+      parameters:
+      - name: orderId
+        in: path
+        description: ID of the order
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      - name: templateName
+        in: query
+        description: Name of the ORDER_LEVEL_TRAVELLER custom template to use (optional)
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: PDF generated successfully
+          content:
+            application/pdf: {}
+        '400':
+          description: Invalid order ID or generation failed
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/document/{orderId}/invoice:
+    get:
+      tags:
+      - Manufacturer Document Controller
+      summary: Generate invoice PDF
+      description: Generates an invoice PDF document for the specified order
+      operationId: getInvoicePdf
+      parameters:
+      - name: orderId
+        in: path
+        description: ID of the order to generate invoice for
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: PDF generated successfully
+          content:
+            application/pdf: {}
+        '400':
+          description: Invalid order ID or generation failed
+        '401':
+          description: Unauthorized - missing operator context
+        '403':
+          description: Invoice downloads are disabled for this operator
+  /api/manufacturer/v1/document/{orderId}/estimate:
+    get:
+      tags:
+      - Manufacturer Document Controller
+      summary: Generate estimate PDF
+      description: Generates an estimate PDF document for the specified order
+      operationId: getEstimate
+      parameters:
+      - name: orderId
+        in: path
+        description: ID of the order to generate estimate for
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: PDF generated successfully
+          content:
+            application/pdf: {}
+        '400':
+          description: Invalid order ID or generation failed
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/document/{orderId}/custom:
+    get:
+      tags:
+      - Manufacturer Document Controller
+      summary: Generate custom template document
+      description: Generates a PDF document using a custom template for the specified order
+      operationId: generateCustomDocument
+      parameters:
+      - name: orderId
+        in: path
+        description: ID of the order
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      - name: templateId
+        in: query
+        description: ID of the custom template
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 42
+      responses:
+        '200':
+          description: PDF generated successfully
+          content:
+            application/pdf: {}
+        '400':
+          description: Invalid order ID, template ID, or generation failed
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/document/{orderId}/consignment-label:
+    get:
+      tags:
+      - Manufacturer Document Controller
+      summary: Generate consignment label PDF
+      description: Generates a consignment label PDF document for the specified order
+      operationId: getConsignmentLabelPdf
+      parameters:
+      - name: orderId
+        in: path
+        description: ID of the order to generate consignment label for
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: PDF generated successfully
+          content:
+            application/pdf: {}
+        '400':
+          description: Invalid order ID or generation failed
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/document/{orderId}/confirmation:
+    get:
+      tags:
+      - Manufacturer Document Controller
+      summary: Generate confirmation PDF
+      description: Generates an order confirmation PDF document for the specified order
+      operationId: getConfirmation
+      parameters:
+      - name: orderId
+        in: path
+        description: ID of the order to generate confirmation for
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: PDF generated successfully
+          content:
+            application/pdf: {}
+        '400':
+          description: Invalid order ID or generation failed
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/document/test/operator:
+    get:
+      tags:
+      - Manufacturer Document Controller
+      summary: Generate test document
+      description: Generates a test document of the specified type and language
+      operationId: getTestDocument
+      parameters:
+      - name: templateId
+        in: query
+        description: Document template ID
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Test document generated successfully
+          content:
+            application/pdf: {}
+        '404':
+          description: Document template not found
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/document/invoice:
+    get:
+      tags:
+      - Manufacturer Document Controller
+      summary: Generate invoice Excel file
+      description: Generates an Excel spreadsheet with invoice data for the specified operator
+      operationId: getInvoiceExcel
+      parameters:
+      - name: isArchived
+        in: query
+        description: Whether to include archived orders
+        required: false
+        schema:
+          type: boolean
+          default: false
+        example: false
+      responses:
+        '200':
+          description: Excel file generated successfully
+          content:
+            application/octet-stream: {}
+        '400':
+          description: Invalid operator ID or generation failed
+        '403':
+          description: Invoice downloads are disabled for this operator
+components:
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

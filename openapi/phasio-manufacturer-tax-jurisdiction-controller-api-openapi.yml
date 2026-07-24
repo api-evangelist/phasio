@@ -1,0 +1,268 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Tax Jurisdiction Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Tax Jurisdiction Controller
+  description: Endpoints for managing tax jurisdictions and their associated tax components
+paths:
+  /api/manufacturer/v1/tax-jurisdiction:
+    get:
+      tags:
+      - Manufacturer Tax Jurisdiction Controller
+      summary: Get all tax jurisdictions
+      description: Retrieves all tax jurisdictions in the system
+      operationId: get_1
+      parameters:
+      - name: includeAccountingSystemAssociated
+        in: query
+        description: Whether to include accounting system associated jurisdictions
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Tax jurisdictions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaxJurisdictionDto'
+    post:
+      tags:
+      - Manufacturer Tax Jurisdiction Controller
+      summary: Create tax jurisdiction
+      description: Creates a new tax jurisdiction with associated tax components
+      operationId: create_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaxJurisdictionDto'
+        required: true
+      responses:
+        '200':
+          description: Tax jurisdiction created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxJurisdictionDto'
+        '400':
+          description: Invalid tax jurisdiction data
+  /api/manufacturer/v1/tax-jurisdiction/batch:
+    post:
+      tags:
+      - Manufacturer Tax Jurisdiction Controller
+      summary: Batch create tax jurisdictions
+      description: Creates multiple tax jurisdictions with the same tax components and settings. Silently skips jurisdictions that already exist.
+      operationId: createBatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchCreateTaxJurisdictionDto'
+        required: true
+      responses:
+        '200':
+          description: Tax jurisdictions created successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaxJurisdictionDto'
+        '400':
+          description: Invalid tax jurisdiction data
+  /api/manufacturer/v1/tax-jurisdiction/{id}:
+    delete:
+      tags:
+      - Manufacturer Tax Jurisdiction Controller
+      summary: Delete tax jurisdiction
+      description: Deletes an existing tax jurisdiction
+      operationId: delete_3
+      parameters:
+      - name: id
+        in: path
+        description: ID of the tax jurisdiction to delete
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: Tax jurisdiction deleted successfully
+        '404':
+          description: Tax jurisdiction not found
+    patch:
+      tags:
+      - Manufacturer Tax Jurisdiction Controller
+      summary: Update tax jurisdiction
+      description: Updates an existing tax jurisdiction
+      operationId: update_6
+      parameters:
+      - name: id
+        in: path
+        description: ID of the tax jurisdiction to update
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaxJurisdictionDto'
+        required: true
+      responses:
+        '200':
+          description: Tax jurisdiction updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxJurisdictionDto'
+        '400':
+          description: Invalid update data
+        '404':
+          description: Tax jurisdiction not found
+  /api/manufacturer/v1/tax-jurisdiction/accounting-system/associate:
+    patch:
+      tags:
+      - Manufacturer Tax Jurisdiction Controller
+      summary: Associate accounting system taxes
+      description: Associates tax jurisdictions with accounting system tax codes (Deprecated)
+      operationId: associateAccountingSystemTaxes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssociateAccountingSystemTaxesDto'
+        required: true
+      responses:
+        '204':
+          description: Accounting system taxes associated successfully
+        '400':
+          description: Invalid association data
+      deprecated: true
+components:
+  schemas:
+    AssociateAccountingSystemTaxDto:
+      type: object
+      properties:
+        taxJurisdictionId:
+          type: string
+          format: uuid
+        accountingSystemTaxId:
+          type: string
+      required:
+      - accountingSystemTaxId
+      - taxJurisdictionId
+    TaxComponentDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        shortName:
+          type: string
+        longName:
+          type: string
+        percentage:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - longName
+      - percentage
+      - shortName
+    TaxJurisdictionDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        jurisdictionName:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        taxComponentIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        country:
+          type: string
+        state:
+          type: string
+        taxComponents:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxComponentDto'
+        allowExemption:
+          type: boolean
+        applyToShippingCost:
+          type: boolean
+        accountingSystemTaxId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - allowExemption
+      - applyToShippingCost
+    AssociateAccountingSystemTaxesDto:
+      type: object
+      description: Tax association data
+      properties:
+        taxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssociateAccountingSystemTaxDto'
+      required:
+      - taxes
+    BatchCreateTaxJurisdictionDto:
+      type: object
+      description: Batch tax jurisdiction data to create
+      properties:
+        jurisdictionIsoCodes:
+          type: array
+          items:
+            type: string
+          minItems: 1
+        taxComponentIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 1
+        allowExemption:
+          type: boolean
+        applyToShippingCost:
+          type: boolean
+        accountingSystemTaxId:
+          type: string
+      required:
+      - allowExemption
+      - applyToShippingCost
+      - jurisdictionIsoCodes
+      - taxComponentIds
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,132 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal User Authentication Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: User Authentication Controller
+  description: Endpoints for managing user authentication and multi-factor authentication
+paths:
+  /api/internal/v1/user-auth/mfa:
+    get:
+      tags:
+      - User Authentication Controller
+      summary: Begin multi-factor authentication setup
+      description: Initiates the multi-factor authentication setup process and returns a QR code
+      operationId: beginMultiFactorSetup
+      parameters:
+      - name: username
+        in: query
+        description: Username of the user whose password is being changed
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully generated MFA setup QR code
+          content:
+            application/octet-stream: {}
+        '400':
+          description: Invalid request or user not found
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '403':
+          description: Forbidden - insufficient permissions
+    post:
+      tags:
+      - User Authentication Controller
+      summary: Complete multi-factor authentication setup
+      description: Completes the multi-factor authentication setup by verifying the provided code
+      operationId: completeMultiFactorSetup
+      parameters:
+      - name: username
+        in: query
+        description: Username of the user whose password is being changed
+        required: true
+        schema:
+          type: string
+      - name: code
+        in: query
+        description: Verification code from authenticator app
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Multi-factor authentication successfully set up
+        '400':
+          description: Invalid verification code or user not found
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '403':
+          description: Forbidden - insufficient permissions
+    delete:
+      tags:
+      - User Authentication Controller
+      summary: Disable multi-factor authentication
+      description: Disables multi-factor authentication for the current user
+      operationId: deleteMultiFactorSetup
+      parameters:
+      - name: username
+        in: query
+        description: Username of the user whose password is being changed
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Multi-factor authentication successfully disabled
+        '400':
+          description: Invalid request or user not found
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '403':
+          description: Forbidden - insufficient permissions
+  /api/internal/v1/user-auth/password:
+    patch:
+      tags:
+      - User Authentication Controller
+      summary: Change user password
+      description: Changes the password for the current authenticated user
+      operationId: changePassword
+      parameters:
+      - name: username
+        in: query
+        description: Username of the user whose password is being changed
+        required: true
+        schema:
+          type: string
+      - name: oldPass
+        in: query
+        description: Current password for verification
+        required: true
+        schema:
+          type: string
+      - name: newPass
+        in: query
+        description: New password to set
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Password successfully changed
+        '400':
+          description: Invalid password change request or incorrect old password
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '403':
+          description: Forbidden - insufficient permissions
+components:
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

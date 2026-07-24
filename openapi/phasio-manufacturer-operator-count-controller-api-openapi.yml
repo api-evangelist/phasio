@@ -1,0 +1,99 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Operator Count Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Operator Count Controller
+  description: Endpoints for managing sequential counters used by operators for numbering orders, projects, etc.
+paths:
+  /api/manufacturer/v1/operator/count:
+    put:
+      tags:
+      - Manufacturer Operator Count Controller
+      summary: Update operator counter
+      description: Updates the current value of a specific counter type for the operator
+      operationId: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOperatorCountDto'
+        required: true
+      responses:
+        '200':
+          description: Operator counter successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperatorCountDto'
+        '400':
+          description: Invalid counter type or value
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/operator/count/{type}:
+    get:
+      tags:
+      - Manufacturer Operator Count Controller
+      summary: Get operator counter by type
+      description: Retrieves the current value of a specific counter type for the operator
+      operationId: get_21
+      parameters:
+      - name: type
+        in: path
+        description: Type of counter to retrieve (e.g., ORDER, PROJECT)
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Operator counter successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperatorCountDto'
+        '400':
+          description: Invalid counter type
+        '401':
+          description: Unauthorized - operator not found
+components:
+  schemas:
+    OperatorCountDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        count:
+          type: integer
+          format: int64
+        type:
+          type: string
+      required:
+      - count
+      - id
+      - type
+    UpdateOperatorCountDto:
+      type: object
+      description: Counter update details
+      properties:
+        count:
+          type: integer
+          format: int64
+        type:
+          type: string
+      required:
+      - count
+      - type
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

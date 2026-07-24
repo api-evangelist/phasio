@@ -1,0 +1,181 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Operator Contact Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Operator Contact Controller
+  description: Endpoints for managing operator contact information and details
+paths:
+  /api/manufacturer/v1/operator-contact:
+    post:
+      tags:
+      - Manufacturer Operator Contact Controller
+      summary: Create operator contact
+      description: Creates a new contact information record for an operator
+      operationId: createOperatorContact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperatorContactDto'
+        required: true
+      responses:
+        '200':
+          description: Operator contact successfully created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        '400':
+          description: Invalid contact data
+        '401':
+          description: Unauthorized - operator not found
+    patch:
+      tags:
+      - Manufacturer Operator Contact Controller
+      summary: Update operator contact
+      description: Updates existing contact information for an operator
+      operationId: updateOperatorContact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOperatorContactDto'
+        required: true
+      responses:
+        '204':
+          description: Operator contact successfully updated
+        '400':
+          description: Invalid update data or contact not found
+  /api/manufacturer/v1/operator-contact/{operatorIdContactId}:
+    get:
+      tags:
+      - Manufacturer Operator Contact Controller
+      summary: Get operator contact by ID
+      description: Retrieves contact information for a specific operator contact ID
+      operationId: getOperatorContact
+      parameters:
+      - name: operatorIdContactId
+        in: path
+        description: ID of the operator contact to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Operator contact successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperatorContactDto'
+        '404':
+          description: Operator contact not found
+  /api/manufacturer/v1/operator-contact/operator:
+    get:
+      tags:
+      - Manufacturer Operator Contact Controller
+      summary: Get operator contact for current operator
+      description: Retrieves contact information for the current authenticated operator
+      operationId: getOperatorContactByOperatorId
+      responses:
+        '200':
+          description: Operator contact successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperatorContactDto'
+        '404':
+          description: Operator contact not found
+        '401':
+          description: Unauthorized - operator not found
+components:
+  schemas:
+    UpdateOperatorContactDto:
+      type: object
+      description: Operator contact update details
+      properties:
+        operatorContactId:
+          type: integer
+          format: int64
+        firstName:
+          type: string
+        lastName:
+          type: string
+        organizationName:
+          type: string
+        notificationEmail:
+          type: string
+        phoneNumber:
+          type: string
+        address:
+          type: string
+      required:
+      - address
+      - firstName
+      - lastName
+      - notificationEmail
+      - operatorContactId
+      - organizationName
+      - phoneNumber
+    CreateOperatorContactDto:
+      type: object
+      description: Operator contact creation details
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        organizationName:
+          type: string
+        notificationEmail:
+          type: string
+        phoneNumber:
+          type: string
+        address:
+          type: string
+      required:
+      - address
+      - firstName
+      - lastName
+      - notificationEmail
+      - organizationName
+      - phoneNumber
+    OperatorContactDto:
+      type: object
+      properties:
+        operatorContactId:
+          type: integer
+          format: int64
+        firstName:
+          type: string
+        lastName:
+          type: string
+        organizationName:
+          type: string
+        notificationEmail:
+          type: string
+        phoneNumber:
+          type: string
+        address:
+          type: string
+      required:
+      - firstName
+      - lastName
+      - notificationEmail
+      - operatorContactId
+      - organizationName
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

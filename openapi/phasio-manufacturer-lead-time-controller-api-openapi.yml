@@ -1,0 +1,153 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Lead Time Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Lead Time Controller
+  description: Endpoints for managing production lead time options for orders
+paths:
+  /api/manufacturer/v1/lead-time/{id}:
+    get:
+      tags:
+      - Manufacturer Lead Time Controller
+      summary: Get lead time by ID
+      description: Retrieves a specific lead time option by its unique identifier
+      operationId: get
+      parameters:
+      - name: id
+        in: path
+        description: ID of the lead time to retrieve
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Lead time successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadTimeDto'
+        '404':
+          description: Lead time not found
+    put:
+      tags:
+      - Manufacturer Lead Time Controller
+      summary: Update lead time
+      description: Updates an existing lead time option
+      operationId: update_1
+      parameters:
+      - name: id
+        in: path
+        description: ID of the lead time to update
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LeadTimeDto'
+        required: true
+      responses:
+        '200':
+          description: Lead time successfully updated
+          content:
+            application/json:
+              schema:
+                type: string
+                format: uuid
+        '400':
+          description: Invalid update data
+        '404':
+          description: Lead time not found
+    delete:
+      tags:
+      - Manufacturer Lead Time Controller
+      summary: Delete lead time
+      description: Deletes an existing lead time option
+      operationId: delete
+      parameters:
+      - name: id
+        in: path
+        description: ID of the lead time to delete
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: Lead time successfully deleted
+        '404':
+          description: Lead time not found
+  /api/manufacturer/v1/lead-time:
+    get:
+      tags:
+      - Manufacturer Lead Time Controller
+      summary: Get all lead times
+      description: Retrieves all available lead time options
+      operationId: get_8
+      responses:
+        '200':
+          description: Lead times successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LeadTimeDto'
+    post:
+      tags:
+      - Manufacturer Lead Time Controller
+      summary: Create lead time
+      description: Creates a new lead time option
+      operationId: create_11
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LeadTimeDto'
+        required: true
+      responses:
+        '200':
+          description: Lead time successfully created
+          content:
+            application/json:
+              schema:
+                type: string
+                format: uuid
+        '400':
+          description: Invalid lead time data
+components:
+  schemas:
+    LeadTimeDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        isDefault:
+          type: boolean
+        isDeleted:
+          type: boolean
+      required:
+      - id
+      - isDefault
+      - isDeleted
+      - name
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

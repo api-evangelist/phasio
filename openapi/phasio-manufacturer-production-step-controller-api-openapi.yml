@@ -1,0 +1,690 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Production Step Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Production Step Controller
+  description: Endpoints for managing production steps in the manufacturing workflow
+paths:
+  /api/manufacturer/v1/production-step/{stepId}/rename:
+    patch:
+      tags:
+      - Manufacturer Production Step Controller
+      summary: Rename production step
+      description: Updates the name of a production step
+      operationId: renameStep
+      parameters:
+      - name: stepId
+        in: path
+        description: ID of the production step to rename
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RenameStepDto'
+        required: true
+      responses:
+        '200':
+          description: Production step renamed successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductionStepDto'
+        '400':
+          description: Invalid step ID or name
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/production-step/move-batches:
+    patch:
+      tags:
+      - Manufacturer Production Step Controller
+      summary: Move batches between production steps
+      description: Moves batches from one production step to another
+      operationId: moveBatches
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: false
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              description: Batch movement instructions
+              items:
+                $ref: '#/components/schemas/MoveBatchesDto'
+        required: true
+      responses:
+        '200':
+          description: Batches moved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BatchBalanceDto'
+        '400':
+          description: Invalid batch movement request
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/production-step:
+    get:
+      tags:
+      - Manufacturer Production Step Controller
+      summary: Get production steps by IDs
+      description: Retrieves production steps with the specified IDs
+      operationId: getSteps
+      parameters:
+      - name: stepIds
+        in: query
+        description: Set of production step IDs to retrieve
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid
+          uniqueItems: true
+      responses:
+        '200':
+          description: Production steps retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductionStepDto'
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/production-step/{stepId}/traveller:
+    get:
+      tags:
+      - Manufacturer Production Step Controller
+      summary: Generate group traveller PDF
+      description: Generates a traveller document PDF for the specified production step (group)
+      operationId: getGroupTraveller
+      parameters:
+      - name: stepId
+        in: path
+        description: ID of the production step to generate traveller for
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: templateName
+        in: query
+        description: Name of the GROUP_LEVEL_TRAVELLER custom template to use (optional)
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: PDF generated successfully
+          content:
+            application/pdf: {}
+        '400':
+          description: Invalid step ID or generation failed
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/production-step/{stepId}/order-traveller:
+    get:
+      tags:
+      - Manufacturer Production Step Controller
+      summary: Generate combined order traveller PDF
+      description: Generates a single order traveller PDF combining all orders within the specified production step
+      operationId: getOrderTravellerForStep
+      parameters:
+      - name: stepId
+        in: path
+        description: ID of the production step
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: templateName
+        in: query
+        description: Name of the ORDER_LEVEL_TRAVELLER custom template to use (optional)
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: PDF generated successfully
+          content:
+            application/pdf: {}
+        '400':
+          description: Invalid step ID, no orders found, or generation failed
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/production-step/paginated:
+    get:
+      tags:
+      - Manufacturer Production Step Controller
+      summary: Get production steps with filtering
+      description: Retrieves a paginated list of production steps with optional filtering and search using RSQL
+      operationId: getStepsPaginated
+      parameters:
+      - name: filter
+        in: query
+        description: RSQL query string for filtering (e.g. paymentStatus=in=(PAID,UNPAID);price>10)
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        schema:
+          type: array
+          default:
+          - createdAt,DESC
+          items:
+            type: string
+      - name: search
+        in: query
+        description: Optional search term
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Production steps retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paginated'
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/production-step/orders/completed:
+    get:
+      tags:
+      - Manufacturer Production Step Controller
+      summary: Orders completed past one or more production steps
+      description: For each given production step id, finds candidate orders (those containing requisitions ever associated with the step) and returns the subset whose every active balance, across every requisition in the order, sits at a production status with a sequence strictly greater than that step's status sequence. The response is the union across all supplied step ids.
+      operationId: getOrdersCompletedPastSteps
+      parameters:
+      - name: stepIds
+        in: query
+        description: Set of production step ids
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid
+          uniqueItems: true
+      responses:
+        '200':
+          description: Completed-past-step order ids retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: integer
+                  format: int64
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/production-step/build-ids:
+    get:
+      tags:
+      - Manufacturer Production Step Controller
+      summary: Get production steps by build IDs
+      description: Retrieves production steps associated with the specified build IDs
+      operationId: getStepsByBuildIds
+      parameters:
+      - name: buildIds
+        in: query
+        description: Set of build IDs to retrieve steps for
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+      responses:
+        '200':
+          description: Production steps retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductionStepDto'
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/production-step/batch-transitions/step-ids:
+    get:
+      tags:
+      - Manufacturer Production Step Controller
+      summary: Get batch transitions by step IDs
+      description: Retrieves batch transitions for the specified production step IDs
+      operationId: getBatchTransitionsByStepIds
+      parameters:
+      - name: stepIds
+        in: query
+        description: Set of production step IDs to retrieve batch transitions for
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid
+          uniqueItems: true
+      responses:
+        '200':
+          description: Batch transitions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BatchTransitionDto'
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/production-step/batch-transitions/build-ids:
+    get:
+      tags:
+      - Manufacturer Production Step Controller
+      summary: Get batch transitions by build IDs
+      description: Retrieves batch transitions for the specified build IDs
+      operationId: getBatchTransitionsByBuildIds
+      parameters:
+      - name: buildIds
+        in: query
+        description: Set of build IDs to retrieve batch transitions for
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+      responses:
+        '200':
+          description: Batch transitions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BatchTransitionDto'
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/production-step/batch-balances/status-ids:
+    get:
+      tags:
+      - Manufacturer Production Step Controller
+      summary: Get batch balances by status IDs
+      description: Retrieves batch balances for the specified production status IDs
+      operationId: getBatchBalancesByOperationId
+      parameters:
+      - name: operationIds
+        in: query
+        description: Set of operation IDs to retrieve batch balances for
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid
+          uniqueItems: true
+      - name: archived
+        in: query
+        description: Include archived requisitions
+        required: false
+        schema:
+          type: boolean
+        example: false
+      - name: completedAfter
+        in: query
+        description: Only return balances completed at or after this instant (inclusive). ISO-8601 with offset, e.g. 2026-05-01T00:00:00Z. Omit to apply no lower bound.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: completedBefore
+        in: query
+        description: Only return balances completed strictly before this instant (exclusive keyset cursor). ISO-8601 with offset, e.g. 2026-05-01T00:00:00Z. Omit to apply no upper bound.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: completedBeforeId
+        in: query
+        description: Step ID of the oldest loaded balance, paired with completedBefore as the keyset tiebreaker so rows sharing the boundary completion instant are not skipped.
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: limit
+        in: query
+        description: Maximum number of balances to return, newest completion first
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: 100
+      responses:
+        '200':
+          description: Batch balances retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BatchBalanceDto'
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/production-step/batch-balances/part-ids:
+    get:
+      tags:
+      - Manufacturer Production Step Controller
+      summary: Get batch balances by part IDs
+      description: Retrieves batch balances for the specified part IDs
+      operationId: getBatchBalancesByRequisitionId
+      parameters:
+      - name: partIds
+        in: query
+        description: Set of requisition IDs to retrieve batch balances for
+        required: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int64
+          uniqueItems: true
+      responses:
+        '200':
+          description: Batch balances retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BatchBalanceDto'
+        '401':
+          description: Unauthorized - operator not found
+components:
+  schemas:
+    BatchBalanceDto:
+      type: object
+      properties:
+        operationId:
+          type: string
+          format: uuid
+        operationName:
+          type: string
+        sequence:
+          type: integer
+          format: int64
+        requisitionId:
+          type: integer
+          format: int64
+        workOrderId:
+          type: string
+          format: uuid
+        processPricesId:
+          type: string
+          format: uuid
+        materialId:
+          type: integer
+          format: int64
+        colorId:
+          type: integer
+          format: int64
+        dispatchDate:
+          type: string
+          format: date
+        requisitionDuration:
+          type: integer
+        quantity:
+          type: integer
+        stepId:
+          type: string
+          format: uuid
+        groupId:
+          type: string
+        prefix:
+          type: string
+        stepType:
+          type: string
+        orderId:
+          type: integer
+          format: int64
+        orderNumber:
+          type: integer
+          format: int64
+        threadId:
+          type: integer
+          format: int64
+        purchaseOrderNumber:
+          type: string
+        commentCount:
+          type: integer
+          format: int64
+        closedAt:
+          type: string
+          format: date-time
+        outstandingAt:
+          type: string
+          format: date-time
+        batchStatusId:
+          type: string
+          format: uuid
+        batchStatusName:
+          type: string
+      required:
+      - batchStatusId
+      - batchStatusName
+      - commentCount
+      - groupId
+      - materialId
+      - operationId
+      - operationName
+      - outstandingAt
+      - prefix
+      - processPricesId
+      - quantity
+      - requisitionId
+      - sequence
+      - stepId
+      - stepType
+      - workOrderId
+    Paginated:
+      type: object
+      properties:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
+    ProductionStepTransitionDto:
+      type: object
+      properties:
+        workOrderId:
+          type: string
+          format: uuid
+        productionStepId:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+      required:
+      - productionStepId
+      - quantity
+      - workOrderId
+    MoveBatchesDto:
+      type: object
+      properties:
+        toOperationId:
+          type: string
+          format: uuid
+        scrapReason:
+          type: string
+        batches:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductionStepTransitionDto'
+        name:
+          type: string
+      required:
+      - batches
+    BatchTransitionDto:
+      type: object
+      discriminator:
+        propertyName: type
+      properties:
+        id:
+          type: string
+          format: uuid
+        requisitionId:
+          type: integer
+          format: int64
+        workOrderId:
+          type: string
+          format: uuid
+        fromOperationId:
+          type: string
+          format: uuid
+        fromOperationName:
+          type: string
+        fromStepId:
+          type: string
+          format: uuid
+        fromStepBuildId:
+          type: string
+        fromStepPrefix:
+          type: string
+        batchSize:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updateDt:
+          type: string
+          format: date-time
+        type:
+          type: string
+        fromStatusId:
+          type: string
+          format: uuid
+        fromStatusName:
+          type: string
+      required:
+      - type
+    RenameStepDto:
+      type: object
+      description: New name for the production step
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    ProductionStepDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        groupId:
+          type: string
+        prefix:
+          type: string
+        type:
+          type: string
+        operationId:
+          type: string
+          format: uuid
+        operationName:
+          type: string
+        manufacturerUsername:
+          type: string
+        actorType:
+          type: string
+        isCompleted:
+          type: boolean
+        completedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updateDt:
+          type: string
+          format: date-time
+        productionStatusId:
+          type: string
+          format: uuid
+        productionStatusName:
+          type: string
+      required:
+      - createdAt
+      - groupId
+      - id
+      - isCompleted
+      - operationId
+      - operationName
+      - prefix
+      - productionStatusId
+      - productionStatusName
+      - type
+      - updateDt
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

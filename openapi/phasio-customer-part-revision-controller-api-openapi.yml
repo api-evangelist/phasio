@@ -1,0 +1,312 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Customer Part Revision Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Customer Part Revision Controller
+  description: Endpoints for managing 3D part revisions and files
+paths:
+  /api/customer/v1/part-revision/upload:
+    put:
+      tags:
+      - Customer Part Revision Controller
+      summary: Upload part file
+      description: Uploads a 3D model file for analysis and part creation
+      operationId: uploadPartRevision_1
+      parameters:
+      - name: X-Filename
+        in: header
+        description: Original filename of the uploaded 3D model
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The 3D model file to upload
+              required:
+              - file
+      responses:
+        '200':
+          description: File successfully uploaded for analysis
+          content:
+            application/json:
+              schema:
+                type: string
+                format: uuid
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/customer/v1/part-revision/manufacturability/validate:
+    post:
+      tags:
+      - Customer Part Revision Controller
+      summary: Validate part manufacturability
+      description: Validates if parts can be manufactured with selected materials and processes
+      operationId: validatePartManufacturability_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              description: List of part manufacturability validation requests
+              items:
+                $ref: '#/components/schemas/PartManufacturabilityRequestDto'
+        required: true
+      responses:
+        '200':
+          description: Manufacturability validation completed
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/customer/v1/part-revision/{partRevisionId}/claim:
+    patch:
+      tags:
+      - Customer Part Revision Controller
+      summary: Claim part revision
+      description: Claims ownership of a part revision for the current customer organisation
+      operationId: claim
+      parameters:
+      - name: partRevisionId
+        in: path
+        description: ID of the part revision to claim
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: hash
+        in: query
+        description: Hash of the part revision file to verify ownership
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Part revision successfully claimed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartRevisionDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Part revision not found
+  /api/customer/v1/part-revision/upload/{analysisId}/results:
+    get:
+      tags:
+      - Customer Part Revision Controller
+      summary: Get upload results
+      description: Retrieves the processed results for an uploaded 3D model file as a MessagePack payload
+      operationId: getUploadResults_1
+      parameters:
+      - name: analysisId
+        in: path
+        description: ID of the analysis to retrieve results for
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Upload results successfully retrieved
+          content:
+            application/msgpack: {}
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Analysis results not found
+  /api/customer/v1/part-revision/upload/status:
+    get:
+      tags:
+      - Customer Part Revision Controller
+      summary: Check upload status
+      description: Checks the processing status of previously uploaded 3D model files
+      operationId: getUploadStatus_1
+      parameters:
+      - name: analysisIds
+        in: query
+        description: Set of analysis IDs to check status for
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid
+          uniqueItems: true
+      responses:
+        '200':
+          description: Upload status successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/customer/v1/part-revision/order/{orderId}:
+    get:
+      tags:
+      - Customer Part Revision Controller
+      summary: Get part revisions by order
+      description: Retrieves all part revisions associated with an order
+      operationId: getByOrder_3
+      parameters:
+      - name: orderId
+        in: path
+        description: ID of the order
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Part revisions successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Unauthorized - missing or invalid authentication
+components:
+  schemas:
+    PartRevisionDto:
+      type: object
+      properties:
+        partRevisionId:
+          type: string
+          format: uuid
+        designName:
+          type: string
+        designId:
+          type: string
+          format: uuid
+        availableAccessories:
+          type: array
+          items:
+            type: string
+            enum:
+            - ORIGINAL_CAD_FILE
+            - CORE_GEOMETRY
+            - THUMBNAIL
+            - PDF_DESIGN_FILE
+            - WALL_THICKNESS_ANALYSIS
+        volume:
+          type: number
+        area:
+          type: number
+        height:
+          type: number
+        width:
+          type: number
+        depth:
+          type: number
+        minimumWallThickness:
+          type: number
+        minBoundingBoxVolume:
+          type: number
+        convexHullVolume:
+          type: number
+        shrinkWrapVolume:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+        versionNumber:
+          type: integer
+          format: int64
+        isLatestRevision:
+          type: boolean
+        repaired:
+          type: boolean
+        watertight:
+          type: boolean
+        originalCADFileType:
+          type: string
+          enum:
+          - STL
+          - OBJ
+          - WRL
+          - STEP
+          - STP
+          - IGES
+          - IGS
+          - THREEMF
+          - DXF
+          - ZIP
+          - THREEDS
+          - BLEND
+          - DAE
+          - FBX
+          - BREP
+          - BDF
+          - MSH
+          - INP
+          - DIFF
+          - MESH
+          - CTM
+          - PLY
+          - 'OFF'
+          - COLLADA
+          - GLTF
+          - XAML
+          - THREEDXML
+          - XYZ
+        conflictOnHash:
+          type: string
+        baseRotationMatrix:
+          type: array
+          items:
+            type: number
+        deleted:
+          type: boolean
+      required:
+      - availableAccessories
+      - deleted
+      - designName
+    PartManufacturabilityRequestDto:
+      type: object
+      properties:
+        partRevisionId:
+          type: string
+          format: uuid
+        units:
+          type: string
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        processPricesId:
+          type: string
+          format: uuid
+        materialId:
+          type: integer
+          format: int64
+      required:
+      - materialId
+      - partRevisionId
+      - processPricesId
+      - units
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

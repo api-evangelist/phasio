@@ -1,0 +1,382 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Addresses API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Addresses
+  description: API for managing addresses for customers and organizations
+paths:
+  /api/manufacturer/v1/address/{addressId}:
+    get:
+      tags:
+      - Addresses
+      summary: Get an address by ID
+      description: Retrieves address details for the specified ID
+      operationId: getById
+      parameters:
+      - name: addressId
+        in: path
+        description: ID of the address to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: Address retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressDto'
+        '404':
+          description: Address not found
+    put:
+      tags:
+      - Addresses
+      summary: Edit an existing address
+      description: Creates a new address with the updated details, soft-deletes the old address, and transfers billing status if applicable
+      operationId: edit
+      parameters:
+      - name: addressId
+        in: path
+        description: ID of the address to edit
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditAddressDto'
+        required: true
+      responses:
+        '200':
+          description: Address edited successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressDto'
+        '404':
+          description: Address not found or already deleted
+    delete:
+      tags:
+      - Addresses
+      summary: Delete an address
+      description: Deletes the specified address
+      operationId: delete_1
+      parameters:
+      - name: addressId
+        in: path
+        description: ID of the address to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: Address deleted successfully
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Invalid address ID or address cannot be deleted
+          content:
+            text/plain:
+              schema:
+                type: string
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/address/create:
+    post:
+      tags:
+      - Addresses
+      summary: Create a new address
+      description: Creates a new address using the provided details
+      operationId: create_16
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAddressDto'
+        required: true
+      responses:
+        '200':
+          description: Address created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressDto'
+        '400':
+          description: Invalid address data
+  /api/manufacturer/v1/address/{addressId}/shipping:
+    patch:
+      tags:
+      - Addresses
+      summary: Set address as default shipping address
+      description: Marks an address as the default shipping address
+      operationId: setShippingAddress
+      parameters:
+      - name: addressId
+        in: path
+        description: ID of the address to set as shipping address
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: Address set as shipping address successfully
+        '400':
+          description: Invalid address ID or operation failed
+  /api/manufacturer/v1/address/{addressId}/billing:
+    patch:
+      tags:
+      - Addresses
+      summary: Set address as default billing address
+      description: Marks an address as the default billing address
+      operationId: setBillingAddress
+      parameters:
+      - name: addressId
+        in: path
+        description: ID of the address to set as billing address
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: Address set as billing address successfully
+        '400':
+          description: Invalid address ID or operation failed
+  /api/manufacturer/v1/address/jurisdiction:
+    patch:
+      tags:
+      - Addresses
+      summary: Update jurisdiction for all addresses
+      description: Updates the jurisdiction information for all addresses in the system
+      operationId: updateJurisdiction
+      responses:
+        '204':
+          description: Jurisdictions updated successfully
+  /api/manufacturer/v1/address/organisation/{organisationId}:
+    get:
+      tags:
+      - Addresses
+      summary: Get addresses by customer organization
+      description: Retrieves all addresses associated with the specified customer organization
+      operationId: getByCustomerOrganisation_2
+      parameters:
+      - name: organisationId
+        in: path
+        description: ID of the customer organization to retrieve addresses for
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: Addresses retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AddressDto'
+  /api/manufacturer/v1/address/customer/{customerId}:
+    get:
+      tags:
+      - Addresses
+      summary: Get addresses by customer
+      description: Retrieves all addresses associated with the specified customer
+      operationId: getByCustomer_1
+      parameters:
+      - name: customerId
+        in: path
+        description: ID of the customer to retrieve addresses for
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: Addresses retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AddressDto'
+components:
+  schemas:
+    EditAddressDto:
+      type: object
+      properties:
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        taxId:
+          type: string
+      required:
+      - city
+      - company
+      - country
+      - email
+      - name
+      - phone
+      - residential
+      - state
+      - street1
+      - street2
+      - zip
+    AddressDto:
+      type: object
+      discriminator:
+        propertyName: addressType
+      properties:
+        addressId:
+          type: integer
+          format: int64
+        isBillingAddress:
+          type: boolean
+        isShippingAddress:
+          type: boolean
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        countryAlpha2Code:
+          type: string
+        countryAlpha3Code:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        addressType:
+          type: string
+        platformEncryptedAesKey:
+          type: string
+        taxId:
+          type: string
+      required:
+      - addressId
+      - addressType
+      - city
+      - company
+      - country
+      - countryAlpha2Code
+      - countryAlpha3Code
+      - email
+      - isBillingAddress
+      - isShippingAddress
+      - name
+      - phone
+      - platformEncryptedAesKey
+      - residential
+      - street1
+      - street2
+      - zip
+    CreateAddressDto:
+      type: object
+      properties:
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        organisationId:
+          type: integer
+          format: int64
+        taxId:
+          type: string
+      required:
+      - city
+      - company
+      - country
+      - email
+      - name
+      - organisationId
+      - phone
+      - residential
+      - state
+      - street1
+      - street2
+      - zip
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,249 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Catalog Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Catalog Controller
+  description: Endpoints for managing manufacturer catalog items
+paths:
+  /api/manufacturer/v1/catalog:
+    post:
+      tags:
+      - Manufacturer Catalog Controller
+      summary: Create catalog items
+      description: Creates one or more catalog items by creating part specifications and customer article references. If a part specification with the same manufacturing parameters already exists, it will be reused. The catalog items will automatically be visible in the customer catalog.
+      operationId: createCatalogItems
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              description: List of catalog items to create
+              items:
+                $ref: '#/components/schemas/CreateCatalogItemDto'
+        required: true
+      responses:
+        '200':
+          description: Catalog items successfully created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PartSpecificationDto'
+        '400':
+          description: Invalid request data or referenced entities not found
+        '401':
+          description: Unauthorized - operator not found
+components:
+  schemas:
+    FixedOrientationConstraintDto:
+      allOf:
+      - $ref: '#/components/schemas/ConstraintDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - rotationMatrix
+      - updatedAt
+    CustomerArticleReferenceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        customerOrganisationId:
+          type: integer
+          format: int64
+        customerOrganisationName:
+          type: string
+        reference:
+          type: string
+        pricingTiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
+        showInCatalog:
+          type: boolean
+      required:
+      - customerOrganisationId
+      - pricingTiers
+      - reference
+    PartSpecificationDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        partRevisionId:
+          type: string
+          format: uuid
+        partRevisionName:
+          type: string
+        units:
+          type: string
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        processPricesId:
+          type: string
+          format: uuid
+        materialId:
+          type: integer
+          format: int64
+        colorId:
+          type: integer
+          format: int64
+        precisionId:
+          type: integer
+          format: int64
+        infillId:
+          type: integer
+          format: int64
+        postProcessingIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        customerReferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferenceDto'
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+        constraints:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/ConstraintDto'
+            - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+      required:
+      - createdAt
+      - customerReferences
+      - id
+      - lastUpdated
+      - materialId
+      - partRevisionId
+      - partRevisionName
+      - postProcessingIds
+      - units
+    CustomerArticleReferencePricingTierDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+          format: int32
+        price:
+          type: number
+      required:
+      - price
+      - quantity
+    CreateCatalogItemDto:
+      type: object
+      properties:
+        partRevisionId:
+          type: string
+          format: uuid
+        processPricesId:
+          type: string
+          format: uuid
+        materialId:
+          type: integer
+          format: int64
+        units:
+          type: string
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        customerOrganisationId:
+          type: integer
+          format: int64
+        reference:
+          type: string
+        infillId:
+          type: integer
+          format: int64
+        precisionId:
+          type: integer
+          format: int64
+        colorId:
+          type: integer
+          format: int64
+        postProcessingIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        pricingTiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
+      required:
+      - customerOrganisationId
+      - materialId
+      - partRevisionId
+      - postProcessingIds
+      - pricingTiers
+      - processPricesId
+      - reference
+      - units
+    ConstraintDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        id:
+          type: string
+          format: uuid
+        constraintType:
+          type: string
+        partSpecificationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - updatedAt
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

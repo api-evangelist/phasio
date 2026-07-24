@@ -1,0 +1,295 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Routing Template Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Routing Template Controller
+  description: Manage routing templates on a part specification
+paths:
+  /api/manufacturer/v1/routing-templates/{id}/deprecate:
+    post:
+      tags:
+      - Manufacturer Routing Template Controller
+      operationId: deprecate
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeprecateRoutingTemplateRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RoutingTemplateDto'
+  /api/manufacturer/v1/routing-templates/{id}/default:
+    post:
+      tags:
+      - Manufacturer Routing Template Controller
+      operationId: setDefault
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RoutingTemplateDto'
+    delete:
+      tags:
+      - Manufacturer Routing Template Controller
+      operationId: unsetDefault
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RoutingTemplateDto'
+  /api/manufacturer/v1/routing-templates/{id}/approve:
+    post:
+      tags:
+      - Manufacturer Routing Template Controller
+      operationId: approve
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RoutingTemplateDto'
+  /api/manufacturer/v1/part-specifications/{specId}/routing-templates:
+    get:
+      tags:
+      - Manufacturer Routing Template Controller
+      operationId: list_1
+      parameters:
+      - name: specId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoutingTemplateDto'
+    post:
+      tags:
+      - Manufacturer Routing Template Controller
+      operationId: create_9
+      parameters:
+      - name: specId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRoutingTemplateRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RoutingTemplateDto'
+  /api/manufacturer/v1/routing-templates/{id}:
+    delete:
+      tags:
+      - Manufacturer Routing Template Controller
+      operationId: delete_5
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+    patch:
+      tags:
+      - Manufacturer Routing Template Controller
+      operationId: patch
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRoutingTemplateRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RoutingTemplateDto'
+components:
+  schemas:
+    RoutingTemplateStepInput:
+      type: object
+      properties:
+        operationId:
+          type: string
+          format: uuid
+        sequence:
+          type: integer
+          format: int32
+      required:
+      - operationId
+      - sequence
+    RoutingTemplateStepDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        operationId:
+          type: string
+          format: uuid
+        operationName:
+          type: string
+        sequence:
+          type: integer
+          format: int32
+      required:
+      - id
+      - operationId
+      - sequence
+    RoutingTemplateDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        partSpecificationId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        approved:
+          type: boolean
+        isDefault:
+          type: boolean
+        deprecated:
+          type: boolean
+        deprecatedAt:
+          type: string
+          format: date-time
+        replacedById:
+          type: string
+          format: uuid
+        workOrderReferences:
+          type: integer
+          format: int64
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoutingTemplateStepDto'
+        createdAt:
+          type: string
+          format: date-time
+        updateDt:
+          type: string
+          format: date-time
+      required:
+      - approved
+      - createdAt
+      - deprecated
+      - id
+      - isDefault
+      - name
+      - partSpecificationId
+      - steps
+      - updateDt
+      - workOrderReferences
+    UpdateRoutingTemplateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoutingTemplateStepInput'
+        approved:
+          type: boolean
+    DeprecateRoutingTemplateRequest:
+      type: object
+      properties:
+        replacedByRoutingTemplateId:
+          type: string
+          format: uuid
+    CreateRoutingTemplateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoutingTemplateStepInput'
+        replacesRoutingTemplateId:
+          type: string
+          format: uuid
+      required:
+      - steps
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

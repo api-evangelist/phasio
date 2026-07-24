@@ -1,0 +1,87 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Internal Accounting Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Internal Accounting Controller
+  description: Endpoints for managing accounting system integrations
+paths:
+  /api/internal/v1/accounting/oauth/register:
+    post:
+      tags:
+      - Internal Accounting Controller
+      operationId: registerOAuthIntegration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterAccountingSystemDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/internal/v1/accounting/customer-organisation/{accountingSystemCustomerOrganisationId}/synchronize:
+    post:
+      tags:
+      - Internal Accounting Controller
+      operationId: synchronizeCustomerOrganisation
+      parameters:
+      - name: accountingSystemCustomerOrganisationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/internal/v1/accounting:
+    delete:
+      tags:
+      - Internal Accounting Controller
+      summary: Disassociate accounting system
+      description: Removes the association between the current operator and its accounting system
+      operationId: disassociate_1
+      responses:
+        '204':
+          description: Accounting system successfully disassociated
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '500':
+          description: Operator not found
+components:
+  schemas:
+    RegisterAccountingSystemDto:
+      type: object
+      properties:
+        referenceId:
+          type: string
+        authorizationCode:
+          type: string
+        quickbooksRealmId:
+          type: string
+      required:
+      - authorizationCode
+      - referenceId
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

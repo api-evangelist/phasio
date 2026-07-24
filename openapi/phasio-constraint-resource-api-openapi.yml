@@ -1,0 +1,218 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal constraint-resource API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: constraint-resource
+paths:
+  /api/manufacturer/v1/constraints/{constraintId}:
+    get:
+      tags:
+      - constraint-resource
+      operationId: getConstraint
+      parameters:
+      - name: constraintId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/ConstraintDto'
+                - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+    put:
+      tags:
+      - constraint-resource
+      operationId: updateConstraint
+      parameters:
+      - name: constraintId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/FixedOrientationConstraintRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/ConstraintDto'
+                - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+    delete:
+      tags:
+      - constraint-resource
+      operationId: deleteConstraint
+      parameters:
+      - name: constraintId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+  /api/manufacturer/v1/constraints:
+    post:
+      tags:
+      - constraint-resource
+      operationId: createConstraint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/FixedOrientationConstraintRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/ConstraintDto'
+                - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+  /api/manufacturer/v1/constraints/part-specification/{partSpecificationId}:
+    get:
+      tags:
+      - constraint-resource
+      operationId: getConstraintsByPartSpecification
+      parameters:
+      - name: partSpecificationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  oneOf:
+                  - $ref: '#/components/schemas/ConstraintDto'
+                  - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+  /api/manufacturer/v1/constraints/part-specification/{partSpecificationId}/type/{constraintType}:
+    delete:
+      tags:
+      - constraint-resource
+      operationId: deleteConstraintByType
+      parameters:
+      - name: partSpecificationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: constraintType
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - FIXED_ORIENTATION
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    FixedOrientationConstraintDto:
+      allOf:
+      - $ref: '#/components/schemas/ConstraintDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - rotationMatrix
+      - updatedAt
+    ConstraintRequestDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        partSpecificationId:
+          type: string
+          format: uuid
+        constraintType:
+          type: string
+      required:
+      - constraintType
+    ConstraintDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        id:
+          type: string
+          format: uuid
+        constraintType:
+          type: string
+        partSpecificationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - updatedAt
+    FixedOrientationConstraintRequestDto:
+      allOf:
+      - $ref: '#/components/schemas/ConstraintRequestDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+      required:
+      - constraintType
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

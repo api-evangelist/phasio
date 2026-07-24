@@ -1,0 +1,178 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Customer Organisation Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Customer Organisation Controller
+  description: Endpoints for managing customer organization details
+paths:
+  /api/customer/v1/customer-organisation:
+    get:
+      tags:
+      - Customer Organisation Controller
+      summary: Get customer organisation
+      description: Retrieves details of the current customer's organization
+      operationId: getCustomerOrganisation
+      responses:
+        '200':
+          description: Successfully retrieved organization details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Customer organisation not found
+    patch:
+      tags:
+      - Customer Organisation Controller
+      summary: Update customer organisation
+      description: Updates details of the current customer's organization
+      operationId: updateCustomerOrganisation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomerOrganisationDto'
+        required: true
+      responses:
+        '200':
+          description: Successfully updated organization details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationDto'
+        '400':
+          description: Invalid update parameters
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Customer organisation not found
+components:
+  schemas:
+    CustomerAddressDto:
+      type: object
+      properties:
+        addressId:
+          type: integer
+          format: int64
+        isBillingAddress:
+          type: boolean
+        isShippingAddress:
+          type: boolean
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        countryAlpha2Code:
+          type: string
+        countryAlpha3Code:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        taxId:
+          type: string
+    UpdateCustomerOrganisationDto:
+      type: object
+      description: Update details for the customer organisation
+      properties:
+        name:
+          type: string
+        language:
+          type: string
+    CustomerOrganisationDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        taxExempt:
+          type: boolean
+        customerType:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+        customers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerDto'
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerAddressDto'
+      required:
+      - addresses
+      - createdAt
+      - customerType
+      - customers
+      - lastUpdated
+      - taxExempt
+    CustomerDto:
+      type: object
+      properties:
+        email:
+          type: string
+        customerId:
+          type: integer
+          format: int64
+        organisationName:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        language:
+          type: string
+        notificationPreference:
+          type: string
+        discountId:
+          type: integer
+          format: int64
+        discountPercentage:
+          type: number
+        customerType:
+          type: string
+      required:
+      - customerType
+      - language
+      - notificationPreference
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

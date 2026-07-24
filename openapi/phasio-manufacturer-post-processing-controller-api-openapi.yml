@@ -1,0 +1,274 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Post Processing Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Post Processing Controller
+  description: Endpoints for managing post-processing options for manufactured parts
+paths:
+  /api/manufacturer/v1/post-processing:
+    get:
+      tags:
+      - Manufacturer Post Processing Controller
+      summary: Get all post-processing options
+      description: Retrieves all post-processing options for the current operator
+      operationId: get_6
+      responses:
+        '200':
+          description: Post-processing options retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostProcessingDto'
+        '401':
+          description: Unauthorized - operator not found
+    post:
+      tags:
+      - Manufacturer Post Processing Controller
+      summary: Create post-processing option
+      description: Creates a new post-processing option for manufactured parts
+      operationId: create_7
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Post-processing data to create
+              oneOf:
+              - $ref: '#/components/schemas/EquationPostProcessingDto'
+              - $ref: '#/components/schemas/LegacyEquationPostProcessingDto'
+        required: true
+      responses:
+        '200':
+          description: Post-processing option successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostProcessingDto'
+        '400':
+          description: Invalid post-processing data
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/post-processing/{id}:
+    delete:
+      tags:
+      - Manufacturer Post Processing Controller
+      summary: Delete post-processing option
+      description: Deletes an existing post-processing option
+      operationId: delete_7
+      parameters:
+      - name: id
+        in: path
+        description: ID of the post-processing option to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '204':
+          description: Post-processing option successfully deleted
+        '404':
+          description: Post-processing option not found
+    patch:
+      tags:
+      - Manufacturer Post Processing Controller
+      summary: Update post-processing option
+      description: Updates an existing post-processing option
+      operationId: update_9
+      parameters:
+      - name: id
+        in: path
+        description: ID of the post-processing option to update
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Updated post-processing data
+              oneOf:
+              - $ref: '#/components/schemas/EquationPostProcessingDto'
+              - $ref: '#/components/schemas/LegacyEquationPostProcessingDto'
+        required: true
+      responses:
+        '200':
+          description: Post-processing option successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostProcessingDto'
+        '400':
+          description: Invalid update data
+        '401':
+          description: Unauthorized - operator not found
+        '404':
+          description: Post-processing option not found
+  /api/manufacturer/v1/post-processing/{postProcessingId}:
+    get:
+      tags:
+      - Manufacturer Post Processing Controller
+      summary: Get post-processing by ID
+      description: Retrieves a specific post-processing option by its ID
+      operationId: get_17
+      parameters:
+      - name: postProcessingId
+        in: path
+        description: ID of the post-processing option to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Post-processing option found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostProcessingDto'
+        '404':
+          description: Post-processing option not found
+  /api/manufacturer/v1/post-processing/equation/variables:
+    get:
+      tags:
+      - Manufacturer Post Processing Controller
+      summary: Get pricing equation variables
+      description: Retrieves all available pricing equation variables for post-processing
+      operationId: getEquationVariables
+      responses:
+        '200':
+          description: Pricing equation variables retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PricingEquationVariableDto'
+components:
+  schemas:
+    EquationPostProcessingDto:
+      allOf:
+      - $ref: '#/components/schemas/PostProcessingDto'
+      - type: object
+        properties:
+          activeEquationId:
+            type: string
+            format: uuid
+          equations:
+            type: array
+            items:
+              $ref: '#/components/schemas/TypescriptEquationDto'
+      required:
+      - effectiveFrom
+      - isDefault
+      - isDeleted
+      - name
+      - purchasable
+      - type
+    PricingEquationVariableDto:
+      type: object
+      properties:
+        name:
+          type: string
+        placeholder:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - placeholder
+    LegacyEquationPostProcessingDto:
+      allOf:
+      - $ref: '#/components/schemas/PostProcessingDto'
+      - type: object
+        properties:
+          equation:
+            type: string
+      required:
+      - effectiveFrom
+      - equation
+      - isDefault
+      - isDeleted
+      - name
+      - purchasable
+      - type
+    ColorDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - id
+      - name
+    PostProcessingDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        purchasable:
+          type: boolean
+        isDefault:
+          type: boolean
+        colors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColorDto'
+        incompatibleMaterialIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        mutuallyExclusiveGroup:
+          type: string
+      required:
+      - colors
+      - incompatibleMaterialIds
+      - isDefault
+      - name
+      - purchasable
+    TypescriptEquationDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        equation:
+          type: string
+        variables:
+          type: array
+          items:
+            type: string
+        lastUpdated:
+          type: string
+          format: date-time
+      required:
+      - equation
+      - id
+      - lastUpdated
+      - variables
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

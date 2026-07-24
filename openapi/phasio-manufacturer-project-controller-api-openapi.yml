@@ -1,0 +1,222 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Project Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Project Controller
+  description: RSQL-enabled endpoints for managing projects with advanced querying and updating capabilities
+paths:
+  /api/manufacturer/v1/project/{projectId}:
+    get:
+      tags:
+      - Manufacturer Project Controller
+      summary: Get project by ID
+      description: Retrieves a specific project by its ID
+      operationId: getProject
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of the project to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Project retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectDto'
+        '404':
+          description: Project not found
+        '401':
+          description: Unauthorized - operator not found
+    patch:
+      tags:
+      - Manufacturer Project Controller
+      summary: Update project
+      description: Updates project name and/or description
+      operationId: updateProject
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of the project to update
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectDto'
+        required: true
+      responses:
+        '204':
+          description: Project updated successfully
+        '400':
+          description: Invalid update data or project not found
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/project:
+    get:
+      tags:
+      - Manufacturer Project Controller
+      summary: Query projects
+      description: 'Retrieves projects using filtering with support for name and description queries. Supports operators like ==, !=, =gt=, =ge=, =lt=, =le=, =in=, =out=, =between=. Examples: name==''Sample Project'', description=like=''design'', status==ACTIVE'
+      operationId: queryProjects
+      parameters:
+      - name: filter
+        in: query
+        description: RSQL query string for filtering (e.g. paymentStatus=in=(PAID,UNPAID);price>10)
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        schema:
+          type: array
+          default:
+          - createdAt,DESC
+          items:
+            type: string
+      - name: search
+        in: query
+        description: Optional search term for name and customer organization
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Projects retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paginated'
+        '400':
+          description: Invalid RSQL filter specification
+        '401':
+          description: Unauthorized - operator not found
+components:
+  schemas:
+    ProjectDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        lastActivityTime:
+          type: string
+          format: date-time
+        status:
+          type: string
+        filesCount:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        subscribedCustomerIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+          uniqueItems: true
+      required:
+      - createdAt
+      - filesCount
+      - id
+      - lastActivityTime
+      - name
+      - status
+      - subscribedCustomerIds
+    UpdateThreadDto:
+      type: object
+      properties:
+        type:
+          type: string
+      required:
+      - type
+    UpdateProjectDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateThreadDto'
+      - type: object
+        properties:
+          name:
+            type: string
+          description:
+            type: string
+          subscribedCustomerIds:
+            type: array
+            items:
+              type: integer
+              format: int64
+      description: Updated project data
+      required:
+      - name
+      - subscribedCustomerIds
+      - type
+    Paginated:
+      type: object
+      properties:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

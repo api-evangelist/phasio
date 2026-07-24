@@ -1,0 +1,51 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Metrics Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Metrics Controller
+  description: Endpoints for tracking and recording system metrics and events
+paths:
+  /api/manufacturer/v1/metrics:
+    post:
+      tags:
+      - Manufacturer Metrics Controller
+      summary: Register event occurrence
+      description: Records the occurrence of a specific metric event for analytics and monitoring
+      operationId: registerEventOccurrence
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DMZEventOccurrenceDto'
+        required: true
+      responses:
+        '200':
+          description: Event successfully registered
+        '400':
+          description: Invalid event data
+        '401':
+          description: Unauthorized - operator not found
+components:
+  schemas:
+    DMZEventOccurrenceDto:
+      type: object
+      description: Event occurrence details
+      properties:
+        event:
+          type: string
+      required:
+      - event
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

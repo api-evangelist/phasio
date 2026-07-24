@@ -1,0 +1,117 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Material Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Material Controller
+  description: Endpoints for managing manufacturing materials
+paths:
+  /api/manufacturer/v1/material:
+    get:
+      tags:
+      - Manufacturer Material Controller
+      summary: Get all materials for an operator
+      description: Retrieves all materials available to a specific manufacturer, including general materials
+      operationId: getAllMaterials
+      parameters:
+      - name: operatorId
+        in: query
+        description: ID of the operator to retrieve materials for
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successfully retrieved materials
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MaterialDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '403':
+          description: Forbidden - insufficient permissions to access materials
+  /api/manufacturer/v1/material/{materialId}:
+    get:
+      tags:
+      - Manufacturer Material Controller
+      summary: Get material by ID
+      description: Retrieves a specific material by its unique identifier
+      operationId: getById_6
+      parameters:
+      - name: materialId
+        in: path
+        description: ID of the material to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Material found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaterialDto'
+        '404':
+          description: Material not found
+components:
+  schemas:
+    ColorDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - id
+      - name
+    MaterialDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        datasheetSummary:
+          type: string
+        quoteOnly:
+          type: boolean
+        colorDtos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColorDto'
+        isDefault:
+          type: boolean
+        wallThicknessWarning:
+          type: number
+        wallThicknessLimit:
+          type: number
+      required:
+      - colorDtos
+      - id
+      - isDefault
+      - name
+      - quoteOnly
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

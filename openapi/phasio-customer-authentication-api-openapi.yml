@@ -1,0 +1,96 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Customer Authentication API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Customer Authentication
+  description: Internal endpoints for managing customer authentication
+paths:
+  /api/internal/v1/customer-auth/principal:
+    post:
+      tags:
+      - Customer Authentication
+      summary: Get customer authentication by principal
+      description: Retrieves authentication information for a customer using their principal identifier
+      operationId: getCustomerAuth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRequestDto'
+        required: true
+      responses:
+        '200':
+          description: Successfully retrieved customer authentication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerAuthDto'
+        '404':
+          description: Customer not found
+        '500':
+          description: Operator not found
+  /api/internal/v1/customer-auth/{customerId}:
+    patch:
+      tags:
+      - Customer Authentication
+      summary: Update customer authentication
+      description: Updates authentication method and credentials for a specific customer
+      operationId: updateCustomerAuth
+      parameters:
+      - name: customerId
+        in: path
+        description: ID of the customer to update
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerAuthDto'
+        required: true
+      responses:
+        '204':
+          description: Successfully updated customer authentication
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '403':
+          description: Forbidden - insufficient permissions
+        '404':
+          description: Customer not found
+components:
+  schemas:
+    CustomerRequestDto:
+      type: object
+      description: Customer request data containing the principal
+      properties:
+        customerPrincipal:
+          type: string
+      required:
+      - customerPrincipal
+    CustomerAuthDto:
+      type: object
+      description: Customer authentication data
+      properties:
+        authMethod:
+          type: string
+        passwordHash:
+          type: string
+      required:
+      - authMethod
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

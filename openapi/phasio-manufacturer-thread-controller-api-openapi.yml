@@ -1,0 +1,951 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Thread Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Thread Controller
+  description: Endpoints for managing communication threads and projects
+paths:
+  /api/manufacturer/v1/thread:
+    post:
+      tags:
+      - Manufacturer Thread Controller
+      summary: Create thread
+      description: Creates a new communication thread or project
+      operationId: create_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Thread data to create
+              oneOf:
+              - $ref: '#/components/schemas/CreateJobDto'
+              - $ref: '#/components/schemas/CreateProjectDto'
+        required: true
+      responses:
+        '200':
+          description: Thread created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThreadDto'
+        '400':
+          description: Invalid thread data
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/thread/merge:
+    post:
+      tags:
+      - Manufacturer Thread Controller
+      summary: Merge threads
+      description: Merges a source thread into a destination thread
+      operationId: merge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MergeThreadsDto'
+        required: true
+      responses:
+        '200':
+          description: Threads merged successfully
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        '400':
+          description: Invalid merge data or threads not found
+  /api/manufacturer/v1/thread/job-to-project:
+    post:
+      tags:
+      - Manufacturer Thread Controller
+      summary: Convert job to project
+      description: Converts a manufacturing job thread to a project thread
+      operationId: convertJobToProject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConvertJobToProjectDto'
+        required: true
+      responses:
+        '200':
+          description: Job converted to project successfully
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        '400':
+          description: Invalid conversion data or job not found
+  /api/manufacturer/v1/thread/{threadId}:
+    get:
+      tags:
+      - Manufacturer Thread Controller
+      summary: Get thread by ID
+      description: Retrieves a specific thread by its ID
+      operationId: get_12
+      parameters:
+      - name: threadId
+        in: path
+        description: ID of the thread to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Thread retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThreadDto'
+        '404':
+          description: Thread not found
+    delete:
+      tags:
+      - Manufacturer Thread Controller
+      summary: Delete thread
+      description: Marks a thread as deleted (soft delete)
+      operationId: delete_2
+      parameters:
+      - name: threadId
+        in: path
+        description: ID of the thread to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '204':
+          description: Thread deleted successfully
+        '400':
+          description: Delete failed or thread not found
+    patch:
+      tags:
+      - Manufacturer Thread Controller
+      summary: Update thread
+      description: Updates an existing thread
+      operationId: update_5
+      parameters:
+      - name: threadId
+        in: path
+        description: ID of the thread to update
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Updated thread data
+              oneOf:
+              - $ref: '#/components/schemas/UpdateJobDto'
+              - $ref: '#/components/schemas/UpdateProjectDto'
+        required: true
+      responses:
+        '204':
+          description: Thread updated successfully
+        '400':
+          description: Invalid update data or thread not found
+  /api/manufacturer/v1/thread/{threadId}/status/{status}:
+    patch:
+      tags:
+      - Manufacturer Thread Controller
+      summary: Update project status
+      description: Updates the status of a project thread
+      operationId: updateProjectStatus
+      parameters:
+      - name: threadId
+        in: path
+        description: ID of the thread to update
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: status
+        in: path
+        description: New status for the project
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Project status updated successfully
+        '400':
+          description: Invalid status or thread not found
+  /api/manufacturer/v1/thread/{threadId}/notifications:
+    patch:
+      tags:
+      - Manufacturer Thread Controller
+      summary: Toggle project notifications
+      description: Enables or disables notifications for a project
+      operationId: toggleProjectNotifications
+      parameters:
+      - name: threadId
+        in: path
+        description: ID of the thread to update
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: enable
+        in: query
+        description: Whether to enable or disable notifications
+        required: true
+        schema:
+          type: boolean
+      responses:
+        '204':
+          description: Project notifications toggled successfully
+        '400':
+          description: Toggle failed or thread not found
+  /api/manufacturer/v1/thread/summary:
+    get:
+      tags:
+      - Manufacturer Thread Controller
+      summary: Get operator thread summary
+      description: Retrieves a summary of threads for the current operator
+      operationId: summariseThreadsForOperator
+      parameters:
+      - name: pageNumber
+        in: query
+        description: Page number for pagination
+        required: false
+        schema:
+          type: integer
+      - name: pageSize
+        in: query
+        description: Page size for pagination
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Thread summaries retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ThreadSummaryDto'
+        '401':
+          description: Unauthorized - operator not found
+components:
+  schemas:
+    FixedPriceShipmentDto:
+      allOf:
+      - $ref: '#/components/schemas/ShipmentDto'
+      - type: object
+        properties:
+          rate:
+            type: number
+          toAddressDto:
+            $ref: '#/components/schemas/CustomerAddressDto'
+          trackingDto:
+            $ref: '#/components/schemas/TrackingDto'
+          name:
+            type: string
+      required:
+      - shippingMode
+    ThreadDto:
+      type: object
+      discriminator:
+        propertyName: type
+      properties:
+        id:
+          type: integer
+          format: int64
+        operatorId:
+          type: integer
+          format: int64
+        organisationId:
+          type: integer
+          format: int64
+        filesCount:
+          type: integer
+        type:
+          type: string
+          enum:
+          - JOB
+          - PROJECT
+        subscribedCustomerIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+          uniqueItems: true
+      required:
+      - filesCount
+      - id
+      - operatorId
+      - organisationId
+      - subscribedCustomerIds
+      - type
+    SelfCollectionShipmentDto:
+      allOf:
+      - $ref: '#/components/schemas/ShipmentDto'
+      - type: object
+        properties:
+          contactName:
+            type: string
+          contactPhoneNumber:
+            type: string
+          rate:
+            type: number
+          name:
+            type: string
+      required:
+      - shippingMode
+    CreateOrderCommentDto:
+      type: object
+      discriminator:
+        propertyName: conversationType
+      properties:
+        message:
+          type: string
+        customerId:
+          type: integer
+          format: int64
+        actorType:
+          type: string
+        conversationType:
+          type: string
+      required:
+      - conversationType
+      - message
+    CreateDiscountDto:
+      type: object
+      properties:
+        discountType:
+          type: string
+        percentage:
+          type: number
+      required:
+      - discountType
+      - percentage
+    UpdateThreadDto:
+      type: object
+      properties:
+        type:
+          type: string
+      required:
+      - type
+    CreateInstantDiscountDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateDiscountDto'
+      - type: object
+        properties:
+          note:
+            type: string
+      required:
+      - discountType
+      - note
+      - percentage
+    CreateHourlyExpenseDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateExpenseDto'
+      - type: object
+        properties:
+          hours:
+            type: number
+          rate:
+            type: number
+      required:
+      - hours
+      - name
+      - rate
+      - type
+    TrackingDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        shipmentId:
+          type: integer
+          format: int64
+        trackingNumber:
+          type: string
+      required:
+      - id
+      - shipmentId
+      - trackingNumber
+    CreateLocationCommentDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateOrderCommentDto'
+      - type: object
+        properties:
+          locationX:
+            type: number
+          locationY:
+            type: number
+          locationZ:
+            type: number
+          cameraPositionX:
+            type: number
+          cameraPositionY:
+            type: number
+          cameraPositionZ:
+            type: number
+          cameraRotationX:
+            type: number
+          cameraRotationY:
+            type: number
+          cameraRotationZ:
+            type: number
+      required:
+      - cameraPositionX
+      - cameraPositionY
+      - cameraPositionZ
+      - cameraRotationX
+      - cameraRotationY
+      - cameraRotationZ
+      - conversationType
+      - locationX
+      - locationY
+      - locationZ
+      - message
+    CreateAssemblyRequisitionDto:
+      type: object
+      properties:
+        requisitionIntentId:
+          type: string
+          format: uuid
+        assemblyId:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+      required:
+      - assemblyId
+      - quantity
+      - requisitionIntentId
+    CreateProjectDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateThreadDto'
+      - type: object
+        properties:
+          name:
+            type: string
+          description:
+            type: string
+          status:
+            type: string
+          estimatedCost:
+            type: number
+          estimatedIterations:
+            type: integer
+            format: int64
+          notificationsEnabled:
+            type: boolean
+          subscribedCustomerIds:
+            type: array
+            items:
+              type: integer
+              format: int64
+      description: Project data to create
+      required:
+      - customerOrganisationId
+      - notificationsEnabled
+      - status
+      - type
+    CreateGenericDiscountDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateDiscountDto'
+      - type: object
+        properties:
+          code:
+            type: string
+          startTime:
+            type: string
+            format: date-time
+          endTime:
+            type: string
+            format: date-time
+          genericDiscountNoe:
+            type: string
+      required:
+      - code
+      - discountType
+      - endTime
+      - genericDiscountNoe
+      - percentage
+      - startTime
+    ConvertJobToProjectDto:
+      type: object
+      description: Job to project conversion data
+      properties:
+        jobId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        notificationsEnabled:
+          type: boolean
+      required:
+      - jobId
+      - name
+      - notificationsEnabled
+    CreateOrderDto:
+      type: object
+      description: Updated order details
+      properties:
+        requisitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateRequisitionDto'
+        assemblyRequisitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateAssemblyRequisitionDto'
+        expenses:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/CreateFixedExpenseDto'
+            - $ref: '#/components/schemas/CreateHourlyExpenseDto'
+        currency:
+          type: string
+          enum:
+          - USD
+          - SGD
+          - EUR
+          - INR
+          - JPY
+          - AUD
+          - GBP
+          - NZD
+          - MYR
+          - CAD
+          - CHF
+          - DKK
+          - SEK
+          - MXN
+          - ZAR
+          - UAH
+          - NOK
+          - PHP
+          - TRY
+        source:
+          type: string
+        discountId:
+          type: integer
+          format: int64
+        operatorNote:
+          type: string
+        isSilent:
+          type: boolean
+        affiliate:
+          type: string
+        paymentDueDate:
+          type: string
+          format: date-time
+        discount:
+          oneOf:
+          - $ref: '#/components/schemas/CreateCustomerDiscountDto'
+          - $ref: '#/components/schemas/CreateGenericDiscountDto'
+          - $ref: '#/components/schemas/CreateInstantDiscountDto'
+        shipment:
+          oneOf:
+          - $ref: '#/components/schemas/CarrierAccountShipmentDto'
+          - $ref: '#/components/schemas/FixedPriceShipmentDto'
+          - $ref: '#/components/schemas/SelfCollectionShipmentDto'
+        billingAddressId:
+          type: integer
+          format: int64
+        markPaymentConfirmed:
+          type: boolean
+        ccCustomerIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+          uniqueItems: true
+        customReference:
+          type: string
+      required:
+      - assemblyRequisitions
+      - ccCustomerIds
+      - currency
+      - expenses
+      - markPaymentConfirmed
+      - requisitions
+      - source
+    ShipmentDto:
+      type: object
+      discriminator:
+        propertyName: shippingMode
+      properties:
+        id:
+          type: integer
+          format: int64
+        shippingMode:
+          type: string
+          enum:
+          - SELF_COLLECTION
+          - FIXED_PRICE
+          - CARRIER_ACCOUNT
+        shippingMethodId:
+          type: integer
+          format: int64
+        rateId:
+          type: string
+        toAddressId:
+          type: integer
+          format: int64
+        status:
+          type: string
+        dispatchDate:
+          type: string
+          format: date
+      required:
+      - shippingMode
+    CreateRequisitionCommentDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateOrderCommentDto'
+      required:
+      - conversationType
+      - message
+    MergeThreadsDto:
+      type: object
+      description: Thread merge data
+      properties:
+        sourceThreadId:
+          type: integer
+          format: int64
+        destinationThreadId:
+          type: integer
+          format: int64
+      required:
+      - destinationThreadId
+      - sourceThreadId
+    CreateJobDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateThreadDto'
+      - type: object
+        properties:
+          createOrderDto:
+            $ref: '#/components/schemas/CreateOrderDto'
+      required:
+      - createOrderDto
+      - customerOrganisationId
+      - type
+    UpdateProjectDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateThreadDto'
+      - type: object
+        properties:
+          name:
+            type: string
+          description:
+            type: string
+          subscribedCustomerIds:
+            type: array
+            items:
+              type: integer
+              format: int64
+      description: Updated project data
+      required:
+      - name
+      - subscribedCustomerIds
+      - type
+    CreateFixedOrientationRequisitionConstraintDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateRequisitionConstraintDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+            maxItems: 3
+            minItems: 3
+      required:
+      - constraintType
+      - rotationMatrix
+    CreateRequisitionConstraintDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        constraintType:
+          type: string
+      required:
+      - constraintType
+    CreateRequisitionPostProcessingDto:
+      type: object
+      properties:
+        postProcessingId:
+          type: integer
+          format: int64
+        variables:
+          type: object
+          additionalProperties:
+            type: number
+      required:
+      - postProcessingId
+      - variables
+    CreateExpenseDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
+    CustomerAddressDto:
+      type: object
+      properties:
+        addressId:
+          type: integer
+          format: int64
+        isBillingAddress:
+          type: boolean
+        isShippingAddress:
+          type: boolean
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        countryAlpha2Code:
+          type: string
+        countryAlpha3Code:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        taxId:
+          type: string
+    CreateCustomerDiscountDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateDiscountDto'
+      - type: object
+        properties:
+          code:
+            type: string
+          startTime:
+            type: string
+            format: date-time
+          endTime:
+            type: string
+            format: date-time
+          customerId:
+            type: integer
+            format: int64
+      required:
+      - code
+      - customerId
+      - discountType
+      - endTime
+      - percentage
+      - startTime
+    CarrierAccountShipmentDto:
+      allOf:
+      - $ref: '#/components/schemas/ShipmentDto'
+      - type: object
+        properties:
+          toAddressDto:
+            $ref: '#/components/schemas/CustomerAddressDto'
+          carrierAccountProvider:
+            type: string
+          carrierAccountServiceType:
+            type: string
+          carrierAccountServiceName:
+            type: string
+          estimatedRate:
+            type: number
+          finalRatePaid:
+            type: number
+          trackingDto:
+            $ref: '#/components/schemas/TrackingDto'
+      required:
+      - shippingMode
+    ThreadSummaryDto:
+      type: object
+      properties:
+        threadId:
+          type: integer
+          format: int64
+        customerName:
+          type: string
+        customerOrganisationId:
+          type: integer
+          format: int64
+        type:
+          type: string
+        projectName:
+          type: string
+        orderId:
+          type: integer
+          format: int64
+        orderNumber:
+          type: integer
+          format: int64
+        quoteNumber:
+          type: integer
+          format: int64
+        lastMessageHint:
+          type: string
+        lastMessageTime:
+          type: string
+          format: date-time
+      required:
+      - customerName
+      - customerOrganisationId
+      - lastMessageHint
+      - lastMessageTime
+      - threadId
+      - type
+    UpdateJobDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateThreadDto'
+      - type: object
+        properties:
+          createOrderDto:
+            $ref: '#/components/schemas/CreateOrderDto'
+      required:
+      - createOrderDto
+      - type
+    CreateThreadDto:
+      type: object
+      discriminator:
+        propertyName: type
+      properties:
+        type:
+          type: string
+        customerOrganisationId:
+          type: integer
+          format: int64
+      required:
+      - customerOrganisationId
+      - type
+    CreateFixedExpenseDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateExpenseDto'
+      - type: object
+        properties:
+          quantity:
+            type: number
+          unitPrice:
+            type: number
+          costForOperator:
+            type: number
+      required:
+      - costForOperator
+      - name
+      - quantity
+      - type
+      - unitPrice
+    CreateRequisitionDto:
+      type: object
+      properties:
+        requisitionIntentId:
+          type: string
+          format: uuid
+        partRevisionId:
+          type: string
+          format: uuid
+        units:
+          type: string
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        quantity:
+          type: integer
+        materialId:
+          type: integer
+          format: int64
+        processPricesId:
+          type: string
+          format: uuid
+        infillId:
+          type: integer
+          format: int64
+        precisionId:
+          type: integer
+          format: int64
+        colorId:
+          type: integer
+          format: int64
+        postProcessing:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateRequisitionPostProcessingDto'
+          uniqueItems: true
+        variables:
+          type: object
+          additionalProperties:
+            type: number
+        manualPrice:
+          type: number
+        leadTimeId:
+          type: string
+          format: uuid
+        comments:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/CreateLocationCommentDto'
+            - $ref: '#/components/schemas/CreateRequisitionCommentDto'
+        name:
+          type: string
+        constraints:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/CreateFixedOrientationRequisitionConstraintDto'
+      required:
+      - comments
+      - constraints
+      - materialId
+      - partRevisionId
+      - postProcessing
+      - processPricesId
+      - quantity
+      - requisitionIntentId
+      - units
+      - variables
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

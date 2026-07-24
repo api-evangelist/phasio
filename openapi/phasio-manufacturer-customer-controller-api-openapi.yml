@@ -1,0 +1,542 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Customer Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Customer Controller
+  description: API for managing customer records and operations
+paths:
+  /api/manufacturer/v1/customer:
+    post:
+      tags:
+      - Manufacturer Customer Controller
+      summary: Create a new customer
+      description: Creates a new customer record
+      operationId: createCustomer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerDto'
+        required: true
+      responses:
+        '200':
+          description: Customer created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerDto'
+        '400':
+          description: Invalid customer data
+        '401':
+          description: Unauthorized - missing operator context
+        '409':
+          description: Customer with the same email or phone number already exists
+          content:
+            application/json: {}
+    patch:
+      tags:
+      - Manufacturer Customer Controller
+      summary: Update a customer
+      description: Updates an existing customer record
+      operationId: updateCustomer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerUpdateDto'
+        required: true
+      responses:
+        '200':
+          description: Customer updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerDto'
+        '400':
+          description: Invalid customer data or customer not found
+  /api/manufacturer/v1/customer/upload:
+    post:
+      tags:
+      - Manufacturer Customer Controller
+      summary: Upload customers from a file
+      description: Imports multiple customers from a CSV or Excel file
+      operationId: uploadCustomers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: CSV or Excel file containing customer data
+              required:
+              - file
+      responses:
+        '204':
+          description: Customers uploaded successfully
+        '400':
+          description: Invalid file format or operator ID mismatch
+  /api/manufacturer/v1/customer/principal:
+    post:
+      tags:
+      - Manufacturer Customer Controller
+      summary: Get a customer by principal
+      description: Retrieves a customer using their principal identifier (username, email, etc.)
+      operationId: getCustomer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRequestDto'
+        required: true
+      responses:
+        '200':
+          description: Customer retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerDto'
+        '404':
+          description: Customer not found
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/customer/phone:
+    post:
+      tags:
+      - Manufacturer Customer Controller
+      summary: Get a customer by phone number
+      description: Retrieves a customer using their phone number. Always returns 200 - exists flag indicates whether a match was found.
+      operationId: getCustomerByPhone
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRequestDto'
+        required: true
+      responses:
+        '200':
+          description: Lookup completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerPhoneLookupDto'
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/customer/organisation/{organisationId}:
+    get:
+      tags:
+      - Manufacturer Customer Controller
+      summary: Get customers by organization
+      description: Retrieves all customers belonging to a specific organization
+      operationId: getCustomersByOrganisation
+      parameters:
+      - name: organisationId
+        in: path
+        description: ID of the organization to get customers for
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: Customers retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerDto'
+    post:
+      tags:
+      - Manufacturer Customer Controller
+      summary: Create a customer in an organization
+      description: Creates a new customer that belongs to a specific organization
+      operationId: createCustomerInOrganisation
+      parameters:
+      - name: organisationId
+        in: path
+        description: ID of the organization to add the customer to
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerDto'
+        required: true
+      responses:
+        '200':
+          description: Customer created successfully
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Invalid customer data or organization ID
+          content:
+            text/plain:
+              schema:
+                type: string
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/customer/email:
+    post:
+      tags:
+      - Manufacturer Customer Controller
+      summary: Get a customer by email
+      description: Retrieves a customer using their email address. Always returns 200 - exists flag indicates whether a match was found.
+      operationId: getCustomerByEmail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRequestDto'
+        required: true
+      responses:
+        '200':
+          description: Lookup completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerEmailLookupDto'
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/customer/{customerId}:
+    get:
+      tags:
+      - Manufacturer Customer Controller
+      summary: Get a customer by ID
+      description: Retrieves details of a specific customer by their ID
+      operationId: getCustomer_3
+      parameters:
+      - name: customerId
+        in: path
+        description: ID of the customer to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: Customer retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerDto'
+        '404':
+          description: Customer not found
+    delete:
+      tags:
+      - Manufacturer Customer Controller
+      summary: Delete a customer
+      description: Hard deletes a customer and removes PII data
+      operationId: deleteCustomer_1
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Customer deleted successfully
+          content:
+            '*/*':
+              schema:
+                type: string
+        '400':
+          description: Customer could not be deleted
+          content:
+            '*/*':
+              schema:
+                type: string
+        '404':
+          description: Customer not found
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/manufacturer/v1/customer/paginated:
+    get:
+      tags:
+      - Manufacturer Customer Controller
+      summary: Get customers with filtering
+      description: Retrieves a paginated list of customers with optional filtering and search using RSQL
+      operationId: getCustomersPaginated
+      parameters:
+      - name: filter
+        in: query
+        description: filter specification
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        schema:
+          type: integer
+          default: 30
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        schema:
+          type: array
+          default:
+          - updateDt,DESC
+          items:
+            type: string
+      - name: search
+        in: query
+        description: Optional search term
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PaginatedCustomerDto'
+  /api/manufacturer/v1/customer/count:
+    get:
+      tags:
+      - Manufacturer Customer Controller
+      summary: Get count of customers
+      description: Retrieves the total count of customers with optional filtering
+      operationId: getCount
+      parameters:
+      - name: searchQuery
+        in: query
+        description: Search query for filtering customers
+        required: false
+        schema:
+          type: string
+        example: john
+      responses:
+        '200':
+          description: Count retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/customer/{customerId}/auth:
+    delete:
+      tags:
+      - Manufacturer Customer Controller
+      summary: Reset customer authentication
+      description: Resets customer to OTP-only auth, clearing their password
+      operationId: resetCustomerAuth
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '204':
+          description: Customer auth reset successfully
+          content:
+            '*/*':
+              schema:
+                type: string
+        '404':
+          description: Customer not found
+          content:
+            '*/*':
+              schema:
+                type: string
+components:
+  schemas:
+    CreateCustomerDto:
+      type: object
+      description: Customer data to create
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        language:
+          type: string
+          enum:
+          - EN
+          - DE
+          - EL
+          - FR
+          - NL
+          - SL
+          - DA
+          - TR
+          - PL
+          - ES
+          - BG
+          - IT
+          - UK
+          - RU
+          - SV
+        notificationPreference:
+          type: string
+          enum:
+          - EMAIL
+          - SMS
+          - WHATSAPP
+        affiliate:
+          type: string
+        organisationName:
+          type: string
+        taxExempt:
+          type: boolean
+      required:
+      - notificationPreference
+    CustomerPhoneLookupDto:
+      type: object
+      properties:
+        isDuplicate:
+          type: boolean
+        customer:
+          $ref: '#/components/schemas/CustomerDto'
+        message:
+          type: string
+      required:
+      - isDuplicate
+    CustomerUpdateDto:
+      type: object
+      properties:
+        customerId:
+          type: integer
+          format: int64
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        notificationPreference:
+          type: string
+        language:
+          type: string
+      required:
+      - customerId
+    CustomerDto:
+      type: object
+      properties:
+        email:
+          type: string
+        customerId:
+          type: integer
+          format: int64
+        organisationName:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        language:
+          type: string
+        notificationPreference:
+          type: string
+        discountId:
+          type: integer
+          format: int64
+        discountPercentage:
+          type: number
+        customerType:
+          type: string
+      required:
+      - customerType
+      - language
+      - notificationPreference
+    PaginatedCustomerDto:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerDto'
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
+    CustomerRequestDto:
+      type: object
+      description: Customer request data containing the principal
+      properties:
+        customerPrincipal:
+          type: string
+      required:
+      - customerPrincipal
+    CustomerEmailLookupDto:
+      type: object
+      properties:
+        isDuplicate:
+          type: boolean
+        customer:
+          $ref: '#/components/schemas/CustomerDto'
+        message:
+          type: string
+      required:
+      - isDuplicate
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

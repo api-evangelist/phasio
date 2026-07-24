@@ -1,0 +1,367 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Production Status Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Production Status Controller
+  description: Endpoints for managing production status configurations for manufacturing workflow
+paths:
+  /api/manufacturer/v1/operation:
+    get:
+      tags:
+      - Manufacturer Production Status Controller
+      summary: Get all production statuses
+      description: Retrieves all production statuses for the current operator
+      operationId: get_3
+      parameters:
+      - name: deleted
+        in: query
+        description: Whether to include deleted statuses
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Production statuses retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OperationDto'
+        '401':
+          description: Unauthorized - operator not found
+    post:
+      tags:
+      - Manufacturer Production Status Controller
+      summary: Create production status
+      description: Creates a new production status for manufacturing workflow
+      operationId: create_4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperationDto'
+        required: true
+      responses:
+        '200':
+          description: Production status created successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OperationDto'
+        '400':
+          description: Invalid production status data
+        '401':
+          description: Unauthorized - operator not found
+    patch:
+      tags:
+      - Manufacturer Production Status Controller
+      summary: Update production status
+      description: Updates an existing production status configuration
+      operationId: update_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperationDto'
+        required: true
+      responses:
+        '200':
+          description: Production status updated successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OperationDto'
+        '400':
+          description: Invalid update data or production status not found
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/production-status:
+    get:
+      tags:
+      - Manufacturer Production Status Controller
+      summary: Get all production statuses
+      description: Retrieves all production statuses for the current operator
+      operationId: get_4
+      parameters:
+      - name: deleted
+        in: query
+        description: Whether to include deleted statuses
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Production statuses retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OperationDto'
+        '401':
+          description: Unauthorized - operator not found
+    post:
+      tags:
+      - Manufacturer Production Status Controller
+      summary: Create production status
+      description: Creates a new production status for manufacturing workflow
+      operationId: create_5
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperationDto'
+        required: true
+      responses:
+        '200':
+          description: Production status created successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OperationDto'
+        '400':
+          description: Invalid production status data
+        '401':
+          description: Unauthorized - operator not found
+    patch:
+      tags:
+      - Manufacturer Production Status Controller
+      summary: Update production status
+      description: Updates an existing production status configuration
+      operationId: update_3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperationDto'
+        required: true
+      responses:
+        '200':
+          description: Production status updated successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OperationDto'
+        '400':
+          description: Invalid update data or production status not found
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/production-status/batch-balances/count:
+    get:
+      tags:
+      - Manufacturer Production Status Controller
+      summary: Get batch balances count
+      description: Gets counts of batches in each requested production status
+      operationId: getBalance
+      parameters:
+      - name: operationIds
+        in: query
+        description: Set of operation IDs to check counts for
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid
+          uniqueItems: true
+      - name: archived
+        in: query
+        description: Include archived requisitions
+        required: false
+        schema:
+          type: boolean
+        example: false
+      responses:
+        '200':
+          description: Batch counts retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/operation/batch-balances/count:
+    get:
+      tags:
+      - Manufacturer Production Status Controller
+      summary: Get batch balances count
+      description: Gets counts of batches in each requested production status
+      operationId: getBalance_1
+      parameters:
+      - name: operationIds
+        in: query
+        description: Set of operation IDs to check counts for
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid
+          uniqueItems: true
+      - name: archived
+        in: query
+        description: Include archived requisitions
+        required: false
+        schema:
+          type: boolean
+        example: false
+      responses:
+        '200':
+          description: Batch counts retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/production-status/{id}:
+    delete:
+      tags:
+      - Manufacturer Production Status Controller
+      summary: Delete production status
+      description: Marks a production status as deleted (soft delete)
+      operationId: delete_15
+      parameters:
+      - name: id
+        in: path
+        description: ID of the production status to delete
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Production status deleted successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OperationDto'
+        '400':
+          description: Production status not found
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/operation/{id}:
+    delete:
+      tags:
+      - Manufacturer Production Status Controller
+      summary: Delete production status
+      description: Marks a production status as deleted (soft delete)
+      operationId: delete_16
+      parameters:
+      - name: id
+        in: path
+        description: ID of the production status to delete
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Production status deleted successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OperationDto'
+        '400':
+          description: Production status not found
+        '401':
+          description: Unauthorized - operator not found
+components:
+  schemas:
+    OperationAutomationDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        operationId:
+          type: string
+          format: uuid
+        type:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        productionStatusId:
+          type: string
+          format: uuid
+      required:
+      - type
+    OperationDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        stepNamePrefix:
+          type: string
+        productionStepType:
+          type: string
+        viewType:
+          type: string
+        buildConstraint:
+          type: string
+        stepNamingStrategy:
+          type: string
+        sequence:
+          type: integer
+          format: int32
+        duration:
+          type: integer
+        isCompletedStatus:
+          type: boolean
+        allowOverproduction:
+          type: boolean
+        automations:
+          type: array
+          items:
+            $ref: '#/components/schemas/OperationAutomationDto'
+        createdAt:
+          type: string
+          format: date-time
+        updateDt:
+          type: string
+          format: date-time
+        statusName:
+          type: string
+          readOnly: true
+      required:
+      - allowOverproduction
+      - buildConstraint
+      - name
+      - productionStepType
+      - statusName
+      - stepNamingStrategy
+      - viewType
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

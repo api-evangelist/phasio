@@ -1,0 +1,133 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Tax Component Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Tax Component Controller
+  description: Endpoints for managing tax components and rates
+paths:
+  /api/manufacturer/v1/tax-component:
+    get:
+      tags:
+      - Manufacturer Tax Component Controller
+      summary: Get all tax components
+      description: Retrieves all tax components in the system
+      operationId: get_2
+      responses:
+        '200':
+          description: Tax components retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaxComponentDto'
+    post:
+      tags:
+      - Manufacturer Tax Component Controller
+      summary: Create tax component
+      description: Creates a new tax component with specified rate
+      operationId: create_3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaxComponentDto'
+        required: true
+      responses:
+        '200':
+          description: Tax component created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxComponentDto'
+        '400':
+          description: Invalid tax component data
+  /api/manufacturer/v1/tax-component/{id}:
+    delete:
+      tags:
+      - Manufacturer Tax Component Controller
+      summary: Delete tax component
+      description: Deletes an existing tax component
+      operationId: delete_4
+      parameters:
+      - name: id
+        in: path
+        description: ID of the tax component to delete
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: Tax component deleted successfully
+        '404':
+          description: Tax component not found
+    patch:
+      tags:
+      - Manufacturer Tax Component Controller
+      summary: Update tax component
+      description: Updates an existing tax component
+      operationId: update_7
+      parameters:
+      - name: id
+        in: path
+        description: ID of the tax component to update
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaxComponentDto'
+        required: true
+      responses:
+        '200':
+          description: Tax component updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxComponentDto'
+        '400':
+          description: Invalid update data
+        '404':
+          description: Tax component not found
+components:
+  schemas:
+    TaxComponentDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        shortName:
+          type: string
+        longName:
+          type: string
+        percentage:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - longName
+      - percentage
+      - shortName
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

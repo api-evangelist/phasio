@@ -1,0 +1,688 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Customer Organisation Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Customer Organisation Controller
+  description: API for managing customer organizations
+paths:
+  /api/manufacturer/v1/organisation/{organisationId}/metadata/key/{metadataKey}:
+    put:
+      tags:
+      - Manufacturer Customer Organisation Controller
+      summary: Upsert customer organisation metadata by key
+      description: Sets the value for a metadata key on a customer organisation, creating the entry if it does not already exist. Intended for external systems that track their own key but do not know the corresponding internal metadata ID.
+      operationId: upsertMetadataByKey
+      parameters:
+      - name: organisationId
+        in: path
+        description: ID of the organisation
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      - name: metadataKey
+        in: path
+        description: Metadata key to set
+        required: true
+        schema:
+          type: string
+        example: shopifyCustomerId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetCustomerOrganisationMetadataValueDto'
+        required: true
+      responses:
+        '200':
+          description: Metadata upserted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationMetadataDto'
+        '400':
+          description: Organisation not found
+  /api/manufacturer/v1/organisation/{organisationId}/metadata:
+    post:
+      tags:
+      - Manufacturer Customer Organisation Controller
+      summary: Add metadata to a customer organisation
+      description: Adds a new metadata entry (key/value pair) to a customer organisation. Keys must be unique per organisation.
+      operationId: addMetadata
+      parameters:
+      - name: organisationId
+        in: path
+        description: ID of the organisation to add metadata to
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerOrganisationMetadataDto'
+        required: true
+      responses:
+        '200':
+          description: Metadata added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationMetadataDto'
+        '400':
+          description: Invalid organisation ID or metadata already exists for the given key
+  /api/manufacturer/v1/organisation/{organisationId}:
+    get:
+      tags:
+      - Manufacturer Customer Organisation Controller
+      summary: Get a customer organization by ID
+      description: Retrieves details of a specific customer organization
+      operationId: get_14
+      parameters:
+      - name: organisationId
+        in: path
+        description: ID of the organization to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: Organization retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationDto'
+        '400':
+          description: Invalid organization ID
+        '401':
+          description: Unauthorized - missing operator context
+    delete:
+      tags:
+      - Manufacturer Customer Organisation Controller
+      summary: Delete a customer organization
+      description: Soft deletes a customer organization and hard deletes all contained customers
+      operationId: deleteCustomerOrganisation
+      parameters:
+      - name: organisationId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Organization deleted successfully
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationDto'
+        '400':
+          description: Organization could not be deleted
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationDto'
+        '404':
+          description: Organization not found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationDto'
+    patch:
+      tags:
+      - Manufacturer Customer Organisation Controller
+      summary: Update a customer organization
+      description: Updates details of an existing customer organization
+      operationId: update_12
+      parameters:
+      - name: organisationId
+        in: path
+        description: ID of the organization to update
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganisationUpdateDto'
+        required: true
+      responses:
+        '200':
+          description: Organization updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationDto'
+        '400':
+          description: Invalid organization ID or update data
+  /api/manufacturer/v1/organisation/{organisationId}/metadata/{metadataId}:
+    delete:
+      tags:
+      - Manufacturer Customer Organisation Controller
+      summary: Delete customer organisation metadata
+      description: Removes a metadata entry from a customer organisation.
+      operationId: deleteMetadata
+      parameters:
+      - name: organisationId
+        in: path
+        description: ID of the organisation
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      - name: metadataId
+        in: path
+        description: ID of the metadata entry to delete
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: Metadata deleted successfully
+        '404':
+          description: Metadata not found for the given organisation
+    patch:
+      tags:
+      - Manufacturer Customer Organisation Controller
+      summary: Update customer organisation metadata
+      description: Partially updates an existing metadata entry on a customer organisation. Only supplied fields are modified.
+      operationId: updateMetadata
+      parameters:
+      - name: organisationId
+        in: path
+        description: ID of the organisation
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      - name: metadataId
+        in: path
+        description: ID of the metadata entry to update
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomerOrganisationMetadataDto'
+        required: true
+      responses:
+        '200':
+          description: Metadata updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationMetadataDto'
+        '400':
+          description: Metadata not found or key conflict
+  /api/manufacturer/v1/organisation/{destinationOrgId}/transfer:
+    patch:
+      tags:
+      - Manufacturer Customer Organisation Controller
+      summary: Transfer an individual customer to an organization
+      description: Merges an individual customer into a corporate organization
+      operationId: mergeIndividualToOrganisation
+      parameters:
+      - name: sourceOrgId
+        in: query
+        description: ID of the source individual organization
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      - name: destinationOrgId
+        in: path
+        description: ID of the destination corporate organization
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 2
+      responses:
+        '200':
+          description: Customer transferred successfully
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Invalid organization IDs or transfer failed
+          content:
+            text/plain:
+              schema:
+                type: string
+  /api/manufacturer/v1/organisation:
+    get:
+      tags:
+      - Manufacturer Customer Organisation Controller
+      summary: Get customer organisation summaries
+      description: Retrieves a list of customer organisation summaries
+      operationId: getCustomerOrganisationSummaries
+      responses:
+        '200':
+          description: Customer organisations retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerOrganisationSummaryDto'
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/organisation/{destinationOrgId}/transfer/preview:
+    get:
+      tags:
+      - Manufacturer Customer Organisation Controller
+      summary: Preview a merge
+      description: 'Read-only dry run: per-entity counts that would move plus whether the merge is eligible and why not.'
+      operationId: previewMerge
+      parameters:
+      - name: sourceOrgId
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: destinationOrgId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MergePreview'
+  /api/manufacturer/v1/organisation/thread/{threadId}:
+    get:
+      tags:
+      - Manufacturer Customer Organisation Controller
+      summary: Get organization by thread ID
+      description: Retrieves the organization associated with a specific thread
+      operationId: getByThread
+      parameters:
+      - name: threadId
+        in: path
+        description: ID of the thread to get organization for
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: Organization retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationDto'
+        '400':
+          description: Invalid thread ID or thread not found
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/organisation/paginated:
+    get:
+      tags:
+      - Manufacturer Customer Organisation Controller
+      summary: Get customer organisations with filtering
+      description: Retrieves a paginated list of customer organisations with optional filtering and search using RSQL
+      operationId: getCustomerOrganisationsPaginated
+      parameters:
+      - name: filter
+        in: query
+        description: filter specification
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        schema:
+          type: integer
+          default: 30
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        schema:
+          type: array
+          default:
+          - updateDt,DESC
+          items:
+            type: string
+      - name: search
+        in: query
+        description: Optional search term
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Customer organisations retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paginated'
+        '400':
+          description: Invalid filter specification
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/organisation/customer/{customerId}:
+    get:
+      tags:
+      - Manufacturer Customer Organisation Controller
+      summary: Get organization by customer ID
+      description: Retrieves the organization associated with a specific customer
+      operationId: getByCustomer
+      parameters:
+      - name: customerId
+        in: path
+        description: ID of the customer to get organization for
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: Organization retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationDto'
+        '400':
+          description: Invalid customer ID or customer not found
+        '401':
+          description: Unauthorized - missing operator context
+components:
+  schemas:
+    CustomerAddressDto:
+      type: object
+      properties:
+        addressId:
+          type: integer
+          format: int64
+        isBillingAddress:
+          type: boolean
+        isShippingAddress:
+          type: boolean
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        countryAlpha2Code:
+          type: string
+        countryAlpha3Code:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        taxId:
+          type: string
+    CustomerOrganisationDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        taxExempt:
+          type: boolean
+        customerType:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+        customers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerDto'
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerAddressDto'
+      required:
+      - addresses
+      - createdAt
+      - customerType
+      - customers
+      - lastUpdated
+      - taxExempt
+    CustomerOrganisationMetadataDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        metadataKey:
+          type: string
+        value:
+          type: string
+      required:
+      - id
+      - metadataKey
+      - value
+    Paginated:
+      type: object
+      properties:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
+    CustomerDto:
+      type: object
+      properties:
+        email:
+          type: string
+        customerId:
+          type: integer
+          format: int64
+        organisationName:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        language:
+          type: string
+        notificationPreference:
+          type: string
+        discountId:
+          type: integer
+          format: int64
+        discountPercentage:
+          type: number
+        customerType:
+          type: string
+      required:
+      - customerType
+      - language
+      - notificationPreference
+    OrganisationUpdateDto:
+      type: object
+      properties:
+        name:
+          type: string
+        canAccessDashboard:
+          type: boolean
+        taxExempt:
+          type: boolean
+        language:
+          type: string
+        accountingSystemId:
+          type: string
+        isApproved:
+          type: boolean
+        customerType:
+          type: string
+        paymentTermId:
+          type: string
+        clearPaymentTerm:
+          type: boolean
+      required:
+      - clearPaymentTerm
+    SetCustomerOrganisationMetadataValueDto:
+      type: object
+      properties:
+        value:
+          type: string
+      required:
+      - value
+    UpdateCustomerOrganisationMetadataDto:
+      type: object
+      properties:
+        metadataKey:
+          type: string
+        value:
+          type: string
+    CreateCustomerOrganisationMetadataDto:
+      type: object
+      properties:
+        metadataKey:
+          type: string
+        value:
+          type: string
+      required:
+      - metadataKey
+      - value
+    MergePreview:
+      type: object
+      properties:
+        sourceOrganisationId:
+          type: integer
+          format: int64
+        destinationOrganisationId:
+          type: integer
+          format: int64
+        eligible:
+          type: boolean
+        blockReason:
+          type: string
+        counts:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+        totalRows:
+          type: integer
+          format: int32
+      required:
+      - counts
+      - destinationOrganisationId
+      - eligible
+      - sourceOrganisationId
+      - totalRows
+    CustomerOrganisationSummaryDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        taxExempt:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updateDt:
+          type: string
+          format: date-time
+        firstTouchSource:
+          type: string
+        language:
+          type: string
+        isApproved:
+          type: boolean
+        accountingSystemId:
+          type: string
+      required:
+      - createdAt
+      - taxExempt
+      - updateDt
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,236 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Customer Cart Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Customer Cart Controller
+  description: Endpoints for managing customer shopping carts
+paths:
+  /api/customer/v1/cart:
+    get:
+      tags:
+      - Customer Cart Controller
+      summary: List open carts
+      description: Returns all open carts for the current customer organisation
+      operationId: getOpenCarts
+      responses:
+        '200':
+          description: List of open carts
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CartResponseDto'
+        '401':
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CartResponseDto'
+    post:
+      tags:
+      - Customer Cart Controller
+      summary: Create a new shopping cart
+      description: Creates a new empty shopping cart for the current customer
+      operationId: create_22
+      responses:
+        '200':
+          description: Cart successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartResponseDto'
+        '400':
+          description: Unable to create cart
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/customer/v1/cart/{cartId}/claim:
+    patch:
+      tags:
+      - Customer Cart Controller
+      summary: Claim shopping cart
+      description: Claims an existing shopping cart for the current customer
+      operationId: claim_1
+      parameters:
+      - name: cartId
+        in: path
+        description: ID of the cart to update
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: Cart successfully claimed
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '409':
+          description: Conflict - Cart has already been claimed
+        '404':
+          description: Cart not found
+  /api/customer/v1/cart/{cartId}:
+    get:
+      tags:
+      - Customer Cart Controller
+      summary: Get cart by ID
+      description: Returns a single cart with items for the resume flow
+      operationId: getById_13
+      parameters:
+      - name: cartId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Cart with items
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CartResponseDto'
+        '401':
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CartResponseDto'
+        '404':
+          description: Cart not found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CartResponseDto'
+    delete:
+      tags:
+      - Customer Cart Controller
+      summary: Soft delete a shopping cart
+      description: Sets the cart status to DELETED without removing it from the database
+      operationId: softDelete
+      parameters:
+      - name: cartId
+        in: path
+        description: ID of the cart to soft-delete
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: Cart successfully soft-deleted
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Cart not found
+components:
+  schemas:
+    CartItemDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        partRevisionId:
+          type: string
+          format: uuid
+        partName:
+          type: string
+        quantity:
+          type: integer
+        colorId:
+          type: integer
+          format: int64
+        precisionPricesId:
+          type: integer
+          format: int64
+        infillId:
+          type: integer
+          format: int64
+        processPricesId:
+          type: string
+          format: uuid
+        materialPricesId:
+          type: integer
+          format: int64
+        leadTimeId:
+          type: string
+          format: uuid
+        units:
+          type: string
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        postProcessingIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - id
+      - quantity
+    CartResponseDto:
+      type: object
+      properties:
+        cartId:
+          type: string
+          format: uuid
+        cartItemDtos:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItemDto'
+        operatorId:
+          type: integer
+          format: int64
+        customerId:
+          type: integer
+          format: int64
+        customerEmail:
+          type: string
+        customerPhone:
+          type: string
+        cartNumber:
+          type: integer
+          format: int64
+        status:
+          type: string
+          enum:
+          - OPEN
+          - DELETED
+          - CONVERTED
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+      required:
+      - cartId
+      - cartItemDtos
+      - createdAt
+      - lastUpdated
+      - status
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

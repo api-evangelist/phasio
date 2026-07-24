@@ -1,0 +1,378 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Customer Cart Item Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Customer Cart Item Controller
+  description: Endpoints for managing customer shopping cart items
+paths:
+  /api/customer/v1/carts/{cartId}/items:
+    post:
+      tags:
+      - Customer Cart Item Controller
+      summary: Create cart item
+      description: Adds a new item to the customer's shopping cart
+      operationId: create_21
+      parameters:
+      - name: cartId
+        in: path
+        description: ID of the cart
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartItemDto'
+        required: true
+      responses:
+        '200':
+          description: Cart item successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItemDto'
+        '400':
+          description: Invalid request data
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/customer/v1/carts/{cartId}/items/{id}:
+    delete:
+      tags:
+      - Customer Cart Item Controller
+      summary: Delete cart item
+      description: Removes an item from the customer's shopping cart
+      operationId: delete_12
+      parameters:
+      - name: cartId
+        in: path
+        description: ID of the cart
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: id
+        in: path
+        description: ID of the cart item to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '204':
+          description: Cart item successfully deleted
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Cart item not found
+    patch:
+      tags:
+      - Customer Cart Item Controller
+      summary: Update cart item
+      description: Updates an existing item in the customer's shopping cart
+      operationId: update_16
+      parameters:
+      - name: cartId
+        in: path
+        description: ID of the cart
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: id
+        in: path
+        description: ID of the cart item to update
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartItemDto'
+        required: true
+      responses:
+        '200':
+          description: Cart item successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItemDto'
+        '400':
+          description: Invalid request data
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Cart item not found
+  /api/customer/v1/carts/{cartId}/items/{id}/part-revision:
+    get:
+      tags:
+      - Customer Cart Item Controller
+      summary: Get part revision for cart item
+      description: Retrieves part revision metadata through cart item ownership
+      operationId: getPartRevision_1
+      parameters:
+      - name: cartId
+        in: path
+        description: ID of the cart
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: id
+        in: path
+        description: ID of the cart item
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Part revision successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartRevisionDto'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Cart item or part revision not found
+  /api/customer/v1/carts/{cartId}/items/{id}/part-revision/thumbnail:
+    get:
+      tags:
+      - Customer Cart Item Controller
+      summary: Download part revision thumbnail for cart item
+      description: Downloads the thumbnail image for a part revision through cart item ownership
+      operationId: downloadPartRevisionThumbnail
+      parameters:
+      - name: cartId
+        in: path
+        description: ID of the cart
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: id
+        in: path
+        description: ID of the cart item
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Thumbnail successfully downloaded
+          content:
+            image/png: {}
+        '400':
+          description: Thumbnail not available
+        '401':
+          description: Unauthorized
+  /api/customer/v1/carts/{cartId}/items/{id}/part-revision/download/{type}:
+    get:
+      tags:
+      - Customer Cart Item Controller
+      summary: Download part revision file for cart item
+      description: Downloads a specific file type for a part revision through cart item ownership
+      operationId: downloadPartRevisionFile
+      parameters:
+      - name: cartId
+        in: path
+        description: ID of the cart
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: id
+        in: path
+        description: ID of the cart item
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: type
+        in: path
+        description: Type of file to download
+        required: true
+        schema:
+          type: string
+          enum:
+          - ORIGINAL_CAD_FILE
+          - CORE_GEOMETRY
+          - THUMBNAIL
+          - PDF_DESIGN_FILE
+          - WALL_THICKNESS_ANALYSIS
+      responses:
+        '200':
+          description: File downloaded successfully
+          content:
+            application/octet-stream: {}
+        '400':
+          description: File not found or download failed
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    PartRevisionDto:
+      type: object
+      properties:
+        partRevisionId:
+          type: string
+          format: uuid
+        designName:
+          type: string
+        designId:
+          type: string
+          format: uuid
+        availableAccessories:
+          type: array
+          items:
+            type: string
+            enum:
+            - ORIGINAL_CAD_FILE
+            - CORE_GEOMETRY
+            - THUMBNAIL
+            - PDF_DESIGN_FILE
+            - WALL_THICKNESS_ANALYSIS
+        volume:
+          type: number
+        area:
+          type: number
+        height:
+          type: number
+        width:
+          type: number
+        depth:
+          type: number
+        minimumWallThickness:
+          type: number
+        minBoundingBoxVolume:
+          type: number
+        convexHullVolume:
+          type: number
+        shrinkWrapVolume:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+        versionNumber:
+          type: integer
+          format: int64
+        isLatestRevision:
+          type: boolean
+        repaired:
+          type: boolean
+        watertight:
+          type: boolean
+        originalCADFileType:
+          type: string
+          enum:
+          - STL
+          - OBJ
+          - WRL
+          - STEP
+          - STP
+          - IGES
+          - IGS
+          - THREEMF
+          - DXF
+          - ZIP
+          - THREEDS
+          - BLEND
+          - DAE
+          - FBX
+          - BREP
+          - BDF
+          - MSH
+          - INP
+          - DIFF
+          - MESH
+          - CTM
+          - PLY
+          - 'OFF'
+          - COLLADA
+          - GLTF
+          - XAML
+          - THREEDXML
+          - XYZ
+        conflictOnHash:
+          type: string
+        baseRotationMatrix:
+          type: array
+          items:
+            type: number
+        deleted:
+          type: boolean
+      required:
+      - availableAccessories
+      - deleted
+      - designName
+    CartItemDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        partRevisionId:
+          type: string
+          format: uuid
+        partName:
+          type: string
+        quantity:
+          type: integer
+        colorId:
+          type: integer
+          format: int64
+        precisionPricesId:
+          type: integer
+          format: int64
+        infillId:
+          type: integer
+          format: int64
+        processPricesId:
+          type: string
+          format: uuid
+        materialPricesId:
+          type: integer
+          format: int64
+        leadTimeId:
+          type: string
+          format: uuid
+        units:
+          type: string
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        postProcessingIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - id
+      - quantity
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

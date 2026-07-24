@@ -1,0 +1,107 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Customer Discount Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Customer Discount Controller
+  description: API for customer discount operations
+paths:
+  /api/customer/v1/discount/validate:
+    post:
+      tags:
+      - Customer Discount Controller
+      summary: Validate a discount code
+      operationId: validateDiscount_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateDiscountDto'
+        required: true
+      responses:
+        '200':
+          description: Discount code is valid and applicable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscountDto'
+        '204':
+          description: Discount code is invalid or not applicable
+        '401':
+          description: Unauthorized - missing customer or operator context
+  /api/customer/v1/discount/{discountId}:
+    get:
+      tags:
+      - Customer Discount Controller
+      summary: Get a specific discount by ID
+      operationId: getDiscount_1
+      parameters:
+      - name: discountId
+        in: path
+        description: ID of the discount to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: Discount retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscountDto'
+        '401':
+          description: Unauthorized - missing customer or operator context
+        '404':
+          description: Discount not found
+components:
+  schemas:
+    ValidateDiscountDto:
+      type: object
+      properties:
+        customerId:
+          type: integer
+          format: int64
+        discountCode:
+          type: string
+      required:
+      - customerId
+      - discountCode
+    DiscountDto:
+      type: object
+      properties:
+        discountId:
+          type: integer
+          format: int64
+        discountType:
+          type: string
+        code:
+          type: string
+        percentage:
+          type: number
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+      required:
+      - discountId
+      - discountType
+      - endTime
+      - percentage
+      - startTime
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

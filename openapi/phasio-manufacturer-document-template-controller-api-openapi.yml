@@ -1,0 +1,193 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Document Template Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Document Template Controller
+  description: Endpoints for managing document templates for invoices, orders, and consignment labels
+paths:
+  /api/manufacturer/v1/document-template:
+    get:
+      tags:
+      - Manufacturer Document Template Controller
+      summary: Get all document templates for operator
+      description: Retrieves all document templates associated with the current operator
+      operationId: getByOperator
+      responses:
+        '200':
+          description: Document templates successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocumentTemplateDto'
+        '401':
+          description: Unauthorized - operator not found
+    post:
+      tags:
+      - Manufacturer Document Template Controller
+      summary: Create document template
+      description: Creates a new document template for a specific language and template type
+      operationId: create_15
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDocumentTemplateDto'
+        required: true
+      responses:
+        '200':
+          description: Document template successfully created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        '400':
+          description: Invalid document template data
+        '401':
+          description: Unauthorized - operator not found
+    patch:
+      tags:
+      - Manufacturer Document Template Controller
+      summary: Update document template
+      description: Updates the content of an existing document template
+      operationId: update_4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDocumentTemplateDto'
+        required: true
+      responses:
+        '204':
+          description: Document template successfully updated
+        '400':
+          description: Invalid update data or document template not found
+  /api/manufacturer/v1/document-template/operator:
+    get:
+      tags:
+      - Manufacturer Document Template Controller
+      summary: Get document template by language and type
+      description: Retrieves a specific document template for the current operator by language and template type
+      operationId: get_24
+      parameters:
+      - name: language
+        in: query
+        description: Language of the document template
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Type of the document template
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Document template successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentTemplateDto'
+        '404':
+          description: Document template not found
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/document-template/{documentTemplateId}:
+    delete:
+      tags:
+      - Manufacturer Document Template Controller
+      summary: Delete document template
+      description: Deletes an existing document template
+      operationId: delete_17
+      parameters:
+      - name: documentTemplateId
+        in: path
+        description: ID of the document template to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '204':
+          description: Document template successfully deleted
+        '400':
+          description: Invalid document template ID or deletion failed
+components:
+  schemas:
+    DocumentTemplateDto:
+      type: object
+      properties:
+        documentTemplateId:
+          type: integer
+          format: int64
+        content:
+          type: string
+        language:
+          type: string
+        type:
+          type: string
+        consignmentLabelSize:
+          type: string
+        name:
+          type: string
+        pageWidth:
+          type: number
+          format: double
+        pageHeight:
+          type: number
+          format: double
+      required:
+      - content
+      - documentTemplateId
+      - language
+      - type
+    CreateDocumentTemplateDto:
+      type: object
+      description: Document template creation details
+      properties:
+        language:
+          type: string
+        type:
+          type: string
+        consignmentLabelSize:
+          type: string
+        name:
+          type: string
+        pageWidth:
+          type: number
+          format: double
+        pageHeight:
+          type: number
+          format: double
+      required:
+      - language
+      - type
+    UpdateDocumentTemplateDto:
+      type: object
+      description: Document template update details
+      properties:
+        documentTemplateId:
+          type: integer
+          format: int64
+        content:
+          type: string
+      required:
+      - content
+      - documentTemplateId
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

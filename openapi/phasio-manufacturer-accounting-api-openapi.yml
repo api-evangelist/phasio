@@ -1,0 +1,979 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Accounting API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Accounting
+  description: Endpoints for managing accounting system integrations
+paths:
+  /api/manufacturer/v1/accounting/associations:
+    get:
+      tags:
+      - Manufacturer Accounting
+      summary: Get accounting system associations
+      description: Retrieves the current integration settings between the operator and an external accounting system
+      operationId: getAssociations
+      responses:
+        '200':
+          description: Successfully retrieved accounting system associations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountingSystemAssociationsDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Operator not found
+    put:
+      tags:
+      - Manufacturer Accounting
+      summary: Update accounting system associations
+      description: Updates the integration settings between the operator and an external accounting system
+      operationId: updateAssociations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountingSystemAssociationsDto'
+        required: true
+      responses:
+        '200':
+          description: Successfully updated accounting system associations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountingSystemAssociationsDto'
+        '400':
+          description: Invalid request data
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Operator not found
+  /api/manufacturer/v1/accounting/payment-terms/sync:
+    post:
+      tags:
+      - Manufacturer Accounting
+      summary: Sync payment terms from accounting system
+      description: Fetches all payment terms from the connected accounting system and upserts them locally
+      operationId: syncPaymentTerms
+      responses:
+        '204':
+          description: Payment terms synced successfully
+        '400':
+          description: No accounting system connected or sync failed
+  /api/manufacturer/v1/accounting/organisations/{organisationId}/sync:
+    post:
+      tags:
+      - Manufacturer Accounting
+      summary: Sync customer with accounting system
+      description: Synchronizes a linked customer organisation with the latest data from the accounting system
+      operationId: syncWithAccountingSystem
+      parameters:
+      - name: organisationId
+        in: path
+        description: Nebula customer organisation ID
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: Customer synced successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationDto'
+        '400':
+          description: Invalid organisation ID or customer not linked to accounting system
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/accounting/organisations/{organisationId}/push:
+    post:
+      tags:
+      - Manufacturer Accounting
+      summary: Push customer to accounting system
+      description: Exports a Nebula customer organisation to the accounting system and links them
+      operationId: pushToAccountingSystem
+      parameters:
+      - name: organisationId
+        in: path
+        description: Nebula customer organisation ID
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        '200':
+          description: Customer pushed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationDto'
+        '400':
+          description: Invalid organisation ID or push failed
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/accounting/oauth/authorize:
+    post:
+      tags:
+      - Manufacturer Accounting
+      operationId: authorizeOAuthIntegration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizeOAuthAccountingSystemRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthorizeAccountingSystemDto'
+  /api/manufacturer/v1/accounting/customers/{accountingSystemId}/pull:
+    post:
+      tags:
+      - Manufacturer Accounting
+      summary: Pull customer from accounting system
+      description: Imports a customer organisation from the accounting system into Nebula
+      operationId: pullFromAccountingSystem
+      parameters:
+      - name: accountingSystemId
+        in: path
+        description: Accounting system customer organisation ID
+        required: true
+        schema:
+          type: string
+        example: 123e4567-e89b-12d3-a456-426614174000
+      responses:
+        '200':
+          description: Customer pulled successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOrganisationDto'
+        '400':
+          description: Invalid accounting system customer ID or customer already exists
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/accounting/customers/search:
+    post:
+      tags:
+      - Manufacturer Accounting
+      summary: Search accounting system for organizations
+      description: Searches for organizations in the accounting system
+      operationId: searchAccountSystem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchAccountingSystemDto'
+        required: true
+      responses:
+        '200':
+          description: Search results retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountingSystemSyncResultDto'
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/accounting/api-key/authorize:
+    post:
+      tags:
+      - Manufacturer Accounting
+      operationId: authorizeApiKeyIntegration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizeApiKeyAccountingSystemRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/manufacturer/v1/accounting/template:
+    patch:
+      tags:
+      - Manufacturer Accounting
+      operationId: updateTemplate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccountingSystemTemplateDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/manufacturer/v1/accounting/payment-account/{accountCode}:
+    patch:
+      tags:
+      - Manufacturer Accounting
+      operationId: updatePaymentAccount
+      parameters:
+      - name: accountCode
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/manufacturer/v1/accounting/organisation/{organisationId}:
+    patch:
+      tags:
+      - Manufacturer Accounting
+      operationId: updateOrganisation
+      parameters:
+      - name: organisationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/manufacturer/v1/accounting/invoice-account/{accountCode}:
+    patch:
+      tags:
+      - Manufacturer Accounting
+      operationId: updateInvoiceAccount
+      parameters:
+      - name: accountCode
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/manufacturer/v1/accounting:
+    get:
+      tags:
+      - Manufacturer Accounting
+      operationId: get_27
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/BexioAccountingSystemDto'
+                - $ref: '#/components/schemas/ComaticAccountingSystemDto'
+                - $ref: '#/components/schemas/LexofficeAccountingSystemDto'
+                - $ref: '#/components/schemas/OdooAccountingSystemDto'
+                - $ref: '#/components/schemas/QuickbooksAccountingSystemDto'
+                - $ref: '#/components/schemas/WeclappAccountingSystemDto'
+                - $ref: '#/components/schemas/XeroAccountingSystemDto'
+                - $ref: '#/components/schemas/ZohoAccountingSystemDto'
+    delete:
+      tags:
+      - Manufacturer Accounting
+      summary: Disassociate from accounting system
+      description: Removes the integration between the operator and any external accounting system
+      operationId: disassociate
+      responses:
+        '204':
+          description: Successfully disassociated from accounting system
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Operator not found
+  /api/manufacturer/v1/accounting/templates/{type}:
+    get:
+      tags:
+      - Manufacturer Accounting
+      operationId: getTemplates
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountingSystemTemplateDto'
+  /api/manufacturer/v1/accounting/taxes:
+    get:
+      tags:
+      - Manufacturer Accounting
+      operationId: getTaxes
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  oneOf:
+                  - $ref: '#/components/schemas/BexioAccountingSystemTaxDto'
+                  - $ref: '#/components/schemas/ComaticAccountingSystemTaxDto'
+                  - $ref: '#/components/schemas/OdooAccountingSystemTaxDto'
+                  - $ref: '#/components/schemas/QuickbooksAccountingSystemTaxDto'
+                  - $ref: '#/components/schemas/WeclappAccountingSystemTaxDto'
+                  - $ref: '#/components/schemas/XeroAccountingSystemTaxDto'
+                  - $ref: '#/components/schemas/ZohoAccountingSystemTaxDto'
+  /api/manufacturer/v1/accounting/registered:
+    get:
+      tags:
+      - Manufacturer Accounting
+      operationId: isRegistered
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: boolean
+  /api/manufacturer/v1/accounting/organisations:
+    get:
+      tags:
+      - Manufacturer Accounting
+      operationId: getOrganisations
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountingSystemOrganisationDto'
+  /api/manufacturer/v1/accounting/customers:
+    get:
+      tags:
+      - Manufacturer Accounting
+      summary: Get all accounting system customers (paginated)
+      description: Retrieves a paginated list of customers from the accounting system with their link status to Nebula
+      operationId: getAccountingSystemCustomers
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 50
+      responses:
+        '200':
+          description: Accounting system customers retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAccountingSystemSyncResultDto'
+        '401':
+          description: Unauthorized - missing operator context
+  /api/manufacturer/v1/accounting/category-codes:
+    get:
+      tags:
+      - Manufacturer Accounting
+      operationId: getCategoryCodes
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountingSystemCategoryCodeDto'
+  /api/manufacturer/v1/accounting/accounts:
+    get:
+      tags:
+      - Manufacturer Accounting
+      operationId: getAccounts
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountingSystemAccountDto'
+components:
+  schemas:
+    QuickbooksAccountingSystemDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemDto'
+      required:
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
+    CustomerOrganisationDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        taxExempt:
+          type: boolean
+        customerType:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+        customers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerDto'
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerAddressDto'
+      required:
+      - addresses
+      - createdAt
+      - customerType
+      - customers
+      - lastUpdated
+      - taxExempt
+    AccountingSystemTaxDto:
+      type: object
+      discriminator:
+        propertyName: accountingSystem
+      properties:
+        accountingSystem:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        percentage:
+          type: number
+      required:
+      - accountingSystem
+      - id
+      - name
+      - percentage
+    PaginatedAccountingSystemSyncResultDto:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountingSystemSyncResultDto'
+        page:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        hasMore:
+          type: boolean
+      required:
+      - content
+      - hasMore
+      - page
+      - pageSize
+    AccountingSystemOrganisationDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+      - id
+      - name
+    WeclappAccountingSystemTaxDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemTaxDto'
+      - type: object
+        properties:
+          taxType:
+            type: string
+      required:
+      - accountingSystem
+      - id
+      - name
+      - percentage
+      - taxType
+    WeclappAccountingSystemDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemDto'
+      required:
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
+    PostProcessAssociationDto:
+      type: object
+      properties:
+        postProcessingId:
+          type: integer
+          format: int64
+        accountingSystemCategoryCode:
+          type: string
+      required:
+      - postProcessingId
+    ProcessAssociationDto:
+      type: object
+      properties:
+        processId:
+          type: string
+          format: uuid
+        processName:
+          type: string
+        customerOrganisationName:
+          type: string
+        accountingSystemCategoryCode:
+          type: string
+      required:
+      - processId
+    ComaticAccountingSystemDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemDto'
+      required:
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
+    TaxAssociationDto:
+      type: object
+      properties:
+        taxJurisdictionId:
+          type: string
+          format: uuid
+        accountingSystemTaxId:
+          type: string
+      required:
+      - taxJurisdictionId
+    ZohoAccountingSystemDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemDto'
+      - type: object
+        properties:
+          dataCenter:
+            type: string
+          estimateTemplateName:
+            type: string
+          invoiceTemplateName:
+            type: string
+      required:
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
+    ZohoAccountingSystemTaxDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemTaxDto'
+      required:
+      - accountingSystem
+      - id
+      - name
+      - percentage
+    AccountingSystemAssociationsDto:
+      type: object
+      properties:
+        processes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessAssociationDto'
+        postProcesses:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostProcessAssociationDto'
+        taxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxAssociationDto'
+        shipping:
+          $ref: '#/components/schemas/ShippingAssociationDto'
+        topup:
+          $ref: '#/components/schemas/TopupAssociationDto'
+        separatePostProcessingLineItems:
+          type: boolean
+    XeroTaxComponentDto:
+      type: object
+      properties:
+        name:
+          type: string
+        rate:
+          type: number
+        isCompound:
+          type: boolean
+      required:
+      - isCompound
+      - name
+      - rate
+    AccountingSystemSyncResultDto:
+      type: object
+      properties:
+        accountingSystemId:
+          type: string
+        name:
+          type: string
+        alreadyAssociated:
+          type: boolean
+        associatedOrganisationId:
+          type: integer
+          format: int64
+        associatedOrganisationName:
+          type: string
+      required:
+      - accountingSystemId
+      - alreadyAssociated
+    QuickbooksTaxComponentDto:
+      type: object
+      properties:
+        name:
+          type: string
+        rate:
+          type: number
+      required:
+      - name
+      - rate
+    AuthorizeAccountingSystemDto:
+      type: object
+      properties:
+        redirectUrl:
+          type: string
+    AccountingSystemCategoryCodeDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+      - id
+      - name
+    AuthorizeApiKeyAccountingSystemRequestDto:
+      type: object
+      properties:
+        accountingSystem:
+          type: string
+        apiKey:
+          type: string
+        organisationId:
+          type: string
+      required:
+      - accountingSystem
+      - apiKey
+    UpdateAccountingSystemTemplateDto:
+      type: object
+      properties:
+        templateId:
+          type: string
+        templateType:
+          type: string
+      required:
+      - templateId
+      - templateType
+    AuthorizeOAuthAccountingSystemRequestDto:
+      type: object
+      properties:
+        accountingSystem:
+          type: string
+        dataCenter:
+          type: string
+      required:
+      - accountingSystem
+    QuickbooksAccountingSystemTaxDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemTaxDto'
+      - type: object
+        properties:
+          taxComponents:
+            type: array
+            items:
+              $ref: '#/components/schemas/QuickbooksTaxComponentDto'
+      required:
+      - accountingSystem
+      - id
+      - name
+      - percentage
+      - taxComponents
+    LexofficeAccountingSystemDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemDto'
+      required:
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
+    OdooAccountingSystemDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemDto'
+      required:
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
+    CustomerAddressDto:
+      type: object
+      properties:
+        addressId:
+          type: integer
+          format: int64
+        isBillingAddress:
+          type: boolean
+        isShippingAddress:
+          type: boolean
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        countryAlpha2Code:
+          type: string
+        countryAlpha3Code:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        taxId:
+          type: string
+    BexioAccountingSystemDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemDto'
+      - type: object
+        properties:
+          invoiceAccountCode:
+            type: string
+          invoiceAccountName:
+            type: string
+          paymentAccountCode:
+            type: string
+          paymentAccountName:
+            type: string
+      required:
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
+    BexioAccountingSystemTaxDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemTaxDto'
+      required:
+      - accountingSystem
+      - id
+      - name
+      - percentage
+    CustomerDto:
+      type: object
+      properties:
+        email:
+          type: string
+        customerId:
+          type: integer
+          format: int64
+        organisationName:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        language:
+          type: string
+        notificationPreference:
+          type: string
+        discountId:
+          type: integer
+          format: int64
+        discountPercentage:
+          type: number
+        customerType:
+          type: string
+      required:
+      - customerType
+      - language
+      - notificationPreference
+    TopupAssociationDto:
+      type: object
+      properties:
+        accountingSystemId:
+          type: string
+    AccountingSystemTemplateDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - id
+      - name
+      - type
+    AccountingSystemAccountDto:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - code
+      - name
+      - type
+    XeroAccountingSystemTaxDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemTaxDto'
+      - type: object
+        properties:
+          taxComponents:
+            type: array
+            items:
+              $ref: '#/components/schemas/XeroTaxComponentDto'
+      required:
+      - accountingSystem
+      - id
+      - name
+      - percentage
+      - taxComponents
+    ComaticAccountingSystemTaxDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemTaxDto'
+      required:
+      - accountingSystem
+      - id
+      - name
+      - percentage
+    SearchAccountingSystemDto:
+      type: object
+      properties:
+        searchQuery:
+          type: string
+      required:
+      - searchQuery
+    XeroAccountingSystemDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemDto'
+      - type: object
+        properties:
+          invoiceAccountCode:
+            type: string
+          invoiceAccountName:
+            type: string
+          paymentAccountCode:
+            type: string
+          paymentAccountName:
+            type: string
+          estimateTemplateName:
+            type: string
+          invoiceTemplateName:
+            type: string
+      required:
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
+    AccountingSystemDto:
+      type: object
+      discriminator:
+        propertyName: type
+      properties:
+        type:
+          type: string
+        isExpired:
+          type: boolean
+        organisationId:
+          type: string
+        organisationName:
+          type: string
+        isRegistered:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+      required:
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
+    ShippingAssociationDto:
+      type: object
+      properties:
+        accountingSystemId:
+          type: string
+    OdooAccountingSystemTaxDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemTaxDto'
+      required:
+      - accountingSystem
+      - id
+      - name
+      - percentage
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

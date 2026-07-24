@@ -1,0 +1,459 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Shipping Method Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Shipping Method Controller
+  description: Endpoints for managing shipping methods available to manufacturers
+paths:
+  /api/manufacturer/v1/shipping-method:
+    post:
+      tags:
+      - Manufacturer Shipping Method Controller
+      summary: Create new shipping method
+      description: Creates a new shipping method for the current operator
+      operationId: createShippingMethod
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Shipping method to create
+              oneOf:
+              - $ref: '#/components/schemas/CarrierAccountShippingMethodDto'
+              - $ref: '#/components/schemas/FixedPriceShippingMethodDto'
+              - $ref: '#/components/schemas/SelfCollectionShippingMethodDto'
+        required: true
+      responses:
+        '200':
+          description: Shipping method successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingMethodDto'
+        '400':
+          description: Invalid shipping method data
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/manufacturer/v1/shipping-method/operator:
+    get:
+      tags:
+      - Manufacturer Shipping Method Controller
+      summary: Get all shipping methods
+      description: Retrieves all shipping methods configured for the current operator
+      operationId: getShippingMethods
+      responses:
+        '200':
+          description: Successfully retrieved shipping methods
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShippingMethodDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Operator not found
+  /api/manufacturer/v1/shipping-method/{shippingMethodId}:
+    delete:
+      tags:
+      - Manufacturer Shipping Method Controller
+      summary: Delete shipping method
+      description: Deletes an existing shipping method
+      operationId: deleteShippingMethod
+      parameters:
+      - name: shippingMethodId
+        in: path
+        description: ID of the shipping method to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '204':
+          description: Shipping method successfully deleted
+        '400':
+          description: Invalid shipping method ID or shipping method cannot be deleted
+        '401':
+          description: Unauthorized - missing or invalid authentication
+        '404':
+          description: Shipping method not found
+components:
+  schemas:
+    OperatorAddressDto:
+      allOf:
+      - $ref: '#/components/schemas/AddressDto'
+      required:
+      - addressId
+      - addressType
+      - city
+      - company
+      - country
+      - countryAlpha2Code
+      - countryAlpha3Code
+      - email
+      - isBillingAddress
+      - isShippingAddress
+      - name
+      - phone
+      - platformEncryptedAesKey
+      - residential
+      - street1
+      - street2
+      - zip
+    SelfCollectionShippingMethodDto:
+      allOf:
+      - $ref: '#/components/schemas/ShippingMethodDto'
+      - type: object
+        properties:
+          name:
+            type: string
+          enableContactInfoCollection:
+            type: boolean
+      required:
+      - shippingMode
+    FixedPriceShippingMethodDto:
+      allOf:
+      - $ref: '#/components/schemas/ShippingMethodDto'
+      - type: object
+        properties:
+          price:
+            type: number
+          name:
+            type: string
+          weightTiers:
+            type: array
+            items:
+              $ref: '#/components/schemas/FixedPriceShippingWeightTierDto'
+          countries:
+            type: array
+            items:
+              type: string
+              enum:
+              - AUSTRALIA
+              - ALBANIA
+              - AMERICAN_SAMOA
+              - ANDORRA
+              - ANTARCTICA
+              - ANTIGUA_AND_BARBUDA
+              - ARGENTINA
+              - AUSTRIA
+              - BAHAMAS
+              - BAHRAIN
+              - BANGLADESH
+              - BARBADOS
+              - BELGIUM
+              - BELIZE
+              - BENIN
+              - BERMUDA
+              - BHUTAN
+              - BOLIVIA
+              - BOSNIA_AND_HERZEGOVINA
+              - BOTSWANA
+              - BOUVET_ISLAND
+              - BRAZIL
+              - BRITISH_INDIAN_OCEAN_TERRITORY
+              - BRUNEI_DARUSSALAM
+              - BULGARIA
+              - CAMBODIA
+              - CANADA
+              - CAYMAN_ISLANDS
+              - CHAD
+              - CHILE
+              - CHINA
+              - CHRISTMAS_ISLAND
+              - COCOS_KEELING_ISLANDS
+              - COLOMBIA
+              - COMOROS
+              - COOK_ISLANDS
+              - COSTA_RICA
+              - CROATIA
+              - CZECH_REPUBLIC
+              - DENMARK
+              - DOMINICAN_REPUBLIC
+              - ESTONIA
+              - ESWATINI
+              - FALKLAND_ISLANDS
+              - FAROE_ISLANDS
+              - FIJI
+              - FINLAND
+              - FRANCE
+              - FRENCH_GUIANA
+              - FRENCH_POLYNESIA
+              - FRENCH_SOUTHERN_TERRITORIES
+              - GABON
+              - GEORGIA
+              - GERMANY
+              - GHANA
+              - GIBRALTAR
+              - GREECE
+              - GREENLAND
+              - GRENADA
+              - GUADELOUPE
+              - GUAM
+              - GUATEMALA
+              - GUERNSEY
+              - GUINEA
+              - GUINEA_BISSAU
+              - GUYANA
+              - HEARD_ISLAND_AND_MCDONALD_ISLANDS
+              - HOLY_SEE
+              - HONG_KONG
+              - HUNGARY
+              - ICELAND
+              - INDIA
+              - INDONESIA
+              - IRELAND
+              - ISLE_OF_MAN
+              - ITALY
+              - JAMAICA
+              - JAPAN
+              - JERSEY
+              - KENYA
+              - REPUBLIC_OF_KOREA
+              - KUWAIT
+              - LAOS
+              - LATVIA
+              - LESOTHO
+              - LIECHTENSTEIN
+              - LITHUANIA
+              - LUXEMBOURG
+              - MACAO
+              - MADAGASCAR
+              - MALAYSIA
+              - MALDIVES
+              - MALTA
+              - MARSHALL_ISLANDS
+              - MARTINIQUE
+              - MAURITANIA
+              - MAURITIUS
+              - MAYOTTE
+              - MEXICO
+              - MICRONESIA
+              - MOLDOVA
+              - MONACO
+              - MONGOLIA
+              - MONTENEGRO
+              - MONTSERRAT
+              - MOROCCO
+              - MOZAMBIQUE
+              - NAMIBIA
+              - NAURU
+              - NEPAL
+              - NETHERLANDS
+              - NEW_CALEDONIA
+              - NEW_ZEALAND
+              - NIUE
+              - NORFOLK_ISLAND
+              - NORTHERN_MARIANA_ISLANDS
+              - NORWAY
+              - OMAN
+              - PALAU
+              - PANAMA
+              - PAPUA_NEW_GUINEA
+              - PARAGUAY
+              - PERU
+              - PHILIPPINES
+              - PITCAIRN
+              - POLAND
+              - PORTUGAL
+              - PUERTO_RICO
+              - QATAR
+              - REPUBLIC_OF_NORTH_MACEDONIA
+              - ROMANIA
+              - REUNION
+              - SAINT_BARTHELEMY
+              - SAINT_HELENA
+              - SAINT_KITTIS_AND_NEVIS
+              - SAINT_LUCIA
+              - SAINT_MARTIN
+              - SAINT_PIERRE_AND_MIQUELON
+              - SAINT_VINCENT_AND_GRENADINES
+              - SAMOA
+              - SAN_MARINO
+              - SAO_TOME_AND_PRINCIPE
+              - SERBIA
+              - SEYCHELLES
+              - SIERRA_LEONE
+              - SINGAPORE
+              - SINT_MAARTEN
+              - SLOVAKIA
+              - SLOVENIA
+              - SOLOMON_ISLANDS
+              - SOUTH_AFRICA
+              - SOUTH_GEORGIA_AND_THE_SOUTH_SANDWICH_ISLANDS
+              - SPAIN
+              - SRI_LANKA
+              - SURINAME
+              - SVALBARD_AND_JAN_MAYEN
+              - SWEDEN
+              - SWITZERLAND
+              - TAIWAN
+              - TANZANIA
+              - THAILAND
+              - TIMOR_LESTE
+              - TOGO
+              - TOKELAU
+              - TONGA
+              - TRINIDAD_AND_TOBAGO
+              - TUNISIA
+              - TURKEY
+              - TURKS_AND_CAICOS_ISLANDS
+              - TUVALU
+              - UNITED_ARAB_EMIRATES
+              - UNITED_KINGDOM
+              - UNITED_STATES
+              - UNITED_STATES_MINOR_OUTLYING_ISLANDS
+              - UKRAINE
+              - URUGUAY
+              - VANUATU
+              - VIETNAM
+              - VIRGIN_ISLANDS_BRITISH
+              - VIRGIN_ISLANDS_UNITED_STATES
+              - WALLIS_AND_FUTUNA
+              - ZAMBIA
+              - DEFAULT
+              - EXEMPT
+      required:
+      - shippingMode
+    CustomerOrganisationAddressDto:
+      allOf:
+      - $ref: '#/components/schemas/AddressDto'
+      required:
+      - addressId
+      - addressType
+      - city
+      - company
+      - country
+      - countryAlpha2Code
+      - countryAlpha3Code
+      - email
+      - isBillingAddress
+      - isShippingAddress
+      - name
+      - phone
+      - platformEncryptedAesKey
+      - residential
+      - street1
+      - street2
+      - zip
+    ShippingMethodDto:
+      type: object
+      properties:
+        shippingMethodId:
+          type: integer
+          format: int64
+        shippingMode:
+          type: string
+      required:
+      - shippingMethodId
+      - shippingMode
+    AddressDto:
+      type: object
+      discriminator:
+        propertyName: addressType
+      properties:
+        addressId:
+          type: integer
+          format: int64
+        isBillingAddress:
+          type: boolean
+        isShippingAddress:
+          type: boolean
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        countryAlpha2Code:
+          type: string
+        countryAlpha3Code:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        addressType:
+          type: string
+        platformEncryptedAesKey:
+          type: string
+        taxId:
+          type: string
+      required:
+      - addressId
+      - addressType
+      - city
+      - company
+      - country
+      - countryAlpha2Code
+      - countryAlpha3Code
+      - email
+      - isBillingAddress
+      - isShippingAddress
+      - name
+      - phone
+      - platformEncryptedAesKey
+      - residential
+      - street1
+      - street2
+      - zip
+    CarrierAccountShippingMethodDto:
+      allOf:
+      - $ref: '#/components/schemas/ShippingMethodDto'
+      - type: object
+        properties:
+          carrierAccountProvider:
+            type: string
+          carrierAccountCredentials:
+            type: object
+            additionalProperties:
+              type: string
+          addressId:
+            type: integer
+            format: int64
+          addressDto:
+            oneOf:
+            - $ref: '#/components/schemas/CustomerOrganisationAddressDto'
+            - $ref: '#/components/schemas/OperatorAddressDto'
+      required:
+      - shippingMode
+    FixedPriceShippingWeightTierDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        lowerWeightLimit:
+          type: number
+        upperWeightLimit:
+          type: number
+        price:
+          type: number
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

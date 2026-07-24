@@ -1,0 +1,928 @@
+openapi: 3.1.0
+info:
+  title: Phasio Activity Internal Manufacturer Operator Controller API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Manufacturer Operator Controller
+  description: Endpoints for managing operator settings and information
+paths:
+  /api/manufacturer/v1/operator/permitted-domain:
+    post:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Add permitted domain
+      description: Adds a new domain to the list of permitted domains for the current operator
+      operationId: addPermittedDomain
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddOperatorPermittedDomainDto'
+        required: true
+      responses:
+        '200':
+          description: Domain successfully added
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid domain format
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/operator/logo:
+    get:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Get operator logo
+      description: Gets the logo image for the current operator
+      operationId: downloadLogo
+      responses:
+        '204':
+          description: Got logo successfully
+        '401':
+          description: Unauthorized - missing or invalid authentication
+    post:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Upload operator logo
+      description: Uploads a new logo image for the current operator
+      operationId: uploadLogo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: Logo image file to upload
+              required:
+              - file
+      responses:
+        '204':
+          description: Logo successfully uploaded
+        '400':
+          description: Invalid file or upload failed
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/manufacturer/v1/operator/domain-authentication:
+    get:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Get domain authentication
+      description: Returns the current domain authentication status and DNS records for the operator.
+      operationId: getDomainAuthentication
+      responses:
+        '200':
+          description: Domain authentication found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainAuthenticationDto'
+        '404':
+          description: No domain authentication configured
+    post:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Create domain authentication
+      description: Creates domain authentication for the operator. Returns DNS records to add to your domain.
+      operationId: createDomainAuthentication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDomainAuthenticationDto'
+        required: true
+      responses:
+        '201':
+          description: Domain authentication created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainAuthenticationDto'
+        '400':
+          description: Invalid request or SendGrid error
+        '409':
+          description: Domain authentication already exists
+        '503':
+          description: SendGrid not configured
+    delete:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Delete domain authentication
+      description: Removes domain authentication from operator
+      operationId: deleteDomainAuthentication
+      responses:
+        '204':
+          description: Domain authentication deleted
+        '404':
+          description: No domain authentication to delete
+  /api/manufacturer/v1/operator/domain-authentication/validate:
+    post:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Validate domain authentication
+      description: Triggers domain DNS validation. Call after adding the DNS records.
+      operationId: validateDomainAuthentication
+      responses:
+        '200':
+          description: Validation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainAuthenticationDto'
+        '404':
+          description: Domain authentication not found
+        '503':
+          description: SendGrid not configured
+  /api/manufacturer/v1/operator:
+    get:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Get operator profile
+      description: Retrieves the profile and settings of the current operator
+      operationId: get_15
+      responses:
+        '200':
+          description: Operator profile successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperatorDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+    patch:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Update operator profile
+      description: Updates the profile and settings of the current operator
+      operationId: update_14
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOperatorDto'
+        required: true
+      responses:
+        '200':
+          description: Operator profile successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperatorDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/manufacturer/v1/operator/settings:
+    patch:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Update operator settings
+      description: Updates settings for the current operator
+      operationId: updateSetting
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Settings to update
+              oneOf:
+              - $ref: '#/components/schemas/UpdateAllowGstDto'
+              - $ref: '#/components/schemas/UpdateAllowPayByInvoiceDto'
+              - $ref: '#/components/schemas/UpdateAllowPayByPurchaseOrderDto'
+              - $ref: '#/components/schemas/UpdateApprovedRoutingTemplateRequiredDto'
+              - $ref: '#/components/schemas/UpdateAssociationStatusDto'
+              - $ref: '#/components/schemas/UpdateCountryDto'
+              - $ref: '#/components/schemas/UpdateCustomerLoginStageDto'
+              - $ref: '#/components/schemas/UpdateDashboardEnabledByDefaultDto'
+              - $ref: '#/components/schemas/UpdateEnableCustomerDashboardDto'
+              - $ref: '#/components/schemas/UpdateEnableWallThicknessDto'
+              - $ref: '#/components/schemas/UpdateLandingPageMessageDto'
+              - $ref: '#/components/schemas/UpdateLoginMethodDto'
+              - $ref: '#/components/schemas/UpdateMaximumFileSizeDto'
+              - $ref: '#/components/schemas/UpdateMaximumOrderAmountDto'
+              - $ref: '#/components/schemas/UpdateMinimumOrderAmountDto'
+              - $ref: '#/components/schemas/UpdateOrderNumberPrefixDto'
+              - $ref: '#/components/schemas/UpdatePaymentCurrencyDto'
+              - $ref: '#/components/schemas/UpdatePaymentProviderDto'
+              - $ref: '#/components/schemas/UpdateQuoteNumberPrefixDto'
+              - $ref: '#/components/schemas/UpdateRoundPriceToWholeNumberDto'
+              - $ref: '#/components/schemas/UpdateShowPropertiesWizardDto'
+              - $ref: '#/components/schemas/UpdateStoreNameDto'
+              - $ref: '#/components/schemas/UpdateTermsOfServiceLinkDto'
+              - $ref: '#/components/schemas/UpdateVideoLinkDto'
+              - $ref: '#/components/schemas/UpdateWorkOrderCreationOrderStatusDto'
+        required: true
+      responses:
+        '204':
+          description: Settings successfully updated
+        '400':
+          description: Invalid settings update
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/manufacturer/v1/operator/payment-account:
+    patch:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Register for payment processing
+      description: Registers the operator with the specified payment system
+      operationId: registerForPayments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterForPaymentsDto'
+        required: true
+      responses:
+        '200':
+          description: Successfully registered for payments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentRegistrationDto'
+        '400':
+          description: Invalid payment system ID
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/manufacturer/v1/operator/onboarding-progress:
+    get:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Get operator onboarding progress
+      description: Retrieves all onboarding progress items for the operator
+      operationId: getOnboardingProgress
+      responses:
+        '200':
+          description: Successfully retrieved onboarding progress
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardingProgressDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+    patch:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Update operator onboarding progress
+      description: Upserts onboarding progress items for the operator
+      operationId: updateOnboardingProgress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOnboardingProgressDto'
+        required: true
+      responses:
+        '200':
+          description: Successfully updated onboarding progress
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardingProgressDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/manufacturer/v1/operator/users:
+    get:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Get operator users
+      description: Retrieves all users associated with the specified operator
+      operationId: getUsers
+      responses:
+        '200':
+          description: Successfully retrieved operator users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDto'
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/manufacturer/v1/operator/subscription-portal:
+    get:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Get subscription portal URL
+      description: Retrieves the URL for the operator's subscription management portal
+      operationId: getSubscriptionPortalUrl
+      responses:
+        '200':
+          description: Successfully retrieved subscription portal URL
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Unauthorized - missing or invalid authentication
+  /api/manufacturer/v1/operator/permitted-domain/{domainId}:
+    delete:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Delete permitted domain
+      description: Removes a domain from the list of permitted domains
+      operationId: deletePermittedDomain
+      parameters:
+      - name: domainId
+        in: path
+        description: ID of the domain to delete
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Domain successfully deleted
+        '400':
+          description: Invalid domain ID or deletion failed
+        '401':
+          description: Unauthorized - operator not found
+  /api/manufacturer/v1/operator/email-credentials:
+    delete:
+      tags:
+      - Manufacturer Operator Controller
+      summary: Delete operator email credentials
+      description: Deletes the SMTP email server credentials for an operator
+      operationId: deleteOperatorEmailCredentials
+      responses:
+        '204':
+          description: Email credentials successfully deleted
+        '401':
+          description: Unauthorized - missing or invalid authentication
+components:
+  schemas:
+    OnboardingProgressDto:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OnboardingProgressItemDto'
+      required:
+      - items
+    OnboardingProgressItemUpdateDto:
+      type: object
+      properties:
+        itemId:
+          type: string
+        status:
+          type: string
+      required:
+      - itemId
+      - status
+    CreateDomainAuthenticationDto:
+      type: object
+      properties:
+        domain:
+          type: string
+        fromAddress:
+          type: string
+      required:
+      - domain
+      - fromAddress
+    UpdateDashboardEnabledByDefaultDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          dashboardEnabledByDefault:
+            type: boolean
+      required:
+      - dashboardEnabledByDefault
+      - settingType
+    UpdateCustomerLoginStageDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          customerLoginStage:
+            type: string
+      required:
+      - customerLoginStage
+      - settingType
+    UpdateQuoteNumberPrefixDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          quoteNumberPrefix:
+            type: string
+      required:
+      - quoteNumberPrefix
+      - settingType
+    UpdateAllowPayByPurchaseOrderDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          allowPayByPurchaseOrder:
+            type: boolean
+      required:
+      - allowPayByPurchaseOrder
+      - settingType
+    OnboardingProgressItemDto:
+      type: object
+      properties:
+        itemId:
+          type: string
+        status:
+          type: string
+        completedAt:
+          type: string
+          format: date-time
+      required:
+      - completedAt
+      - itemId
+      - status
+    UpdateWorkOrderCreationOrderStatusDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          kanbanColumnId:
+            type: string
+      required:
+      - settingType
+    UpdatePaymentCurrencyDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          paymentCurrency:
+            type: string
+      required:
+      - paymentCurrency
+      - settingType
+    UpdateMinimumOrderAmountDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          minimumOrderAmount:
+            type: number
+      required:
+      - minimumOrderAmount
+      - settingType
+    UpdateOperatorDto:
+      type: object
+      description: Operator profile update details
+      properties:
+        name:
+          type: string
+        currency:
+          type: string
+        country:
+          type: string
+        videoLink:
+          type: string
+        termsOfServiceLink:
+          type: string
+        notificationPreference:
+          type: string
+          enum:
+          - EMAIL
+          - SMS
+          - WHATSAPP
+        isAIEnabled:
+          type: boolean
+        minimumOrderAmount:
+          type: number
+        loginMethod:
+          type: string
+          enum:
+          - EMAIL
+          - PHONE
+          - ANY
+        loginStage:
+          type: string
+          enum:
+          - BEFORE_PRICE
+          - AFTER_PRICE
+        isPayByInvoiceEnabled:
+          type: boolean
+        isPayByPurchaseOrderEnabled:
+          type: boolean
+        landingPageMessage:
+          type: string
+        isApprovalRequiredForNewCustomers:
+          type: boolean
+        isRoundPriceToWholeNumberEnabled:
+          type: boolean
+        maximumOrderAmount:
+          type: number
+        quoteNumberPrefix:
+          type: string
+        orderNumberPrefix:
+          type: string
+        isTaxIDEnabled:
+          type: boolean
+        isWallThicknessEnabled:
+          type: boolean
+        isMeshRepairEnabled:
+          type: boolean
+        isOrientationConstraintEnabled:
+          type: boolean
+        isTaxExcludedFromOrderValues:
+          type: boolean
+        isInvoiceDownloadEnabled:
+          type: boolean
+        defaultFxFee:
+          type: number
+        acceptedCurrencies:
+          type: object
+          additionalProperties:
+            type: number
+        storefrontTheme:
+          type: string
+          enum:
+          - SYSTEM
+          - LIGHT
+          - DARK
+    DomainAuthenticationDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        domain:
+          type: string
+        subdomain:
+          type: string
+        fromAddress:
+          type: string
+        status:
+          type: string
+        dnsRecords:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/DnsRecordInfoDto'
+      required:
+      - domain
+      - fromAddress
+      - id
+      - status
+      - subdomain
+    UpdateLandingPageMessageDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          landingPageMessage:
+            type: string
+      required:
+      - settingType
+    UpdatePaymentProviderDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          paymentProvider:
+            type: string
+      required:
+      - paymentProvider
+      - settingType
+    UpdateMaximumOrderAmountDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          maximumOrderAmount:
+            type: number
+      required:
+      - settingType
+    UpdateRoundPriceToWholeNumberDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          roundPriceToWholeNumber:
+            type: boolean
+      required:
+      - roundPriceToWholeNumber
+      - settingType
+    UpdateCountryDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          country:
+            type: string
+      required:
+      - country
+      - settingType
+    UpdateEnableWallThicknessDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          enableWallThickness:
+            type: boolean
+      required:
+      - enableWallThickness
+      - settingType
+    OperatorDto:
+      type: object
+      properties:
+        name:
+          type: string
+        subscribedModules:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        currency:
+          type: string
+        acceptedCurrencies:
+          type: array
+          items:
+            type: string
+            enum:
+            - USD
+            - SGD
+            - EUR
+            - INR
+            - JPY
+            - AUD
+            - GBP
+            - NZD
+            - MYR
+            - CAD
+            - CHF
+            - DKK
+            - SEK
+            - MXN
+            - ZAR
+            - UAH
+            - NOK
+            - PHP
+            - TRY
+          uniqueItems: true
+        permittedDomains:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        loginMethod:
+          type: string
+          enum:
+          - EMAIL
+          - PHONE
+          - ANY
+        loginStage:
+          type: string
+          enum:
+          - BEFORE_PRICE
+          - AFTER_PRICE
+        landingPageMessage:
+          type: string
+        paymentProvider:
+          type: string
+        videoLink:
+          type: string
+        termsOfServiceLink:
+          type: string
+        maximumFileSize:
+          type: integer
+          format: int64
+        isAIEnabled:
+          type: boolean
+        isTaxIDEnabled:
+          type: boolean
+        isPayByInvoiceEnabled:
+          type: boolean
+        isPayByPurchaseOrderEnabled:
+          type: boolean
+        isAccountingEnabled:
+          type: boolean
+        isOrientationConstraintEnabled:
+          type: boolean
+        isInvoiceDownloadEnabled:
+          type: boolean
+        storefrontTheme:
+          type: string
+          enum:
+          - SYSTEM
+          - LIGHT
+          - DARK
+        country:
+          type: string
+      required:
+      - acceptedCurrencies
+      - country
+      - currency
+      - isAIEnabled
+      - isAccountingEnabled
+      - isInvoiceDownloadEnabled
+      - isOrientationConstraintEnabled
+      - isPayByInvoiceEnabled
+      - isPayByPurchaseOrderEnabled
+      - isTaxIDEnabled
+      - loginMethod
+      - loginStage
+      - name
+      - paymentProvider
+      - permittedDomains
+      - storefrontTheme
+      - subscribedModules
+    UpdateShowPropertiesWizardDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          showPropertiesWizard:
+            type: boolean
+      required:
+      - settingType
+      - showPropertiesWizard
+    PaymentRegistrationDto:
+      type: object
+      properties:
+        redirectUri:
+          type: string
+          format: uri
+    DnsRecordInfoDto:
+      type: object
+      properties:
+        valid:
+          type: boolean
+        type:
+          type: string
+        host:
+          type: string
+        data:
+          type: string
+    UpdateOrderNumberPrefixDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          orderNumberPrefix:
+            type: string
+      required:
+      - orderNumberPrefix
+      - settingType
+    UpdateOnboardingProgressDto:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OnboardingProgressItemUpdateDto'
+      required:
+      - items
+    UpdateTermsOfServiceLinkDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          termsOfServiceLink:
+            type: string
+      required:
+      - settingType
+      - termsOfServiceLink
+    UpdateAllowPayByInvoiceDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          allowPayByInvoice:
+            type: boolean
+      required:
+      - allowPayByInvoice
+      - settingType
+    UpdateAssociationStatusDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          associationStatus:
+            type: string
+      required:
+      - associationStatus
+      - settingType
+    UpdateVideoLinkDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          videoLink:
+            type: string
+      required:
+      - settingType
+      - videoLink
+    RegisterForPaymentsDto:
+      type: object
+      description: Payment registration details
+      properties:
+        merchantId:
+          type: string
+    UpdateAllowGstDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          allowGst:
+            type: boolean
+      required:
+      - allowGst
+      - settingType
+    UpdateStoreNameDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          storeName:
+            type: string
+      required:
+      - settingType
+      - storeName
+    UpdateEnableCustomerDashboardDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          enableCustomerDashboard:
+            type: boolean
+      required:
+      - enableCustomerDashboard
+      - settingType
+    UpdateMaximumFileSizeDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          maximumFileSize:
+            type: integer
+            format: int64
+      required:
+      - settingType
+    UserDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        email:
+          type: string
+        teamId:
+          type: integer
+          format: int64
+        mfaEnabled:
+          type: boolean
+      required:
+      - email
+      - firstName
+      - lastName
+      - mfaEnabled
+      - phoneNumber
+      - teamId
+    UpdateOperatorSettingsDto:
+      type: object
+      properties:
+        settingType:
+          type: string
+      required:
+      - settingType
+    UpdateApprovedRoutingTemplateRequiredDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          approvedRoutingTemplateRequired:
+            type: boolean
+      required:
+      - approvedRoutingTemplateRequired
+      - settingType
+    AddOperatorPermittedDomainDto:
+      type: object
+      description: Domain to be added
+      properties:
+        domainUrl:
+          type: string
+      required:
+      - domainUrl
+    UpdateLoginMethodDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          loginMethod:
+            type: string
+      required:
+      - loginMethod
+      - settingType
+  securitySchemes:
+    Phasio API Bearer Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT
