@@ -1,0 +1,38 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/phasio-openapi-original.json
+description: >-
+  Candidate MCP tool surface derived from the Phasio Manufacturer API OpenAPI.
+  No official hosted/remote Phasio MCP server was found (docs, npm, MCP
+  registries). This is a curated candidate set over the marquee read/act
+  operations, not a published server.
+server:
+  name: phasio
+  transport: http
+  url: null
+auth:
+  type: oauth2-client-credentials
+  token_endpoint: https://auth.eu.phas.io/oauth2/token
+tools:
+- name: list_orders
+  description: List orders with RSQL filtering, search, and pagination.
+  source_operation: openapi/phasio-openapi-original.json#get_7
+- name: get_order
+  description: Retrieve a single order by id.
+  source_operation: openapi/phasio-openapi-original.json#getById_2
+- name: create_order
+  description: Create a new manufacturing order.
+  source_operation: openapi/phasio-openapi-original.json#create_10
+- name: list_part_specifications
+  description: List part specifications (process/material/color/precision/infill).
+  source_operation: openapi/phasio-openapi-original.json#get_18
+- name: validate_order_manufacturability
+  description: Validate part manufacturability for an order.
+  source_operation: openapi/phasio-openapi-original.json#validatePartManufacturabilityForOrder
+- name: create_webhook
+  description: Register a webhook endpoint for order/quote/customer events.
+  source_operation: openapi/phasio-openapi-original.json#createWebhook
+notes: >-
+  Full API exposes 481 operations across 85 controllers; a production MCP server
+  should scope to a task-oriented subset with human-in-the-loop on write ops.

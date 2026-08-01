@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/phasio-openapi-original.json; https://auth.eu.phas.io/.well-known/openid-configuration; https://www.phas.io/security
+standards:
+- id: oauth2
+  conforms: true
+  evidence: OAuth 2.0 client_credentials grant advertised at auth.eu.phas.io oauth-authorization-server; Bearer JWT access tokens.
+- id: oidc
+  conforms: true
+  evidence: OpenID Connect Discovery document published at auth.eu.phas.io/.well-known/openid-configuration.
+- id: rfc8414-oauth-server-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns 200 with full metadata.
+- id: jwt-bearer
+  conforms: true
+  evidence: securityScheme http bearer with bearerFormat JWT.
+- id: idempotency
+  conforms: true
+  evidence: Idempotency-Key request header supported on batch-mutating operations.
+- id: rsql-filtering
+  conforms: true
+  evidence: List endpoints accept RSQL filter query strings.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Error bodies are application/json, not application/problem+json.
+- id: soc2
+  conforms: true
+  evidence: SOC 2 audited (Type-II in progress) per https://www.phas.io/security; report available under NDA.
+- id: gdpr
+  conforms: true
+  evidence: EU data residency and GDPR compliance per https://www.phas.io/security.

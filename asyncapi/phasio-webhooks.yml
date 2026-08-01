@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.phas.io/developers/webhooks
+spec_type: Webhooks
+description: >-
+  Phasio Manufacturer API webhook event catalog. Webhooks are configured in the
+  dashboard Developers section against an https:// endpoint. Each payload is
+  encrypted with AES-256-GCM (Base64 URL-safe) and signed with HMAC-SHA256.
+delivery:
+  transport: https-post
+  content_type: application/json
+  signature_header: X-Phasio-Signature
+  signature_scheme: HMAC-SHA256 (hex-encoded) over the encrypted payload
+  encryption: AES-256-GCM with per-webhook Base64-encoded secret key
+management_api:
+  base_path: /api/manufacturer/v1/webhook
+  operations:
+  - operationId: getWebhooks
+    method: GET
+    summary: Retrieve all webhooks
+  - operationId: createWebhook
+    method: POST
+    summary: Create a webhook
+  - operationId: deleteWebhook
+    method: DELETE
+    summary: Delete a webhook
+events:
+- name: ORDER
+  description: Fires when a new order is created or committed.
+- name: ORDER_UPDATED
+  description: Fires when an order's details, status, payment status, or Kanban column changes.
+- name: QUOTE_CONVERTED
+  description: Fires when a quote is accepted or paid, converting it into a confirmed order.
+- name: CUSTOMER_ORGANISATION_CREATED
+  description: Fires when a new customer organisation is created.
+- name: CUSTOMER_ORGANISATION_UPDATED
+  description: Fires when a customer organisation's details are modified.
+- name: SPECIFICATION_CREATED
+  description: Fires when a new part specification is created.
+- name: CART_CREATED
+  description: Fires when a new cart is created on the storefront.

@@ -1,0 +1,58 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/phasio-openapi-original.json
+description: >-
+  Entity-relationship graph derived from id-reference fields in the Phasio
+  Manufacturer API schemas (360 component schemas). Relationships inferred from
+  *Id fields and nested $ref objects on the core DTOs.
+entities:
+- name: Order
+  schema: OrderDto
+  relationships:
+  - {type: has_one, target: Shipment, via: shipment}
+  - {type: belongs_to, target: Thread, via: threadId}
+  - {type: has_many, target: Requisition, via: orderId}
+  - {type: references, target: AccountingSystem, via: accountingSystemInvoiceId}
+- name: Requisition
+  schema: RequisitionDto
+  relationships:
+  - {type: belongs_to, target: Order, via: orderId}
+  - {type: belongs_to, target: PartRevision, via: partRevisionId}
+  - {type: belongs_to, target: Material, via: materialId}
+  - {type: belongs_to, target: Color, via: colorId}
+  - {type: belongs_to, target: Precision, via: precisionId}
+  - {type: belongs_to, target: Infill, via: infillId}
+  - {type: belongs_to, target: ProcessPrices, via: processPricesId}
+  - {type: belongs_to, target: LeadTime, via: leadTimeId}
+- name: PartSpecification
+  schema: PartSpecificationDto
+  relationships:
+  - {type: belongs_to, target: PartRevision, via: partRevisionId}
+  - {type: belongs_to, target: Material, via: materialId}
+  - {type: belongs_to, target: Color, via: colorId}
+  - {type: belongs_to, target: Precision, via: precisionId}
+  - {type: belongs_to, target: Infill, via: infillId}
+  - {type: belongs_to, target: ProcessPrices, via: processPricesId}
+- name: Shipment
+  schema: ShipmentDto
+  relationships:
+  - {type: belongs_to, target: ShippingMethod, via: shippingMethodId}
+  - {type: belongs_to, target: Address, via: toAddressId}
+  - {type: references, target: Rate, via: rateId}
+- name: Customer
+  schema: CustomerDto
+  relationships:
+  - {type: has_one, target: Discount, via: discountId}
+  - {type: belongs_to, target: CustomerOrganisation, via: customerId}
+- name: CustomerOrganisation
+  schema: CustomerOrganisationDto
+  relationships:
+  - {type: has_many, target: Customer, via: organisation}
+- name: Webhook
+  schema: WebhookDto
+  relationships: []
+notes: >-
+  Core manufacturing-operations domain: Orders contain Requisitions (per-part
+  manufacturing line items), each bound to a PartRevision and its process /
+  material / color / precision / infill pricing dimensions; Orders fulfil via
+  Shipments; Customers belong to CustomerOrganisations.

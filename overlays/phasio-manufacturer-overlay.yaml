@@ -1,0 +1,21 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Phasio Manufacturer API
+  version: 1.0.0
+extends: openapi/phasio-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-20'
+    x-apievangelist-provider: phasio
+    x-authorization-server: https://auth.eu.phas.io
+    x-token-endpoint: https://auth.eu.phas.io/oauth2/token
+    x-oauth-grant: client_credentials
+- target: $.info
+  update:
+    x-conventions: conventions/phasio-conventions.yml
+    x-error-catalog: errors/phasio-problem-types.yml
+    x-webhooks: asyncapi/phasio-webhooks.yml
+    x-idempotency-header: Idempotency-Key
+    x-pagination-style: page-number
+    x-filtering: RSQL

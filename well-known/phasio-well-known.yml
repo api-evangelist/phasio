@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of phas.io / m-api.eu.phas.io / auth host well-known paths
+hosts:
+- host: https://auth.eu.phas.io
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: phasio-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: phasio-oauth-authorization-server.json
+- host: https://m-api.eu.phas.io
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://phas.io
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+notes: >-
+  auth.phas.io redirects to the regional auth issuer auth.eu.phas.io, which
+  publishes full OIDC discovery (RFC 8414 / OpenID Connect Discovery) advertising
+  the client_credentials grant used by the Manufacturer API. No security.txt,
+  api-catalog, or ai-plugin.json is published.

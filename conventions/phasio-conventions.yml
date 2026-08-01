@@ -1,0 +1,58 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.phas.io/developers
+description: >-
+  Cross-cutting request/response semantics for the Phasio Manufacturer API v1,
+  captured from the developer docs and derived from openapi/phasio-openapi-original.json.
+authentication:
+  style: oauth2-client-credentials
+  token_type: Bearer JWT
+  token_endpoint: https://auth.eu.phas.io/oauth2/token
+  header: 'Authorization: Bearer <access_token>'
+  detail: authentication/phasio-authentication.yml
+idempotency:
+  supported: true
+  header: Idempotency-Key
+  scope: per-operation (documented on batch-mutating operations)
+  evidence: openapi Idempotency-Key parameter on moveBatches (PATCH /production-step/move-batches)
+pagination:
+  style: page-number
+  request_params:
+    page: zero-based page index (default 0)
+    size: page size (default 20)
+    sort: property,(asc|desc) — default createdAt,DESC
+    search: optional full-text search term
+  response_fields:
+  - content
+  - totalElements
+  - totalPages
+  - pageNumber
+  - pageSize
+  - isEmpty
+  - isFirst
+  - isLast
+filtering:
+  style: RSQL
+  param: filter
+  example: paymentStatus=in=(PAID,UNPAID);price>10
+versioning:
+  scheme: uri-path
+  current: v1
+  base_path: /api/manufacturer/v1
+rate_limiting:
+  signaled: true
+  status_code: 429
+  detail: HTTP 429 returned on throttled operations (see openapi responses)
+error_envelope:
+  media_types:
+  - application/json
+  - text/plain
+  format: json
+  detail: errors/phasio-problem-types.yml
+tracing:
+  request_id_header: null
+cross_links:
+  errors: errors/phasio-problem-types.yml
+  lifecycle: lifecycle/phasio-lifecycle.yml
+  authentication: authentication/phasio-authentication.yml
+  webhooks: asyncapi/phasio-webhooks.yml

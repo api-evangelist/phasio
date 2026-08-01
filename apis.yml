@@ -1,25 +1,1228 @@
 aid: phasio
 name: Phasio
-description: Phasio is a company surfaced as a portfolio company of 500-global and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Phasio is an operating platform for manufacturing service providers that unifies
+  intelligent quoting, production operations, connected back-office/ERP integration,
+  part intelligence, and white-labeled customer storefronts. It serves contract
+  manufacturers across additive manufacturing, CNC machining, and injection molding,
+  generating CAD-based quotes in seconds and managing shop-floor routing and
+  scheduling. The Phasio Manufacturer API (v1) is an OpenAPI 3.1 REST API of 481
+  operations across 85 controllers covering orders, quotes, requisitions, part
+  specifications and revisions, shipments, production steps, discounts, expenses,
+  taxes, and webhooks, secured with OAuth 2.0 client-credentials Bearer JWTs.
 url: https://raw.githubusercontent.com/api-evangelist/phasio/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://phas.io/icon.svg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 500-global
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Manufacturing
+- Additive Manufacturing
+- 3D Printing
+- CNC Machining
+- Quoting
+- Production Operations
+- Manufacturing Execution
+- API
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: phasio:phasio-activity-internal-api
+  name: Phasio Activity Internal API
+  description: Internal API for activity operations including conversation creation
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Activity Internal
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-activity-internal-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-addresses-api
+  name: Phasio Addresses API
+  description: API for managing addresses for customers and organizations
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Addresses
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-addresses-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-cart-resource-api
+  name: Phasio cart-resource API
+  description: The cart-resource API from Phasio — 4 operation(s) for cart-resource.
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - cart-resource
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-cart-resource-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-constraint-resource-api
+  name: Phasio constraint-resource API
+  description: The constraint-resource API from Phasio — 4 operation(s) for constraint-resource.
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - constraint-resource
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-constraint-resource-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-activity-controller-api
+  name: Phasio Customer Activity Controller API
+  description: Endpoints for managing customer communications and activity
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Activity Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-activity-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-addresses-api
+  name: Phasio Customer Addresses API
+  description: Endpoints for managing customer shipping and billing addresses
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Addresses
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-addresses-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-analytics-controller-api
+  name: Phasio Customer Analytics Controller API
+  description: API for tracking customer analytics events
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Analytics Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-analytics-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-assembly-controller-api
+  name: Phasio Customer Assembly Controller API
+  description: Endpoints for viewing assemblies
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Assembly Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-assembly-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-authentication-api
+  name: Phasio Customer Authentication API
+  description: Internal endpoints for managing customer authentication
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-authentication-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-cart-controller-api
+  name: Phasio Customer Cart Controller API
+  description: Endpoints for managing customer shopping carts
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Cart Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-cart-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-cart-item-controller-api
+  name: Phasio Customer Cart Item Controller API
+  description: Endpoints for managing customer shopping cart items
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Cart Item Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-cart-item-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-catalog-controller-api
+  name: Phasio Customer Catalog Controller API
+  description: Endpoints for accessing manufacturing capabilities catalog
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Catalog Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-catalog-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-controller-api
+  name: Phasio Customer Controller API
+  description: Endpoints for managing customer information
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-country-controller-api
+  name: Phasio Customer Country Controller API
+  description: Endpoints for retrieving country and jurisdiction information
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Country Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-country-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-discount-controller-api
+  name: Phasio Customer Discount Controller API
+  description: API for customer discount operations
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Discount Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-discount-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-document-controller-api
+  name: Phasio Customer Document Controller API
+  description: Endpoints for retrieving order-related documents
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Document Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-document-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-expense-controller-api
+  name: Phasio Customer Expense Controller API
+  description: API for customers to view expenses on their orders
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Expense Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-expense-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-operator-controller-api
+  name: Phasio Customer Operator Controller API
+  description: API for customers to retrieve information about the operator
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Operator Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-operator-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-order-controller-api
+  name: Phasio Customer Order Controller API
+  description: Endpoints for managing customer manufacturing orders
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Order Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-order-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-organisation-controller-api
+  name: Phasio Customer Organisation Controller API
+  description: Endpoints for managing customer organization details
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Organisation Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-organisation-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-part-design-controller-api
+  name: Phasio Customer Part Design Controller API
+  description: API for customers to access their part designs
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Part Design Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-part-design-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-part-revision-controller-api
+  name: Phasio Customer Part Revision Controller API
+  description: Endpoints for managing 3D part revisions and files
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Part Revision Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-part-revision-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-project-controller-api
+  name: Phasio Customer Project Controller API
+  description: Endpoints for managing customer projects
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Project Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-project-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-requisition-controller-api
+  name: Phasio Customer Requisition Controller API
+  description: API for customers to view requisitions in their orders
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Requisition Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-requisition-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-shipment-controller-api
+  name: Phasio Customer Shipment Controller API
+  description: Endpoints for managing customer shipments and shipping calculations
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Shipment Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-shipment-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-customer-thread-file-controller-api
+  name: Phasio Customer Thread File Controller API
+  description: API for customers to manage files attached to threads
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Customer Thread File Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-customer-thread-file-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-equation-resource-api
+  name: Phasio equation-resource API
+  description: The equation-resource API from Phasio — 3 operation(s) for equation-resource.
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - equation-resource
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-equation-resource-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-file-analysis-controller-api
+  name: Phasio File Analysis Controller API
+  description: Endpoints for managing 3D file analysis and processing
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - File Analysis Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-file-analysis-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-inbound-email-controller-api
+  name: Phasio Inbound Email Controller API
+  description: Endpoints for handling incoming emails to the system
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Inbound Email Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-inbound-email-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-internal-accounting-controller-api
+  name: Phasio Internal Accounting Controller API
+  description: Endpoints for managing accounting system integrations
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Internal Accounting Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-internal-accounting-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-internal-customer-controller-api
+  name: Phasio Internal Customer Controller API
+  description: Endpoints for internal customer management operations
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Internal Customer Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-internal-customer-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-internal-customer-organisation-controller-api
+  name: Phasio Internal Customer Organisation Controller API
+  description: Endpoints for managing customer organizations from internal services
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Internal Customer Organisation Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-internal-customer-organisation-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-internal-operator-controller-api
+  name: Phasio Internal Operator Controller API
+  description: Endpoints for managing operator configuration and settings
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Internal Operator Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-internal-operator-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-internal-order-controller-api
+  name: Phasio Internal Order Controller API
+  description: Endpoints for internal order processing operations
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Internal Order Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-internal-order-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-accounting-api
+  name: Phasio Manufacturer Accounting API
+  description: Endpoints for managing accounting system integrations
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Accounting
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-accounting-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-activity-controller-api
+  name: Phasio Manufacturer Activity Controller API
+  description: Endpoints for managing manufacturer activities and conversations
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Activity Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-activity-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-analytics-controller-api
+  name: Phasio Manufacturer Analytics Controller API
+  description: >-
+    Programmatic analytics endpoints for retrieving manufacturer dashboard metrics, funnel performance,
+    revenue, production, customer and material insights.
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Analytics Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-analytics-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-assembly-controller-api
+  name: Phasio Manufacturer Assembly Controller API
+  description: Endpoints for managing assemblies
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Assembly Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-assembly-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-camspec-controller-api
+  name: Phasio Manufacturer CAMSPEC Controller API
+  description: Endpoints for exporting CAMSPEC files and managing manifest mappings
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer CAMSPEC Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-camspec-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-cart-item-controller-api
+  name: Phasio Manufacturer Cart Item Controller API
+  description: API for managing cart items
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Cart Item Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-cart-item-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-catalog-controller-api
+  name: Phasio Manufacturer Catalog Controller API
+  description: Endpoints for managing manufacturer catalog items
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Catalog Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-catalog-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-color-controller-api
+  name: Phasio Manufacturer Color Controller API
+  description: Endpoints for retrieving color options for manufactured parts
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Color Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-color-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-countries-controller-api
+  name: Phasio Manufacturer Countries Controller API
+  description: >-
+    The Manufacturer Countries Controller API from Phasio — 2 operation(s) for manufacturer countries
+    controller.
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Countries Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-countries-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-currencies-controller-api
+  name: Phasio Manufacturer Currencies Controller API
+  description: >-
+    The Manufacturer Currencies Controller API from Phasio — 1 operation(s) for manufacturer currencies
+    controller.
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Currencies Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-currencies-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-customer-controller-api
+  name: Phasio Manufacturer Customer Controller API
+  description: API for managing customer records and operations
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Customer Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-customer-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-customer-organisation-controller-api
+  name: Phasio Manufacturer Customer Organisation Controller API
+  description: API for managing customer organizations
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Customer Organisation Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-customer-organisation-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-discount-controller-api
+  name: Phasio Manufacturer Discount Controller API
+  description: API for managing discounts
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Discount Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-discount-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-document-controller-api
+  name: Phasio Manufacturer Document Controller API
+  description: API for generating and downloading various document types
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Document Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-document-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-document-template-controller-api
+  name: Phasio Manufacturer Document Template Controller API
+  description: Endpoints for managing document templates for invoices, orders, and consignment labels
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Document Template Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-document-template-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-expense-controller-api
+  name: Phasio Manufacturer Expense Controller API
+  description: API for managing order expenses
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Expense Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-expense-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-infill-controller-api
+  name: Phasio Manufacturer Infill Controller API
+  description: Endpoints for managing 3D printing infill options and configurations
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Infill Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-infill-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-kanban-column-controller-api
+  name: Phasio Manufacturer Kanban Column Controller API
+  description: Endpoints for managing Kanban board columns for order processing workflow
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Kanban Column Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-kanban-column-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-lead-time-controller-api
+  name: Phasio Manufacturer Lead Time Controller API
+  description: Endpoints for managing production lead time options for orders
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Lead Time Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-lead-time-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-material-controller-api
+  name: Phasio Manufacturer Material Controller API
+  description: Endpoints for managing manufacturing materials
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Material Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-material-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-material-prices-controller-api
+  name: Phasio Manufacturer Material Prices Controller API
+  description: Endpoints for managing material pricing configuration
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Material Prices Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-material-prices-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-metrics-controller-api
+  name: Phasio Manufacturer Metrics Controller API
+  description: Endpoints for tracking and recording system metrics and events
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Metrics Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-metrics-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-operator-contact-controller-api
+  name: Phasio Manufacturer Operator Contact Controller API
+  description: Endpoints for managing operator contact information and details
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Operator Contact Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-operator-contact-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-operator-controller-api
+  name: Phasio Manufacturer Operator Controller API
+  description: Endpoints for managing operator settings and information
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Operator Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-operator-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-operator-count-controller-api
+  name: Phasio Manufacturer Operator Count Controller API
+  description: >-
+    Endpoints for managing sequential counters used by operators for numbering orders, projects, etc.
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Operator Count Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-operator-count-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-order-controller-api
+  name: Phasio Manufacturer Order Controller API
+  description: API for managing manufacturing orders and their lifecycle
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Order Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-order-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-part-design-controller-api
+  name: Phasio Manufacturer Part Design Controller API
+  description: API for managing part designs
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Part Design Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-part-design-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-part-revision-controller-api
+  name: Phasio Manufacturer Part Revision Controller API
+  description: Endpoints for managing part geometry revisions and 3D file analysis
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Part Revision Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-part-revision-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-part-specification-controller-api
+  name: Phasio Manufacturer Part Specification Controller API
+  description: Endpoints for managing part specifications and customer article references
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Part Specification Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-part-specification-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-payment-information-controller-api
+  name: Phasio Manufacturer Payment Information Controller API
+  description: Endpoints for managing operator payment information and settings
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Payment Information Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-payment-information-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-post-processing-controller-api
+  name: Phasio Manufacturer Post Processing Controller API
+  description: Endpoints for managing post-processing options for manufactured parts
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Post Processing Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-post-processing-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-precision-prices-controller-api
+  name: Phasio Manufacturer Precision Prices Controller API
+  description: Endpoints for managing precision prices for manufacturing operations
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Precision Prices Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-precision-prices-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-process-prices-controller-api
+  name: Phasio Manufacturer Process Prices Controller API
+  description: Endpoints for managing manufacturing process pricing configurations
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Process Prices Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-process-prices-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-production-status-controller-api
+  name: Phasio Manufacturer Production Status Controller API
+  description: Endpoints for managing production status configurations for manufacturing workflow
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Production Status Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-production-status-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-production-step-controller-api
+  name: Phasio Manufacturer Production Step Controller API
+  description: Endpoints for managing production steps in the manufacturing workflow
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Production Step Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-production-step-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-programmatic-client-controller-api
+  name: Phasio Manufacturer Programmatic Client Controller API
+  description: Endpoints for managing manufacturer programmatic clients
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Programmatic Client Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-programmatic-client-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-project-controller-api
+  name: Phasio Manufacturer Project Controller API
+  description: >-
+    RSQL-enabled endpoints for managing projects with advanced querying and updating capabilities
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Project Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-project-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-quote-controller-api
+  name: Phasio Manufacturer Quote Controller API
+  description: Endpoints for managing order quotes and pricing
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Quote Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-quote-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-reports-api
+  name: Phasio Manufacturer Reports API
+  description: Endpoints for downloadable manufacturer reports
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-reports-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-requisition-controller-api
+  name: Phasio Manufacturer Requisition Controller API
+  description: API for managing part requisitions and production batches
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Requisition Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-requisition-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-routing-template-controller-api
+  name: Phasio Manufacturer Routing Template Controller API
+  description: Manage routing templates on a part specification
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Routing Template Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-routing-template-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-search-controller-api
+  name: Phasio Manufacturer Search Controller API
+  description: >-
+    Global search across parts, orders, customers, files, catalog references, and production steps
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Search Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-search-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-shipment-controller-api
+  name: Phasio Manufacturer Shipment Controller API
+  description: >-
+    This controller is responsible for managing shipments. It allows you to get rates and fetch existing
+    shipments.
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Shipment Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-shipment-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-shipping-box-controller-api
+  name: Phasio Manufacturer Shipping Box Controller API
+  description: Endpoints for managing shipping box dimensions used for shipments
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Shipping Box Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-shipping-box-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-shipping-method-controller-api
+  name: Phasio Manufacturer Shipping Method Controller API
+  description: Endpoints for managing shipping methods available to manufacturers
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Shipping Method Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-shipping-method-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-tax-component-controller-api
+  name: Phasio Manufacturer Tax Component Controller API
+  description: Endpoints for managing tax components and rates
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Tax Component Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-tax-component-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-tax-jurisdiction-controller-api
+  name: Phasio Manufacturer Tax Jurisdiction Controller API
+  description: Endpoints for managing tax jurisdictions and their associated tax components
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Tax Jurisdiction Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-tax-jurisdiction-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-thread-controller-api
+  name: Phasio Manufacturer Thread Controller API
+  description: Endpoints for managing communication threads and projects
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Thread Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-thread-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-thread-file-controller-api
+  name: Phasio Manufacturer Thread File Controller API
+  description: API for managing files attached to threads
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Thread File Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-thread-file-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-tracking-controller-api
+  name: Phasio Manufacturer Tracking Controller API
+  description: Endpoints for managing shipment tracking information
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Tracking Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-tracking-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-user-controller-api
+  name: Phasio Manufacturer User Controller API
+  description: Endpoints for managing manufacturer user information
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer User Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-user-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-manufacturer-work-order-controller-api
+  name: Phasio Manufacturer Work Order Controller API
+  description: Manage individual work orders, including downstream routing mutations
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Manufacturer Work Order Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-manufacturer-work-order-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-metrics-controller-api
+  name: Phasio Metrics Controller API
+  description: Endpoints for tracking system metrics and events
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Metrics Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-metrics-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-payment-term-resource-api
+  name: Phasio payment-term-resource API
+  description: The payment-term-resource API from Phasio — 2 operation(s) for payment-term-resource.
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - payment-term-resource
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-payment-term-resource-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-pre-order-api
+  name: Phasio Pre-Order API
+  description: Endpoints for retrieving pre-order information
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Pre-Order
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-pre-order-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-user-authentication-controller-api
+  name: Phasio User Authentication Controller API
+  description: Endpoints for managing user authentication and multi-factor authentication
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - User Authentication Controller
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-user-authentication-controller-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-webhook-resource-api
+  name: Phasio webhook-resource API
+  description: The webhook-resource API from Phasio — 2 operation(s) for webhook-resource.
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - webhook-resource
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-webhook-resource-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
+- aid: phasio:phasio-webhooks-api
+  name: Phasio Webhooks API
+  description: Endpoints for managing webhooks
+  humanURL: https://docs.phas.io/developers
+  baseURL: https://m-api.eu.phas.io/api/manufacturer/v1
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/phasio-webhooks-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/phasio-webhooks.yml
 common:
 - type: Website
   url: https://phas.io
+- type: DeveloperPortal
+  url: https://docs.phas.io/developers
+- type: Documentation
+  url: https://docs.phas.io/developers
+- type: APIReference
+  url: https://docs.phas.io/developers
+- type: GettingStarted
+  url: https://docs.phas.io/developers
+- type: Pricing
+  url: https://phas.io/pricing
+- type: Blog
+  url: https://phas.io/post
+- type: SignUp
+  url: https://auth.phas.io/create
+- type: Login
+  url: https://app.phas.io
+- type: TermsOfService
+  url: https://phas.io/terms-of-service
+- type: PrivacyPolicy
+  url: https://phas.io/privacy-policy
+- type: Support
+  url: https://phas.io/contact
+- type: Authentication
+  url: authentication/phasio-authentication.yml
+- type: WellKnown
+  url: well-known/phasio-well-known.yml
+- type: Conventions
+  url: conventions/phasio-conventions.yml
+- type: Idempotency
+  url: conventions/phasio-conventions.yml
+- type: ErrorCatalog
+  url: errors/phasio-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/phasio-lifecycle.yml
+- type: DataModel
+  url: data-model/phasio-data-model.yml
+- type: Conformance
+  url: conformance/phasio-conformance.yml
+- type: Compliance
+  url: https://phas.io/security
+- type: TrustCenter
+  url: security/phasio-trust-center.yml
+- type: DomainSecurity
+  url: security/phasio-domain-security.yml
+- type: Webhooks
+  url: asyncapi/phasio-webhooks.yml
+- type: MCPServer
+  url: mcp/phasio-mcp.yml
+- type: LLMsTxt
+  url: llms/phasio-llms.txt
+- type: AgentSkill
+  url: skills/phasio-create-and-track-order.md
+- type: AgentSkill
+  url: skills/phasio-subscribe-to-webhooks.md
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 19
+  pass: local-v1
