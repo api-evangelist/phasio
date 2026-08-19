@@ -1,0 +1,273 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Customer Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Customer Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/customer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new customer record"
+        },
+        {
+          "info": {
+            "name": "Update a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/customer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing customer record"
+        },
+        {
+          "info": {
+            "name": "Upload customers from a file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/customer/upload",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Imports multiple customers from a CSV or Excel file"
+        },
+        {
+          "info": {
+            "name": "Get a customer by principal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/customer/principal",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves a customer using their principal identifier (username, email, etc.)"
+        },
+        {
+          "info": {
+            "name": "Get a customer by phone number",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/customer/phone",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves a customer using their phone number. Always returns 200 - exists flag indicates whether a match was found."
+        },
+        {
+          "info": {
+            "name": "Get customers by organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/customer/organisation/:organisationId",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the organization to get customers for"
+              }
+            ]
+          },
+          "docs": "Retrieves all customers belonging to a specific organization"
+        },
+        {
+          "info": {
+            "name": "Create a customer in an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/customer/organisation/:organisationId",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the organization to add the customer to"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new customer that belongs to a specific organization"
+        },
+        {
+          "info": {
+            "name": "Get a customer by email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/customer/email",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves a customer using their email address. Always returns 200 - exists flag indicates whether a match was found."
+        },
+        {
+          "info": {
+            "name": "Get a customer by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/customer/:customerId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the customer to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific customer by their ID"
+        },
+        {
+          "info": {
+            "name": "Delete a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/customer/:customerId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Hard deletes a customer and removes PII data"
+        },
+        {
+          "info": {
+            "name": "Get customers with filtering",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/customer/paginated",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "filter specification"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Optional search term"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of customers with optional filtering and search using RSQL"
+        },
+        {
+          "info": {
+            "name": "Get count of customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/customer/count",
+            "params": [
+              {
+                "name": "searchQuery",
+                "value": "john",
+                "type": "query",
+                "description": "Search query for filtering customers"
+              }
+            ]
+          },
+          "docs": "Retrieves the total count of customers with optional filtering"
+        },
+        {
+          "info": {
+            "name": "Reset customer authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/customer/:customerId/auth",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resets customer to OTP-only auth, clearing their password"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

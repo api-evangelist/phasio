@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Metrics Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Metrics Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register event occurrence",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/metrics",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records the occurrence of a specific metric event for analytics and monitoring"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

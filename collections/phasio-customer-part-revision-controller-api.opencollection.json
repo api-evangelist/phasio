@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Customer Part Revision Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Part Revision Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload part file",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/part-revision/upload",
+            "headers": [
+              {
+                "name": "X-Filename",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Uploads a 3D model file for analysis and part creation"
+        },
+        {
+          "info": {
+            "name": "Validate part manufacturability",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/part-revision/manufacturability/validate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates if parts can be manufactured with selected materials and processes"
+        },
+        {
+          "info": {
+            "name": "Claim part revision",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/part-revision/:partRevisionId/claim",
+            "params": [
+              {
+                "name": "partRevisionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part revision to claim"
+              },
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "Hash of the part revision file to verify ownership"
+              }
+            ]
+          },
+          "docs": "Claims ownership of a part revision for the current customer organisation"
+        },
+        {
+          "info": {
+            "name": "Get upload results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/part-revision/upload/:analysisId/results",
+            "params": [
+              {
+                "name": "analysisId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the analysis to retrieve results for"
+              }
+            ]
+          },
+          "docs": "Retrieves the processed results for an uploaded 3D model file as a MessagePack payload"
+        },
+        {
+          "info": {
+            "name": "Check upload status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/part-revision/upload/status",
+            "params": [
+              {
+                "name": "analysisIds",
+                "value": "",
+                "type": "query",
+                "description": "Set of analysis IDs to check status for"
+              }
+            ]
+          },
+          "docs": "Checks the processing status of previously uploaded 3D model files"
+        },
+        {
+          "info": {
+            "name": "Get part revisions by order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/part-revision/order/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order"
+              }
+            ]
+          },
+          "docs": "Retrieves all part revisions associated with an order"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

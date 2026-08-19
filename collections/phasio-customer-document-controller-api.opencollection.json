@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Customer Document Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Document Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download order invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/document/order/:orderId/invoice",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order"
+              }
+            ]
+          },
+          "docs": "Generates and downloads the invoice PDF for a specific order"
+        },
+        {
+          "info": {
+            "name": "Download order estimate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/document/order/:orderId/estimate",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order"
+              }
+            ]
+          },
+          "docs": "Generates and downloads the estimate PDF for a specific order"
+        },
+        {
+          "info": {
+            "name": "Download order confirmation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/document/order/:orderId/confirmation",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order"
+              }
+            ]
+          },
+          "docs": "Generates and downloads the order confirmation PDF for a specific order"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

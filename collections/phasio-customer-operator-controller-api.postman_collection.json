@@ -1,0 +1,768 @@
+{
+  "item": [
+    {
+      "id": "b739523b-f0f1-4c17-a95c-138f5ffb3ee9",
+      "name": "Customer Operator Controller",
+      "description": {
+        "content": "API for customers to retrieve information about the operator",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "39c0fbb8-6436-446e-b34f-0c3d2c28ca30",
+          "name": "Get operator information",
+          "request": {
+            "name": "Get operator information",
+            "description": {
+              "content": "Retrieves information about the current operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "operator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e340410-d579-4b33-8bd0-cc3ed08cc317",
+              "name": "Successfully retrieved operator information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "operator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"acceptedCurrencies\": [\n    \"INR\",\n    \"JPY\"\n  ],\n  \"country\": \"string\",\n  \"currency\": \"string\",\n  \"isAIEnabled\": false,\n  \"isAccountingEnabled\": true,\n  \"isInvoiceDownloadEnabled\": false,\n  \"isOrientationConstraintEnabled\": false,\n  \"isPayByInvoiceEnabled\": false,\n  \"isPayByPurchaseOrderEnabled\": false,\n  \"isTaxIDEnabled\": true,\n  \"loginMethod\": \"PHONE\",\n  \"loginStage\": \"AFTER_PRICE\",\n  \"name\": \"string\",\n  \"paymentProvider\": \"string\",\n  \"permittedDomains\": [\n    \"string\"\n  ],\n  \"storefrontTheme\": \"LIGHT\",\n  \"subscribedModules\": [\n    \"string\"\n  ],\n  \"landingPageMessage\": \"string\",\n  \"videoLink\": \"string\",\n  \"termsOfServiceLink\": \"string\",\n  \"maximumFileSize\": 4924\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e40a8a2-ace1-4b63-9afc-e3767a66af7f",
+              "name": "Operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "operator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d42f09d-9a61-43e9-b6da-962e0fa5a42c",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "operator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cae6324e-2813-419b-867c-b66fadceb015",
+          "name": "Get available shipping methods",
+          "request": {
+            "name": "Get available shipping methods",
+            "description": {
+              "content": "Retrieves all shipping methods available to the customer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "operator",
+                "shipping-methods"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e21ec756-c6fd-4768-9204-33243bfc1128",
+              "name": "Successfully retrieved shipping methods",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "operator",
+                    "shipping-methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"shippingMethodId\": 6335,\n    \"shippingMode\": \"string\"\n  },\n  {\n    \"shippingMethodId\": 4502,\n    \"shippingMode\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cf53b40-7bd7-4b0c-8b7a-abbdfc44254a",
+              "name": "Unauthorized - missing customer or operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "operator",
+                    "shipping-methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af8fbd1d-9153-4072-9a69-61d16a559a6a",
+          "name": "Get available manufacturing processes",
+          "request": {
+            "name": "Get available manufacturing processes",
+            "description": {
+              "content": "Retrieves all manufacturing processes available to the customer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "operator",
+                "processes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60a3195a-4a34-4e0d-890c-198eee436161",
+              "name": "Successfully retrieved manufacturing processes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "operator",
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"bulkPricingQuantities\": [\n      8535,\n      2868\n    ],\n    \"id\": \"3beb5856-1a80-f180-e530-6b984b7a618d\",\n    \"infills\": [\n      {\n        \"default\": true,\n        \"id\": 8740,\n        \"name\": \"string\",\n        \"value\": 2926.759563082816\n      },\n      {\n        \"default\": false,\n        \"id\": 4481,\n        \"name\": \"string\",\n        \"value\": 5826.57213365114\n      }\n    ],\n    \"isDefault\": true,\n    \"isInternal\": false,\n    \"materials\": [\n      {\n        \"colorDtos\": [\n          {\n            \"code\": \"string\",\n            \"id\": 1509,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 8265,\n            \"name\": \"string\"\n          }\n        ],\n        \"id\": 3316,\n        \"isDefault\": false,\n        \"name\": \"string\",\n        \"quoteOnly\": true,\n        \"datasheetSummary\": \"string\",\n        \"wallThicknessWarning\": 505.42117821553046,\n        \"wallThicknessLimit\": 942.8809499784252\n      },\n      {\n        \"colorDtos\": [\n          {\n            \"code\": \"string\",\n            \"id\": 3685,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 13,\n            \"name\": \"string\"\n          }\n        ],\n        \"id\": 370,\n        \"isDefault\": false,\n        \"name\": \"string\",\n        \"quoteOnly\": true,\n        \"datasheetSummary\": \"string\",\n        \"wallThicknessWarning\": 7787.599235014338,\n        \"wallThicknessLimit\": 8914.181905738353\n      }\n    ],\n    \"postProcessings\": [\n      {\n        \"colors\": [\n          {\n            \"code\": \"string\",\n            \"id\": 8518,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 973,\n            \"name\": \"string\"\n          }\n        ],\n        \"incompatibleMaterialIds\": [\n          3454,\n          3999\n        ],\n        \"isDefault\": false,\n        \"name\": \"string\",\n        \"purchasable\": true,\n        \"id\": 5632,\n        \"mutuallyExclusiveGroup\": \"string\"\n      },\n      {\n        \"colors\": [\n          {\n            \"code\": \"string\",\n            \"id\": 1919,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 1577,\n            \"name\": \"string\"\n          }\n        ],\n        \"incompatibleMaterialIds\": [\n          2525,\n          4777\n        ],\n        \"isDefault\": true,\n        \"name\": \"string\",\n        \"purchasable\": false,\n        \"id\": 4085,\n        \"mutuallyExclusiveGroup\": \"string\"\n      }\n    ],\n    \"precisions\": [\n      {\n        \"id\": 1887,\n        \"isActive\": true,\n        \"name\": \"string\",\n        \"price\": 9294.307462928997\n      },\n      {\n        \"id\": 7858,\n        \"isActive\": true,\n        \"name\": \"string\",\n        \"price\": 179.18211004855132\n      }\n    ],\n    \"technology\": \"string\",\n    \"description\": \"string\"\n  },\n  {\n    \"bulkPricingQuantities\": [\n      6238,\n      6647\n    ],\n    \"id\": \"cb6c096c-df5c-393b-5e00-55a0645f6ab9\",\n    \"infills\": [\n      {\n        \"default\": true,\n        \"id\": 1508,\n        \"name\": \"string\",\n        \"value\": 5501.262993219514\n      },\n      {\n        \"default\": false,\n        \"id\": 9693,\n        \"name\": \"string\",\n        \"value\": 7068.571993962692\n      }\n    ],\n    \"isDefault\": true,\n    \"isInternal\": true,\n    \"materials\": [\n      {\n        \"colorDtos\": [\n          {\n            \"code\": \"string\",\n            \"id\": 3497,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 8951,\n            \"name\": \"string\"\n          }\n        ],\n        \"id\": 1037,\n        \"isDefault\": true,\n        \"name\": \"string\",\n        \"quoteOnly\": true,\n        \"datasheetSummary\": \"string\",\n        \"wallThicknessWarning\": 8158.238828165114,\n        \"wallThicknessLimit\": 469.28731927310395\n      },\n      {\n        \"colorDtos\": [\n          {\n            \"code\": \"string\",\n            \"id\": 5132,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 6884,\n            \"name\": \"string\"\n          }\n        ],\n        \"id\": 4021,\n        \"isDefault\": false,\n        \"name\": \"string\",\n        \"quoteOnly\": true,\n        \"datasheetSummary\": \"string\",\n        \"wallThicknessWarning\": 2475.09624656587,\n        \"wallThicknessLimit\": 4832.543276704033\n      }\n    ],\n    \"postProcessings\": [\n      {\n        \"colors\": [\n          {\n            \"code\": \"string\",\n            \"id\": 4642,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 6959,\n            \"name\": \"string\"\n          }\n        ],\n        \"incompatibleMaterialIds\": [\n          601,\n          6183\n        ],\n        \"isDefault\": true,\n        \"name\": \"string\",\n        \"purchasable\": true,\n        \"id\": 4134,\n        \"mutuallyExclusiveGroup\": \"string\"\n      },\n      {\n        \"colors\": [\n          {\n            \"code\": \"string\",\n            \"id\": 946,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 539,\n            \"name\": \"string\"\n          }\n        ],\n        \"incompatibleMaterialIds\": [\n          8029,\n          2691\n        ],\n        \"isDefault\": false,\n        \"name\": \"string\",\n        \"purchasable\": true,\n        \"id\": 6197,\n        \"mutuallyExclusiveGroup\": \"string\"\n      }\n    ],\n    \"precisions\": [\n      {\n        \"id\": 3277,\n        \"isActive\": false,\n        \"name\": \"string\",\n        \"price\": 9558.102834058483\n      },\n      {\n        \"id\": 8499,\n        \"isActive\": false,\n        \"name\": \"string\",\n        \"price\": 2148.596653064494\n      }\n    ],\n    \"technology\": \"string\",\n    \"description\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa676414-47f8-4f1d-a947-d9000bdac99a",
+              "name": "Unauthorized - missing customer or operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "operator",
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af0516d1-1e5c-40fb-8a9d-efb3b8e168c9",
+          "name": "Get operator logo",
+          "request": {
+            "name": "Get operator logo",
+            "description": {
+              "content": "Retrieves the logo image for the current operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "operator",
+                "logo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca9585e4-a39b-4f2d-a1f8-5ec24ab1c135",
+              "name": "Successfully retrieved logo",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "operator",
+                    "logo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7ffeef9d-0a0b-4560-af18-1c64eea2ddd4",
+              "name": "Logo not found or could not be retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "operator",
+                    "logo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2eb1e546-3f37-4e9e-a1e8-3aa68c16449b",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "operator",
+                    "logo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eeb5c712-239a-4279-92fe-3c301429e6e2",
+          "name": "Get available manufacturing lead times",
+          "request": {
+            "name": "Get available manufacturing lead times",
+            "description": {
+              "content": "Retrieves all manufacturing lead times",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "operator",
+                "lead-times"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38b4cc8a-a42b-4cb6-ada2-949317f0074f",
+              "name": "Successfully retrieved manufacturing lead times",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "operator",
+                    "lead-times"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"d84f9b4b-0bc0-4455-ad36-7cec07c7fd50\",\n    \"isDefault\": false,\n    \"isDeleted\": false,\n    \"name\": \"string\"\n  },\n  {\n    \"id\": \"b573c537-f6fb-183b-7cb4-c1a7a8da8e9e\",\n    \"isDefault\": false,\n    \"isDeleted\": false,\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af611d87-9d6c-48a0-bcd6-4a57ef3f45b3",
+              "name": "Unauthorized - missing customer or operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "operator",
+                    "lead-times"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d9514323-97b4-4eeb-b6b7-d21b72b69ea0",
+    "name": "Phasio Activity Internal Customer Operator Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

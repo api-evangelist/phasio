@@ -1,0 +1,221 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Part Specification Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Part Specification Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update customer article reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-specification/:partSpecificationId/customer-reference",
+            "params": [
+              {
+                "name": "partSpecificationId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part specification to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the customer's article reference for a specific part specification"
+        },
+        {
+          "info": {
+            "name": "Get part specifications by IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-specification/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves part specifications by a list of unique identifiers"
+        },
+        {
+          "info": {
+            "name": "Get part specifications with filtering",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-specification",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "filter specification"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Optional search term"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of part specifications with optional filtering and search"
+        },
+        {
+          "info": {
+            "name": "Get part specification by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-specification/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part specification to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific part specification by its unique identifier"
+        },
+        {
+          "info": {
+            "name": "Preview the system-derived routing for a part specification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-specification/:id/derived-routing",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part specification to derive a routing for"
+              }
+            ]
+          },
+          "docs": "Returns the ordered operations a new work order would snapshot when the specification has no designated default routing template. Read-only — nothing is materialized; may be empty when the process and post-processings define no operations."
+        },
+        {
+          "info": {
+            "name": "Get part specifications by part revision",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-specification/part-revision/:partRevisionId",
+            "params": [
+              {
+                "name": "partRevisionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part revision"
+              }
+            ]
+          },
+          "docs": "Retrieves all part specifications associated with a specific part revision"
+        },
+        {
+          "info": {
+            "name": "Find part specifications by customer reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-specification/customer-reference",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches for part specifications matching a specific customer reference string"
+        },
+        {
+          "info": {
+            "name": "Get part specifications by customer organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-specification/customer-organisation/:customerOrganisationId",
+            "params": [
+              {
+                "name": "customerOrganisationId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the customer organization"
+              }
+            ]
+          },
+          "docs": "Retrieves all part specifications associated with a specific customer organization"
+        },
+        {
+          "info": {
+            "name": "Delete customer article reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-specification/:partSpecificationId/customer-reference/:customerOrganisationId",
+            "params": [
+              {
+                "name": "partSpecificationId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part specification to update"
+              },
+              {
+                "name": "customerOrganisationId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the customer organization whose reference should be deleted"
+              }
+            ]
+          },
+          "docs": "Removes the customer's article reference from a specific part specification"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

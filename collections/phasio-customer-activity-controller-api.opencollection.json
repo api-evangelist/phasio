@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Customer Activity Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Activity Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/activity",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new activity such as a conversation or comment"
+        },
+        {
+          "info": {
+            "name": "Get activity by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/activity/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the activity to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific activity by its unique identifier"
+        },
+        {
+          "info": {
+            "name": "Get activities by thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/activity/thread/:threadId",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the thread"
+              }
+            ]
+          },
+          "docs": "Retrieves all activities associated with a specific thread"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

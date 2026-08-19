@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer CAMSPEC Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer CAMSPEC Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get manifest mappings by manifest IDs (bulk lookup)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/camspec/manifest-mappings/lookup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves the mapping between CAMSPEC manifest IDs and requisition IDs for the specified manifest IDs. Supports hundreds of manifest IDs."
+        },
+        {
+          "info": {
+            "name": "Export CAMSPEC archive for requisitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/camspec/export",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates and downloads a CAMSPEC archive (.camspec file) containing manufacturing constraints and CAD files for the specified requisitions"
+        },
+        {
+          "info": {
+            "name": "Get manifest mappings by requisition ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/camspec/requisitions/:requisitionId/manifest-mappings",
+            "params": [
+              {
+                "name": "requisitionId",
+                "value": "",
+                "type": "path",
+                "description": "The requisition ID to look up"
+              }
+            ]
+          },
+          "docs": "Retrieves all CAMSPEC manifest mappings for a specific requisition ID (reverse lookup)"
+        },
+        {
+          "info": {
+            "name": "Get manifest mapping by manifest ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/camspec/manifest-mappings/:manifestId",
+            "params": [
+              {
+                "name": "manifestId",
+                "value": "",
+                "type": "path",
+                "description": "The manifest ID to look up"
+              }
+            ]
+          },
+          "docs": "Retrieves the mapping between a single CAMSPEC manifest ID and its corresponding requisition ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

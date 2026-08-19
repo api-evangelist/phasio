@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Quote Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Quote Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate pre-order quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/quote/pre-order",
+            "params": [
+              {
+                "name": "customerOrganisationId",
+                "value": "",
+                "type": "query",
+                "description": "Customer organisation to generate a quote for"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a preliminary quote for a potential order"
+        },
+        {
+          "info": {
+            "name": "Generate order quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/quote/order/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order to generate a quote for"
+              }
+            ]
+          },
+          "docs": "Generates a detailed quote for an existing order"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

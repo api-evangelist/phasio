@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Activity Internal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create new conversations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/activity/conversation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates new conversations, as either the customer or manufacturer"
+        },
+        {
+          "info": {
+            "name": "Get thread organisation ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/activity/thread/:threadId/organisation",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the organisation ID associated with a specific thread"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

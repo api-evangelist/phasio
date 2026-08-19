@@ -1,0 +1,337 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Accounting API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Accounting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get accounting system associations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/associations"
+          },
+          "docs": "Retrieves the current integration settings between the operator and an external accounting system"
+        },
+        {
+          "info": {
+            "name": "Update accounting system associations",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/associations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the integration settings between the operator and an external accounting system"
+        },
+        {
+          "info": {
+            "name": "Sync payment terms from accounting system",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/payment-terms/sync"
+          },
+          "docs": "Fetches all payment terms from the connected accounting system and upserts them locally"
+        },
+        {
+          "info": {
+            "name": "Sync customer with accounting system",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/organisations/:organisationId/sync",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "1",
+                "type": "path",
+                "description": "Nebula customer organisation ID"
+              }
+            ]
+          },
+          "docs": "Synchronizes a linked customer organisation with the latest data from the accounting system"
+        },
+        {
+          "info": {
+            "name": "Push customer to accounting system",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/organisations/:organisationId/push",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "1",
+                "type": "path",
+                "description": "Nebula customer organisation ID"
+              }
+            ]
+          },
+          "docs": "Exports a Nebula customer organisation to the accounting system and links them"
+        },
+        {
+          "info": {
+            "name": "authorizeOAuthIntegration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/oauth/authorize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Pull customer from accounting system",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/customers/:accountingSystemId/pull",
+            "params": [
+              {
+                "name": "accountingSystemId",
+                "value": "123e4567-e89b-12d3-a456-426614174000",
+                "type": "path",
+                "description": "Accounting system customer organisation ID"
+              }
+            ]
+          },
+          "docs": "Imports a customer organisation from the accounting system into Nebula"
+        },
+        {
+          "info": {
+            "name": "Search accounting system for organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/customers/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches for organizations in the accounting system"
+        },
+        {
+          "info": {
+            "name": "authorizeApiKeyIntegration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/api-key/authorize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "updateTemplate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/template",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "updatePaymentAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/payment-account/:accountCode",
+            "params": [
+              {
+                "name": "accountCode",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "updateOrganisation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/organisation/:organisationId",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "updateInvoiceAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/invoice-account/:accountCode",
+            "params": [
+              {
+                "name": "accountCode",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "get_27",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting"
+          }
+        },
+        {
+          "info": {
+            "name": "Disassociate from accounting system",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting"
+          },
+          "docs": "Removes the integration between the operator and any external accounting system"
+        },
+        {
+          "info": {
+            "name": "getTemplates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/templates/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "getTaxes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/taxes"
+          }
+        },
+        {
+          "info": {
+            "name": "isRegistered",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/registered"
+          }
+        },
+        {
+          "info": {
+            "name": "getOrganisations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/organisations"
+          }
+        },
+        {
+          "info": {
+            "name": "Get all accounting system customers (paginated)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/customers",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of customers from the accounting system with their link status to Nebula"
+        },
+        {
+          "info": {
+            "name": "getCategoryCodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/category-codes"
+          }
+        },
+        {
+          "info": {
+            "name": "getAccounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/accounting/accounts"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

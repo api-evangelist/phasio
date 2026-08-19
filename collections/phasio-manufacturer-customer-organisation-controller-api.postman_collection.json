@@ -1,0 +1,2518 @@
+{
+  "item": [
+    {
+      "id": "cc2f0817-62ff-463b-9f5e-68c6008cb8a1",
+      "name": "Manufacturer Customer Organisation Controller",
+      "description": {
+        "content": "API for managing customer organizations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ae087b4f-d62a-4e4d-a9f2-dc0d3c1bb769",
+          "name": "Upsert customer organisation metadata by key",
+          "request": {
+            "name": "Upsert customer organisation metadata by key",
+            "description": {
+              "content": "Sets the value for a metadata key on a customer organisation, creating the entry if it does not already exist. Intended for external systems that track their own key but do not know the corresponding internal metadata ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "organisation",
+                ":organisationId",
+                "metadata",
+                "key",
+                ":metadataKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "organisationId",
+                  "description": "(Required) ID of the organisation"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "metadataKey",
+                  "description": "(Required) Metadata key to set"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "32cd104a-8428-48a7-9dd3-2d316d4f0607",
+              "name": "Metadata upserted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId",
+                    "metadata",
+                    "key",
+                    ":metadataKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organisation"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "metadataKey",
+                      "description": "(Required) Metadata key to set"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e7c80985-298d-2f3f-a850-75a102d4472e\",\n  \"metadataKey\": \"string\",\n  \"value\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ed43fd6-79e3-4694-82c2-57b0a2ca4a91",
+              "name": "Organisation not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId",
+                    "metadata",
+                    "key",
+                    ":metadataKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organisation"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "metadataKey",
+                      "description": "(Required) Metadata key to set"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "772ecc81-247f-4ecd-a951-f05ed5fbd827",
+          "name": "Add metadata to a customer organisation",
+          "request": {
+            "name": "Add metadata to a customer organisation",
+            "description": {
+              "content": "Adds a new metadata entry (key/value pair) to a customer organisation. Keys must be unique per organisation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "organisation",
+                ":organisationId",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "organisationId",
+                  "description": "(Required) ID of the organisation to add metadata to"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"metadataKey\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cbac85b2-6a66-4ab9-895e-ea7d77ad6f2f",
+              "name": "Metadata added successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organisation to add metadata to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadataKey\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e7c80985-298d-2f3f-a850-75a102d4472e\",\n  \"metadataKey\": \"string\",\n  \"value\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b015fe9-9397-418a-bbb2-f7d8a6dda89d",
+              "name": "Invalid organisation ID or metadata already exists for the given key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organisation to add metadata to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadataKey\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1bba178-d01b-4b9a-9bb4-b3cfd598542d",
+          "name": "Get a customer organization by ID",
+          "request": {
+            "name": "Get a customer organization by ID",
+            "description": {
+              "content": "Retrieves details of a specific customer organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "organisation",
+                ":organisationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "organisationId",
+                  "description": "(Required) ID of the organization to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f7c74ec-d15a-4a76-8840-de370b1c032a",
+              "name": "Organization retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organization to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8722,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 7231,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1970-04-07T18:27:12.484Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 1134,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 6407,\n      \"discountPercentage\": 6527.685947614203\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 5254,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 5208,\n      \"discountPercentage\": 9209.736403259672\n    }\n  ],\n  \"lastUpdated\": \"2026-08-08T22:45:50.411Z\",\n  \"taxExempt\": false,\n  \"id\": 8911,\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7e953ca-4161-46ed-828b-79ceb8be5bfa",
+              "name": "Invalid organization ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organization to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5bc4b163-657c-4fef-94a9-62afe3754049",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organization to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "079c70b8-8170-442c-828d-0ae3f6e8d0ba",
+          "name": "Delete a customer organization",
+          "request": {
+            "name": "Delete a customer organization",
+            "description": {
+              "content": "Soft deletes a customer organization and hard deletes all contained customers",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "organisation",
+                ":organisationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "organisationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a4ff188c-e1c4-4e3b-9a5c-e38ce9046c5f",
+              "name": "Organization deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8722,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 7231,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1970-04-07T18:27:12.484Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 1134,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 6407,\n      \"discountPercentage\": 6527.685947614203\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 5254,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 5208,\n      \"discountPercentage\": 9209.736403259672\n    }\n  ],\n  \"lastUpdated\": \"2026-08-08T22:45:50.411Z\",\n  \"taxExempt\": false,\n  \"id\": 8911,\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d78f4cf5-2e9f-4fa4-841e-2b5b7a55a083",
+              "name": "Organization could not be deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8722,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 7231,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1970-04-07T18:27:12.484Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 1134,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 6407,\n      \"discountPercentage\": 6527.685947614203\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 5254,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 5208,\n      \"discountPercentage\": 9209.736403259672\n    }\n  ],\n  \"lastUpdated\": \"2026-08-08T22:45:50.411Z\",\n  \"taxExempt\": false,\n  \"id\": 8911,\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5f44e51-86d5-4339-982f-aa3cd8b429fa",
+              "name": "Organization not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8722,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 7231,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1970-04-07T18:27:12.484Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 1134,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 6407,\n      \"discountPercentage\": 6527.685947614203\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 5254,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 5208,\n      \"discountPercentage\": 9209.736403259672\n    }\n  ],\n  \"lastUpdated\": \"2026-08-08T22:45:50.411Z\",\n  \"taxExempt\": false,\n  \"id\": 8911,\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb0c030d-265d-4250-9101-aa7acc17b911",
+          "name": "Update a customer organization",
+          "request": {
+            "name": "Update a customer organization",
+            "description": {
+              "content": "Updates details of an existing customer organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "organisation",
+                ":organisationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "organisationId",
+                  "description": "(Required) ID of the organization to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clearPaymentTerm\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"canAccessDashboard\": \"<boolean>\",\n  \"taxExempt\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"accountingSystemId\": \"<string>\",\n  \"isApproved\": \"<boolean>\",\n  \"customerType\": \"<string>\",\n  \"paymentTermId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2dac2eb4-f7d4-4660-baf1-293b02fa2892",
+              "name": "Organization updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organization to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clearPaymentTerm\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"canAccessDashboard\": \"<boolean>\",\n  \"taxExempt\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"accountingSystemId\": \"<string>\",\n  \"isApproved\": \"<boolean>\",\n  \"customerType\": \"<string>\",\n  \"paymentTermId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8722,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 7231,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1970-04-07T18:27:12.484Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 1134,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 6407,\n      \"discountPercentage\": 6527.685947614203\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 5254,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 5208,\n      \"discountPercentage\": 9209.736403259672\n    }\n  ],\n  \"lastUpdated\": \"2026-08-08T22:45:50.411Z\",\n  \"taxExempt\": false,\n  \"id\": 8911,\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3eed4291-6c31-401b-a108-847edcb9f209",
+              "name": "Invalid organization ID or update data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organization to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clearPaymentTerm\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"canAccessDashboard\": \"<boolean>\",\n  \"taxExempt\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"accountingSystemId\": \"<string>\",\n  \"isApproved\": \"<boolean>\",\n  \"customerType\": \"<string>\",\n  \"paymentTermId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be3716a1-6562-43a9-a6eb-6ea0088d0ca7",
+          "name": "Delete customer organisation metadata",
+          "request": {
+            "name": "Delete customer organisation metadata",
+            "description": {
+              "content": "Removes a metadata entry from a customer organisation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "organisation",
+                ":organisationId",
+                "metadata",
+                ":metadataId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "organisationId",
+                  "description": "(Required) ID of the organisation"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "metadataId",
+                  "description": "(Required) ID of the metadata entry to delete"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "282ad63e-d324-4bb8-a110-6b5f9f02f12f",
+              "name": "Metadata deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId",
+                    "metadata",
+                    ":metadataId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organisation"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "metadataId",
+                      "description": "(Required) ID of the metadata entry to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6fe539bc-5616-4ca0-92c1-d8281ec4e57e",
+              "name": "Metadata not found for the given organisation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId",
+                    "metadata",
+                    ":metadataId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organisation"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "metadataId",
+                      "description": "(Required) ID of the metadata entry to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d018c48-2ac9-4dd3-89af-28cf8ef4f842",
+          "name": "Update customer organisation metadata",
+          "request": {
+            "name": "Update customer organisation metadata",
+            "description": {
+              "content": "Partially updates an existing metadata entry on a customer organisation. Only supplied fields are modified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "organisation",
+                ":organisationId",
+                "metadata",
+                ":metadataId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "organisationId",
+                  "description": "(Required) ID of the organisation"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "metadataId",
+                  "description": "(Required) ID of the metadata entry to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"metadataKey\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "99155ee7-0f28-45b6-9189-dd9edd89d719",
+              "name": "Metadata updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId",
+                    "metadata",
+                    ":metadataId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organisation"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "metadataId",
+                      "description": "(Required) ID of the metadata entry to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadataKey\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e7c80985-298d-2f3f-a850-75a102d4472e\",\n  \"metadataKey\": \"string\",\n  \"value\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca6588df-7aad-4171-8bbd-28b11ab62a4e",
+              "name": "Metadata not found or key conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId",
+                    "metadata",
+                    ":metadataId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organisation"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "metadataId",
+                      "description": "(Required) ID of the metadata entry to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadataKey\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0d05579-3b0e-42be-8c76-5c277e820d77",
+          "name": "Transfer an individual customer to an organization",
+          "request": {
+            "name": "Transfer an individual customer to an organization",
+            "description": {
+              "content": "Merges an individual customer into a corporate organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "organisation",
+                ":destinationOrgId",
+                "transfer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sourceOrgId",
+                  "value": "<long>",
+                  "description": "(Required) ID of the source individual organization"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "destinationOrgId",
+                  "description": "(Required) ID of the destination corporate organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a55eeb2b-6ed4-47f3-9543-0aef2fb6850c",
+              "name": "Customer transferred successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":destinationOrgId",
+                    "transfer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sourceOrgId",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "destinationOrgId",
+                      "description": "(Required) ID of the destination corporate organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7b4c8485-da3c-47b5-a0dc-9242e2cc9da6",
+              "name": "Invalid organization IDs or transfer failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":destinationOrgId",
+                    "transfer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sourceOrgId",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "destinationOrgId",
+                      "description": "(Required) ID of the destination corporate organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35a29ed3-72f5-4a85-b866-704ab56dc0df",
+          "name": "Get customer organisation summaries",
+          "request": {
+            "name": "Get customer organisation summaries",
+            "description": {
+              "content": "Retrieves a list of customer organisation summaries",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "organisation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13791a31-950c-4667-9fb9-678de80e9b19",
+              "name": "Customer organisations retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"2020-08-10T18:44:07.321Z\",\n    \"taxExempt\": true,\n    \"updateDt\": \"1976-04-05T21:26:44.455Z\",\n    \"id\": 6776,\n    \"name\": \"string\",\n    \"firstTouchSource\": \"string\",\n    \"language\": \"string\",\n    \"isApproved\": false,\n    \"accountingSystemId\": \"string\"\n  },\n  {\n    \"createdAt\": \"1988-03-19T05:24:43.832Z\",\n    \"taxExempt\": true,\n    \"updateDt\": \"2007-10-11T02:02:33.492Z\",\n    \"id\": 6450,\n    \"name\": \"string\",\n    \"firstTouchSource\": \"string\",\n    \"language\": \"string\",\n    \"isApproved\": true,\n    \"accountingSystemId\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b3fce0f-c7fb-4fb4-867b-506a5fef0658",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fc4fd4f-0898-4995-b4f2-a953acb6db2c",
+          "name": "Preview a merge",
+          "request": {
+            "name": "Preview a merge",
+            "description": {
+              "content": "Read-only dry run: per-entity counts that would move plus whether the merge is eligible and why not.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "organisation",
+                ":destinationOrgId",
+                "transfer",
+                "preview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sourceOrgId",
+                  "value": "<long>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "destinationOrgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "622ffece-73fa-4fbc-8efd-5ef4b0c36c6e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":destinationOrgId",
+                    "transfer",
+                    "preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sourceOrgId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "destinationOrgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"counts\": {\n    \"key_0\": 3679\n  },\n  \"destinationOrganisationId\": 502,\n  \"eligible\": false,\n  \"sourceOrganisationId\": 7370,\n  \"totalRows\": 7314,\n  \"blockReason\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7986ea5d-233d-4356-83a8-770ca2581dd8",
+          "name": "Get organization by thread ID",
+          "request": {
+            "name": "Get organization by thread ID",
+            "description": {
+              "content": "Retrieves the organization associated with a specific thread",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "organisation",
+                "thread",
+                ":threadId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "threadId",
+                  "description": "(Required) ID of the thread to get organization for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19c74703-a4cb-44df-a959-1d2948e4c3e0",
+              "name": "Organization retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    "thread",
+                    ":threadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread to get organization for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8722,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 7231,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1970-04-07T18:27:12.484Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 1134,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 6407,\n      \"discountPercentage\": 6527.685947614203\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 5254,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 5208,\n      \"discountPercentage\": 9209.736403259672\n    }\n  ],\n  \"lastUpdated\": \"2026-08-08T22:45:50.411Z\",\n  \"taxExempt\": false,\n  \"id\": 8911,\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e1cde67-6582-4876-a945-cdd0a6322cbb",
+              "name": "Invalid thread ID or thread not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    "thread",
+                    ":threadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread to get organization for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cdbfc5e1-1525-4351-9e5c-7dafc28e60e7",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    "thread",
+                    ":threadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread to get organization for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aba91bc7-9365-4788-94bc-e0b258faf52c",
+          "name": "Get customer organisations with filtering",
+          "request": {
+            "name": "Get customer organisations with filtering",
+            "description": {
+              "content": "Retrieves a paginated list of customer organisations with optional filtering and search using RSQL",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "organisation",
+                "paginated"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "(Required) filter specification"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "30",
+                  "description": "The size of the page to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "updateDt,DESC",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Optional search term"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2af1d30f-2946-4199-8e4e-c21297a844a1",
+              "name": "Customer organisations retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    "paginated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "30"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "updateDt,DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"content\": [],\n  \"isEmpty\": true,\n  \"isFirst\": true,\n  \"isLast\": true,\n  \"pageNumber\": 8865,\n  \"pageSize\": 3163,\n  \"totalElements\": 5357,\n  \"totalPages\": 4664\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8494c095-1c47-4520-8048-af6c97c2c015",
+              "name": "Invalid filter specification",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    "paginated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "30"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "updateDt,DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "afcec4ac-3061-448f-b5e4-931d6f6dc1d4",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    "paginated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "30"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "updateDt,DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cdcc39cf-a47b-48ac-9692-38d79c09d172",
+          "name": "Get organization by customer ID",
+          "request": {
+            "name": "Get organization by customer ID",
+            "description": {
+              "content": "Retrieves the organization associated with a specific customer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "organisation",
+                "customer",
+                ":customerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "customerId",
+                  "description": "(Required) ID of the customer to get organization for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f863b369-db9d-4756-a2d4-ba20e2f3a0bf",
+              "name": "Organization retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    "customer",
+                    ":customerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "customerId",
+                      "description": "(Required) ID of the customer to get organization for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8722,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 7231,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1970-04-07T18:27:12.484Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 1134,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 6407,\n      \"discountPercentage\": 6527.685947614203\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 5254,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 5208,\n      \"discountPercentage\": 9209.736403259672\n    }\n  ],\n  \"lastUpdated\": \"2026-08-08T22:45:50.411Z\",\n  \"taxExempt\": false,\n  \"id\": 8911,\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84491e1b-e9f1-43a0-b05c-6cf35758d809",
+              "name": "Invalid customer ID or customer not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    "customer",
+                    ":customerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "customerId",
+                      "description": "(Required) ID of the customer to get organization for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "999de30e-d7ce-4f82-9f1d-058a4c6d17d0",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    "customer",
+                    ":customerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "customerId",
+                      "description": "(Required) ID of the customer to get organization for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6a141cc2-c280-473c-b475-60df4d25709b",
+    "name": "Phasio Activity Internal Manufacturer Customer Organisation Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

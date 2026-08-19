@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Metrics Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metrics Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register metric event",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/metrics",
+            "params": [
+              {
+                "name": "event",
+                "value": "",
+                "type": "query",
+                "description": "Type of metric event to register"
+              }
+            ]
+          },
+          "docs": "Records the occurrence of a specific metric event for analytics purposes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

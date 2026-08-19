@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Material Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Material Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all materials for an operator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/material",
+            "params": [
+              {
+                "name": "operatorId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the operator to retrieve materials for"
+              }
+            ]
+          },
+          "docs": "Retrieves all materials available to a specific manufacturer, including general materials"
+        },
+        {
+          "info": {
+            "name": "Get material by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/material/:materialId",
+            "params": [
+              {
+                "name": "materialId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the material to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific material by its unique identifier"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

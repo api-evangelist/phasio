@@ -1,0 +1,306 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Requisition Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Requisition Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an additional work order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition/:requisitionId/work-order",
+            "params": [
+              {
+                "name": "requisitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new work order on the requisition and schedules the requested quantity into its first operation, distinct from the idempotent bulk schedule path. Uses the ad-hoc routing given by optional ordered operationIds, else the template given by optional routingTemplateId, else the spec's designated default template, else a system-derived routing. routingTemplateId alongside operationIds records which template the ad-hoc steps were customized from. Its routing can be diverged afterward via the "
+        },
+        {
+          "info": {
+            "name": "Create work orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition/work-orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new work order for every part and quantity in the request"
+        },
+        {
+          "info": {
+            "name": "Create production batches",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition/batch-status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates production batches for the specified parts and quantities. Idempotent: parts whose work order is already in production are skipped"
+        },
+        {
+          "info": {
+            "name": "Create production batches",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition/create-batches",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates production batches for the specified parts and quantities. Idempotent: parts whose work order is already in production are skipped"
+        },
+        {
+          "info": {
+            "name": "Get requisitions by ids",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves requisitions for the given ids, regardless of current step. Used to hydrate paginated completed-order rows whose requisitions fall outside the operation-scoped set."
+        },
+        {
+          "info": {
+            "name": "Automatically create batches for an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition/auto-create-batches/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to create batches for"
+              }
+            ]
+          },
+          "docs": "Creates production batches for all parts in the specified order"
+        },
+        {
+          "info": {
+            "name": "Get all requisitions for current operator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition",
+            "params": [
+              {
+                "name": "archived",
+                "value": "false",
+                "type": "query",
+                "description": "Include archived requisitions"
+              }
+            ]
+          },
+          "docs": "Retrieves all requisitions for the current operator"
+        },
+        {
+          "info": {
+            "name": "Download requisition part thumbnail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition/:requisitionId/thumbnail",
+            "params": [
+              {
+                "name": "requisitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the requisition"
+              }
+            ]
+          },
+          "docs": "Downloads the thumbnail image for a requisition's part"
+        },
+        {
+          "info": {
+            "name": "Get requisition by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the requisition to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific requisition by its ID"
+        },
+        {
+          "info": {
+            "name": "Get requisitions by production step",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition/production-step/:stepId",
+            "params": [
+              {
+                "name": "stepId",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the production step to filter by"
+              },
+              {
+                "name": "archived",
+                "value": "false",
+                "type": "query",
+                "description": "Include archived requisitions"
+              }
+            ]
+          },
+          "docs": "Retrieves all requisitions at the specified production step"
+        },
+        {
+          "info": {
+            "name": "Get requisitions by part specification ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition/part-specification/:specificationId",
+            "params": [
+              {
+                "name": "specificationId",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the part specification to filter by"
+              },
+              {
+                "name": "archived",
+                "value": "false",
+                "type": "query",
+                "description": "Include archived requisitions"
+              }
+            ]
+          },
+          "docs": "Retrieves all requisitions for the specified part specification"
+        },
+        {
+          "info": {
+            "name": "Get requisitions by order ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition/order",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "query",
+                "description": "ID of the order to filter by"
+              }
+            ]
+          },
+          "docs": "Retrieves all requisitions for the specified order"
+        },
+        {
+          "info": {
+            "name": "Get requisitions by operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition/operation/:operationId",
+            "params": [
+              {
+                "name": "operationId",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the operation to filter by"
+              },
+              {
+                "name": "archived",
+                "value": "false",
+                "type": "query",
+                "description": "Include archived requisitions"
+              }
+            ]
+          },
+          "docs": "Retrieves all requisitions with the specified operation"
+        },
+        {
+          "info": {
+            "name": "Get batch transitions for parts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition/batch-transitions",
+            "params": [
+              {
+                "name": "requisitionIds",
+                "value": "",
+                "type": "query",
+                "description": "List of part IDs to get transitions for"
+              }
+            ]
+          },
+          "docs": "Retrieves all batch transitions for the specified part IDs"
+        },
+        {
+          "info": {
+            "name": "Get backlogged requisitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/requisition/backlog"
+          },
+          "docs": "Retrieves all requisitions in the operator's backlog"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

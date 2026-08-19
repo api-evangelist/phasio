@@ -1,0 +1,167 @@
+{
+  "item": [
+    {
+      "id": "da0b29e3-af50-4760-bfc2-0866f32ab5b4",
+      "name": "Customer Part Design Controller",
+      "description": {
+        "content": "API for customers to access their part designs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "18fdca0a-a29b-4cb3-8fa6-a204f505db2c",
+          "name": "Get all part designs",
+          "request": {
+            "name": "Get all part designs",
+            "description": {
+              "content": "Retrieves all part designs for the current customer organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "part-design"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3faa245-5e2b-445b-a244-5b33bcd755e6",
+              "name": "Successfully retrieved part designs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "part-design"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"2024-12-03T00:55:17.394Z\",\n    \"id\": \"51672ddb-4789-87a6-b444-56adaa9935af\",\n    \"name\": \"string\",\n    \"revisions\": [\n      \"3b3ef7a9-4fda-71cb-8ef5-9b4eadc0e03e\",\n      \"87ef9555-aba1-b493-f5c8-1b27d09c4de7\"\n    ]\n  },\n  {\n    \"createdAt\": \"1969-04-02T02:11:02.941Z\",\n    \"id\": \"e933dfc5-74be-293e-aa96-e56d6e31e3b4\",\n    \"name\": \"string\",\n    \"revisions\": [\n      \"63271b77-406f-8f84-91cd-28aaaa4d2fba\",\n      \"fad46b5c-1f92-52eb-6ba6-c8c7322745a8\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca56e195-857a-47a0-9e3e-65a8437b75f4",
+              "name": "Unauthorized - missing customer or operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "part-design"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "97182ecf-4ab6-4080-a832-07ed7899a884",
+    "name": "Phasio Activity Internal Customer Part Design Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

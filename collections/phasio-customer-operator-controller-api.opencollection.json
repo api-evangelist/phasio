@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Customer Operator Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Operator Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get operator information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/operator"
+          },
+          "docs": "Retrieves information about the current operator"
+        },
+        {
+          "info": {
+            "name": "Get available shipping methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/operator/shipping-methods"
+          },
+          "docs": "Retrieves all shipping methods available to the customer"
+        },
+        {
+          "info": {
+            "name": "Get available manufacturing processes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/operator/processes"
+          },
+          "docs": "Retrieves all manufacturing processes available to the customer"
+        },
+        {
+          "info": {
+            "name": "Get operator logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/operator/logo"
+          },
+          "docs": "Retrieves the logo image for the current operator"
+        },
+        {
+          "info": {
+            "name": "Get available manufacturing lead times",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/operator/lead-times"
+          },
+          "docs": "Retrieves all manufacturing lead times"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

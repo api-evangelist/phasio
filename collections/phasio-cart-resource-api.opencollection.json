@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal cart-resource API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "cart-resource",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get paginated carts with RSQL filtering",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/cart",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "RSQL query string for filtering (e.g. paymentStatus=in=(PAID,UNPAID);price>10)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves paginated cart records for the current operator. Intended for cart analytics — typical use case is identifying high-value or anomalous quoting activity across customers. Supports RSQL filtering via `filter` and a free-text `search` parameter matched against cart number."
+        },
+        {
+          "info": {
+            "name": "Get a cart by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/cart/:cartId",
+            "params": [
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific shopping cart by its ID. Companion to the paginated cart endpoint for drilling into individual records during analytics workflows."
+        },
+        {
+          "info": {
+            "name": "Get cart pre-order (quote + purchasability)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/cart/:cartId/pre-order",
+            "params": [
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart to pre-order"
+              }
+            ]
+          },
+          "docs": "Generates a bundled quote and purchasability check for a cart via the pre-order pipeline. Exposed for analytics consumers needing the quoted total alongside cart contents."
+        },
+        {
+          "info": {
+            "name": "Get all carts for the operator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/cart/operator"
+          },
+          "docs": "Retrieves all shopping carts associated with the current operator"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

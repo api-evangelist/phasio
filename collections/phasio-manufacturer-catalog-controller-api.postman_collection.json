@@ -1,0 +1,246 @@
+{
+  "item": [
+    {
+      "id": "15c5f148-1f76-4e0c-adc9-1652eed8f907",
+      "name": "Manufacturer Catalog Controller",
+      "description": {
+        "content": "Endpoints for managing manufacturer catalog items",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "92f54d03-ab7b-4da6-b9fa-14b88cc649ad",
+          "name": "Create catalog items",
+          "request": {
+            "name": "Create catalog items",
+            "description": {
+              "content": "Creates one or more catalog items by creating part specifications and customer article references. If a part specification with the same manufacturing parameters already exists, it will be reused. The catalog items will automatically be visible in the customer catalog.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"customerOrganisationId\": \"<long>\",\n    \"materialId\": \"<long>\",\n    \"partRevisionId\": \"<uuid>\",\n    \"postProcessingIds\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"pricingTiers\": [\n      {\n        \"price\": \"<number>\",\n        \"quantity\": \"<integer>\",\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"price\": \"<number>\",\n        \"quantity\": \"<integer>\",\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"processPricesId\": \"<uuid>\",\n    \"reference\": \"<string>\",\n    \"units\": \"<string>\",\n    \"infillId\": \"<long>\",\n    \"precisionId\": \"<long>\",\n    \"colorId\": \"<long>\"\n  },\n  {\n    \"customerOrganisationId\": \"<long>\",\n    \"materialId\": \"<long>\",\n    \"partRevisionId\": \"<uuid>\",\n    \"postProcessingIds\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"pricingTiers\": [\n      {\n        \"price\": \"<number>\",\n        \"quantity\": \"<integer>\",\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"price\": \"<number>\",\n        \"quantity\": \"<integer>\",\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"processPricesId\": \"<uuid>\",\n    \"reference\": \"<string>\",\n    \"units\": \"<string>\",\n    \"infillId\": \"<long>\",\n    \"precisionId\": \"<long>\",\n    \"colorId\": \"<long>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "42465ddf-840a-4637-aebd-f1fe96e3d0b2",
+              "name": "Catalog items successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"customerOrganisationId\": 1329,\n    \"materialId\": 8955,\n    \"partRevisionId\": \"4ad9cee0-38e5-5d7a-99ce-457cb3262aff\",\n    \"postProcessingIds\": [\n      4502,\n      747\n    ],\n    \"pricingTiers\": [\n      {\n        \"price\": 4917.517790884802,\n        \"quantity\": 9308,\n        \"id\": \"6b488f61-3e91-29ea-2413-a43f5d2d87ef\"\n      },\n      {\n        \"price\": 5326.460463365247,\n        \"quantity\": 1444,\n        \"id\": \"65fa621e-8255-20a1-ae38-be0541c4d629\"\n      }\n    ],\n    \"processPricesId\": \"4e90b1c6-aa26-72f3-7aa0-c44e7717358f\",\n    \"reference\": \"string\",\n    \"units\": \"CENTIMETERS\",\n    \"infillId\": 8164,\n    \"precisionId\": 6044,\n    \"colorId\": 7748\n  },\n  {\n    \"customerOrganisationId\": 2954,\n    \"materialId\": 9926,\n    \"partRevisionId\": \"133f6605-c1a2-6286-df45-09f2adeedea1\",\n    \"postProcessingIds\": [\n      1813,\n      8624\n    ],\n    \"pricingTiers\": [\n      {\n        \"price\": 3149.9564490392386,\n        \"quantity\": 5996,\n        \"id\": \"6676eb11-766a-6b0e-aeef-4c20b78d5008\"\n      },\n      {\n        \"price\": 3535.999643354949,\n        \"quantity\": 811,\n        \"id\": \"4721d858-1036-2637-f451-b0eefbaeebf1\"\n      }\n    ],\n    \"processPricesId\": \"7c777c1d-9ee3-45ad-2b34-868f8f96de89\",\n    \"reference\": \"string\",\n    \"units\": \"FEET\",\n    \"infillId\": 3610,\n    \"precisionId\": 2805,\n    \"colorId\": 142\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"1996-08-28T17:06:53.837Z\",\n    \"customerReferences\": [\n      {\n        \"customerOrganisationId\": 9970,\n        \"pricingTiers\": [\n          {\n            \"price\": 9306.599314153073,\n            \"quantity\": 9621,\n            \"id\": \"4b61b195-15ea-bc8d-e658-f18f21a73a92\"\n          },\n          {\n            \"price\": 7365.138775752671,\n            \"quantity\": 5207,\n            \"id\": \"a9fbf8c8-57c3-36fb-958a-b646080d493c\"\n          }\n        ],\n        \"reference\": \"string\",\n        \"id\": \"a4b3d9eb-78db-f264-435c-29727dfe4439\",\n        \"customerOrganisationName\": \"string\",\n        \"showInCatalog\": true\n      },\n      {\n        \"customerOrganisationId\": 9731,\n        \"pricingTiers\": [\n          {\n            \"price\": 1046.0459245166599,\n            \"quantity\": 9909,\n            \"id\": \"3a10f0d8-9bc6-d3c7-0416-f035cbc768c1\"\n          },\n          {\n            \"price\": 9401.469275783293,\n            \"quantity\": 4997,\n            \"id\": \"ce89d672-ac83-b113-6da4-c6888e5c5d84\"\n          }\n        ],\n        \"reference\": \"string\",\n        \"id\": \"868d4ecb-8b8a-9bc9-e0c6-82ae7789157e\",\n        \"customerOrganisationName\": \"string\",\n        \"showInCatalog\": false\n      }\n    ],\n    \"id\": \"45820263-a1ec-9dfc-a934-d2eafcbe790c\",\n    \"lastUpdated\": \"2017-02-22T19:33:19.172Z\",\n    \"materialId\": 4425,\n    \"partRevisionId\": \"aeefc85a-41c4-d3f7-4eef-32d437449d2e\",\n    \"partRevisionName\": \"string\",\n    \"postProcessingIds\": [\n      8458,\n      1154\n    ],\n    \"units\": \"INCHES\",\n    \"processPricesId\": \"0ee75e87-2edc-3605-fa08-03b5b9a1428c\",\n    \"colorId\": 7445,\n    \"precisionId\": 2565,\n    \"infillId\": 7097,\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1996-03-25T20:32:50.687Z\",\n        \"id\": \"fadf0eb7-8841-929b-6142-5f7fa8c96b87\",\n        \"partSpecificationId\": \"06d7fa81-aa7e-ac25-6897-f98885b237cd\",\n        \"updatedAt\": \"1973-07-27T00:04:57.473Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2023-09-16T06:23:34.667Z\",\n        \"id\": \"b1d3b6c7-51ec-5de3-83f8-32bb83402dd2\",\n        \"partSpecificationId\": \"3620040b-bda5-6fe6-0177-e87bf50e723d\",\n        \"updatedAt\": \"1980-09-19T06:26:41.514Z\"\n      }\n    ]\n  },\n  {\n    \"createdAt\": \"1976-08-06T06:30:59.387Z\",\n    \"customerReferences\": [\n      {\n        \"customerOrganisationId\": 2645,\n        \"pricingTiers\": [\n          {\n            \"price\": 1390.5488288331435,\n            \"quantity\": 901,\n            \"id\": \"ea4fac4c-5009-80e3-4413-6ee225658329\"\n          },\n          {\n            \"price\": 1156.5664256960506,\n            \"quantity\": 824,\n            \"id\": \"a19dd659-c763-0e9d-8d56-f2ba5fa96031\"\n          }\n        ],\n        \"reference\": \"string\",\n        \"id\": \"f586e1ca-ad87-e222-f76b-c927b4297279\",\n        \"customerOrganisationName\": \"string\",\n        \"showInCatalog\": false\n      },\n      {\n        \"customerOrganisationId\": 6801,\n        \"pricingTiers\": [\n          {\n            \"price\": 3122.9303230759942,\n            \"quantity\": 2308,\n            \"id\": \"f554ffc3-0110-5349-3318-ad30733eb9a4\"\n          },\n          {\n            \"price\": 3837.6318546864295,\n            \"quantity\": 5146,\n            \"id\": \"cf7bdb35-5d07-d471-bdbc-c1bd6f487b3e\"\n          }\n        ],\n        \"reference\": \"string\",\n        \"id\": \"bd02780b-109e-a9c9-a69d-e231efd0274e\",\n        \"customerOrganisationName\": \"string\",\n        \"showInCatalog\": true\n      }\n    ],\n    \"id\": \"c7ab5f49-6093-f83b-a8ba-9cd1b4da21cc\",\n    \"lastUpdated\": \"1953-01-31T20:39:05.233Z\",\n    \"materialId\": 311,\n    \"partRevisionId\": \"0bcc9795-545e-b609-34bd-e1e7234257a5\",\n    \"partRevisionName\": \"string\",\n    \"postProcessingIds\": [\n      7044,\n      3897\n    ],\n    \"units\": \"INCHES\",\n    \"processPricesId\": \"21d39823-6ce3-91a2-d196-e563f93d333d\",\n    \"colorId\": 9318,\n    \"precisionId\": 9897,\n    \"infillId\": 8036,\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1967-06-26T08:55:28.359Z\",\n        \"id\": \"fee3ac50-65ea-5503-7786-fa3544084c45\",\n        \"partSpecificationId\": \"d60a8bea-2382-613c-0cd8-50744d48eb36\",\n        \"updatedAt\": \"2025-04-05T03:49:39.504Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1971-05-26T08:10:08.387Z\",\n        \"id\": \"c2898d28-1652-f0cb-5ea8-36c3b9b2712a\",\n        \"partSpecificationId\": \"9bc5a963-d518-d515-5cf2-92fa25c1934d\",\n        \"updatedAt\": \"1996-09-24T23:56:14.796Z\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b654c41-d6e1-4518-b882-c7f641324952",
+              "name": "Invalid request data or referenced entities not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"customerOrganisationId\": 1329,\n    \"materialId\": 8955,\n    \"partRevisionId\": \"4ad9cee0-38e5-5d7a-99ce-457cb3262aff\",\n    \"postProcessingIds\": [\n      4502,\n      747\n    ],\n    \"pricingTiers\": [\n      {\n        \"price\": 4917.517790884802,\n        \"quantity\": 9308,\n        \"id\": \"6b488f61-3e91-29ea-2413-a43f5d2d87ef\"\n      },\n      {\n        \"price\": 5326.460463365247,\n        \"quantity\": 1444,\n        \"id\": \"65fa621e-8255-20a1-ae38-be0541c4d629\"\n      }\n    ],\n    \"processPricesId\": \"4e90b1c6-aa26-72f3-7aa0-c44e7717358f\",\n    \"reference\": \"string\",\n    \"units\": \"CENTIMETERS\",\n    \"infillId\": 8164,\n    \"precisionId\": 6044,\n    \"colorId\": 7748\n  },\n  {\n    \"customerOrganisationId\": 2954,\n    \"materialId\": 9926,\n    \"partRevisionId\": \"133f6605-c1a2-6286-df45-09f2adeedea1\",\n    \"postProcessingIds\": [\n      1813,\n      8624\n    ],\n    \"pricingTiers\": [\n      {\n        \"price\": 3149.9564490392386,\n        \"quantity\": 5996,\n        \"id\": \"6676eb11-766a-6b0e-aeef-4c20b78d5008\"\n      },\n      {\n        \"price\": 3535.999643354949,\n        \"quantity\": 811,\n        \"id\": \"4721d858-1036-2637-f451-b0eefbaeebf1\"\n      }\n    ],\n    \"processPricesId\": \"7c777c1d-9ee3-45ad-2b34-868f8f96de89\",\n    \"reference\": \"string\",\n    \"units\": \"FEET\",\n    \"infillId\": 3610,\n    \"precisionId\": 2805,\n    \"colorId\": 142\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4b70e110-03ca-4488-8890-bfb866950d67",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"customerOrganisationId\": 1329,\n    \"materialId\": 8955,\n    \"partRevisionId\": \"4ad9cee0-38e5-5d7a-99ce-457cb3262aff\",\n    \"postProcessingIds\": [\n      4502,\n      747\n    ],\n    \"pricingTiers\": [\n      {\n        \"price\": 4917.517790884802,\n        \"quantity\": 9308,\n        \"id\": \"6b488f61-3e91-29ea-2413-a43f5d2d87ef\"\n      },\n      {\n        \"price\": 5326.460463365247,\n        \"quantity\": 1444,\n        \"id\": \"65fa621e-8255-20a1-ae38-be0541c4d629\"\n      }\n    ],\n    \"processPricesId\": \"4e90b1c6-aa26-72f3-7aa0-c44e7717358f\",\n    \"reference\": \"string\",\n    \"units\": \"CENTIMETERS\",\n    \"infillId\": 8164,\n    \"precisionId\": 6044,\n    \"colorId\": 7748\n  },\n  {\n    \"customerOrganisationId\": 2954,\n    \"materialId\": 9926,\n    \"partRevisionId\": \"133f6605-c1a2-6286-df45-09f2adeedea1\",\n    \"postProcessingIds\": [\n      1813,\n      8624\n    ],\n    \"pricingTiers\": [\n      {\n        \"price\": 3149.9564490392386,\n        \"quantity\": 5996,\n        \"id\": \"6676eb11-766a-6b0e-aeef-4c20b78d5008\"\n      },\n      {\n        \"price\": 3535.999643354949,\n        \"quantity\": 811,\n        \"id\": \"4721d858-1036-2637-f451-b0eefbaeebf1\"\n      }\n    ],\n    \"processPricesId\": \"7c777c1d-9ee3-45ad-2b34-868f8f96de89\",\n    \"reference\": \"string\",\n    \"units\": \"FEET\",\n    \"infillId\": 3610,\n    \"precisionId\": 2805,\n    \"colorId\": 142\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7942ebd5-15db-444f-a9c7-a2d0cc00e8fc",
+    "name": "Phasio Activity Internal Manufacturer Catalog Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,605 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Order Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Order Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Edit a confirmed or paid order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/edit",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to edit"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edits an order in-place (for CONFIRMED/PAID orders). Unlike the PATCH endpoint which voids and replaces quotes, this preserves the order ID and edits requisitions in-place."
+        },
+        {
+          "info": {
+            "name": "Get orders with filtering",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "RSQL query string for filtering (e.g. paymentStatus=in=(PAID,UNPAID);price>10)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Optional search term"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of orders with optional filtering and search"
+        },
+        {
+          "info": {
+            "name": "Create a new order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the thread to associate with the order"
+              },
+              {
+                "name": "customerOrganisationId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the customer organisation to associated with the order"
+              },
+              {
+                "name": "draft",
+                "value": "",
+                "type": "query",
+                "description": "Whether to save the quote as a draft. Draft quotes are internal and not visible to customers."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new manufacturing order with the provided details"
+        },
+        {
+          "info": {
+            "name": "resendEstimate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/resend-estimate",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to resend estimate for"
+              },
+              {
+                "name": "includePaymentLink",
+                "value": "true",
+                "type": "query",
+                "description": "Whether to include payment link in the estimate"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Create payment for an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/payment",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to create payment for"
+              }
+            ]
+          },
+          "docs": "Initiates payment processing for the specified order"
+        },
+        {
+          "info": {
+            "name": "Convert a draft quote into an open quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/convert",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the draft quote to convert"
+              }
+            ]
+          },
+          "docs": "Converts a draft quote into an open quote. This is a one-way transition: the order must currently be a draft. On conversion the customer can view the quote, the customer is notified, and any accounting estimate is moved into the open state."
+        },
+        {
+          "info": {
+            "name": "sendOrderConfirmation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/confirmation",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to resend order confirmation for"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Clone an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/clone",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to clone"
+              }
+            ]
+          },
+          "docs": "Creates a new order as a copy of an existing one"
+        },
+        {
+          "info": {
+            "name": "Get order by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific order by its ID"
+        },
+        {
+          "info": {
+            "name": "Update an existing order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an order with the provided details"
+        },
+        {
+          "info": {
+            "name": "Delete an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to delete"
+              }
+            ]
+          },
+          "docs": "Deletes an order by its ID"
+        },
+        {
+          "info": {
+            "name": "Unarchive an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/unarchive",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to unarchive"
+              }
+            ]
+          },
+          "docs": "Removes archived status from an order"
+        },
+        {
+          "info": {
+            "name": "Update order shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/shipment",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to update shipment for"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates shipment information for an order"
+        },
+        {
+          "info": {
+            "name": "Update purchase order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/purchase-order",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to update purchase order for"
+              },
+              {
+                "name": "purchaseOrderNumber",
+                "value": "",
+                "type": "query",
+                "description": "Purchase order details"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an order's purchase order"
+        },
+        {
+          "info": {
+            "name": "Confirm order payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/payment/confirm",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to confirm payment for"
+              },
+              {
+                "name": "purchaseOrderNumber",
+                "value": "",
+                "type": "query",
+                "description": "Purchase order number"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Marks an order's payment as confirmed"
+        },
+        {
+          "info": {
+            "name": "Update order owner",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/owner",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reassigns the order owner. The new owner must be a user belonging to the same operator team as the order. Pass a null/blank owner to clear the assignment."
+        },
+        {
+          "info": {
+            "name": "Update order kanban column",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/kanban-column",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Moves an order to a different kanban column. Optional skipAutomationTypes field suppresses the named column automations for this request only."
+        },
+        {
+          "info": {
+            "name": "Apply discount to an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/discount",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to apply discount to"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Applies a specified discount to an order"
+        },
+        {
+          "info": {
+            "name": "Remove discount from an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/discount",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to remove discount from"
+              }
+            ]
+          },
+          "docs": "Removes any applied discount from an order"
+        },
+        {
+          "info": {
+            "name": "Update order custom reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/custom-reference",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the custom reference for an order. This can be done on any order status."
+        },
+        {
+          "info": {
+            "name": "Bypass purchasability checks for an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/bypass-purchasability-check",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to bypass checks for"
+              }
+            ]
+          },
+          "docs": "Marks an order as bypassing purchasability validation"
+        },
+        {
+          "info": {
+            "name": "Update order awaiting status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/awaiting-status",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the awaiting status of an order with additional details"
+        },
+        {
+          "info": {
+            "name": "Archive an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/archive",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to archive"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Marks an order as archived with an optional message"
+        },
+        {
+          "info": {
+            "name": "Validate order purchasability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/purchasability",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to validate"
+              }
+            ]
+          },
+          "docs": "Checks if an order can be purchased by validating its details"
+        },
+        {
+          "info": {
+            "name": "Validate part manufacturability for an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/manufacturability",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to validate parts for"
+              }
+            ]
+          },
+          "docs": "Checks if all parts in an order can be manufactured with current setup"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

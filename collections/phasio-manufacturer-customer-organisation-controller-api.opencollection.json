@@ -1,0 +1,330 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Customer Organisation Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Customer Organisation Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upsert customer organisation metadata by key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/organisation/:organisationId/metadata/key/:metadataKey",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the organisation"
+              },
+              {
+                "name": "metadataKey",
+                "value": "shopifyCustomerId",
+                "type": "path",
+                "description": "Metadata key to set"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the value for a metadata key on a customer organisation, creating the entry if it does not already exist. Intended for external systems that track their own key but do not know the corresponding internal metadata ID."
+        },
+        {
+          "info": {
+            "name": "Add metadata to a customer organisation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/organisation/:organisationId/metadata",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the organisation to add metadata to"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new metadata entry (key/value pair) to a customer organisation. Keys must be unique per organisation."
+        },
+        {
+          "info": {
+            "name": "Get a customer organization by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/organisation/:organisationId",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the organization to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific customer organization"
+        },
+        {
+          "info": {
+            "name": "Update a customer organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/organisation/:organisationId",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the organization to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates details of an existing customer organization"
+        },
+        {
+          "info": {
+            "name": "Delete a customer organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/organisation/:organisationId",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Soft deletes a customer organization and hard deletes all contained customers"
+        },
+        {
+          "info": {
+            "name": "Update customer organisation metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/organisation/:organisationId/metadata/:metadataId",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the organisation"
+              },
+              {
+                "name": "metadataId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the metadata entry to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially updates an existing metadata entry on a customer organisation. Only supplied fields are modified."
+        },
+        {
+          "info": {
+            "name": "Delete customer organisation metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/organisation/:organisationId/metadata/:metadataId",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the organisation"
+              },
+              {
+                "name": "metadataId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the metadata entry to delete"
+              }
+            ]
+          },
+          "docs": "Removes a metadata entry from a customer organisation."
+        },
+        {
+          "info": {
+            "name": "Transfer an individual customer to an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/organisation/:destinationOrgId/transfer",
+            "params": [
+              {
+                "name": "sourceOrgId",
+                "value": "1",
+                "type": "query",
+                "description": "ID of the source individual organization"
+              },
+              {
+                "name": "destinationOrgId",
+                "value": "2",
+                "type": "path",
+                "description": "ID of the destination corporate organization"
+              }
+            ]
+          },
+          "docs": "Merges an individual customer into a corporate organization"
+        },
+        {
+          "info": {
+            "name": "Get customer organisation summaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/organisation"
+          },
+          "docs": "Retrieves a list of customer organisation summaries"
+        },
+        {
+          "info": {
+            "name": "Preview a merge",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/organisation/:destinationOrgId/transfer/preview",
+            "params": [
+              {
+                "name": "sourceOrgId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "destinationOrgId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read-only dry run: per-entity counts that would move plus whether the merge is eligible and why not."
+        },
+        {
+          "info": {
+            "name": "Get organization by thread ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/organisation/thread/:threadId",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the thread to get organization for"
+              }
+            ]
+          },
+          "docs": "Retrieves the organization associated with a specific thread"
+        },
+        {
+          "info": {
+            "name": "Get customer organisations with filtering",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/organisation/paginated",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "filter specification"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Optional search term"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of customer organisations with optional filtering and search using RSQL"
+        },
+        {
+          "info": {
+            "name": "Get organization by customer ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/organisation/customer/:customerId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the customer to get organization for"
+              }
+            ]
+          },
+          "docs": "Retrieves the organization associated with a specific customer"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

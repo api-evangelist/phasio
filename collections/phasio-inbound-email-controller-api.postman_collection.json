@@ -1,0 +1,385 @@
+{
+  "item": [
+    {
+      "id": "6a5e19f6-8cd3-4ee7-b9f0-fc78bf98bbd0",
+      "name": "Inbound Email Controller",
+      "description": {
+        "content": "Endpoints for handling incoming emails to the system",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6adb0060-42c9-4436-b978-7dc970252fcf",
+          "name": "Process inbound email",
+          "request": {
+            "name": "Process inbound email",
+            "description": {
+              "content": "Processes an incoming email and associates it with a thread or creates a new thread",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "internal",
+                "v1",
+                "inbound-email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fromEmail",
+                  "value": "<string>",
+                  "description": "(Required) Email address of the sender"
+                },
+                {
+                  "disabled": false,
+                  "key": "subject",
+                  "value": "<string>",
+                  "description": "(Required) Subject line of the email"
+                },
+                {
+                  "disabled": false,
+                  "key": "body",
+                  "value": "<string>",
+                  "description": "(Required) Body content of the email"
+                },
+                {
+                  "disabled": false,
+                  "key": "threadId",
+                  "value": "<long>",
+                  "description": "ID of an existing thread to associate the email with (optional)"
+                },
+                {
+                  "disabled": false,
+                  "key": "spf",
+                  "value": "<boolean>",
+                  "description": "(Required) Whether the email passed SPF authentication"
+                },
+                {
+                  "disabled": false,
+                  "key": "dkim",
+                  "value": "<boolean>",
+                  "description": "(Required) Whether the email passed DKIM authentication"
+                },
+                {
+                  "disabled": false,
+                  "key": "notSpam",
+                  "value": "<boolean>",
+                  "description": "(Required) Whether the email was determined to be legitimate (not spam)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "attachments",
+                  "value": "[\"<binary>\",\"<binary>\"]",
+                  "type": "text",
+                  "description": "Files attached to the email (optional)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c91b78e0-a503-4a9f-9acf-f8584a72e517",
+              "name": "Email successfully processed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "inbound-email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fromEmail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subject",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "body",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "threadId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "spf",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dkim",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "notSpam",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Files attached to the email (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "attachments",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7d216c62-ce3c-409f-88a7-5063a353215c",
+              "name": "Invalid request data or operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "inbound-email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fromEmail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subject",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "body",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "threadId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "spf",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dkim",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "notSpam",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Files attached to the email (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "attachments",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "94635b40-ffa6-42ba-96b2-c9b7e87e1648",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "inbound-email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fromEmail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subject",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "body",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "threadId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "spf",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dkim",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "notSpam",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Files attached to the email (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "attachments",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e6d5c11f-ead5-46f0-9f45-4a9ef840b017",
+    "name": "Phasio Activity Internal Inbound Email Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

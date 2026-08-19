@@ -1,0 +1,898 @@
+{
+  "item": [
+    {
+      "id": "9ba99c78-c549-448c-9cf5-2339d44a5f0e",
+      "name": "Manufacturer Routing Template Controller",
+      "description": {
+        "content": "Manage routing templates on a part specification",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "60ebc1b6-09f0-4eb5-87b8-f6a1ca520e21",
+          "name": "deprecate",
+          "request": {
+            "name": "deprecate",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "routing-templates",
+                ":id",
+                "deprecate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"replacedByRoutingTemplateId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "87b8ed9c-c4dd-441c-a1b6-2372a30b3cf4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "routing-templates",
+                    ":id",
+                    "deprecate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"replacedByRoutingTemplateId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"approved\": true,\n  \"createdAt\": \"1989-06-13T15:54:19.539Z\",\n  \"deprecated\": false,\n  \"id\": \"5a6cfa82-fe7a-b811-89a2-0044a39a94dd\",\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"partSpecificationId\": \"7db9dfea-49eb-109c-71f9-f9c6dbf4bc97\",\n  \"steps\": [\n    {\n      \"id\": \"0bf5e203-7722-e3d8-3c6e-f5160b4af712\",\n      \"operationId\": \"0f619cf8-fa60-adba-c272-4618e8bec168\",\n      \"sequence\": 7541,\n      \"operationName\": \"string\"\n    },\n    {\n      \"id\": \"f2e17371-afb3-c853-c8b2-23d0799c762d\",\n      \"operationId\": \"ba6988c5-d6e0-4e05-3a96-09af9dcfff02\",\n      \"sequence\": 1032,\n      \"operationName\": \"string\"\n    }\n  ],\n  \"updateDt\": \"2020-12-02T09:52:28.196Z\",\n  \"workOrderReferences\": 1584,\n  \"deprecatedAt\": \"1976-05-17T15:38:30.522Z\",\n  \"replacedById\": \"9b977884-1722-1a0c-c3d3-69833060f7e5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8367ed2-aa0b-4705-ba37-245541c0c14a",
+          "name": "set Default",
+          "request": {
+            "name": "set Default",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "routing-templates",
+                ":id",
+                "default"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea134b63-56d0-4af9-99d3-6022a3d2c8e4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "routing-templates",
+                    ":id",
+                    "default"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"approved\": true,\n  \"createdAt\": \"1989-06-13T15:54:19.539Z\",\n  \"deprecated\": false,\n  \"id\": \"5a6cfa82-fe7a-b811-89a2-0044a39a94dd\",\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"partSpecificationId\": \"7db9dfea-49eb-109c-71f9-f9c6dbf4bc97\",\n  \"steps\": [\n    {\n      \"id\": \"0bf5e203-7722-e3d8-3c6e-f5160b4af712\",\n      \"operationId\": \"0f619cf8-fa60-adba-c272-4618e8bec168\",\n      \"sequence\": 7541,\n      \"operationName\": \"string\"\n    },\n    {\n      \"id\": \"f2e17371-afb3-c853-c8b2-23d0799c762d\",\n      \"operationId\": \"ba6988c5-d6e0-4e05-3a96-09af9dcfff02\",\n      \"sequence\": 1032,\n      \"operationName\": \"string\"\n    }\n  ],\n  \"updateDt\": \"2020-12-02T09:52:28.196Z\",\n  \"workOrderReferences\": 1584,\n  \"deprecatedAt\": \"1976-05-17T15:38:30.522Z\",\n  \"replacedById\": \"9b977884-1722-1a0c-c3d3-69833060f7e5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac6546af-2c7d-4173-be75-3af1ab3bfafc",
+          "name": "unset Default",
+          "request": {
+            "name": "unset Default",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "routing-templates",
+                ":id",
+                "default"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fc1a0c95-7e70-4c2e-be7d-c7df1c4caaee",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "routing-templates",
+                    ":id",
+                    "default"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"approved\": true,\n  \"createdAt\": \"1989-06-13T15:54:19.539Z\",\n  \"deprecated\": false,\n  \"id\": \"5a6cfa82-fe7a-b811-89a2-0044a39a94dd\",\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"partSpecificationId\": \"7db9dfea-49eb-109c-71f9-f9c6dbf4bc97\",\n  \"steps\": [\n    {\n      \"id\": \"0bf5e203-7722-e3d8-3c6e-f5160b4af712\",\n      \"operationId\": \"0f619cf8-fa60-adba-c272-4618e8bec168\",\n      \"sequence\": 7541,\n      \"operationName\": \"string\"\n    },\n    {\n      \"id\": \"f2e17371-afb3-c853-c8b2-23d0799c762d\",\n      \"operationId\": \"ba6988c5-d6e0-4e05-3a96-09af9dcfff02\",\n      \"sequence\": 1032,\n      \"operationName\": \"string\"\n    }\n  ],\n  \"updateDt\": \"2020-12-02T09:52:28.196Z\",\n  \"workOrderReferences\": 1584,\n  \"deprecatedAt\": \"1976-05-17T15:38:30.522Z\",\n  \"replacedById\": \"9b977884-1722-1a0c-c3d3-69833060f7e5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "402d78b9-c80d-4c49-a3d3-e0a115b373a0",
+          "name": "approve",
+          "request": {
+            "name": "approve",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "routing-templates",
+                ":id",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8a7d3fe-7ed2-4ba4-ac4a-0fede6df1c03",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "routing-templates",
+                    ":id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"approved\": true,\n  \"createdAt\": \"1989-06-13T15:54:19.539Z\",\n  \"deprecated\": false,\n  \"id\": \"5a6cfa82-fe7a-b811-89a2-0044a39a94dd\",\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"partSpecificationId\": \"7db9dfea-49eb-109c-71f9-f9c6dbf4bc97\",\n  \"steps\": [\n    {\n      \"id\": \"0bf5e203-7722-e3d8-3c6e-f5160b4af712\",\n      \"operationId\": \"0f619cf8-fa60-adba-c272-4618e8bec168\",\n      \"sequence\": 7541,\n      \"operationName\": \"string\"\n    },\n    {\n      \"id\": \"f2e17371-afb3-c853-c8b2-23d0799c762d\",\n      \"operationId\": \"ba6988c5-d6e0-4e05-3a96-09af9dcfff02\",\n      \"sequence\": 1032,\n      \"operationName\": \"string\"\n    }\n  ],\n  \"updateDt\": \"2020-12-02T09:52:28.196Z\",\n  \"workOrderReferences\": 1584,\n  \"deprecatedAt\": \"1976-05-17T15:38:30.522Z\",\n  \"replacedById\": \"9b977884-1722-1a0c-c3d3-69833060f7e5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a01bf419-1a76-48e3-9dce-8b732dee66fd",
+          "name": "list 1",
+          "request": {
+            "name": "list 1",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "part-specifications",
+                ":specId",
+                "routing-templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "specId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb2dfcd4-fe7a-40c3-99a0-102027334dac",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "part-specifications",
+                    ":specId",
+                    "routing-templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "specId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"approved\": false,\n    \"createdAt\": \"2005-09-15T07:49:41.988Z\",\n    \"deprecated\": false,\n    \"id\": \"f1221eef-2efc-d8ef-d902-11de965bb7a3\",\n    \"isDefault\": false,\n    \"name\": \"string\",\n    \"partSpecificationId\": \"c71a3953-abf6-39e8-160c-1f9532963f1d\",\n    \"steps\": [\n      {\n        \"id\": \"7b85ce7f-8e11-0480-548e-9cdd6f344807\",\n        \"operationId\": \"40a843dd-a23a-07c2-1569-ddf026346629\",\n        \"sequence\": 1010,\n        \"operationName\": \"string\"\n      },\n      {\n        \"id\": \"1799b804-1e7e-8e37-4a6b-6ece696fcf30\",\n        \"operationId\": \"11382398-7e99-43cb-6f85-ffe7767fd19a\",\n        \"sequence\": 4295,\n        \"operationName\": \"string\"\n      }\n    ],\n    \"updateDt\": \"2008-04-25T06:21:04.753Z\",\n    \"workOrderReferences\": 9974,\n    \"deprecatedAt\": \"1964-01-18T05:20:39.809Z\",\n    \"replacedById\": \"9519f8e5-e752-166b-aa9c-15cd4a5fc39e\"\n  },\n  {\n    \"approved\": true,\n    \"createdAt\": \"1999-08-09T10:15:04.794Z\",\n    \"deprecated\": true,\n    \"id\": \"6d92adea-525e-1260-4ce7-9046c291ac15\",\n    \"isDefault\": false,\n    \"name\": \"string\",\n    \"partSpecificationId\": \"26e2eb13-be35-dfc8-380a-042687d96be6\",\n    \"steps\": [\n      {\n        \"id\": \"c025d114-da33-56e9-6cee-c55734513f35\",\n        \"operationId\": \"ab43245e-eb9f-a743-218f-b7a90ecabb11\",\n        \"sequence\": 3772,\n        \"operationName\": \"string\"\n      },\n      {\n        \"id\": \"85aa154f-d41a-72ae-520b-47dc75c5abae\",\n        \"operationId\": \"df944818-cd66-6424-b707-938289091551\",\n        \"sequence\": 2641,\n        \"operationName\": \"string\"\n      }\n    ],\n    \"updateDt\": \"2014-09-04T16:28:43.980Z\",\n    \"workOrderReferences\": 2067,\n    \"deprecatedAt\": \"1967-06-10T01:12:52.276Z\",\n    \"replacedById\": \"9c190598-379a-4e58-4ada-521c3ef125e4\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc9f9169-dd67-457e-b0d6-6a44b4b13bcc",
+          "name": "create 9",
+          "request": {
+            "name": "create 9",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "part-specifications",
+                ":specId",
+                "routing-templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "specId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"steps\": [\n    {\n      \"operationId\": \"<uuid>\",\n      \"sequence\": \"<integer>\"\n    },\n    {\n      \"operationId\": \"<uuid>\",\n      \"sequence\": \"<integer>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"replacesRoutingTemplateId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6f424ca4-22ca-4ff5-84bc-3bb5b05bec8b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "part-specifications",
+                    ":specId",
+                    "routing-templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "specId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"steps\": [\n    {\n      \"operationId\": \"a5d2cfd2-cc43-9bf0-b624-603f8b4780ee\",\n      \"sequence\": 7710\n    },\n    {\n      \"operationId\": \"41989840-955d-bbf1-2a00-f48a3443e785\",\n      \"sequence\": 2627\n    }\n  ],\n  \"name\": \"<string>\",\n  \"replacesRoutingTemplateId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"approved\": true,\n  \"createdAt\": \"1989-06-13T15:54:19.539Z\",\n  \"deprecated\": false,\n  \"id\": \"5a6cfa82-fe7a-b811-89a2-0044a39a94dd\",\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"partSpecificationId\": \"7db9dfea-49eb-109c-71f9-f9c6dbf4bc97\",\n  \"steps\": [\n    {\n      \"id\": \"0bf5e203-7722-e3d8-3c6e-f5160b4af712\",\n      \"operationId\": \"0f619cf8-fa60-adba-c272-4618e8bec168\",\n      \"sequence\": 7541,\n      \"operationName\": \"string\"\n    },\n    {\n      \"id\": \"f2e17371-afb3-c853-c8b2-23d0799c762d\",\n      \"operationId\": \"ba6988c5-d6e0-4e05-3a96-09af9dcfff02\",\n      \"sequence\": 1032,\n      \"operationName\": \"string\"\n    }\n  ],\n  \"updateDt\": \"2020-12-02T09:52:28.196Z\",\n  \"workOrderReferences\": 1584,\n  \"deprecatedAt\": \"1976-05-17T15:38:30.522Z\",\n  \"replacedById\": \"9b977884-1722-1a0c-c3d3-69833060f7e5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1a5255b-ff60-4cff-9129-1600df884e33",
+          "name": "delete 5",
+          "request": {
+            "name": "delete 5",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "routing-templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d7c9be7f-e935-48e3-b891-4d2093827c8b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "routing-templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4581c31f-3de2-4d24-8473-62c37188fade",
+          "name": "patch",
+          "request": {
+            "name": "patch",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "routing-templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"steps\": [\n    {\n      \"operationId\": \"<uuid>\",\n      \"sequence\": \"<integer>\"\n    },\n    {\n      \"operationId\": \"<uuid>\",\n      \"sequence\": \"<integer>\"\n    }\n  ],\n  \"approved\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f7049b86-262e-413c-a089-846d591e996c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "routing-templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"steps\": [\n    {\n      \"operationId\": \"975771a8-b3be-df11-5918-289310424226\",\n      \"sequence\": 2522\n    },\n    {\n      \"operationId\": \"7273f8ee-98e2-88d5-8aa0-41805706550c\",\n      \"sequence\": 419\n    }\n  ],\n  \"approved\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"approved\": true,\n  \"createdAt\": \"1989-06-13T15:54:19.539Z\",\n  \"deprecated\": false,\n  \"id\": \"5a6cfa82-fe7a-b811-89a2-0044a39a94dd\",\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"partSpecificationId\": \"7db9dfea-49eb-109c-71f9-f9c6dbf4bc97\",\n  \"steps\": [\n    {\n      \"id\": \"0bf5e203-7722-e3d8-3c6e-f5160b4af712\",\n      \"operationId\": \"0f619cf8-fa60-adba-c272-4618e8bec168\",\n      \"sequence\": 7541,\n      \"operationName\": \"string\"\n    },\n    {\n      \"id\": \"f2e17371-afb3-c853-c8b2-23d0799c762d\",\n      \"operationId\": \"ba6988c5-d6e0-4e05-3a96-09af9dcfff02\",\n      \"sequence\": 1032,\n      \"operationName\": \"string\"\n    }\n  ],\n  \"updateDt\": \"2020-12-02T09:52:28.196Z\",\n  \"workOrderReferences\": 1584,\n  \"deprecatedAt\": \"1976-05-17T15:38:30.522Z\",\n  \"replacedById\": \"9b977884-1722-1a0c-c3d3-69833060f7e5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4a19d66b-9150-4f57-b190-673d35eca9a8",
+    "name": "Phasio Activity Internal Manufacturer Routing Template Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

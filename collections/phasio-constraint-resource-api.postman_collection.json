@@ -1,0 +1,661 @@
+{
+  "item": [
+    {
+      "id": "ab03b74c-240e-4375-bc20-74d17064ce18",
+      "name": "constraint-resource",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "651a4607-6e29-4999-9074-f10c9360bc47",
+          "name": "get Constraint",
+          "request": {
+            "name": "get Constraint",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "constraints",
+                ":constraintId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "constraintId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1e562fe-b0ed-4fb8-af24-b368114a4c0f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "constraints",
+                    ":constraintId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "constraintId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"constraintType\": \"string\",\n  \"createdAt\": \"2017-08-14T08:03:02.429Z\",\n  \"id\": \"d68eb543-9966-c058-30b4-bf1e133c3ca5\",\n  \"partSpecificationId\": \"15f88d9b-e90a-c263-4c08-465b6598c85e\",\n  \"updatedAt\": \"1963-09-10T13:38:24.141Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "043dabdb-8b93-41d0-9890-7f385d64e76b",
+          "name": "update Constraint",
+          "request": {
+            "name": "update Constraint",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "constraints",
+                ":constraintId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "constraintId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"constraintType\": \"<string>\",\n  \"partSpecificationId\": \"<uuid>\",\n  \"rotationMatrix\": [\n    [\n      \"<number>\",\n      \"<number>\"\n    ],\n    [\n      \"<number>\",\n      \"<number>\"\n    ]\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ee77f4c5-ffb4-48a2-a6c5-7e6b675af5d1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "constraints",
+                    ":constraintId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "constraintId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"constraintType\": \"string\",\n  \"partSpecificationId\": \"b70d84c9-a106-961a-2fb9-29638420e3ef\",\n  \"rotationMatrix\": [\n    [\n      9276.417868974715,\n      1668.9494795039195\n    ],\n    [\n      6216.31904294139,\n      7224.997244608765\n    ]\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"constraintType\": \"string\",\n  \"createdAt\": \"2017-08-14T08:03:02.429Z\",\n  \"id\": \"d68eb543-9966-c058-30b4-bf1e133c3ca5\",\n  \"partSpecificationId\": \"15f88d9b-e90a-c263-4c08-465b6598c85e\",\n  \"updatedAt\": \"1963-09-10T13:38:24.141Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94c4e31a-a2e0-4898-a5ae-312389205a3a",
+          "name": "delete Constraint",
+          "request": {
+            "name": "delete Constraint",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "constraints",
+                ":constraintId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "constraintId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48c8d6f9-3d82-4b7f-8ea5-b13b3b99df31",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "constraints",
+                    ":constraintId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "constraintId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5de77cad-c4fd-4e5d-b20b-a560b08cc2fe",
+          "name": "create Constraint",
+          "request": {
+            "name": "create Constraint",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "constraints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"constraintType\": \"<string>\",\n  \"partSpecificationId\": \"<uuid>\",\n  \"rotationMatrix\": [\n    [\n      \"<number>\",\n      \"<number>\"\n    ],\n    [\n      \"<number>\",\n      \"<number>\"\n    ]\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c4f182f-67dc-4c34-bf1c-e5e73c443cbb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "constraints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"constraintType\": \"string\",\n  \"partSpecificationId\": \"b70d84c9-a106-961a-2fb9-29638420e3ef\",\n  \"rotationMatrix\": [\n    [\n      9276.417868974715,\n      1668.9494795039195\n    ],\n    [\n      6216.31904294139,\n      7224.997244608765\n    ]\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"constraintType\": \"string\",\n  \"createdAt\": \"2017-08-14T08:03:02.429Z\",\n  \"id\": \"d68eb543-9966-c058-30b4-bf1e133c3ca5\",\n  \"partSpecificationId\": \"15f88d9b-e90a-c263-4c08-465b6598c85e\",\n  \"updatedAt\": \"1963-09-10T13:38:24.141Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93547e4c-695d-4121-83d2-6df975b73f1c",
+          "name": "get Constraints By Part Specification",
+          "request": {
+            "name": "get Constraints By Part Specification",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "constraints",
+                "part-specification",
+                ":partSpecificationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "partSpecificationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4532409a-fe90-48a4-b5e0-da6ee7b2c910",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "constraints",
+                    "part-specification",
+                    ":partSpecificationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "partSpecificationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"constraintType\": \"string\",\n    \"createdAt\": \"2026-04-03T14:38:21.722Z\",\n    \"id\": \"9d53b788-e614-0ddb-7bf0-00a2d5bf4722\",\n    \"partSpecificationId\": \"40064039-be73-e51f-a5de-334b55e328ba\",\n    \"updatedAt\": \"1988-06-11T14:50:49.902Z\"\n  },\n  {\n    \"constraintType\": \"string\",\n    \"createdAt\": \"2015-08-25T00:37:46.873Z\",\n    \"id\": \"ce8df243-f68a-0eb7-5a5c-cbeb55b377b4\",\n    \"partSpecificationId\": \"55cea742-f566-f285-1b45-266c6093bb5b\",\n    \"updatedAt\": \"1971-05-24T12:30:09.107Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82c6f7ef-7704-4ed5-b8de-6b93b73870f4",
+          "name": "delete Constraint By Type",
+          "request": {
+            "name": "delete Constraint By Type",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "constraints",
+                "part-specification",
+                ":partSpecificationId",
+                "type",
+                ":constraintType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "partSpecificationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "constraintType",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24955075-ae9e-40f6-b2fa-51ef3e688d2d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "constraints",
+                    "part-specification",
+                    ":partSpecificationId",
+                    "type",
+                    ":constraintType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "partSpecificationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "constraintType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "23bbb63e-dca6-41ab-aa55-2a850650715a",
+    "name": "Phasio Activity Internal constraint-resource API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

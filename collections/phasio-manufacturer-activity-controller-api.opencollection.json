@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Activity Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Activity Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/activity",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new activity associated with the current manufacturer"
+        },
+        {
+          "info": {
+            "name": "Get activity by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/activity/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "123e4567-e89b-12d3-a456-426614174000",
+                "type": "path",
+                "description": "Activity ID to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific activity by its unique identifier"
+        },
+        {
+          "info": {
+            "name": "Get activities by thread ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/activity/thread/:threadId",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "123",
+                "type": "path",
+                "description": "Thread ID to retrieve activities for"
+              },
+              {
+                "name": "excludeArchivedAndVoided",
+                "value": "",
+                "type": "query",
+                "description": "Exclude activities from archived or voided orders"
+              }
+            ]
+          },
+          "docs": "Retrieves all activities associated with the specified thread"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

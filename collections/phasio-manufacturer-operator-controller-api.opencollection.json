@@ -1,0 +1,247 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Operator Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Operator Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add permitted domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/permitted-domain",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new domain to the list of permitted domains for the current operator"
+        },
+        {
+          "info": {
+            "name": "Get operator logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/logo"
+          },
+          "docs": "Gets the logo image for the current operator"
+        },
+        {
+          "info": {
+            "name": "Upload operator logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/logo",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Uploads a new logo image for the current operator"
+        },
+        {
+          "info": {
+            "name": "Get domain authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/domain-authentication"
+          },
+          "docs": "Returns the current domain authentication status and DNS records for the operator."
+        },
+        {
+          "info": {
+            "name": "Create domain authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/domain-authentication",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates domain authentication for the operator. Returns DNS records to add to your domain."
+        },
+        {
+          "info": {
+            "name": "Delete domain authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/domain-authentication"
+          },
+          "docs": "Removes domain authentication from operator"
+        },
+        {
+          "info": {
+            "name": "Validate domain authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/domain-authentication/validate"
+          },
+          "docs": "Triggers domain DNS validation. Call after adding the DNS records."
+        },
+        {
+          "info": {
+            "name": "Get operator profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator"
+          },
+          "docs": "Retrieves the profile and settings of the current operator"
+        },
+        {
+          "info": {
+            "name": "Update operator profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the profile and settings of the current operator"
+        },
+        {
+          "info": {
+            "name": "Update operator settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates settings for the current operator"
+        },
+        {
+          "info": {
+            "name": "Register for payment processing",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/payment-account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers the operator with the specified payment system"
+        },
+        {
+          "info": {
+            "name": "Get operator onboarding progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/onboarding-progress"
+          },
+          "docs": "Retrieves all onboarding progress items for the operator"
+        },
+        {
+          "info": {
+            "name": "Update operator onboarding progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/onboarding-progress",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upserts onboarding progress items for the operator"
+        },
+        {
+          "info": {
+            "name": "Get operator users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/users"
+          },
+          "docs": "Retrieves all users associated with the specified operator"
+        },
+        {
+          "info": {
+            "name": "Get subscription portal URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/subscription-portal"
+          },
+          "docs": "Retrieves the URL for the operator's subscription management portal"
+        },
+        {
+          "info": {
+            "name": "Delete permitted domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/permitted-domain/:domainId",
+            "params": [
+              {
+                "name": "domainId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the domain to delete"
+              }
+            ]
+          },
+          "docs": "Removes a domain from the list of permitted domains"
+        },
+        {
+          "info": {
+            "name": "Delete operator email credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/email-credentials"
+          },
+          "docs": "Deletes the SMTP email server credentials for an operator"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1318 @@
+{
+  "item": [
+    {
+      "id": "44c6c394-9980-4ece-89c5-818220a27183",
+      "name": "Addresses",
+      "description": {
+        "content": "API for managing addresses for customers and organizations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6bf1b97a-7cae-4f61-b524-1cfe43959087",
+          "name": "Get an address by ID",
+          "request": {
+            "name": "Get an address by ID",
+            "description": {
+              "content": "Retrieves address details for the specified ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "address",
+                ":addressId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "addressId",
+                  "description": "(Required) ID of the address to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98b662ae-6366-4577-b4d5-cebe54cd64fa",
+              "name": "Address retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addressId\": 2717,\n  \"addressType\": \"string\",\n  \"city\": \"string\",\n  \"company\": \"string\",\n  \"country\": \"string\",\n  \"countryAlpha2Code\": \"string\",\n  \"countryAlpha3Code\": \"string\",\n  \"email\": \"string\",\n  \"isBillingAddress\": false,\n  \"isShippingAddress\": false,\n  \"name\": \"string\",\n  \"phone\": \"string\",\n  \"platformEncryptedAesKey\": \"string\",\n  \"residential\": false,\n  \"street1\": \"string\",\n  \"street2\": \"string\",\n  \"zip\": \"string\",\n  \"state\": \"string\",\n  \"jurisdictionIsoCode\": \"string\",\n  \"taxId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53ddae62-48bc-45e8-84e6-6053b4284b24",
+              "name": "Address not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "535ced8c-9be8-4c4b-805f-b9f57c011661",
+          "name": "Edit an existing address",
+          "request": {
+            "name": "Edit an existing address",
+            "description": {
+              "content": "Creates a new address with the updated details, soft-deletes the old address, and transfers billing status if applicable",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "address",
+                ":addressId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "addressId",
+                  "description": "(Required) ID of the address to edit"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"city\": \"<string>\",\n  \"company\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"residential\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"street1\": \"<string>\",\n  \"street2\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\",\n  \"taxId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e5a55a17-471c-41fa-9af8-2f5311678473",
+              "name": "Address edited successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to edit"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"city\": \"<string>\",\n  \"company\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"residential\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"street1\": \"<string>\",\n  \"street2\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\",\n  \"taxId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addressId\": 2717,\n  \"addressType\": \"string\",\n  \"city\": \"string\",\n  \"company\": \"string\",\n  \"country\": \"string\",\n  \"countryAlpha2Code\": \"string\",\n  \"countryAlpha3Code\": \"string\",\n  \"email\": \"string\",\n  \"isBillingAddress\": false,\n  \"isShippingAddress\": false,\n  \"name\": \"string\",\n  \"phone\": \"string\",\n  \"platformEncryptedAesKey\": \"string\",\n  \"residential\": false,\n  \"street1\": \"string\",\n  \"street2\": \"string\",\n  \"zip\": \"string\",\n  \"state\": \"string\",\n  \"jurisdictionIsoCode\": \"string\",\n  \"taxId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83ad7615-7601-45d8-b597-7531c2bcef97",
+              "name": "Address not found or already deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to edit"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"city\": \"<string>\",\n  \"company\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"residential\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"street1\": \"<string>\",\n  \"street2\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\",\n  \"taxId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d9448d5-c8a7-43c5-8065-35b1eb4fffc7",
+          "name": "Delete an address",
+          "request": {
+            "name": "Delete an address",
+            "description": {
+              "content": "Deletes the specified address",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "address",
+                ":addressId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "addressId",
+                  "description": "(Required) ID of the address to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3dd6c30-3114-4b0b-b4ac-3bedc1cb890b",
+              "name": "Address deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f07d2894-5032-4c1a-b752-b7a37dddec4c",
+              "name": "Invalid address ID or address cannot be deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4aefac7-577c-44e7-a07b-b6aff5100e48",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de4cef73-89fc-4aa8-ad6a-66fcc8aa2b0e",
+          "name": "Create a new address",
+          "request": {
+            "name": "Create a new address",
+            "description": {
+              "content": "Creates a new address using the provided details",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "address",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"city\": \"<string>\",\n  \"company\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organisationId\": \"<long>\",\n  \"phone\": \"<string>\",\n  \"residential\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"street1\": \"<string>\",\n  \"street2\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\",\n  \"taxId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f8b70c98-8ccc-41d5-a3ac-4877d41a8b12",
+              "name": "Address created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"city\": \"<string>\",\n  \"company\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organisationId\": \"<long>\",\n  \"phone\": \"<string>\",\n  \"residential\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"street1\": \"<string>\",\n  \"street2\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\",\n  \"taxId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addressId\": 2717,\n  \"addressType\": \"string\",\n  \"city\": \"string\",\n  \"company\": \"string\",\n  \"country\": \"string\",\n  \"countryAlpha2Code\": \"string\",\n  \"countryAlpha3Code\": \"string\",\n  \"email\": \"string\",\n  \"isBillingAddress\": false,\n  \"isShippingAddress\": false,\n  \"name\": \"string\",\n  \"phone\": \"string\",\n  \"platformEncryptedAesKey\": \"string\",\n  \"residential\": false,\n  \"street1\": \"string\",\n  \"street2\": \"string\",\n  \"zip\": \"string\",\n  \"state\": \"string\",\n  \"jurisdictionIsoCode\": \"string\",\n  \"taxId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f96c376f-a1ec-4101-a84f-3a54d8eff3c9",
+              "name": "Invalid address data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"city\": \"<string>\",\n  \"company\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organisationId\": \"<long>\",\n  \"phone\": \"<string>\",\n  \"residential\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"street1\": \"<string>\",\n  \"street2\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\",\n  \"taxId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98e5b4e6-d54b-408e-b919-e862d0c2529a",
+          "name": "Set address as default shipping address",
+          "request": {
+            "name": "Set address as default shipping address",
+            "description": {
+              "content": "Marks an address as the default shipping address",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "address",
+                ":addressId",
+                "shipping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "addressId",
+                  "description": "(Required) ID of the address to set as shipping address"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9bb2822b-ea54-4d67-8192-73adb839fa01",
+              "name": "Address set as shipping address successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    ":addressId",
+                    "shipping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to set as shipping address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c8c528cf-2335-4b3b-acc1-977db3c4db52",
+              "name": "Invalid address ID or operation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    ":addressId",
+                    "shipping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to set as shipping address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a568537-59fb-4ec3-9c41-3a37fb69cf93",
+          "name": "Set address as default billing address",
+          "request": {
+            "name": "Set address as default billing address",
+            "description": {
+              "content": "Marks an address as the default billing address",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "address",
+                ":addressId",
+                "billing"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "addressId",
+                  "description": "(Required) ID of the address to set as billing address"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a87dc68-e530-4272-9063-e8c690db2de0",
+              "name": "Address set as billing address successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    ":addressId",
+                    "billing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to set as billing address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "94a3d562-28c3-4bab-8888-228ce2baff22",
+              "name": "Invalid address ID or operation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    ":addressId",
+                    "billing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to set as billing address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a89bcbb2-9618-4bc7-b262-e90cd86e2d22",
+          "name": "Update jurisdiction for all addresses",
+          "request": {
+            "name": "Update jurisdiction for all addresses",
+            "description": {
+              "content": "Updates the jurisdiction information for all addresses in the system",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "address",
+                "jurisdiction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ab327c4-ea91-4b98-b057-8f0482e0c72c",
+              "name": "Jurisdictions updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    "jurisdiction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec75f929-fe01-4c1b-802d-8d14c77aa3ff",
+          "name": "Get addresses by customer organization",
+          "request": {
+            "name": "Get addresses by customer organization",
+            "description": {
+              "content": "Retrieves all addresses associated with the specified customer organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "address",
+                "organisation",
+                ":organisationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "organisationId",
+                  "description": "(Required) ID of the customer organization to retrieve addresses for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dee810b1-bb48-4b2f-848b-d150678f7fb9",
+              "name": "Addresses retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    "organisation",
+                    ":organisationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the customer organization to retrieve addresses for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"addressId\": 6205,\n    \"addressType\": \"string\",\n    \"city\": \"string\",\n    \"company\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"email\": \"string\",\n    \"isBillingAddress\": false,\n    \"isShippingAddress\": false,\n    \"name\": \"string\",\n    \"phone\": \"string\",\n    \"platformEncryptedAesKey\": \"string\",\n    \"residential\": true,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"zip\": \"string\",\n    \"state\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"taxId\": \"string\"\n  },\n  {\n    \"addressId\": 2828,\n    \"addressType\": \"string\",\n    \"city\": \"string\",\n    \"company\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"email\": \"string\",\n    \"isBillingAddress\": false,\n    \"isShippingAddress\": true,\n    \"name\": \"string\",\n    \"phone\": \"string\",\n    \"platformEncryptedAesKey\": \"string\",\n    \"residential\": true,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"zip\": \"string\",\n    \"state\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"taxId\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "acbd2b22-835c-4c6d-b477-d682c7352035",
+          "name": "Get addresses by customer",
+          "request": {
+            "name": "Get addresses by customer",
+            "description": {
+              "content": "Retrieves all addresses associated with the specified customer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "address",
+                "customer",
+                ":customerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "customerId",
+                  "description": "(Required) ID of the customer to retrieve addresses for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7dcfb782-6f6b-4244-b0c0-359351fbaf70",
+              "name": "Addresses retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "address",
+                    "customer",
+                    ":customerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "customerId",
+                      "description": "(Required) ID of the customer to retrieve addresses for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"addressId\": 6205,\n    \"addressType\": \"string\",\n    \"city\": \"string\",\n    \"company\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"email\": \"string\",\n    \"isBillingAddress\": false,\n    \"isShippingAddress\": false,\n    \"name\": \"string\",\n    \"phone\": \"string\",\n    \"platformEncryptedAesKey\": \"string\",\n    \"residential\": true,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"zip\": \"string\",\n    \"state\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"taxId\": \"string\"\n  },\n  {\n    \"addressId\": 2828,\n    \"addressType\": \"string\",\n    \"city\": \"string\",\n    \"company\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"email\": \"string\",\n    \"isBillingAddress\": false,\n    \"isShippingAddress\": true,\n    \"name\": \"string\",\n    \"phone\": \"string\",\n    \"platformEncryptedAesKey\": \"string\",\n    \"residential\": true,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"zip\": \"string\",\n    \"state\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"taxId\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b79e8ca2-3c60-4da1-890d-d850a1244354",
+    "name": "Phasio Activity Internal Addresses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

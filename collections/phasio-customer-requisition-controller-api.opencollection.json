@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Customer Requisition Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Requisition Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get requisitions by order ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/requisition",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "query",
+                "description": "ID of the order to retrieve requisitions for"
+              }
+            ]
+          },
+          "docs": "Retrieves all requisitions for the specified order"
+        },
+        {
+          "info": {
+            "name": "Get part revision",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/requisition/:requisitionId",
+            "params": [
+              {
+                "name": "requisitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part revision to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific part revision by ID"
+        },
+        {
+          "info": {
+            "name": "Download part thumbnail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/requisition/:requisitionId/thumbnail",
+            "params": [
+              {
+                "name": "requisitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the requisition"
+              }
+            ]
+          },
+          "docs": "Downloads the thumbnail image for a requisition"
+        },
+        {
+          "info": {
+            "name": "Download part revision file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/requisition/:requisitionId/download/:type",
+            "params": [
+              {
+                "name": "requisitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part revision"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Type of file to download"
+              }
+            ]
+          },
+          "docs": "Downloads a specific file type associated with a part revision"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

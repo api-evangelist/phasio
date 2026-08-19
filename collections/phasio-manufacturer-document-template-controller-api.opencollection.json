@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Document Template Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Document Template Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all document templates for operator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document-template"
+          },
+          "docs": "Retrieves all document templates associated with the current operator"
+        },
+        {
+          "info": {
+            "name": "Create document template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document-template",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new document template for a specific language and template type"
+        },
+        {
+          "info": {
+            "name": "Update document template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document-template",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the content of an existing document template"
+        },
+        {
+          "info": {
+            "name": "Get document template by language and type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document-template/operator",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language of the document template"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Type of the document template"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific document template for the current operator by language and template type"
+        },
+        {
+          "info": {
+            "name": "Delete document template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document-template/:documentTemplateId",
+            "params": [
+              {
+                "name": "documentTemplateId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the document template to delete"
+              }
+            ]
+          },
+          "docs": "Deletes an existing document template"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

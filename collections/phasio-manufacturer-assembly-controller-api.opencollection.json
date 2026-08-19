@@ -1,0 +1,222 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Assembly Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Assembly Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get assembly by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/assemblies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Assembly ID"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific assembly by its ID"
+        },
+        {
+          "info": {
+            "name": "Update assembly",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/assemblies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Assembly ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing assembly"
+        },
+        {
+          "info": {
+            "name": "Delete assembly",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/assemblies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Assembly ID"
+              }
+            ]
+          },
+          "docs": "Deletes an assembly"
+        },
+        {
+          "info": {
+            "name": "Update customer article reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/assemblies/:id/customer-reference",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Assembly ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the customer's article reference for a specific assembly"
+        },
+        {
+          "info": {
+            "name": "List assemblies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/assemblies",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "filter specification"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Optional search term"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of assemblies with optional filtering and search"
+        },
+        {
+          "info": {
+            "name": "Create assembly",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/assemblies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new assembly with items"
+        },
+        {
+          "info": {
+            "name": "Add assembly to catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/assemblies/:id/catalog",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Assembly ID"
+              },
+              {
+                "name": "customerOrganisationId",
+                "value": "",
+                "type": "query",
+                "description": "Customer organisation ID"
+              },
+              {
+                "name": "reference",
+                "value": "",
+                "type": "query",
+                "description": "Customer reference"
+              }
+            ]
+          },
+          "docs": "Adds an assembly to a customer's catalog"
+        },
+        {
+          "info": {
+            "name": "Delete customer article reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/assemblies/:id/customer-reference/:customerOrganisationId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Assembly ID"
+              },
+              {
+                "name": "customerOrganisationId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the customer organization whose reference should be deleted"
+              }
+            ]
+          },
+          "docs": "Removes the customer's article reference from a specific assembly"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

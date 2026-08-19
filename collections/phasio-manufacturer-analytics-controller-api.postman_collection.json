@@ -1,0 +1,1298 @@
+{
+  "item": [
+    {
+      "id": "b6bc05f8-d361-48a9-b8ae-8f121f9e997d",
+      "name": "Manufacturer Analytics Controller",
+      "description": {
+        "content": "Programmatic analytics endpoints for retrieving manufacturer dashboard metrics, funnel performance, revenue, production, customer and material insights.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6fd3e137-0316-4fd8-92bd-d018ef2b83cb",
+          "name": "Get website visit statistics for the current month",
+          "request": {
+            "name": "Get website visit statistics for the current month",
+            "description": {
+              "content": "Retrieves website traffic and visitor data for the current month",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "analytics",
+                "operator",
+                "website-visits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "53f120b2-4e82-4696-b7d3-7712da8c2f4c",
+              "name": "Website visit statistics retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "operator",
+                    "website-visits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"numberOfWebsiteVisits\": 5252\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f955399a-fd90-4631-933c-315e0e6b4979",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "operator",
+                    "website-visits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a683f74-46cb-48d2-8712-e2c101030320",
+          "name": "Get revenue analytics for the current month",
+          "request": {
+            "name": "Get revenue analytics for the current month",
+            "description": {
+              "content": "Retrieves revenue data for the current month",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "analytics",
+                "operator",
+                "revenue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe82eb94-8784-45ae-9cce-3a895a9f9679",
+              "name": "Revenue data retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "operator",
+                    "revenue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currency\": \"string\",\n  \"earnedRevenue\": 1908,\n  \"unearnedRevenue\": 985\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8273f3e7-506e-4e7e-9bf8-f4c134dfb1ab",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "operator",
+                    "revenue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84751d1f-4343-4cfb-a2ef-31b5ef089c2c",
+          "name": "Get overview analytics for the current month",
+          "request": {
+            "name": "Get overview analytics for the current month",
+            "description": {
+              "content": "Retrieves a comprehensive overview of key analytics metrics for the current month",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "analytics",
+                "operator",
+                "overview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91e2adb8-32c2-4536-93ed-3221cb47af6f",
+              "name": "Overview analytics retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "operator",
+                    "overview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currency\": \"string\",\n  \"earnedRevenue\": 7745,\n  \"numberOfGeneratedQuotes\": 7130,\n  \"numberOfOrders\": 3670,\n  \"numberOfPaidOrders\": 4825,\n  \"numberOfUnpaidOrders\": 9049,\n  \"numberOfWebsiteVisits\": 3180,\n  \"unearnedRevenue\": 2824\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "216662af-f529-4872-838b-8c73b1ff1412",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "operator",
+                    "overview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf2c7f1a-5e5d-4bd1-bd53-e1a4da9dc018",
+          "name": "Get orders by payment status for the current month",
+          "request": {
+            "name": "Get orders by payment status for the current month",
+            "description": {
+              "content": "Retrieves order information categorized by payment status for the current month",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "analytics",
+                "operator",
+                "orders",
+                "payment-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8cebdfcc-8db5-4245-b0cf-ac667ba11966",
+              "name": "Orders by payment status retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "operator",
+                    "orders",
+                    "payment-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"numberOfOrders\": 7176,\n  \"numberOfPaidOrders\": 8977,\n  \"numberOfUnpaidOrders\": 412\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1777222b-9cfa-49fb-864c-a15c0042bdba",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "operator",
+                    "orders",
+                    "payment-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d26daf82-3f9f-4dc0-8b81-dd5aa270e67a",
+          "name": "Get time series metrics for the operator",
+          "request": {
+            "name": "Get time series metrics for the operator",
+            "description": {
+              "content": "Retrieves a collection of time-based metrics for the operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "analytics",
+                "operator",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0525db8-a26c-4c1b-93d5-52c2930e1203",
+              "name": "Operator metrics retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "operator",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa26a681-a607-41ce-b9f5-1143078c1f95",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "operator",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0157897a-5a99-4c6e-9d0c-62f72fb85ee3",
+              "name": "Too many requests - per-operator analytics rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "operator",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6dcd8f64-3a0a-4b2d-8fe2-1d6d1ea6fc5d",
+          "name": "Get quotes generated in the current month",
+          "request": {
+            "name": "Get quotes generated in the current month",
+            "description": {
+              "content": "Retrieves data on quotes generated during the current month",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "analytics",
+                "operator",
+                "generated-quotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15b83324-80ff-4ec3-b772-82e6388ee4d9",
+              "name": "Quote generation data retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "operator",
+                    "generated-quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"numberOfGeneratedQuotes\": 1508\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3bd17691-688d-4d1b-9f80-c54b8aca4528",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "operator",
+                    "generated-quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fd06189-8e31-4d62-b768-a5e1a65ea558",
+          "name": "Get dashboard analytics",
+          "request": {
+            "name": "Get dashboard analytics",
+            "description": {
+              "content": "Returns the manufacturer analytics dashboard in one call, including revenue, funnel, production, customer and material insights. Use this endpoint for reporting dashboards and external BI syncs that need the same aggregates shown in the manufacturer app. The response is scoped to the authenticated operator. Supply a `period` preset or an explicit `from`/`to` range, which wins over `period`. Aggregation is computed at the database level. All period math is in UTC. The `funnel` section returns three stage lists over the quotes-created-in-window cohort - `acquisition` (visits -> sign-ups -> first order), `quoteToOrder` (quote opened -> accepted -> order created) and `fulfillment` (order created -> production started -> production completed -> order completed) - each stage carrying drop-off counts/conversions and median/p95 days from the previous stage, so you can see where flow is lost and where it slows down. Transition times come from the audit trail, so later edits do not rewrite history; order completion is a kanban state and is reported count-only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "analytics",
+                "dashboard"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "Preset reporting window. Defaults to `last_30_days` when omitted. Ignored when both `from` and `to` are supplied."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<date>",
+                  "description": "Explicit reporting window start date in `yyyy-MM-dd` format. Together with `to`, overrides `period`."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<date>",
+                  "description": "Explicit reporting window end date in `yyyy-MM-dd` format, inclusive. Together with `from`, overrides `period`."
+                },
+                {
+                  "disabled": false,
+                  "key": "granularity",
+                  "value": "<string>",
+                  "description": "Time-series bucket granularity. Auto-derived from the requested window when omitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "sections",
+                  "value": "<string>",
+                  "description": "Dashboard sections to compute. Repeat the query parameter for multiple sections, e.g. `sections=revenue&sections=funnel`. All sections are returned when omitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "customerType",
+                  "value": "<string>",
+                  "description": "Optional dimension filter by customer type."
+                },
+                {
+                  "disabled": false,
+                  "key": "source",
+                  "value": "<string>",
+                  "description": "Optional dimension filter by order source."
+                },
+                {
+                  "disabled": false,
+                  "key": "compare",
+                  "value": "false",
+                  "description": "When true, include a compact `previous` block (equal-length prior window) of KPI scalars for period-over-period deltas. Ignored for all_time."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeArchived",
+                  "value": "false",
+                  "description": "When true, include archived orders in every count/sum. Defaults to false so the dashboard reflects only live, active orders."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a57166c4-1754-4e04-8c91-76ab8e3f04fb",
+              "name": "Dashboard analytics retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "dashboard"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "last_30_days"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2026-01-01"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2026-01-31"
+                    },
+                    {
+                      "key": "granularity",
+                      "value": "day"
+                    },
+                    {
+                      "key": "sections",
+                      "value": "revenue"
+                    },
+                    {
+                      "key": "customerType",
+                      "value": "ACCOUNT"
+                    },
+                    {
+                      "key": "source",
+                      "value": "INBOUND"
+                    },
+                    {
+                      "key": "compare",
+                      "value": "false"
+                    },
+                    {
+                      "key": "includeArchived",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"range\": {\n    \"from\": \"2026-01-01\",\n    \"granularity\": \"day\",\n    \"period\": \"last_30_days\",\n    \"primaryCurrency\": \"USD\",\n    \"to\": \"2026-01-31\"\n  },\n  \"previous\": {\n    \"from\": \"2025-12-01\",\n    \"to\": \"2025-12-31\",\n    \"revenue\": {\n      \"confirmed\": 3180.3990250602264,\n      \"orders\": 42,\n      \"outstanding\": 3727.0982801730524,\n      \"paid\": 3290.7433708820754\n    },\n    \"funnel\": {\n      \"completionRate\": 451.31985431528744,\n      \"conversion\": 6796.632160417903,\n      \"medianDaysToCompletion\": 1008.0371034806268\n    },\n    \"customers\": {\n      \"avgOrderValue\": 2420.97064565989,\n      \"new\": 12,\n      \"payingCustomers\": 31,\n      \"repeatRate\": 2518.364367051148\n    },\n    \"production\": {\n      \"openRequisitions\": 18,\n      \"scrapRate\": 4666.224475575244,\n      \"avgLeadTimeDays\": 8694.677843230418,\n      \"onTimePct\": 7890.120106783317\n    }\n  },\n  \"revenue\": {\n    \"byBucket\": [\n      {\n        \"bucket\": \"2026-01-01\",\n        \"confirmed\": 4862.850014139393,\n        \"currency\": \"USD\",\n        \"orders\": 5,\n        \"paid\": 5874.499693675629\n      },\n      {\n        \"bucket\": \"2026-01-01\",\n        \"confirmed\": 1119.6046262373127,\n        \"currency\": \"USD\",\n        \"orders\": 5,\n        \"paid\": 7367.2321635013095\n      }\n    ],\n    \"byCurrency\": [\n      {\n        \"confirmed\": 3102.1323058181806,\n        \"currency\": \"USD\",\n        \"orders\": 42,\n        \"outstanding\": 7614.337946812,\n        \"paid\": 4312.299193573826,\n        \"total\": 6020.936507302511\n      },\n      {\n        \"confirmed\": 1868.4175931542013,\n        \"currency\": \"USD\",\n        \"orders\": 42,\n        \"outstanding\": 234.08899009078388,\n        \"paid\": 8385.48630274341,\n        \"total\": 6737.891194026195\n      }\n    ],\n    \"byPaymentStatus\": {\n      \"PAID\": 12,\n      \"CONFIRMED\": 8\n    }\n  },\n  \"funnel\": {\n    \"accepted\": 51,\n    \"confirmed\": 30,\n    \"ordersCreated\": 48,\n    \"paid\": 18,\n    \"quotesGenerated\": 120,\n    \"conversion\": 117.59736790832864,\n    \"acquisition\": [\n      {\n        \"count\": 48,\n        \"label\": \"Order created\",\n        \"stage\": \"order_created\",\n        \"dropOff\": 12,\n        \"conversionFromPrevious\": 1077.8226206606157,\n        \"conversionFromStart\": 5970.040527224466,\n        \"medianDaysFromPrevious\": 4631.219146172029,\n        \"p95DaysFromPrevious\": 9203.980008965662\n      },\n      {\n        \"count\": 48,\n        \"label\": \"Order created\",\n        \"stage\": \"order_created\",\n        \"dropOff\": 12,\n        \"conversionFromPrevious\": 8165.418310823935,\n        \"conversionFromStart\": 6257.871518793978,\n        \"medianDaysFromPrevious\": 1290.5382649391017,\n        \"p95DaysFromPrevious\": 7486.563581088187\n      }\n    ],\n    \"quoteToOrder\": [\n      {\n        \"count\": 48,\n        \"label\": \"Order created\",\n        \"stage\": \"order_created\",\n        \"dropOff\": 12,\n        \"conversionFromPrevious\": 1198.1429591187086,\n        \"conversionFromStart\": 7310.524739405163,\n        \"medianDaysFromPrevious\": 1058.8461089184864,\n        \"p95DaysFromPrevious\": 7140.962432276281\n      },\n      {\n        \"count\": 48,\n        \"label\": \"Order created\",\n        \"stage\": \"order_created\",\n        \"dropOff\": 12,\n        \"conversionFromPrevious\": 7459.899945406701,\n        \"conversionFromStart\": 752.0453763498325,\n        \"medianDaysFromPrevious\": 8540.28070461947,\n        \"p95DaysFromPrevious\": 5134.25095089652\n      }\n    ],\n    \"quoteToOrderInbound\": [\n      {\n        \"count\": 48,\n        \"label\": \"Order created\",\n        \"stage\": \"order_created\",\n        \"dropOff\": 12,\n        \"conversionFromPrevious\": 934.8636237120567,\n        \"conversionFromStart\": 6770.761947440715,\n        \"medianDaysFromPrevious\": 566.210385196192,\n        \"p95DaysFromPrevious\": 5731.81235634453\n      },\n      {\n        \"count\": 48,\n        \"label\": \"Order created\",\n        \"stage\": \"order_created\",\n        \"dropOff\": 12,\n        \"conversionFromPrevious\": 516.4768768879146,\n        \"conversionFromStart\": 1005.4095488529224,\n        \"medianDaysFromPrevious\": 7170.08770294245,\n        \"p95DaysFromPrevious\": 3722.4955745904663\n      }\n    ],\n    \"quoteToOrderOutbound\": [\n      {\n        \"count\": 48,\n        \"label\": \"Order created\",\n        \"stage\": \"order_created\",\n        \"dropOff\": 12,\n        \"conversionFromPrevious\": 7496.20176249703,\n        \"conversionFromStart\": 9883.670477206839,\n        \"medianDaysFromPrevious\": 7034.98536460773,\n        \"p95DaysFromPrevious\": 6085.881464405264\n      },\n      {\n        \"count\": 48,\n        \"label\": \"Order created\",\n        \"stage\": \"order_created\",\n        \"dropOff\": 12,\n        \"conversionFromPrevious\": 8963.86432720548,\n        \"conversionFromStart\": 9760.642359770523,\n        \"medianDaysFromPrevious\": 8632.166306024852,\n        \"p95DaysFromPrevious\": 7010.136687678985\n      }\n    ],\n    \"fulfillment\": [\n      {\n        \"count\": 48,\n        \"label\": \"Order created\",\n        \"stage\": \"order_created\",\n        \"dropOff\": 12,\n        \"conversionFromPrevious\": 2419.2225242499653,\n        \"conversionFromStart\": 6016.329042569305,\n        \"medianDaysFromPrevious\": 9041.97338700048,\n        \"p95DaysFromPrevious\": 109.09240043524227\n      },\n      {\n        \"count\": 48,\n        \"label\": \"Order created\",\n        \"stage\": \"order_created\",\n        \"dropOff\": 12,\n        \"conversionFromPrevious\": 6434.789479785593,\n        \"conversionFromStart\": 20.776682086299793,\n        \"medianDaysFromPrevious\": 327.3295182556668,\n        \"p95DaysFromPrevious\": 2433.691061277491\n      }\n    ]\n  },\n  \"production\": {\n    \"openRequisitions\": 24,\n    \"avgLeadTimeDays\": 5415.669120606902,\n    \"onTimePct\": 6146.898845016354,\n    \"throughput\": [\n      {\n        \"bucket\": \"2026-01-01\",\n        \"quantity\": 35,\n        \"operation\": \"FDM Printing\"\n      },\n      {\n        \"bucket\": \"2026-01-01\",\n        \"quantity\": 35,\n        \"operation\": \"FDM Printing\"\n      }\n    ],\n    \"wip\": [\n      {\n        \"count\": 9,\n        \"operation\": \"Finishing\"\n      },\n      {\n        \"count\": 9,\n        \"operation\": \"Finishing\"\n      }\n    ],\n    \"cycleTime\": [\n      {\n        \"avgDays\": 1751.5517715776618,\n        \"p95Days\": 3106.4090717575864,\n        \"samples\": 22,\n        \"operation\": \"CNC Milling\"\n      },\n      {\n        \"avgDays\": 1377.6372931350677,\n        \"p95Days\": 7023.838988151513,\n        \"samples\": 22,\n        \"operation\": \"CNC Milling\"\n      }\n    ],\n    \"scrap\": {\n      \"byOperation\": [\n        {\n          \"scrappedUnits\": 4,\n          \"operation\": \"FDM Printing\"\n        },\n        {\n          \"scrappedUnits\": 4,\n          \"operation\": \"FDM Printing\"\n        }\n      ],\n      \"producedUnits\": 240,\n      \"scrapRate\": 8070.26088954713,\n      \"scrappedUnits\": 7\n    },\n    \"kanban\": [\n      {\n        \"count\": 14,\n        \"name\": \"In Production\",\n        \"sequence\": 3\n      },\n      {\n        \"count\": 14,\n        \"name\": \"In Production\",\n        \"sequence\": 3\n      }\n    ]\n  },\n  \"customers\": {\n    \"byType\": {\n      \"ACCOUNT\": 8,\n      \"PRO_FORMA\": 7\n    },\n    \"new\": 15,\n    \"topByRevenue\": [\n      {\n        \"confirmed\": 3329.0569540488823,\n        \"currency\": \"USD\",\n        \"customerOrganisationId\": 123,\n        \"paid\": 8386.287969941599,\n        \"name\": \"Acme Manufacturing\"\n      },\n      {\n        \"confirmed\": 9078.932576175017,\n        \"currency\": \"USD\",\n        \"customerOrganisationId\": 123,\n        \"paid\": 4981.034576119263,\n        \"name\": \"Acme Manufacturing\"\n      }\n    ],\n    \"value\": [\n      {\n        \"avgLifetimeValue\": 1369.2389059989707,\n        \"avgOrderValue\": 2777.0858282551326,\n        \"currency\": \"USD\",\n        \"orders\": 68,\n        \"payingCustomers\": 31,\n        \"totalConfirmed\": 9270.683188460136,\n        \"totalPaid\": 9372.266669581219\n      },\n      {\n        \"avgLifetimeValue\": 1303.0163070841106,\n        \"avgOrderValue\": 2869.887215283894,\n        \"currency\": \"USD\",\n        \"orders\": 68,\n        \"payingCustomers\": 31,\n        \"totalConfirmed\": 2086.969382391337,\n        \"totalPaid\": 9569.905683642295\n      }\n    ],\n    \"retention\": {\n      \"atRiskCustomers\": 9,\n      \"atRiskThresholdDays\": 90,\n      \"churnedCustomers\": 4,\n      \"customersWithOrders\": 80,\n      \"repeatCustomers\": 22,\n      \"repeatRate\": 8390.503364953365\n    },\n    \"acquisition\": [\n      {\n        \"confirmed\": 5678.721886921133,\n        \"customers\": 18,\n        \"paid\": 5231.247027630025,\n        \"source\": \"STORE_FRONT\"\n      },\n      {\n        \"confirmed\": 2354.418439966044,\n        \"customers\": 18,\n        \"paid\": 5760.061639929802,\n        \"source\": \"STORE_FRONT\"\n      }\n    ],\n    \"geography\": [\n      {\n        \"confirmed\": 3775.2864296056523,\n        \"country\": \"US\",\n        \"orders\": 17,\n        \"paid\": 9973.175092910562\n      },\n      {\n        \"confirmed\": 1357.6846060580717,\n        \"country\": \"US\",\n        \"orders\": 17,\n        \"paid\": 4532.979877106682\n      }\n    ],\n    \"paymentBehaviour\": [\n      {\n        \"confirmedOrders\": 11,\n        \"currency\": \"USD\",\n        \"latePaymentRate\": 8192.726497651754,\n        \"outstanding\": 390.9913243304442,\n        \"paidOrders\": 18,\n        \"daysSalesOutstanding\": 9004.08963316209\n      },\n      {\n        \"confirmedOrders\": 11,\n        \"currency\": \"USD\",\n        \"latePaymentRate\": 2137.6618105760294,\n        \"outstanding\": 1305.1429849980823,\n        \"paidOrders\": 18,\n        \"daysSalesOutstanding\": 3789.144905935764\n      }\n    ],\n    \"cartConversion\": {\n      \"abandoned\": 62,\n      \"carts\": 96,\n      \"conversionRate\": 1471.5016449262864,\n      \"converted\": 34\n    },\n    \"discountUsage\": {\n      \"ordersWithDiscount\": 12,\n      \"totalOrders\": 68,\n      \"usageRate\": 4992.187787289638,\n      \"avgDiscountPercentage\": 4044.7525037233136\n    }\n  },\n  \"materials\": {\n    \"materialProcessMatrix\": [\n      {\n        \"material\": \"Aluminium 6061\",\n        \"requisitions\": 8,\n        \"revenue\": 6926.239273969504,\n        \"technology\": \"CNC\"\n      },\n      {\n        \"material\": \"Aluminium 6061\",\n        \"requisitions\": 8,\n        \"revenue\": 4490.6870339720535,\n        \"technology\": \"CNC\"\n      }\n    ],\n    \"postProcessing\": [\n      {\n        \"count\": 14,\n        \"name\": \"Anodising\"\n      },\n      {\n        \"count\": 14,\n        \"name\": \"Anodising\"\n      }\n    ],\n    \"scrapByMaterial\": [\n      {\n        \"material\": \"PLA\",\n        \"scrappedUnits\": 5\n      },\n      {\n        \"material\": \"PLA\",\n        \"scrappedUnits\": 5\n      }\n    ],\n    \"topMaterials\": [\n      {\n        \"estimatedVolume\": 1163.3485646566999,\n        \"materialId\": 42,\n        \"name\": \"PLA\",\n        \"quantity\": 210,\n        \"requisitions\": 26\n      },\n      {\n        \"estimatedVolume\": 7700.223222037803,\n        \"materialId\": 42,\n        \"name\": \"PLA\",\n        \"quantity\": 210,\n        \"requisitions\": 26\n      }\n    ],\n    \"topTechnologies\": [\n      {\n        \"estimatedVolume\": 4090.675138530958,\n        \"quantity\": 280,\n        \"requisitions\": 31,\n        \"technology\": \"FDM\"\n      },\n      {\n        \"estimatedVolume\": 9506.783159632401,\n        \"quantity\": 280,\n        \"requisitions\": 31,\n        \"technology\": \"FDM\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb6ad7d8-65f3-4e03-97a2-60a3be900979",
+              "name": "Invalid range (e.g. too many buckets, or `to` before `from`)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "dashboard"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "last_30_days"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2026-01-01"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2026-01-31"
+                    },
+                    {
+                      "key": "granularity",
+                      "value": "day"
+                    },
+                    {
+                      "key": "sections",
+                      "value": "revenue"
+                    },
+                    {
+                      "key": "customerType",
+                      "value": "ACCOUNT"
+                    },
+                    {
+                      "key": "source",
+                      "value": "INBOUND"
+                    },
+                    {
+                      "key": "compare",
+                      "value": "false"
+                    },
+                    {
+                      "key": "includeArchived",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "07bfbf75-831f-4943-a8e7-88f6fb9fa37f",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "dashboard"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "last_30_days"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2026-01-01"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2026-01-31"
+                    },
+                    {
+                      "key": "granularity",
+                      "value": "day"
+                    },
+                    {
+                      "key": "sections",
+                      "value": "revenue"
+                    },
+                    {
+                      "key": "customerType",
+                      "value": "ACCOUNT"
+                    },
+                    {
+                      "key": "source",
+                      "value": "INBOUND"
+                    },
+                    {
+                      "key": "compare",
+                      "value": "false"
+                    },
+                    {
+                      "key": "includeArchived",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "937a80ce-6953-4ec5-b2a1-f22d5b32959a",
+              "name": "Too many requests - per-operator analytics rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "analytics",
+                    "dashboard"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "last_30_days"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2026-01-01"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2026-01-31"
+                    },
+                    {
+                      "key": "granularity",
+                      "value": "day"
+                    },
+                    {
+                      "key": "sections",
+                      "value": "revenue"
+                    },
+                    {
+                      "key": "customerType",
+                      "value": "ACCOUNT"
+                    },
+                    {
+                      "key": "source",
+                      "value": "INBOUND"
+                    },
+                    {
+                      "key": "compare",
+                      "value": "false"
+                    },
+                    {
+                      "key": "includeArchived",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3c535825-44f3-480f-aff6-39f1fd49112b",
+    "name": "Phasio Activity Internal Manufacturer Analytics Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

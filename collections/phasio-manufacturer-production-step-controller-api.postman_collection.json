@@ -1,0 +1,2327 @@
+{
+  "item": [
+    {
+      "id": "b57829af-2e29-4974-888e-8acb41590716",
+      "name": "Manufacturer Production Step Controller",
+      "description": {
+        "content": "Endpoints for managing production steps in the manufacturing workflow",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eed9db30-f140-4aaf-9383-fbf40458769d",
+          "name": "Rename production step",
+          "request": {
+            "name": "Rename production step",
+            "description": {
+              "content": "Updates the name of a production step",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "production-step",
+                ":stepId",
+                "rename"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "stepId",
+                  "description": "(Required) ID of the production step to rename"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2388c603-7b61-42c6-a07f-8176b5ec8aff",
+              "name": "Production step renamed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    ":stepId",
+                    "rename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "stepId",
+                      "description": "(Required) ID of the production step to rename"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"2015-10-07T20:01:23.692Z\",\n    \"groupId\": \"string\",\n    \"id\": \"6bc3d074-6155-9507-0c6a-e1b0065d36e4\",\n    \"isCompleted\": false,\n    \"operationId\": \"bd0980e2-3b9c-f5b0-b026-d0dd9cf4bce4\",\n    \"operationName\": \"string\",\n    \"prefix\": \"string\",\n    \"productionStatusId\": \"46d99c7a-9aee-7b1a-2837-ab04fe1e9e09\",\n    \"productionStatusName\": \"string\",\n    \"type\": \"string\",\n    \"updateDt\": \"1995-11-25T02:23:51.909Z\",\n    \"manufacturerUsername\": \"string\",\n    \"actorType\": \"string\",\n    \"completedAt\": \"1992-06-10T03:47:53.503Z\"\n  },\n  {\n    \"createdAt\": \"1984-08-02T02:55:33.127Z\",\n    \"groupId\": \"string\",\n    \"id\": \"d45808c5-9242-80e8-29eb-4d1d8982d58a\",\n    \"isCompleted\": true,\n    \"operationId\": \"9676ef20-999e-2341-80d6-88b10dc3cd0c\",\n    \"operationName\": \"string\",\n    \"prefix\": \"string\",\n    \"productionStatusId\": \"1c5c6a89-c1eb-2ec7-c518-06719c78c566\",\n    \"productionStatusName\": \"string\",\n    \"type\": \"string\",\n    \"updateDt\": \"2023-04-30T13:58:54.478Z\",\n    \"manufacturerUsername\": \"string\",\n    \"actorType\": \"string\",\n    \"completedAt\": \"1953-01-30T17:58:49.812Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a2616bf-ce29-4858-a7d9-1d666f10d505",
+              "name": "Invalid step ID or name",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    ":stepId",
+                    "rename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "stepId",
+                      "description": "(Required) ID of the production step to rename"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ecb7d8b8-8f36-4eef-99cc-cc77bc9a4a7c",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    ":stepId",
+                    "rename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "stepId",
+                      "description": "(Required) ID of the production step to rename"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84b5d804-bc96-4100-b883-0c480144e29e",
+          "name": "Move batches between production steps",
+          "request": {
+            "name": "Move batches between production steps",
+            "description": {
+              "content": "Moves batches from one production step to another",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "production-step",
+                "move-batches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Idempotency-Key",
+                "value": "<uuid>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"batches\": [\n      {\n        \"productionStepId\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"workOrderId\": \"<uuid>\"\n      },\n      {\n        \"productionStepId\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"workOrderId\": \"<uuid>\"\n      }\n    ],\n    \"toOperationId\": \"<uuid>\",\n    \"scrapReason\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"batches\": [\n      {\n        \"productionStepId\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"workOrderId\": \"<uuid>\"\n      },\n      {\n        \"productionStepId\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"workOrderId\": \"<uuid>\"\n      }\n    ],\n    \"toOperationId\": \"<uuid>\",\n    \"scrapReason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "12011de0-089f-462d-8175-3c17befcf05b",
+              "name": "Batches moved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "move-batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Idempotency-Key",
+                    "value": "<uuid>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"batches\": [\n      {\n        \"productionStepId\": \"76a3e832-e2f0-1ed4-6ffc-262f76041cbe\",\n        \"quantity\": 401,\n        \"workOrderId\": \"fcfedadb-0d7b-e287-b9c9-b2b5600d4f47\"\n      },\n      {\n        \"productionStepId\": \"b0ebbbc0-ae24-a78a-a560-73208e0585fd\",\n        \"quantity\": 9368,\n        \"workOrderId\": \"1cf8c77f-81c8-79ce-2934-6999835425a3\"\n      }\n    ],\n    \"toOperationId\": \"2d04c5d9-97df-d0f6-5e65-f2f698e6a5f5\",\n    \"scrapReason\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"batches\": [\n      {\n        \"productionStepId\": \"bdb9dee1-666f-dfda-eb53-56032ad9380a\",\n        \"quantity\": 7976,\n        \"workOrderId\": \"cc3455f4-149c-bee7-d510-90438d2e6215\"\n      },\n      {\n        \"productionStepId\": \"b1c061b5-f7d6-45fd-a0b7-6b0155f26df6\",\n        \"quantity\": 3628,\n        \"workOrderId\": \"6dc801bb-3a09-a78b-3855-f0eeccae59d4\"\n      }\n    ],\n    \"toOperationId\": \"1a9b2520-f5d1-aaac-bbf6-d792b2021ebd\",\n    \"scrapReason\": \"string\",\n    \"name\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"batchStatusId\": \"66214455-dafe-2dfb-f5a7-d517957abe76\",\n    \"batchStatusName\": \"string\",\n    \"commentCount\": 9162,\n    \"groupId\": \"string\",\n    \"materialId\": 8124,\n    \"operationId\": \"d6c9297d-5d3b-597e-9f89-e66ac9b6d894\",\n    \"operationName\": \"string\",\n    \"outstandingAt\": \"1992-07-14T00:29:06.248Z\",\n    \"prefix\": \"string\",\n    \"processPricesId\": \"d480ffc8-2b3e-86e3-d432-f0474ac91965\",\n    \"quantity\": 5921,\n    \"requisitionId\": 7736,\n    \"sequence\": 7410,\n    \"stepId\": \"5b1f5544-9a82-a76d-d1a7-24e388e5bd9b\",\n    \"stepType\": \"string\",\n    \"workOrderId\": \"630636b6-fc68-436f-5a4c-40942eec8623\",\n    \"colorId\": 5523,\n    \"dispatchDate\": \"2000-01-22\",\n    \"requisitionDuration\": 6921,\n    \"orderId\": 7424,\n    \"orderNumber\": 4031,\n    \"threadId\": 7997,\n    \"purchaseOrderNumber\": \"string\",\n    \"closedAt\": \"1982-01-10T16:22:04.812Z\"\n  },\n  {\n    \"batchStatusId\": \"6fca2278-1ceb-8ff2-24c5-357880711003\",\n    \"batchStatusName\": \"string\",\n    \"commentCount\": 6997,\n    \"groupId\": \"string\",\n    \"materialId\": 333,\n    \"operationId\": \"8e83f292-caed-024b-33a9-80834f4d10f4\",\n    \"operationName\": \"string\",\n    \"outstandingAt\": \"2022-04-22T22:41:03.814Z\",\n    \"prefix\": \"string\",\n    \"processPricesId\": \"cb25ecca-ca69-1984-097d-937b6539b5cc\",\n    \"quantity\": 4607,\n    \"requisitionId\": 3796,\n    \"sequence\": 6364,\n    \"stepId\": \"000bdbbf-fe2c-e7e8-b3eb-e1265c923334\",\n    \"stepType\": \"string\",\n    \"workOrderId\": \"93039bcd-3a1b-2179-04b2-07bba90411cd\",\n    \"colorId\": 3787,\n    \"dispatchDate\": \"2015-08-28\",\n    \"requisitionDuration\": 232,\n    \"orderId\": 2219,\n    \"orderNumber\": 1379,\n    \"threadId\": 2838,\n    \"purchaseOrderNumber\": \"string\",\n    \"closedAt\": \"1972-08-20T20:23:44.017Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "313ed0f4-8d0b-4a19-8ce2-d0b48fb80c1a",
+              "name": "Invalid batch movement request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "move-batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Idempotency-Key",
+                    "value": "<uuid>",
+                    "description": ""
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"batches\": [\n      {\n        \"productionStepId\": \"76a3e832-e2f0-1ed4-6ffc-262f76041cbe\",\n        \"quantity\": 401,\n        \"workOrderId\": \"fcfedadb-0d7b-e287-b9c9-b2b5600d4f47\"\n      },\n      {\n        \"productionStepId\": \"b0ebbbc0-ae24-a78a-a560-73208e0585fd\",\n        \"quantity\": 9368,\n        \"workOrderId\": \"1cf8c77f-81c8-79ce-2934-6999835425a3\"\n      }\n    ],\n    \"toOperationId\": \"2d04c5d9-97df-d0f6-5e65-f2f698e6a5f5\",\n    \"scrapReason\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"batches\": [\n      {\n        \"productionStepId\": \"bdb9dee1-666f-dfda-eb53-56032ad9380a\",\n        \"quantity\": 7976,\n        \"workOrderId\": \"cc3455f4-149c-bee7-d510-90438d2e6215\"\n      },\n      {\n        \"productionStepId\": \"b1c061b5-f7d6-45fd-a0b7-6b0155f26df6\",\n        \"quantity\": 3628,\n        \"workOrderId\": \"6dc801bb-3a09-a78b-3855-f0eeccae59d4\"\n      }\n    ],\n    \"toOperationId\": \"1a9b2520-f5d1-aaac-bbf6-d792b2021ebd\",\n    \"scrapReason\": \"string\",\n    \"name\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6adb0e06-9544-4037-862e-69f8addad52a",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "move-batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Idempotency-Key",
+                    "value": "<uuid>",
+                    "description": ""
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"batches\": [\n      {\n        \"productionStepId\": \"76a3e832-e2f0-1ed4-6ffc-262f76041cbe\",\n        \"quantity\": 401,\n        \"workOrderId\": \"fcfedadb-0d7b-e287-b9c9-b2b5600d4f47\"\n      },\n      {\n        \"productionStepId\": \"b0ebbbc0-ae24-a78a-a560-73208e0585fd\",\n        \"quantity\": 9368,\n        \"workOrderId\": \"1cf8c77f-81c8-79ce-2934-6999835425a3\"\n      }\n    ],\n    \"toOperationId\": \"2d04c5d9-97df-d0f6-5e65-f2f698e6a5f5\",\n    \"scrapReason\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"batches\": [\n      {\n        \"productionStepId\": \"bdb9dee1-666f-dfda-eb53-56032ad9380a\",\n        \"quantity\": 7976,\n        \"workOrderId\": \"cc3455f4-149c-bee7-d510-90438d2e6215\"\n      },\n      {\n        \"productionStepId\": \"b1c061b5-f7d6-45fd-a0b7-6b0155f26df6\",\n        \"quantity\": 3628,\n        \"workOrderId\": \"6dc801bb-3a09-a78b-3855-f0eeccae59d4\"\n      }\n    ],\n    \"toOperationId\": \"1a9b2520-f5d1-aaac-bbf6-d792b2021ebd\",\n    \"scrapReason\": \"string\",\n    \"name\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "375dfab5-dbcc-474f-906c-16fad0c8d140",
+          "name": "Get production steps by IDs",
+          "request": {
+            "name": "Get production steps by IDs",
+            "description": {
+              "content": "Retrieves production steps with the specified IDs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "production-step"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stepIds",
+                  "value": "<uuid>",
+                  "description": "(Required) Set of production step IDs to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "stepIds",
+                  "value": "<uuid>",
+                  "description": "(Required) Set of production step IDs to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0a94707-b277-438a-9654-c9561cd4a835",
+              "name": "Production steps retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stepIds",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"2015-10-07T20:01:23.692Z\",\n    \"groupId\": \"string\",\n    \"id\": \"6bc3d074-6155-9507-0c6a-e1b0065d36e4\",\n    \"isCompleted\": false,\n    \"operationId\": \"bd0980e2-3b9c-f5b0-b026-d0dd9cf4bce4\",\n    \"operationName\": \"string\",\n    \"prefix\": \"string\",\n    \"productionStatusId\": \"46d99c7a-9aee-7b1a-2837-ab04fe1e9e09\",\n    \"productionStatusName\": \"string\",\n    \"type\": \"string\",\n    \"updateDt\": \"1995-11-25T02:23:51.909Z\",\n    \"manufacturerUsername\": \"string\",\n    \"actorType\": \"string\",\n    \"completedAt\": \"1992-06-10T03:47:53.503Z\"\n  },\n  {\n    \"createdAt\": \"1984-08-02T02:55:33.127Z\",\n    \"groupId\": \"string\",\n    \"id\": \"d45808c5-9242-80e8-29eb-4d1d8982d58a\",\n    \"isCompleted\": true,\n    \"operationId\": \"9676ef20-999e-2341-80d6-88b10dc3cd0c\",\n    \"operationName\": \"string\",\n    \"prefix\": \"string\",\n    \"productionStatusId\": \"1c5c6a89-c1eb-2ec7-c518-06719c78c566\",\n    \"productionStatusName\": \"string\",\n    \"type\": \"string\",\n    \"updateDt\": \"2023-04-30T13:58:54.478Z\",\n    \"manufacturerUsername\": \"string\",\n    \"actorType\": \"string\",\n    \"completedAt\": \"1953-01-30T17:58:49.812Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93aa0f84-da4d-4934-aa23-9c31dfa6f5d9",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stepIds",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12417c8d-efbd-470a-84e8-0142f1f7ceed",
+          "name": "Generate group traveller PDF",
+          "request": {
+            "name": "Generate group traveller PDF",
+            "description": {
+              "content": "Generates a traveller document PDF for the specified production step (group)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "production-step",
+                ":stepId",
+                "traveller"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "templateName",
+                  "value": "<string>",
+                  "description": "Name of the GROUP_LEVEL_TRAVELLER custom template to use (optional)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "stepId",
+                  "description": "(Required) ID of the production step to generate traveller for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6eb1fa33-7509-4879-a30e-99cca32b38dd",
+              "name": "PDF generated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    ":stepId",
+                    "traveller"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateName",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "stepId",
+                      "description": "(Required) ID of the production step to generate traveller for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "60755ec8-0e4b-4e4c-a322-d7b0c336ab45",
+              "name": "Invalid step ID or generation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    ":stepId",
+                    "traveller"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateName",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "stepId",
+                      "description": "(Required) ID of the production step to generate traveller for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6dc74c3-bbcf-48a0-9983-f0fcaef32b41",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    ":stepId",
+                    "traveller"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateName",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "stepId",
+                      "description": "(Required) ID of the production step to generate traveller for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad1b59b0-7184-42a4-b0cb-1bd1c1c1d860",
+          "name": "Generate combined order traveller PDF",
+          "request": {
+            "name": "Generate combined order traveller PDF",
+            "description": {
+              "content": "Generates a single order traveller PDF combining all orders within the specified production step",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "production-step",
+                ":stepId",
+                "order-traveller"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "templateName",
+                  "value": "<string>",
+                  "description": "Name of the ORDER_LEVEL_TRAVELLER custom template to use (optional)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "stepId",
+                  "description": "(Required) ID of the production step"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "698c0495-b240-4605-9df1-9739841d24a7",
+              "name": "PDF generated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    ":stepId",
+                    "order-traveller"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateName",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "stepId",
+                      "description": "(Required) ID of the production step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "726c9a85-5b49-4816-83bd-944e62f45b88",
+              "name": "Invalid step ID, no orders found, or generation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    ":stepId",
+                    "order-traveller"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateName",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "stepId",
+                      "description": "(Required) ID of the production step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a41fbdd8-80a6-4c6b-be04-e3ec349a810c",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    ":stepId",
+                    "order-traveller"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateName",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "stepId",
+                      "description": "(Required) ID of the production step"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7975c93f-1483-4c34-93a5-c72dfed07ff0",
+          "name": "Get production steps with filtering",
+          "request": {
+            "name": "Get production steps with filtering",
+            "description": {
+              "content": "Retrieves a paginated list of production steps with optional filtering and search using RSQL",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "production-step",
+                "paginated"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "(Required) RSQL query string for filtering (e.g. paymentStatus=in=(PAID,UNPAID);price>10)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "createdAt,DESC",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Optional search term"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83569217-629c-4b6d-9aed-d5b034e017d9",
+              "name": "Production steps retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "paginated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "createdAt,DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"content\": [],\n  \"isEmpty\": true,\n  \"isFirst\": true,\n  \"isLast\": true,\n  \"pageNumber\": 1581,\n  \"pageSize\": 8541,\n  \"totalElements\": 8802,\n  \"totalPages\": 5080\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "917c132d-7d19-4ba4-a9e0-ada6fc52c6c0",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "paginated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "createdAt,DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d8d3dbd-ecf1-4cb8-b292-d8ff632bf040",
+          "name": "Orders completed past one or more production steps",
+          "request": {
+            "name": "Orders completed past one or more production steps",
+            "description": {
+              "content": "For each given production step id, finds candidate orders (those containing requisitions ever associated with the step) and returns the subset whose every active balance, across every requisition in the order, sits at a production status with a sequence strictly greater than that step's status sequence. The response is the union across all supplied step ids.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "production-step",
+                "orders",
+                "completed"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stepIds",
+                  "value": "<uuid>",
+                  "description": "(Required) Set of production step ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "stepIds",
+                  "value": "<uuid>",
+                  "description": "(Required) Set of production step ids"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5200fc6-8f25-4531-8e17-6a3c3578200c",
+              "name": "Completed-past-step order ids retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "orders",
+                    "completed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stepIds",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  5769,\n  2197\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb82cc3b-967a-43e8-9151-083b8377eead",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "orders",
+                    "completed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stepIds",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fbe7ca02-1636-4b35-a40c-f68952a91d4a",
+          "name": "Get production steps by build IDs",
+          "request": {
+            "name": "Get production steps by build IDs",
+            "description": {
+              "content": "Retrieves production steps associated with the specified build IDs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "production-step",
+                "build-ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buildIds",
+                  "value": "<string>",
+                  "description": "(Required) Set of build IDs to retrieve steps for"
+                },
+                {
+                  "disabled": false,
+                  "key": "buildIds",
+                  "value": "<string>",
+                  "description": "(Required) Set of build IDs to retrieve steps for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf22aa74-6f76-4aee-9b67-016645b53fb7",
+              "name": "Production steps retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "build-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buildIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"2015-10-07T20:01:23.692Z\",\n    \"groupId\": \"string\",\n    \"id\": \"6bc3d074-6155-9507-0c6a-e1b0065d36e4\",\n    \"isCompleted\": false,\n    \"operationId\": \"bd0980e2-3b9c-f5b0-b026-d0dd9cf4bce4\",\n    \"operationName\": \"string\",\n    \"prefix\": \"string\",\n    \"productionStatusId\": \"46d99c7a-9aee-7b1a-2837-ab04fe1e9e09\",\n    \"productionStatusName\": \"string\",\n    \"type\": \"string\",\n    \"updateDt\": \"1995-11-25T02:23:51.909Z\",\n    \"manufacturerUsername\": \"string\",\n    \"actorType\": \"string\",\n    \"completedAt\": \"1992-06-10T03:47:53.503Z\"\n  },\n  {\n    \"createdAt\": \"1984-08-02T02:55:33.127Z\",\n    \"groupId\": \"string\",\n    \"id\": \"d45808c5-9242-80e8-29eb-4d1d8982d58a\",\n    \"isCompleted\": true,\n    \"operationId\": \"9676ef20-999e-2341-80d6-88b10dc3cd0c\",\n    \"operationName\": \"string\",\n    \"prefix\": \"string\",\n    \"productionStatusId\": \"1c5c6a89-c1eb-2ec7-c518-06719c78c566\",\n    \"productionStatusName\": \"string\",\n    \"type\": \"string\",\n    \"updateDt\": \"2023-04-30T13:58:54.478Z\",\n    \"manufacturerUsername\": \"string\",\n    \"actorType\": \"string\",\n    \"completedAt\": \"1953-01-30T17:58:49.812Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37890c62-2d33-45b6-8443-855445f709c2",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "build-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buildIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd18185a-78e5-4db6-8363-a83a67e6ac4e",
+          "name": "Get batch transitions by step IDs",
+          "request": {
+            "name": "Get batch transitions by step IDs",
+            "description": {
+              "content": "Retrieves batch transitions for the specified production step IDs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "production-step",
+                "batch-transitions",
+                "step-ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stepIds",
+                  "value": "<uuid>",
+                  "description": "(Required) Set of production step IDs to retrieve batch transitions for"
+                },
+                {
+                  "disabled": false,
+                  "key": "stepIds",
+                  "value": "<uuid>",
+                  "description": "(Required) Set of production step IDs to retrieve batch transitions for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65574461-99c2-4ecb-939e-e61adf672842",
+              "name": "Batch transitions retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "batch-transitions",
+                    "step-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stepIds",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"string\",\n    \"id\": \"ac5aa127-937b-974f-cc56-1dcc20f6d449\",\n    \"requisitionId\": 5148,\n    \"workOrderId\": \"ee845d4d-5eeb-92aa-2f74-5adabe8c7d80\",\n    \"fromOperationId\": \"f82a24f2-9141-d707-37d8-047c72c76d13\",\n    \"fromOperationName\": \"string\",\n    \"fromStepId\": \"f44a222d-9ec7-a3a7-0a96-00db2633502d\",\n    \"fromStepBuildId\": \"string\",\n    \"fromStepPrefix\": \"string\",\n    \"batchSize\": 6010,\n    \"createdAt\": \"1949-05-16T05:24:15.845Z\",\n    \"updateDt\": \"1960-05-09T18:30:47.993Z\",\n    \"fromStatusId\": \"1c083252-6590-c410-1d76-a214fd836a1f\",\n    \"fromStatusName\": \"string\"\n  },\n  {\n    \"type\": \"string\",\n    \"id\": \"8541e034-3db1-a167-daa2-5e44111d8941\",\n    \"requisitionId\": 4017,\n    \"workOrderId\": \"9765a910-2b58-feaa-3914-389cf8505495\",\n    \"fromOperationId\": \"60802efb-a548-a54a-d622-ede9faae20fd\",\n    \"fromOperationName\": \"string\",\n    \"fromStepId\": \"b71f94af-2bc8-e6e8-e6a0-556ae58b0ab3\",\n    \"fromStepBuildId\": \"string\",\n    \"fromStepPrefix\": \"string\",\n    \"batchSize\": 5136,\n    \"createdAt\": \"1951-02-10T20:37:23.440Z\",\n    \"updateDt\": \"2015-02-27T16:11:55.780Z\",\n    \"fromStatusId\": \"6a2161a4-0519-a330-027b-fa004d96dc7a\",\n    \"fromStatusName\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b433dbfc-5589-4da1-9d60-b172fad0b405",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "batch-transitions",
+                    "step-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stepIds",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04eabfb0-f48d-47cc-a9da-f8ac03b34ff5",
+          "name": "Get batch transitions by build IDs",
+          "request": {
+            "name": "Get batch transitions by build IDs",
+            "description": {
+              "content": "Retrieves batch transitions for the specified build IDs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "production-step",
+                "batch-transitions",
+                "build-ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buildIds",
+                  "value": "<string>",
+                  "description": "(Required) Set of build IDs to retrieve batch transitions for"
+                },
+                {
+                  "disabled": false,
+                  "key": "buildIds",
+                  "value": "<string>",
+                  "description": "(Required) Set of build IDs to retrieve batch transitions for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "566605d7-a0a0-4bcd-b261-05a2d3b9b181",
+              "name": "Batch transitions retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "batch-transitions",
+                    "build-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buildIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"string\",\n    \"id\": \"ac5aa127-937b-974f-cc56-1dcc20f6d449\",\n    \"requisitionId\": 5148,\n    \"workOrderId\": \"ee845d4d-5eeb-92aa-2f74-5adabe8c7d80\",\n    \"fromOperationId\": \"f82a24f2-9141-d707-37d8-047c72c76d13\",\n    \"fromOperationName\": \"string\",\n    \"fromStepId\": \"f44a222d-9ec7-a3a7-0a96-00db2633502d\",\n    \"fromStepBuildId\": \"string\",\n    \"fromStepPrefix\": \"string\",\n    \"batchSize\": 6010,\n    \"createdAt\": \"1949-05-16T05:24:15.845Z\",\n    \"updateDt\": \"1960-05-09T18:30:47.993Z\",\n    \"fromStatusId\": \"1c083252-6590-c410-1d76-a214fd836a1f\",\n    \"fromStatusName\": \"string\"\n  },\n  {\n    \"type\": \"string\",\n    \"id\": \"8541e034-3db1-a167-daa2-5e44111d8941\",\n    \"requisitionId\": 4017,\n    \"workOrderId\": \"9765a910-2b58-feaa-3914-389cf8505495\",\n    \"fromOperationId\": \"60802efb-a548-a54a-d622-ede9faae20fd\",\n    \"fromOperationName\": \"string\",\n    \"fromStepId\": \"b71f94af-2bc8-e6e8-e6a0-556ae58b0ab3\",\n    \"fromStepBuildId\": \"string\",\n    \"fromStepPrefix\": \"string\",\n    \"batchSize\": 5136,\n    \"createdAt\": \"1951-02-10T20:37:23.440Z\",\n    \"updateDt\": \"2015-02-27T16:11:55.780Z\",\n    \"fromStatusId\": \"6a2161a4-0519-a330-027b-fa004d96dc7a\",\n    \"fromStatusName\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad31bd6f-ff82-4c07-a6d8-7a5ef8077642",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "batch-transitions",
+                    "build-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buildIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f8b7dd5-ad27-46ff-8e3e-7014b41b777d",
+          "name": "Get batch balances by status IDs",
+          "request": {
+            "name": "Get batch balances by status IDs",
+            "description": {
+              "content": "Retrieves batch balances for the specified production status IDs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "production-step",
+                "batch-balances",
+                "status-ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "operationIds",
+                  "value": "<uuid>",
+                  "description": "(Required) Set of operation IDs to retrieve batch balances for"
+                },
+                {
+                  "disabled": false,
+                  "key": "operationIds",
+                  "value": "<uuid>",
+                  "description": "(Required) Set of operation IDs to retrieve batch balances for"
+                },
+                {
+                  "disabled": false,
+                  "key": "archived",
+                  "value": "<boolean>",
+                  "description": "Include archived requisitions"
+                },
+                {
+                  "disabled": false,
+                  "key": "completedAfter",
+                  "value": "<dateTime>",
+                  "description": "Only return balances completed at or after this instant (inclusive). ISO-8601 with offset, e.g. 2026-05-01T00:00:00Z. Omit to apply no lower bound."
+                },
+                {
+                  "disabled": false,
+                  "key": "completedBefore",
+                  "value": "<dateTime>",
+                  "description": "Only return balances completed strictly before this instant (exclusive keyset cursor). ISO-8601 with offset, e.g. 2026-05-01T00:00:00Z. Omit to apply no upper bound."
+                },
+                {
+                  "disabled": false,
+                  "key": "completedBeforeId",
+                  "value": "<uuid>",
+                  "description": "Step ID of the oldest loaded balance, paired with completedBefore as the keyset tiebreaker so rows sharing the boundary completion instant are not skipped."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of balances to return, newest completion first"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e6d2e9f3-68b8-4cab-a720-e31f830e98a1",
+              "name": "Batch balances retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "batch-balances",
+                    "status-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "operationIds",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "archived",
+                      "value": "false"
+                    },
+                    {
+                      "key": "completedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completedBeforeId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"batchStatusId\": \"66214455-dafe-2dfb-f5a7-d517957abe76\",\n    \"batchStatusName\": \"string\",\n    \"commentCount\": 9162,\n    \"groupId\": \"string\",\n    \"materialId\": 8124,\n    \"operationId\": \"d6c9297d-5d3b-597e-9f89-e66ac9b6d894\",\n    \"operationName\": \"string\",\n    \"outstandingAt\": \"1992-07-14T00:29:06.248Z\",\n    \"prefix\": \"string\",\n    \"processPricesId\": \"d480ffc8-2b3e-86e3-d432-f0474ac91965\",\n    \"quantity\": 5921,\n    \"requisitionId\": 7736,\n    \"sequence\": 7410,\n    \"stepId\": \"5b1f5544-9a82-a76d-d1a7-24e388e5bd9b\",\n    \"stepType\": \"string\",\n    \"workOrderId\": \"630636b6-fc68-436f-5a4c-40942eec8623\",\n    \"colorId\": 5523,\n    \"dispatchDate\": \"2000-01-22\",\n    \"requisitionDuration\": 6921,\n    \"orderId\": 7424,\n    \"orderNumber\": 4031,\n    \"threadId\": 7997,\n    \"purchaseOrderNumber\": \"string\",\n    \"closedAt\": \"1982-01-10T16:22:04.812Z\"\n  },\n  {\n    \"batchStatusId\": \"6fca2278-1ceb-8ff2-24c5-357880711003\",\n    \"batchStatusName\": \"string\",\n    \"commentCount\": 6997,\n    \"groupId\": \"string\",\n    \"materialId\": 333,\n    \"operationId\": \"8e83f292-caed-024b-33a9-80834f4d10f4\",\n    \"operationName\": \"string\",\n    \"outstandingAt\": \"2022-04-22T22:41:03.814Z\",\n    \"prefix\": \"string\",\n    \"processPricesId\": \"cb25ecca-ca69-1984-097d-937b6539b5cc\",\n    \"quantity\": 4607,\n    \"requisitionId\": 3796,\n    \"sequence\": 6364,\n    \"stepId\": \"000bdbbf-fe2c-e7e8-b3eb-e1265c923334\",\n    \"stepType\": \"string\",\n    \"workOrderId\": \"93039bcd-3a1b-2179-04b2-07bba90411cd\",\n    \"colorId\": 3787,\n    \"dispatchDate\": \"2015-08-28\",\n    \"requisitionDuration\": 232,\n    \"orderId\": 2219,\n    \"orderNumber\": 1379,\n    \"threadId\": 2838,\n    \"purchaseOrderNumber\": \"string\",\n    \"closedAt\": \"1972-08-20T20:23:44.017Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3735af3-3036-4f83-b04d-a541f38fca83",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "batch-balances",
+                    "status-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "operationIds",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "archived",
+                      "value": "false"
+                    },
+                    {
+                      "key": "completedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completedBeforeId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ea4063a-29a1-48c4-a1d9-29299b3182c6",
+          "name": "Get batch balances by part IDs",
+          "request": {
+            "name": "Get batch balances by part IDs",
+            "description": {
+              "content": "Retrieves batch balances for the specified part IDs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "production-step",
+                "batch-balances",
+                "part-ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "partIds",
+                  "value": "<long>",
+                  "description": "(Required) Set of requisition IDs to retrieve batch balances for"
+                },
+                {
+                  "disabled": false,
+                  "key": "partIds",
+                  "value": "<long>",
+                  "description": "(Required) Set of requisition IDs to retrieve batch balances for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "446e3fc1-948f-422f-9b5f-2fb247f2b928",
+              "name": "Batch balances retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "batch-balances",
+                    "part-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partIds",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"batchStatusId\": \"66214455-dafe-2dfb-f5a7-d517957abe76\",\n    \"batchStatusName\": \"string\",\n    \"commentCount\": 9162,\n    \"groupId\": \"string\",\n    \"materialId\": 8124,\n    \"operationId\": \"d6c9297d-5d3b-597e-9f89-e66ac9b6d894\",\n    \"operationName\": \"string\",\n    \"outstandingAt\": \"1992-07-14T00:29:06.248Z\",\n    \"prefix\": \"string\",\n    \"processPricesId\": \"d480ffc8-2b3e-86e3-d432-f0474ac91965\",\n    \"quantity\": 5921,\n    \"requisitionId\": 7736,\n    \"sequence\": 7410,\n    \"stepId\": \"5b1f5544-9a82-a76d-d1a7-24e388e5bd9b\",\n    \"stepType\": \"string\",\n    \"workOrderId\": \"630636b6-fc68-436f-5a4c-40942eec8623\",\n    \"colorId\": 5523,\n    \"dispatchDate\": \"2000-01-22\",\n    \"requisitionDuration\": 6921,\n    \"orderId\": 7424,\n    \"orderNumber\": 4031,\n    \"threadId\": 7997,\n    \"purchaseOrderNumber\": \"string\",\n    \"closedAt\": \"1982-01-10T16:22:04.812Z\"\n  },\n  {\n    \"batchStatusId\": \"6fca2278-1ceb-8ff2-24c5-357880711003\",\n    \"batchStatusName\": \"string\",\n    \"commentCount\": 6997,\n    \"groupId\": \"string\",\n    \"materialId\": 333,\n    \"operationId\": \"8e83f292-caed-024b-33a9-80834f4d10f4\",\n    \"operationName\": \"string\",\n    \"outstandingAt\": \"2022-04-22T22:41:03.814Z\",\n    \"prefix\": \"string\",\n    \"processPricesId\": \"cb25ecca-ca69-1984-097d-937b6539b5cc\",\n    \"quantity\": 4607,\n    \"requisitionId\": 3796,\n    \"sequence\": 6364,\n    \"stepId\": \"000bdbbf-fe2c-e7e8-b3eb-e1265c923334\",\n    \"stepType\": \"string\",\n    \"workOrderId\": \"93039bcd-3a1b-2179-04b2-07bba90411cd\",\n    \"colorId\": 3787,\n    \"dispatchDate\": \"2015-08-28\",\n    \"requisitionDuration\": 232,\n    \"orderId\": 2219,\n    \"orderNumber\": 1379,\n    \"threadId\": 2838,\n    \"purchaseOrderNumber\": \"string\",\n    \"closedAt\": \"1972-08-20T20:23:44.017Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "720fc71c-f249-4e9c-9aff-1fd90c0d27ed",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "production-step",
+                    "batch-balances",
+                    "part-ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partIds",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5150ba81-ef6c-4a36-9e09-f9296b6b92cd",
+    "name": "Phasio Activity Internal Manufacturer Production Step Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "48a12f8d-4464-42e8-b440-16ffc391bfa1",
+      "name": "Customer Assembly Controller",
+      "description": {
+        "content": "Endpoints for viewing assemblies",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "71f0a321-8fe1-4001-8167-834a20388ff1",
+          "name": "Get assembly by ID",
+          "request": {
+            "name": "Get assembly by ID",
+            "description": {
+              "content": "Retrieves a specific assembly by its ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "assemblies",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Assembly ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a0e725b-61a5-40c9-8161-1b0c45cf2b6b",
+              "name": "Successfully retrieved assembly",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "assemblies",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Assembly ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assemblyPrice\": 8400.33483860708,\n  \"customerReferences\": [\n    {\n      \"customerOrganisationId\": 1136,\n      \"pricingTiers\": [\n        {\n          \"price\": 5059.89969136633,\n          \"quantity\": 2059,\n          \"id\": \"ff6e7a7e-d0ae-6f5a-407a-9d0a54afee5e\"\n        },\n        {\n          \"price\": 110.45880784112283,\n          \"quantity\": 6648,\n          \"id\": \"a06daa2b-5ee2-5c54-11b0-8ddee2a9d502\"\n        }\n      ],\n      \"reference\": \"string\",\n      \"id\": \"c6c68901-b85a-602f-79d9-d38063732825\",\n      \"customerOrganisationName\": \"string\",\n      \"showInCatalog\": false\n    },\n    {\n      \"customerOrganisationId\": 3792,\n      \"pricingTiers\": [\n        {\n          \"price\": 1424.4336855449312,\n          \"quantity\": 4645,\n          \"id\": \"32a7f678-e460-bf05-3dce-8ed4be5ec31c\"\n        },\n        {\n          \"price\": 9632.014336980277,\n          \"quantity\": 103,\n          \"id\": \"89afe382-248e-2c1b-4a04-931cc73d2a55\"\n        }\n      ],\n      \"reference\": \"string\",\n      \"id\": \"06382440-cfc0-ed53-e308-1003fd941359\",\n      \"customerOrganisationName\": \"string\",\n      \"showInCatalog\": true\n    }\n  ],\n  \"id\": \"124105e5-0d2f-4d7f-4914-0f1e334d9387\",\n  \"items\": [\n    {\n      \"id\": \"740b0f80-ae25-5193-699b-78f4e518faf7\",\n      \"partSpecificationId\": \"b1035b74-b733-efd4-fa35-1fb19643a161\",\n      \"positionX\": 5245.09842107225,\n      \"positionY\": 2040.4126060212634,\n      \"positionZ\": 4145.8106285652775,\n      \"rotationX\": 3729.927837901359,\n      \"rotationY\": 2322.0401742122885,\n      \"rotationZ\": 1816.0251159164675,\n      \"partRevisionId\": \"b801c314-5f87-4b16-5b0e-69005401bb0e\",\n      \"partName\": \"string\"\n    },\n    {\n      \"id\": \"feee3729-28d9-807c-e44a-9ac8c47c068c\",\n      \"partSpecificationId\": \"20b5b922-7b27-48c5-1000-163c6e56b85f\",\n      \"positionX\": 4381.68650682883,\n      \"positionY\": 5589.199830988719,\n      \"positionZ\": 1319.616811142581,\n      \"rotationX\": 3493.3210584098438,\n      \"rotationY\": 9107.90105639271,\n      \"rotationZ\": 3948.218520350837,\n      \"partRevisionId\": \"979f78a4-2981-7b8d-9995-85e9576f8f0d\",\n      \"partName\": \"string\"\n    }\n  ],\n  \"name\": \"string\",\n  \"createdAt\": \"2000-04-04T04:53:57.584Z\",\n  \"updatedAt\": \"1956-06-24T19:20:54.452Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0c74425-5196-4899-ae2a-10cbd996405f",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "assemblies",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Assembly ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fe2e03c3-5648-44ce-90bb-164130bc6975",
+              "name": "Assembly not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "assemblies",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Assembly ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "08cb3da8-8bdb-4842-9363-37efb91ba744",
+    "name": "Phasio Activity Internal Customer Assembly Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

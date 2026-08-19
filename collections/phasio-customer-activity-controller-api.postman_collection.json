@@ -1,0 +1,606 @@
+{
+  "item": [
+    {
+      "id": "e99270f0-f49b-463b-a8a9-13751c602ab0",
+      "name": "Customer Activity Controller",
+      "description": {
+        "content": "Endpoints for managing customer communications and activity",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "608f7b21-60eb-4476-a3d9-5ffa75c048fa",
+          "name": "Create activity",
+          "request": {
+            "name": "Create activity",
+            "description": {
+              "content": "Creates a new activity such as a conversation or comment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "activity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activityType\": \"<string>\",\n  \"conversationType\": \"<string>\",\n  \"message\": \"<string>\",\n  \"threadId\": \"<long>\",\n  \"requisitionTagged\": {\n    \"requisitionId\": \"<long>\"\n  },\n  \"locationTagged\": {\n    \"cameraPositionX\": \"<number>\",\n    \"cameraPositionY\": \"<number>\",\n    \"cameraPositionZ\": \"<number>\",\n    \"cameraRotationX\": \"<number>\",\n    \"cameraRotationY\": \"<number>\",\n    \"cameraRotationZ\": \"<number>\",\n    \"locationX\": \"<number>\",\n    \"locationY\": \"<number>\",\n    \"locationZ\": \"<number>\",\n    \"requisitionId\": \"<long>\"\n  },\n  \"orderId\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7f80c609-2a59-42e0-839a-e9385827744f",
+              "name": "Activity successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activityType\": \"string\",\n  \"conversationType\": \"string\",\n  \"message\": \"string\",\n  \"threadId\": 1958,\n  \"requisitionTagged\": {\n    \"requisitionId\": 9914\n  },\n  \"locationTagged\": {\n    \"cameraPositionX\": 3993.0064917265286,\n    \"cameraPositionY\": 5200.163735956787,\n    \"cameraPositionZ\": 2944.783700367769,\n    \"cameraRotationX\": 6221.715740731204,\n    \"cameraRotationY\": 2214.753990038173,\n    \"cameraRotationZ\": 947.8536848629349,\n    \"locationX\": 581.413562399774,\n    \"locationY\": 8354.889382844687,\n    \"locationZ\": 95.97135399511015,\n    \"requisitionId\": 8779\n  },\n  \"orderId\": 9361\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activityType\": \"string\",\n  \"createdAt\": \"2010-11-24T02:50:02.854Z\",\n  \"id\": \"99995dab-e2d6-9bf7-3d2a-ac2de0a67491\",\n  \"threadId\": 1493\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c96a066a-ca8e-420c-9f27-15b48ced1573",
+              "name": "Invalid request data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activityType\": \"string\",\n  \"conversationType\": \"string\",\n  \"message\": \"string\",\n  \"threadId\": 1958,\n  \"requisitionTagged\": {\n    \"requisitionId\": 9914\n  },\n  \"locationTagged\": {\n    \"cameraPositionX\": 3993.0064917265286,\n    \"cameraPositionY\": 5200.163735956787,\n    \"cameraPositionZ\": 2944.783700367769,\n    \"cameraRotationX\": 6221.715740731204,\n    \"cameraRotationY\": 2214.753990038173,\n    \"cameraRotationZ\": 947.8536848629349,\n    \"locationX\": 581.413562399774,\n    \"locationY\": 8354.889382844687,\n    \"locationZ\": 95.97135399511015,\n    \"requisitionId\": 8779\n  },\n  \"orderId\": 9361\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7e6b7731-e818-4f5d-add7-a5d609f927d5",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activityType\": \"string\",\n  \"conversationType\": \"string\",\n  \"message\": \"string\",\n  \"threadId\": 1958,\n  \"requisitionTagged\": {\n    \"requisitionId\": 9914\n  },\n  \"locationTagged\": {\n    \"cameraPositionX\": 3993.0064917265286,\n    \"cameraPositionY\": 5200.163735956787,\n    \"cameraPositionZ\": 2944.783700367769,\n    \"cameraRotationX\": 6221.715740731204,\n    \"cameraRotationY\": 2214.753990038173,\n    \"cameraRotationZ\": 947.8536848629349,\n    \"locationX\": 581.413562399774,\n    \"locationY\": 8354.889382844687,\n    \"locationZ\": 95.97135399511015,\n    \"requisitionId\": 8779\n  },\n  \"orderId\": 9361\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a087552-cd34-4dfe-98ee-d1333c1f2049",
+          "name": "Get activity by ID",
+          "request": {
+            "name": "Get activity by ID",
+            "description": {
+              "content": "Retrieves a specific activity by its unique identifier",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "activity",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the activity to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "192b0948-6fea-4b87-a589-9b6da87cac31",
+              "name": "Activity successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "activity",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the activity to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activityType\": \"string\",\n  \"createdAt\": \"2010-11-24T02:50:02.854Z\",\n  \"id\": \"99995dab-e2d6-9bf7-3d2a-ac2de0a67491\",\n  \"threadId\": 1493\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b65e58f1-0b02-43ff-b424-0631ed1c0243",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "activity",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the activity to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7b74b158-2560-4a0e-9c69-e0ad27fe0479",
+              "name": "Activity not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "activity",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the activity to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5db8e71-506a-4a0f-8988-b2337f884948",
+          "name": "Get activities by thread",
+          "request": {
+            "name": "Get activities by thread",
+            "description": {
+              "content": "Retrieves all activities associated with a specific thread",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "activity",
+                "thread",
+                ":threadId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "threadId",
+                  "description": "(Required) ID of the thread"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc6f1b4a-79d7-43ff-9ead-8a36c17383be",
+              "name": "Activities successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "activity",
+                    "thread",
+                    ":threadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9343802d-9a62-4ebf-9f82-2ee400c305bd",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "activity",
+                    "thread",
+                    ":threadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c0aafe24-9a07-4cae-a1b5-88460ef17db0",
+    "name": "Phasio Activity Internal Customer Activity Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

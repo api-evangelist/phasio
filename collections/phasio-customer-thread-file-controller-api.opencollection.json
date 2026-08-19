@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Customer Thread File Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Thread File Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get files by thread ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/thread-file/thread/:threadId",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the thread to get files for"
+              }
+            ]
+          },
+          "docs": "Retrieves all files attached to the specified thread"
+        },
+        {
+          "info": {
+            "name": "Upload a file to a thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/thread-file/thread/:threadId",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the thread to attach the file to"
+              },
+              {
+                "name": "requisitionId",
+                "value": "",
+                "type": "query",
+                "description": "RequisitionId to attach the file to"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Uploads and attaches a file to a specified thread as a customer"
+        },
+        {
+          "info": {
+            "name": "Download a thread file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/thread-file/thread/:threadId/:fileId",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the thread containing the file"
+              },
+              {
+                "name": "fileId",
+                "value": "550e8400-e29b-41d4-a716-446655440000",
+                "type": "path",
+                "description": "ID of the file to download"
+              }
+            ]
+          },
+          "docs": "Downloads a file attached to a thread by its ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Expense Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Expense Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new expense for an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/expense",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "query",
+                "description": "ID of the order to associate the expense with"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new expense for an order"
+        },
+        {
+          "info": {
+            "name": "Get an expense by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/expense/:expenseId",
+            "params": [
+              {
+                "name": "expenseId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the expense to retrieve"
+              }
+            ]
+          },
+          "docs": "Get an expense by ID"
+        },
+        {
+          "info": {
+            "name": "Delete an expense",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/expense/:expenseId",
+            "params": [
+              {
+                "name": "expenseId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the expense to delete"
+              }
+            ]
+          },
+          "docs": "Delete an expense"
+        },
+        {
+          "info": {
+            "name": "Get all expenses for an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/expense/order/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to get expenses for"
+              }
+            ]
+          },
+          "docs": "Get all expenses for an order"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Internal Customer Organisation Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Internal Customer Organisation Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get customer organisation by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/customer-organisation/:organisationId",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "",
+                "type": "path",
+                "description": "Customer organisation ID to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves information about a specific customer organisation"
+        },
+        {
+          "info": {
+            "name": "Check if customer organisation has custom pricing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/customer-organisation/:organisationId/custom-pricing",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "",
+                "type": "path",
+                "description": "Customer organisation ID to check"
+              }
+            ]
+          },
+          "docs": "Determines whether a customer organisation has custom pricing configured"
+        },
+        {
+          "info": {
+            "name": "Get customer organisation by customer ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/customer-organisation/customer/:customerId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves information about a specific customer organisation based on customer ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

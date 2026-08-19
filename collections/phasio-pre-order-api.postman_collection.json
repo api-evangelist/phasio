@@ -1,0 +1,371 @@
+{
+  "item": [
+    {
+      "id": "9cc0884a-41a8-4390-b776-728130473749",
+      "name": "Pre-Order",
+      "description": {
+        "content": "Endpoints for retrieving pre-order information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a0773921-c40f-4d4b-9d8b-186f926fa29d",
+          "name": "Perform validation and get a quote",
+          "request": {
+            "name": "Perform validation and get a quote",
+            "description": {
+              "content": "Generates a preliminary quote for and validates a potential order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "pre-order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\"\n    },\n    {\n      \"assemblyId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\"\n    }\n  ],\n  \"ccCustomerIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"currency\": \"<string>\",\n  \"expenses\": [\n    {\n      \"costForOperator\": \"<number>\",\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"type\": \"<string>\",\n      \"unitPrice\": \"<number>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"costForOperator\": \"<number>\",\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"type\": \"<string>\",\n      \"unitPrice\": \"<number>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"markPaymentConfirmed\": \"<boolean>\",\n  \"requisitions\": [\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\",\n            \"key_1\": \"<number>\",\n            \"key_2\": \"<number>\",\n            \"key_3\": \"<number>\",\n            \"key_4\": \"<number>\"\n          }\n        },\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\"\n          }\n        }\n      ],\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\",\n      \"units\": \"<string>\",\n      \"variables\": {\n        \"key_0\": \"<number>\",\n        \"key_1\": \"<number>\",\n        \"key_2\": \"<number>\",\n        \"key_3\": \"<number>\"\n      },\n      \"infillId\": \"<long>\",\n      \"precisionId\": \"<long>\",\n      \"colorId\": \"<long>\",\n      \"manualPrice\": \"<number>\",\n      \"leadTimeId\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\",\n            \"key_1\": \"<number>\",\n            \"key_2\": \"<number>\"\n          }\n        },\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\"\n          }\n        }\n      ],\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\",\n      \"units\": \"<string>\",\n      \"variables\": {\n        \"key_0\": \"<number>\",\n        \"key_1\": \"<number>\"\n      },\n      \"infillId\": \"<long>\",\n      \"precisionId\": \"<long>\",\n      \"colorId\": \"<long>\",\n      \"manualPrice\": \"<number>\",\n      \"leadTimeId\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"discountId\": \"<long>\",\n  \"operatorNote\": \"<string>\",\n  \"isSilent\": \"<boolean>\",\n  \"affiliate\": \"<string>\",\n  \"paymentDueDate\": \"<dateTime>\",\n  \"discount\": {\n    \"code\": \"<string>\",\n    \"customerId\": \"<long>\",\n    \"discountType\": \"<string>\",\n    \"endTime\": \"<dateTime>\",\n    \"percentage\": \"<number>\",\n    \"startTime\": \"<dateTime>\"\n  },\n  \"shipment\": {\n    \"shippingMode\": \"<string>\",\n    \"id\": \"<long>\",\n    \"shippingMethodId\": \"<long>\",\n    \"rateId\": \"<string>\",\n    \"toAddressId\": \"<long>\",\n    \"status\": \"<string>\",\n    \"dispatchDate\": \"<date>\",\n    \"toAddressDto\": {\n      \"addressId\": \"<long>\",\n      \"isBillingAddress\": \"<boolean>\",\n      \"isShippingAddress\": \"<boolean>\",\n      \"street1\": \"<string>\",\n      \"street2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"countryAlpha2Code\": \"<string>\",\n      \"countryAlpha3Code\": \"<string>\",\n      \"jurisdictionIsoCode\": \"<string>\",\n      \"zip\": \"<string>\",\n      \"name\": \"<string>\",\n      \"company\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\",\n      \"residential\": \"<boolean>\",\n      \"taxId\": \"<string>\"\n    },\n    \"carrierAccountProvider\": \"<string>\",\n    \"carrierAccountServiceType\": \"<string>\",\n    \"carrierAccountServiceName\": \"<string>\",\n    \"estimatedRate\": \"<number>\",\n    \"finalRatePaid\": \"<number>\",\n    \"trackingDto\": {\n      \"id\": \"<long>\",\n      \"shipmentId\": \"<long>\",\n      \"trackingNumber\": \"<string>\"\n    }\n  },\n  \"billingAddressId\": \"<long>\",\n  \"customReference\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2362bd41-6231-4abe-88b1-65bf93abc107",
+              "name": "Successfully quoted and validated a potential order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "pre-order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"010ed75c-f6ab-03be-b078-c014bf4c7ea7\",\n      \"quantity\": 3828,\n      \"requisitionIntentId\": \"f4232342-5f2f-1c22-15b5-91f9e0bfaafa\"\n    },\n    {\n      \"assemblyId\": \"ae8922d3-ffbc-2dd9-1653-4a1be9b974db\",\n      \"quantity\": 970,\n      \"requisitionIntentId\": \"b13c9bfc-1e62-10e7-f0f2-5d6d3b437741\"\n    }\n  ],\n  \"ccCustomerIds\": [\n    \"<long>\"\n  ],\n  \"currency\": \"<string>\",\n  \"expenses\": [\n    {\n      \"costForOperator\": 5676.778895546064,\n      \"name\": \"string\",\n      \"quantity\": 9678.086928108069,\n      \"type\": \"string\",\n      \"unitPrice\": 9818.503653434656,\n      \"description\": \"string\"\n    },\n    {\n      \"costForOperator\": 6129.050806807027,\n      \"name\": \"string\",\n      \"quantity\": 2254.1160089438927,\n      \"type\": \"string\",\n      \"unitPrice\": 1405.6468401675415,\n      \"description\": \"string\"\n    }\n  ],\n  \"markPaymentConfirmed\": \"<boolean>\",\n  \"requisitions\": [\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": 1646.7068331437895,\n          \"cameraPositionY\": 2726.95122984942,\n          \"cameraPositionZ\": 5214.257234835461,\n          \"cameraRotationX\": 6717.8069366414875,\n          \"cameraRotationY\": 4072.605222070916,\n          \"cameraRotationZ\": 8686.698903588143,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 4874.755277625622,\n          \"locationY\": 9193.629934766825,\n          \"locationZ\": 1940.2695136431457,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": 8276.506644601142,\n          \"cameraPositionY\": 7617.867427059056,\n          \"cameraPositionZ\": 1460.5485273477204,\n          \"cameraRotationX\": 8516.729012565007,\n          \"cameraRotationY\": 6763.239378114509,\n          \"cameraRotationZ\": 8607.013283056183,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 3689.2331669189193,\n          \"locationY\": 6391.477598480788,\n          \"locationZ\": 9657.153409487913,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": 6458,\n      \"partRevisionId\": \"9fb5cccd-590e-db18-fae3-d39ccb9372b4\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": 4910,\n          \"variables\": {\n            \"key_0\": 4924.4560669283255,\n            \"key_1\": 2114.34039880946\n          }\n        },\n        {\n          \"postProcessingId\": 6370,\n          \"variables\": {\n            \"key_0\": 257.74631314289695\n          }\n        }\n      ],\n      \"processPricesId\": \"36839371-d037-922c-c47f-851a8c53808f\",\n      \"quantity\": 6973,\n      \"requisitionIntentId\": \"e41469f5-45ce-abe1-79d8-eac5d2f3f5cb\",\n      \"units\": \"CENTIMETERS\",\n      \"variables\": {\n        \"key_0\": 8361.354358977482,\n        \"key_1\": 2192.4372832540485\n      },\n      \"infillId\": 2242,\n      \"precisionId\": 9960,\n      \"colorId\": 7939,\n      \"manualPrice\": 5005.221962320021,\n      \"leadTimeId\": \"8f2e3d3f-dcb0-8ef3-2bce-96de0cad7d24\",\n      \"name\": \"string\"\n    },\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": 3206.830105053361,\n          \"cameraPositionY\": 7839.0752154203155,\n          \"cameraPositionZ\": 1945.5436492177969,\n          \"cameraRotationX\": 4055.850076053047,\n          \"cameraRotationY\": 5311.29982368543,\n          \"cameraRotationZ\": 1106.6928012470555,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 5089.428207269272,\n          \"locationY\": 446.0618888866841,\n          \"locationZ\": 8178.462864979231,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": 8254.58380112136,\n          \"cameraPositionY\": 6904.1996414972,\n          \"cameraPositionZ\": 9724.983318792792,\n          \"cameraRotationX\": 5856.195707266164,\n          \"cameraRotationY\": 1039.6079016797355,\n          \"cameraRotationZ\": 8458.18000465445,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 203.6824409444593,\n          \"locationY\": 5016.338984023561,\n          \"locationZ\": 6122.192489618741,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": 5519,\n      \"partRevisionId\": \"6ea59a6b-d35a-7fd5-00ea-9619e2176174\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": 9328,\n          \"variables\": {\n            \"key_0\": 9897.776320416251,\n            \"key_1\": 1800.9729264620355\n          }\n        },\n        {\n          \"postProcessingId\": 9919,\n          \"variables\": {\n            \"key_0\": 5699.499663094971\n          }\n        }\n      ],\n      \"processPricesId\": \"3e51e530-0f37-64b8-c5d1-10911d0313df\",\n      \"quantity\": 9963,\n      \"requisitionIntentId\": \"e769cdd2-23b7-aa0a-eedf-d25bdd680eab\",\n      \"units\": \"FEET\",\n      \"variables\": {\n        \"key_0\": 4624.755829146303,\n        \"key_1\": 724.2501228285724,\n        \"key_2\": 2382.1295413561293\n      },\n      \"infillId\": 6088,\n      \"precisionId\": 2124,\n      \"colorId\": 1391,\n      \"manualPrice\": 6469.234670594097,\n      \"leadTimeId\": \"2d47ca21-4bf9-d4fa-3c82-ad8f54634ffe\",\n      \"name\": \"string\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"discountId\": \"<long>\",\n  \"operatorNote\": \"<string>\",\n  \"isSilent\": \"<boolean>\",\n  \"affiliate\": \"<string>\",\n  \"paymentDueDate\": \"<dateTime>\",\n  \"discount\": {\n    \"code\": \"string\",\n    \"customerId\": 643,\n    \"discountType\": \"string\",\n    \"endTime\": \"1984-08-25T21:30:41.216Z\",\n    \"percentage\": 4206.473863387207,\n    \"startTime\": \"2019-02-22T02:58:15.174Z\"\n  },\n  \"shipment\": {\n    \"shippingMode\": \"SELF_COLLECTION\",\n    \"id\": 931,\n    \"shippingMethodId\": 1316,\n    \"rateId\": \"string\",\n    \"toAddressId\": 6938,\n    \"status\": \"string\",\n    \"dispatchDate\": \"1968-11-17\",\n    \"toAddressDto\": {\n      \"addressId\": 4751,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": false,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    \"carrierAccountProvider\": \"string\",\n    \"carrierAccountServiceType\": \"string\",\n    \"carrierAccountServiceName\": \"string\",\n    \"estimatedRate\": 7066.637865631606,\n    \"finalRatePaid\": 6005.4207475837975,\n    \"trackingDto\": {\n      \"id\": 1957,\n      \"shipmentId\": 5627,\n      \"trackingNumber\": \"string\"\n    }\n  },\n  \"billingAddressId\": \"<long>\",\n  \"customReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"constraints\": {\n    \"key_0\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1974-07-03T16:05:41.544Z\",\n        \"id\": \"a4578f9d-1083-b9ec-2b89-775ddd37ee47\",\n        \"partSpecificationId\": \"8363062d-c466-115d-cf68-66fb5286f967\",\n        \"updatedAt\": \"1963-10-29T03:17:27.689Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1955-08-07T01:46:57.973Z\",\n        \"id\": \"9bd1dbd4-e149-b3df-e9c0-326cca62c66d\",\n        \"partSpecificationId\": \"be51bddc-fe2a-b954-c731-79c61d36e116\",\n        \"updatedAt\": \"2010-06-02T00:08:15.950Z\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1971-11-12T05:09:40.906Z\",\n        \"id\": \"080f69bb-8c89-2869-fceb-d067c73c8492\",\n        \"partSpecificationId\": \"e973ebf0-c16c-615b-1d4e-b4f2bf70808c\",\n        \"updatedAt\": \"1958-05-18T11:53:57.883Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2002-03-21T23:31:31.874Z\",\n        \"id\": \"aa5854f4-6f8f-015d-62b8-eb116d553dc4\",\n        \"partSpecificationId\": \"9fc438cd-ec4c-a579-3300-ac3b074c769c\",\n        \"updatedAt\": \"2024-11-16T05:06:04.051Z\"\n      }\n    ],\n    \"key_2\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1972-03-19T19:49:57.530Z\",\n        \"id\": \"32562e89-4bde-a077-6110-c2cb74a9204a\",\n        \"partSpecificationId\": \"d7a260d1-8cc7-ff0e-bdf4-f40994baa472\",\n        \"updatedAt\": \"2013-10-17T18:10:02.418Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1964-12-17T16:52:40.980Z\",\n        \"id\": \"75f39e91-f421-94f6-ca19-6a60a62f045b\",\n        \"partSpecificationId\": \"25619a37-27a5-5e0d-6d80-5e8c5b44bdce\",\n        \"updatedAt\": \"1991-12-17T16:08:44.944Z\"\n      }\n    ]\n  },\n  \"purchasability\": {\n    \"canBePurchased\": true,\n    \"isMaterialPurchasable\": true,\n    \"isPostProcessingPurchasable\": false,\n    \"isPriceReviewRequired\": false,\n    \"parts\": {\n      \"key_0\": {\n        \"limits\": {\n          \"withinBoundingBoxLimit\": true,\n          \"withinWallThicknessLimit\": true\n        },\n        \"partRevisionId\": \"9d07a44f-9fa6-8323-25f2-2087a572731f\",\n        \"values\": {\n          \"boundingBox\": [\n            6227.553665663578,\n            8065.589809141971\n          ],\n          \"wallThicknessLimit\": 3389.1514941694622,\n          \"wallThicknessWarning\": 130.0959481782471\n        },\n        \"warnings\": {\n          \"hasOptimalWallThickness\": false\n        }\n      }\n    },\n    \"withinBoundingBoxLimit\": false,\n    \"withinMaximumOrderValue\": false,\n    \"withinWallThicknessLimit\": true\n  },\n  \"quote\": {\n    \"currency\": \"string\",\n    \"discount\": 5026.945925738682,\n    \"lineItems\": [\n      {\n        \"name\": \"string\",\n        \"price\": 3291.3868487134723\n      },\n      {\n        \"name\": \"string\",\n        \"price\": 8032.972732548617\n      }\n    ],\n    \"price\": 2852.8819854143017,\n    \"requisitions\": {\n      \"key_0\": {\n        \"manufacturingPrice\": 8846.235378510632,\n        \"partRevisionId\": \"6287ae27-deca-d9f2-5812-9da010a42275\",\n        \"postProcessingOptions\": [\n          {\n            \"id\": 4142,\n            \"price\": 154.94789211382587\n          },\n          {\n            \"id\": 5396,\n            \"price\": 4529.227756649788\n          }\n        ],\n        \"postProcessingPrice\": 1660.3691302423586,\n        \"price\": 294.7876367471891,\n        \"quantity\": 2471,\n        \"unitPrice\": 9899.69547164892\n      },\n      \"key_1\": {\n        \"manufacturingPrice\": 8662.687817575832,\n        \"partRevisionId\": \"b807811b-2b59-0ba5-a98a-5d809a736d9e\",\n        \"postProcessingOptions\": [\n          {\n            \"id\": 5956,\n            \"price\": 4390.90127945804\n          },\n          {\n            \"id\": 3214,\n            \"price\": 1252.0942642654952\n          }\n        ],\n        \"postProcessingPrice\": 4962.888053503929,\n        \"price\": 5126.085026626764,\n        \"quantity\": 9709,\n        \"unitPrice\": 9284.262453944328\n      },\n      \"key_2\": {\n        \"manufacturingPrice\": 8005.774462667994,\n        \"partRevisionId\": \"f6f66b7b-ce20-4c88-b885-1185ec0ba465\",\n        \"postProcessingOptions\": [\n          {\n            \"id\": 5515,\n            \"price\": 8350.10100840327\n          },\n          {\n            \"id\": 4602,\n            \"price\": 3108.694276761148\n          }\n        ],\n        \"postProcessingPrice\": 2581.116686511693,\n        \"price\": 2615.883073648718,\n        \"quantity\": 7721,\n        \"unitPrice\": 101.91593387961385\n      }\n    },\n    \"shipment\": 2026.146887320227,\n    \"subtotal\": 6244.3391293162285,\n    \"tax\": {\n      \"components\": [\n        {\n          \"amount\": 8401.885790792338,\n          \"longName\": \"string\",\n          \"percentage\": 8036.681809464634,\n          \"shortName\": \"string\"\n        },\n        {\n          \"amount\": 7958.499634309633,\n          \"longName\": \"string\",\n          \"percentage\": 3947.87609089136,\n          \"shortName\": \"string\"\n        }\n      ],\n      \"isTaxAppliedToShipping\": true,\n      \"isTaxExempted\": false,\n      \"isTaxReverseCharged\": false,\n      \"totalPercentage\": 7505.230917698283,\n      \"totalPrice\": 4431.272136598472\n    },\n    \"topUp\": 3047.6499187307613,\n    \"dispatchDate\": \"2003-01-06\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0095976-7952-4116-93dd-1396136ce8fb",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "pre-order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"010ed75c-f6ab-03be-b078-c014bf4c7ea7\",\n      \"quantity\": 3828,\n      \"requisitionIntentId\": \"f4232342-5f2f-1c22-15b5-91f9e0bfaafa\"\n    },\n    {\n      \"assemblyId\": \"ae8922d3-ffbc-2dd9-1653-4a1be9b974db\",\n      \"quantity\": 970,\n      \"requisitionIntentId\": \"b13c9bfc-1e62-10e7-f0f2-5d6d3b437741\"\n    }\n  ],\n  \"ccCustomerIds\": [\n    \"<long>\"\n  ],\n  \"currency\": \"<string>\",\n  \"expenses\": [\n    {\n      \"costForOperator\": 5676.778895546064,\n      \"name\": \"string\",\n      \"quantity\": 9678.086928108069,\n      \"type\": \"string\",\n      \"unitPrice\": 9818.503653434656,\n      \"description\": \"string\"\n    },\n    {\n      \"costForOperator\": 6129.050806807027,\n      \"name\": \"string\",\n      \"quantity\": 2254.1160089438927,\n      \"type\": \"string\",\n      \"unitPrice\": 1405.6468401675415,\n      \"description\": \"string\"\n    }\n  ],\n  \"markPaymentConfirmed\": \"<boolean>\",\n  \"requisitions\": [\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": 1646.7068331437895,\n          \"cameraPositionY\": 2726.95122984942,\n          \"cameraPositionZ\": 5214.257234835461,\n          \"cameraRotationX\": 6717.8069366414875,\n          \"cameraRotationY\": 4072.605222070916,\n          \"cameraRotationZ\": 8686.698903588143,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 4874.755277625622,\n          \"locationY\": 9193.629934766825,\n          \"locationZ\": 1940.2695136431457,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": 8276.506644601142,\n          \"cameraPositionY\": 7617.867427059056,\n          \"cameraPositionZ\": 1460.5485273477204,\n          \"cameraRotationX\": 8516.729012565007,\n          \"cameraRotationY\": 6763.239378114509,\n          \"cameraRotationZ\": 8607.013283056183,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 3689.2331669189193,\n          \"locationY\": 6391.477598480788,\n          \"locationZ\": 9657.153409487913,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": 6458,\n      \"partRevisionId\": \"9fb5cccd-590e-db18-fae3-d39ccb9372b4\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": 4910,\n          \"variables\": {\n            \"key_0\": 4924.4560669283255,\n            \"key_1\": 2114.34039880946\n          }\n        },\n        {\n          \"postProcessingId\": 6370,\n          \"variables\": {\n            \"key_0\": 257.74631314289695\n          }\n        }\n      ],\n      \"processPricesId\": \"36839371-d037-922c-c47f-851a8c53808f\",\n      \"quantity\": 6973,\n      \"requisitionIntentId\": \"e41469f5-45ce-abe1-79d8-eac5d2f3f5cb\",\n      \"units\": \"CENTIMETERS\",\n      \"variables\": {\n        \"key_0\": 8361.354358977482,\n        \"key_1\": 2192.4372832540485\n      },\n      \"infillId\": 2242,\n      \"precisionId\": 9960,\n      \"colorId\": 7939,\n      \"manualPrice\": 5005.221962320021,\n      \"leadTimeId\": \"8f2e3d3f-dcb0-8ef3-2bce-96de0cad7d24\",\n      \"name\": \"string\"\n    },\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": 3206.830105053361,\n          \"cameraPositionY\": 7839.0752154203155,\n          \"cameraPositionZ\": 1945.5436492177969,\n          \"cameraRotationX\": 4055.850076053047,\n          \"cameraRotationY\": 5311.29982368543,\n          \"cameraRotationZ\": 1106.6928012470555,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 5089.428207269272,\n          \"locationY\": 446.0618888866841,\n          \"locationZ\": 8178.462864979231,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": 8254.58380112136,\n          \"cameraPositionY\": 6904.1996414972,\n          \"cameraPositionZ\": 9724.983318792792,\n          \"cameraRotationX\": 5856.195707266164,\n          \"cameraRotationY\": 1039.6079016797355,\n          \"cameraRotationZ\": 8458.18000465445,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 203.6824409444593,\n          \"locationY\": 5016.338984023561,\n          \"locationZ\": 6122.192489618741,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": 5519,\n      \"partRevisionId\": \"6ea59a6b-d35a-7fd5-00ea-9619e2176174\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": 9328,\n          \"variables\": {\n            \"key_0\": 9897.776320416251,\n            \"key_1\": 1800.9729264620355\n          }\n        },\n        {\n          \"postProcessingId\": 9919,\n          \"variables\": {\n            \"key_0\": 5699.499663094971\n          }\n        }\n      ],\n      \"processPricesId\": \"3e51e530-0f37-64b8-c5d1-10911d0313df\",\n      \"quantity\": 9963,\n      \"requisitionIntentId\": \"e769cdd2-23b7-aa0a-eedf-d25bdd680eab\",\n      \"units\": \"FEET\",\n      \"variables\": {\n        \"key_0\": 4624.755829146303,\n        \"key_1\": 724.2501228285724,\n        \"key_2\": 2382.1295413561293\n      },\n      \"infillId\": 6088,\n      \"precisionId\": 2124,\n      \"colorId\": 1391,\n      \"manualPrice\": 6469.234670594097,\n      \"leadTimeId\": \"2d47ca21-4bf9-d4fa-3c82-ad8f54634ffe\",\n      \"name\": \"string\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"discountId\": \"<long>\",\n  \"operatorNote\": \"<string>\",\n  \"isSilent\": \"<boolean>\",\n  \"affiliate\": \"<string>\",\n  \"paymentDueDate\": \"<dateTime>\",\n  \"discount\": {\n    \"code\": \"string\",\n    \"customerId\": 643,\n    \"discountType\": \"string\",\n    \"endTime\": \"1984-08-25T21:30:41.216Z\",\n    \"percentage\": 4206.473863387207,\n    \"startTime\": \"2019-02-22T02:58:15.174Z\"\n  },\n  \"shipment\": {\n    \"shippingMode\": \"SELF_COLLECTION\",\n    \"id\": 931,\n    \"shippingMethodId\": 1316,\n    \"rateId\": \"string\",\n    \"toAddressId\": 6938,\n    \"status\": \"string\",\n    \"dispatchDate\": \"1968-11-17\",\n    \"toAddressDto\": {\n      \"addressId\": 4751,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": false,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    \"carrierAccountProvider\": \"string\",\n    \"carrierAccountServiceType\": \"string\",\n    \"carrierAccountServiceName\": \"string\",\n    \"estimatedRate\": 7066.637865631606,\n    \"finalRatePaid\": 6005.4207475837975,\n    \"trackingDto\": {\n      \"id\": 1957,\n      \"shipmentId\": 5627,\n      \"trackingNumber\": \"string\"\n    }\n  },\n  \"billingAddressId\": \"<long>\",\n  \"customReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14e6d2ea-0028-44d2-81c1-706c08fd2462",
+          "name": "Get a bulk quote",
+          "request": {
+            "name": "Get a bulk quote",
+            "description": {
+              "content": "Generates tiered pricing quotes for bulk orders of the same part",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "pre-order",
+                "bulk-quote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "(Required) The currency to generate bulk quotes for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"materialId\": \"<long>\",\n  \"partRevisionId\": \"<uuid>\",\n  \"postProcessingIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"processPricesId\": \"<uuid>\",\n  \"units\": \"<string>\",\n  \"infillId\": \"<long>\",\n  \"precisionId\": \"<long>\",\n  \"colorId\": \"<long>\",\n  \"leadTimeId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1b4f591c-efa2-4455-a4e4-206f7bd4704c",
+              "name": "Bulk quote successfully generated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "pre-order",
+                    "bulk-quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"materialId\": \"<long>\",\n  \"partRevisionId\": \"<uuid>\",\n  \"postProcessingIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"processPricesId\": \"<uuid>\",\n  \"units\": \"<string>\",\n  \"infillId\": \"<long>\",\n  \"precisionId\": \"<long>\",\n  \"colorId\": \"<long>\",\n  \"leadTimeId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9d90e76-f77e-4c6f-a8b5-c2d87cc1f6d3",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "pre-order",
+                    "bulk-quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"materialId\": \"<long>\",\n  \"partRevisionId\": \"<uuid>\",\n  \"postProcessingIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"processPricesId\": \"<uuid>\",\n  \"units\": \"<string>\",\n  \"infillId\": \"<long>\",\n  \"precisionId\": \"<long>\",\n  \"colorId\": \"<long>\",\n  \"leadTimeId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ebff622b-33e0-4c60-a02b-919ebdb1ae8f",
+    "name": "Phasio Activity Internal Pre-Order API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

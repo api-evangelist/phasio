@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Part Design Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Part Design Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get specific design details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-design/:designId",
+            "params": [
+              {
+                "name": "designId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the design to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific part design by its ID"
+        },
+        {
+          "info": {
+            "name": "Update design",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-design/:designId",
+            "params": [
+              {
+                "name": "designId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the design to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates design properties like name"
+        },
+        {
+          "info": {
+            "name": "Get all part designs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-design"
+          },
+          "docs": "Retrieves all part designs for the current operator"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

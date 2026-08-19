@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Material Prices Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Material Prices Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create material prices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/material-prices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new material pricing configuration"
+        },
+        {
+          "info": {
+            "name": "Update material prices",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/material-prices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing material pricing configuration"
+        },
+        {
+          "info": {
+            "name": "Create duplicate material prices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/material-prices/duplicate/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a duplicate of an existing material pricing configuration with a new name"
+        },
+        {
+          "info": {
+            "name": "Set material prices as default",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/material-prices/:materialPricesId/default",
+            "params": [
+              {
+                "name": "materialPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the material prices to set as default"
+              }
+            ]
+          },
+          "docs": "Sets a material pricing configuration as the default for its material"
+        },
+        {
+          "info": {
+            "name": "Unset material prices as default",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/material-prices/:materialPricesId/default/unselect",
+            "params": [
+              {
+                "name": "materialPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the material prices to unset as default"
+              }
+            ]
+          },
+          "docs": "Removes the default status from a material pricing configuration"
+        },
+        {
+          "info": {
+            "name": "Get material prices by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/material-prices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the material prices to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves material pricing configuration by its unique identifier"
+        },
+        {
+          "info": {
+            "name": "Delete material prices",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/material-prices/:materialPricesId/delete",
+            "params": [
+              {
+                "name": "materialPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the material prices to delete"
+              }
+            ]
+          },
+          "docs": "Deletes an existing material pricing configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

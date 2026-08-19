@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Customer Authentication API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get customer authentication by principal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/customer-auth/principal",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves authentication information for a customer using their principal identifier"
+        },
+        {
+          "info": {
+            "name": "Update customer authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/customer-auth/:customerId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "123",
+                "type": "path",
+                "description": "ID of the customer to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates authentication method and credentials for a specific customer"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

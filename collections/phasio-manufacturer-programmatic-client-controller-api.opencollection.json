@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Programmatic Client Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Programmatic Client Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/programmatic-client"
+          },
+          "docs": "Retrieves a list of all programmatic clients for the current operator"
+        },
+        {
+          "info": {
+            "name": "Create a new programmatic client",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/programmatic-client",
+            "params": [
+              {
+                "name": "keyName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Creates a new programmatic client for the current operator"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

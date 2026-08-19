@@ -1,0 +1,2419 @@
+{
+  "item": [
+    {
+      "id": "16833e19-fa36-4e0c-97d9-47b57aa0d03b",
+      "name": "Manufacturer Process Prices Controller",
+      "description": {
+        "content": "Endpoints for managing manufacturing process pricing configurations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f2f7f5f5-785c-4df7-a843-7441cf36da3e",
+          "name": "Update bounding box limit",
+          "request": {
+            "name": "Update bounding box limit",
+            "description": {
+              "content": "Updates the maximum build volume dimensions for a process pricing configuration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes",
+                ":processPricesId",
+                "bounding-box-limit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "processPricesId",
+                  "description": "(Required) ID of the process pricing to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"height\": \"<number>\",\n  \"length\": \"<number>\",\n  \"width\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a47251c3-4ea8-435a-8462-c9261973ff52",
+              "name": "Bounding box limit successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "bounding-box-limit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"height\": \"<number>\",\n  \"length\": \"<number>\",\n  \"width\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "17e7338e-6833-4c8b-b102-eba5f29f6ac0",
+              "name": "Invalid bounding box data, process pricing not found, or operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "bounding-box-limit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"height\": \"<number>\",\n  \"length\": \"<number>\",\n  \"width\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7eee5fda-f22e-421c-bc1d-04fe475c6f80",
+          "name": "Delete bounding box limit",
+          "request": {
+            "name": "Delete bounding box limit",
+            "description": {
+              "content": "Removes the maximum build volume dimensions constraint from a process pricing configuration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes",
+                ":processPricesId",
+                "bounding-box-limit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "processPricesId",
+                  "description": "(Required) ID of the process pricing from which to remove the bounding box limit"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cbd834cf-2e4f-4f3f-84df-776a6383d84e",
+              "name": "Bounding box limit successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "bounding-box-limit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing from which to remove the bounding box limit"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d230df5d-ad9c-49eb-97b2-aaa1cd8c78ff",
+              "name": "Process pricing not found or operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "bounding-box-limit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing from which to remove the bounding box limit"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0c7e892-f711-434e-add8-72b486b0dcab",
+          "name": "Get all process pricings",
+          "request": {
+            "name": "Get all process pricings",
+            "description": {
+              "content": "Retrieves all manufacturing process pricing configurations for the current operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b09b64d7-6262-4a43-a2b2-7e420f80a2dd",
+              "name": "Process pricings successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"bulkPricingQuantities\": [\n      8677,\n      3144\n    ],\n    \"id\": \"e388e396-9d9d-a035-e71c-20569142098e\",\n    \"infills\": [\n      {\n        \"default\": true,\n        \"id\": 5076,\n        \"name\": \"string\",\n        \"value\": 1558.3821201488024\n      },\n      {\n        \"default\": true,\n        \"id\": 2193,\n        \"name\": \"string\",\n        \"value\": 6102.612477382721\n      }\n    ],\n    \"isDefault\": false,\n    \"isInternal\": true,\n    \"materials\": [\n      {\n        \"colorDtos\": [\n          {\n            \"code\": \"string\",\n            \"id\": 3836,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 1468,\n            \"name\": \"string\"\n          }\n        ],\n        \"id\": 7863,\n        \"isDefault\": true,\n        \"name\": \"string\",\n        \"quoteOnly\": false,\n        \"datasheetSummary\": \"string\",\n        \"wallThicknessWarning\": 4888.411079102548,\n        \"wallThicknessLimit\": 5002.91063065307\n      },\n      {\n        \"colorDtos\": [\n          {\n            \"code\": \"string\",\n            \"id\": 8581,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 515,\n            \"name\": \"string\"\n          }\n        ],\n        \"id\": 2719,\n        \"isDefault\": true,\n        \"name\": \"string\",\n        \"quoteOnly\": false,\n        \"datasheetSummary\": \"string\",\n        \"wallThicknessWarning\": 4988.296862126973,\n        \"wallThicknessLimit\": 5155.261462756847\n      }\n    ],\n    \"postProcessings\": [\n      {\n        \"colors\": [\n          {\n            \"code\": \"string\",\n            \"id\": 5010,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 1765,\n            \"name\": \"string\"\n          }\n        ],\n        \"incompatibleMaterialIds\": [\n          2814,\n          1304\n        ],\n        \"isDefault\": true,\n        \"name\": \"string\",\n        \"purchasable\": true,\n        \"id\": 3329,\n        \"mutuallyExclusiveGroup\": \"string\"\n      },\n      {\n        \"colors\": [\n          {\n            \"code\": \"string\",\n            \"id\": 4941,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 6689,\n            \"name\": \"string\"\n          }\n        ],\n        \"incompatibleMaterialIds\": [\n          7940,\n          5379\n        ],\n        \"isDefault\": true,\n        \"name\": \"string\",\n        \"purchasable\": false,\n        \"id\": 46,\n        \"mutuallyExclusiveGroup\": \"string\"\n      }\n    ],\n    \"precisions\": [\n      {\n        \"id\": 5890,\n        \"isActive\": true,\n        \"name\": \"string\",\n        \"price\": 4390.70681579404\n      },\n      {\n        \"id\": 1878,\n        \"isActive\": true,\n        \"name\": \"string\",\n        \"price\": 4131.355358339755\n      }\n    ],\n    \"technology\": \"string\",\n    \"description\": \"string\"\n  },\n  {\n    \"bulkPricingQuantities\": [\n      9330,\n      1782\n    ],\n    \"id\": \"201af64c-12d8-5957-da86-9f551f818ef8\",\n    \"infills\": [\n      {\n        \"default\": false,\n        \"id\": 8086,\n        \"name\": \"string\",\n        \"value\": 2866.6484781723357\n      },\n      {\n        \"default\": true,\n        \"id\": 7446,\n        \"name\": \"string\",\n        \"value\": 8136.094652722003\n      }\n    ],\n    \"isDefault\": false,\n    \"isInternal\": false,\n    \"materials\": [\n      {\n        \"colorDtos\": [\n          {\n            \"code\": \"string\",\n            \"id\": 5815,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 3583,\n            \"name\": \"string\"\n          }\n        ],\n        \"id\": 5923,\n        \"isDefault\": false,\n        \"name\": \"string\",\n        \"quoteOnly\": false,\n        \"datasheetSummary\": \"string\",\n        \"wallThicknessWarning\": 2942.7035482804963,\n        \"wallThicknessLimit\": 4387.982132497884\n      },\n      {\n        \"colorDtos\": [\n          {\n            \"code\": \"string\",\n            \"id\": 164,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 9032,\n            \"name\": \"string\"\n          }\n        ],\n        \"id\": 9903,\n        \"isDefault\": false,\n        \"name\": \"string\",\n        \"quoteOnly\": true,\n        \"datasheetSummary\": \"string\",\n        \"wallThicknessWarning\": 6859.709825461233,\n        \"wallThicknessLimit\": 2281.1421426740553\n      }\n    ],\n    \"postProcessings\": [\n      {\n        \"colors\": [\n          {\n            \"code\": \"string\",\n            \"id\": 832,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 7963,\n            \"name\": \"string\"\n          }\n        ],\n        \"incompatibleMaterialIds\": [\n          572,\n          8503\n        ],\n        \"isDefault\": true,\n        \"name\": \"string\",\n        \"purchasable\": true,\n        \"id\": 2556,\n        \"mutuallyExclusiveGroup\": \"string\"\n      },\n      {\n        \"colors\": [\n          {\n            \"code\": \"string\",\n            \"id\": 2802,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 7759,\n            \"name\": \"string\"\n          }\n        ],\n        \"incompatibleMaterialIds\": [\n          9847,\n          2731\n        ],\n        \"isDefault\": true,\n        \"name\": \"string\",\n        \"purchasable\": false,\n        \"id\": 5803,\n        \"mutuallyExclusiveGroup\": \"string\"\n      }\n    ],\n    \"precisions\": [\n      {\n        \"id\": 156,\n        \"isActive\": true,\n        \"name\": \"string\",\n        \"price\": 2852.7679472150257\n      },\n      {\n        \"id\": 8593,\n        \"isActive\": true,\n        \"name\": \"string\",\n        \"price\": 6375.39591936925\n      }\n    ],\n    \"technology\": \"string\",\n    \"description\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1c82a1f-a931-44f7-99f6-a168dfb80bdc",
+              "name": "Operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c9b24c9-716a-453c-99d7-895521675c34",
+          "name": "Create process pricing",
+          "request": {
+            "name": "Create process pricing",
+            "description": {
+              "content": "Creates a new manufacturing process pricing configuration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organisationId",
+                  "value": "<long>",
+                  "description": "Optional organization ID to associate with this pricing"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"isInternal\": \"<boolean>\",\n  \"pricingAlgo\": \"<string>\",\n  \"technology\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e21c4afb-16e4-42c6-acdc-497b88773363",
+              "name": "Process pricing successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organisationId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"isInternal\": \"<boolean>\",\n  \"pricingAlgo\": \"<string>\",\n  \"technology\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bulkPricingQuantities\": [\n    7052,\n    928\n  ],\n  \"id\": \"cea4e473-34ec-5987-5d17-12f0e1208008\",\n  \"infills\": [\n    {\n      \"default\": false,\n      \"id\": 4646,\n      \"name\": \"string\",\n      \"value\": 6642.989522364338\n    },\n    {\n      \"default\": false,\n      \"id\": 2472,\n      \"name\": \"string\",\n      \"value\": 563.4730095904372\n    }\n  ],\n  \"isDefault\": true,\n  \"isInternal\": false,\n  \"materials\": [\n    {\n      \"colorDtos\": [\n        {\n          \"code\": \"string\",\n          \"id\": 2922,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 577,\n          \"name\": \"string\"\n        }\n      ],\n      \"id\": 9003,\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"quoteOnly\": false,\n      \"datasheetSummary\": \"string\",\n      \"wallThicknessWarning\": 2347.315203820871,\n      \"wallThicknessLimit\": 2812.8227300461895\n    },\n    {\n      \"colorDtos\": [\n        {\n          \"code\": \"string\",\n          \"id\": 7731,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 663,\n          \"name\": \"string\"\n        }\n      ],\n      \"id\": 4999,\n      \"isDefault\": true,\n      \"name\": \"string\",\n      \"quoteOnly\": true,\n      \"datasheetSummary\": \"string\",\n      \"wallThicknessWarning\": 9515.508730543943,\n      \"wallThicknessLimit\": 4276.654987611774\n    }\n  ],\n  \"postProcessings\": [\n    {\n      \"colors\": [\n        {\n          \"code\": \"string\",\n          \"id\": 3057,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 7345,\n          \"name\": \"string\"\n        }\n      ],\n      \"incompatibleMaterialIds\": [\n        1905,\n        1357\n      ],\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"purchasable\": true,\n      \"id\": 7250,\n      \"mutuallyExclusiveGroup\": \"string\"\n    },\n    {\n      \"colors\": [\n        {\n          \"code\": \"string\",\n          \"id\": 3466,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 5883,\n          \"name\": \"string\"\n        }\n      ],\n      \"incompatibleMaterialIds\": [\n        7590,\n        7827\n      ],\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"purchasable\": false,\n      \"id\": 3264,\n      \"mutuallyExclusiveGroup\": \"string\"\n    }\n  ],\n  \"precisions\": [\n    {\n      \"id\": 1278,\n      \"isActive\": true,\n      \"name\": \"string\",\n      \"price\": 5326.200334931448\n    },\n    {\n      \"id\": 952,\n      \"isActive\": false,\n      \"name\": \"string\",\n      \"price\": 1915.1243717225075\n    }\n  ],\n  \"technology\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38b39a5e-52c0-4a4d-b51b-c9a7e3f0756d",
+              "name": "Invalid process pricing data or operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organisationId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"isInternal\": \"<boolean>\",\n  \"pricingAlgo\": \"<string>\",\n  \"technology\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0b1557c-67f4-4dca-bf3b-6fe6620e88c6",
+          "name": "Apply a stereotype to an existing process",
+          "request": {
+            "name": "Apply a stereotype to an existing process",
+            "description": {
+              "content": "Generates the technology-default equation and variable schema, appending them to the target process. Fails if equations already exist or variable names collide.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes",
+                ":processPricesId",
+                "stereotype"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "processPricesId",
+                  "description": "(Required) ID of the process pricing to apply the stereotype to"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f29d4c28-6e8f-459b-90ca-cd8fe4d7aa28",
+              "name": "Stereotype applied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "stereotype"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to apply the stereotype to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bulkPricingQuantities\": [\n    7052,\n    928\n  ],\n  \"id\": \"cea4e473-34ec-5987-5d17-12f0e1208008\",\n  \"infills\": [\n    {\n      \"default\": false,\n      \"id\": 4646,\n      \"name\": \"string\",\n      \"value\": 6642.989522364338\n    },\n    {\n      \"default\": false,\n      \"id\": 2472,\n      \"name\": \"string\",\n      \"value\": 563.4730095904372\n    }\n  ],\n  \"isDefault\": true,\n  \"isInternal\": false,\n  \"materials\": [\n    {\n      \"colorDtos\": [\n        {\n          \"code\": \"string\",\n          \"id\": 2922,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 577,\n          \"name\": \"string\"\n        }\n      ],\n      \"id\": 9003,\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"quoteOnly\": false,\n      \"datasheetSummary\": \"string\",\n      \"wallThicknessWarning\": 2347.315203820871,\n      \"wallThicknessLimit\": 2812.8227300461895\n    },\n    {\n      \"colorDtos\": [\n        {\n          \"code\": \"string\",\n          \"id\": 7731,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 663,\n          \"name\": \"string\"\n        }\n      ],\n      \"id\": 4999,\n      \"isDefault\": true,\n      \"name\": \"string\",\n      \"quoteOnly\": true,\n      \"datasheetSummary\": \"string\",\n      \"wallThicknessWarning\": 9515.508730543943,\n      \"wallThicknessLimit\": 4276.654987611774\n    }\n  ],\n  \"postProcessings\": [\n    {\n      \"colors\": [\n        {\n          \"code\": \"string\",\n          \"id\": 3057,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 7345,\n          \"name\": \"string\"\n        }\n      ],\n      \"incompatibleMaterialIds\": [\n        1905,\n        1357\n      ],\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"purchasable\": true,\n      \"id\": 7250,\n      \"mutuallyExclusiveGroup\": \"string\"\n    },\n    {\n      \"colors\": [\n        {\n          \"code\": \"string\",\n          \"id\": 3466,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 5883,\n          \"name\": \"string\"\n        }\n      ],\n      \"incompatibleMaterialIds\": [\n        7590,\n        7827\n      ],\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"purchasable\": false,\n      \"id\": 3264,\n      \"mutuallyExclusiveGroup\": \"string\"\n    }\n  ],\n  \"precisions\": [\n    {\n      \"id\": 1278,\n      \"isActive\": true,\n      \"name\": \"string\",\n      \"price\": 5326.200334931448\n    },\n    {\n      \"id\": 952,\n      \"isActive\": false,\n      \"name\": \"string\",\n      \"price\": 1915.1243717225075\n    }\n  ],\n  \"technology\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a30e23e-2681-4095-ba0f-bd0c5f7833da",
+              "name": "Process not found, technology has no stereotype, or process already has equations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "stereotype"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to apply the stereotype to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03327d9d-8133-40ce-9e63-6f6fa092a770",
+              "name": "Variable name collision, or concurrent modification",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "stereotype"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to apply the stereotype to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1a8c3bf-f56a-4b98-9295-d696cc3f1fbc",
+          "name": "create Material Variable",
+          "request": {
+            "name": "create Material Variable",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes",
+                ":processPricesId",
+                "material-variable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "processPricesId",
+                  "description": "(Required) ID of the process to create a material variable for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "86d4a22c-c3ba-4107-a345-7f00b20f961c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "material-variable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process to create a material variable for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"084d4e82-8b87-91c2-675a-337507ea617b\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0418c5d-ff16-41db-95a0-92e57c0f5144",
+          "name": "Duplicate process pricing",
+          "request": {
+            "name": "Duplicate process pricing",
+            "description": {
+              "content": "Creates a duplicate of an existing process pricing configuration with new settings",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes",
+                ":processPricesId",
+                "duplicate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "processPricesId",
+                  "description": "(Required) ID of the process pricing to duplicate"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"technology\": \"<string>\",\n  \"newOrganisationId\": \"<long>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1dd89a46-819f-440b-af90-a54dd0048d04",
+              "name": "Process pricing successfully duplicated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "duplicate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to duplicate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"technology\": \"<string>\",\n  \"newOrganisationId\": \"<long>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bulkPricingQuantities\": [\n    7052,\n    928\n  ],\n  \"id\": \"cea4e473-34ec-5987-5d17-12f0e1208008\",\n  \"infills\": [\n    {\n      \"default\": false,\n      \"id\": 4646,\n      \"name\": \"string\",\n      \"value\": 6642.989522364338\n    },\n    {\n      \"default\": false,\n      \"id\": 2472,\n      \"name\": \"string\",\n      \"value\": 563.4730095904372\n    }\n  ],\n  \"isDefault\": true,\n  \"isInternal\": false,\n  \"materials\": [\n    {\n      \"colorDtos\": [\n        {\n          \"code\": \"string\",\n          \"id\": 2922,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 577,\n          \"name\": \"string\"\n        }\n      ],\n      \"id\": 9003,\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"quoteOnly\": false,\n      \"datasheetSummary\": \"string\",\n      \"wallThicknessWarning\": 2347.315203820871,\n      \"wallThicknessLimit\": 2812.8227300461895\n    },\n    {\n      \"colorDtos\": [\n        {\n          \"code\": \"string\",\n          \"id\": 7731,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 663,\n          \"name\": \"string\"\n        }\n      ],\n      \"id\": 4999,\n      \"isDefault\": true,\n      \"name\": \"string\",\n      \"quoteOnly\": true,\n      \"datasheetSummary\": \"string\",\n      \"wallThicknessWarning\": 9515.508730543943,\n      \"wallThicknessLimit\": 4276.654987611774\n    }\n  ],\n  \"postProcessings\": [\n    {\n      \"colors\": [\n        {\n          \"code\": \"string\",\n          \"id\": 3057,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 7345,\n          \"name\": \"string\"\n        }\n      ],\n      \"incompatibleMaterialIds\": [\n        1905,\n        1357\n      ],\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"purchasable\": true,\n      \"id\": 7250,\n      \"mutuallyExclusiveGroup\": \"string\"\n    },\n    {\n      \"colors\": [\n        {\n          \"code\": \"string\",\n          \"id\": 3466,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 5883,\n          \"name\": \"string\"\n        }\n      ],\n      \"incompatibleMaterialIds\": [\n        7590,\n        7827\n      ],\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"purchasable\": false,\n      \"id\": 3264,\n      \"mutuallyExclusiveGroup\": \"string\"\n    }\n  ],\n  \"precisions\": [\n    {\n      \"id\": 1278,\n      \"isActive\": true,\n      \"name\": \"string\",\n      \"price\": 5326.200334931448\n    },\n    {\n      \"id\": 952,\n      \"isActive\": false,\n      \"name\": \"string\",\n      \"price\": 1915.1243717225075\n    }\n  ],\n  \"technology\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4458c26-90b7-4322-a568-989063dec95a",
+              "name": "Invalid duplication data, process pricing not found, or operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "duplicate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to duplicate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"technology\": \"<string>\",\n  \"newOrganisationId\": \"<long>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d240685c-4bbd-4333-a3a9-70dab5ac26d0",
+          "name": "Create process pricing with an initial stereotype",
+          "request": {
+            "name": "Create process pricing with an initial stereotype",
+            "description": {
+              "content": "Creates a new manufacturing process pricing configuration with a skeleton stereotype structure",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes",
+                "stereotype"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "technology",
+                  "value": "<string>",
+                  "description": "(Required) The technology that this process is based upon"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c54a2bf2-9c5f-478e-aafd-9961e18d58bb",
+              "name": "Process pricing successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    "stereotype"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "technology",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bulkPricingQuantities\": [\n    7052,\n    928\n  ],\n  \"id\": \"cea4e473-34ec-5987-5d17-12f0e1208008\",\n  \"infills\": [\n    {\n      \"default\": false,\n      \"id\": 4646,\n      \"name\": \"string\",\n      \"value\": 6642.989522364338\n    },\n    {\n      \"default\": false,\n      \"id\": 2472,\n      \"name\": \"string\",\n      \"value\": 563.4730095904372\n    }\n  ],\n  \"isDefault\": true,\n  \"isInternal\": false,\n  \"materials\": [\n    {\n      \"colorDtos\": [\n        {\n          \"code\": \"string\",\n          \"id\": 2922,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 577,\n          \"name\": \"string\"\n        }\n      ],\n      \"id\": 9003,\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"quoteOnly\": false,\n      \"datasheetSummary\": \"string\",\n      \"wallThicknessWarning\": 2347.315203820871,\n      \"wallThicknessLimit\": 2812.8227300461895\n    },\n    {\n      \"colorDtos\": [\n        {\n          \"code\": \"string\",\n          \"id\": 7731,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 663,\n          \"name\": \"string\"\n        }\n      ],\n      \"id\": 4999,\n      \"isDefault\": true,\n      \"name\": \"string\",\n      \"quoteOnly\": true,\n      \"datasheetSummary\": \"string\",\n      \"wallThicknessWarning\": 9515.508730543943,\n      \"wallThicknessLimit\": 4276.654987611774\n    }\n  ],\n  \"postProcessings\": [\n    {\n      \"colors\": [\n        {\n          \"code\": \"string\",\n          \"id\": 3057,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 7345,\n          \"name\": \"string\"\n        }\n      ],\n      \"incompatibleMaterialIds\": [\n        1905,\n        1357\n      ],\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"purchasable\": true,\n      \"id\": 7250,\n      \"mutuallyExclusiveGroup\": \"string\"\n    },\n    {\n      \"colors\": [\n        {\n          \"code\": \"string\",\n          \"id\": 3466,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 5883,\n          \"name\": \"string\"\n        }\n      ],\n      \"incompatibleMaterialIds\": [\n        7590,\n        7827\n      ],\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"purchasable\": false,\n      \"id\": 3264,\n      \"mutuallyExclusiveGroup\": \"string\"\n    }\n  ],\n  \"precisions\": [\n    {\n      \"id\": 1278,\n      \"isActive\": true,\n      \"name\": \"string\",\n      \"price\": 5326.200334931448\n    },\n    {\n      \"id\": 952,\n      \"isActive\": false,\n      \"name\": \"string\",\n      \"price\": 1915.1243717225075\n    }\n  ],\n  \"technology\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dee62ddb-67ae-44eb-b4ab-ccfb5422d36a",
+              "name": "Invalid process pricing data or operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    "stereotype"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "technology",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37ea14d6-f997-4424-845e-3ad4f4a4930d",
+          "name": "Get process pricing by ID",
+          "request": {
+            "name": "Get process pricing by ID",
+            "description": {
+              "content": "Retrieves a specific manufacturing process pricing configuration by its ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes",
+                ":processPricesId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "processPricesId",
+                  "description": "(Required) ID of the process pricing to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a40785e-9aef-4abf-9b40-a6ad48fa9c41",
+              "name": "Process pricing found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bulkPricingQuantities\": [\n    7052,\n    928\n  ],\n  \"id\": \"cea4e473-34ec-5987-5d17-12f0e1208008\",\n  \"infills\": [\n    {\n      \"default\": false,\n      \"id\": 4646,\n      \"name\": \"string\",\n      \"value\": 6642.989522364338\n    },\n    {\n      \"default\": false,\n      \"id\": 2472,\n      \"name\": \"string\",\n      \"value\": 563.4730095904372\n    }\n  ],\n  \"isDefault\": true,\n  \"isInternal\": false,\n  \"materials\": [\n    {\n      \"colorDtos\": [\n        {\n          \"code\": \"string\",\n          \"id\": 2922,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 577,\n          \"name\": \"string\"\n        }\n      ],\n      \"id\": 9003,\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"quoteOnly\": false,\n      \"datasheetSummary\": \"string\",\n      \"wallThicknessWarning\": 2347.315203820871,\n      \"wallThicknessLimit\": 2812.8227300461895\n    },\n    {\n      \"colorDtos\": [\n        {\n          \"code\": \"string\",\n          \"id\": 7731,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 663,\n          \"name\": \"string\"\n        }\n      ],\n      \"id\": 4999,\n      \"isDefault\": true,\n      \"name\": \"string\",\n      \"quoteOnly\": true,\n      \"datasheetSummary\": \"string\",\n      \"wallThicknessWarning\": 9515.508730543943,\n      \"wallThicknessLimit\": 4276.654987611774\n    }\n  ],\n  \"postProcessings\": [\n    {\n      \"colors\": [\n        {\n          \"code\": \"string\",\n          \"id\": 3057,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 7345,\n          \"name\": \"string\"\n        }\n      ],\n      \"incompatibleMaterialIds\": [\n        1905,\n        1357\n      ],\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"purchasable\": true,\n      \"id\": 7250,\n      \"mutuallyExclusiveGroup\": \"string\"\n    },\n    {\n      \"colors\": [\n        {\n          \"code\": \"string\",\n          \"id\": 3466,\n          \"name\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"id\": 5883,\n          \"name\": \"string\"\n        }\n      ],\n      \"incompatibleMaterialIds\": [\n        7590,\n        7827\n      ],\n      \"isDefault\": false,\n      \"name\": \"string\",\n      \"purchasable\": false,\n      \"id\": 3264,\n      \"mutuallyExclusiveGroup\": \"string\"\n    }\n  ],\n  \"precisions\": [\n    {\n      \"id\": 1278,\n      \"isActive\": true,\n      \"name\": \"string\",\n      \"price\": 5326.200334931448\n    },\n    {\n      \"id\": 952,\n      \"isActive\": false,\n      \"name\": \"string\",\n      \"price\": 1915.1243717225075\n    }\n  ],\n  \"technology\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7809ea86-281f-4fff-a474-d67e3bb3474c",
+              "name": "Process pricing not found or operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ada131cf-d662-4240-9241-7ced13c820d8",
+          "name": "Delete process pricing",
+          "request": {
+            "name": "Delete process pricing",
+            "description": {
+              "content": "Deletes an existing manufacturing process pricing configuration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes",
+                ":processPricesId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "processPricesId",
+                  "description": "(Required) ID of the process pricing to delete"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "094d1d79-0ea6-4bae-91c1-aebff9f5a89e",
+              "name": "Process pricing successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7a16aa7-31db-40e5-9e8b-07cfe14c5706",
+              "name": "Process pricing not found or operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a28f92d-d4de-4313-b98a-75f06daba215",
+          "name": "Update process pricing",
+          "request": {
+            "name": "Update process pricing",
+            "description": {
+              "content": "Updates an existing manufacturing process pricing configuration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes",
+                ":processPricesId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "processPricesId",
+                  "description": "(Required) ID of the process pricing to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bulkPricingQuantities\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"isInternal\": \"<boolean>\",\n  \"operationIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"pricingAlgorithm\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "60661c16-20fd-4d00-9b1a-9ce315266d44",
+              "name": "Process pricing successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bulkPricingQuantities\": [\n    \"<integer>\"\n  ],\n  \"isInternal\": \"<boolean>\",\n  \"operationIds\": [\n    \"<uuid>\"\n  ],\n  \"pricingAlgorithm\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2beef789-0309-4f27-a4f4-12aa74947eaf",
+              "name": "Invalid update data, process pricing not found, or operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bulkPricingQuantities\": [\n    \"<integer>\"\n  ],\n  \"isInternal\": \"<boolean>\",\n  \"operationIds\": [\n    \"<uuid>\"\n  ],\n  \"pricingAlgorithm\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd43e1fd-6f75-4a31-98bb-3d8d571d76f9",
+          "name": "Update available post-processings",
+          "request": {
+            "name": "Update available post-processings",
+            "description": {
+              "content": "Updates which post-processing options are available for a process pricing configuration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes",
+                ":processPricesId",
+                "post-processings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "processPricesId",
+                  "description": "(Required) ID of the process pricing to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<long>\",\n  \"<long>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4f973654-f721-4145-b6c9-dec040ff0567",
+              "name": "Available post-processings successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "post-processings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<long>\",\n  \"<long>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b2237efa-92bb-4c85-9f49-fe78d29cdbb6",
+              "name": "Invalid post-processing IDs, process pricing not found, or operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "post-processings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<long>\",\n  \"<long>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa618995-f61a-45ac-a40f-01990e4e7c5e",
+          "name": "Set process pricing as default",
+          "request": {
+            "name": "Set process pricing as default",
+            "description": {
+              "content": "Sets a process pricing configuration as the default for its technology",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes",
+                ":processPricesId",
+                "default"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "processPricesId",
+                  "description": "(Required) ID of the process pricing to set as default"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8dd26379-e93e-448b-9370-571761dcefbc",
+              "name": "Process pricing successfully set as default",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "default"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to set as default"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "92042e6a-4925-4116-ab2e-b68757aa0886",
+              "name": "Process pricing not found or operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "default"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to set as default"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7750796f-6334-418a-bbd7-0573a7c8a6f0",
+          "name": "Unset process pricing as default",
+          "request": {
+            "name": "Unset process pricing as default",
+            "description": {
+              "content": "Removes the default status from a process pricing configuration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes",
+                ":processPricesId",
+                "default",
+                "unselect"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "processPricesId",
+                  "description": "(Required) ID of the process pricing to unset as default"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "836499a3-59ce-4afc-aad5-ec6c3544fc48",
+              "name": "Process pricing default status successfully removed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "default",
+                    "unselect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to unset as default"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "95faac47-2bf3-4123-b656-7fcb76b8fa75",
+              "name": "Process pricing not found or operation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "default",
+                    "unselect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to unset as default"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2e93ef4e-b9c2-4ad9-90fc-bbf804006cd8",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    ":processPricesId",
+                    "default",
+                    "unselect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "processPricesId",
+                      "description": "(Required) ID of the process pricing to unset as default"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e6c3d43-9547-4fad-8a0b-bd8760cb2b7e",
+          "name": "delete Material Variable",
+          "request": {
+            "name": "delete Material Variable",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "processes",
+                "material-variable",
+                ":materialVariableId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "materialVariableId",
+                  "description": "(Required) ID of the material variable to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b13c9616-8950-4448-8c8c-8ece3002e950",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "processes",
+                    "material-variable",
+                    ":materialVariableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "materialVariableId",
+                      "description": "(Required) ID of the material variable to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"084d4e82-8b87-91c2-675a-337507ea617b\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bcd94044-704f-481e-b02d-816157829b42",
+    "name": "Phasio Activity Internal Manufacturer Process Prices Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

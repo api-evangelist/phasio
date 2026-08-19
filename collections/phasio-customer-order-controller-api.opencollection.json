@@ -1,0 +1,381 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Customer Order Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Order Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload purchase order PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order/:orderId/purchase-order-pdf",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Uploads a PDF document as a purchase order for an order. DEPRECATED: Use the confirmPurchaseOrderPayment endpoint instead, which confirms payment and uploads the PDF in a single call."
+        },
+        {
+          "info": {
+            "name": "Get all orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order"
+          },
+          "docs": "Retrieves all orders for the current customer organization"
+        },
+        {
+          "info": {
+            "name": "Create order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "",
+                "type": "query",
+                "description": "Thread ID the order belongs to"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new manufacturing order"
+        },
+        {
+          "info": {
+            "name": "Create payment for order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order/:orderId/payment",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order to create payment for"
+              }
+            ]
+          },
+          "docs": "Initiates a payment transaction for the specified order"
+        },
+        {
+          "info": {
+            "name": "Update order shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order/:orderId/shipment",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the shipping information for an order"
+        },
+        {
+          "info": {
+            "name": "Pay by purchase order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order/:orderId/payment/purchase-order",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order to confirm payment for"
+              },
+              {
+                "name": "purchaseOrderNumber",
+                "value": "",
+                "type": "query",
+                "description": "Purchase order number"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Optional message from customer"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Confirms payment for an order when paying by purchase order, or updates an existing purchase order. Accepts PO number, message, and optional PDF file."
+        },
+        {
+          "info": {
+            "name": "Confirm invoice payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order/:orderId/payment/invoice",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order to confirm payment for"
+              }
+            ]
+          },
+          "docs": "Confirms payment for an order when paying by invoice (for German manufacturers)"
+        },
+        {
+          "info": {
+            "name": "Apply discount to order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order/:orderId/discount/:discountId/apply",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order"
+              },
+              {
+                "name": "discountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the discount to apply"
+              }
+            ]
+          },
+          "docs": "Applies a specific discount to an order"
+        },
+        {
+          "info": {
+            "name": "Remove discount from order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order/:orderId/discount/remove",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order"
+              }
+            ]
+          },
+          "docs": "Removes any applied discount from an order"
+        },
+        {
+          "info": {
+            "name": "Update order awaiting status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order/:orderId/awaiting-status",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the awaiting status of an order, such as confirming or rejecting a quotation"
+        },
+        {
+          "info": {
+            "name": "Get order by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific order by its unique identifier"
+        },
+        {
+          "info": {
+            "name": "Get order quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order/:orderId/quote",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order to get a quote for"
+              }
+            ]
+          },
+          "docs": "Retrieves a detailed quote for an existing order"
+        },
+        {
+          "info": {
+            "name": "Validate order purchasability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order/:orderId/purchasability",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order to validate"
+              }
+            ]
+          },
+          "docs": "Checks if an order can be purchased (all parts manufacturable, etc.)"
+        },
+        {
+          "info": {
+            "name": "Get orders by project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order/project/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the project/thread"
+              }
+            ]
+          },
+          "docs": "Retrieves all orders associated with a specific project or thread"
+        },
+        {
+          "info": {
+            "name": "Get order count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/order/count",
+            "params": [
+              {
+                "name": "paymentStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter by payment status"
+              },
+              {
+                "name": "awaitingStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter by awaiting status"
+              },
+              {
+                "name": "searchQuery",
+                "value": "",
+                "type": "query",
+                "description": "Search query for order details"
+              },
+              {
+                "name": "orderSource",
+                "value": "",
+                "type": "query",
+                "description": "Filter by order source"
+              },
+              {
+                "name": "showArchived",
+                "value": "",
+                "type": "query",
+                "description": "Include archived orders"
+              },
+              {
+                "name": "affiliate",
+                "value": "",
+                "type": "query",
+                "description": "Filter by affiliate"
+              },
+              {
+                "name": "threadId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by thread ID"
+              }
+            ]
+          },
+          "docs": "Returns the count of orders matching the specified filters"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

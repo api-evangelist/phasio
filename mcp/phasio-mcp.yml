@@ -2,11 +2,9 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/phasio-openapi-original.json
-description: >-
-  Candidate MCP tool surface derived from the Phasio Manufacturer API OpenAPI.
-  No official hosted/remote Phasio MCP server was found (docs, npm, MCP
-  registries). This is a curated candidate set over the marquee read/act
-  operations, not a published server.
+description: Candidate MCP tool surface derived from the Phasio Manufacturer API OpenAPI. No official
+  hosted/remote Phasio MCP server was found (docs, npm, MCP registries). This is a curated candidate set
+  over the marquee read/act operations, not a published server.
 server:
   name: phasio
   transport: http
@@ -33,6 +31,11 @@ tools:
 - name: create_webhook
   description: Register a webhook endpoint for order/quote/customer events.
   source_operation: openapi/phasio-openapi-original.json#createWebhook
-notes: >-
-  Full API exposes 481 operations across 85 controllers; a production MCP server
-  should scope to a task-oriented subset with human-in-the-loop on write ops.
+notes: Full API exposes 481 operations across 85 controllers; a production MCP server should scope to
+  a task-oriented subset with human-in-the-loop on write ops.
+deployment:
+  mode: none
+  verified: derived
+  tools: 6
+  checked: '2026-08-12'
+  source: catalog MCP census

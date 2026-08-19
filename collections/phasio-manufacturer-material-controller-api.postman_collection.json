@@ -1,0 +1,384 @@
+{
+  "item": [
+    {
+      "id": "45f3e435-3ca2-4271-b125-1382b2c89b8e",
+      "name": "Manufacturer Material Controller",
+      "description": {
+        "content": "Endpoints for managing manufacturing materials",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "124ff31a-0f74-4e5f-b5eb-b0a4511958e0",
+          "name": "Get all materials for an operator",
+          "request": {
+            "name": "Get all materials for an operator",
+            "description": {
+              "content": "Retrieves all materials available to a specific manufacturer, including general materials",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "material"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "operatorId",
+                  "value": "<long>",
+                  "description": "(Required) ID of the operator to retrieve materials for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "243b2528-7f1f-4b16-a9a2-f14b608ac8ce",
+              "name": "Successfully retrieved materials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "material"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "operatorId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"colorDtos\": [\n      {\n        \"code\": \"string\",\n        \"id\": 8559,\n        \"name\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"id\": 1210,\n        \"name\": \"string\"\n      }\n    ],\n    \"id\": 9180,\n    \"isDefault\": false,\n    \"name\": \"string\",\n    \"quoteOnly\": true,\n    \"datasheetSummary\": \"string\",\n    \"wallThicknessWarning\": 2618.068680056177,\n    \"wallThicknessLimit\": 1892.9974441255238\n  },\n  {\n    \"colorDtos\": [\n      {\n        \"code\": \"string\",\n        \"id\": 3314,\n        \"name\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"id\": 709,\n        \"name\": \"string\"\n      }\n    ],\n    \"id\": 2063,\n    \"isDefault\": true,\n    \"name\": \"string\",\n    \"quoteOnly\": true,\n    \"datasheetSummary\": \"string\",\n    \"wallThicknessWarning\": 8372.605880444291,\n    \"wallThicknessLimit\": 4763.853671424539\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1bc2911-dab0-4a19-ad17-45a9ffeddd16",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "material"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "operatorId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d6903444-6c5f-4198-b890-567d0930e1c0",
+              "name": "Forbidden - insufficient permissions to access materials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "material"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "operatorId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e6b6387-ec60-4dc1-9149-8c28c8cc8076",
+          "name": "Get material by ID",
+          "request": {
+            "name": "Get material by ID",
+            "description": {
+              "content": "Retrieves a specific material by its unique identifier",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "material",
+                ":materialId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "materialId",
+                  "description": "(Required) ID of the material to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4be81064-f47c-4c96-ad35-d4e02427d84e",
+              "name": "Material found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "material",
+                    ":materialId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "materialId",
+                      "description": "(Required) ID of the material to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"colorDtos\": [\n    {\n      \"code\": \"string\",\n      \"id\": 6021,\n      \"name\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"id\": 2195,\n      \"name\": \"string\"\n    }\n  ],\n  \"id\": 8212,\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"quoteOnly\": true,\n  \"datasheetSummary\": \"string\",\n  \"wallThicknessWarning\": 5039.845172900892,\n  \"wallThicknessLimit\": 3719.3802943086384\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dda23f05-16c2-4218-968f-810635ccd35b",
+              "name": "Material not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "material",
+                    ":materialId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "materialId",
+                      "description": "(Required) ID of the material to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "723aac39-0922-4589-becc-6f128d402391",
+    "name": "Phasio Activity Internal Manufacturer Material Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

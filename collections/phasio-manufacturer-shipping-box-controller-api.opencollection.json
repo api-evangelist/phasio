@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Shipping Box Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Shipping Box Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create shipping box",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/shipping-box",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new shipping box with specified dimensions"
+        },
+        {
+          "info": {
+            "name": "Update shipping box",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/shipping-box",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing shipping box dimensions"
+        },
+        {
+          "info": {
+            "name": "Get shipping box by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/shipping-box/:shippingBoxId",
+            "params": [
+              {
+                "name": "shippingBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the shipping box to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific shipping box by its ID"
+        },
+        {
+          "info": {
+            "name": "Delete shipping box",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/shipping-box/:shippingBoxId",
+            "params": [
+              {
+                "name": "shippingBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the shipping box to delete"
+              }
+            ]
+          },
+          "docs": "Deletes an existing shipping box"
+        },
+        {
+          "info": {
+            "name": "Get all shipping boxes for operator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/shipping-box/operator"
+          },
+          "docs": "Retrieves all shipping boxes associated with the current operator"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

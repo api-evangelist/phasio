@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Tracking Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Tracking Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get tracking information by shipment ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/tracking",
+            "params": [
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the shipment to get tracking for"
+              }
+            ]
+          },
+          "docs": "Retrieves tracking information for a specific shipment"
+        },
+        {
+          "info": {
+            "name": "Create tracking information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/tracking",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates tracking information for a shipment"
+        },
+        {
+          "info": {
+            "name": "Update tracking information",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/tracking",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates existing tracking information"
+        },
+        {
+          "info": {
+            "name": "Delete tracking information",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/tracking/:trackingId",
+            "params": [
+              {
+                "name": "trackingId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the tracking information to delete"
+              }
+            ]
+          },
+          "docs": "Deletes existing tracking information"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

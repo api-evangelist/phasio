@@ -1,0 +1,995 @@
+{
+  "item": [
+    {
+      "id": "f7afd0b9-c1fb-4251-b47d-488215fffb23",
+      "name": "Customer Cart Controller",
+      "description": {
+        "content": "Endpoints for managing customer shopping carts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2d6eb942-d76d-47e3-802c-b89e945154d0",
+          "name": "List open carts",
+          "request": {
+            "name": "List open carts",
+            "description": {
+              "content": "Returns all open carts for the current customer organisation",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "cart"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "878cdaae-935e-4cce-8164-4eab587f6ea4",
+              "name": "List of open carts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"cartId\": \"01cf7b86-c6b2-9735-da4a-c8a9ba45436a\",\n    \"cartItemDtos\": [\n      {\n        \"id\": 2545,\n        \"quantity\": 2065,\n        \"partRevisionId\": \"01dde4fe-555a-fa62-09bb-86ee29c2997e\",\n        \"partName\": \"string\",\n        \"colorId\": 6309,\n        \"precisionPricesId\": 1931,\n        \"infillId\": 1574,\n        \"processPricesId\": \"44795eeb-d2a3-2818-5008-805f0ed7c382\",\n        \"materialPricesId\": 758,\n        \"leadTimeId\": \"05179e88-11d9-e642-bd49-c0afe75c7701\",\n        \"units\": \"MILLIMETERS\",\n        \"postProcessingIds\": [\n          1437,\n          5125\n        ],\n        \"createdAt\": \"1956-09-19T10:25:45.329Z\",\n        \"updatedAt\": \"1977-05-25T17:07:29.237Z\"\n      },\n      {\n        \"id\": 9144,\n        \"quantity\": 1761,\n        \"partRevisionId\": \"bccfbf6a-56d8-bb51-2b5e-dde0ca8fb3f7\",\n        \"partName\": \"string\",\n        \"colorId\": 3335,\n        \"precisionPricesId\": 8161,\n        \"infillId\": 2639,\n        \"processPricesId\": \"8bba94aa-117f-49dc-cc1a-809c489f5f96\",\n        \"materialPricesId\": 537,\n        \"leadTimeId\": \"61a0ebbc-c6c6-1eb7-bb6f-28f716e8e9c6\",\n        \"units\": \"CENTIMETERS\",\n        \"postProcessingIds\": [\n          6285,\n          9857\n        ],\n        \"createdAt\": \"1966-09-01T12:19:49.257Z\",\n        \"updatedAt\": \"1960-11-30T14:09:08.116Z\"\n      }\n    ],\n    \"createdAt\": \"1989-07-15T06:15:04.767Z\",\n    \"lastUpdated\": \"2018-07-12T06:09:52.475Z\",\n    \"status\": \"CONVERTED\",\n    \"operatorId\": 661,\n    \"customerId\": 8078,\n    \"customerEmail\": \"string\",\n    \"customerPhone\": \"string\",\n    \"cartNumber\": 6162\n  },\n  {\n    \"cartId\": \"f2a21e0f-e9ef-f3bc-9d21-16e8bc63369f\",\n    \"cartItemDtos\": [\n      {\n        \"id\": 9279,\n        \"quantity\": 1904,\n        \"partRevisionId\": \"748f41bf-cadd-cf95-dfce-731991e307d7\",\n        \"partName\": \"string\",\n        \"colorId\": 6096,\n        \"precisionPricesId\": 9360,\n        \"infillId\": 9714,\n        \"processPricesId\": \"33d55681-7083-a5e8-1f02-8d828c0b45f8\",\n        \"materialPricesId\": 1893,\n        \"leadTimeId\": \"1aa06f5f-1786-43b0-5a7c-76006c58be6a\",\n        \"units\": \"INCHES\",\n        \"postProcessingIds\": [\n          5101,\n          8229\n        ],\n        \"createdAt\": \"1999-04-12T23:30:10.744Z\",\n        \"updatedAt\": \"2016-09-05T22:05:04.420Z\"\n      },\n      {\n        \"id\": 4239,\n        \"quantity\": 8781,\n        \"partRevisionId\": \"73a46325-1aea-807e-2451-d776326167e6\",\n        \"partName\": \"string\",\n        \"colorId\": 7419,\n        \"precisionPricesId\": 5502,\n        \"infillId\": 3541,\n        \"processPricesId\": \"b78dee82-b6e1-6072-0583-3a6b14131280\",\n        \"materialPricesId\": 6521,\n        \"leadTimeId\": \"db69c887-843e-f733-c0b2-a85342fe8518\",\n        \"units\": \"MILLIMETERS\",\n        \"postProcessingIds\": [\n          7084,\n          4730\n        ],\n        \"createdAt\": \"1992-02-29T03:13:08.973Z\",\n        \"updatedAt\": \"1995-06-21T15:40:37.004Z\"\n      }\n    ],\n    \"createdAt\": \"1959-05-07T01:25:26.882Z\",\n    \"lastUpdated\": \"1993-10-19T08:07:27.817Z\",\n    \"status\": \"DELETED\",\n    \"operatorId\": 2616,\n    \"customerId\": 1939,\n    \"customerEmail\": \"string\",\n    \"customerPhone\": \"string\",\n    \"cartNumber\": 9844\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cada43a9-eb64-4b1c-8f63-fbdb8dc225bd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"cartId\": \"01cf7b86-c6b2-9735-da4a-c8a9ba45436a\",\n    \"cartItemDtos\": [\n      {\n        \"id\": 2545,\n        \"quantity\": 2065,\n        \"partRevisionId\": \"01dde4fe-555a-fa62-09bb-86ee29c2997e\",\n        \"partName\": \"string\",\n        \"colorId\": 6309,\n        \"precisionPricesId\": 1931,\n        \"infillId\": 1574,\n        \"processPricesId\": \"44795eeb-d2a3-2818-5008-805f0ed7c382\",\n        \"materialPricesId\": 758,\n        \"leadTimeId\": \"05179e88-11d9-e642-bd49-c0afe75c7701\",\n        \"units\": \"MILLIMETERS\",\n        \"postProcessingIds\": [\n          1437,\n          5125\n        ],\n        \"createdAt\": \"1956-09-19T10:25:45.329Z\",\n        \"updatedAt\": \"1977-05-25T17:07:29.237Z\"\n      },\n      {\n        \"id\": 9144,\n        \"quantity\": 1761,\n        \"partRevisionId\": \"bccfbf6a-56d8-bb51-2b5e-dde0ca8fb3f7\",\n        \"partName\": \"string\",\n        \"colorId\": 3335,\n        \"precisionPricesId\": 8161,\n        \"infillId\": 2639,\n        \"processPricesId\": \"8bba94aa-117f-49dc-cc1a-809c489f5f96\",\n        \"materialPricesId\": 537,\n        \"leadTimeId\": \"61a0ebbc-c6c6-1eb7-bb6f-28f716e8e9c6\",\n        \"units\": \"CENTIMETERS\",\n        \"postProcessingIds\": [\n          6285,\n          9857\n        ],\n        \"createdAt\": \"1966-09-01T12:19:49.257Z\",\n        \"updatedAt\": \"1960-11-30T14:09:08.116Z\"\n      }\n    ],\n    \"createdAt\": \"1989-07-15T06:15:04.767Z\",\n    \"lastUpdated\": \"2018-07-12T06:09:52.475Z\",\n    \"status\": \"CONVERTED\",\n    \"operatorId\": 661,\n    \"customerId\": 8078,\n    \"customerEmail\": \"string\",\n    \"customerPhone\": \"string\",\n    \"cartNumber\": 6162\n  },\n  {\n    \"cartId\": \"f2a21e0f-e9ef-f3bc-9d21-16e8bc63369f\",\n    \"cartItemDtos\": [\n      {\n        \"id\": 9279,\n        \"quantity\": 1904,\n        \"partRevisionId\": \"748f41bf-cadd-cf95-dfce-731991e307d7\",\n        \"partName\": \"string\",\n        \"colorId\": 6096,\n        \"precisionPricesId\": 9360,\n        \"infillId\": 9714,\n        \"processPricesId\": \"33d55681-7083-a5e8-1f02-8d828c0b45f8\",\n        \"materialPricesId\": 1893,\n        \"leadTimeId\": \"1aa06f5f-1786-43b0-5a7c-76006c58be6a\",\n        \"units\": \"INCHES\",\n        \"postProcessingIds\": [\n          5101,\n          8229\n        ],\n        \"createdAt\": \"1999-04-12T23:30:10.744Z\",\n        \"updatedAt\": \"2016-09-05T22:05:04.420Z\"\n      },\n      {\n        \"id\": 4239,\n        \"quantity\": 8781,\n        \"partRevisionId\": \"73a46325-1aea-807e-2451-d776326167e6\",\n        \"partName\": \"string\",\n        \"colorId\": 7419,\n        \"precisionPricesId\": 5502,\n        \"infillId\": 3541,\n        \"processPricesId\": \"b78dee82-b6e1-6072-0583-3a6b14131280\",\n        \"materialPricesId\": 6521,\n        \"leadTimeId\": \"db69c887-843e-f733-c0b2-a85342fe8518\",\n        \"units\": \"MILLIMETERS\",\n        \"postProcessingIds\": [\n          7084,\n          4730\n        ],\n        \"createdAt\": \"1992-02-29T03:13:08.973Z\",\n        \"updatedAt\": \"1995-06-21T15:40:37.004Z\"\n      }\n    ],\n    \"createdAt\": \"1959-05-07T01:25:26.882Z\",\n    \"lastUpdated\": \"1993-10-19T08:07:27.817Z\",\n    \"status\": \"DELETED\",\n    \"operatorId\": 2616,\n    \"customerId\": 1939,\n    \"customerEmail\": \"string\",\n    \"customerPhone\": \"string\",\n    \"cartNumber\": 9844\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7cf49e22-a0ea-48c1-bfa5-3f94a901bca3",
+          "name": "Create a new shopping cart",
+          "request": {
+            "name": "Create a new shopping cart",
+            "description": {
+              "content": "Creates a new empty shopping cart for the current customer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "cart"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c7b8329c-e21d-416c-805c-aa2bcb57b5fc",
+              "name": "Cart successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cartId\": \"06f90d69-0ff9-c082-1072-6e840c1204d9\",\n  \"cartItemDtos\": [\n    {\n      \"id\": 2790,\n      \"quantity\": 1239,\n      \"partRevisionId\": \"4d35bce0-2721-949c-a3da-45070d9a341e\",\n      \"partName\": \"string\",\n      \"colorId\": 2711,\n      \"precisionPricesId\": 3875,\n      \"infillId\": 8157,\n      \"processPricesId\": \"526a45f4-115b-fa7b-d20d-732759e01194\",\n      \"materialPricesId\": 9983,\n      \"leadTimeId\": \"9c52a9b6-1e17-49ab-f22b-61dc6605a213\",\n      \"units\": \"MILLIMETERS\",\n      \"postProcessingIds\": [\n        7239,\n        6365\n      ],\n      \"createdAt\": \"1986-05-31T12:57:02.621Z\",\n      \"updatedAt\": \"2013-06-08T10:07:14.037Z\"\n    },\n    {\n      \"id\": 8542,\n      \"quantity\": 6537,\n      \"partRevisionId\": \"d6941f9d-7cb7-c8a8-bd7d-8982f0bd4321\",\n      \"partName\": \"string\",\n      \"colorId\": 1185,\n      \"precisionPricesId\": 1850,\n      \"infillId\": 7651,\n      \"processPricesId\": \"f919e4ff-e385-e18b-4c30-7abe91c28c27\",\n      \"materialPricesId\": 5878,\n      \"leadTimeId\": \"260ed41a-62b6-08bb-9783-4a914cf377a1\",\n      \"units\": \"METRES\",\n      \"postProcessingIds\": [\n        8402,\n        5800\n      ],\n      \"createdAt\": \"1985-01-05T07:45:34.340Z\",\n      \"updatedAt\": \"1949-03-21T23:18:00.683Z\"\n    }\n  ],\n  \"createdAt\": \"1953-12-09T16:28:36.187Z\",\n  \"lastUpdated\": \"1960-09-14T02:16:11.010Z\",\n  \"status\": \"DELETED\",\n  \"operatorId\": 3529,\n  \"customerId\": 5888,\n  \"customerEmail\": \"string\",\n  \"customerPhone\": \"string\",\n  \"cartNumber\": 1599\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72f1c708-0d3e-47e3-a68c-dafc1746f840",
+              "name": "Unable to create cart",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b84605f0-7b97-46ff-aaec-1dfd80133639",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a42acc67-dd20-4d23-9e4a-c0c419666549",
+          "name": "Claim shopping cart",
+          "request": {
+            "name": "Claim shopping cart",
+            "description": {
+              "content": "Claims an existing shopping cart for the current customer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "cart",
+                ":cartId",
+                "claim"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "cartId",
+                  "description": "(Required) ID of the cart to update"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e075fde-4884-4205-9a88-c178e6f43df7",
+              "name": "Cart successfully claimed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart",
+                    ":cartId",
+                    "claim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "cartId",
+                      "description": "(Required) ID of the cart to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae90609b-affe-4752-b841-a0b36f4140b4",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart",
+                    ":cartId",
+                    "claim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "cartId",
+                      "description": "(Required) ID of the cart to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc0beea9-37b3-4ee7-9b3d-20bf1db54605",
+              "name": "Cart not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart",
+                    ":cartId",
+                    "claim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "cartId",
+                      "description": "(Required) ID of the cart to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "766901c8-cdd3-40fa-ab99-e3e837118cdc",
+              "name": "Conflict - Cart has already been claimed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart",
+                    ":cartId",
+                    "claim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "cartId",
+                      "description": "(Required) ID of the cart to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b550ba1c-46a7-4162-8515-9cc1d83294ee",
+          "name": "Get cart by ID",
+          "request": {
+            "name": "Get cart by ID",
+            "description": {
+              "content": "Returns a single cart with items for the resume flow",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "cart",
+                ":cartId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "cartId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8b6e432-bc01-4dba-a3ed-5ef894ae5d61",
+              "name": "Cart with items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart",
+                    ":cartId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "cartId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"cartId\": \"06f90d69-0ff9-c082-1072-6e840c1204d9\",\n  \"cartItemDtos\": [\n    {\n      \"id\": 2790,\n      \"quantity\": 1239,\n      \"partRevisionId\": \"4d35bce0-2721-949c-a3da-45070d9a341e\",\n      \"partName\": \"string\",\n      \"colorId\": 2711,\n      \"precisionPricesId\": 3875,\n      \"infillId\": 8157,\n      \"processPricesId\": \"526a45f4-115b-fa7b-d20d-732759e01194\",\n      \"materialPricesId\": 9983,\n      \"leadTimeId\": \"9c52a9b6-1e17-49ab-f22b-61dc6605a213\",\n      \"units\": \"MILLIMETERS\",\n      \"postProcessingIds\": [\n        7239,\n        6365\n      ],\n      \"createdAt\": \"1986-05-31T12:57:02.621Z\",\n      \"updatedAt\": \"2013-06-08T10:07:14.037Z\"\n    },\n    {\n      \"id\": 8542,\n      \"quantity\": 6537,\n      \"partRevisionId\": \"d6941f9d-7cb7-c8a8-bd7d-8982f0bd4321\",\n      \"partName\": \"string\",\n      \"colorId\": 1185,\n      \"precisionPricesId\": 1850,\n      \"infillId\": 7651,\n      \"processPricesId\": \"f919e4ff-e385-e18b-4c30-7abe91c28c27\",\n      \"materialPricesId\": 5878,\n      \"leadTimeId\": \"260ed41a-62b6-08bb-9783-4a914cf377a1\",\n      \"units\": \"METRES\",\n      \"postProcessingIds\": [\n        8402,\n        5800\n      ],\n      \"createdAt\": \"1985-01-05T07:45:34.340Z\",\n      \"updatedAt\": \"1949-03-21T23:18:00.683Z\"\n    }\n  ],\n  \"createdAt\": \"1953-12-09T16:28:36.187Z\",\n  \"lastUpdated\": \"1960-09-14T02:16:11.010Z\",\n  \"status\": \"DELETED\",\n  \"operatorId\": 3529,\n  \"customerId\": 5888,\n  \"customerEmail\": \"string\",\n  \"customerPhone\": \"string\",\n  \"cartNumber\": 1599\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12d6fe6d-c97b-4582-b927-00cc9b15a173",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart",
+                    ":cartId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "cartId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"cartId\": \"06f90d69-0ff9-c082-1072-6e840c1204d9\",\n  \"cartItemDtos\": [\n    {\n      \"id\": 2790,\n      \"quantity\": 1239,\n      \"partRevisionId\": \"4d35bce0-2721-949c-a3da-45070d9a341e\",\n      \"partName\": \"string\",\n      \"colorId\": 2711,\n      \"precisionPricesId\": 3875,\n      \"infillId\": 8157,\n      \"processPricesId\": \"526a45f4-115b-fa7b-d20d-732759e01194\",\n      \"materialPricesId\": 9983,\n      \"leadTimeId\": \"9c52a9b6-1e17-49ab-f22b-61dc6605a213\",\n      \"units\": \"MILLIMETERS\",\n      \"postProcessingIds\": [\n        7239,\n        6365\n      ],\n      \"createdAt\": \"1986-05-31T12:57:02.621Z\",\n      \"updatedAt\": \"2013-06-08T10:07:14.037Z\"\n    },\n    {\n      \"id\": 8542,\n      \"quantity\": 6537,\n      \"partRevisionId\": \"d6941f9d-7cb7-c8a8-bd7d-8982f0bd4321\",\n      \"partName\": \"string\",\n      \"colorId\": 1185,\n      \"precisionPricesId\": 1850,\n      \"infillId\": 7651,\n      \"processPricesId\": \"f919e4ff-e385-e18b-4c30-7abe91c28c27\",\n      \"materialPricesId\": 5878,\n      \"leadTimeId\": \"260ed41a-62b6-08bb-9783-4a914cf377a1\",\n      \"units\": \"METRES\",\n      \"postProcessingIds\": [\n        8402,\n        5800\n      ],\n      \"createdAt\": \"1985-01-05T07:45:34.340Z\",\n      \"updatedAt\": \"1949-03-21T23:18:00.683Z\"\n    }\n  ],\n  \"createdAt\": \"1953-12-09T16:28:36.187Z\",\n  \"lastUpdated\": \"1960-09-14T02:16:11.010Z\",\n  \"status\": \"DELETED\",\n  \"operatorId\": 3529,\n  \"customerId\": 5888,\n  \"customerEmail\": \"string\",\n  \"customerPhone\": \"string\",\n  \"cartNumber\": 1599\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db325cff-a89b-4e6f-9058-af0394cab4e4",
+              "name": "Cart not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart",
+                    ":cartId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "cartId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"cartId\": \"06f90d69-0ff9-c082-1072-6e840c1204d9\",\n  \"cartItemDtos\": [\n    {\n      \"id\": 2790,\n      \"quantity\": 1239,\n      \"partRevisionId\": \"4d35bce0-2721-949c-a3da-45070d9a341e\",\n      \"partName\": \"string\",\n      \"colorId\": 2711,\n      \"precisionPricesId\": 3875,\n      \"infillId\": 8157,\n      \"processPricesId\": \"526a45f4-115b-fa7b-d20d-732759e01194\",\n      \"materialPricesId\": 9983,\n      \"leadTimeId\": \"9c52a9b6-1e17-49ab-f22b-61dc6605a213\",\n      \"units\": \"MILLIMETERS\",\n      \"postProcessingIds\": [\n        7239,\n        6365\n      ],\n      \"createdAt\": \"1986-05-31T12:57:02.621Z\",\n      \"updatedAt\": \"2013-06-08T10:07:14.037Z\"\n    },\n    {\n      \"id\": 8542,\n      \"quantity\": 6537,\n      \"partRevisionId\": \"d6941f9d-7cb7-c8a8-bd7d-8982f0bd4321\",\n      \"partName\": \"string\",\n      \"colorId\": 1185,\n      \"precisionPricesId\": 1850,\n      \"infillId\": 7651,\n      \"processPricesId\": \"f919e4ff-e385-e18b-4c30-7abe91c28c27\",\n      \"materialPricesId\": 5878,\n      \"leadTimeId\": \"260ed41a-62b6-08bb-9783-4a914cf377a1\",\n      \"units\": \"METRES\",\n      \"postProcessingIds\": [\n        8402,\n        5800\n      ],\n      \"createdAt\": \"1985-01-05T07:45:34.340Z\",\n      \"updatedAt\": \"1949-03-21T23:18:00.683Z\"\n    }\n  ],\n  \"createdAt\": \"1953-12-09T16:28:36.187Z\",\n  \"lastUpdated\": \"1960-09-14T02:16:11.010Z\",\n  \"status\": \"DELETED\",\n  \"operatorId\": 3529,\n  \"customerId\": 5888,\n  \"customerEmail\": \"string\",\n  \"customerPhone\": \"string\",\n  \"cartNumber\": 1599\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a115d5b-7cc9-4289-b1da-15d60aa22202",
+          "name": "Soft delete a shopping cart",
+          "request": {
+            "name": "Soft delete a shopping cart",
+            "description": {
+              "content": "Sets the cart status to DELETED without removing it from the database",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "cart",
+                ":cartId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "cartId",
+                  "description": "(Required) ID of the cart to soft-delete"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6bdbb07c-cb1d-4f2d-9f24-521aec9e187e",
+              "name": "Cart successfully soft-deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart",
+                    ":cartId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "cartId",
+                      "description": "(Required) ID of the cart to soft-delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6f9679d8-c780-4a06-8f90-8b37e3f62ac4",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart",
+                    ":cartId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "cartId",
+                      "description": "(Required) ID of the cart to soft-delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aa575527-1f1c-4d32-a4a7-b2580cf96ae9",
+              "name": "Cart not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "cart",
+                    ":cartId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "cartId",
+                      "description": "(Required) ID of the cart to soft-delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9a8cd252-3f72-4c73-b197-27909e957c5e",
+    "name": "Phasio Activity Internal Customer Cart Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

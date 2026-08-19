@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Inbound Email Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inbound Email Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Process inbound email",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/inbound-email",
+            "params": [
+              {
+                "name": "fromEmail",
+                "value": "",
+                "type": "query",
+                "description": "Email address of the sender"
+              },
+              {
+                "name": "subject",
+                "value": "",
+                "type": "query",
+                "description": "Subject line of the email"
+              },
+              {
+                "name": "body",
+                "value": "",
+                "type": "query",
+                "description": "Body content of the email"
+              },
+              {
+                "name": "threadId",
+                "value": "",
+                "type": "query",
+                "description": "ID of an existing thread to associate the email with (optional)"
+              },
+              {
+                "name": "spf",
+                "value": "",
+                "type": "query",
+                "description": "Whether the email passed SPF authentication"
+              },
+              {
+                "name": "dkim",
+                "value": "",
+                "type": "query",
+                "description": "Whether the email passed DKIM authentication"
+              },
+              {
+                "name": "notSpam",
+                "value": "",
+                "type": "query",
+                "description": "Whether the email was determined to be legitimate (not spam)"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "attachments",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Processes an incoming email and associates it with a thread or creates a new thread"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

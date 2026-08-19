@@ -1,0 +1,250 @@
+{
+  "item": [
+    {
+      "id": "db85ce0d-f26a-4b80-aaee-2a84f25d61ea",
+      "name": "Customer Shipment Controller",
+      "description": {
+        "content": "Endpoints for managing customer shipments and shipping calculations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f07ab812-88bd-43b3-b723-e180f6824da3",
+          "name": "Calculate shipping rates",
+          "request": {
+            "name": "Calculate shipping rates",
+            "description": {
+              "content": "Calculates available shipping rates based on parts and destination",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "shipment",
+                "rate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"<string>\",\n  \"organisationId\": \"<long>\",\n  \"parts\": [\n    {\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"units\": \"<string>\"\n    },\n    {\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"units\": \"<string>\"\n    }\n  ],\n  \"toAddressId\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ae31699-0c76-4588-9669-28dfc84e37dd",
+              "name": "Successfully calculated shipping rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "shipment",
+                    "rate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"<string>\",\n  \"organisationId\": \"<long>\",\n  \"parts\": [\n    {\n      \"materialId\": 7662,\n      \"partRevisionId\": \"8d6d8700-fee5-fb37-ed1a-d5dd8804823b\",\n      \"processPricesId\": \"b7e24892-92fa-0d5b-3b84-ddc11df44886\",\n      \"quantity\": 3499,\n      \"units\": \"METRES\"\n    },\n    {\n      \"materialId\": 5564,\n      \"partRevisionId\": \"efe1ad52-c76f-2980-269b-52d84f91006b\",\n      \"processPricesId\": \"0105500c-1323-b53d-0329-697a643c3cc3\",\n      \"quantity\": 7561,\n      \"units\": \"CENTIMETERS\"\n    }\n  ],\n  \"toAddressId\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorWithCarrier\": true,\n    \"rates\": [\n      {\n        \"currency\": \"string\",\n        \"id\": \"string\",\n        \"rate\": 9161.224749487565,\n        \"serviceName\": \"string\",\n        \"serviceType\": \"string\",\n        \"shippingMethodId\": 9462\n      },\n      {\n        \"currency\": \"string\",\n        \"id\": \"string\",\n        \"rate\": 520.4211245668678,\n        \"serviceName\": \"string\",\n        \"serviceType\": \"string\",\n        \"shippingMethodId\": 5634\n      }\n    ],\n    \"tooLargeForBoxes\": false,\n    \"shippingMethodId\": 6862\n  },\n  {\n    \"errorWithCarrier\": false,\n    \"rates\": [\n      {\n        \"currency\": \"string\",\n        \"id\": \"string\",\n        \"rate\": 5475.207391227086,\n        \"serviceName\": \"string\",\n        \"serviceType\": \"string\",\n        \"shippingMethodId\": 744\n      },\n      {\n        \"currency\": \"string\",\n        \"id\": \"string\",\n        \"rate\": 5762.87643363403,\n        \"serviceName\": \"string\",\n        \"serviceType\": \"string\",\n        \"shippingMethodId\": 9138\n      }\n    ],\n    \"tooLargeForBoxes\": false,\n    \"shippingMethodId\": 3006\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5e70653-83f6-4558-8534-22f6af204428",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "shipment",
+                    "rate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"<string>\",\n  \"organisationId\": \"<long>\",\n  \"parts\": [\n    {\n      \"materialId\": 7662,\n      \"partRevisionId\": \"8d6d8700-fee5-fb37-ed1a-d5dd8804823b\",\n      \"processPricesId\": \"b7e24892-92fa-0d5b-3b84-ddc11df44886\",\n      \"quantity\": 3499,\n      \"units\": \"METRES\"\n    },\n    {\n      \"materialId\": 5564,\n      \"partRevisionId\": \"efe1ad52-c76f-2980-269b-52d84f91006b\",\n      \"processPricesId\": \"0105500c-1323-b53d-0329-697a643c3cc3\",\n      \"quantity\": 7561,\n      \"units\": \"CENTIMETERS\"\n    }\n  ],\n  \"toAddressId\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be4e999d-11a5-4e29-8cf2-b6ac3bf3cb76",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "shipment",
+                    "rate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"<string>\",\n  \"organisationId\": \"<long>\",\n  \"parts\": [\n    {\n      \"materialId\": 7662,\n      \"partRevisionId\": \"8d6d8700-fee5-fb37-ed1a-d5dd8804823b\",\n      \"processPricesId\": \"b7e24892-92fa-0d5b-3b84-ddc11df44886\",\n      \"quantity\": 3499,\n      \"units\": \"METRES\"\n    },\n    {\n      \"materialId\": 5564,\n      \"partRevisionId\": \"efe1ad52-c76f-2980-269b-52d84f91006b\",\n      \"processPricesId\": \"0105500c-1323-b53d-0329-697a643c3cc3\",\n      \"quantity\": 7561,\n      \"units\": \"CENTIMETERS\"\n    }\n  ],\n  \"toAddressId\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ec29d30d-944b-4497-b05b-13bbbb31200a",
+    "name": "Phasio Activity Internal Customer Shipment Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

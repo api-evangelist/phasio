@@ -1,0 +1,748 @@
+{
+  "item": [
+    {
+      "id": "92c0f09c-9748-4366-b9db-3c5274caadf1",
+      "name": "File Analysis Controller",
+      "description": {
+        "content": "Endpoints for managing 3D file analysis and processing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "023d56dd-f528-4b8a-bb73-b04d9fffc9bb",
+          "name": "Save file analysis results",
+          "request": {
+            "name": "Save file analysis results",
+            "description": {
+              "content": "Accepts a fully-encrypted msgpack payload from Gina-Three",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "internal",
+                "v1",
+                "file-analysis",
+                "results",
+                ":analysisId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "analysisId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/msgpack"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"analysisVersion\": \"<integer>\",\n  \"area\": \"<number>\",\n  \"baseRotation\": [\n    [\n      \"<number>\",\n      \"<number>\"\n    ],\n    [\n      \"<number>\",\n      \"<number>\"\n    ]\n  ],\n  \"baseTranslation\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"convexHullVolume\": \"<number>\",\n  \"fileHash\": \"<string>\",\n  \"height\": \"<number>\",\n  \"length\": \"<number>\",\n  \"minBoundingBoxVolume\": \"<number>\",\n  \"repaired\": \"<boolean>\",\n  \"shrinkWrapVolume\": \"<number>\",\n  \"stl\": \"<byte>\",\n  \"thumbnails\": [\n    {\n      \"data\": \"<byte>\",\n      \"direction\": \"<string>\",\n      \"similarityVector\": [\n        \"<number>\",\n        \"<number>\"\n      ]\n    },\n    {\n      \"data\": \"<byte>\",\n      \"direction\": \"<string>\",\n      \"similarityVector\": [\n        \"<number>\",\n        \"<number>\"\n      ]\n    }\n  ],\n  \"volume\": \"<number>\",\n  \"watertight\": \"<boolean>\",\n  \"width\": \"<number>\",\n  \"wallThickness\": \"<byte>\",\n  \"minimumWallThickness\": \"<number>\",\n  \"similarityVector\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"partRevisionId\": \"<uuid>\",\n  \"creationMethod\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"analysisId\": \"<uuid>\",\n  \"createdAt\": \"<string>\",\n  \"originalCadFileType\": \"<string>\",\n  \"availableAccessories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"versionNumber\": \"<long>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "a1832544-2e78-4ea8-b6cd-5b7db8703751",
+              "name": "Analysis results saved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "file-analysis",
+                    "results",
+                    ":analysisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"analysisVersion\": \"<integer>\",\n  \"area\": \"<number>\",\n  \"baseRotation\": [\n    [\n      \"<number>\",\n      \"<number>\"\n    ],\n    [\n      \"<number>\",\n      \"<number>\"\n    ]\n  ],\n  \"baseTranslation\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"convexHullVolume\": \"<number>\",\n  \"fileHash\": \"<string>\",\n  \"height\": \"<number>\",\n  \"length\": \"<number>\",\n  \"minBoundingBoxVolume\": \"<number>\",\n  \"repaired\": \"<boolean>\",\n  \"shrinkWrapVolume\": \"<number>\",\n  \"stl\": \"<byte>\",\n  \"thumbnails\": [\n    {\n      \"data\": \"string\",\n      \"direction\": \"string\",\n      \"similarityVector\": [\n        4325.546486558175,\n        1943.7736997486365\n      ]\n    },\n    {\n      \"data\": \"string\",\n      \"direction\": \"string\",\n      \"similarityVector\": [\n        8777.661712516268,\n        9574.621975852873\n      ]\n    }\n  ],\n  \"volume\": \"<number>\",\n  \"watertight\": \"<boolean>\",\n  \"width\": \"<number>\",\n  \"wallThickness\": \"<byte>\",\n  \"minimumWallThickness\": \"<number>\",\n  \"similarityVector\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"partRevisionId\": \"<uuid>\",\n  \"creationMethod\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"analysisId\": \"<uuid>\",\n  \"createdAt\": \"<string>\",\n  \"originalCadFileType\": \"<string>\",\n  \"availableAccessories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"versionNumber\": \"<long>\"\n}"
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6836a6c-24e9-4696-b513-5ad9b0c23aa0",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "file-analysis",
+                    "results",
+                    ":analysisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"analysisVersion\": \"<integer>\",\n  \"area\": \"<number>\",\n  \"baseRotation\": [\n    [\n      \"<number>\",\n      \"<number>\"\n    ],\n    [\n      \"<number>\",\n      \"<number>\"\n    ]\n  ],\n  \"baseTranslation\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"convexHullVolume\": \"<number>\",\n  \"fileHash\": \"<string>\",\n  \"height\": \"<number>\",\n  \"length\": \"<number>\",\n  \"minBoundingBoxVolume\": \"<number>\",\n  \"repaired\": \"<boolean>\",\n  \"shrinkWrapVolume\": \"<number>\",\n  \"stl\": \"<byte>\",\n  \"thumbnails\": [\n    {\n      \"data\": \"string\",\n      \"direction\": \"string\",\n      \"similarityVector\": [\n        4325.546486558175,\n        1943.7736997486365\n      ]\n    },\n    {\n      \"data\": \"string\",\n      \"direction\": \"string\",\n      \"similarityVector\": [\n        8777.661712516268,\n        9574.621975852873\n      ]\n    }\n  ],\n  \"volume\": \"<number>\",\n  \"watertight\": \"<boolean>\",\n  \"width\": \"<number>\",\n  \"wallThickness\": \"<byte>\",\n  \"minimumWallThickness\": \"<number>\",\n  \"similarityVector\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"partRevisionId\": \"<uuid>\",\n  \"creationMethod\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"analysisId\": \"<uuid>\",\n  \"createdAt\": \"<string>\",\n  \"originalCadFileType\": \"<string>\",\n  \"availableAccessories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"versionNumber\": \"<long>\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c8b899d0-3953-458d-a72b-014cfd4f267f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "file-analysis",
+                    "results",
+                    ":analysisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"analysisVersion\": \"<integer>\",\n  \"area\": \"<number>\",\n  \"baseRotation\": [\n    [\n      \"<number>\",\n      \"<number>\"\n    ],\n    [\n      \"<number>\",\n      \"<number>\"\n    ]\n  ],\n  \"baseTranslation\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"convexHullVolume\": \"<number>\",\n  \"fileHash\": \"<string>\",\n  \"height\": \"<number>\",\n  \"length\": \"<number>\",\n  \"minBoundingBoxVolume\": \"<number>\",\n  \"repaired\": \"<boolean>\",\n  \"shrinkWrapVolume\": \"<number>\",\n  \"stl\": \"<byte>\",\n  \"thumbnails\": [\n    {\n      \"data\": \"string\",\n      \"direction\": \"string\",\n      \"similarityVector\": [\n        4325.546486558175,\n        1943.7736997486365\n      ]\n    },\n    {\n      \"data\": \"string\",\n      \"direction\": \"string\",\n      \"similarityVector\": [\n        8777.661712516268,\n        9574.621975852873\n      ]\n    }\n  ],\n  \"volume\": \"<number>\",\n  \"watertight\": \"<boolean>\",\n  \"width\": \"<number>\",\n  \"wallThickness\": \"<byte>\",\n  \"minimumWallThickness\": \"<number>\",\n  \"similarityVector\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"partRevisionId\": \"<uuid>\",\n  \"creationMethod\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"analysisId\": \"<uuid>\",\n  \"createdAt\": \"<string>\",\n  \"originalCadFileType\": \"<string>\",\n  \"availableAccessories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"versionNumber\": \"<long>\"\n}"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1143d2b-aeb3-4b76-ad0a-d5b6469ac131",
+          "name": "Update analysis status",
+          "request": {
+            "name": "Update analysis status",
+            "description": {
+              "content": "Receives status callbacks from Gina during processing",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "internal",
+                "v1",
+                "file-analysis",
+                "status",
+                ":analysisId",
+                ":status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "analysisId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "status",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "27d8167a-c146-43d6-94d5-e8a0b2da77f1",
+              "name": "Status updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "file-analysis",
+                    "status",
+                    ":analysisId",
+                    ":status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "status",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8b5d1cb-6e01-4833-8560-7dfd340c548b",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "file-analysis",
+                    "status",
+                    ":analysisId",
+                    ":status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "status",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b6766dca-02d7-4dcb-9d7a-dec96eb2ff62",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "file-analysis",
+                    "status",
+                    ":analysisId",
+                    ":status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "status",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "370e54df-102b-4bf2-8c4b-070a02196039",
+          "name": "Get pre-analysis file",
+          "request": {
+            "name": "Get pre-analysis file",
+            "description": {
+              "content": "Retrieves a file prepared for analysis based on the analysis ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "internal",
+                "v1",
+                "file-analysis",
+                "pre-analysis",
+                ":analysisId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "analysisId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7051bd57-6c75-4d4e-bee8-910e3eb92e20",
+              "name": "Successfully retrieved pre-analysis file",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "file-analysis",
+                    "pre-analysis",
+                    ":analysisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99bd00c3-a97b-4045-b372-1160f64181ad",
+              "name": "Invalid analysis ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "file-analysis",
+                    "pre-analysis",
+                    ":analysisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "89116e5f-821a-4ecc-9c24-47b965127e32",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "file-analysis",
+                    "pre-analysis",
+                    ":analysisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7269b80a-4938-4d5a-b5e6-f9fb06f9cc29",
+              "name": "Pre-analysis file not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "file-analysis",
+                    "pre-analysis",
+                    ":analysisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "25825a4d-22dc-421c-81d4-9246f29dd946",
+    "name": "Phasio Activity Internal File Analysis Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Analytics Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Analytics Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get website visit statistics for the current month",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/analytics/operator/website-visits"
+          },
+          "docs": "Retrieves website traffic and visitor data for the current month"
+        },
+        {
+          "info": {
+            "name": "Get revenue analytics for the current month",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/analytics/operator/revenue"
+          },
+          "docs": "Retrieves revenue data for the current month"
+        },
+        {
+          "info": {
+            "name": "Get overview analytics for the current month",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/analytics/operator/overview"
+          },
+          "docs": "Retrieves a comprehensive overview of key analytics metrics for the current month"
+        },
+        {
+          "info": {
+            "name": "Get orders by payment status for the current month",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/analytics/operator/orders/payment-status"
+          },
+          "docs": "Retrieves order information categorized by payment status for the current month"
+        },
+        {
+          "info": {
+            "name": "Get time series metrics for the operator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/analytics/operator/metrics"
+          },
+          "docs": "Retrieves a collection of time-based metrics for the operator"
+        },
+        {
+          "info": {
+            "name": "Get quotes generated in the current month",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/analytics/operator/generated-quotes"
+          },
+          "docs": "Retrieves data on quotes generated during the current month"
+        },
+        {
+          "info": {
+            "name": "Get dashboard analytics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/analytics/dashboard",
+            "params": [
+              {
+                "name": "period",
+                "value": "last_30_days",
+                "type": "query",
+                "description": "Preset reporting window. Defaults to `last_30_days` when omitted. Ignored when both `from` and `to` are supplied."
+              },
+              {
+                "name": "from",
+                "value": "2026-01-01",
+                "type": "query",
+                "description": "Explicit reporting window start date in `yyyy-MM-dd` format. Together with `to`, overrides `period`."
+              },
+              {
+                "name": "to",
+                "value": "2026-01-31",
+                "type": "query",
+                "description": "Explicit reporting window end date in `yyyy-MM-dd` format, inclusive. Together with `from`, overrides `period`."
+              },
+              {
+                "name": "granularity",
+                "value": "day",
+                "type": "query",
+                "description": "Time-series bucket granularity. Auto-derived from the requested window when omitted."
+              },
+              {
+                "name": "sections",
+                "value": "revenue",
+                "type": "query",
+                "description": "Dashboard sections to compute. Repeat the query parameter for multiple sections, e.g. `sections=revenue&sections=funnel`. All sections are returned when omitted."
+              },
+              {
+                "name": "customerType",
+                "value": "ACCOUNT",
+                "type": "query",
+                "description": "Optional dimension filter by customer type."
+              },
+              {
+                "name": "source",
+                "value": "INBOUND",
+                "type": "query",
+                "description": "Optional dimension filter by order source."
+              },
+              {
+                "name": "compare",
+                "value": "",
+                "type": "query",
+                "description": "When true, include a compact `previous` block (equal-length prior window) of KPI scalars for period-over-period deltas. Ignored for all_time."
+              },
+              {
+                "name": "includeArchived",
+                "value": "",
+                "type": "query",
+                "description": "When true, include archived orders in every count/sum. Defaults to false so the dashboard reflects only live, active orders."
+              }
+            ]
+          },
+          "docs": "Returns the manufacturer analytics dashboard in one call, including revenue, funnel, production, customer and material insights. Use this endpoint for reporting dashboards and external BI syncs that need the same aggregates shown in the manufacturer app. The response is scoped to the authenticated operator. Supply a `period` preset or an explicit `from`/`to` range, which wins over `period`. Aggregation is computed at the database level. All period math is in UTC. The `funnel` section returns thr"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

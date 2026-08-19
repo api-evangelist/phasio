@@ -1,0 +1,352 @@
+{
+  "item": [
+    {
+      "id": "cd3fc3d0-fb76-4ed5-bc3d-52453706cc53",
+      "name": "Manufacturer Shipment Controller",
+      "description": {
+        "content": "This controller is responsible for managing shipments. It allows you to get rates and fetch existing shipments.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c1eb2d6c-233a-48c9-afd6-d115ecf01025",
+          "name": "Calculate the shipping rates for a group of parts",
+          "request": {
+            "name": "Calculate the shipping rates for a group of parts",
+            "description": {
+              "content": "This endpoint calculates the shipping rates for a group of parts. The request body should contain the list of parts and their quantities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "shipment",
+                "rates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"<string>\",\n  \"organisationId\": \"<long>\",\n  \"parts\": [\n    {\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"units\": \"<string>\"\n    },\n    {\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"units\": \"<string>\"\n    }\n  ],\n  \"toAddressId\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3a5b5aa7-d301-464e-8889-60819c845ee2",
+              "name": "Shipping rates calculated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipment",
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"<string>\",\n  \"organisationId\": \"<long>\",\n  \"parts\": [\n    {\n      \"materialId\": 1128,\n      \"partRevisionId\": \"bb29638e-1df5-e1b3-964b-d5fc82d5f984\",\n      \"processPricesId\": \"6de9760f-26d6-2fc6-c8cc-df564bd58fb7\",\n      \"quantity\": 7699,\n      \"units\": \"MILLIMETERS\"\n    },\n    {\n      \"materialId\": 3003,\n      \"partRevisionId\": \"f3a4c281-4884-bada-7225-6ff51094b9b4\",\n      \"processPricesId\": \"57351c14-fd43-5f6f-2315-ab7f8955a0e5\",\n      \"quantity\": 6423,\n      \"units\": \"MILLIMETERS\"\n    }\n  ],\n  \"toAddressId\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorWithCarrier\": true,\n    \"rates\": [\n      {\n        \"currency\": \"string\",\n        \"id\": \"string\",\n        \"rate\": 7809.819743929369,\n        \"serviceName\": \"string\",\n        \"serviceType\": \"string\",\n        \"shippingMethodId\": 9360\n      },\n      {\n        \"currency\": \"string\",\n        \"id\": \"string\",\n        \"rate\": 2164.8212276970035,\n        \"serviceName\": \"string\",\n        \"serviceType\": \"string\",\n        \"shippingMethodId\": 9869\n      }\n    ],\n    \"tooLargeForBoxes\": false,\n    \"shippingMethodId\": 269\n  },\n  {\n    \"errorWithCarrier\": true,\n    \"rates\": [\n      {\n        \"currency\": \"string\",\n        \"id\": \"string\",\n        \"rate\": 3444.0579120611214,\n        \"serviceName\": \"string\",\n        \"serviceType\": \"string\",\n        \"shippingMethodId\": 4840\n      },\n      {\n        \"currency\": \"string\",\n        \"id\": \"string\",\n        \"rate\": 7696.303007942454,\n        \"serviceName\": \"string\",\n        \"serviceType\": \"string\",\n        \"shippingMethodId\": 6758\n      }\n    ],\n    \"tooLargeForBoxes\": true,\n    \"shippingMethodId\": 3168\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3da6c11a-df56-406e-a8fd-49dab0300bca",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipment",
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"<string>\",\n  \"organisationId\": \"<long>\",\n  \"parts\": [\n    {\n      \"materialId\": 1128,\n      \"partRevisionId\": \"bb29638e-1df5-e1b3-964b-d5fc82d5f984\",\n      \"processPricesId\": \"6de9760f-26d6-2fc6-c8cc-df564bd58fb7\",\n      \"quantity\": 7699,\n      \"units\": \"MILLIMETERS\"\n    },\n    {\n      \"materialId\": 3003,\n      \"partRevisionId\": \"f3a4c281-4884-bada-7225-6ff51094b9b4\",\n      \"processPricesId\": \"57351c14-fd43-5f6f-2315-ab7f8955a0e5\",\n      \"quantity\": 6423,\n      \"units\": \"MILLIMETERS\"\n    }\n  ],\n  \"toAddressId\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fcf9f989-1c81-4327-8ed0-189d0f303e6e",
+          "name": "Get shipment by ID",
+          "request": {
+            "name": "Get shipment by ID",
+            "description": {
+              "content": "Retrieves a specific shipment by its ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "shipment",
+                ":shipmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "shipmentId",
+                  "description": "(Required) ID of the shipment to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85087a02-7a33-4b10-8185-fd8b15b0221c",
+              "name": "Shipment retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipment",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shippingMode\": \"FIXED_PRICE\",\n  \"id\": 269,\n  \"shippingMethodId\": 9248,\n  \"rateId\": \"string\",\n  \"toAddressId\": 38,\n  \"status\": \"string\",\n  \"dispatchDate\": \"2020-04-28\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72041178-6912-4dde-a9c0-c02dca86a333",
+              "name": "Shipment not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipment",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dffb3d78-38cf-4985-aa3f-174488cca29e",
+    "name": "Phasio Activity Internal Manufacturer Shipment Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Customer Country Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Country Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/countries"
+          },
+          "docs": "Retrieves a list of all available countries with their ISO codes"
+        },
+        {
+          "info": {
+            "name": "Get jurisdictions by country",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/countries/:country/jurisdictions",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "path",
+                "description": "Country code or name"
+              }
+            ]
+          },
+          "docs": "Retrieves all jurisdictions (states, provinces, etc.) for a specific country"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

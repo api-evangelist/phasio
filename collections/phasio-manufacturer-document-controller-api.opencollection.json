@@ -1,0 +1,207 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Document Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Document Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate traveller sheet PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document/:orderId/traveller-sheet",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to generate traveller sheet for"
+              }
+            ]
+          },
+          "docs": "Generates a traveller sheet PDF document for the specified order"
+        },
+        {
+          "info": {
+            "name": "Generate order traveller PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document/:orderId/order-traveller",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order"
+              },
+              {
+                "name": "templateName",
+                "value": "",
+                "type": "query",
+                "description": "Name of the ORDER_LEVEL_TRAVELLER custom template to use (optional)"
+              }
+            ]
+          },
+          "docs": "Generates an order-level traveller PDF for the specified order, optionally using a custom named template"
+        },
+        {
+          "info": {
+            "name": "Generate invoice PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document/:orderId/invoice",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to generate invoice for"
+              }
+            ]
+          },
+          "docs": "Generates an invoice PDF document for the specified order"
+        },
+        {
+          "info": {
+            "name": "Generate estimate PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document/:orderId/estimate",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to generate estimate for"
+              }
+            ]
+          },
+          "docs": "Generates an estimate PDF document for the specified order"
+        },
+        {
+          "info": {
+            "name": "Generate custom template document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document/:orderId/custom",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order"
+              },
+              {
+                "name": "templateId",
+                "value": "42",
+                "type": "query",
+                "description": "ID of the custom template"
+              }
+            ]
+          },
+          "docs": "Generates a PDF document using a custom template for the specified order"
+        },
+        {
+          "info": {
+            "name": "Generate consignment label PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document/:orderId/consignment-label",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to generate consignment label for"
+              }
+            ]
+          },
+          "docs": "Generates a consignment label PDF document for the specified order"
+        },
+        {
+          "info": {
+            "name": "Generate confirmation PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document/:orderId/confirmation",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to generate confirmation for"
+              }
+            ]
+          },
+          "docs": "Generates an order confirmation PDF document for the specified order"
+        },
+        {
+          "info": {
+            "name": "Generate test document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document/test/operator",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "query",
+                "description": "Document template ID"
+              }
+            ]
+          },
+          "docs": "Generates a test document of the specified type and language"
+        },
+        {
+          "info": {
+            "name": "Generate invoice Excel file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document/invoice",
+            "params": [
+              {
+                "name": "isArchived",
+                "value": "false",
+                "type": "query",
+                "description": "Whether to include archived orders"
+              }
+            ]
+          },
+          "docs": "Generates an Excel spreadsheet with invoice data for the specified operator"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

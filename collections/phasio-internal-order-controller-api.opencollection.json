@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Internal Order Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Internal Order Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update order payment status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/order/payment",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the order to update"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "New payment status to set"
+              }
+            ]
+          },
+          "docs": "Updates the payment status of an order (e.g., pending, paid, failed)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

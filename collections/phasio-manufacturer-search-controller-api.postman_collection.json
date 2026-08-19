@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "b2ec2bdd-e5a9-4452-bcb4-460c03fe4c0f",
+      "name": "Manufacturer Search Controller",
+      "description": {
+        "content": "Global search across parts, orders, customers, files, catalog references, and production steps",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "60afbc23-def4-4a59-80e0-c1606e4e3596",
+          "name": "Global search",
+          "request": {
+            "name": "Global search",
+            "description": {
+              "content": "Returns the top-ranked matches across all searchable entity types for the given query. Capped at 5 hits per entity type. Frontend groups results by entityType and hides empty sections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Search query string"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13629f47-60fc-44df-b392-3432a409f441",
+              "name": "Ranked list of search hits",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"displayLabel\": \"string\",\n  \"entityId\": \"string\",\n  \"entityType\": \"string\",\n  \"rank\": 1446.9641779433996,\n  \"linkId\": \"string\",\n  \"displaySubtext\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b8e29761-dd0e-4234-8edb-23c61f386706",
+    "name": "Phasio Activity Internal Manufacturer Search Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

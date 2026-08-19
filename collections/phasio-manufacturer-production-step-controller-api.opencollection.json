@@ -1,0 +1,324 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Production Step Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Production Step Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Rename production step",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-step/:stepId/rename",
+            "params": [
+              {
+                "name": "stepId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the production step to rename"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the name of a production step"
+        },
+        {
+          "info": {
+            "name": "Move batches between production steps",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-step/move-batches",
+            "headers": [
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Moves batches from one production step to another"
+        },
+        {
+          "info": {
+            "name": "Get production steps by IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-step",
+            "params": [
+              {
+                "name": "stepIds",
+                "value": "",
+                "type": "query",
+                "description": "Set of production step IDs to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves production steps with the specified IDs"
+        },
+        {
+          "info": {
+            "name": "Generate group traveller PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-step/:stepId/traveller",
+            "params": [
+              {
+                "name": "stepId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the production step to generate traveller for"
+              },
+              {
+                "name": "templateName",
+                "value": "",
+                "type": "query",
+                "description": "Name of the GROUP_LEVEL_TRAVELLER custom template to use (optional)"
+              }
+            ]
+          },
+          "docs": "Generates a traveller document PDF for the specified production step (group)"
+        },
+        {
+          "info": {
+            "name": "Generate combined order traveller PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-step/:stepId/order-traveller",
+            "params": [
+              {
+                "name": "stepId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the production step"
+              },
+              {
+                "name": "templateName",
+                "value": "",
+                "type": "query",
+                "description": "Name of the ORDER_LEVEL_TRAVELLER custom template to use (optional)"
+              }
+            ]
+          },
+          "docs": "Generates a single order traveller PDF combining all orders within the specified production step"
+        },
+        {
+          "info": {
+            "name": "Get production steps with filtering",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-step/paginated",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "RSQL query string for filtering (e.g. paymentStatus=in=(PAID,UNPAID);price>10)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Optional search term"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of production steps with optional filtering and search using RSQL"
+        },
+        {
+          "info": {
+            "name": "Orders completed past one or more production steps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-step/orders/completed",
+            "params": [
+              {
+                "name": "stepIds",
+                "value": "",
+                "type": "query",
+                "description": "Set of production step ids"
+              }
+            ]
+          },
+          "docs": "For each given production step id, finds candidate orders (those containing requisitions ever associated with the step) and returns the subset whose every active balance, across every requisition in the order, sits at a production status with a sequence strictly greater than that step's status sequence. The response is the union across all supplied step ids."
+        },
+        {
+          "info": {
+            "name": "Get production steps by build IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-step/build-ids",
+            "params": [
+              {
+                "name": "buildIds",
+                "value": "",
+                "type": "query",
+                "description": "Set of build IDs to retrieve steps for"
+              }
+            ]
+          },
+          "docs": "Retrieves production steps associated with the specified build IDs"
+        },
+        {
+          "info": {
+            "name": "Get batch transitions by step IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-step/batch-transitions/step-ids",
+            "params": [
+              {
+                "name": "stepIds",
+                "value": "",
+                "type": "query",
+                "description": "Set of production step IDs to retrieve batch transitions for"
+              }
+            ]
+          },
+          "docs": "Retrieves batch transitions for the specified production step IDs"
+        },
+        {
+          "info": {
+            "name": "Get batch transitions by build IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-step/batch-transitions/build-ids",
+            "params": [
+              {
+                "name": "buildIds",
+                "value": "",
+                "type": "query",
+                "description": "Set of build IDs to retrieve batch transitions for"
+              }
+            ]
+          },
+          "docs": "Retrieves batch transitions for the specified build IDs"
+        },
+        {
+          "info": {
+            "name": "Get batch balances by status IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-step/batch-balances/status-ids",
+            "params": [
+              {
+                "name": "operationIds",
+                "value": "",
+                "type": "query",
+                "description": "Set of operation IDs to retrieve batch balances for"
+              },
+              {
+                "name": "archived",
+                "value": "false",
+                "type": "query",
+                "description": "Include archived requisitions"
+              },
+              {
+                "name": "completedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return balances completed at or after this instant (inclusive). ISO-8601 with offset, e.g. 2026-05-01T00:00:00Z. Omit to apply no lower bound."
+              },
+              {
+                "name": "completedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return balances completed strictly before this instant (exclusive keyset cursor). ISO-8601 with offset, e.g. 2026-05-01T00:00:00Z. Omit to apply no upper bound."
+              },
+              {
+                "name": "completedBeforeId",
+                "value": "",
+                "type": "query",
+                "description": "Step ID of the oldest loaded balance, paired with completedBefore as the keyset tiebreaker so rows sharing the boundary completion instant are not skipped."
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of balances to return, newest completion first"
+              }
+            ]
+          },
+          "docs": "Retrieves batch balances for the specified production status IDs"
+        },
+        {
+          "info": {
+            "name": "Get batch balances by part IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-step/batch-balances/part-ids",
+            "params": [
+              {
+                "name": "partIds",
+                "value": "",
+                "type": "query",
+                "description": "Set of requisition IDs to retrieve batch balances for"
+              }
+            ]
+          },
+          "docs": "Retrieves batch balances for the specified part IDs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

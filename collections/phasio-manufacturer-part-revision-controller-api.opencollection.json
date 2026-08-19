@@ -1,0 +1,540 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Part Revision Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Part Revision Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload part revision",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/upload",
+            "headers": [
+              {
+                "name": "X-Filename",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "designId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the design to associate with this revision (optional)"
+              },
+              {
+                "name": "customerOrganisationId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the customer organization (optional)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Uploads a 3D model file for analysis and creates a new part revision"
+        },
+        {
+          "info": {
+            "name": "Recognize a single part from a camera image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/recognize",
+            "params": [
+              {
+                "name": "count",
+                "value": "5",
+                "type": "query",
+                "description": "Maximum number of results to return (1-100)"
+              }
+            ]
+          },
+          "docs": "Analyses an image and returns the top-N most visually similar part revisions. This is a simpler, 'raw' alternative to the /detect-and-embed endpoint"
+        },
+        {
+          "info": {
+            "name": "Merge part revisions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/merge/:partRevisionId/into/:targetPartRevisionId",
+            "params": [
+              {
+                "name": "partRevisionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part revision to merge (source)"
+              },
+              {
+                "name": "targetPartRevisionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part revision to merge into (target)"
+              }
+            ]
+          },
+          "docs": "Merges one part revision into another, combining their properties"
+        },
+        {
+          "info": {
+            "name": "Validate part manufacturability",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/manufacturability/validate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates if parts can be manufactured with specified processes and materials"
+        },
+        {
+          "info": {
+            "name": "Merge hash conflicts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/hash-conflicts/:targetPartRevisionId/merge",
+            "params": [
+              {
+                "name": "targetPartRevisionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the target part revision to keep"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolves hash conflicts by merging duplicate part revisions into the target revision"
+        },
+        {
+          "info": {
+            "name": "Download part revision files as ZIP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/download/zip",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Downloads multiple part revision files as a single ZIP archive"
+        },
+        {
+          "info": {
+            "name": "Detect parts in an image and find similar part revisions per detection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/detect-and-embed",
+            "params": [
+              {
+                "name": "count",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of similar part revisions per detection (1-100)"
+              }
+            ]
+          },
+          "docs": "Detect parts in the image and, for each detected part, returns the top-N visually similar part revisions. Bounding boxes are in original-image pixel coordinates ([x, y, width, height]) so the consumer can overlay them on the uploaded image."
+        },
+        {
+          "info": {
+            "name": "Get part revisions by design ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/design/:designId",
+            "params": [
+              {
+                "name": "designId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the design to get part revisions for"
+              }
+            ]
+          },
+          "docs": "Retrieves all part revisions associated with a specific design"
+        },
+        {
+          "info": {
+            "name": "Move part revision to design",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/design/:designId",
+            "params": [
+              {
+                "name": "designId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the target design to move the revision to"
+              },
+              {
+                "name": "revisionId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the part revision to move"
+              }
+            ]
+          },
+          "docs": "Moves a part revision from its current design to the specified design"
+        },
+        {
+          "info": {
+            "name": "Get multiple part revisions by IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves multiple part revisions by their IDs"
+        },
+        {
+          "info": {
+            "name": "Get part revisions with filtering",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "filter specification"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Optional search term"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of part revisions with optional filtering and search"
+        },
+        {
+          "info": {
+            "name": "Get part revision by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/:partRevisionId",
+            "params": [
+              {
+                "name": "partRevisionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part revision to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific part revision by its ID"
+        },
+        {
+          "info": {
+            "name": "Scrub part revision content",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/:partRevisionId",
+            "params": [
+              {
+                "name": "partRevisionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part revision to scrub"
+              }
+            ]
+          },
+          "docs": "Removes all accessory files and content-derivable signals (geometry, thumbnails, hashes, similarity vectors) for a part revision and marks it as deleted. The PartRevision row itself is preserved so inbound references (orders, cart items, etc.) remain intact; the frontend should render the deleted state from the returned DTO."
+        },
+        {
+          "info": {
+            "name": "Retrieve a thumbnail image of a part revision",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/:partRevisionId/thumbnail",
+            "params": [
+              {
+                "name": "partRevisionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a PNG format thumbnail image for a part revision"
+        },
+        {
+          "info": {
+            "name": "Find similar part revisions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/:partRevisionId/similar",
+            "params": [
+              {
+                "name": "partRevisionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part revision to find similar parts for"
+              },
+              {
+                "name": "count",
+                "value": "5",
+                "type": "query",
+                "description": "Maximum number of similar parts to return (1-100)"
+              },
+              {
+                "name": "threshold",
+                "value": "0.15",
+                "type": "query",
+                "description": "Maximum L2 distance threshold for similarity (default 0.08)"
+              }
+            ]
+          },
+          "docs": "Finds part revisions that are geometrically similar to the specified part"
+        },
+        {
+          "info": {
+            "name": "Find possible duplicate part revisions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/:partRevisionId/possible-duplicates",
+            "params": [
+              {
+                "name": "partRevisionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part revision to find duplicates for"
+              },
+              {
+                "name": "count",
+                "value": "5",
+                "type": "query",
+                "description": "Maximum number of possible duplicates to return (1-100)"
+              },
+              {
+                "name": "threshold",
+                "value": "0.08",
+                "type": "query",
+                "description": "Maximum L2 distance threshold for duplicate detection (default 0.08)"
+              }
+            ]
+          },
+          "docs": "Finds part revisions that may be duplicates of the specified part"
+        },
+        {
+          "info": {
+            "name": "Download part revision file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/:partRevisionId/download/:type",
+            "params": [
+              {
+                "name": "partRevisionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part revision"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Type of file to download"
+              }
+            ]
+          },
+          "docs": "Downloads a specific file type associated with a part revision"
+        },
+        {
+          "info": {
+            "name": "Get part revision claims",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/:partRevisionId/claims",
+            "params": [
+              {
+                "name": "partRevisionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the part revision to get claims for"
+              }
+            ]
+          },
+          "docs": "Gets all customer organizations that have claimed this part revision"
+        },
+        {
+          "info": {
+            "name": "Get file analysis results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/upload/:analysisId/results",
+            "params": [
+              {
+                "name": "analysisId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the analysis to retrieve results for"
+              }
+            ]
+          },
+          "docs": "Retrieves the results and processed file for a completed analysis as a MessagePack payload"
+        },
+        {
+          "info": {
+            "name": "Get file analysis status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/upload/status",
+            "params": [
+              {
+                "name": "analysisIds",
+                "value": "",
+                "type": "query",
+                "description": "Set of analysis IDs to check status for"
+              }
+            ]
+          },
+          "docs": "Checks the processing status of uploaded 3D model files"
+        },
+        {
+          "info": {
+            "name": "Get part revisions by requisition ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/requisition/:requisitionId",
+            "params": [
+              {
+                "name": "requisitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the requisition to get part revisions for"
+              }
+            ]
+          },
+          "docs": "Retrieves all part revisions associated with a specific requisition"
+        },
+        {
+          "info": {
+            "name": "Get part revisions by order ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/order/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the order to get part revisions for"
+              },
+              {
+                "name": "includeHistory",
+                "value": "false",
+                "type": "query",
+                "description": "Whether to include historical revisions"
+              }
+            ]
+          },
+          "docs": "Retrieves all part revisions associated with a specific order"
+        },
+        {
+          "info": {
+            "name": "Get part revisions with hash conflicts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-revision/hash-conflicts/:hash",
+            "params": [
+              {
+                "name": "hash",
+                "value": "",
+                "type": "path",
+                "description": "Hash value to check for conflicts"
+              }
+            ]
+          },
+          "docs": "Retrieves all part revisions that have a hash conflict with the specified hash"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

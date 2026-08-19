@@ -1,0 +1,2924 @@
+{
+  "item": [
+    {
+      "id": "525761ca-f15d-415f-97fc-c046a11163ea",
+      "name": "Manufacturer Accounting",
+      "description": {
+        "content": "Endpoints for managing accounting system integrations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1148a68c-1fb8-45e9-9268-b7bbc5f3d84a",
+          "name": "Get accounting system associations",
+          "request": {
+            "name": "Get accounting system associations",
+            "description": {
+              "content": "Retrieves the current integration settings between the operator and an external accounting system",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "associations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c14a0362-ad3a-477f-8992-6079f46cc314",
+              "name": "Successfully retrieved accounting system associations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "associations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"processes\": [\n    {\n      \"processId\": \"f3cd9d8d-5f8a-f5d4-9dcb-0cf0c61d0e73\",\n      \"processName\": \"string\",\n      \"customerOrganisationName\": \"string\",\n      \"accountingSystemCategoryCode\": \"string\"\n    },\n    {\n      \"processId\": \"3ce8f14b-b4b1-7cb0-7170-4dbc60723a21\",\n      \"processName\": \"string\",\n      \"customerOrganisationName\": \"string\",\n      \"accountingSystemCategoryCode\": \"string\"\n    }\n  ],\n  \"postProcesses\": [\n    {\n      \"postProcessingId\": 590,\n      \"accountingSystemCategoryCode\": \"string\"\n    },\n    {\n      \"postProcessingId\": 2621,\n      \"accountingSystemCategoryCode\": \"string\"\n    }\n  ],\n  \"taxes\": [\n    {\n      \"taxJurisdictionId\": \"c0531c0b-04cb-47b7-4641-e1f68f382a8a\",\n      \"accountingSystemTaxId\": \"string\"\n    },\n    {\n      \"taxJurisdictionId\": \"552f59a6-cd93-370e-7453-31e15b19e7b2\",\n      \"accountingSystemTaxId\": \"string\"\n    }\n  ],\n  \"shipping\": {\n    \"accountingSystemId\": \"string\"\n  },\n  \"topup\": {\n    \"accountingSystemId\": \"string\"\n  },\n  \"separatePostProcessingLineItems\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab8548bc-dc71-4ed7-92e4-0cad9aa531a4",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "associations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b650d4b2-549b-41b9-a700-4b48a5f5a5b2",
+              "name": "Operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "associations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca4b660f-f3f2-4504-9c7b-065f896b8465",
+          "name": "Update accounting system associations",
+          "request": {
+            "name": "Update accounting system associations",
+            "description": {
+              "content": "Updates the integration settings between the operator and an external accounting system",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "associations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"processes\": [\n    {\n      \"processId\": \"<uuid>\",\n      \"processName\": \"<string>\",\n      \"customerOrganisationName\": \"<string>\",\n      \"accountingSystemCategoryCode\": \"<string>\"\n    },\n    {\n      \"processId\": \"<uuid>\",\n      \"processName\": \"<string>\",\n      \"customerOrganisationName\": \"<string>\",\n      \"accountingSystemCategoryCode\": \"<string>\"\n    }\n  ],\n  \"postProcesses\": [\n    {\n      \"postProcessingId\": \"<long>\",\n      \"accountingSystemCategoryCode\": \"<string>\"\n    },\n    {\n      \"postProcessingId\": \"<long>\",\n      \"accountingSystemCategoryCode\": \"<string>\"\n    }\n  ],\n  \"taxes\": [\n    {\n      \"taxJurisdictionId\": \"<uuid>\",\n      \"accountingSystemTaxId\": \"<string>\"\n    },\n    {\n      \"taxJurisdictionId\": \"<uuid>\",\n      \"accountingSystemTaxId\": \"<string>\"\n    }\n  ],\n  \"shipping\": {\n    \"accountingSystemId\": \"<string>\"\n  },\n  \"topup\": {\n    \"accountingSystemId\": \"<string>\"\n  },\n  \"separatePostProcessingLineItems\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "72fa101f-f40b-4d39-8c37-a63748cde0e6",
+              "name": "Successfully updated accounting system associations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "associations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"processes\": [\n    {\n      \"processId\": \"8a82584a-4709-03c3-f7ae-1f132049c35e\",\n      \"processName\": \"string\",\n      \"customerOrganisationName\": \"string\",\n      \"accountingSystemCategoryCode\": \"string\"\n    },\n    {\n      \"processId\": \"ab2710f9-ae8c-64f0-90d4-490a8c1e298e\",\n      \"processName\": \"string\",\n      \"customerOrganisationName\": \"string\",\n      \"accountingSystemCategoryCode\": \"string\"\n    }\n  ],\n  \"postProcesses\": [\n    {\n      \"postProcessingId\": 4724,\n      \"accountingSystemCategoryCode\": \"string\"\n    },\n    {\n      \"postProcessingId\": 2047,\n      \"accountingSystemCategoryCode\": \"string\"\n    }\n  ],\n  \"taxes\": [\n    {\n      \"taxJurisdictionId\": \"95ea5401-e976-316a-fa03-0128298ec4c8\",\n      \"accountingSystemTaxId\": \"string\"\n    },\n    {\n      \"taxJurisdictionId\": \"f1145bbd-aabf-9a0e-6839-5aa49cd3547f\",\n      \"accountingSystemTaxId\": \"string\"\n    }\n  ],\n  \"shipping\": {\n    \"accountingSystemId\": \"string\"\n  },\n  \"topup\": {\n    \"accountingSystemId\": \"string\"\n  },\n  \"separatePostProcessingLineItems\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"processes\": [\n    {\n      \"processId\": \"f3cd9d8d-5f8a-f5d4-9dcb-0cf0c61d0e73\",\n      \"processName\": \"string\",\n      \"customerOrganisationName\": \"string\",\n      \"accountingSystemCategoryCode\": \"string\"\n    },\n    {\n      \"processId\": \"3ce8f14b-b4b1-7cb0-7170-4dbc60723a21\",\n      \"processName\": \"string\",\n      \"customerOrganisationName\": \"string\",\n      \"accountingSystemCategoryCode\": \"string\"\n    }\n  ],\n  \"postProcesses\": [\n    {\n      \"postProcessingId\": 590,\n      \"accountingSystemCategoryCode\": \"string\"\n    },\n    {\n      \"postProcessingId\": 2621,\n      \"accountingSystemCategoryCode\": \"string\"\n    }\n  ],\n  \"taxes\": [\n    {\n      \"taxJurisdictionId\": \"c0531c0b-04cb-47b7-4641-e1f68f382a8a\",\n      \"accountingSystemTaxId\": \"string\"\n    },\n    {\n      \"taxJurisdictionId\": \"552f59a6-cd93-370e-7453-31e15b19e7b2\",\n      \"accountingSystemTaxId\": \"string\"\n    }\n  ],\n  \"shipping\": {\n    \"accountingSystemId\": \"string\"\n  },\n  \"topup\": {\n    \"accountingSystemId\": \"string\"\n  },\n  \"separatePostProcessingLineItems\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b30e32be-80f7-4f99-badf-9a5f17f0b4fe",
+              "name": "Invalid request data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "associations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"processes\": [\n    {\n      \"processId\": \"8a82584a-4709-03c3-f7ae-1f132049c35e\",\n      \"processName\": \"string\",\n      \"customerOrganisationName\": \"string\",\n      \"accountingSystemCategoryCode\": \"string\"\n    },\n    {\n      \"processId\": \"ab2710f9-ae8c-64f0-90d4-490a8c1e298e\",\n      \"processName\": \"string\",\n      \"customerOrganisationName\": \"string\",\n      \"accountingSystemCategoryCode\": \"string\"\n    }\n  ],\n  \"postProcesses\": [\n    {\n      \"postProcessingId\": 4724,\n      \"accountingSystemCategoryCode\": \"string\"\n    },\n    {\n      \"postProcessingId\": 2047,\n      \"accountingSystemCategoryCode\": \"string\"\n    }\n  ],\n  \"taxes\": [\n    {\n      \"taxJurisdictionId\": \"95ea5401-e976-316a-fa03-0128298ec4c8\",\n      \"accountingSystemTaxId\": \"string\"\n    },\n    {\n      \"taxJurisdictionId\": \"f1145bbd-aabf-9a0e-6839-5aa49cd3547f\",\n      \"accountingSystemTaxId\": \"string\"\n    }\n  ],\n  \"shipping\": {\n    \"accountingSystemId\": \"string\"\n  },\n  \"topup\": {\n    \"accountingSystemId\": \"string\"\n  },\n  \"separatePostProcessingLineItems\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0cd89257-5b75-4963-aecf-e6cf25735c53",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "associations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"processes\": [\n    {\n      \"processId\": \"8a82584a-4709-03c3-f7ae-1f132049c35e\",\n      \"processName\": \"string\",\n      \"customerOrganisationName\": \"string\",\n      \"accountingSystemCategoryCode\": \"string\"\n    },\n    {\n      \"processId\": \"ab2710f9-ae8c-64f0-90d4-490a8c1e298e\",\n      \"processName\": \"string\",\n      \"customerOrganisationName\": \"string\",\n      \"accountingSystemCategoryCode\": \"string\"\n    }\n  ],\n  \"postProcesses\": [\n    {\n      \"postProcessingId\": 4724,\n      \"accountingSystemCategoryCode\": \"string\"\n    },\n    {\n      \"postProcessingId\": 2047,\n      \"accountingSystemCategoryCode\": \"string\"\n    }\n  ],\n  \"taxes\": [\n    {\n      \"taxJurisdictionId\": \"95ea5401-e976-316a-fa03-0128298ec4c8\",\n      \"accountingSystemTaxId\": \"string\"\n    },\n    {\n      \"taxJurisdictionId\": \"f1145bbd-aabf-9a0e-6839-5aa49cd3547f\",\n      \"accountingSystemTaxId\": \"string\"\n    }\n  ],\n  \"shipping\": {\n    \"accountingSystemId\": \"string\"\n  },\n  \"topup\": {\n    \"accountingSystemId\": \"string\"\n  },\n  \"separatePostProcessingLineItems\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d6aca684-7874-473a-848b-4c340349b7f1",
+              "name": "Operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "associations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"processes\": [\n    {\n      \"processId\": \"8a82584a-4709-03c3-f7ae-1f132049c35e\",\n      \"processName\": \"string\",\n      \"customerOrganisationName\": \"string\",\n      \"accountingSystemCategoryCode\": \"string\"\n    },\n    {\n      \"processId\": \"ab2710f9-ae8c-64f0-90d4-490a8c1e298e\",\n      \"processName\": \"string\",\n      \"customerOrganisationName\": \"string\",\n      \"accountingSystemCategoryCode\": \"string\"\n    }\n  ],\n  \"postProcesses\": [\n    {\n      \"postProcessingId\": 4724,\n      \"accountingSystemCategoryCode\": \"string\"\n    },\n    {\n      \"postProcessingId\": 2047,\n      \"accountingSystemCategoryCode\": \"string\"\n    }\n  ],\n  \"taxes\": [\n    {\n      \"taxJurisdictionId\": \"95ea5401-e976-316a-fa03-0128298ec4c8\",\n      \"accountingSystemTaxId\": \"string\"\n    },\n    {\n      \"taxJurisdictionId\": \"f1145bbd-aabf-9a0e-6839-5aa49cd3547f\",\n      \"accountingSystemTaxId\": \"string\"\n    }\n  ],\n  \"shipping\": {\n    \"accountingSystemId\": \"string\"\n  },\n  \"topup\": {\n    \"accountingSystemId\": \"string\"\n  },\n  \"separatePostProcessingLineItems\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7168341-0782-455c-bf08-c50f3055f681",
+          "name": "Sync payment terms from accounting system",
+          "request": {
+            "name": "Sync payment terms from accounting system",
+            "description": {
+              "content": "Fetches all payment terms from the connected accounting system and upserts them locally",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "payment-terms",
+                "sync"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e97ea00b-8de8-4a3f-82f2-9eb5e05a0e7c",
+              "name": "Payment terms synced successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "payment-terms",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f0e3a5eb-095d-4931-9920-985dce2766d4",
+              "name": "No accounting system connected or sync failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "payment-terms",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89e465d0-7568-49a6-bd2c-5dabc2b13a54",
+          "name": "Sync customer with accounting system",
+          "request": {
+            "name": "Sync customer with accounting system",
+            "description": {
+              "content": "Synchronizes a linked customer organisation with the latest data from the accounting system",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "organisations",
+                ":organisationId",
+                "sync"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "organisationId",
+                  "description": "(Required) Nebula customer organisation ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0167c27-d283-4971-a1d2-8c06009d46b0",
+              "name": "Customer synced successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "organisations",
+                    ":organisationId",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) Nebula customer organisation ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 4060,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": false,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 8003,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1988-07-27T14:48:59.159Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 7945,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 542,\n      \"discountPercentage\": 7912.780538783513\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 4671,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 3947,\n      \"discountPercentage\": 1848.1829017916361\n    }\n  ],\n  \"lastUpdated\": \"2015-07-30T20:10:56.473Z\",\n  \"taxExempt\": false,\n  \"id\": 7588,\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35ea5d72-c2a5-428c-abce-9eb2583e66fb",
+              "name": "Invalid organisation ID or customer not linked to accounting system",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "organisations",
+                    ":organisationId",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) Nebula customer organisation ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a6e84d74-e320-4b51-bf89-28900034671d",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "organisations",
+                    ":organisationId",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) Nebula customer organisation ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2d2621a-efff-473a-bf7a-55fc9d21bcec",
+          "name": "Push customer to accounting system",
+          "request": {
+            "name": "Push customer to accounting system",
+            "description": {
+              "content": "Exports a Nebula customer organisation to the accounting system and links them",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "organisations",
+                ":organisationId",
+                "push"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "organisationId",
+                  "description": "(Required) Nebula customer organisation ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9626bc76-58b0-49e1-be18-d5c66ea8f58a",
+              "name": "Customer pushed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "organisations",
+                    ":organisationId",
+                    "push"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) Nebula customer organisation ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 4060,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": false,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 8003,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1988-07-27T14:48:59.159Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 7945,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 542,\n      \"discountPercentage\": 7912.780538783513\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 4671,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 3947,\n      \"discountPercentage\": 1848.1829017916361\n    }\n  ],\n  \"lastUpdated\": \"2015-07-30T20:10:56.473Z\",\n  \"taxExempt\": false,\n  \"id\": 7588,\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60217f4a-9d46-473f-8e65-6585ae1f6b6a",
+              "name": "Invalid organisation ID or push failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "organisations",
+                    ":organisationId",
+                    "push"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) Nebula customer organisation ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6861d76e-8339-45af-bdc6-9bad6160e303",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "organisations",
+                    ":organisationId",
+                    "push"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) Nebula customer organisation ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d56f48a8-caf7-4b15-9067-c7eb6d6b3791",
+          "name": "authorize O Auth Integration",
+          "request": {
+            "name": "authorize O Auth Integration",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "oauth",
+                "authorize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountingSystem\": \"<string>\",\n  \"dataCenter\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d098402-469c-449a-949e-b2b87c5c02dd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "oauth",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountingSystem\": \"<string>\",\n  \"dataCenter\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"redirectUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6044a3e-b17d-4e0f-adaf-8e32d7af661b",
+          "name": "Pull customer from accounting system",
+          "request": {
+            "name": "Pull customer from accounting system",
+            "description": {
+              "content": "Imports a customer organisation from the accounting system into Nebula",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "customers",
+                ":accountingSystemId",
+                "pull"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountingSystemId",
+                  "description": "(Required) Accounting system customer organisation ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e9e65d2c-61b3-4c62-a68d-22266ed68bdc",
+              "name": "Customer pulled successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "customers",
+                    ":accountingSystemId",
+                    "pull"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountingSystemId",
+                      "description": "(Required) Accounting system customer organisation ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 4060,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": false,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 8003,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1988-07-27T14:48:59.159Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 7945,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 542,\n      \"discountPercentage\": 7912.780538783513\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 4671,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 3947,\n      \"discountPercentage\": 1848.1829017916361\n    }\n  ],\n  \"lastUpdated\": \"2015-07-30T20:10:56.473Z\",\n  \"taxExempt\": false,\n  \"id\": 7588,\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb4b054c-2ddd-43c0-9739-24b94f18c944",
+              "name": "Invalid accounting system customer ID or customer already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "customers",
+                    ":accountingSystemId",
+                    "pull"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountingSystemId",
+                      "description": "(Required) Accounting system customer organisation ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8aa23619-8924-460d-a5ad-196b133a9a2b",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "customers",
+                    ":accountingSystemId",
+                    "pull"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountingSystemId",
+                      "description": "(Required) Accounting system customer organisation ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "310703bb-e18d-499f-a378-c8348376efa8",
+          "name": "Search accounting system for organizations",
+          "request": {
+            "name": "Search accounting system for organizations",
+            "description": {
+              "content": "Searches for organizations in the accounting system",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "customers",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"searchQuery\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f233a0e6-29d8-4986-89d0-818bdf54d941",
+              "name": "Search results retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "customers",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"searchQuery\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"accountingSystemId\": \"string\",\n    \"alreadyAssociated\": true,\n    \"name\": \"string\",\n    \"associatedOrganisationId\": 5797,\n    \"associatedOrganisationName\": \"string\"\n  },\n  {\n    \"accountingSystemId\": \"string\",\n    \"alreadyAssociated\": true,\n    \"name\": \"string\",\n    \"associatedOrganisationId\": 52,\n    \"associatedOrganisationName\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82f797fd-f89b-4c02-b192-3929ec7cbddf",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "customers",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"searchQuery\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd17e1a6-61b8-42f2-a1de-570fbd2c0b5e",
+          "name": "authorize Api Key Integration",
+          "request": {
+            "name": "authorize Api Key Integration",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "api-key",
+                "authorize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountingSystem\": \"<string>\",\n  \"apiKey\": \"<string>\",\n  \"organisationId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e7d80939-ae32-4996-9c51-17e85c353179",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "api-key",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountingSystem\": \"<string>\",\n  \"apiKey\": \"<string>\",\n  \"organisationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dad14f8c-0eb9-453b-b8e3-f22660c30ded",
+          "name": "update Template",
+          "request": {
+            "name": "update Template",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "template"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"templateId\": \"<string>\",\n  \"templateType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9f6095ac-585b-46c0-a121-ed13e6faf859",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"templateId\": \"<string>\",\n  \"templateType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f20a23c6-6708-4803-9a41-54d802395d6b",
+          "name": "update Payment Account",
+          "request": {
+            "name": "update Payment Account",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "payment-account",
+                ":accountCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountCode",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2477de85-2665-47e6-88a3-44c3195c1c20",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "payment-account",
+                    ":accountCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountCode",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1bf11911-f4f0-4c7e-b3c6-7c2985bf6491",
+          "name": "update Organisation",
+          "request": {
+            "name": "update Organisation",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "organisation",
+                ":organisationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organisationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da57fb02-bf4b-4c95-9b98-964bf2051cdb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "organisation",
+                    ":organisationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organisationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6dddb8c-ca81-472c-95b3-b77d0c0e345c",
+          "name": "update Invoice Account",
+          "request": {
+            "name": "update Invoice Account",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "invoice-account",
+                ":accountCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountCode",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36c2f3ef-53db-4fd0-87d1-a9751bd38b35",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "invoice-account",
+                    ":accountCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountCode",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a12b705e-9967-43a4-87b6-62c13b07bfd6",
+          "name": "get 27",
+          "request": {
+            "name": "get 27",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b11813d-888d-467b-965c-4db5c4c51c1b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"1949-12-23T08:25:33.850Z\",\n  \"isExpired\": false,\n  \"isRegistered\": true,\n  \"type\": \"string\",\n  \"organisationId\": \"string\",\n  \"organisationName\": \"string\",\n  \"invoiceAccountCode\": \"string\",\n  \"invoiceAccountName\": \"string\",\n  \"paymentAccountCode\": \"string\",\n  \"paymentAccountName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18fcdc57-6ada-4507-919a-7d19ea25d638",
+          "name": "Disassociate from accounting system",
+          "request": {
+            "name": "Disassociate from accounting system",
+            "description": {
+              "content": "Removes the integration between the operator and any external accounting system",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9fdd36e7-81ef-43a5-81d4-2609708a9a62",
+              "name": "Successfully disassociated from accounting system",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ca66555a-afe2-410a-950a-84f0ddba4646",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dfc73f8b-90b3-4a6c-a6c5-0f33d4b89401",
+              "name": "Operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f49043e1-d9d1-4f02-931d-0378bc25f410",
+          "name": "get Templates",
+          "request": {
+            "name": "get Templates",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "templates",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eeac46b6-62a6-409d-9827-9ade454d3b20",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "templates",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "531b99c9-de9e-41ae-b8ad-0e9c265c51da",
+          "name": "get Taxes",
+          "request": {
+            "name": "get Taxes",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "taxes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d082baa-da5f-4b1d-9ea9-280f0a216edb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "taxes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"accountingSystem\": \"string\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"percentage\": 8591.94467895478\n  },\n  {\n    \"accountingSystem\": \"string\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"percentage\": 847.5449082496611\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb25df0f-0a63-46b1-ab8f-49f2422601b2",
+          "name": "is Registered",
+          "request": {
+            "name": "is Registered",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "registered"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b5c9b03-52ed-4823-9b69-4e8593a497d2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "registered"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "false",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4becc84f-4989-4aaf-8d04-53568fb22ee0",
+          "name": "get Organisations",
+          "request": {
+            "name": "get Organisations",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "organisations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dae6150c-d344-4864-ac97-3c1fc959fd2a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "organisations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "638a06fb-647e-4012-b7e6-d70d45ccae16",
+          "name": "Get all accounting system customers (paginated)",
+          "request": {
+            "name": "Get all accounting system customers (paginated)",
+            "description": {
+              "content": "Retrieves a paginated list of customers from the accounting system with their link status to Nebula",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "50"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12167ecc-e879-43c4-be35-98cc58b159cb",
+              "name": "Accounting system customers retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"content\": [\n    {\n      \"accountingSystemId\": \"string\",\n      \"alreadyAssociated\": false,\n      \"name\": \"string\",\n      \"associatedOrganisationId\": 462,\n      \"associatedOrganisationName\": \"string\"\n    },\n    {\n      \"accountingSystemId\": \"string\",\n      \"alreadyAssociated\": false,\n      \"name\": \"string\",\n      \"associatedOrganisationId\": 9774,\n      \"associatedOrganisationName\": \"string\"\n    }\n  ],\n  \"hasMore\": false,\n  \"page\": 2789,\n  \"pageSize\": 787\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c0d91fb-980f-42af-a50e-e59d25f0fba9",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab7d2398-7282-4c53-8c0c-2ca500aaec13",
+          "name": "get Category Codes",
+          "request": {
+            "name": "get Category Codes",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "category-codes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8cbb5f01-5700-4703-9788-516f04292373",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "category-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2248c4a8-9384-416c-9117-c232bfdbf436",
+          "name": "get Accounts",
+          "request": {
+            "name": "get Accounts",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "accounting",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f221a535-ee25-4be1-9a85-8dd0cc98ebbf",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "accounting",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d93a2da6-3972-43df-a582-90ffbbdf67d1",
+    "name": "Phasio Activity Internal Manufacturer Accounting API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

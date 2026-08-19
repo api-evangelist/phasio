@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Operator Contact Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Operator Contact Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create operator contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator-contact",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new contact information record for an operator"
+        },
+        {
+          "info": {
+            "name": "Update operator contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator-contact",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates existing contact information for an operator"
+        },
+        {
+          "info": {
+            "name": "Get operator contact by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator-contact/:operatorIdContactId",
+            "params": [
+              {
+                "name": "operatorIdContactId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the operator contact to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves contact information for a specific operator contact ID"
+        },
+        {
+          "info": {
+            "name": "Get operator contact for current operator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator-contact/operator"
+          },
+          "docs": "Retrieves contact information for the current authenticated operator"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

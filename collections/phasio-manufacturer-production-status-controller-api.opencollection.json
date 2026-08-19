@@ -1,0 +1,210 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Production Status Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Production Status Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all production statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operation",
+            "params": [
+              {
+                "name": "deleted",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include deleted statuses"
+              }
+            ]
+          },
+          "docs": "Retrieves all production statuses for the current operator"
+        },
+        {
+          "info": {
+            "name": "Create production status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new production status for manufacturing workflow"
+        },
+        {
+          "info": {
+            "name": "Update production status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing production status configuration"
+        },
+        {
+          "info": {
+            "name": "Get all production statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-status",
+            "params": [
+              {
+                "name": "deleted",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include deleted statuses"
+              }
+            ]
+          },
+          "docs": "Retrieves all production statuses for the current operator"
+        },
+        {
+          "info": {
+            "name": "Create production status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new production status for manufacturing workflow"
+        },
+        {
+          "info": {
+            "name": "Update production status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing production status configuration"
+        },
+        {
+          "info": {
+            "name": "Get batch balances count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-status/batch-balances/count",
+            "params": [
+              {
+                "name": "operationIds",
+                "value": "",
+                "type": "query",
+                "description": "Set of operation IDs to check counts for"
+              },
+              {
+                "name": "archived",
+                "value": "false",
+                "type": "query",
+                "description": "Include archived requisitions"
+              }
+            ]
+          },
+          "docs": "Gets counts of batches in each requested production status"
+        },
+        {
+          "info": {
+            "name": "Get batch balances count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operation/batch-balances/count",
+            "params": [
+              {
+                "name": "operationIds",
+                "value": "",
+                "type": "query",
+                "description": "Set of operation IDs to check counts for"
+              },
+              {
+                "name": "archived",
+                "value": "false",
+                "type": "query",
+                "description": "Include archived requisitions"
+              }
+            ]
+          },
+          "docs": "Gets counts of batches in each requested production status"
+        },
+        {
+          "info": {
+            "name": "Delete production status",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/production-status/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the production status to delete"
+              }
+            ]
+          },
+          "docs": "Marks a production status as deleted (soft delete)"
+        },
+        {
+          "info": {
+            "name": "Delete production status",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operation/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the production status to delete"
+              }
+            ]
+          },
+          "docs": "Marks a production status as deleted (soft delete)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

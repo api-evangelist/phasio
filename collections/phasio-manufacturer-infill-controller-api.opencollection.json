@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Infill Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Infill Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create infill option",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/infill/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new infill option for 3D printing with specified density value"
+        },
+        {
+          "info": {
+            "name": "Set infill option as default",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/infill/:infillId/default",
+            "params": [
+              {
+                "name": "infillId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the infill option to set as default"
+              }
+            ]
+          },
+          "docs": "Sets an infill option as the default for its pricing group"
+        },
+        {
+          "info": {
+            "name": "Update infill option",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/infill/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing infill option's properties"
+        },
+        {
+          "info": {
+            "name": "Get infill by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/infill/:infillId",
+            "params": [
+              {
+                "name": "infillId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the infill option to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific infill option by its unique identifier"
+        },
+        {
+          "info": {
+            "name": "Delete infill option",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/infill/:infillId",
+            "params": [
+              {
+                "name": "infillId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the infill option to delete"
+              }
+            ]
+          },
+          "docs": "Deletes an existing infill option"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

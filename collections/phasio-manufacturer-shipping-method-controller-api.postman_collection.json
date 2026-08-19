@@ -1,0 +1,663 @@
+{
+  "item": [
+    {
+      "id": "2890fff5-d536-43b6-a9fc-4d8f04b9b9b6",
+      "name": "Manufacturer Shipping Method Controller",
+      "description": {
+        "content": "Endpoints for managing shipping methods available to manufacturers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e4945ad9-d78e-4777-ad7f-9fa801a3da74",
+          "name": "Create new shipping method",
+          "request": {
+            "name": "Create new shipping method",
+            "description": {
+              "content": "Creates a new shipping method for the current operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "shipping-method"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shippingMethodId\": \"<long>\",\n  \"shippingMode\": \"<string>\",\n  \"carrierAccountProvider\": \"<string>\",\n  \"carrierAccountCredentials\": {\n    \"key_0\": \"<string>\"\n  },\n  \"addressId\": \"<long>\",\n  \"addressDto\": {\n    \"addressId\": \"<long>\",\n    \"addressType\": \"<string>\",\n    \"city\": \"<string>\",\n    \"company\": \"<string>\",\n    \"country\": \"<string>\",\n    \"countryAlpha2Code\": \"<string>\",\n    \"countryAlpha3Code\": \"<string>\",\n    \"email\": \"<string>\",\n    \"isBillingAddress\": \"<boolean>\",\n    \"isShippingAddress\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"platformEncryptedAesKey\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "37b7333d-0225-4cd1-bce1-eb63792f9b31",
+              "name": "Shipping method successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipping-method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shippingMethodId\": 1611,\n  \"shippingMode\": \"string\",\n  \"carrierAccountProvider\": \"string\",\n  \"carrierAccountCredentials\": {\n    \"key_0\": \"string\"\n  },\n  \"addressId\": 9797,\n  \"addressDto\": {\n    \"addressId\": 3037,\n    \"addressType\": \"string\",\n    \"city\": \"string\",\n    \"company\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"email\": \"string\",\n    \"isBillingAddress\": false,\n    \"isShippingAddress\": true,\n    \"name\": \"string\",\n    \"phone\": \"string\",\n    \"platformEncryptedAesKey\": \"string\",\n    \"residential\": false,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"zip\": \"string\",\n    \"state\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"taxId\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shippingMethodId\": 2616,\n  \"shippingMode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63e43ed6-dc14-41de-bcf0-cc535fa991f0",
+              "name": "Invalid shipping method data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipping-method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shippingMethodId\": 1611,\n  \"shippingMode\": \"string\",\n  \"carrierAccountProvider\": \"string\",\n  \"carrierAccountCredentials\": {\n    \"key_0\": \"string\"\n  },\n  \"addressId\": 9797,\n  \"addressDto\": {\n    \"addressId\": 3037,\n    \"addressType\": \"string\",\n    \"city\": \"string\",\n    \"company\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"email\": \"string\",\n    \"isBillingAddress\": false,\n    \"isShippingAddress\": true,\n    \"name\": \"string\",\n    \"phone\": \"string\",\n    \"platformEncryptedAesKey\": \"string\",\n    \"residential\": false,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"zip\": \"string\",\n    \"state\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"taxId\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b7fecbbc-547e-4b2d-8773-41b6339737a1",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipping-method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shippingMethodId\": 1611,\n  \"shippingMode\": \"string\",\n  \"carrierAccountProvider\": \"string\",\n  \"carrierAccountCredentials\": {\n    \"key_0\": \"string\"\n  },\n  \"addressId\": 9797,\n  \"addressDto\": {\n    \"addressId\": 3037,\n    \"addressType\": \"string\",\n    \"city\": \"string\",\n    \"company\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"email\": \"string\",\n    \"isBillingAddress\": false,\n    \"isShippingAddress\": true,\n    \"name\": \"string\",\n    \"phone\": \"string\",\n    \"platformEncryptedAesKey\": \"string\",\n    \"residential\": false,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"zip\": \"string\",\n    \"state\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"taxId\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46645e3b-ec59-41cd-aa75-b2c37579426c",
+          "name": "Get all shipping methods",
+          "request": {
+            "name": "Get all shipping methods",
+            "description": {
+              "content": "Retrieves all shipping methods configured for the current operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "shipping-method",
+                "operator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2fd1d831-bff2-40ab-a0c5-b5e92e3f67b2",
+              "name": "Successfully retrieved shipping methods",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipping-method",
+                    "operator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"shippingMethodId\": 3578,\n    \"shippingMode\": \"string\"\n  },\n  {\n    \"shippingMethodId\": 645,\n    \"shippingMode\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38b82f6c-dba0-43cd-8617-816970925450",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipping-method",
+                    "operator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4cb5ba0b-e88c-4226-9cf3-ae3bba8ab096",
+              "name": "Operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipping-method",
+                    "operator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c09ad4d-2e0e-497c-aa00-c6a4b9860c6a",
+          "name": "Delete shipping method",
+          "request": {
+            "name": "Delete shipping method",
+            "description": {
+              "content": "Deletes an existing shipping method",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "shipping-method",
+                ":shippingMethodId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "shippingMethodId",
+                  "description": "(Required) ID of the shipping method to delete"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d092ee6a-a3e7-4fb1-8c25-699af8510568",
+              "name": "Shipping method successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipping-method",
+                    ":shippingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "shippingMethodId",
+                      "description": "(Required) ID of the shipping method to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "55c0ccb5-5c9f-4265-8ce7-641535e03a64",
+              "name": "Invalid shipping method ID or shipping method cannot be deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipping-method",
+                    ":shippingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "shippingMethodId",
+                      "description": "(Required) ID of the shipping method to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "46462756-5f2a-407a-9321-ce6b7c3a9544",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipping-method",
+                    ":shippingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "shippingMethodId",
+                      "description": "(Required) ID of the shipping method to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7b6ed126-dd22-4f7b-a5f8-ac9c7bd6d37b",
+              "name": "Shipping method not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipping-method",
+                    ":shippingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "shippingMethodId",
+                      "description": "(Required) ID of the shipping method to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6542c123-ba5f-4ca1-8adc-0c2e04a5a2b6",
+    "name": "Phasio Activity Internal Manufacturer Shipping Method Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Internal Operator Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Internal Operator Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get operator details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/operator"
+          },
+          "docs": "Retrieves the complete details of the current operator"
+        },
+        {
+          "info": {
+            "name": "Initialize operator",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/operator",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets up the initial configuration for an operator account"
+        },
+        {
+          "info": {
+            "name": "Update subscription status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/operator/subscription-status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the subscription status for an operator"
+        },
+        {
+          "info": {
+            "name": "Sync operator modules",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/operator/id/modules"
+          },
+          "docs": "Updates the subscribed feature modules for an operator"
+        },
+        {
+          "info": {
+            "name": "Get available manufacturing processes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/operator/processes"
+          },
+          "docs": "Retrieves all manufacturing processes available to the customer"
+        },
+        {
+          "info": {
+            "name": "Get operator email credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/operator/email-credentials"
+          },
+          "docs": "Retrieves the SMTP email server credentials for the current operator"
+        },
+        {
+          "info": {
+            "name": "Get operator domain from address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/operator/domain-from-address"
+          },
+          "docs": "Retrieves the verified SendGrid domain authentication from address for the current operator"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

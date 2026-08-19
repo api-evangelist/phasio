@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Shipping Method Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Shipping Method Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create new shipping method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/shipping-method",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new shipping method for the current operator"
+        },
+        {
+          "info": {
+            "name": "Get all shipping methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/shipping-method/operator"
+          },
+          "docs": "Retrieves all shipping methods configured for the current operator"
+        },
+        {
+          "info": {
+            "name": "Delete shipping method",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/shipping-method/:shippingMethodId",
+            "params": [
+              {
+                "name": "shippingMethodId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the shipping method to delete"
+              }
+            ]
+          },
+          "docs": "Deletes an existing shipping method"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

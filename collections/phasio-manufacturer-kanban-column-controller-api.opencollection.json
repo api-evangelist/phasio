@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Kanban Column Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Kanban Column Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Kanban columns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/kanban-column",
+            "params": [
+              {
+                "name": "orderStatus",
+                "value": "",
+                "type": "query",
+                "description": "Order status to filter Kanban columns by (optional)"
+              }
+            ]
+          },
+          "docs": "Retrieves all Kanban columns for the current operator, optionally filtered by order status"
+        },
+        {
+          "info": {
+            "name": "Create Kanban column",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/kanban-column",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Kanban column for the order processing workflow"
+        },
+        {
+          "info": {
+            "name": "Update Kanban column",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/kanban-column/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Kanban column to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing Kanban column's properties"
+        },
+        {
+          "info": {
+            "name": "Delete Kanban column",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/kanban-column/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Kanban column to delete"
+              }
+            ]
+          },
+          "docs": "Deletes an existing Kanban column"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

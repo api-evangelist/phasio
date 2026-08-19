@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Tax Jurisdiction Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Tax Jurisdiction Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all tax jurisdictions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/tax-jurisdiction",
+            "params": [
+              {
+                "name": "includeAccountingSystemAssociated",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include accounting system associated jurisdictions"
+              }
+            ]
+          },
+          "docs": "Retrieves all tax jurisdictions in the system"
+        },
+        {
+          "info": {
+            "name": "Create tax jurisdiction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/tax-jurisdiction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new tax jurisdiction with associated tax components"
+        },
+        {
+          "info": {
+            "name": "Batch create tax jurisdictions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/tax-jurisdiction/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates multiple tax jurisdictions with the same tax components and settings. Silently skips jurisdictions that already exist."
+        },
+        {
+          "info": {
+            "name": "Update tax jurisdiction",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/tax-jurisdiction/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the tax jurisdiction to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing tax jurisdiction"
+        },
+        {
+          "info": {
+            "name": "Delete tax jurisdiction",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/tax-jurisdiction/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the tax jurisdiction to delete"
+              }
+            ]
+          },
+          "docs": "Deletes an existing tax jurisdiction"
+        },
+        {
+          "info": {
+            "name": "Associate accounting system taxes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/tax-jurisdiction/accounting-system/associate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Associates tax jurisdictions with accounting system tax codes (Deprecated)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

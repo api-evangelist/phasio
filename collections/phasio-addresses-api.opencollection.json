@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Addresses API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Addresses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an address by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/address/:addressId",
+            "params": [
+              {
+                "name": "addressId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the address to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves address details for the specified ID"
+        },
+        {
+          "info": {
+            "name": "Edit an existing address",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/address/:addressId",
+            "params": [
+              {
+                "name": "addressId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the address to edit"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new address with the updated details, soft-deletes the old address, and transfers billing status if applicable"
+        },
+        {
+          "info": {
+            "name": "Delete an address",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/address/:addressId",
+            "params": [
+              {
+                "name": "addressId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the address to delete"
+              }
+            ]
+          },
+          "docs": "Deletes the specified address"
+        },
+        {
+          "info": {
+            "name": "Create a new address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/address/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new address using the provided details"
+        },
+        {
+          "info": {
+            "name": "Set address as default shipping address",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/address/:addressId/shipping",
+            "params": [
+              {
+                "name": "addressId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the address to set as shipping address"
+              }
+            ]
+          },
+          "docs": "Marks an address as the default shipping address"
+        },
+        {
+          "info": {
+            "name": "Set address as default billing address",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/address/:addressId/billing",
+            "params": [
+              {
+                "name": "addressId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the address to set as billing address"
+              }
+            ]
+          },
+          "docs": "Marks an address as the default billing address"
+        },
+        {
+          "info": {
+            "name": "Update jurisdiction for all addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/address/jurisdiction"
+          },
+          "docs": "Updates the jurisdiction information for all addresses in the system"
+        },
+        {
+          "info": {
+            "name": "Get addresses by customer organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/address/organisation/:organisationId",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the customer organization to retrieve addresses for"
+              }
+            ]
+          },
+          "docs": "Retrieves all addresses associated with the specified customer organization"
+        },
+        {
+          "info": {
+            "name": "Get addresses by customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/address/customer/:customerId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the customer to retrieve addresses for"
+              }
+            ]
+          },
+          "docs": "Retrieves all addresses associated with the specified customer"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

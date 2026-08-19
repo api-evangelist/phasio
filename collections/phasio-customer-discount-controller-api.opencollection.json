@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Customer Discount Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Discount Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validate a discount code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/discount/validate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate a discount code"
+        },
+        {
+          "info": {
+            "name": "Get a specific discount by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/discount/:discountId",
+            "params": [
+              {
+                "name": "discountId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the discount to retrieve"
+              }
+            ]
+          },
+          "docs": "Get a specific discount by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

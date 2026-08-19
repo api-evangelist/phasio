@@ -1,0 +1,746 @@
+{
+  "item": [
+    {
+      "id": "286a695f-6e1f-40f5-82ec-e4c39d281dd7",
+      "name": "Manufacturer CAMSPEC Controller",
+      "description": {
+        "content": "Endpoints for exporting CAMSPEC files and managing manifest mappings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "796c6629-fc1f-4d10-ba79-07e0db748457",
+          "name": "Get manifest mappings by manifest IDs (bulk lookup)",
+          "request": {
+            "name": "Get manifest mappings by manifest IDs (bulk lookup)",
+            "description": {
+              "content": "Retrieves the mapping between CAMSPEC manifest IDs and requisition IDs for the specified manifest IDs. Supports hundreds of manifest IDs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "camspec",
+                "manifest-mappings",
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<uuid>\",\n  \"<uuid>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4096f4fc-1d5d-415c-81f9-4fe06d30c60f",
+              "name": "Manifest mappings retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "camspec",
+                    "manifest-mappings",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<uuid>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"1956-08-20T05:46:40.530Z\",\n    \"id\": \"ac64db49-e732-4991-5436-94db5f483fd3\",\n    \"requisitionId\": 6015\n  },\n  {\n    \"createdAt\": \"2001-03-12T07:41:23.295Z\",\n    \"id\": \"074fd38e-0d04-ebd6-27a2-91d75511455f\",\n    \"requisitionId\": 158\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d1e30f9-0338-4fae-8d1f-68d94efe468f",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "camspec",
+                    "manifest-mappings",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<uuid>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"1956-08-20T05:46:40.530Z\",\n    \"id\": \"ac64db49-e732-4991-5436-94db5f483fd3\",\n    \"requisitionId\": 6015\n  },\n  {\n    \"createdAt\": \"2001-03-12T07:41:23.295Z\",\n    \"id\": \"074fd38e-0d04-ebd6-27a2-91d75511455f\",\n    \"requisitionId\": 158\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e81d6bf2-97e0-4d44-8437-0ad119f1bc13",
+          "name": "Export CAMSPEC archive for requisitions",
+          "request": {
+            "name": "Export CAMSPEC archive for requisitions",
+            "description": {
+              "content": "Creates and downloads a CAMSPEC archive (.camspec file) containing manufacturing constraints and CAD files for the specified requisitions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "camspec",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/zip"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fileType\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"requisitionEntries\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"requisitionId\": \"<long>\"\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"requisitionId\": \"<long>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "18c9d013-2c6e-4c69-9442-3b91e22239c4",
+              "name": "CAMSPEC archive created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "camspec",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/zip"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileType\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"requisitionEntries\": [\n    {\n      \"quantity\": 3187,\n      \"requisitionId\": 5339\n    },\n    {\n      \"quantity\": 6731,\n      \"requisitionId\": 9359\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/zip"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1422de8-29f5-4b52-bc88-f2c93aab922f",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "camspec",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileType\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"requisitionEntries\": [\n    {\n      \"quantity\": 3187,\n      \"requisitionId\": 5339\n    },\n    {\n      \"quantity\": 6731,\n      \"requisitionId\": 9359\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ff75ca9-bd90-4764-a789-637653d7b2be",
+              "name": "One or more requisitions not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "camspec",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileType\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"requisitionEntries\": [\n    {\n      \"quantity\": 3187,\n      \"requisitionId\": 5339\n    },\n    {\n      \"quantity\": 6731,\n      \"requisitionId\": 9359\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8996c22a-2554-4879-b9f4-6de0a076ce42",
+          "name": "Get manifest mappings by requisition ID",
+          "request": {
+            "name": "Get manifest mappings by requisition ID",
+            "description": {
+              "content": "Retrieves all CAMSPEC manifest mappings for a specific requisition ID (reverse lookup)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "camspec",
+                "requisitions",
+                ":requisitionId",
+                "manifest-mappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "requisitionId",
+                  "description": "(Required) The requisition ID to look up"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74331b3a-1ade-4e3f-82ee-cab491cd8372",
+              "name": "Manifest mappings retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "camspec",
+                    "requisitions",
+                    ":requisitionId",
+                    "manifest-mappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) The requisition ID to look up"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"1956-08-20T05:46:40.530Z\",\n    \"id\": \"ac64db49-e732-4991-5436-94db5f483fd3\",\n    \"requisitionId\": 6015\n  },\n  {\n    \"createdAt\": \"2001-03-12T07:41:23.295Z\",\n    \"id\": \"074fd38e-0d04-ebd6-27a2-91d75511455f\",\n    \"requisitionId\": 158\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b8c144c-b731-49c1-b693-77b85ccdf73a",
+              "name": "Requisition not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "camspec",
+                    "requisitions",
+                    ":requisitionId",
+                    "manifest-mappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) The requisition ID to look up"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"1956-08-20T05:46:40.530Z\",\n    \"id\": \"ac64db49-e732-4991-5436-94db5f483fd3\",\n    \"requisitionId\": 6015\n  },\n  {\n    \"createdAt\": \"2001-03-12T07:41:23.295Z\",\n    \"id\": \"074fd38e-0d04-ebd6-27a2-91d75511455f\",\n    \"requisitionId\": 158\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1588fbf4-5193-4159-bb31-9383b60b49c8",
+          "name": "Get manifest mapping by manifest ID",
+          "request": {
+            "name": "Get manifest mapping by manifest ID",
+            "description": {
+              "content": "Retrieves the mapping between a single CAMSPEC manifest ID and its corresponding requisition ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "camspec",
+                "manifest-mappings",
+                ":manifestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "manifestId",
+                  "description": "(Required) The manifest ID to look up"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "213f718c-4083-433a-a178-2a4351183282",
+              "name": "Manifest mapping retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "camspec",
+                    "manifest-mappings",
+                    ":manifestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "manifestId",
+                      "description": "(Required) The manifest ID to look up"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"1960-11-17T21:04:16.099Z\",\n  \"id\": \"a665ed57-1f54-268a-65f4-48b8772e2988\",\n  \"requisitionId\": 5144\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bbabb0c-3cab-4eff-bc4d-fe22234091bb",
+              "name": "Manifest mapping not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "camspec",
+                    "manifest-mappings",
+                    ":manifestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "manifestId",
+                      "description": "(Required) The manifest ID to look up"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"1960-11-17T21:04:16.099Z\",\n  \"id\": \"a665ed57-1f54-268a-65f4-48b8772e2988\",\n  \"requisitionId\": 5144\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "20bf778c-4680-4037-aa77-dcfda47dd23b",
+    "name": "Phasio Activity Internal Manufacturer CAMSPEC Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

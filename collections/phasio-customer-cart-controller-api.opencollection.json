@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Customer Cart Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Cart Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List open carts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/cart"
+          },
+          "docs": "Returns all open carts for the current customer organisation"
+        },
+        {
+          "info": {
+            "name": "Create a new shopping cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/cart"
+          },
+          "docs": "Creates a new empty shopping cart for the current customer"
+        },
+        {
+          "info": {
+            "name": "Claim shopping cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/cart/:cartId/claim",
+            "params": [
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart to update"
+              }
+            ]
+          },
+          "docs": "Claims an existing shopping cart for the current customer"
+        },
+        {
+          "info": {
+            "name": "Get cart by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/cart/:cartId",
+            "params": [
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a single cart with items for the resume flow"
+        },
+        {
+          "info": {
+            "name": "Soft delete a shopping cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/cart/:cartId",
+            "params": [
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart to soft-delete"
+              }
+            ]
+          },
+          "docs": "Sets the cart status to DELETED without removing it from the database"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

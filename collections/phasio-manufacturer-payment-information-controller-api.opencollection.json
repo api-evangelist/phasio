@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Payment Information Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Payment Information Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update operator payment information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/payment-information/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates payment information settings for the current operator"
+        },
+        {
+          "info": {
+            "name": "Get all operator payment information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/payment-information"
+          },
+          "docs": "Retrieves all payment information settings for the current operator"
+        },
+        {
+          "info": {
+            "name": "Get operator payment information by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/payment-information/:paymentInformationId",
+            "params": [
+              {
+                "name": "paymentInformationId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the payment information to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific payment information setting by its ID"
+        },
+        {
+          "info": {
+            "name": "Delete operator payment information",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/payment-information/:paymentInformationId/delete",
+            "params": [
+              {
+                "name": "paymentInformationId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the payment information to delete"
+              }
+            ]
+          },
+          "docs": "Deletes a specific payment information setting"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

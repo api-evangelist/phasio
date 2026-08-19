@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Customer Catalog Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Catalog Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get manufacturing catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/catalog"
+          },
+          "docs": "Retrieves the complete catalog of available manufacturing capabilities, materials, and processes"
+        },
+        {
+          "info": {
+            "name": "Get thumbnail by catalog item id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/catalog/:catalogItemId/thumbnail",
+            "params": [
+              {
+                "name": "catalogItemId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the catalog item"
+              }
+            ]
+          },
+          "docs": "Downloads the thumbnail image for a specific catalog item"
+        },
+        {
+          "info": {
+            "name": "Get part revision dto by catalog item id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/catalog/:catalogItemId/part-revision",
+            "params": [
+              {
+                "name": "catalogItemId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the catalog item"
+              }
+            ]
+          },
+          "docs": "Retrieves the part revision data for a specific catalog item"
+        },
+        {
+          "info": {
+            "name": "Get Accessory file by catalog item id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/catalog/:catalogItemId/download/:type",
+            "params": [
+              {
+                "name": "catalogItemId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the catalog item"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Type of Accessory file to download (STL, STEP, etc.)"
+              }
+            ]
+          },
+          "docs": "Get Accessory File and accepts an Accessory File Type"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

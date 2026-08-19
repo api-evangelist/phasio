@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Post Processing Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Post Processing Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all post-processing options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/post-processing"
+          },
+          "docs": "Retrieves all post-processing options for the current operator"
+        },
+        {
+          "info": {
+            "name": "Create post-processing option",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/post-processing",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new post-processing option for manufactured parts"
+        },
+        {
+          "info": {
+            "name": "Update post-processing option",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/post-processing/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the post-processing option to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing post-processing option"
+        },
+        {
+          "info": {
+            "name": "Delete post-processing option",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/post-processing/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the post-processing option to delete"
+              }
+            ]
+          },
+          "docs": "Deletes an existing post-processing option"
+        },
+        {
+          "info": {
+            "name": "Get post-processing by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/post-processing/:postProcessingId",
+            "params": [
+              {
+                "name": "postProcessingId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the post-processing option to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific post-processing option by its ID"
+        },
+        {
+          "info": {
+            "name": "Get pricing equation variables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/post-processing/equation/variables"
+          },
+          "docs": "Retrieves all available pricing equation variables for post-processing"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

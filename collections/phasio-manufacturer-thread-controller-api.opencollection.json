@@ -1,0 +1,205 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Thread Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Thread Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/thread",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new communication thread or project"
+        },
+        {
+          "info": {
+            "name": "Merge threads",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/thread/merge",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Merges a source thread into a destination thread"
+        },
+        {
+          "info": {
+            "name": "Convert job to project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/thread/job-to-project",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Converts a manufacturing job thread to a project thread"
+        },
+        {
+          "info": {
+            "name": "Get thread by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/thread/:threadId",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the thread to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific thread by its ID"
+        },
+        {
+          "info": {
+            "name": "Update thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/thread/:threadId",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the thread to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing thread"
+        },
+        {
+          "info": {
+            "name": "Delete thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/thread/:threadId",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the thread to delete"
+              }
+            ]
+          },
+          "docs": "Marks a thread as deleted (soft delete)"
+        },
+        {
+          "info": {
+            "name": "Update project status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/thread/:threadId/status/:status",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the thread to update"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "path",
+                "description": "New status for the project"
+              }
+            ]
+          },
+          "docs": "Updates the status of a project thread"
+        },
+        {
+          "info": {
+            "name": "Toggle project notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/thread/:threadId/notifications",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the thread to update"
+              },
+              {
+                "name": "enable",
+                "value": "",
+                "type": "query",
+                "description": "Whether to enable or disable notifications"
+              }
+            ]
+          },
+          "docs": "Enables or disables notifications for a project"
+        },
+        {
+          "info": {
+            "name": "Get operator thread summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/thread/summary",
+            "params": [
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Page size for pagination"
+              }
+            ]
+          },
+          "docs": "Retrieves a summary of threads for the current operator"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

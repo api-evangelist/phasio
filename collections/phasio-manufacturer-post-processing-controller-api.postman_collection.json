@@ -1,0 +1,1056 @@
+{
+  "item": [
+    {
+      "id": "ce5f5245-1ada-4696-b03f-66187ac502e2",
+      "name": "Manufacturer Post Processing Controller",
+      "description": {
+        "content": "Endpoints for managing post-processing options for manufactured parts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "022a79f4-d528-4abf-919a-2110e50ff051",
+          "name": "Get all post-processing options",
+          "request": {
+            "name": "Get all post-processing options",
+            "description": {
+              "content": "Retrieves all post-processing options for the current operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "post-processing"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd18945c-f671-41d8-90e0-4c4e48a1af11",
+              "name": "Post-processing options retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "post-processing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"colors\": [\n      {\n        \"code\": \"string\",\n        \"id\": 3520,\n        \"name\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"id\": 8821,\n        \"name\": \"string\"\n      }\n    ],\n    \"incompatibleMaterialIds\": [\n      9592,\n      771\n    ],\n    \"isDefault\": true,\n    \"name\": \"string\",\n    \"purchasable\": true,\n    \"id\": 9077,\n    \"mutuallyExclusiveGroup\": \"string\"\n  },\n  {\n    \"colors\": [\n      {\n        \"code\": \"string\",\n        \"id\": 9333,\n        \"name\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"id\": 3813,\n        \"name\": \"string\"\n      }\n    ],\n    \"incompatibleMaterialIds\": [\n      1458,\n      7678\n    ],\n    \"isDefault\": false,\n    \"name\": \"string\",\n    \"purchasable\": true,\n    \"id\": 409,\n    \"mutuallyExclusiveGroup\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "944f8d6a-9372-4e26-880f-3baa67c41e66",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "post-processing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0cbfa00e-b917-41df-9d7c-4adda5400518",
+          "name": "Create post-processing option",
+          "request": {
+            "name": "Create post-processing option",
+            "description": {
+              "content": "Creates a new post-processing option for manufactured parts",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "post-processing"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"colors\": [\n    {\n      \"code\": \"<string>\",\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"incompatibleMaterialIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"isDefault\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"purchasable\": \"<boolean>\",\n  \"id\": \"<long>\",\n  \"mutuallyExclusiveGroup\": \"<string>\",\n  \"activeEquationId\": \"<uuid>\",\n  \"equations\": [\n    {\n      \"equation\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"lastUpdated\": \"<dateTime>\",\n      \"variables\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"equation\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"lastUpdated\": \"<dateTime>\",\n      \"variables\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f7cf4553-083e-4cfe-8d4f-4a919c51fe1a",
+              "name": "Post-processing option successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "post-processing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"colors\": [\n    {\n      \"code\": \"string\",\n      \"id\": 2184,\n      \"name\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"id\": 1949,\n      \"name\": \"string\"\n    }\n  ],\n  \"incompatibleMaterialIds\": [\n    8922,\n    4353\n  ],\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"purchasable\": true,\n  \"id\": 5291,\n  \"mutuallyExclusiveGroup\": \"string\",\n  \"activeEquationId\": \"9894b12f-e879-9f38-95f5-cf7bbb25c5f6\",\n  \"equations\": [\n    {\n      \"equation\": \"string\",\n      \"id\": \"9e3e5543-afa9-9dfc-4913-d7f82c24dd01\",\n      \"lastUpdated\": \"1958-09-22T19:47:23.435Z\",\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\"\n    },\n    {\n      \"equation\": \"string\",\n      \"id\": \"326a56c4-4425-9c5c-eb36-3ef153ea3404\",\n      \"lastUpdated\": \"1987-01-01T10:00:16.401Z\",\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"colors\": [\n    {\n      \"code\": \"string\",\n      \"id\": 3614,\n      \"name\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"id\": 5318,\n      \"name\": \"string\"\n    }\n  ],\n  \"incompatibleMaterialIds\": [\n    7223,\n    3265\n  ],\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"purchasable\": false,\n  \"id\": 1617,\n  \"mutuallyExclusiveGroup\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f87d4e79-cfe8-4261-b662-7ad502c36a8c",
+              "name": "Invalid post-processing data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "post-processing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"colors\": [\n    {\n      \"code\": \"string\",\n      \"id\": 2184,\n      \"name\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"id\": 1949,\n      \"name\": \"string\"\n    }\n  ],\n  \"incompatibleMaterialIds\": [\n    8922,\n    4353\n  ],\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"purchasable\": true,\n  \"id\": 5291,\n  \"mutuallyExclusiveGroup\": \"string\",\n  \"activeEquationId\": \"9894b12f-e879-9f38-95f5-cf7bbb25c5f6\",\n  \"equations\": [\n    {\n      \"equation\": \"string\",\n      \"id\": \"9e3e5543-afa9-9dfc-4913-d7f82c24dd01\",\n      \"lastUpdated\": \"1958-09-22T19:47:23.435Z\",\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\"\n    },\n    {\n      \"equation\": \"string\",\n      \"id\": \"326a56c4-4425-9c5c-eb36-3ef153ea3404\",\n      \"lastUpdated\": \"1987-01-01T10:00:16.401Z\",\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1d03c586-4a18-4d00-b05d-c351ec38ae4b",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "post-processing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"colors\": [\n    {\n      \"code\": \"string\",\n      \"id\": 2184,\n      \"name\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"id\": 1949,\n      \"name\": \"string\"\n    }\n  ],\n  \"incompatibleMaterialIds\": [\n    8922,\n    4353\n  ],\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"purchasable\": true,\n  \"id\": 5291,\n  \"mutuallyExclusiveGroup\": \"string\",\n  \"activeEquationId\": \"9894b12f-e879-9f38-95f5-cf7bbb25c5f6\",\n  \"equations\": [\n    {\n      \"equation\": \"string\",\n      \"id\": \"9e3e5543-afa9-9dfc-4913-d7f82c24dd01\",\n      \"lastUpdated\": \"1958-09-22T19:47:23.435Z\",\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\"\n    },\n    {\n      \"equation\": \"string\",\n      \"id\": \"326a56c4-4425-9c5c-eb36-3ef153ea3404\",\n      \"lastUpdated\": \"1987-01-01T10:00:16.401Z\",\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85f6721f-5e62-497c-95b6-ed2165942d79",
+          "name": "Delete post-processing option",
+          "request": {
+            "name": "Delete post-processing option",
+            "description": {
+              "content": "Deletes an existing post-processing option",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "post-processing",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) ID of the post-processing option to delete"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d832127f-915c-4531-9180-24d67c5cc0e2",
+              "name": "Post-processing option successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "post-processing",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) ID of the post-processing option to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d387c103-4fc3-4e1d-858a-6da1502a3f4b",
+              "name": "Post-processing option not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "post-processing",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) ID of the post-processing option to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab96ca1c-f0e1-4e82-b6c6-8e98bda3c60b",
+          "name": "Update post-processing option",
+          "request": {
+            "name": "Update post-processing option",
+            "description": {
+              "content": "Updates an existing post-processing option",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "post-processing",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) ID of the post-processing option to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"colors\": [\n    {\n      \"code\": \"<string>\",\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"incompatibleMaterialIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"isDefault\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"purchasable\": \"<boolean>\",\n  \"id\": \"<long>\",\n  \"mutuallyExclusiveGroup\": \"<string>\",\n  \"activeEquationId\": \"<uuid>\",\n  \"equations\": [\n    {\n      \"equation\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"lastUpdated\": \"<dateTime>\",\n      \"variables\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"equation\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"lastUpdated\": \"<dateTime>\",\n      \"variables\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "436c60d1-5d4a-42ea-8959-d70739b1771c",
+              "name": "Post-processing option successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "post-processing",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) ID of the post-processing option to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"colors\": [\n    {\n      \"code\": \"string\",\n      \"id\": 2184,\n      \"name\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"id\": 1949,\n      \"name\": \"string\"\n    }\n  ],\n  \"incompatibleMaterialIds\": [\n    8922,\n    4353\n  ],\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"purchasable\": true,\n  \"id\": 5291,\n  \"mutuallyExclusiveGroup\": \"string\",\n  \"activeEquationId\": \"9894b12f-e879-9f38-95f5-cf7bbb25c5f6\",\n  \"equations\": [\n    {\n      \"equation\": \"string\",\n      \"id\": \"9e3e5543-afa9-9dfc-4913-d7f82c24dd01\",\n      \"lastUpdated\": \"1958-09-22T19:47:23.435Z\",\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\"\n    },\n    {\n      \"equation\": \"string\",\n      \"id\": \"326a56c4-4425-9c5c-eb36-3ef153ea3404\",\n      \"lastUpdated\": \"1987-01-01T10:00:16.401Z\",\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"colors\": [\n    {\n      \"code\": \"string\",\n      \"id\": 3614,\n      \"name\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"id\": 5318,\n      \"name\": \"string\"\n    }\n  ],\n  \"incompatibleMaterialIds\": [\n    7223,\n    3265\n  ],\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"purchasable\": false,\n  \"id\": 1617,\n  \"mutuallyExclusiveGroup\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95b966df-1512-4bb6-bba5-cf102aa75409",
+              "name": "Invalid update data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "post-processing",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) ID of the post-processing option to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"colors\": [\n    {\n      \"code\": \"string\",\n      \"id\": 2184,\n      \"name\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"id\": 1949,\n      \"name\": \"string\"\n    }\n  ],\n  \"incompatibleMaterialIds\": [\n    8922,\n    4353\n  ],\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"purchasable\": true,\n  \"id\": 5291,\n  \"mutuallyExclusiveGroup\": \"string\",\n  \"activeEquationId\": \"9894b12f-e879-9f38-95f5-cf7bbb25c5f6\",\n  \"equations\": [\n    {\n      \"equation\": \"string\",\n      \"id\": \"9e3e5543-afa9-9dfc-4913-d7f82c24dd01\",\n      \"lastUpdated\": \"1958-09-22T19:47:23.435Z\",\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\"\n    },\n    {\n      \"equation\": \"string\",\n      \"id\": \"326a56c4-4425-9c5c-eb36-3ef153ea3404\",\n      \"lastUpdated\": \"1987-01-01T10:00:16.401Z\",\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "452a26e9-a754-48d1-9243-8285672388a1",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "post-processing",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) ID of the post-processing option to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"colors\": [\n    {\n      \"code\": \"string\",\n      \"id\": 2184,\n      \"name\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"id\": 1949,\n      \"name\": \"string\"\n    }\n  ],\n  \"incompatibleMaterialIds\": [\n    8922,\n    4353\n  ],\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"purchasable\": true,\n  \"id\": 5291,\n  \"mutuallyExclusiveGroup\": \"string\",\n  \"activeEquationId\": \"9894b12f-e879-9f38-95f5-cf7bbb25c5f6\",\n  \"equations\": [\n    {\n      \"equation\": \"string\",\n      \"id\": \"9e3e5543-afa9-9dfc-4913-d7f82c24dd01\",\n      \"lastUpdated\": \"1958-09-22T19:47:23.435Z\",\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\"\n    },\n    {\n      \"equation\": \"string\",\n      \"id\": \"326a56c4-4425-9c5c-eb36-3ef153ea3404\",\n      \"lastUpdated\": \"1987-01-01T10:00:16.401Z\",\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "53e2d0a2-e899-4982-b5a9-d8b78a6dda13",
+              "name": "Post-processing option not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "post-processing",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) ID of the post-processing option to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"colors\": [\n    {\n      \"code\": \"string\",\n      \"id\": 2184,\n      \"name\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"id\": 1949,\n      \"name\": \"string\"\n    }\n  ],\n  \"incompatibleMaterialIds\": [\n    8922,\n    4353\n  ],\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"purchasable\": true,\n  \"id\": 5291,\n  \"mutuallyExclusiveGroup\": \"string\",\n  \"activeEquationId\": \"9894b12f-e879-9f38-95f5-cf7bbb25c5f6\",\n  \"equations\": [\n    {\n      \"equation\": \"string\",\n      \"id\": \"9e3e5543-afa9-9dfc-4913-d7f82c24dd01\",\n      \"lastUpdated\": \"1958-09-22T19:47:23.435Z\",\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\"\n    },\n    {\n      \"equation\": \"string\",\n      \"id\": \"326a56c4-4425-9c5c-eb36-3ef153ea3404\",\n      \"lastUpdated\": \"1987-01-01T10:00:16.401Z\",\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1cdde6d-da19-4dea-97d7-9f8f48436c81",
+          "name": "Get post-processing by ID",
+          "request": {
+            "name": "Get post-processing by ID",
+            "description": {
+              "content": "Retrieves a specific post-processing option by its ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "post-processing",
+                ":postProcessingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "postProcessingId",
+                  "description": "(Required) ID of the post-processing option to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4da317b0-7753-41e9-83b2-cac45907979d",
+              "name": "Post-processing option found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "post-processing",
+                    ":postProcessingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "postProcessingId",
+                      "description": "(Required) ID of the post-processing option to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"colors\": [\n    {\n      \"code\": \"string\",\n      \"id\": 3614,\n      \"name\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"id\": 5318,\n      \"name\": \"string\"\n    }\n  ],\n  \"incompatibleMaterialIds\": [\n    7223,\n    3265\n  ],\n  \"isDefault\": true,\n  \"name\": \"string\",\n  \"purchasable\": false,\n  \"id\": 1617,\n  \"mutuallyExclusiveGroup\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4cefeb82-e962-4972-b424-a01f13bfe543",
+              "name": "Post-processing option not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "post-processing",
+                    ":postProcessingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "postProcessingId",
+                      "description": "(Required) ID of the post-processing option to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "289278aa-d157-4525-9f69-f6375c06a833",
+          "name": "Get pricing equation variables",
+          "request": {
+            "name": "Get pricing equation variables",
+            "description": {
+              "content": "Retrieves all available pricing equation variables for post-processing",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "post-processing",
+                "equation",
+                "variables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9185ba72-7235-4d95-b439-5c9d8ad427d2",
+              "name": "Pricing equation variables retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "post-processing",
+                    "equation",
+                    "variables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"placeholder\": \"string\",\n    \"type\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"placeholder\": \"string\",\n    \"type\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c2a451d8-a97d-41b5-83dc-d8afa354f47f",
+    "name": "Phasio Activity Internal Manufacturer Post Processing Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

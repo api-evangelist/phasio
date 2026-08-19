@@ -1,0 +1,2086 @@
+{
+  "item": [
+    {
+      "id": "e33f8bba-7adf-4a88-9199-297e8ad2dbaf",
+      "name": "Manufacturer Requisition Controller",
+      "description": {
+        "content": "API for managing part requisitions and production batches",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0c5accd8-69ec-4ed3-b24a-9e16329a92f7",
+          "name": "Create an additional work order",
+          "request": {
+            "name": "Create an additional work order",
+            "description": {
+              "content": "Creates a new work order on the requisition and schedules the requested quantity into its first operation, distinct from the idempotent bulk schedule path. Uses the ad-hoc routing given by optional ordered operationIds, else the template given by optional routingTemplateId, else the spec's designated default template, else a system-derived routing. routingTemplateId alongside operationIds records which template the ad-hoc steps were customized from. Its routing can be diverged afterward via the routing editor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition",
+                ":requisitionId",
+                "work-order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "requisitionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"routingTemplateId\": \"<uuid>\",\n  \"operationIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a6af6979-756a-4497-8774-911c7aef309f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    ":requisitionId",
+                    "work-order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quantity\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"routingTemplateId\": \"<uuid>\",\n  \"operationIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2012-02-27T00:42:23.801Z\",\n  \"id\": \"42849bbf-21f8-871a-fd9d-b833d92aee12\",\n  \"quantity\": 8756,\n  \"routing\": [\n    {\n      \"operationId\": \"ab83db2a-2236-cc7f-1b9a-3f377624318c\",\n      \"sequence\": 7475,\n      \"statusId\": \"4be1c6ca-89a5-1089-140f-29a2951bf74c\"\n    },\n    {\n      \"operationId\": \"25a8aa85-10ae-bcee-5aed-903379eb92da\",\n      \"sequence\": 5369,\n      \"statusId\": \"21636b5b-dd5a-bda6-0a6f-882d195219c5\"\n    }\n  ],\n  \"workOrderNumber\": 893,\n  \"routingTemplateId\": \"d155d725-95cb-5f8c-baf9-ae72e741e132\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a1415bb-c3fb-42e2-84d7-daf427cb1186",
+          "name": "Create work orders",
+          "request": {
+            "name": "Create work orders",
+            "description": {
+              "content": "Creates a new work order for every part and quantity in the request",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition",
+                "work-orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"quantity\": \"<integer>\",\n    \"requisitionId\": \"<long>\",\n    \"name\": \"<string>\",\n    \"routingTemplateId\": \"<uuid>\",\n    \"operationIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  },\n  {\n    \"quantity\": \"<integer>\",\n    \"requisitionId\": \"<long>\",\n    \"name\": \"<string>\",\n    \"routingTemplateId\": \"<uuid>\",\n    \"operationIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e1619f1c-46b2-4014-8caa-e23526cba825",
+              "name": "Successfully created work orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "work-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"quantity\": 1864,\n    \"requisitionId\": 1068,\n    \"name\": \"string\",\n    \"routingTemplateId\": \"b58f9953-72ea-8a77-2c3c-ef423ea2c261\",\n    \"operationIds\": [\n      \"774b7ae5-5655-8126-c101-f28b08a1350d\",\n      \"7ff74de6-a12d-56d6-3098-c971cebd882e\"\n    ]\n  },\n  {\n    \"quantity\": 5546,\n    \"requisitionId\": 2893,\n    \"name\": \"string\",\n    \"routingTemplateId\": \"451ae6b1-aa45-dff6-f5c0-f9f9d178d58d\",\n    \"operationIds\": [\n      \"8d3bdd1d-dec6-31eb-32c1-be000b487c2e\",\n      \"05d4fe19-108b-d1bb-d282-aed781da9265\"\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"batchStatusId\": \"028a5ad2-5996-3a51-f1ce-a8ffedc0722e\",\n    \"batchStatusName\": \"string\",\n    \"commentCount\": 5499,\n    \"groupId\": \"string\",\n    \"materialId\": 9515,\n    \"operationId\": \"f09079ba-8a8b-c039-eeca-cd0ad024bb57\",\n    \"operationName\": \"string\",\n    \"outstandingAt\": \"2026-06-04T11:06:57.044Z\",\n    \"prefix\": \"string\",\n    \"processPricesId\": \"7a5a7a58-a3d0-d9c4-658f-d162c7354495\",\n    \"quantity\": 7134,\n    \"requisitionId\": 6066,\n    \"sequence\": 3036,\n    \"stepId\": \"910b68cb-2517-a04d-0f40-521370c9cf66\",\n    \"stepType\": \"string\",\n    \"workOrderId\": \"edcf51a8-8140-64a0-7849-0cf2b2c0c41a\",\n    \"colorId\": 455,\n    \"dispatchDate\": \"2004-02-25\",\n    \"requisitionDuration\": 2392,\n    \"orderId\": 7300,\n    \"orderNumber\": 753,\n    \"threadId\": 2851,\n    \"purchaseOrderNumber\": \"string\",\n    \"closedAt\": \"1956-08-06T22:52:54.434Z\"\n  },\n  {\n    \"batchStatusId\": \"4aa93ea6-ebea-fa1a-d506-ce0233d57cfe\",\n    \"batchStatusName\": \"string\",\n    \"commentCount\": 290,\n    \"groupId\": \"string\",\n    \"materialId\": 9450,\n    \"operationId\": \"3e3ee932-ddf3-c499-26eb-6f578574351e\",\n    \"operationName\": \"string\",\n    \"outstandingAt\": \"2007-12-23T09:57:12.875Z\",\n    \"prefix\": \"string\",\n    \"processPricesId\": \"e40c4959-29cb-f069-d178-642d47e76205\",\n    \"quantity\": 8606,\n    \"requisitionId\": 7880,\n    \"sequence\": 9702,\n    \"stepId\": \"19c864bb-5021-d027-4958-e50b5e8cbbe7\",\n    \"stepType\": \"string\",\n    \"workOrderId\": \"6f687e73-fd90-ba05-1e72-525ac0bf9afa\",\n    \"colorId\": 3071,\n    \"dispatchDate\": \"1981-01-27\",\n    \"requisitionDuration\": 533,\n    \"orderId\": 728,\n    \"orderNumber\": 716,\n    \"threadId\": 9906,\n    \"purchaseOrderNumber\": \"string\",\n    \"closedAt\": \"1979-12-22T04:52:50.680Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d666bab7-0e38-4475-a02f-82e0a1aaf410",
+              "name": "Failed to create work orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "work-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"quantity\": 1864,\n    \"requisitionId\": 1068,\n    \"name\": \"string\",\n    \"routingTemplateId\": \"b58f9953-72ea-8a77-2c3c-ef423ea2c261\",\n    \"operationIds\": [\n      \"774b7ae5-5655-8126-c101-f28b08a1350d\",\n      \"7ff74de6-a12d-56d6-3098-c971cebd882e\"\n    ]\n  },\n  {\n    \"quantity\": 5546,\n    \"requisitionId\": 2893,\n    \"name\": \"string\",\n    \"routingTemplateId\": \"451ae6b1-aa45-dff6-f5c0-f9f9d178d58d\",\n    \"operationIds\": [\n      \"8d3bdd1d-dec6-31eb-32c1-be000b487c2e\",\n      \"05d4fe19-108b-d1bb-d282-aed781da9265\"\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e871881a-1faf-4f03-a8b5-1e8a81959d3c",
+          "name": "Create production batches",
+          "request": {
+            "name": "Create production batches",
+            "description": {
+              "content": "Creates production batches for the specified parts and quantities. Idempotent: parts whose work order is already in production are skipped",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition",
+                "batch-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"quantity\": \"<integer>\",\n    \"requisitionId\": \"<long>\",\n    \"name\": \"<string>\",\n    \"routingTemplateId\": \"<uuid>\",\n    \"operationIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  },\n  {\n    \"quantity\": \"<integer>\",\n    \"requisitionId\": \"<long>\",\n    \"name\": \"<string>\",\n    \"routingTemplateId\": \"<uuid>\",\n    \"operationIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "70f2e261-b455-46dc-9b15-08b8c457f4e2",
+              "name": "Successfully created production batches",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "batch-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"quantity\": 1864,\n    \"requisitionId\": 1068,\n    \"name\": \"string\",\n    \"routingTemplateId\": \"b58f9953-72ea-8a77-2c3c-ef423ea2c261\",\n    \"operationIds\": [\n      \"774b7ae5-5655-8126-c101-f28b08a1350d\",\n      \"7ff74de6-a12d-56d6-3098-c971cebd882e\"\n    ]\n  },\n  {\n    \"quantity\": 5546,\n    \"requisitionId\": 2893,\n    \"name\": \"string\",\n    \"routingTemplateId\": \"451ae6b1-aa45-dff6-f5c0-f9f9d178d58d\",\n    \"operationIds\": [\n      \"8d3bdd1d-dec6-31eb-32c1-be000b487c2e\",\n      \"05d4fe19-108b-d1bb-d282-aed781da9265\"\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"batchStatusId\": \"028a5ad2-5996-3a51-f1ce-a8ffedc0722e\",\n    \"batchStatusName\": \"string\",\n    \"commentCount\": 5499,\n    \"groupId\": \"string\",\n    \"materialId\": 9515,\n    \"operationId\": \"f09079ba-8a8b-c039-eeca-cd0ad024bb57\",\n    \"operationName\": \"string\",\n    \"outstandingAt\": \"2026-06-04T11:06:57.044Z\",\n    \"prefix\": \"string\",\n    \"processPricesId\": \"7a5a7a58-a3d0-d9c4-658f-d162c7354495\",\n    \"quantity\": 7134,\n    \"requisitionId\": 6066,\n    \"sequence\": 3036,\n    \"stepId\": \"910b68cb-2517-a04d-0f40-521370c9cf66\",\n    \"stepType\": \"string\",\n    \"workOrderId\": \"edcf51a8-8140-64a0-7849-0cf2b2c0c41a\",\n    \"colorId\": 455,\n    \"dispatchDate\": \"2004-02-25\",\n    \"requisitionDuration\": 2392,\n    \"orderId\": 7300,\n    \"orderNumber\": 753,\n    \"threadId\": 2851,\n    \"purchaseOrderNumber\": \"string\",\n    \"closedAt\": \"1956-08-06T22:52:54.434Z\"\n  },\n  {\n    \"batchStatusId\": \"4aa93ea6-ebea-fa1a-d506-ce0233d57cfe\",\n    \"batchStatusName\": \"string\",\n    \"commentCount\": 290,\n    \"groupId\": \"string\",\n    \"materialId\": 9450,\n    \"operationId\": \"3e3ee932-ddf3-c499-26eb-6f578574351e\",\n    \"operationName\": \"string\",\n    \"outstandingAt\": \"2007-12-23T09:57:12.875Z\",\n    \"prefix\": \"string\",\n    \"processPricesId\": \"e40c4959-29cb-f069-d178-642d47e76205\",\n    \"quantity\": 8606,\n    \"requisitionId\": 7880,\n    \"sequence\": 9702,\n    \"stepId\": \"19c864bb-5021-d027-4958-e50b5e8cbbe7\",\n    \"stepType\": \"string\",\n    \"workOrderId\": \"6f687e73-fd90-ba05-1e72-525ac0bf9afa\",\n    \"colorId\": 3071,\n    \"dispatchDate\": \"1981-01-27\",\n    \"requisitionDuration\": 533,\n    \"orderId\": 728,\n    \"orderNumber\": 716,\n    \"threadId\": 9906,\n    \"purchaseOrderNumber\": \"string\",\n    \"closedAt\": \"1979-12-22T04:52:50.680Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c69ad33e-df45-4965-8356-02613137ff38",
+              "name": "Failed to create production batches",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "batch-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"quantity\": 1864,\n    \"requisitionId\": 1068,\n    \"name\": \"string\",\n    \"routingTemplateId\": \"b58f9953-72ea-8a77-2c3c-ef423ea2c261\",\n    \"operationIds\": [\n      \"774b7ae5-5655-8126-c101-f28b08a1350d\",\n      \"7ff74de6-a12d-56d6-3098-c971cebd882e\"\n    ]\n  },\n  {\n    \"quantity\": 5546,\n    \"requisitionId\": 2893,\n    \"name\": \"string\",\n    \"routingTemplateId\": \"451ae6b1-aa45-dff6-f5c0-f9f9d178d58d\",\n    \"operationIds\": [\n      \"8d3bdd1d-dec6-31eb-32c1-be000b487c2e\",\n      \"05d4fe19-108b-d1bb-d282-aed781da9265\"\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ec90551-9870-45fe-8f1d-3409525eca36",
+          "name": "Create production batches",
+          "request": {
+            "name": "Create production batches",
+            "description": {
+              "content": "Creates production batches for the specified parts and quantities. Idempotent: parts whose work order is already in production are skipped",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition",
+                "create-batches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"quantity\": \"<integer>\",\n    \"requisitionId\": \"<long>\",\n    \"name\": \"<string>\",\n    \"routingTemplateId\": \"<uuid>\",\n    \"operationIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  },\n  {\n    \"quantity\": \"<integer>\",\n    \"requisitionId\": \"<long>\",\n    \"name\": \"<string>\",\n    \"routingTemplateId\": \"<uuid>\",\n    \"operationIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b04989b1-888d-4e7b-88c6-9a06d882493f",
+              "name": "Successfully created production batches",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "create-batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"quantity\": 1864,\n    \"requisitionId\": 1068,\n    \"name\": \"string\",\n    \"routingTemplateId\": \"b58f9953-72ea-8a77-2c3c-ef423ea2c261\",\n    \"operationIds\": [\n      \"774b7ae5-5655-8126-c101-f28b08a1350d\",\n      \"7ff74de6-a12d-56d6-3098-c971cebd882e\"\n    ]\n  },\n  {\n    \"quantity\": 5546,\n    \"requisitionId\": 2893,\n    \"name\": \"string\",\n    \"routingTemplateId\": \"451ae6b1-aa45-dff6-f5c0-f9f9d178d58d\",\n    \"operationIds\": [\n      \"8d3bdd1d-dec6-31eb-32c1-be000b487c2e\",\n      \"05d4fe19-108b-d1bb-d282-aed781da9265\"\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"batchStatusId\": \"028a5ad2-5996-3a51-f1ce-a8ffedc0722e\",\n    \"batchStatusName\": \"string\",\n    \"commentCount\": 5499,\n    \"groupId\": \"string\",\n    \"materialId\": 9515,\n    \"operationId\": \"f09079ba-8a8b-c039-eeca-cd0ad024bb57\",\n    \"operationName\": \"string\",\n    \"outstandingAt\": \"2026-06-04T11:06:57.044Z\",\n    \"prefix\": \"string\",\n    \"processPricesId\": \"7a5a7a58-a3d0-d9c4-658f-d162c7354495\",\n    \"quantity\": 7134,\n    \"requisitionId\": 6066,\n    \"sequence\": 3036,\n    \"stepId\": \"910b68cb-2517-a04d-0f40-521370c9cf66\",\n    \"stepType\": \"string\",\n    \"workOrderId\": \"edcf51a8-8140-64a0-7849-0cf2b2c0c41a\",\n    \"colorId\": 455,\n    \"dispatchDate\": \"2004-02-25\",\n    \"requisitionDuration\": 2392,\n    \"orderId\": 7300,\n    \"orderNumber\": 753,\n    \"threadId\": 2851,\n    \"purchaseOrderNumber\": \"string\",\n    \"closedAt\": \"1956-08-06T22:52:54.434Z\"\n  },\n  {\n    \"batchStatusId\": \"4aa93ea6-ebea-fa1a-d506-ce0233d57cfe\",\n    \"batchStatusName\": \"string\",\n    \"commentCount\": 290,\n    \"groupId\": \"string\",\n    \"materialId\": 9450,\n    \"operationId\": \"3e3ee932-ddf3-c499-26eb-6f578574351e\",\n    \"operationName\": \"string\",\n    \"outstandingAt\": \"2007-12-23T09:57:12.875Z\",\n    \"prefix\": \"string\",\n    \"processPricesId\": \"e40c4959-29cb-f069-d178-642d47e76205\",\n    \"quantity\": 8606,\n    \"requisitionId\": 7880,\n    \"sequence\": 9702,\n    \"stepId\": \"19c864bb-5021-d027-4958-e50b5e8cbbe7\",\n    \"stepType\": \"string\",\n    \"workOrderId\": \"6f687e73-fd90-ba05-1e72-525ac0bf9afa\",\n    \"colorId\": 3071,\n    \"dispatchDate\": \"1981-01-27\",\n    \"requisitionDuration\": 533,\n    \"orderId\": 728,\n    \"orderNumber\": 716,\n    \"threadId\": 9906,\n    \"purchaseOrderNumber\": \"string\",\n    \"closedAt\": \"1979-12-22T04:52:50.680Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc925bcd-9d25-4d6a-b247-573d7782a8df",
+              "name": "Failed to create production batches",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "create-batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"quantity\": 1864,\n    \"requisitionId\": 1068,\n    \"name\": \"string\",\n    \"routingTemplateId\": \"b58f9953-72ea-8a77-2c3c-ef423ea2c261\",\n    \"operationIds\": [\n      \"774b7ae5-5655-8126-c101-f28b08a1350d\",\n      \"7ff74de6-a12d-56d6-3098-c971cebd882e\"\n    ]\n  },\n  {\n    \"quantity\": 5546,\n    \"requisitionId\": 2893,\n    \"name\": \"string\",\n    \"routingTemplateId\": \"451ae6b1-aa45-dff6-f5c0-f9f9d178d58d\",\n    \"operationIds\": [\n      \"8d3bdd1d-dec6-31eb-32c1-be000b487c2e\",\n      \"05d4fe19-108b-d1bb-d282-aed781da9265\"\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "472e588d-6be7-486e-a765-357595eb336c",
+          "name": "Get requisitions by ids",
+          "request": {
+            "name": "Get requisitions by ids",
+            "description": {
+              "content": "Retrieves requisitions for the given ids, regardless of current step. Used to hydrate paginated completed-order rows whose requisitions fall outside the operation-scoped set.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<long>\",\n  \"<long>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "258abc97-3af9-4272-98d0-33689983d033",
+              "name": "Successfully retrieved requisitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<long>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2026-05-11T01:28:43.817Z\",\n        \"id\": \"41b7931a-bfbf-ce7e-5bbd-e90a6bbda487\",\n        \"partSpecificationId\": \"5e592889-2b05-3bd4-4bc8-b504f6bc73fa\",\n        \"updatedAt\": \"2016-01-17T19:19:49.384Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1979-07-11T03:49:08.499Z\",\n        \"id\": \"823bdc36-633d-c75d-6b04-3a51db761fb5\",\n        \"partSpecificationId\": \"ea1a09e7-1857-ea7e-2240-08c5b589961c\",\n        \"updatedAt\": \"1978-11-27T20:56:45.282Z\"\n      }\n    ],\n    \"createdAt\": \"1956-12-25T10:42:45.354Z\",\n    \"id\": 7814,\n    \"lastUpdated\": \"1959-09-07T12:00:41.453Z\",\n    \"materialId\": 3554,\n    \"name\": \"string\",\n    \"orderId\": 6819,\n    \"partRevisionId\": \"a75ea68d-1520-7e89-765d-d3f48402b3e8\",\n    \"postProcessingIds\": [\n      3062,\n      7210\n    ],\n    \"processPricesId\": \"055e7a15-b947-b7ed-10c9-d4ab745bc860\",\n    \"quantity\": 5365,\n    \"units\": \"METRES\",\n    \"watertight\": false,\n    \"colorId\": 2828,\n    \"precisionId\": 9720,\n    \"infillId\": 5957,\n    \"pricePaid\": 3589.824137444152,\n    \"leadTimeId\": \"84df685c-6f0f-1634-cb38-9b5c01d2d8f1\"\n  },\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1946-11-10T02:19:17.486Z\",\n        \"id\": \"b9dad374-3562-5cdc-9506-538bc9a2cf1c\",\n        \"partSpecificationId\": \"e678d675-bd87-75c8-ae70-eb1ba4974596\",\n        \"updatedAt\": \"1987-05-05T15:58:59.838Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2009-02-18T18:33:29.447Z\",\n        \"id\": \"6902d66e-8d06-8216-232b-d6b294ff8c29\",\n        \"partSpecificationId\": \"105ce11d-5edf-1181-4202-a30f7a6592c5\",\n        \"updatedAt\": \"2022-04-06T02:45:32.680Z\"\n      }\n    ],\n    \"createdAt\": \"2005-03-05T22:39:13.570Z\",\n    \"id\": 3386,\n    \"lastUpdated\": \"2023-12-16T14:28:23.968Z\",\n    \"materialId\": 4199,\n    \"name\": \"string\",\n    \"orderId\": 7379,\n    \"partRevisionId\": \"bbf1f8ad-3167-be80-0969-87d6053f4882\",\n    \"postProcessingIds\": [\n      2135,\n      6752\n    ],\n    \"processPricesId\": \"f3d1425e-265a-1bec-8105-06565d72328a\",\n    \"quantity\": 7753,\n    \"units\": \"CENTIMETERS\",\n    \"watertight\": true,\n    \"colorId\": 9673,\n    \"precisionId\": 9061,\n    \"infillId\": 7622,\n    \"pricePaid\": 8078.030815469547,\n    \"leadTimeId\": \"8967dcd8-d0ac-b144-76fb-9a643895874c\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13273a00-05d6-4dfd-8416-848e2f99fb92",
+          "name": "Automatically create batches for an order",
+          "request": {
+            "name": "Automatically create batches for an order",
+            "description": {
+              "content": "Creates production batches for all parts in the specified order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition",
+                "auto-create-batches",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order to create batches for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d0b2274b-f72c-4968-997a-b7482e985be8",
+              "name": "Successfully created production batches",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "auto-create-batches",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to create batches for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"batchStatusId\": \"028a5ad2-5996-3a51-f1ce-a8ffedc0722e\",\n    \"batchStatusName\": \"string\",\n    \"commentCount\": 5499,\n    \"groupId\": \"string\",\n    \"materialId\": 9515,\n    \"operationId\": \"f09079ba-8a8b-c039-eeca-cd0ad024bb57\",\n    \"operationName\": \"string\",\n    \"outstandingAt\": \"2026-06-04T11:06:57.044Z\",\n    \"prefix\": \"string\",\n    \"processPricesId\": \"7a5a7a58-a3d0-d9c4-658f-d162c7354495\",\n    \"quantity\": 7134,\n    \"requisitionId\": 6066,\n    \"sequence\": 3036,\n    \"stepId\": \"910b68cb-2517-a04d-0f40-521370c9cf66\",\n    \"stepType\": \"string\",\n    \"workOrderId\": \"edcf51a8-8140-64a0-7849-0cf2b2c0c41a\",\n    \"colorId\": 455,\n    \"dispatchDate\": \"2004-02-25\",\n    \"requisitionDuration\": 2392,\n    \"orderId\": 7300,\n    \"orderNumber\": 753,\n    \"threadId\": 2851,\n    \"purchaseOrderNumber\": \"string\",\n    \"closedAt\": \"1956-08-06T22:52:54.434Z\"\n  },\n  {\n    \"batchStatusId\": \"4aa93ea6-ebea-fa1a-d506-ce0233d57cfe\",\n    \"batchStatusName\": \"string\",\n    \"commentCount\": 290,\n    \"groupId\": \"string\",\n    \"materialId\": 9450,\n    \"operationId\": \"3e3ee932-ddf3-c499-26eb-6f578574351e\",\n    \"operationName\": \"string\",\n    \"outstandingAt\": \"2007-12-23T09:57:12.875Z\",\n    \"prefix\": \"string\",\n    \"processPricesId\": \"e40c4959-29cb-f069-d178-642d47e76205\",\n    \"quantity\": 8606,\n    \"requisitionId\": 7880,\n    \"sequence\": 9702,\n    \"stepId\": \"19c864bb-5021-d027-4958-e50b5e8cbbe7\",\n    \"stepType\": \"string\",\n    \"workOrderId\": \"6f687e73-fd90-ba05-1e72-525ac0bf9afa\",\n    \"colorId\": 3071,\n    \"dispatchDate\": \"1981-01-27\",\n    \"requisitionDuration\": 533,\n    \"orderId\": 728,\n    \"orderNumber\": 716,\n    \"threadId\": 9906,\n    \"purchaseOrderNumber\": \"string\",\n    \"closedAt\": \"1979-12-22T04:52:50.680Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c547ac4-fc77-4d9a-b39a-48b106d506c4",
+              "name": "Failed to create production batches",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "auto-create-batches",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to create batches for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c31d34e4-ebf9-42b3-a646-bd8a3af0746b",
+          "name": "Get all requisitions for current operator",
+          "request": {
+            "name": "Get all requisitions for current operator",
+            "description": {
+              "content": "Retrieves all requisitions for the current operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "archived",
+                  "value": "<boolean>",
+                  "description": "(Required) Include archived requisitions"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8d241d8-bdc9-4b3e-b47a-4912adca2685",
+              "name": "Successfully retrieved requisitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "archived",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2026-05-11T01:28:43.817Z\",\n        \"id\": \"41b7931a-bfbf-ce7e-5bbd-e90a6bbda487\",\n        \"partSpecificationId\": \"5e592889-2b05-3bd4-4bc8-b504f6bc73fa\",\n        \"updatedAt\": \"2016-01-17T19:19:49.384Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1979-07-11T03:49:08.499Z\",\n        \"id\": \"823bdc36-633d-c75d-6b04-3a51db761fb5\",\n        \"partSpecificationId\": \"ea1a09e7-1857-ea7e-2240-08c5b589961c\",\n        \"updatedAt\": \"1978-11-27T20:56:45.282Z\"\n      }\n    ],\n    \"createdAt\": \"1956-12-25T10:42:45.354Z\",\n    \"id\": 7814,\n    \"lastUpdated\": \"1959-09-07T12:00:41.453Z\",\n    \"materialId\": 3554,\n    \"name\": \"string\",\n    \"orderId\": 6819,\n    \"partRevisionId\": \"a75ea68d-1520-7e89-765d-d3f48402b3e8\",\n    \"postProcessingIds\": [\n      3062,\n      7210\n    ],\n    \"processPricesId\": \"055e7a15-b947-b7ed-10c9-d4ab745bc860\",\n    \"quantity\": 5365,\n    \"units\": \"METRES\",\n    \"watertight\": false,\n    \"colorId\": 2828,\n    \"precisionId\": 9720,\n    \"infillId\": 5957,\n    \"pricePaid\": 3589.824137444152,\n    \"leadTimeId\": \"84df685c-6f0f-1634-cb38-9b5c01d2d8f1\"\n  },\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1946-11-10T02:19:17.486Z\",\n        \"id\": \"b9dad374-3562-5cdc-9506-538bc9a2cf1c\",\n        \"partSpecificationId\": \"e678d675-bd87-75c8-ae70-eb1ba4974596\",\n        \"updatedAt\": \"1987-05-05T15:58:59.838Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2009-02-18T18:33:29.447Z\",\n        \"id\": \"6902d66e-8d06-8216-232b-d6b294ff8c29\",\n        \"partSpecificationId\": \"105ce11d-5edf-1181-4202-a30f7a6592c5\",\n        \"updatedAt\": \"2022-04-06T02:45:32.680Z\"\n      }\n    ],\n    \"createdAt\": \"2005-03-05T22:39:13.570Z\",\n    \"id\": 3386,\n    \"lastUpdated\": \"2023-12-16T14:28:23.968Z\",\n    \"materialId\": 4199,\n    \"name\": \"string\",\n    \"orderId\": 7379,\n    \"partRevisionId\": \"bbf1f8ad-3167-be80-0969-87d6053f4882\",\n    \"postProcessingIds\": [\n      2135,\n      6752\n    ],\n    \"processPricesId\": \"f3d1425e-265a-1bec-8105-06565d72328a\",\n    \"quantity\": 7753,\n    \"units\": \"CENTIMETERS\",\n    \"watertight\": true,\n    \"colorId\": 9673,\n    \"precisionId\": 9061,\n    \"infillId\": 7622,\n    \"pricePaid\": 8078.030815469547,\n    \"leadTimeId\": \"8967dcd8-d0ac-b144-76fb-9a643895874c\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37964922-c275-4fa1-8975-aa8e2a7da5a5",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "archived",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45105b6d-c264-4884-ae11-bf200fe97a17",
+          "name": "Download requisition part thumbnail",
+          "request": {
+            "name": "Download requisition part thumbnail",
+            "description": {
+              "content": "Downloads the thumbnail image for a requisition's part",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition",
+                ":requisitionId",
+                "thumbnail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "requisitionId",
+                  "description": "(Required) ID of the requisition"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e57f5002-ad5f-4a31-b869-b6b828cfcc63",
+              "name": "Thumbnail successfully downloaded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    ":requisitionId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) ID of the requisition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d5bfad41-580a-408e-8e50-9f8183d15033",
+              "name": "Invalid requisition ID or thumbnail not available",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    ":requisitionId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) ID of the requisition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "68790223-e694-413a-b5e5-569d2cdc68f0",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    ":requisitionId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) ID of the requisition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7fdc90da-8e18-48aa-8b2f-63acce3a65ab",
+          "name": "Get requisition by ID",
+          "request": {
+            "name": "Get requisition by ID",
+            "description": {
+              "content": "Retrieves a specific requisition by its ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) ID of the requisition to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e50846e-4351-469d-8728-bcb66429d2c4",
+              "name": "Successfully retrieved requisition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) ID of the requisition to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"constraints\": [\n    {\n      \"constraintType\": \"string\",\n      \"createdAt\": \"2002-03-16T23:39:17.531Z\",\n      \"id\": \"ecbe1af8-1f89-6ca4-3d8d-e35f66540a76\",\n      \"partSpecificationId\": \"eef95844-d7da-fcc0-df74-c6d4ed86bfe2\",\n      \"updatedAt\": \"2014-03-01T23:52:56.796Z\"\n    },\n    {\n      \"constraintType\": \"string\",\n      \"createdAt\": \"1955-09-24T02:02:21.791Z\",\n      \"id\": \"9b212caa-78ad-b4b1-3efa-1d4a33f8e039\",\n      \"partSpecificationId\": \"9247c91e-b9ee-24a1-963a-be5616950356\",\n      \"updatedAt\": \"1965-12-07T21:42:33.071Z\"\n    }\n  ],\n  \"createdAt\": \"2006-08-20T04:24:39.370Z\",\n  \"id\": 2270,\n  \"lastUpdated\": \"1981-09-21T14:04:04.278Z\",\n  \"materialId\": 7172,\n  \"name\": \"string\",\n  \"orderId\": 6283,\n  \"partRevisionId\": \"601e17d3-5e00-62e6-6535-3f67db6df212\",\n  \"postProcessingIds\": [\n    7489,\n    7275\n  ],\n  \"processPricesId\": \"b2e09d7d-8e79-0e5e-44a3-06b39b6d992a\",\n  \"quantity\": 2402,\n  \"units\": \"METRES\",\n  \"watertight\": false,\n  \"colorId\": 7465,\n  \"precisionId\": 8081,\n  \"infillId\": 204,\n  \"pricePaid\": 3152.1818926959213,\n  \"leadTimeId\": \"c9b67f74-07c6-9348-eda6-6b897ea28546\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4946c86-7984-4791-ac05-8078ed15d8a8",
+              "name": "Requisition not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) ID of the requisition to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cbb36c1-1fed-49a6-8b8f-fa48066f9cf1",
+          "name": "Get requisitions by production step",
+          "request": {
+            "name": "Get requisitions by production step",
+            "description": {
+              "content": "Retrieves all requisitions at the specified production step",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition",
+                "production-step",
+                ":stepId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "archived",
+                  "value": "<boolean>",
+                  "description": "(Required) Include archived requisitions"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "stepId",
+                  "description": "(Required) UUID of the production step to filter by"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48c6b359-8132-4c48-a382-46efceeb0944",
+              "name": "Successfully retrieved requisitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "production-step",
+                    ":stepId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "archived",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "stepId",
+                      "description": "(Required) UUID of the production step to filter by"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2026-05-11T01:28:43.817Z\",\n        \"id\": \"41b7931a-bfbf-ce7e-5bbd-e90a6bbda487\",\n        \"partSpecificationId\": \"5e592889-2b05-3bd4-4bc8-b504f6bc73fa\",\n        \"updatedAt\": \"2016-01-17T19:19:49.384Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1979-07-11T03:49:08.499Z\",\n        \"id\": \"823bdc36-633d-c75d-6b04-3a51db761fb5\",\n        \"partSpecificationId\": \"ea1a09e7-1857-ea7e-2240-08c5b589961c\",\n        \"updatedAt\": \"1978-11-27T20:56:45.282Z\"\n      }\n    ],\n    \"createdAt\": \"1956-12-25T10:42:45.354Z\",\n    \"id\": 7814,\n    \"lastUpdated\": \"1959-09-07T12:00:41.453Z\",\n    \"materialId\": 3554,\n    \"name\": \"string\",\n    \"orderId\": 6819,\n    \"partRevisionId\": \"a75ea68d-1520-7e89-765d-d3f48402b3e8\",\n    \"postProcessingIds\": [\n      3062,\n      7210\n    ],\n    \"processPricesId\": \"055e7a15-b947-b7ed-10c9-d4ab745bc860\",\n    \"quantity\": 5365,\n    \"units\": \"METRES\",\n    \"watertight\": false,\n    \"colorId\": 2828,\n    \"precisionId\": 9720,\n    \"infillId\": 5957,\n    \"pricePaid\": 3589.824137444152,\n    \"leadTimeId\": \"84df685c-6f0f-1634-cb38-9b5c01d2d8f1\"\n  },\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1946-11-10T02:19:17.486Z\",\n        \"id\": \"b9dad374-3562-5cdc-9506-538bc9a2cf1c\",\n        \"partSpecificationId\": \"e678d675-bd87-75c8-ae70-eb1ba4974596\",\n        \"updatedAt\": \"1987-05-05T15:58:59.838Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2009-02-18T18:33:29.447Z\",\n        \"id\": \"6902d66e-8d06-8216-232b-d6b294ff8c29\",\n        \"partSpecificationId\": \"105ce11d-5edf-1181-4202-a30f7a6592c5\",\n        \"updatedAt\": \"2022-04-06T02:45:32.680Z\"\n      }\n    ],\n    \"createdAt\": \"2005-03-05T22:39:13.570Z\",\n    \"id\": 3386,\n    \"lastUpdated\": \"2023-12-16T14:28:23.968Z\",\n    \"materialId\": 4199,\n    \"name\": \"string\",\n    \"orderId\": 7379,\n    \"partRevisionId\": \"bbf1f8ad-3167-be80-0969-87d6053f4882\",\n    \"postProcessingIds\": [\n      2135,\n      6752\n    ],\n    \"processPricesId\": \"f3d1425e-265a-1bec-8105-06565d72328a\",\n    \"quantity\": 7753,\n    \"units\": \"CENTIMETERS\",\n    \"watertight\": true,\n    \"colorId\": 9673,\n    \"precisionId\": 9061,\n    \"infillId\": 7622,\n    \"pricePaid\": 8078.030815469547,\n    \"leadTimeId\": \"8967dcd8-d0ac-b144-76fb-9a643895874c\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cff8d0f6-0493-482f-9788-2bbd4963f0c6",
+          "name": "Get requisitions by part specification ID",
+          "request": {
+            "name": "Get requisitions by part specification ID",
+            "description": {
+              "content": "Retrieves all requisitions for the specified part specification",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition",
+                "part-specification",
+                ":specificationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "archived",
+                  "value": "<boolean>",
+                  "description": "Include archived requisitions"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "specificationId",
+                  "description": "(Required) UUID of the part specification to filter by"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "27c6d41a-e90e-4e79-a19a-2ad708d5c96e",
+              "name": "Successfully retrieved requisitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "part-specification",
+                    ":specificationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "archived",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "specificationId",
+                      "description": "(Required) UUID of the part specification to filter by"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2026-05-11T01:28:43.817Z\",\n        \"id\": \"41b7931a-bfbf-ce7e-5bbd-e90a6bbda487\",\n        \"partSpecificationId\": \"5e592889-2b05-3bd4-4bc8-b504f6bc73fa\",\n        \"updatedAt\": \"2016-01-17T19:19:49.384Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1979-07-11T03:49:08.499Z\",\n        \"id\": \"823bdc36-633d-c75d-6b04-3a51db761fb5\",\n        \"partSpecificationId\": \"ea1a09e7-1857-ea7e-2240-08c5b589961c\",\n        \"updatedAt\": \"1978-11-27T20:56:45.282Z\"\n      }\n    ],\n    \"createdAt\": \"1956-12-25T10:42:45.354Z\",\n    \"id\": 7814,\n    \"lastUpdated\": \"1959-09-07T12:00:41.453Z\",\n    \"materialId\": 3554,\n    \"name\": \"string\",\n    \"orderId\": 6819,\n    \"partRevisionId\": \"a75ea68d-1520-7e89-765d-d3f48402b3e8\",\n    \"postProcessingIds\": [\n      3062,\n      7210\n    ],\n    \"processPricesId\": \"055e7a15-b947-b7ed-10c9-d4ab745bc860\",\n    \"quantity\": 5365,\n    \"units\": \"METRES\",\n    \"watertight\": false,\n    \"colorId\": 2828,\n    \"precisionId\": 9720,\n    \"infillId\": 5957,\n    \"pricePaid\": 3589.824137444152,\n    \"leadTimeId\": \"84df685c-6f0f-1634-cb38-9b5c01d2d8f1\"\n  },\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1946-11-10T02:19:17.486Z\",\n        \"id\": \"b9dad374-3562-5cdc-9506-538bc9a2cf1c\",\n        \"partSpecificationId\": \"e678d675-bd87-75c8-ae70-eb1ba4974596\",\n        \"updatedAt\": \"1987-05-05T15:58:59.838Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2009-02-18T18:33:29.447Z\",\n        \"id\": \"6902d66e-8d06-8216-232b-d6b294ff8c29\",\n        \"partSpecificationId\": \"105ce11d-5edf-1181-4202-a30f7a6592c5\",\n        \"updatedAt\": \"2022-04-06T02:45:32.680Z\"\n      }\n    ],\n    \"createdAt\": \"2005-03-05T22:39:13.570Z\",\n    \"id\": 3386,\n    \"lastUpdated\": \"2023-12-16T14:28:23.968Z\",\n    \"materialId\": 4199,\n    \"name\": \"string\",\n    \"orderId\": 7379,\n    \"partRevisionId\": \"bbf1f8ad-3167-be80-0969-87d6053f4882\",\n    \"postProcessingIds\": [\n      2135,\n      6752\n    ],\n    \"processPricesId\": \"f3d1425e-265a-1bec-8105-06565d72328a\",\n    \"quantity\": 7753,\n    \"units\": \"CENTIMETERS\",\n    \"watertight\": true,\n    \"colorId\": 9673,\n    \"precisionId\": 9061,\n    \"infillId\": 7622,\n    \"pricePaid\": 8078.030815469547,\n    \"leadTimeId\": \"8967dcd8-d0ac-b144-76fb-9a643895874c\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d03fedd-754e-4406-b31d-34290e43929f",
+          "name": "Get requisitions by order ID",
+          "request": {
+            "name": "Get requisitions by order ID",
+            "description": {
+              "content": "Retrieves all requisitions for the specified order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition",
+                "order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orderId",
+                  "value": "<long>",
+                  "description": "(Required) ID of the order to filter by"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb4a7ed5-981a-44ef-9c0b-acd5d899655b",
+              "name": "Successfully retrieved requisitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orderId",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2026-05-11T01:28:43.817Z\",\n        \"id\": \"41b7931a-bfbf-ce7e-5bbd-e90a6bbda487\",\n        \"partSpecificationId\": \"5e592889-2b05-3bd4-4bc8-b504f6bc73fa\",\n        \"updatedAt\": \"2016-01-17T19:19:49.384Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1979-07-11T03:49:08.499Z\",\n        \"id\": \"823bdc36-633d-c75d-6b04-3a51db761fb5\",\n        \"partSpecificationId\": \"ea1a09e7-1857-ea7e-2240-08c5b589961c\",\n        \"updatedAt\": \"1978-11-27T20:56:45.282Z\"\n      }\n    ],\n    \"createdAt\": \"1956-12-25T10:42:45.354Z\",\n    \"id\": 7814,\n    \"lastUpdated\": \"1959-09-07T12:00:41.453Z\",\n    \"materialId\": 3554,\n    \"name\": \"string\",\n    \"orderId\": 6819,\n    \"partRevisionId\": \"a75ea68d-1520-7e89-765d-d3f48402b3e8\",\n    \"postProcessingIds\": [\n      3062,\n      7210\n    ],\n    \"processPricesId\": \"055e7a15-b947-b7ed-10c9-d4ab745bc860\",\n    \"quantity\": 5365,\n    \"units\": \"METRES\",\n    \"watertight\": false,\n    \"colorId\": 2828,\n    \"precisionId\": 9720,\n    \"infillId\": 5957,\n    \"pricePaid\": 3589.824137444152,\n    \"leadTimeId\": \"84df685c-6f0f-1634-cb38-9b5c01d2d8f1\"\n  },\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1946-11-10T02:19:17.486Z\",\n        \"id\": \"b9dad374-3562-5cdc-9506-538bc9a2cf1c\",\n        \"partSpecificationId\": \"e678d675-bd87-75c8-ae70-eb1ba4974596\",\n        \"updatedAt\": \"1987-05-05T15:58:59.838Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2009-02-18T18:33:29.447Z\",\n        \"id\": \"6902d66e-8d06-8216-232b-d6b294ff8c29\",\n        \"partSpecificationId\": \"105ce11d-5edf-1181-4202-a30f7a6592c5\",\n        \"updatedAt\": \"2022-04-06T02:45:32.680Z\"\n      }\n    ],\n    \"createdAt\": \"2005-03-05T22:39:13.570Z\",\n    \"id\": 3386,\n    \"lastUpdated\": \"2023-12-16T14:28:23.968Z\",\n    \"materialId\": 4199,\n    \"name\": \"string\",\n    \"orderId\": 7379,\n    \"partRevisionId\": \"bbf1f8ad-3167-be80-0969-87d6053f4882\",\n    \"postProcessingIds\": [\n      2135,\n      6752\n    ],\n    \"processPricesId\": \"f3d1425e-265a-1bec-8105-06565d72328a\",\n    \"quantity\": 7753,\n    \"units\": \"CENTIMETERS\",\n    \"watertight\": true,\n    \"colorId\": 9673,\n    \"precisionId\": 9061,\n    \"infillId\": 7622,\n    \"pricePaid\": 8078.030815469547,\n    \"leadTimeId\": \"8967dcd8-d0ac-b144-76fb-9a643895874c\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3055d506-552d-46e8-b58a-3aff57fe7dab",
+          "name": "Get requisitions by operation",
+          "request": {
+            "name": "Get requisitions by operation",
+            "description": {
+              "content": "Retrieves all requisitions with the specified operation",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition",
+                "operation",
+                ":operationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "archived",
+                  "value": "<boolean>",
+                  "description": "Include archived requisitions"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "operationId",
+                  "description": "(Required) UUID of the operation to filter by"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d2dd6fd6-0a53-46ed-b582-95258ec2b435",
+              "name": "Successfully retrieved requisitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "operation",
+                    ":operationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "archived",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "operationId",
+                      "description": "(Required) UUID of the operation to filter by"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2026-05-11T01:28:43.817Z\",\n        \"id\": \"41b7931a-bfbf-ce7e-5bbd-e90a6bbda487\",\n        \"partSpecificationId\": \"5e592889-2b05-3bd4-4bc8-b504f6bc73fa\",\n        \"updatedAt\": \"2016-01-17T19:19:49.384Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1979-07-11T03:49:08.499Z\",\n        \"id\": \"823bdc36-633d-c75d-6b04-3a51db761fb5\",\n        \"partSpecificationId\": \"ea1a09e7-1857-ea7e-2240-08c5b589961c\",\n        \"updatedAt\": \"1978-11-27T20:56:45.282Z\"\n      }\n    ],\n    \"createdAt\": \"1956-12-25T10:42:45.354Z\",\n    \"id\": 7814,\n    \"lastUpdated\": \"1959-09-07T12:00:41.453Z\",\n    \"materialId\": 3554,\n    \"name\": \"string\",\n    \"orderId\": 6819,\n    \"partRevisionId\": \"a75ea68d-1520-7e89-765d-d3f48402b3e8\",\n    \"postProcessingIds\": [\n      3062,\n      7210\n    ],\n    \"processPricesId\": \"055e7a15-b947-b7ed-10c9-d4ab745bc860\",\n    \"quantity\": 5365,\n    \"units\": \"METRES\",\n    \"watertight\": false,\n    \"colorId\": 2828,\n    \"precisionId\": 9720,\n    \"infillId\": 5957,\n    \"pricePaid\": 3589.824137444152,\n    \"leadTimeId\": \"84df685c-6f0f-1634-cb38-9b5c01d2d8f1\"\n  },\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1946-11-10T02:19:17.486Z\",\n        \"id\": \"b9dad374-3562-5cdc-9506-538bc9a2cf1c\",\n        \"partSpecificationId\": \"e678d675-bd87-75c8-ae70-eb1ba4974596\",\n        \"updatedAt\": \"1987-05-05T15:58:59.838Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2009-02-18T18:33:29.447Z\",\n        \"id\": \"6902d66e-8d06-8216-232b-d6b294ff8c29\",\n        \"partSpecificationId\": \"105ce11d-5edf-1181-4202-a30f7a6592c5\",\n        \"updatedAt\": \"2022-04-06T02:45:32.680Z\"\n      }\n    ],\n    \"createdAt\": \"2005-03-05T22:39:13.570Z\",\n    \"id\": 3386,\n    \"lastUpdated\": \"2023-12-16T14:28:23.968Z\",\n    \"materialId\": 4199,\n    \"name\": \"string\",\n    \"orderId\": 7379,\n    \"partRevisionId\": \"bbf1f8ad-3167-be80-0969-87d6053f4882\",\n    \"postProcessingIds\": [\n      2135,\n      6752\n    ],\n    \"processPricesId\": \"f3d1425e-265a-1bec-8105-06565d72328a\",\n    \"quantity\": 7753,\n    \"units\": \"CENTIMETERS\",\n    \"watertight\": true,\n    \"colorId\": 9673,\n    \"precisionId\": 9061,\n    \"infillId\": 7622,\n    \"pricePaid\": 8078.030815469547,\n    \"leadTimeId\": \"8967dcd8-d0ac-b144-76fb-9a643895874c\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "002334cb-0383-448d-9a8e-e233aacfca33",
+          "name": "Get batch transitions for parts",
+          "request": {
+            "name": "Get batch transitions for parts",
+            "description": {
+              "content": "Retrieves all batch transitions for the specified part IDs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition",
+                "batch-transitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "requisitionIds",
+                  "value": "<long>",
+                  "description": "(Required) List of part IDs to get transitions for"
+                },
+                {
+                  "disabled": false,
+                  "key": "requisitionIds",
+                  "value": "<long>",
+                  "description": "(Required) List of part IDs to get transitions for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48654d63-f28b-4fb5-9dd9-c3956c7f6b25",
+              "name": "Successfully retrieved batch transitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "batch-transitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requisitionIds",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"string\",\n    \"id\": \"ebd6d7d4-f006-5061-243f-fd6fd483a6d4\",\n    \"requisitionId\": 3981,\n    \"workOrderId\": \"7e5e54a8-a1a4-1596-58ec-83e5fae5f542\",\n    \"fromOperationId\": \"f8c79699-31a9-cdbd-9b17-87d8b9d2f09a\",\n    \"fromOperationName\": \"string\",\n    \"fromStepId\": \"5f5a4d43-8e97-d727-de7c-87e5538ee440\",\n    \"fromStepBuildId\": \"string\",\n    \"fromStepPrefix\": \"string\",\n    \"batchSize\": 8471,\n    \"createdAt\": \"2017-04-11T08:57:15.143Z\",\n    \"updateDt\": \"1993-11-26T08:27:01.969Z\",\n    \"fromStatusId\": \"52ca3379-022c-f897-7ec7-1fd2be6a05df\",\n    \"fromStatusName\": \"string\"\n  },\n  {\n    \"type\": \"string\",\n    \"id\": \"fe32ce33-7e7d-5ea1-ce85-96e96ccd96fe\",\n    \"requisitionId\": 5949,\n    \"workOrderId\": \"7c2f314c-46ae-b672-7b20-1d740605f828\",\n    \"fromOperationId\": \"ea92c53f-a66e-a995-3f74-afecc44d43bc\",\n    \"fromOperationName\": \"string\",\n    \"fromStepId\": \"ee069425-3287-d54f-10f1-5e3d7e0b4430\",\n    \"fromStepBuildId\": \"string\",\n    \"fromStepPrefix\": \"string\",\n    \"batchSize\": 339,\n    \"createdAt\": \"2007-05-31T05:21:49.325Z\",\n    \"updateDt\": \"1955-08-02T13:41:57.189Z\",\n    \"fromStatusId\": \"92a21020-fe45-3a34-263f-65ee7b610747\",\n    \"fromStatusName\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1d0ad8d-dc78-4ad0-bd18-b79856323969",
+          "name": "Get backlogged requisitions",
+          "request": {
+            "name": "Get backlogged requisitions",
+            "description": {
+              "content": "Retrieves all requisitions in the operator's backlog",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "requisition",
+                "backlog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e3d1355-295e-40b5-9a10-afdda2b803a1",
+              "name": "Successfully retrieved backlogged requisitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "backlog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2026-05-11T01:28:43.817Z\",\n        \"id\": \"41b7931a-bfbf-ce7e-5bbd-e90a6bbda487\",\n        \"partSpecificationId\": \"5e592889-2b05-3bd4-4bc8-b504f6bc73fa\",\n        \"updatedAt\": \"2016-01-17T19:19:49.384Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1979-07-11T03:49:08.499Z\",\n        \"id\": \"823bdc36-633d-c75d-6b04-3a51db761fb5\",\n        \"partSpecificationId\": \"ea1a09e7-1857-ea7e-2240-08c5b589961c\",\n        \"updatedAt\": \"1978-11-27T20:56:45.282Z\"\n      }\n    ],\n    \"createdAt\": \"1956-12-25T10:42:45.354Z\",\n    \"id\": 7814,\n    \"lastUpdated\": \"1959-09-07T12:00:41.453Z\",\n    \"materialId\": 3554,\n    \"name\": \"string\",\n    \"orderId\": 6819,\n    \"partRevisionId\": \"a75ea68d-1520-7e89-765d-d3f48402b3e8\",\n    \"postProcessingIds\": [\n      3062,\n      7210\n    ],\n    \"processPricesId\": \"055e7a15-b947-b7ed-10c9-d4ab745bc860\",\n    \"quantity\": 5365,\n    \"units\": \"METRES\",\n    \"watertight\": false,\n    \"colorId\": 2828,\n    \"precisionId\": 9720,\n    \"infillId\": 5957,\n    \"pricePaid\": 3589.824137444152,\n    \"leadTimeId\": \"84df685c-6f0f-1634-cb38-9b5c01d2d8f1\"\n  },\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1946-11-10T02:19:17.486Z\",\n        \"id\": \"b9dad374-3562-5cdc-9506-538bc9a2cf1c\",\n        \"partSpecificationId\": \"e678d675-bd87-75c8-ae70-eb1ba4974596\",\n        \"updatedAt\": \"1987-05-05T15:58:59.838Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2009-02-18T18:33:29.447Z\",\n        \"id\": \"6902d66e-8d06-8216-232b-d6b294ff8c29\",\n        \"partSpecificationId\": \"105ce11d-5edf-1181-4202-a30f7a6592c5\",\n        \"updatedAt\": \"2022-04-06T02:45:32.680Z\"\n      }\n    ],\n    \"createdAt\": \"2005-03-05T22:39:13.570Z\",\n    \"id\": 3386,\n    \"lastUpdated\": \"2023-12-16T14:28:23.968Z\",\n    \"materialId\": 4199,\n    \"name\": \"string\",\n    \"orderId\": 7379,\n    \"partRevisionId\": \"bbf1f8ad-3167-be80-0969-87d6053f4882\",\n    \"postProcessingIds\": [\n      2135,\n      6752\n    ],\n    \"processPricesId\": \"f3d1425e-265a-1bec-8105-06565d72328a\",\n    \"quantity\": 7753,\n    \"units\": \"CENTIMETERS\",\n    \"watertight\": true,\n    \"colorId\": 9673,\n    \"precisionId\": 9061,\n    \"infillId\": 7622,\n    \"pricePaid\": 8078.030815469547,\n    \"leadTimeId\": \"8967dcd8-d0ac-b144-76fb-9a643895874c\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ac2e1ff-4e07-463e-84b1-eb291a65a023",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "requisition",
+                    "backlog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4d0bf803-9ee4-4ba7-95b4-13fc79650486",
+    "name": "Phasio Activity Internal Manufacturer Requisition Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

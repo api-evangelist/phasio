@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Precision Prices Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Precision Prices Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create precision prices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/precision-prices/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new precision price entry for manufacturing operations"
+        },
+        {
+          "info": {
+            "name": "Select default precision price",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/precision-prices/:precisionPricesId/select",
+            "params": [
+              {
+                "name": "precisionPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the precision prices to set as default"
+              }
+            ]
+          },
+          "docs": "Sets a precision price entry as the default option"
+        },
+        {
+          "info": {
+            "name": "Update precision prices",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/precision-prices/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing precision price entry"
+        },
+        {
+          "info": {
+            "name": "Get precision prices by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/precision-prices/:precisionPricesId",
+            "params": [
+              {
+                "name": "precisionPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the precision prices to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific precision price entry by its unique identifier"
+        },
+        {
+          "info": {
+            "name": "Delete precision prices",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/precision-prices/:precisionPricesId/delete",
+            "params": [
+              {
+                "name": "precisionPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the precision prices to delete"
+              }
+            ]
+          },
+          "docs": "Marks a precision price entry as deleted (soft delete)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

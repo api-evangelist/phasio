@@ -1,0 +1,1390 @@
+{
+  "item": [
+    {
+      "id": "417040e2-a2a1-4264-80c8-ebe2535ce515",
+      "name": "Internal Operator Controller",
+      "description": {
+        "content": "Endpoints for managing operator configuration and settings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4d27d75f-4384-49db-b809-aaf7e85450da",
+          "name": "Get operator details",
+          "request": {
+            "name": "Get operator details",
+            "description": {
+              "content": "Retrieves the complete details of the current operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "internal",
+                "v1",
+                "operator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1692751c-509c-48fe-84b6-fc986aaf8b92",
+              "name": "Successfully retrieved operator details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"acceptedCurrencies\": [\n    \"CAD\",\n    \"ZAR\"\n  ],\n  \"country\": \"string\",\n  \"currency\": \"string\",\n  \"isAIEnabled\": true,\n  \"isAccountingEnabled\": false,\n  \"isInvoiceDownloadEnabled\": false,\n  \"isOrientationConstraintEnabled\": false,\n  \"isPayByInvoiceEnabled\": true,\n  \"isPayByPurchaseOrderEnabled\": true,\n  \"isTaxIDEnabled\": false,\n  \"loginMethod\": \"ANY\",\n  \"loginStage\": \"BEFORE_PRICE\",\n  \"name\": \"string\",\n  \"paymentProvider\": \"string\",\n  \"permittedDomains\": [\n    \"string\"\n  ],\n  \"storefrontTheme\": \"SYSTEM\",\n  \"subscribedModules\": [\n    \"string\"\n  ],\n  \"landingPageMessage\": \"string\",\n  \"videoLink\": \"string\",\n  \"termsOfServiceLink\": \"string\",\n  \"maximumFileSize\": 1172\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dac3bd6b-d2e8-48f5-9aa3-62d4bac487cd",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aa6880fa-1d8f-4cf9-85bf-9c35b316ec1b",
+              "name": "Operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "19f17c6b-6adb-43c6-8964-9705385b30de",
+              "name": "Operator context not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ff74eb1-a027-4f9c-b1d7-eb0868583b68",
+          "name": "Initialize operator",
+          "request": {
+            "name": "Initialize operator",
+            "description": {
+              "content": "Sets up the initial configuration for an operator account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "internal",
+                "v1",
+                "operator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"organizationName\": \"<string>\",\n  \"userRequest\": {\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9975a787-8804-4acc-bdd8-5bb255e40575",
+              "name": "Operator successfully initialized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"organizationName\": \"<string>\",\n  \"userRequest\": {\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"password\": \"string\",\n    \"phoneNumber\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "5612",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "109cf138-c688-4eb6-a9a6-1ffbc4e89106",
+              "name": "Invalid initialization data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"organizationName\": \"<string>\",\n  \"userRequest\": {\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"password\": \"string\",\n    \"phoneNumber\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "262f0966-0587-4856-bf5f-4e85b1c544ef",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"organizationName\": \"<string>\",\n  \"userRequest\": {\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"password\": \"string\",\n    \"phoneNumber\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc83f6fe-09dc-4a5b-9dce-ea1830cc0601",
+              "name": "Operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"organizationName\": \"<string>\",\n  \"userRequest\": {\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"password\": \"string\",\n    \"phoneNumber\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf199b76-ac3e-4eb6-8f66-b35676fe5fca",
+          "name": "Update subscription status",
+          "request": {
+            "name": "Update subscription status",
+            "description": {
+              "content": "Updates the subscription status for an operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "internal",
+                "v1",
+                "operator",
+                "subscription-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "89930100-97c1-4791-a198-1dafaf7e4ee8",
+              "name": "Subscription status updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "subscription-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a8b0e16f-8f9e-4f9a-9abc-a360ea59e4a4",
+              "name": "Invalid status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "subscription-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3badbc9-983a-40d6-9f51-58373ad01b01",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "subscription-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "785dc8e1-92e4-4fc2-b6f6-8ef13622be42",
+          "name": "Sync operator modules",
+          "request": {
+            "name": "Sync operator modules",
+            "description": {
+              "content": "Updates the subscribed feature modules for an operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "internal",
+                "v1",
+                "operator",
+                "id",
+                "modules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d31eb14-e2b0-4cd6-9fdf-ca2252e67657",
+              "name": "Modules successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "id",
+                    "modules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dffd7e7c-f899-4c97-a56c-41c2763975db",
+              "name": "Invalid module configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "id",
+                    "modules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7e4d2f0d-1e94-49fd-948b-699bf02dfd68",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "id",
+                    "modules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3fdf9b75-2a6c-41b2-a550-c14d548a5d51",
+              "name": "Operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "id",
+                    "modules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba369d0b-783b-4c6a-9f45-586ba2c2db43",
+          "name": "Get available manufacturing processes",
+          "request": {
+            "name": "Get available manufacturing processes",
+            "description": {
+              "content": "Retrieves all manufacturing processes available to the customer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "internal",
+                "v1",
+                "operator",
+                "processes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc128922-4cc8-4404-b40d-6f09706f522c",
+              "name": "Successfully retrieved manufacturing processes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"bulkPricingQuantities\": [\n      3967,\n      3360\n    ],\n    \"id\": \"4716b4d2-d0b1-1f37-623e-c2279fa64e6d\",\n    \"infills\": [\n      {\n        \"default\": false,\n        \"id\": 7009,\n        \"name\": \"string\",\n        \"value\": 3357.381361443831\n      },\n      {\n        \"default\": true,\n        \"id\": 8374,\n        \"name\": \"string\",\n        \"value\": 7157.410857340328\n      }\n    ],\n    \"isDefault\": false,\n    \"isInternal\": false,\n    \"materials\": [\n      {\n        \"colorDtos\": [\n          {\n            \"code\": \"string\",\n            \"id\": 4492,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 5734,\n            \"name\": \"string\"\n          }\n        ],\n        \"id\": 1674,\n        \"isDefault\": false,\n        \"name\": \"string\",\n        \"quoteOnly\": true,\n        \"datasheetSummary\": \"string\",\n        \"wallThicknessWarning\": 1790.3839882567352,\n        \"wallThicknessLimit\": 1307.214841499651\n      },\n      {\n        \"colorDtos\": [\n          {\n            \"code\": \"string\",\n            \"id\": 8761,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 5162,\n            \"name\": \"string\"\n          }\n        ],\n        \"id\": 7851,\n        \"isDefault\": false,\n        \"name\": \"string\",\n        \"quoteOnly\": false,\n        \"datasheetSummary\": \"string\",\n        \"wallThicknessWarning\": 9175.621349308778,\n        \"wallThicknessLimit\": 2647.6144221823506\n      }\n    ],\n    \"postProcessings\": [\n      {\n        \"colors\": [\n          {\n            \"code\": \"string\",\n            \"id\": 2089,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 2058,\n            \"name\": \"string\"\n          }\n        ],\n        \"incompatibleMaterialIds\": [\n          8722,\n          3244\n        ],\n        \"isDefault\": false,\n        \"name\": \"string\",\n        \"purchasable\": false,\n        \"id\": 3724,\n        \"mutuallyExclusiveGroup\": \"string\"\n      },\n      {\n        \"colors\": [\n          {\n            \"code\": \"string\",\n            \"id\": 8259,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 6884,\n            \"name\": \"string\"\n          }\n        ],\n        \"incompatibleMaterialIds\": [\n          1974,\n          1226\n        ],\n        \"isDefault\": true,\n        \"name\": \"string\",\n        \"purchasable\": false,\n        \"id\": 3244,\n        \"mutuallyExclusiveGroup\": \"string\"\n      }\n    ],\n    \"precisions\": [\n      {\n        \"id\": 4298,\n        \"isActive\": false,\n        \"name\": \"string\",\n        \"price\": 2930.837605302752\n      },\n      {\n        \"id\": 5170,\n        \"isActive\": false,\n        \"name\": \"string\",\n        \"price\": 108.91668031776436\n      }\n    ],\n    \"technology\": \"string\",\n    \"description\": \"string\"\n  },\n  {\n    \"bulkPricingQuantities\": [\n      2585,\n      9660\n    ],\n    \"id\": \"263496f2-4067-7594-2c1a-e8f82e665fff\",\n    \"infills\": [\n      {\n        \"default\": true,\n        \"id\": 7638,\n        \"name\": \"string\",\n        \"value\": 5865.418034381156\n      },\n      {\n        \"default\": false,\n        \"id\": 1357,\n        \"name\": \"string\",\n        \"value\": 6184.826680236798\n      }\n    ],\n    \"isDefault\": true,\n    \"isInternal\": false,\n    \"materials\": [\n      {\n        \"colorDtos\": [\n          {\n            \"code\": \"string\",\n            \"id\": 4284,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 7887,\n            \"name\": \"string\"\n          }\n        ],\n        \"id\": 8846,\n        \"isDefault\": false,\n        \"name\": \"string\",\n        \"quoteOnly\": true,\n        \"datasheetSummary\": \"string\",\n        \"wallThicknessWarning\": 9709.387666201586,\n        \"wallThicknessLimit\": 8488.370361661995\n      },\n      {\n        \"colorDtos\": [\n          {\n            \"code\": \"string\",\n            \"id\": 7403,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 2509,\n            \"name\": \"string\"\n          }\n        ],\n        \"id\": 6021,\n        \"isDefault\": true,\n        \"name\": \"string\",\n        \"quoteOnly\": true,\n        \"datasheetSummary\": \"string\",\n        \"wallThicknessWarning\": 5320.239084184899,\n        \"wallThicknessLimit\": 5072.61815569283\n      }\n    ],\n    \"postProcessings\": [\n      {\n        \"colors\": [\n          {\n            \"code\": \"string\",\n            \"id\": 8588,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 3681,\n            \"name\": \"string\"\n          }\n        ],\n        \"incompatibleMaterialIds\": [\n          8373,\n          9179\n        ],\n        \"isDefault\": true,\n        \"name\": \"string\",\n        \"purchasable\": false,\n        \"id\": 138,\n        \"mutuallyExclusiveGroup\": \"string\"\n      },\n      {\n        \"colors\": [\n          {\n            \"code\": \"string\",\n            \"id\": 7692,\n            \"name\": \"string\"\n          },\n          {\n            \"code\": \"string\",\n            \"id\": 8655,\n            \"name\": \"string\"\n          }\n        ],\n        \"incompatibleMaterialIds\": [\n          5257,\n          5841\n        ],\n        \"isDefault\": false,\n        \"name\": \"string\",\n        \"purchasable\": true,\n        \"id\": 3747,\n        \"mutuallyExclusiveGroup\": \"string\"\n      }\n    ],\n    \"precisions\": [\n      {\n        \"id\": 4268,\n        \"isActive\": false,\n        \"name\": \"string\",\n        \"price\": 2944.5295677300487\n      },\n      {\n        \"id\": 4625,\n        \"isActive\": false,\n        \"name\": \"string\",\n        \"price\": 4711.976002743578\n      }\n    ],\n    \"technology\": \"string\",\n    \"description\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "079eb48a-4fae-4df7-b34b-1dcb67299117",
+              "name": "Unauthorized - missing customer or operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d6609b6-2752-415a-b80f-bb99ca5dfc4a",
+          "name": "Get operator email credentials",
+          "request": {
+            "name": "Get operator email credentials",
+            "description": {
+              "content": "Retrieves the SMTP email server credentials for the current operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "internal",
+                "v1",
+                "operator",
+                "email-credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f39495c-994b-4e4e-8094-9bc1fd3ceab5",
+              "name": "Successfully retrieved email credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "email-credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fromAddress\": \"string\",\n  \"id\": \"c9173eae-5966-2aab-ca40-b85be918c58f\",\n  \"smtpHost\": \"string\",\n  \"smtpPassword\": \"string\",\n  \"smtpPort\": 9674,\n  \"smtpUsername\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fd7140b-b8c3-4f72-882a-5863154e9ba9",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "email-credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4346ead5-031a-4cd7-9d56-4e0fadc47281",
+              "name": "Email credentials not found for the operator",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "email-credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc1fb8ee-0fcd-4334-8c57-5313b6c82be2",
+          "name": "Get operator domain from address",
+          "request": {
+            "name": "Get operator domain from address",
+            "description": {
+              "content": "Retrieves the verified SendGrid domain authentication from address for the current operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "internal",
+                "v1",
+                "operator",
+                "domain-from-address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba4a9c88-152a-4afe-8693-26bd3950bb92",
+              "name": "Successfully retrieved verified from address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "domain-from-address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fromAddress\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d04d5238-7b0d-43af-838b-4d8615605953",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "domain-from-address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d27bd9b6-3091-4b7d-8770-d1353b71ab80",
+              "name": "No verified domain authentication found for the operator",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "operator",
+                    "domain-from-address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c7592eef-72ae-482d-8c85-b3c80bd026f7",
+    "name": "Phasio Activity Internal Internal Operator Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

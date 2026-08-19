@@ -1,0 +1,714 @@
+{
+  "item": [
+    {
+      "id": "d61febc3-3807-4300-a296-eaca4fd2abc8",
+      "name": "Manufacturer Kanban Column Controller",
+      "description": {
+        "content": "Endpoints for managing Kanban board columns for order processing workflow",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31597a70-7cff-43da-b769-fe03f94d082b",
+          "name": "Get Kanban columns",
+          "request": {
+            "name": "Get Kanban columns",
+            "description": {
+              "content": "Retrieves all Kanban columns for the current operator, optionally filtered by order status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "kanban-column"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orderStatus",
+                  "value": "<string>",
+                  "description": "Order status to filter Kanban columns by (optional)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4bdae223-6252-4cbd-8985-5f55f71c8a7d",
+              "name": "Kanban columns successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "kanban-column"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orderStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"automations\": [\n      {\n        \"createdAt\": \"2002-01-24T05:48:52.402Z\",\n        \"id\": \"17a7dc16-a8f2-3ead-e1c1-9d33386421ee\",\n        \"kanbanColumnId\": \"bff65b00-5929-618c-6a97-54e92e224161\",\n        \"type\": \"string\",\n        \"updatedAt\": \"1989-11-26T22:14:25.998Z\"\n      },\n      {\n        \"createdAt\": \"1992-02-27T06:31:25.482Z\",\n        \"id\": \"9d87321b-041d-f0e8-ba57-7587ad843742\",\n        \"kanbanColumnId\": \"9d85ce3a-ad6c-1237-6267-52bf0927e521\",\n        \"type\": \"string\",\n        \"updatedAt\": \"2003-06-07T01:15:41.519Z\"\n      }\n    ],\n    \"createdAt\": \"2005-08-03T10:19:08.547Z\",\n    \"id\": \"a383251f-841f-1b2d-ddb0-a638c761c85b\",\n    \"name\": \"string\",\n    \"orderStatus\": \"string\",\n    \"sequence\": 5498,\n    \"updatedAt\": \"1998-05-31T23:02:24.165Z\"\n  },\n  {\n    \"automations\": [\n      {\n        \"createdAt\": \"1951-05-20T03:20:16.515Z\",\n        \"id\": \"7b7f200e-cf51-4c6d-c55e-7b2166f323ea\",\n        \"kanbanColumnId\": \"da4b6f53-f719-d194-60b4-18ee19e05f32\",\n        \"type\": \"string\",\n        \"updatedAt\": \"1978-04-21T03:57:37.514Z\"\n      },\n      {\n        \"createdAt\": \"1950-07-18T17:05:37.359Z\",\n        \"id\": \"048d8b15-d637-bae3-52c7-da9ae24ec822\",\n        \"kanbanColumnId\": \"e2cf6387-690f-1fd0-ad85-db37541db4a7\",\n        \"type\": \"string\",\n        \"updatedAt\": \"1960-10-25T21:48:03.757Z\"\n      }\n    ],\n    \"createdAt\": \"1954-11-01T06:21:05.105Z\",\n    \"id\": \"c254dfcf-82df-6a55-b9e0-bf0d8acbd85a\",\n    \"name\": \"string\",\n    \"orderStatus\": \"string\",\n    \"sequence\": 6659,\n    \"updatedAt\": \"2018-08-03T01:58:09.776Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66506ac3-336f-4ec7-aaf4-d72eaf3e7f07",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "kanban-column"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orderStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1bf82979-9346-456b-9be9-78e398e2e5b0",
+          "name": "Create Kanban column",
+          "request": {
+            "name": "Create Kanban column",
+            "description": {
+              "content": "Creates a new Kanban column for the order processing workflow",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "kanban-column"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"automations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"orderStatus\": \"<string>\",\n  \"sequence\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7470520f-15c4-4039-99a3-3dabc490808e",
+              "name": "Kanban column successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "kanban-column"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"automations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"orderStatus\": \"<string>\",\n  \"sequence\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"automations\": [\n    {\n      \"createdAt\": \"1973-07-19T07:36:31.925Z\",\n      \"id\": \"ffe85530-9cf5-1fb3-6bb8-a6f38c6e11e2\",\n      \"kanbanColumnId\": \"793eb64b-523f-813f-c955-377822f00307\",\n      \"type\": \"string\",\n      \"updatedAt\": \"2003-06-01T02:43:49.557Z\"\n    },\n    {\n      \"createdAt\": \"1979-10-28T23:22:10.619Z\",\n      \"id\": \"cebc0707-af1a-a0d7-1029-820754acb2ab\",\n      \"kanbanColumnId\": \"5b08f1c2-a1c3-683a-52a5-f8aab40239f1\",\n      \"type\": \"string\",\n      \"updatedAt\": \"2018-03-25T23:12:04.056Z\"\n    }\n  ],\n  \"createdAt\": \"1991-09-14T17:42:11.613Z\",\n  \"id\": \"54f59cc2-44fc-667e-dd09-8457fcf97a2b\",\n  \"name\": \"string\",\n  \"orderStatus\": \"string\",\n  \"sequence\": 7951,\n  \"updatedAt\": \"1967-08-13T20:28:20.186Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6bf611ad-a14d-470e-8d16-4f6b0ebfffc4",
+              "name": "Invalid Kanban column data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "kanban-column"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"automations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"orderStatus\": \"<string>\",\n  \"sequence\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "948431b8-4ccb-4338-bb35-42d9ba178d7d",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "kanban-column"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"automations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"orderStatus\": \"<string>\",\n  \"sequence\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11a3f0a3-63bc-4c6b-bf36-38006a5a9705",
+          "name": "Delete Kanban column",
+          "request": {
+            "name": "Delete Kanban column",
+            "description": {
+              "content": "Deletes an existing Kanban column",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "kanban-column",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the Kanban column to delete"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e93c6c6-85bb-4549-a94e-f64217b26a2f",
+              "name": "Kanban column successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "kanban-column",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the Kanban column to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a203c6b5-255b-4324-9d97-5435b57475d1",
+              "name": "Invalid Kanban column ID or deletion failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "kanban-column",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the Kanban column to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9778f05-b92a-4b5e-95d5-cc416bf5a4fd",
+          "name": "Update Kanban column",
+          "request": {
+            "name": "Update Kanban column",
+            "description": {
+              "content": "Updates an existing Kanban column's properties",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "kanban-column",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the Kanban column to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"sequence\": \"<integer>\",\n  \"orderStatus\": \"<string>\",\n  \"automations\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5dc51ead-6daa-4525-b5ad-7587fbbdbf44",
+              "name": "Kanban column successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "kanban-column",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the Kanban column to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"sequence\": \"<integer>\",\n  \"orderStatus\": \"<string>\",\n  \"automations\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"automations\": [\n    {\n      \"createdAt\": \"1973-07-19T07:36:31.925Z\",\n      \"id\": \"ffe85530-9cf5-1fb3-6bb8-a6f38c6e11e2\",\n      \"kanbanColumnId\": \"793eb64b-523f-813f-c955-377822f00307\",\n      \"type\": \"string\",\n      \"updatedAt\": \"2003-06-01T02:43:49.557Z\"\n    },\n    {\n      \"createdAt\": \"1979-10-28T23:22:10.619Z\",\n      \"id\": \"cebc0707-af1a-a0d7-1029-820754acb2ab\",\n      \"kanbanColumnId\": \"5b08f1c2-a1c3-683a-52a5-f8aab40239f1\",\n      \"type\": \"string\",\n      \"updatedAt\": \"2018-03-25T23:12:04.056Z\"\n    }\n  ],\n  \"createdAt\": \"1991-09-14T17:42:11.613Z\",\n  \"id\": \"54f59cc2-44fc-667e-dd09-8457fcf97a2b\",\n  \"name\": \"string\",\n  \"orderStatus\": \"string\",\n  \"sequence\": 7951,\n  \"updatedAt\": \"1967-08-13T20:28:20.186Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b025e92-fcda-4726-a5e1-c57f84b0fa7c",
+              "name": "Invalid update data or Kanban column not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "kanban-column",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the Kanban column to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"sequence\": \"<integer>\",\n  \"orderStatus\": \"<string>\",\n  \"automations\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cd9dfab6-40c9-4a29-bfa6-88e101062b7c",
+    "name": "Phasio Activity Internal Manufacturer Kanban Column Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

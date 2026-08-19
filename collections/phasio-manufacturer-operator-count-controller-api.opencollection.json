@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Operator Count Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Operator Count Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update operator counter",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/count",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the current value of a specific counter type for the operator"
+        },
+        {
+          "info": {
+            "name": "Get operator counter by type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/operator/count/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Type of counter to retrieve (e.g., ORDER, PROJECT)"
+              }
+            ]
+          },
+          "docs": "Retrieves the current value of a specific counter type for the operator"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

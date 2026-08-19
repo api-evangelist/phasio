@@ -1,0 +1,3302 @@
+{
+  "item": [
+    {
+      "id": "9d676add-bc87-4a0d-bb2f-1cdb78af783a",
+      "name": "Customer Order Controller",
+      "description": {
+        "content": "Endpoints for managing customer manufacturing orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c96c1a83-e422-4250-aa43-305190f9cb83",
+          "name": "Upload purchase order PDF",
+          "request": {
+            "name": "Upload purchase order PDF",
+            "description": {
+              "content": "Uploads a PDF document as a purchase order for an order. DEPRECATED: Use the confirmPurchaseOrderPayment endpoint instead, which confirms payment and uploads the PDF in a single call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order",
+                ":orderId",
+                "purchase-order-pdf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"file\": \"<binary>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0468cc5d-d051-44cd-914a-04408e7a625e",
+              "name": "PDF successfully uploaded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "purchase-order-pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"file\": \"<binary>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6eb154dc-1a61-432d-821f-86790dd040a5",
+              "name": "Invalid order ID or upload failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "purchase-order-pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"file\": \"<binary>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6d8d530-4e23-4893-b52b-f6bd068aec09",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "purchase-order-pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"file\": \"<binary>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a6d2b60-4fd3-43e3-a691-e3d7185bac2a",
+          "name": "Get all orders",
+          "request": {
+            "name": "Get all orders",
+            "description": {
+              "content": "Retrieves all orders for the current customer organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3bc7e3a-0f94-41e8-8b84-9a348c485c34",
+              "name": "Successfully retrieved orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbe1020d-cf9c-4112-bc62-aeb3f268845a",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2dc77d82-d775-478e-b6ea-88b39925bc1f",
+          "name": "Create order",
+          "request": {
+            "name": "Create order",
+            "description": {
+              "content": "Creates a new manufacturing order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "threadId",
+                  "value": "<long>",
+                  "description": "(Required) Thread ID the order belongs to"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\"\n    },\n    {\n      \"assemblyId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\"\n    }\n  ],\n  \"ccCustomerIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"currency\": \"<string>\",\n  \"expenses\": [\n    {\n      \"costForOperator\": \"<number>\",\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"type\": \"<string>\",\n      \"unitPrice\": \"<number>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"costForOperator\": \"<number>\",\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"type\": \"<string>\",\n      \"unitPrice\": \"<number>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"markPaymentConfirmed\": \"<boolean>\",\n  \"requisitions\": [\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\",\n            \"key_1\": \"<number>\"\n          }\n        },\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\"\n          }\n        }\n      ],\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\",\n      \"units\": \"<string>\",\n      \"variables\": {\n        \"key_0\": \"<number>\",\n        \"key_1\": \"<number>\"\n      },\n      \"infillId\": \"<long>\",\n      \"precisionId\": \"<long>\",\n      \"colorId\": \"<long>\",\n      \"manualPrice\": \"<number>\",\n      \"leadTimeId\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\",\n            \"key_1\": \"<number>\",\n            \"key_2\": \"<number>\",\n            \"key_3\": \"<number>\"\n          }\n        },\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\"\n          }\n        }\n      ],\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\",\n      \"units\": \"<string>\",\n      \"variables\": {\n        \"key_0\": \"<number>\",\n        \"key_1\": \"<number>\"\n      },\n      \"infillId\": \"<long>\",\n      \"precisionId\": \"<long>\",\n      \"colorId\": \"<long>\",\n      \"manualPrice\": \"<number>\",\n      \"leadTimeId\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"discountId\": \"<long>\",\n  \"operatorNote\": \"<string>\",\n  \"isSilent\": \"<boolean>\",\n  \"affiliate\": \"<string>\",\n  \"paymentDueDate\": \"<dateTime>\",\n  \"discount\": {\n    \"code\": \"<string>\",\n    \"customerId\": \"<long>\",\n    \"discountType\": \"<string>\",\n    \"endTime\": \"<dateTime>\",\n    \"percentage\": \"<number>\",\n    \"startTime\": \"<dateTime>\"\n  },\n  \"shipment\": {\n    \"shippingMode\": \"<string>\",\n    \"id\": \"<long>\",\n    \"shippingMethodId\": \"<long>\",\n    \"rateId\": \"<string>\",\n    \"toAddressId\": \"<long>\",\n    \"status\": \"<string>\",\n    \"dispatchDate\": \"<date>\",\n    \"toAddressDto\": {\n      \"addressId\": \"<long>\",\n      \"isBillingAddress\": \"<boolean>\",\n      \"isShippingAddress\": \"<boolean>\",\n      \"street1\": \"<string>\",\n      \"street2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"countryAlpha2Code\": \"<string>\",\n      \"countryAlpha3Code\": \"<string>\",\n      \"jurisdictionIsoCode\": \"<string>\",\n      \"zip\": \"<string>\",\n      \"name\": \"<string>\",\n      \"company\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\",\n      \"residential\": \"<boolean>\",\n      \"taxId\": \"<string>\"\n    },\n    \"carrierAccountProvider\": \"<string>\",\n    \"carrierAccountServiceType\": \"<string>\",\n    \"carrierAccountServiceName\": \"<string>\",\n    \"estimatedRate\": \"<number>\",\n    \"finalRatePaid\": \"<number>\",\n    \"trackingDto\": {\n      \"id\": \"<long>\",\n      \"shipmentId\": \"<long>\",\n      \"trackingNumber\": \"<string>\"\n    }\n  },\n  \"billingAddressId\": \"<long>\",\n  \"customReference\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "efb9719f-ca64-4c9f-82ea-0a0b24a7ca87",
+              "name": "Order successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "threadId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"55899f5b-44ea-e250-d8b4-c37a9428b4d0\",\n      \"quantity\": 4932,\n      \"requisitionIntentId\": \"6498b3b7-4ae9-0c10-e9a5-9516b28ed079\"\n    },\n    {\n      \"assemblyId\": \"f9d4d28e-eda8-c224-2f72-ee5eb8c9e28b\",\n      \"quantity\": 2414,\n      \"requisitionIntentId\": \"13b7fbdc-2c7f-ca76-1187-54443f2a0d17\"\n    }\n  ],\n  \"ccCustomerIds\": [\n    \"<long>\"\n  ],\n  \"currency\": \"<string>\",\n  \"expenses\": [\n    {\n      \"costForOperator\": 3769.908099631912,\n      \"name\": \"string\",\n      \"quantity\": 8465.456207928028,\n      \"type\": \"string\",\n      \"unitPrice\": 3103.4690899906204,\n      \"description\": \"string\"\n    },\n    {\n      \"costForOperator\": 2626.61129198281,\n      \"name\": \"string\",\n      \"quantity\": 644.5742692970601,\n      \"type\": \"string\",\n      \"unitPrice\": 8020.909224560384,\n      \"description\": \"string\"\n    }\n  ],\n  \"markPaymentConfirmed\": \"<boolean>\",\n  \"requisitions\": [\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": 8185.641380788443,\n          \"cameraPositionY\": 713.4756507475881,\n          \"cameraPositionZ\": 2579.1359593936313,\n          \"cameraRotationX\": 4935.025116686409,\n          \"cameraRotationY\": 2518.3166885495134,\n          \"cameraRotationZ\": 686.9954757024399,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 6548.51208146369,\n          \"locationY\": 6662.235255914007,\n          \"locationZ\": 9327.258583006209,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": 9844.830942081571,\n          \"cameraPositionY\": 4806.100059832018,\n          \"cameraPositionZ\": 2795.699375818602,\n          \"cameraRotationX\": 5443.958094854474,\n          \"cameraRotationY\": 3050.4759098787436,\n          \"cameraRotationZ\": 884.2890925770541,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 1379.3547247935246,\n          \"locationY\": 4346.76588928067,\n          \"locationZ\": 2557.8143306275692,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": 6563,\n      \"partRevisionId\": \"b85900f4-94b8-dbd6-86c6-3e5acd0914cd\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": 6571,\n          \"variables\": {\n            \"key_0\": 970.2942540358616,\n            \"key_1\": 2810.660451225189\n          }\n        },\n        {\n          \"postProcessingId\": 877,\n          \"variables\": {\n            \"key_0\": 5832.159562389551,\n            \"key_1\": 5203.598132090238\n          }\n        }\n      ],\n      \"processPricesId\": \"c7d3cac3-befe-182f-f581-9f99c394d622\",\n      \"quantity\": 527,\n      \"requisitionIntentId\": \"cc661ce7-71fb-734c-32a2-c4510a079ee0\",\n      \"units\": \"MILLIMETERS\",\n      \"variables\": {\n        \"key_0\": 1010.9096077974167\n      },\n      \"infillId\": 7953,\n      \"precisionId\": 3367,\n      \"colorId\": 6725,\n      \"manualPrice\": 2014.4229487218902,\n      \"leadTimeId\": \"caa9d4f0-09fc-95b6-e76b-912a30c95d44\",\n      \"name\": \"string\"\n    },\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": 5958.734035598645,\n          \"cameraPositionY\": 9047.414631814294,\n          \"cameraPositionZ\": 3547.570807271817,\n          \"cameraRotationX\": 973.1961792976451,\n          \"cameraRotationY\": 5792.711808636411,\n          \"cameraRotationZ\": 3129.932710246669,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 3967.122250592877,\n          \"locationY\": 4630.997271862985,\n          \"locationZ\": 3903.120568937393,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": 5210.784526662958,\n          \"cameraPositionY\": 6773.50972597484,\n          \"cameraPositionZ\": 1193.2719694602479,\n          \"cameraRotationX\": 1746.7467049135755,\n          \"cameraRotationY\": 7781.102709791689,\n          \"cameraRotationZ\": 754.1075533340469,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 9710.780157665098,\n          \"locationY\": 4545.893120211146,\n          \"locationZ\": 267.11796399344735,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": 3941,\n      \"partRevisionId\": \"ce092ac1-3b4a-a16a-a56c-8291d7b5ff5f\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": 431,\n          \"variables\": {\n            \"key_0\": 1529.9269941589444,\n            \"key_1\": 7778.937459308474,\n            \"key_2\": 9715.021144635195\n          }\n        },\n        {\n          \"postProcessingId\": 1746,\n          \"variables\": {\n            \"key_0\": 4506.978067495346,\n            \"key_1\": 1450.3737615170187\n          }\n        }\n      ],\n      \"processPricesId\": \"26dac36e-52f0-65eb-5692-ff390304dd23\",\n      \"quantity\": 5049,\n      \"requisitionIntentId\": \"9bd908ee-73fc-fc4b-9603-8d7c7ef53bf4\",\n      \"units\": \"INCHES\",\n      \"variables\": {\n        \"key_0\": 8591.033013834536\n      },\n      \"infillId\": 420,\n      \"precisionId\": 5419,\n      \"colorId\": 1873,\n      \"manualPrice\": 8963.279909895187,\n      \"leadTimeId\": \"2f47655b-c2be-8d68-bcd4-f1ff9399460e\",\n      \"name\": \"string\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"discountId\": \"<long>\",\n  \"operatorNote\": \"<string>\",\n  \"isSilent\": \"<boolean>\",\n  \"affiliate\": \"<string>\",\n  \"paymentDueDate\": \"<dateTime>\",\n  \"discount\": {\n    \"code\": \"string\",\n    \"customerId\": 3053,\n    \"discountType\": \"string\",\n    \"endTime\": \"2017-09-23T15:56:23.526Z\",\n    \"percentage\": 9156.955863676092,\n    \"startTime\": \"1985-10-11T00:55:27.885Z\"\n  },\n  \"shipment\": {\n    \"shippingMode\": \"SELF_COLLECTION\",\n    \"id\": 1826,\n    \"shippingMethodId\": 779,\n    \"rateId\": \"string\",\n    \"toAddressId\": 9583,\n    \"status\": \"string\",\n    \"dispatchDate\": \"1994-10-09\",\n    \"toAddressDto\": {\n      \"addressId\": 7726,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": false,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    \"carrierAccountProvider\": \"string\",\n    \"carrierAccountServiceType\": \"string\",\n    \"carrierAccountServiceName\": \"string\",\n    \"estimatedRate\": 1995.6312829753208,\n    \"finalRatePaid\": 6934.040447346004,\n    \"trackingDto\": {\n      \"id\": 2645,\n      \"shipmentId\": 2210,\n      \"trackingNumber\": \"string\"\n    }\n  },\n  \"billingAddressId\": \"<long>\",\n  \"customReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requisitions\": {\n    \"key_0\": {\n      \"constraints\": [\n        {\n          \"constraintType\": \"string\",\n          \"createdAt\": \"2000-02-10T04:19:17.491Z\",\n          \"id\": \"da03d122-10e5-d2f6-cac8-3145161c4bcf\",\n          \"partSpecificationId\": \"b8f3c55b-bb84-2a88-79d8-7ccbf4b9a3df\",\n          \"updatedAt\": \"2003-03-27T07:04:22.193Z\"\n        },\n        {\n          \"constraintType\": \"string\",\n          \"createdAt\": \"1954-10-07T08:48:00.153Z\",\n          \"id\": \"37062e49-2401-de54-d9c1-52e9b8397c05\",\n          \"partSpecificationId\": \"efdc764f-4f4f-427d-01bb-3aa1347621c6\",\n          \"updatedAt\": \"2020-07-05T08:57:58.813Z\"\n        }\n      ],\n      \"createdAt\": \"1987-10-27T03:00:14.728Z\",\n      \"id\": 4773,\n      \"lastUpdated\": \"1971-05-24T19:43:33.677Z\",\n      \"materialId\": 8401,\n      \"name\": \"string\",\n      \"orderId\": 6099,\n      \"partRevisionId\": \"0fa9d2cd-eb0b-1435-23c2-9f5c83a1e424\",\n      \"postProcessingIds\": [\n        8794,\n        2512\n      ],\n      \"processPricesId\": \"14f63c93-b223-1d78-c1f5-8e03f2eb3536\",\n      \"quantity\": 9925,\n      \"units\": \"METRES\",\n      \"watertight\": true,\n      \"colorId\": 3490,\n      \"precisionId\": 9596,\n      \"infillId\": 8289,\n      \"pricePaid\": 5869.988342025657,\n      \"leadTimeId\": \"99a88c2b-1cd9-e7b8-1d81-4790ef0365b9\"\n    }\n  },\n  \"order\": {\n    \"assemblyRequisitions\": [\n      {\n        \"assemblyId\": \"22e6389d-004e-142f-d030-d90e69e1577e\",\n        \"assemblyName\": \"string\",\n        \"assemblyPricePaid\": 8630.275749404327,\n        \"id\": 5020,\n        \"partCount\": 3334,\n        \"quantity\": 8217,\n        \"totalPricePaid\": 9201.651610116774,\n        \"createdAt\": \"1999-10-08T11:33:07.988Z\"\n      },\n      {\n        \"assemblyId\": \"52fa1d26-b80b-7389-5abd-96b7fecc9f00\",\n        \"assemblyName\": \"string\",\n        \"assemblyPricePaid\": 3802.8000863869215,\n        \"id\": 9366,\n        \"partCount\": 2186,\n        \"quantity\": 9232,\n        \"totalPricePaid\": 764.3896399102945,\n        \"createdAt\": \"2023-05-17T06:13:02.646Z\"\n      }\n    ],\n    \"awaitingStatus\": \"string\",\n    \"bypassPurchasabilityChecks\": true,\n    \"createdAt\": \"2011-09-27T11:54:33.831Z\",\n    \"currency\": \"string\",\n    \"expenses\": [\n      {\n        \"expenseId\": 1570,\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"expenseId\": 3884,\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"description\": \"string\"\n      }\n    ],\n    \"id\": 5659,\n    \"isArchived\": true,\n    \"isInProject\": true,\n    \"isVoided\": true,\n    \"lastUpdated\": \"1986-09-28T16:52:03.545Z\",\n    \"paymentStatus\": \"string\",\n    \"requisitionIds\": [\n      4909,\n      1200\n    ],\n    \"source\": \"string\",\n    \"subscribedCustomerIds\": [\n      8077,\n      2506\n    ],\n    \"threadId\": 2681,\n    \"quoteNumber\": \"string\",\n    \"orderNumber\": \"string\",\n    \"price\": 2656.1557846945648,\n    \"operatorNote\": \"string\",\n    \"accountingSystemEstimateId\": \"string\",\n    \"accountingSystemEstimateNumber\": \"string\",\n    \"accountingSystemConfirmationId\": \"string\",\n    \"accountingSystemConfirmationNumber\": \"string\",\n    \"accountingSystemInvoiceId\": \"string\",\n    \"accountingSystemInvoiceNumber\": \"string\",\n    \"shipment\": {\n      \"shippingMode\": \"FIXED_PRICE\",\n      \"id\": 7041,\n      \"shippingMethodId\": 3779,\n      \"rateId\": \"string\",\n      \"toAddressId\": 7109,\n      \"status\": \"string\",\n      \"dispatchDate\": \"1954-01-21\",\n      \"toAddressDto\": {\n        \"addressId\": 8630,\n        \"isBillingAddress\": false,\n        \"isShippingAddress\": false,\n        \"street1\": \"string\",\n        \"street2\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"country\": \"string\",\n        \"countryAlpha2Code\": \"string\",\n        \"countryAlpha3Code\": \"string\",\n        \"jurisdictionIsoCode\": \"string\",\n        \"zip\": \"string\",\n        \"name\": \"string\",\n        \"company\": \"string\",\n        \"phone\": \"string\",\n        \"email\": \"string\",\n        \"residential\": true,\n        \"taxId\": \"string\"\n      },\n      \"carrierAccountProvider\": \"string\",\n      \"carrierAccountServiceType\": \"string\",\n      \"carrierAccountServiceName\": \"string\",\n      \"estimatedRate\": 8104.5275800546315,\n      \"finalRatePaid\": 5819.625393593331,\n      \"trackingDto\": {\n        \"id\": 1937,\n        \"shipmentId\": 4280,\n        \"trackingNumber\": \"string\"\n      }\n    },\n    \"discount\": {\n      \"discountId\": 4994,\n      \"discountType\": \"string\",\n      \"endTime\": \"1987-02-01T05:09:24.195Z\",\n      \"percentage\": 9945.279553798,\n      \"startTime\": \"2023-06-19T03:02:28.378Z\",\n      \"code\": \"string\"\n    },\n    \"kanbanColumn\": {\n      \"automations\": [\n        {\n          \"createdAt\": \"1960-09-12T05:14:41.424Z\",\n          \"id\": \"b4f3fedb-483c-e661-a117-101f9a2a6472\",\n          \"kanbanColumnId\": \"5e723be7-60ea-f1c4-8c99-ae9d1790ea7c\",\n          \"type\": \"string\",\n          \"updatedAt\": \"1947-01-03T19:05:34.945Z\"\n        },\n        {\n          \"createdAt\": \"1987-04-07T12:05:22.751Z\",\n          \"id\": \"4d7ac76a-9a6a-bc0f-d859-8b1e4596e79a\",\n          \"kanbanColumnId\": \"3094a19f-e162-04dc-87b5-c30d4708159f\",\n          \"type\": \"string\",\n          \"updatedAt\": \"1975-12-27T03:24:50.417Z\"\n        }\n      ],\n      \"createdAt\": \"1949-10-13T07:35:17.564Z\",\n      \"id\": \"7986b516-4e13-2765-318a-c9a98f1e0b9a\",\n      \"name\": \"string\",\n      \"orderStatus\": \"string\",\n      \"sequence\": 8203,\n      \"updatedAt\": \"1987-06-27T04:40:19.455Z\"\n    },\n    \"tax\": {\n      \"components\": [\n        {\n          \"amount\": 3062.211319836897,\n          \"id\": \"929706ce-35a0-f6e2-9b1d-950b1563761a\",\n          \"localAmount\": 4749.235451273252,\n          \"longName\": \"string\",\n          \"percentage\": 1717.148774230719,\n          \"shortName\": \"string\"\n        },\n        {\n          \"amount\": 2706.113722043504,\n          \"id\": \"705a66c7-f473-7fec-5a3a-6e910555e1e8\",\n          \"localAmount\": 2013.8518869829181,\n          \"longName\": \"string\",\n          \"percentage\": 4381.578999074305,\n          \"shortName\": \"string\"\n        }\n      ],\n      \"id\": \"fc127436-f91f-143a-f562-60ba91800bc2\",\n      \"isTaxAppliedToShipping\": false,\n      \"isTaxExempted\": true,\n      \"localTotalPrice\": 9553.458601708096,\n      \"totalPrice\": 4713.494131862079,\n      \"taxNumber\": \"string\"\n    },\n    \"purchaseOrderNumber\": \"string\",\n    \"customReference\": \"string\",\n    \"billingAddress\": {\n      \"addressId\": 1525,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": false,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce9a109a-b4b0-4f93-bebb-8446499b9c7d",
+              "name": "Invalid order data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "threadId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"55899f5b-44ea-e250-d8b4-c37a9428b4d0\",\n      \"quantity\": 4932,\n      \"requisitionIntentId\": \"6498b3b7-4ae9-0c10-e9a5-9516b28ed079\"\n    },\n    {\n      \"assemblyId\": \"f9d4d28e-eda8-c224-2f72-ee5eb8c9e28b\",\n      \"quantity\": 2414,\n      \"requisitionIntentId\": \"13b7fbdc-2c7f-ca76-1187-54443f2a0d17\"\n    }\n  ],\n  \"ccCustomerIds\": [\n    \"<long>\"\n  ],\n  \"currency\": \"<string>\",\n  \"expenses\": [\n    {\n      \"costForOperator\": 3769.908099631912,\n      \"name\": \"string\",\n      \"quantity\": 8465.456207928028,\n      \"type\": \"string\",\n      \"unitPrice\": 3103.4690899906204,\n      \"description\": \"string\"\n    },\n    {\n      \"costForOperator\": 2626.61129198281,\n      \"name\": \"string\",\n      \"quantity\": 644.5742692970601,\n      \"type\": \"string\",\n      \"unitPrice\": 8020.909224560384,\n      \"description\": \"string\"\n    }\n  ],\n  \"markPaymentConfirmed\": \"<boolean>\",\n  \"requisitions\": [\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": 8185.641380788443,\n          \"cameraPositionY\": 713.4756507475881,\n          \"cameraPositionZ\": 2579.1359593936313,\n          \"cameraRotationX\": 4935.025116686409,\n          \"cameraRotationY\": 2518.3166885495134,\n          \"cameraRotationZ\": 686.9954757024399,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 6548.51208146369,\n          \"locationY\": 6662.235255914007,\n          \"locationZ\": 9327.258583006209,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": 9844.830942081571,\n          \"cameraPositionY\": 4806.100059832018,\n          \"cameraPositionZ\": 2795.699375818602,\n          \"cameraRotationX\": 5443.958094854474,\n          \"cameraRotationY\": 3050.4759098787436,\n          \"cameraRotationZ\": 884.2890925770541,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 1379.3547247935246,\n          \"locationY\": 4346.76588928067,\n          \"locationZ\": 2557.8143306275692,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": 6563,\n      \"partRevisionId\": \"b85900f4-94b8-dbd6-86c6-3e5acd0914cd\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": 6571,\n          \"variables\": {\n            \"key_0\": 970.2942540358616,\n            \"key_1\": 2810.660451225189\n          }\n        },\n        {\n          \"postProcessingId\": 877,\n          \"variables\": {\n            \"key_0\": 5832.159562389551,\n            \"key_1\": 5203.598132090238\n          }\n        }\n      ],\n      \"processPricesId\": \"c7d3cac3-befe-182f-f581-9f99c394d622\",\n      \"quantity\": 527,\n      \"requisitionIntentId\": \"cc661ce7-71fb-734c-32a2-c4510a079ee0\",\n      \"units\": \"MILLIMETERS\",\n      \"variables\": {\n        \"key_0\": 1010.9096077974167\n      },\n      \"infillId\": 7953,\n      \"precisionId\": 3367,\n      \"colorId\": 6725,\n      \"manualPrice\": 2014.4229487218902,\n      \"leadTimeId\": \"caa9d4f0-09fc-95b6-e76b-912a30c95d44\",\n      \"name\": \"string\"\n    },\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": 5958.734035598645,\n          \"cameraPositionY\": 9047.414631814294,\n          \"cameraPositionZ\": 3547.570807271817,\n          \"cameraRotationX\": 973.1961792976451,\n          \"cameraRotationY\": 5792.711808636411,\n          \"cameraRotationZ\": 3129.932710246669,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 3967.122250592877,\n          \"locationY\": 4630.997271862985,\n          \"locationZ\": 3903.120568937393,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": 5210.784526662958,\n          \"cameraPositionY\": 6773.50972597484,\n          \"cameraPositionZ\": 1193.2719694602479,\n          \"cameraRotationX\": 1746.7467049135755,\n          \"cameraRotationY\": 7781.102709791689,\n          \"cameraRotationZ\": 754.1075533340469,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 9710.780157665098,\n          \"locationY\": 4545.893120211146,\n          \"locationZ\": 267.11796399344735,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": 3941,\n      \"partRevisionId\": \"ce092ac1-3b4a-a16a-a56c-8291d7b5ff5f\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": 431,\n          \"variables\": {\n            \"key_0\": 1529.9269941589444,\n            \"key_1\": 7778.937459308474,\n            \"key_2\": 9715.021144635195\n          }\n        },\n        {\n          \"postProcessingId\": 1746,\n          \"variables\": {\n            \"key_0\": 4506.978067495346,\n            \"key_1\": 1450.3737615170187\n          }\n        }\n      ],\n      \"processPricesId\": \"26dac36e-52f0-65eb-5692-ff390304dd23\",\n      \"quantity\": 5049,\n      \"requisitionIntentId\": \"9bd908ee-73fc-fc4b-9603-8d7c7ef53bf4\",\n      \"units\": \"INCHES\",\n      \"variables\": {\n        \"key_0\": 8591.033013834536\n      },\n      \"infillId\": 420,\n      \"precisionId\": 5419,\n      \"colorId\": 1873,\n      \"manualPrice\": 8963.279909895187,\n      \"leadTimeId\": \"2f47655b-c2be-8d68-bcd4-f1ff9399460e\",\n      \"name\": \"string\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"discountId\": \"<long>\",\n  \"operatorNote\": \"<string>\",\n  \"isSilent\": \"<boolean>\",\n  \"affiliate\": \"<string>\",\n  \"paymentDueDate\": \"<dateTime>\",\n  \"discount\": {\n    \"code\": \"string\",\n    \"customerId\": 3053,\n    \"discountType\": \"string\",\n    \"endTime\": \"2017-09-23T15:56:23.526Z\",\n    \"percentage\": 9156.955863676092,\n    \"startTime\": \"1985-10-11T00:55:27.885Z\"\n  },\n  \"shipment\": {\n    \"shippingMode\": \"SELF_COLLECTION\",\n    \"id\": 1826,\n    \"shippingMethodId\": 779,\n    \"rateId\": \"string\",\n    \"toAddressId\": 9583,\n    \"status\": \"string\",\n    \"dispatchDate\": \"1994-10-09\",\n    \"toAddressDto\": {\n      \"addressId\": 7726,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": false,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    \"carrierAccountProvider\": \"string\",\n    \"carrierAccountServiceType\": \"string\",\n    \"carrierAccountServiceName\": \"string\",\n    \"estimatedRate\": 1995.6312829753208,\n    \"finalRatePaid\": 6934.040447346004,\n    \"trackingDto\": {\n      \"id\": 2645,\n      \"shipmentId\": 2210,\n      \"trackingNumber\": \"string\"\n    }\n  },\n  \"billingAddressId\": \"<long>\",\n  \"customReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "02daec6c-5f28-4e17-8024-501eb4647889",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "threadId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"55899f5b-44ea-e250-d8b4-c37a9428b4d0\",\n      \"quantity\": 4932,\n      \"requisitionIntentId\": \"6498b3b7-4ae9-0c10-e9a5-9516b28ed079\"\n    },\n    {\n      \"assemblyId\": \"f9d4d28e-eda8-c224-2f72-ee5eb8c9e28b\",\n      \"quantity\": 2414,\n      \"requisitionIntentId\": \"13b7fbdc-2c7f-ca76-1187-54443f2a0d17\"\n    }\n  ],\n  \"ccCustomerIds\": [\n    \"<long>\"\n  ],\n  \"currency\": \"<string>\",\n  \"expenses\": [\n    {\n      \"costForOperator\": 3769.908099631912,\n      \"name\": \"string\",\n      \"quantity\": 8465.456207928028,\n      \"type\": \"string\",\n      \"unitPrice\": 3103.4690899906204,\n      \"description\": \"string\"\n    },\n    {\n      \"costForOperator\": 2626.61129198281,\n      \"name\": \"string\",\n      \"quantity\": 644.5742692970601,\n      \"type\": \"string\",\n      \"unitPrice\": 8020.909224560384,\n      \"description\": \"string\"\n    }\n  ],\n  \"markPaymentConfirmed\": \"<boolean>\",\n  \"requisitions\": [\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": 8185.641380788443,\n          \"cameraPositionY\": 713.4756507475881,\n          \"cameraPositionZ\": 2579.1359593936313,\n          \"cameraRotationX\": 4935.025116686409,\n          \"cameraRotationY\": 2518.3166885495134,\n          \"cameraRotationZ\": 686.9954757024399,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 6548.51208146369,\n          \"locationY\": 6662.235255914007,\n          \"locationZ\": 9327.258583006209,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": 9844.830942081571,\n          \"cameraPositionY\": 4806.100059832018,\n          \"cameraPositionZ\": 2795.699375818602,\n          \"cameraRotationX\": 5443.958094854474,\n          \"cameraRotationY\": 3050.4759098787436,\n          \"cameraRotationZ\": 884.2890925770541,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 1379.3547247935246,\n          \"locationY\": 4346.76588928067,\n          \"locationZ\": 2557.8143306275692,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": 6563,\n      \"partRevisionId\": \"b85900f4-94b8-dbd6-86c6-3e5acd0914cd\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": 6571,\n          \"variables\": {\n            \"key_0\": 970.2942540358616,\n            \"key_1\": 2810.660451225189\n          }\n        },\n        {\n          \"postProcessingId\": 877,\n          \"variables\": {\n            \"key_0\": 5832.159562389551,\n            \"key_1\": 5203.598132090238\n          }\n        }\n      ],\n      \"processPricesId\": \"c7d3cac3-befe-182f-f581-9f99c394d622\",\n      \"quantity\": 527,\n      \"requisitionIntentId\": \"cc661ce7-71fb-734c-32a2-c4510a079ee0\",\n      \"units\": \"MILLIMETERS\",\n      \"variables\": {\n        \"key_0\": 1010.9096077974167\n      },\n      \"infillId\": 7953,\n      \"precisionId\": 3367,\n      \"colorId\": 6725,\n      \"manualPrice\": 2014.4229487218902,\n      \"leadTimeId\": \"caa9d4f0-09fc-95b6-e76b-912a30c95d44\",\n      \"name\": \"string\"\n    },\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": 5958.734035598645,\n          \"cameraPositionY\": 9047.414631814294,\n          \"cameraPositionZ\": 3547.570807271817,\n          \"cameraRotationX\": 973.1961792976451,\n          \"cameraRotationY\": 5792.711808636411,\n          \"cameraRotationZ\": 3129.932710246669,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 3967.122250592877,\n          \"locationY\": 4630.997271862985,\n          \"locationZ\": 3903.120568937393,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": 5210.784526662958,\n          \"cameraPositionY\": 6773.50972597484,\n          \"cameraPositionZ\": 1193.2719694602479,\n          \"cameraRotationX\": 1746.7467049135755,\n          \"cameraRotationY\": 7781.102709791689,\n          \"cameraRotationZ\": 754.1075533340469,\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": 9710.780157665098,\n          \"locationY\": 4545.893120211146,\n          \"locationZ\": 267.11796399344735,\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": 3941,\n      \"partRevisionId\": \"ce092ac1-3b4a-a16a-a56c-8291d7b5ff5f\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": 431,\n          \"variables\": {\n            \"key_0\": 1529.9269941589444,\n            \"key_1\": 7778.937459308474,\n            \"key_2\": 9715.021144635195\n          }\n        },\n        {\n          \"postProcessingId\": 1746,\n          \"variables\": {\n            \"key_0\": 4506.978067495346,\n            \"key_1\": 1450.3737615170187\n          }\n        }\n      ],\n      \"processPricesId\": \"26dac36e-52f0-65eb-5692-ff390304dd23\",\n      \"quantity\": 5049,\n      \"requisitionIntentId\": \"9bd908ee-73fc-fc4b-9603-8d7c7ef53bf4\",\n      \"units\": \"INCHES\",\n      \"variables\": {\n        \"key_0\": 8591.033013834536\n      },\n      \"infillId\": 420,\n      \"precisionId\": 5419,\n      \"colorId\": 1873,\n      \"manualPrice\": 8963.279909895187,\n      \"leadTimeId\": \"2f47655b-c2be-8d68-bcd4-f1ff9399460e\",\n      \"name\": \"string\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"discountId\": \"<long>\",\n  \"operatorNote\": \"<string>\",\n  \"isSilent\": \"<boolean>\",\n  \"affiliate\": \"<string>\",\n  \"paymentDueDate\": \"<dateTime>\",\n  \"discount\": {\n    \"code\": \"string\",\n    \"customerId\": 3053,\n    \"discountType\": \"string\",\n    \"endTime\": \"2017-09-23T15:56:23.526Z\",\n    \"percentage\": 9156.955863676092,\n    \"startTime\": \"1985-10-11T00:55:27.885Z\"\n  },\n  \"shipment\": {\n    \"shippingMode\": \"SELF_COLLECTION\",\n    \"id\": 1826,\n    \"shippingMethodId\": 779,\n    \"rateId\": \"string\",\n    \"toAddressId\": 9583,\n    \"status\": \"string\",\n    \"dispatchDate\": \"1994-10-09\",\n    \"toAddressDto\": {\n      \"addressId\": 7726,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": false,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    \"carrierAccountProvider\": \"string\",\n    \"carrierAccountServiceType\": \"string\",\n    \"carrierAccountServiceName\": \"string\",\n    \"estimatedRate\": 1995.6312829753208,\n    \"finalRatePaid\": 6934.040447346004,\n    \"trackingDto\": {\n      \"id\": 2645,\n      \"shipmentId\": 2210,\n      \"trackingNumber\": \"string\"\n    }\n  },\n  \"billingAddressId\": \"<long>\",\n  \"customReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "feab5b2c-d1af-45f6-be1d-b56ff706f3ed",
+          "name": "Create payment for order",
+          "request": {
+            "name": "Create payment for order",
+            "description": {
+              "content": "Initiates a payment transaction for the specified order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order",
+                ":orderId",
+                "payment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order to create payment for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74b89106-944a-4ca6-ab3a-4e959b55ff51",
+              "name": "Payment successfully initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to create payment for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currency\": \"string\",\n  \"finalPrice\": 9306.95283905085,\n  \"id\": \"string\",\n  \"provider\": \"string\",\n  \"tax\": 5559.1699997759715,\n  \"clientSecret\": \"string\",\n  \"paymentPrincipal\": \"string\",\n  \"merchantAccount\": \"string\",\n  \"woocommerceOrderKey\": \"string\",\n  \"flywireGatewayUrl\": \"string\",\n  \"stripePaymentIntentStatus\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "325aaf11-f193-4387-ab13-528f5cfc2f06",
+              "name": "Invalid order ID or payment setup failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to create payment for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "098237e4-42f6-4d6e-b1e5-c51031e5dd08",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to create payment for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41585858-2347-445e-9bdd-b40c18fa3c11",
+          "name": "Update order shipment",
+          "request": {
+            "name": "Update order shipment",
+            "description": {
+              "content": "Updates the shipping information for an order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order",
+                ":orderId",
+                "shipment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shippingMode\": \"<string>\",\n  \"id\": \"<long>\",\n  \"shippingMethodId\": \"<long>\",\n  \"rateId\": \"<string>\",\n  \"toAddressId\": \"<long>\",\n  \"status\": \"<string>\",\n  \"dispatchDate\": \"<date>\",\n  \"toAddressDto\": {\n    \"addressId\": \"<long>\",\n    \"isBillingAddress\": \"<boolean>\",\n    \"isShippingAddress\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"countryAlpha2Code\": \"<string>\",\n    \"countryAlpha3Code\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"name\": \"<string>\",\n    \"company\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"taxId\": \"<string>\"\n  },\n  \"carrierAccountProvider\": \"<string>\",\n  \"carrierAccountServiceType\": \"<string>\",\n  \"carrierAccountServiceName\": \"<string>\",\n  \"estimatedRate\": \"<number>\",\n  \"finalRatePaid\": \"<number>\",\n  \"trackingDto\": {\n    \"id\": \"<long>\",\n    \"shipmentId\": \"<long>\",\n    \"trackingNumber\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7691b0b8-a2bf-47d9-9a94-89c00ba7b75e",
+              "name": "Shipment successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shippingMode\": \"CARRIER_ACCOUNT\",\n  \"id\": 6169,\n  \"shippingMethodId\": 6840,\n  \"rateId\": \"string\",\n  \"toAddressId\": 6354,\n  \"status\": \"string\",\n  \"dispatchDate\": \"2011-12-15\",\n  \"toAddressDto\": {\n    \"addressId\": 4660,\n    \"isBillingAddress\": true,\n    \"isShippingAddress\": false,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"company\": \"string\",\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"residential\": true,\n    \"taxId\": \"string\"\n  },\n  \"carrierAccountProvider\": \"string\",\n  \"carrierAccountServiceType\": \"string\",\n  \"carrierAccountServiceName\": \"string\",\n  \"estimatedRate\": 7931.461439314175,\n  \"finalRatePaid\": 6387.514494735248,\n  \"trackingDto\": {\n    \"id\": 9454,\n    \"shipmentId\": 4904,\n    \"trackingNumber\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shippingMode\": \"CARRIER_ACCOUNT\",\n  \"id\": 78,\n  \"shippingMethodId\": 1301,\n  \"rateId\": \"string\",\n  \"toAddressId\": 1696,\n  \"status\": \"string\",\n  \"dispatchDate\": \"1965-10-14\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "984440de-a9b7-4161-b0e2-4424155bf88a",
+              "name": "Invalid order ID or shipment data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shippingMode\": \"CARRIER_ACCOUNT\",\n  \"id\": 6169,\n  \"shippingMethodId\": 6840,\n  \"rateId\": \"string\",\n  \"toAddressId\": 6354,\n  \"status\": \"string\",\n  \"dispatchDate\": \"2011-12-15\",\n  \"toAddressDto\": {\n    \"addressId\": 4660,\n    \"isBillingAddress\": true,\n    \"isShippingAddress\": false,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"company\": \"string\",\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"residential\": true,\n    \"taxId\": \"string\"\n  },\n  \"carrierAccountProvider\": \"string\",\n  \"carrierAccountServiceType\": \"string\",\n  \"carrierAccountServiceName\": \"string\",\n  \"estimatedRate\": 7931.461439314175,\n  \"finalRatePaid\": 6387.514494735248,\n  \"trackingDto\": {\n    \"id\": 9454,\n    \"shipmentId\": 4904,\n    \"trackingNumber\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ac23a966-9390-47d7-bfc3-31d01b8e03ac",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shippingMode\": \"CARRIER_ACCOUNT\",\n  \"id\": 6169,\n  \"shippingMethodId\": 6840,\n  \"rateId\": \"string\",\n  \"toAddressId\": 6354,\n  \"status\": \"string\",\n  \"dispatchDate\": \"2011-12-15\",\n  \"toAddressDto\": {\n    \"addressId\": 4660,\n    \"isBillingAddress\": true,\n    \"isShippingAddress\": false,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"company\": \"string\",\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"residential\": true,\n    \"taxId\": \"string\"\n  },\n  \"carrierAccountProvider\": \"string\",\n  \"carrierAccountServiceType\": \"string\",\n  \"carrierAccountServiceName\": \"string\",\n  \"estimatedRate\": 7931.461439314175,\n  \"finalRatePaid\": 6387.514494735248,\n  \"trackingDto\": {\n    \"id\": 9454,\n    \"shipmentId\": 4904,\n    \"trackingNumber\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff65bc20-3c01-48ed-98fc-378498d8c8c8",
+          "name": "Pay by purchase order",
+          "request": {
+            "name": "Pay by purchase order",
+            "description": {
+              "content": "Confirms payment for an order when paying by purchase order, or updates an existing purchase order. Accepts PO number, message, and optional PDF file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order",
+                ":orderId",
+                "payment",
+                "purchase-order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "purchaseOrderNumber",
+                  "value": "<string>",
+                  "description": "Purchase order number"
+                },
+                {
+                  "disabled": false,
+                  "key": "message",
+                  "value": "<string>",
+                  "description": "Optional message from customer"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order to confirm payment for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Purchase order PDF file"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cffb3dce-b00f-401f-b2c1-359c3a0410f6",
+              "name": "Purchase order payment successfully confirmed or updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment",
+                    "purchase-order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "purchaseOrderNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to confirm payment for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Purchase order PDF file",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"294ab2d6-9b84-b2ca-8523-f8083fe00798\",\n      \"assemblyName\": \"string\",\n      \"assemblyPricePaid\": 3581.125106961349,\n      \"id\": 3196,\n      \"partCount\": 7928,\n      \"quantity\": 7169,\n      \"totalPricePaid\": 5886.782990504289,\n      \"createdAt\": \"1985-06-17T20:36:03.325Z\"\n    },\n    {\n      \"assemblyId\": \"67c5a4e3-967f-da87-17f5-bc5028d703f7\",\n      \"assemblyName\": \"string\",\n      \"assemblyPricePaid\": 6688.042080959353,\n      \"id\": 7085,\n      \"partCount\": 5791,\n      \"quantity\": 4203,\n      \"totalPricePaid\": 1957.3035419914886,\n      \"createdAt\": \"1995-08-10T03:37:53.911Z\"\n    }\n  ],\n  \"awaitingStatus\": \"string\",\n  \"bypassPurchasabilityChecks\": false,\n  \"createdAt\": \"2008-04-03T02:48:29.361Z\",\n  \"currency\": \"string\",\n  \"expenses\": [\n    {\n      \"expenseId\": 4615,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"expenseId\": 4327,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"id\": 1999,\n  \"isArchived\": true,\n  \"isInProject\": false,\n  \"isVoided\": false,\n  \"lastUpdated\": \"1987-05-31T11:47:32.512Z\",\n  \"paymentStatus\": \"string\",\n  \"requisitionIds\": [\n    5979,\n    1477\n  ],\n  \"source\": \"string\",\n  \"subscribedCustomerIds\": [\n    9377,\n    4322\n  ],\n  \"threadId\": 8307,\n  \"quoteNumber\": \"string\",\n  \"orderNumber\": \"string\",\n  \"price\": 3357.375930449873,\n  \"operatorNote\": \"string\",\n  \"accountingSystemEstimateId\": \"string\",\n  \"accountingSystemEstimateNumber\": \"string\",\n  \"accountingSystemConfirmationId\": \"string\",\n  \"accountingSystemConfirmationNumber\": \"string\",\n  \"accountingSystemInvoiceId\": \"string\",\n  \"accountingSystemInvoiceNumber\": \"string\",\n  \"shipment\": {\n    \"shippingMode\": \"FIXED_PRICE\",\n    \"id\": 8783,\n    \"shippingMethodId\": 2279,\n    \"rateId\": \"string\",\n    \"toAddressId\": 475,\n    \"status\": \"string\",\n    \"dispatchDate\": \"1949-01-03\",\n    \"toAddressDto\": {\n      \"addressId\": 6187,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": false,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    \"carrierAccountProvider\": \"string\",\n    \"carrierAccountServiceType\": \"string\",\n    \"carrierAccountServiceName\": \"string\",\n    \"estimatedRate\": 5379.23050904644,\n    \"finalRatePaid\": 3648.2112912371813,\n    \"trackingDto\": {\n      \"id\": 2880,\n      \"shipmentId\": 2433,\n      \"trackingNumber\": \"string\"\n    }\n  },\n  \"discount\": {\n    \"discountId\": 4047,\n    \"discountType\": \"string\",\n    \"endTime\": \"1979-09-09T08:07:14.549Z\",\n    \"percentage\": 8180.15028971782,\n    \"startTime\": \"2023-04-26T03:37:53.898Z\",\n    \"code\": \"string\"\n  },\n  \"kanbanColumn\": {\n    \"automations\": [\n      {\n        \"createdAt\": \"2005-02-02T23:25:16.885Z\",\n        \"id\": \"e73e679d-aade-5dbe-bf33-f78939ae73ce\",\n        \"kanbanColumnId\": \"2579f3c5-c04e-d368-ef92-f63d781c847a\",\n        \"type\": \"string\",\n        \"updatedAt\": \"1997-12-25T15:56:20.303Z\"\n      },\n      {\n        \"createdAt\": \"2008-12-08T02:43:29.158Z\",\n        \"id\": \"c088e9f8-5c1f-150a-95e0-6446d5c75219\",\n        \"kanbanColumnId\": \"68be76ad-5f61-2550-927b-b973f4d96a87\",\n        \"type\": \"string\",\n        \"updatedAt\": \"2013-07-28T13:06:38.861Z\"\n      }\n    ],\n    \"createdAt\": \"2004-08-24T00:08:03.615Z\",\n    \"id\": \"6df1ef7e-fe44-1f53-c2d4-dc971c4d7682\",\n    \"name\": \"string\",\n    \"orderStatus\": \"string\",\n    \"sequence\": 7938,\n    \"updatedAt\": \"1996-08-01T18:01:54.501Z\"\n  },\n  \"tax\": {\n    \"components\": [\n      {\n        \"amount\": 4703.752902694566,\n        \"id\": \"b48c56bd-5108-82ce-4f24-31ea057cffea\",\n        \"localAmount\": 855.7035432990301,\n        \"longName\": \"string\",\n        \"percentage\": 4616.951993455796,\n        \"shortName\": \"string\"\n      },\n      {\n        \"amount\": 2009.4064261480714,\n        \"id\": \"bd959b77-f64b-bccc-cc56-f8551c6b7495\",\n        \"localAmount\": 1080.3577768040661,\n        \"longName\": \"string\",\n        \"percentage\": 9439.532410621765,\n        \"shortName\": \"string\"\n      }\n    ],\n    \"id\": \"f9e28cf6-4194-3dc1-e4ce-777292f335c4\",\n    \"isTaxAppliedToShipping\": true,\n    \"isTaxExempted\": true,\n    \"localTotalPrice\": 8094.759534324559,\n    \"totalPrice\": 3719.2584446612955,\n    \"taxNumber\": \"string\"\n  },\n  \"purchaseOrderNumber\": \"string\",\n  \"customReference\": \"string\",\n  \"billingAddress\": {\n    \"addressId\": 7187,\n    \"isBillingAddress\": false,\n    \"isShippingAddress\": false,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"company\": \"string\",\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"residential\": false,\n    \"taxId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e968e619-a7b0-4645-94a7-474c2ff54ae9",
+              "name": "Invalid order ID or payment confirmation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment",
+                    "purchase-order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "purchaseOrderNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to confirm payment for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Purchase order PDF file",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "097e8f21-d1d7-4740-92ed-59b756a88a62",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment",
+                    "purchase-order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "purchaseOrderNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to confirm payment for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Purchase order PDF file",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9747327-d312-4c1d-9ce2-f659ee1e6213",
+          "name": "Confirm invoice payment",
+          "request": {
+            "name": "Confirm invoice payment",
+            "description": {
+              "content": "Confirms payment for an order when paying by invoice (for German manufacturers)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order",
+                ":orderId",
+                "payment",
+                "invoice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order to confirm payment for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "543acb46-3ae5-439a-95ec-8bf30d33b009",
+              "name": "Payment successfully confirmed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment",
+                    "invoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to confirm payment for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"294ab2d6-9b84-b2ca-8523-f8083fe00798\",\n      \"assemblyName\": \"string\",\n      \"assemblyPricePaid\": 3581.125106961349,\n      \"id\": 3196,\n      \"partCount\": 7928,\n      \"quantity\": 7169,\n      \"totalPricePaid\": 5886.782990504289,\n      \"createdAt\": \"1985-06-17T20:36:03.325Z\"\n    },\n    {\n      \"assemblyId\": \"67c5a4e3-967f-da87-17f5-bc5028d703f7\",\n      \"assemblyName\": \"string\",\n      \"assemblyPricePaid\": 6688.042080959353,\n      \"id\": 7085,\n      \"partCount\": 5791,\n      \"quantity\": 4203,\n      \"totalPricePaid\": 1957.3035419914886,\n      \"createdAt\": \"1995-08-10T03:37:53.911Z\"\n    }\n  ],\n  \"awaitingStatus\": \"string\",\n  \"bypassPurchasabilityChecks\": false,\n  \"createdAt\": \"2008-04-03T02:48:29.361Z\",\n  \"currency\": \"string\",\n  \"expenses\": [\n    {\n      \"expenseId\": 4615,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"expenseId\": 4327,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"id\": 1999,\n  \"isArchived\": true,\n  \"isInProject\": false,\n  \"isVoided\": false,\n  \"lastUpdated\": \"1987-05-31T11:47:32.512Z\",\n  \"paymentStatus\": \"string\",\n  \"requisitionIds\": [\n    5979,\n    1477\n  ],\n  \"source\": \"string\",\n  \"subscribedCustomerIds\": [\n    9377,\n    4322\n  ],\n  \"threadId\": 8307,\n  \"quoteNumber\": \"string\",\n  \"orderNumber\": \"string\",\n  \"price\": 3357.375930449873,\n  \"operatorNote\": \"string\",\n  \"accountingSystemEstimateId\": \"string\",\n  \"accountingSystemEstimateNumber\": \"string\",\n  \"accountingSystemConfirmationId\": \"string\",\n  \"accountingSystemConfirmationNumber\": \"string\",\n  \"accountingSystemInvoiceId\": \"string\",\n  \"accountingSystemInvoiceNumber\": \"string\",\n  \"shipment\": {\n    \"shippingMode\": \"FIXED_PRICE\",\n    \"id\": 8783,\n    \"shippingMethodId\": 2279,\n    \"rateId\": \"string\",\n    \"toAddressId\": 475,\n    \"status\": \"string\",\n    \"dispatchDate\": \"1949-01-03\",\n    \"toAddressDto\": {\n      \"addressId\": 6187,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": false,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    \"carrierAccountProvider\": \"string\",\n    \"carrierAccountServiceType\": \"string\",\n    \"carrierAccountServiceName\": \"string\",\n    \"estimatedRate\": 5379.23050904644,\n    \"finalRatePaid\": 3648.2112912371813,\n    \"trackingDto\": {\n      \"id\": 2880,\n      \"shipmentId\": 2433,\n      \"trackingNumber\": \"string\"\n    }\n  },\n  \"discount\": {\n    \"discountId\": 4047,\n    \"discountType\": \"string\",\n    \"endTime\": \"1979-09-09T08:07:14.549Z\",\n    \"percentage\": 8180.15028971782,\n    \"startTime\": \"2023-04-26T03:37:53.898Z\",\n    \"code\": \"string\"\n  },\n  \"kanbanColumn\": {\n    \"automations\": [\n      {\n        \"createdAt\": \"2005-02-02T23:25:16.885Z\",\n        \"id\": \"e73e679d-aade-5dbe-bf33-f78939ae73ce\",\n        \"kanbanColumnId\": \"2579f3c5-c04e-d368-ef92-f63d781c847a\",\n        \"type\": \"string\",\n        \"updatedAt\": \"1997-12-25T15:56:20.303Z\"\n      },\n      {\n        \"createdAt\": \"2008-12-08T02:43:29.158Z\",\n        \"id\": \"c088e9f8-5c1f-150a-95e0-6446d5c75219\",\n        \"kanbanColumnId\": \"68be76ad-5f61-2550-927b-b973f4d96a87\",\n        \"type\": \"string\",\n        \"updatedAt\": \"2013-07-28T13:06:38.861Z\"\n      }\n    ],\n    \"createdAt\": \"2004-08-24T00:08:03.615Z\",\n    \"id\": \"6df1ef7e-fe44-1f53-c2d4-dc971c4d7682\",\n    \"name\": \"string\",\n    \"orderStatus\": \"string\",\n    \"sequence\": 7938,\n    \"updatedAt\": \"1996-08-01T18:01:54.501Z\"\n  },\n  \"tax\": {\n    \"components\": [\n      {\n        \"amount\": 4703.752902694566,\n        \"id\": \"b48c56bd-5108-82ce-4f24-31ea057cffea\",\n        \"localAmount\": 855.7035432990301,\n        \"longName\": \"string\",\n        \"percentage\": 4616.951993455796,\n        \"shortName\": \"string\"\n      },\n      {\n        \"amount\": 2009.4064261480714,\n        \"id\": \"bd959b77-f64b-bccc-cc56-f8551c6b7495\",\n        \"localAmount\": 1080.3577768040661,\n        \"longName\": \"string\",\n        \"percentage\": 9439.532410621765,\n        \"shortName\": \"string\"\n      }\n    ],\n    \"id\": \"f9e28cf6-4194-3dc1-e4ce-777292f335c4\",\n    \"isTaxAppliedToShipping\": true,\n    \"isTaxExempted\": true,\n    \"localTotalPrice\": 8094.759534324559,\n    \"totalPrice\": 3719.2584446612955,\n    \"taxNumber\": \"string\"\n  },\n  \"purchaseOrderNumber\": \"string\",\n  \"customReference\": \"string\",\n  \"billingAddress\": {\n    \"addressId\": 7187,\n    \"isBillingAddress\": false,\n    \"isShippingAddress\": false,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"company\": \"string\",\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"residential\": false,\n    \"taxId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08894340-a9ec-41a5-aee8-ba704ea24dbe",
+              "name": "Invalid order ID, invoice payment not enabled, or payment confirmation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment",
+                    "invoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to confirm payment for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bad19a23-cae3-4fc4-bb80-177b3192cd2d",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment",
+                    "invoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to confirm payment for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98a4829d-6aad-4dd7-b1c8-94b3befc69af",
+          "name": "Apply discount to order",
+          "request": {
+            "name": "Apply discount to order",
+            "description": {
+              "content": "Applies a specific discount to an order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order",
+                ":orderId",
+                "discount",
+                ":discountId",
+                "apply"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "discountId",
+                  "description": "(Required) ID of the discount to apply"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "edfa92d5-f405-4a07-a00e-e4b604096e39",
+              "name": "Discount successfully applied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "discount",
+                    ":discountId",
+                    "apply"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "discountId",
+                      "description": "(Required) ID of the discount to apply"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "175857bf-89f1-4748-ad82-30e68e65f28f",
+              "name": "Invalid order ID, discount ID, or discount cannot be applied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "discount",
+                    ":discountId",
+                    "apply"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "discountId",
+                      "description": "(Required) ID of the discount to apply"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb911e1a-efa3-4e0b-a758-354d2b592022",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "discount",
+                    ":discountId",
+                    "apply"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "discountId",
+                      "description": "(Required) ID of the discount to apply"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b03ce0a-e752-4a41-82fa-2633304a2292",
+          "name": "Remove discount from order",
+          "request": {
+            "name": "Remove discount from order",
+            "description": {
+              "content": "Removes any applied discount from an order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order",
+                ":orderId",
+                "discount",
+                "remove"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "422f08a9-909d-47b2-9c84-5fc4bdb72aa7",
+              "name": "Discount successfully removed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "discount",
+                    "remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab1696a9-25be-4fce-a86b-93b198e5f850",
+              "name": "Invalid order ID or discount removal failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "discount",
+                    "remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "584535ba-04a3-4f71-82bc-26b075395862",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "discount",
+                    "remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03de76b3-6e48-4302-9869-cb950a1f426a",
+          "name": "Update order awaiting status",
+          "request": {
+            "name": "Update order awaiting status",
+            "description": {
+              "content": "Updates the awaiting status of an order, such as confirming or rejecting a quotation",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order",
+                ":orderId",
+                "awaiting-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"awaitingStatus\": \"<string>\",\n  \"purchaseOrderNumber\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80b1ae9d-749f-465c-8892-03fa364bc728",
+              "name": "Order status successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "awaiting-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"awaitingStatus\": \"<string>\",\n  \"purchaseOrderNumber\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"294ab2d6-9b84-b2ca-8523-f8083fe00798\",\n      \"assemblyName\": \"string\",\n      \"assemblyPricePaid\": 3581.125106961349,\n      \"id\": 3196,\n      \"partCount\": 7928,\n      \"quantity\": 7169,\n      \"totalPricePaid\": 5886.782990504289,\n      \"createdAt\": \"1985-06-17T20:36:03.325Z\"\n    },\n    {\n      \"assemblyId\": \"67c5a4e3-967f-da87-17f5-bc5028d703f7\",\n      \"assemblyName\": \"string\",\n      \"assemblyPricePaid\": 6688.042080959353,\n      \"id\": 7085,\n      \"partCount\": 5791,\n      \"quantity\": 4203,\n      \"totalPricePaid\": 1957.3035419914886,\n      \"createdAt\": \"1995-08-10T03:37:53.911Z\"\n    }\n  ],\n  \"awaitingStatus\": \"string\",\n  \"bypassPurchasabilityChecks\": false,\n  \"createdAt\": \"2008-04-03T02:48:29.361Z\",\n  \"currency\": \"string\",\n  \"expenses\": [\n    {\n      \"expenseId\": 4615,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"expenseId\": 4327,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"id\": 1999,\n  \"isArchived\": true,\n  \"isInProject\": false,\n  \"isVoided\": false,\n  \"lastUpdated\": \"1987-05-31T11:47:32.512Z\",\n  \"paymentStatus\": \"string\",\n  \"requisitionIds\": [\n    5979,\n    1477\n  ],\n  \"source\": \"string\",\n  \"subscribedCustomerIds\": [\n    9377,\n    4322\n  ],\n  \"threadId\": 8307,\n  \"quoteNumber\": \"string\",\n  \"orderNumber\": \"string\",\n  \"price\": 3357.375930449873,\n  \"operatorNote\": \"string\",\n  \"accountingSystemEstimateId\": \"string\",\n  \"accountingSystemEstimateNumber\": \"string\",\n  \"accountingSystemConfirmationId\": \"string\",\n  \"accountingSystemConfirmationNumber\": \"string\",\n  \"accountingSystemInvoiceId\": \"string\",\n  \"accountingSystemInvoiceNumber\": \"string\",\n  \"shipment\": {\n    \"shippingMode\": \"FIXED_PRICE\",\n    \"id\": 8783,\n    \"shippingMethodId\": 2279,\n    \"rateId\": \"string\",\n    \"toAddressId\": 475,\n    \"status\": \"string\",\n    \"dispatchDate\": \"1949-01-03\",\n    \"toAddressDto\": {\n      \"addressId\": 6187,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": false,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    \"carrierAccountProvider\": \"string\",\n    \"carrierAccountServiceType\": \"string\",\n    \"carrierAccountServiceName\": \"string\",\n    \"estimatedRate\": 5379.23050904644,\n    \"finalRatePaid\": 3648.2112912371813,\n    \"trackingDto\": {\n      \"id\": 2880,\n      \"shipmentId\": 2433,\n      \"trackingNumber\": \"string\"\n    }\n  },\n  \"discount\": {\n    \"discountId\": 4047,\n    \"discountType\": \"string\",\n    \"endTime\": \"1979-09-09T08:07:14.549Z\",\n    \"percentage\": 8180.15028971782,\n    \"startTime\": \"2023-04-26T03:37:53.898Z\",\n    \"code\": \"string\"\n  },\n  \"kanbanColumn\": {\n    \"automations\": [\n      {\n        \"createdAt\": \"2005-02-02T23:25:16.885Z\",\n        \"id\": \"e73e679d-aade-5dbe-bf33-f78939ae73ce\",\n        \"kanbanColumnId\": \"2579f3c5-c04e-d368-ef92-f63d781c847a\",\n        \"type\": \"string\",\n        \"updatedAt\": \"1997-12-25T15:56:20.303Z\"\n      },\n      {\n        \"createdAt\": \"2008-12-08T02:43:29.158Z\",\n        \"id\": \"c088e9f8-5c1f-150a-95e0-6446d5c75219\",\n        \"kanbanColumnId\": \"68be76ad-5f61-2550-927b-b973f4d96a87\",\n        \"type\": \"string\",\n        \"updatedAt\": \"2013-07-28T13:06:38.861Z\"\n      }\n    ],\n    \"createdAt\": \"2004-08-24T00:08:03.615Z\",\n    \"id\": \"6df1ef7e-fe44-1f53-c2d4-dc971c4d7682\",\n    \"name\": \"string\",\n    \"orderStatus\": \"string\",\n    \"sequence\": 7938,\n    \"updatedAt\": \"1996-08-01T18:01:54.501Z\"\n  },\n  \"tax\": {\n    \"components\": [\n      {\n        \"amount\": 4703.752902694566,\n        \"id\": \"b48c56bd-5108-82ce-4f24-31ea057cffea\",\n        \"localAmount\": 855.7035432990301,\n        \"longName\": \"string\",\n        \"percentage\": 4616.951993455796,\n        \"shortName\": \"string\"\n      },\n      {\n        \"amount\": 2009.4064261480714,\n        \"id\": \"bd959b77-f64b-bccc-cc56-f8551c6b7495\",\n        \"localAmount\": 1080.3577768040661,\n        \"longName\": \"string\",\n        \"percentage\": 9439.532410621765,\n        \"shortName\": \"string\"\n      }\n    ],\n    \"id\": \"f9e28cf6-4194-3dc1-e4ce-777292f335c4\",\n    \"isTaxAppliedToShipping\": true,\n    \"isTaxExempted\": true,\n    \"localTotalPrice\": 8094.759534324559,\n    \"totalPrice\": 3719.2584446612955,\n    \"taxNumber\": \"string\"\n  },\n  \"purchaseOrderNumber\": \"string\",\n  \"customReference\": \"string\",\n  \"billingAddress\": {\n    \"addressId\": 7187,\n    \"isBillingAddress\": false,\n    \"isShippingAddress\": false,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"company\": \"string\",\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"residential\": false,\n    \"taxId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01d62741-79d4-48a2-8c8f-379653001eb7",
+              "name": "Invalid order ID or status update failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "awaiting-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"awaitingStatus\": \"<string>\",\n  \"purchaseOrderNumber\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6e29f4c4-1aea-40db-8c27-afcb1f091fbb",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "awaiting-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"awaitingStatus\": \"<string>\",\n  \"purchaseOrderNumber\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a5852e9-5485-4526-a862-facbace2c3b4",
+          "name": "Get order by ID",
+          "request": {
+            "name": "Get order by ID",
+            "description": {
+              "content": "Retrieves a specific order by its unique identifier",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b06ae8d2-6aae-4d57-ad92-f6a48eae642e",
+              "name": "Successfully retrieved order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"294ab2d6-9b84-b2ca-8523-f8083fe00798\",\n      \"assemblyName\": \"string\",\n      \"assemblyPricePaid\": 3581.125106961349,\n      \"id\": 3196,\n      \"partCount\": 7928,\n      \"quantity\": 7169,\n      \"totalPricePaid\": 5886.782990504289,\n      \"createdAt\": \"1985-06-17T20:36:03.325Z\"\n    },\n    {\n      \"assemblyId\": \"67c5a4e3-967f-da87-17f5-bc5028d703f7\",\n      \"assemblyName\": \"string\",\n      \"assemblyPricePaid\": 6688.042080959353,\n      \"id\": 7085,\n      \"partCount\": 5791,\n      \"quantity\": 4203,\n      \"totalPricePaid\": 1957.3035419914886,\n      \"createdAt\": \"1995-08-10T03:37:53.911Z\"\n    }\n  ],\n  \"awaitingStatus\": \"string\",\n  \"bypassPurchasabilityChecks\": false,\n  \"createdAt\": \"2008-04-03T02:48:29.361Z\",\n  \"currency\": \"string\",\n  \"expenses\": [\n    {\n      \"expenseId\": 4615,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"expenseId\": 4327,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"id\": 1999,\n  \"isArchived\": true,\n  \"isInProject\": false,\n  \"isVoided\": false,\n  \"lastUpdated\": \"1987-05-31T11:47:32.512Z\",\n  \"paymentStatus\": \"string\",\n  \"requisitionIds\": [\n    5979,\n    1477\n  ],\n  \"source\": \"string\",\n  \"subscribedCustomerIds\": [\n    9377,\n    4322\n  ],\n  \"threadId\": 8307,\n  \"quoteNumber\": \"string\",\n  \"orderNumber\": \"string\",\n  \"price\": 3357.375930449873,\n  \"operatorNote\": \"string\",\n  \"accountingSystemEstimateId\": \"string\",\n  \"accountingSystemEstimateNumber\": \"string\",\n  \"accountingSystemConfirmationId\": \"string\",\n  \"accountingSystemConfirmationNumber\": \"string\",\n  \"accountingSystemInvoiceId\": \"string\",\n  \"accountingSystemInvoiceNumber\": \"string\",\n  \"shipment\": {\n    \"shippingMode\": \"FIXED_PRICE\",\n    \"id\": 8783,\n    \"shippingMethodId\": 2279,\n    \"rateId\": \"string\",\n    \"toAddressId\": 475,\n    \"status\": \"string\",\n    \"dispatchDate\": \"1949-01-03\",\n    \"toAddressDto\": {\n      \"addressId\": 6187,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": false,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    \"carrierAccountProvider\": \"string\",\n    \"carrierAccountServiceType\": \"string\",\n    \"carrierAccountServiceName\": \"string\",\n    \"estimatedRate\": 5379.23050904644,\n    \"finalRatePaid\": 3648.2112912371813,\n    \"trackingDto\": {\n      \"id\": 2880,\n      \"shipmentId\": 2433,\n      \"trackingNumber\": \"string\"\n    }\n  },\n  \"discount\": {\n    \"discountId\": 4047,\n    \"discountType\": \"string\",\n    \"endTime\": \"1979-09-09T08:07:14.549Z\",\n    \"percentage\": 8180.15028971782,\n    \"startTime\": \"2023-04-26T03:37:53.898Z\",\n    \"code\": \"string\"\n  },\n  \"kanbanColumn\": {\n    \"automations\": [\n      {\n        \"createdAt\": \"2005-02-02T23:25:16.885Z\",\n        \"id\": \"e73e679d-aade-5dbe-bf33-f78939ae73ce\",\n        \"kanbanColumnId\": \"2579f3c5-c04e-d368-ef92-f63d781c847a\",\n        \"type\": \"string\",\n        \"updatedAt\": \"1997-12-25T15:56:20.303Z\"\n      },\n      {\n        \"createdAt\": \"2008-12-08T02:43:29.158Z\",\n        \"id\": \"c088e9f8-5c1f-150a-95e0-6446d5c75219\",\n        \"kanbanColumnId\": \"68be76ad-5f61-2550-927b-b973f4d96a87\",\n        \"type\": \"string\",\n        \"updatedAt\": \"2013-07-28T13:06:38.861Z\"\n      }\n    ],\n    \"createdAt\": \"2004-08-24T00:08:03.615Z\",\n    \"id\": \"6df1ef7e-fe44-1f53-c2d4-dc971c4d7682\",\n    \"name\": \"string\",\n    \"orderStatus\": \"string\",\n    \"sequence\": 7938,\n    \"updatedAt\": \"1996-08-01T18:01:54.501Z\"\n  },\n  \"tax\": {\n    \"components\": [\n      {\n        \"amount\": 4703.752902694566,\n        \"id\": \"b48c56bd-5108-82ce-4f24-31ea057cffea\",\n        \"localAmount\": 855.7035432990301,\n        \"longName\": \"string\",\n        \"percentage\": 4616.951993455796,\n        \"shortName\": \"string\"\n      },\n      {\n        \"amount\": 2009.4064261480714,\n        \"id\": \"bd959b77-f64b-bccc-cc56-f8551c6b7495\",\n        \"localAmount\": 1080.3577768040661,\n        \"longName\": \"string\",\n        \"percentage\": 9439.532410621765,\n        \"shortName\": \"string\"\n      }\n    ],\n    \"id\": \"f9e28cf6-4194-3dc1-e4ce-777292f335c4\",\n    \"isTaxAppliedToShipping\": true,\n    \"isTaxExempted\": true,\n    \"localTotalPrice\": 8094.759534324559,\n    \"totalPrice\": 3719.2584446612955,\n    \"taxNumber\": \"string\"\n  },\n  \"purchaseOrderNumber\": \"string\",\n  \"customReference\": \"string\",\n  \"billingAddress\": {\n    \"addressId\": 7187,\n    \"isBillingAddress\": false,\n    \"isShippingAddress\": false,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"company\": \"string\",\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"residential\": false,\n    \"taxId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "922b8966-dfb5-4763-a848-ebe0a5c0c890",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4e283487-6109-4717-8af9-d844e0fd2388",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7f4eda6-1b43-44b4-a9f5-42034fcc16ac",
+          "name": "Get order quote",
+          "request": {
+            "name": "Get order quote",
+            "description": {
+              "content": "Retrieves a detailed quote for an existing order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order",
+                ":orderId",
+                "quote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order to get a quote for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e214bf3a-6e50-461b-94b8-6401d6f39702",
+              "name": "Order quote successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to get a quote for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currency\": \"string\",\n  \"discount\": 2498.572072111431,\n  \"lineItems\": [\n    {\n      \"name\": \"string\",\n      \"price\": 4619.1247534084505\n    },\n    {\n      \"name\": \"string\",\n      \"price\": 7421.436531056696\n    }\n  ],\n  \"price\": 8993.99216685643,\n  \"requisitions\": {\n    \"key_0\": {\n      \"manufacturingPrice\": 8695.081191972142,\n      \"partRevisionId\": \"1a69e571-059d-7937-684a-64a2e1402cfb\",\n      \"postProcessingOptions\": [\n        {\n          \"id\": 9808,\n          \"price\": 7275.229374876676\n        },\n        {\n          \"id\": 3267,\n          \"price\": 2337.84092670863\n        }\n      ],\n      \"postProcessingPrice\": 2176.1501717799515,\n      \"price\": 4488.390897798607,\n      \"quantity\": 3750,\n      \"unitPrice\": 4427.849255609002\n    }\n  },\n  \"shipment\": 6504.992784227549,\n  \"subtotal\": 4760.8903131557645,\n  \"tax\": {\n    \"components\": [\n      {\n        \"amount\": 7840.235904447049,\n        \"longName\": \"string\",\n        \"percentage\": 6800.336979790117,\n        \"shortName\": \"string\"\n      },\n      {\n        \"amount\": 7971.062911786878,\n        \"longName\": \"string\",\n        \"percentage\": 9071.928969363782,\n        \"shortName\": \"string\"\n      }\n    ],\n    \"isTaxAppliedToShipping\": true,\n    \"isTaxExempted\": false,\n    \"isTaxReverseCharged\": false,\n    \"totalPercentage\": 8218.59200995997,\n    \"totalPrice\": 1443.5141255015715\n  },\n  \"topUp\": 4942.825237732431,\n  \"dispatchDate\": \"2005-02-14\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76b25b40-721f-4ac5-b5f5-f4ea82fd69ea",
+              "name": "Not found - Order does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to get a quote for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28a7eb7e-c3c9-4bba-9fb5-ead1329c8aca",
+              "name": "Unauthorized - Missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to get a quote for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b05d3553-c7e0-4ef7-8793-392cd562f028",
+          "name": "Validate order purchasability",
+          "request": {
+            "name": "Validate order purchasability",
+            "description": {
+              "content": "Checks if an order can be purchased (all parts manufacturable, etc.)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order",
+                ":orderId",
+                "purchasability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order to validate"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f00527ed-44f7-4a1b-9491-7576b01f3ac3",
+              "name": "Purchasability validation completed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "purchasability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to validate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"canBePurchased\": false,\n  \"isMaterialPurchasable\": false,\n  \"isPostProcessingPurchasable\": false,\n  \"isPriceReviewRequired\": true,\n  \"parts\": {\n    \"key_0\": {\n      \"limits\": {\n        \"withinBoundingBoxLimit\": true,\n        \"withinWallThicknessLimit\": false\n      },\n      \"partRevisionId\": \"912a31b2-85f0-e8e3-7f66-b8b9c05c3df7\",\n      \"values\": {\n        \"boundingBox\": [\n          2193.237584065032,\n          6168.339010177044\n        ],\n        \"wallThicknessLimit\": 7843.520551207715,\n        \"wallThicknessWarning\": 6403.257182213532\n      },\n      \"warnings\": {\n        \"hasOptimalWallThickness\": true\n      }\n    }\n  },\n  \"withinBoundingBoxLimit\": false,\n  \"withinMaximumOrderValue\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18c22a44-3785-4496-8690-93ad1c4242cb",
+              "name": "Invalid order ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "purchasability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to validate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4cfc21c3-35dd-4188-8de2-841d5c610da6",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "purchasability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to validate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8f33753-09cc-45ff-8082-0deaf811a5b5",
+          "name": "Get orders by project",
+          "request": {
+            "name": "Get orders by project",
+            "description": {
+              "content": "Retrieves all orders associated with a specific project or thread",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order",
+                "project",
+                ":projectId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "projectId",
+                  "description": "(Required) ID of the project/thread"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aed1125f-4e93-4e6a-a0d8-526a5caff973",
+              "name": "Successfully retrieved orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    "project",
+                    ":projectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "projectId",
+                      "description": "(Required) ID of the project/thread"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "272e36d6-17a1-4d87-9051-2ffb18f9c2dd",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    "project",
+                    ":projectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "projectId",
+                      "description": "(Required) ID of the project/thread"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "faa9ffdb-4726-4444-b5f7-197e87720827",
+          "name": "Get order count",
+          "request": {
+            "name": "Get order count",
+            "description": {
+              "content": "Returns the count of orders matching the specified filters",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "order",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "paymentStatus",
+                  "value": "<string>",
+                  "description": "Filter by payment status"
+                },
+                {
+                  "disabled": false,
+                  "key": "paymentStatus",
+                  "value": "<string>",
+                  "description": "Filter by payment status"
+                },
+                {
+                  "disabled": false,
+                  "key": "awaitingStatus",
+                  "value": "<string>",
+                  "description": "Filter by awaiting status"
+                },
+                {
+                  "disabled": false,
+                  "key": "searchQuery",
+                  "value": "<string>",
+                  "description": "Search query for order details"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderSource",
+                  "value": "<string>",
+                  "description": "Filter by order source"
+                },
+                {
+                  "disabled": false,
+                  "key": "showArchived",
+                  "value": "<boolean>",
+                  "description": "Include archived orders"
+                },
+                {
+                  "disabled": false,
+                  "key": "affiliate",
+                  "value": "<string>",
+                  "description": "Filter by affiliate"
+                },
+                {
+                  "disabled": false,
+                  "key": "threadId",
+                  "value": "<long>",
+                  "description": "Filter by thread ID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a341f48-a6b8-42e5-bb54-e9e23d5847e0",
+              "name": "Successfully retrieved order count",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "paymentStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "paymentStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "awaitingStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchQuery",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderSource",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showArchived",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "affiliate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "threadId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "7478",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ffdd391-2181-478e-bf6b-69d532a6d7ca",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "order",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "paymentStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "paymentStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "awaitingStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchQuery",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderSource",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showArchived",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "affiliate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "threadId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d93d1bc3-3f4e-4064-8df0-470351ab4f3b",
+    "name": "Phasio Activity Internal Customer Order Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

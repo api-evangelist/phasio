@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal User Authentication Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Authentication Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Begin multi-factor authentication setup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/user-auth/mfa",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "query",
+                "description": "Username of the user whose password is being changed"
+              }
+            ]
+          },
+          "docs": "Initiates the multi-factor authentication setup process and returns a QR code"
+        },
+        {
+          "info": {
+            "name": "Complete multi-factor authentication setup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/user-auth/mfa",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "query",
+                "description": "Username of the user whose password is being changed"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Verification code from authenticator app"
+              }
+            ]
+          },
+          "docs": "Completes the multi-factor authentication setup by verifying the provided code"
+        },
+        {
+          "info": {
+            "name": "Disable multi-factor authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/user-auth/mfa",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "query",
+                "description": "Username of the user whose password is being changed"
+              }
+            ]
+          },
+          "docs": "Disables multi-factor authentication for the current user"
+        },
+        {
+          "info": {
+            "name": "Change user password",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/user-auth/password",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "query",
+                "description": "Username of the user whose password is being changed"
+              },
+              {
+                "name": "oldPass",
+                "value": "",
+                "type": "query",
+                "description": "Current password for verification"
+              },
+              {
+                "name": "newPass",
+                "value": "",
+                "type": "query",
+                "description": "New password to set"
+              }
+            ]
+          },
+          "docs": "Changes the password for the current authenticated user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

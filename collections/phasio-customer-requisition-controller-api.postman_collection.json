@@ -1,0 +1,836 @@
+{
+  "item": [
+    {
+      "id": "323c319c-ecc8-4c07-bb0d-7c8d2774fafb",
+      "name": "Customer Requisition Controller",
+      "description": {
+        "content": "API for customers to view requisitions in their orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0662c9c8-3812-4831-9129-fb6e86b323b5",
+          "name": "Get requisitions by order ID",
+          "request": {
+            "name": "Get requisitions by order ID",
+            "description": {
+              "content": "Retrieves all requisitions for the specified order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "requisition"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orderId",
+                  "value": "<long>",
+                  "description": "(Required) ID of the order to retrieve requisitions for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d33026ce-0887-401b-b18a-afc5ddb2ca5a",
+              "name": "Successfully retrieved requisitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "requisition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orderId",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1992-10-23T03:19:49.943Z\",\n        \"id\": \"79cd3446-a3b9-698e-e67b-fe4deb375ca8\",\n        \"partSpecificationId\": \"67abbbb6-36c6-2c74-e0bc-48ea202597ce\",\n        \"updatedAt\": \"2023-05-15T22:58:34.546Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"2005-09-23T05:47:59.314Z\",\n        \"id\": \"3608a978-7d2f-20a5-e8fb-487cb211086b\",\n        \"partSpecificationId\": \"94cba18f-6188-cbad-f6c6-f95d1dd4f71d\",\n        \"updatedAt\": \"1966-07-24T09:25:48.859Z\"\n      }\n    ],\n    \"createdAt\": \"2021-07-05T23:29:04.678Z\",\n    \"id\": 1287,\n    \"lastUpdated\": \"1950-01-10T18:03:43.189Z\",\n    \"materialId\": 4992,\n    \"name\": \"string\",\n    \"orderId\": 8562,\n    \"partRevisionId\": \"9b746484-9e68-d123-09e0-7166d5212c6e\",\n    \"postProcessingIds\": [\n      7468,\n      9593\n    ],\n    \"processPricesId\": \"11d1f5b8-d4be-3d5e-17ab-419735edc999\",\n    \"quantity\": 2685,\n    \"units\": \"MILLIMETERS\",\n    \"watertight\": false,\n    \"colorId\": 754,\n    \"precisionId\": 9546,\n    \"infillId\": 9705,\n    \"pricePaid\": 2249.952563868357,\n    \"leadTimeId\": \"50903b7d-dca0-3635-09ba-fc896151010c\"\n  },\n  {\n    \"constraints\": [\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1952-10-18T22:09:59.268Z\",\n        \"id\": \"e09ee198-63cf-6f70-369d-70f3657f7dd3\",\n        \"partSpecificationId\": \"26b557b7-53e4-99df-faa7-04d472eaf0c0\",\n        \"updatedAt\": \"1981-11-06T09:45:35.347Z\"\n      },\n      {\n        \"constraintType\": \"string\",\n        \"createdAt\": \"1953-03-09T13:40:45.930Z\",\n        \"id\": \"39f2e055-17e2-f3d0-4630-2219bf46c2d4\",\n        \"partSpecificationId\": \"71c0d33d-a3f9-09bb-c1b7-3c19679b524d\",\n        \"updatedAt\": \"1973-04-08T04:02:39.525Z\"\n      }\n    ],\n    \"createdAt\": \"1956-10-31T14:00:10.787Z\",\n    \"id\": 788,\n    \"lastUpdated\": \"1986-01-23T01:30:07.673Z\",\n    \"materialId\": 4288,\n    \"name\": \"string\",\n    \"orderId\": 8856,\n    \"partRevisionId\": \"856ada6e-aa20-cb7d-beed-3b657f5d366d\",\n    \"postProcessingIds\": [\n      7437,\n      3200\n    ],\n    \"processPricesId\": \"df5518e0-bac3-cd88-160b-397c4f88597c\",\n    \"quantity\": 7165,\n    \"units\": \"MILLIMETERS\",\n    \"watertight\": false,\n    \"colorId\": 9810,\n    \"precisionId\": 811,\n    \"infillId\": 5503,\n    \"pricePaid\": 8301.547998228089,\n    \"leadTimeId\": \"245ce665-a230-47d1-6785-9d469291d5d9\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2142524c-208b-4b08-b7c0-db45cc6a0206",
+              "name": "Unauthorized - missing customer or operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "requisition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orderId",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a2c93c1-d75e-4942-9fb9-a61d92ec2f7b",
+          "name": "Get part revision",
+          "request": {
+            "name": "Get part revision",
+            "description": {
+              "content": "Retrieves a specific part revision by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "requisition",
+                ":requisitionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "requisitionId",
+                  "description": "(Required) ID of the part revision to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19e989da-9036-4f25-9ed2-8e28e38e3ce7",
+              "name": "Part revision successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "requisition",
+                    ":requisitionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) ID of the part revision to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"availableAccessories\": [\n    \"ORIGINAL_CAD_FILE\",\n    \"CORE_GEOMETRY\"\n  ],\n  \"deleted\": false,\n  \"designName\": \"string\",\n  \"partRevisionId\": \"7d4a090f-439b-7b85-f65b-abd32432b048\",\n  \"designId\": \"4f110d8f-ca6f-6e3c-82f2-b0d0888e4e74\",\n  \"volume\": 9538.218631549546,\n  \"area\": 8826.655447267745,\n  \"height\": 5520.620642875707,\n  \"width\": 8878.59479028882,\n  \"depth\": 7388.939888803241,\n  \"minimumWallThickness\": 6531.246603049845,\n  \"minBoundingBoxVolume\": 7862.5254644744555,\n  \"convexHullVolume\": 7641.054845730665,\n  \"shrinkWrapVolume\": 4751.450349522804,\n  \"createdAt\": \"1974-02-07T05:57:58.044Z\",\n  \"versionNumber\": 6565,\n  \"isLatestRevision\": false,\n  \"repaired\": true,\n  \"watertight\": false,\n  \"originalCADFileType\": \"THREEDS\",\n  \"conflictOnHash\": \"string\",\n  \"baseRotationMatrix\": [\n    7278.58172411686,\n    5387.231485211741\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc82d95e-e919-4f81-90c9-2534dade096f",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "requisition",
+                    ":requisitionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) ID of the part revision to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "11b1ee14-921b-4b89-90c5-cf35b5d9f9a8",
+              "name": "Part revision not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "requisition",
+                    ":requisitionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) ID of the part revision to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6941b06-f417-41b6-b765-acf236d1c960",
+          "name": "Download part thumbnail",
+          "request": {
+            "name": "Download part thumbnail",
+            "description": {
+              "content": "Downloads the thumbnail image for a requisition",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "requisition",
+                ":requisitionId",
+                "thumbnail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "requisitionId",
+                  "description": "(Required) ID of the requisition"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a8e9d36-b071-44f1-a908-4c35f8e3b4c6",
+              "name": "Thumbnail successfully downloaded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "requisition",
+                    ":requisitionId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) ID of the requisition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "71b92651-fb4a-4787-8a2b-fc1cb6f36fae",
+              "name": "Invalid requisition ID or thumbnail not available",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "requisition",
+                    ":requisitionId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) ID of the requisition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2aab7d5b-35f1-456e-a2a3-bff336995110",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "requisition",
+                    ":requisitionId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) ID of the requisition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad9b981a-60a8-4998-ae82-8d02436adef6",
+          "name": "Download part revision file",
+          "request": {
+            "name": "Download part revision file",
+            "description": {
+              "content": "Downloads a specific file type associated with a part revision",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "v1",
+                "requisition",
+                ":requisitionId",
+                "download",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "requisitionId",
+                  "description": "(Required) ID of the part revision"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Type of file to download"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8286d064-d769-45a5-b138-37e998b12658",
+              "name": "File downloaded successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "requisition",
+                    ":requisitionId",
+                    "download",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) ID of the part revision"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Type of file to download"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4ac76662-8ab2-484a-804a-5e506ec4bef3",
+              "name": "File not found or download failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "requisition",
+                    ":requisitionId",
+                    "download",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) ID of the part revision"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Type of file to download"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "73766441-8326-44ad-bc52-5f8ef0b559dd",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "v1",
+                    "requisition",
+                    ":requisitionId",
+                    "download",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "requisitionId",
+                      "description": "(Required) ID of the part revision"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Type of file to download"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fc55d71a-5d62-4595-8a58-f3ee8bfe6e93",
+    "name": "Phasio Activity Internal Customer Requisition Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

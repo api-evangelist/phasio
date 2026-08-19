@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Customer Addresses API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Addresses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all addresses for current customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/address"
+          },
+          "docs": "Retrieves all addresses associated with the current customer organization"
+        },
+        {
+          "info": {
+            "name": "Create a new address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/address",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new shipping or billing address for the current customer organization"
+        },
+        {
+          "info": {
+            "name": "Get address by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/address/:addressId",
+            "params": [
+              {
+                "name": "addressId",
+                "value": "123",
+                "type": "path",
+                "description": "ID of the address to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves an address by its unique identifier"
+        },
+        {
+          "info": {
+            "name": "Delete address",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/address/:addressId",
+            "params": [
+              {
+                "name": "addressId",
+                "value": "123",
+                "type": "path",
+                "description": "ID of the address to delete"
+              }
+            ]
+          },
+          "docs": "Deletes an address by its unique identifier"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

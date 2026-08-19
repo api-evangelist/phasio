@@ -1,0 +1,182 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Customer Cart Item Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Cart Item Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create cart item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/carts/:cartId/items",
+            "params": [
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new item to the customer's shopping cart"
+        },
+        {
+          "info": {
+            "name": "Update cart item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/carts/:cartId/items/:id",
+            "params": [
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart item to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing item in the customer's shopping cart"
+        },
+        {
+          "info": {
+            "name": "Delete cart item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/carts/:cartId/items/:id",
+            "params": [
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart item to delete"
+              }
+            ]
+          },
+          "docs": "Removes an item from the customer's shopping cart"
+        },
+        {
+          "info": {
+            "name": "Get part revision for cart item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/carts/:cartId/items/:id/part-revision",
+            "params": [
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart item"
+              }
+            ]
+          },
+          "docs": "Retrieves part revision metadata through cart item ownership"
+        },
+        {
+          "info": {
+            "name": "Download part revision thumbnail for cart item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/carts/:cartId/items/:id/part-revision/thumbnail",
+            "params": [
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart item"
+              }
+            ]
+          },
+          "docs": "Downloads the thumbnail image for a part revision through cart item ownership"
+        },
+        {
+          "info": {
+            "name": "Download part revision file for cart item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/customer/v1/carts/:cartId/items/:id/part-revision/download/:type",
+            "params": [
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the cart item"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Type of file to download"
+              }
+            ]
+          },
+          "docs": "Downloads a specific file type for a part revision through cart item ownership"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1525 @@
+{
+  "item": [
+    {
+      "id": "7d5f1525-b52d-4591-bf14-14af0fe306ab",
+      "name": "Manufacturer Thread Controller",
+      "description": {
+        "content": "Endpoints for managing communication threads and projects",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b5455c3-9edf-4cbb-8058-a12afe05a179",
+          "name": "Create thread",
+          "request": {
+            "name": "Create thread",
+            "description": {
+              "content": "Creates a new communication thread or project",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "thread"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"createOrderDto\": {\n    \"assemblyRequisitions\": [\n      {\n        \"assemblyId\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"requisitionIntentId\": \"<uuid>\"\n      },\n      {\n        \"assemblyId\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"requisitionIntentId\": \"<uuid>\"\n      }\n    ],\n    \"ccCustomerIds\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"currency\": \"<string>\",\n    \"expenses\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"markPaymentConfirmed\": \"<boolean>\",\n    \"requisitions\": [\n      {\n        \"comments\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"constraints\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"materialId\": \"<long>\",\n        \"partRevisionId\": \"<uuid>\",\n        \"postProcessing\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"processPricesId\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"requisitionIntentId\": \"<uuid>\",\n        \"units\": \"<string>\",\n        \"variables\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"infillId\": \"<long>\",\n        \"precisionId\": \"<long>\",\n        \"colorId\": \"<long>\",\n        \"manualPrice\": \"<number>\",\n        \"leadTimeId\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"comments\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"constraints\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"materialId\": \"<long>\",\n        \"partRevisionId\": \"<uuid>\",\n        \"postProcessing\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"processPricesId\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"requisitionIntentId\": \"<uuid>\",\n        \"units\": \"<string>\",\n        \"variables\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"infillId\": \"<long>\",\n        \"precisionId\": \"<long>\",\n        \"colorId\": \"<long>\",\n        \"manualPrice\": \"<number>\",\n        \"leadTimeId\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"source\": \"<string>\",\n    \"discountId\": \"<long>\",\n    \"operatorNote\": \"<string>\",\n    \"isSilent\": \"<boolean>\",\n    \"affiliate\": \"<string>\",\n    \"paymentDueDate\": \"<dateTime>\",\n    \"discount\": {\n      \"code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"customerId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"endTime\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"startTime\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"discountType\": \"string\",\n      \"percentage\": true\n    },\n    \"shipment\": {\n      \"toAddressDto\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountProvider\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountServiceType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountServiceName\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"estimatedRate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"finalRatePaid\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"trackingDto\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"billingAddressId\": \"<long>\",\n    \"customReference\": \"<string>\"\n  },\n  \"customerOrganisationId\": \"<long>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3ac99430-3c58-4f32-8d1e-9331ef3ac521",
+              "name": "Thread created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"createOrderDto\": {\n    \"assemblyRequisitions\": [\n      {\n        \"assemblyId\": \"75a291ee-0624-1491-bbb3-24be0ae3e3b7\",\n        \"quantity\": 7118,\n        \"requisitionIntentId\": \"5777fb41-7c3c-92c0-ea7b-cc0bc762aac9\"\n      },\n      {\n        \"assemblyId\": \"1e335fcf-7e55-f046-78c8-de433452ecf7\",\n        \"quantity\": 1991,\n        \"requisitionIntentId\": \"54b0aed7-a9a6-5ec5-1f1e-c454bff1c3f2\"\n      }\n    ],\n    \"ccCustomerIds\": [\n      6104,\n      4860\n    ],\n    \"currency\": \"PHP\",\n    \"expenses\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"markPaymentConfirmed\": false,\n    \"requisitions\": [\n      {\n        \"comments\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"constraints\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"materialId\": 6033,\n        \"partRevisionId\": \"bb9e88af-5c18-0fe0-83a9-dade44bd3f71\",\n        \"postProcessing\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"processPricesId\": \"890a861b-ed82-f177-66f3-8197346490c9\",\n        \"quantity\": 4745,\n        \"requisitionIntentId\": \"66f6632d-519d-afe5-5887-0ecd26ee88ef\",\n        \"units\": \"MILLIMETERS\",\n        \"variables\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"infillId\": 1867,\n        \"precisionId\": 6377,\n        \"colorId\": 8298,\n        \"manualPrice\": 7103.040352108335,\n        \"leadTimeId\": \"cfb4ac30-6cba-8443-791a-0cfdc11ecadc\",\n        \"name\": \"string\"\n      },\n      {\n        \"comments\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"constraints\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"materialId\": 9227,\n        \"partRevisionId\": \"b4de6281-82d8-c0f3-96bb-9a7d66adc4d3\",\n        \"postProcessing\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"processPricesId\": \"7cc33808-1290-9ad7-13d6-e3e183609b09\",\n        \"quantity\": 7143,\n        \"requisitionIntentId\": \"92b1143c-5f64-9179-0cfa-e367a689a314\",\n        \"units\": \"METRES\",\n        \"variables\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_3\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"infillId\": 1017,\n        \"precisionId\": 9921,\n        \"colorId\": 2687,\n        \"manualPrice\": 2168.945123973998,\n        \"leadTimeId\": \"714bbb8d-4248-4256-b234-978b0f13d8e9\",\n        \"name\": \"string\"\n      }\n    ],\n    \"source\": \"string\",\n    \"discountId\": 8290,\n    \"operatorNote\": \"string\",\n    \"isSilent\": true,\n    \"affiliate\": \"string\",\n    \"paymentDueDate\": \"1971-02-27T00:09:45.479Z\",\n    \"discount\": {\n      \"code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"customerId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"endTime\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"startTime\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"discountType\": 5667.476117869956,\n      \"percentage\": 2338\n    },\n    \"shipment\": {\n      \"toAddressDto\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountProvider\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountServiceType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountServiceName\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"estimatedRate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"finalRatePaid\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"trackingDto\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"billingAddressId\": 6274,\n    \"customReference\": \"string\"\n  },\n  \"customerOrganisationId\": 4922,\n  \"type\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"filesCount\": 7037,\n  \"id\": 645,\n  \"operatorId\": 3188,\n  \"organisationId\": 5768,\n  \"subscribedCustomerIds\": [\n    2113,\n    9757\n  ],\n  \"type\": \"PROJECT\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70d25c2c-580c-47e8-8040-2a44bbcf3327",
+              "name": "Invalid thread data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"createOrderDto\": {\n    \"assemblyRequisitions\": [\n      {\n        \"assemblyId\": \"75a291ee-0624-1491-bbb3-24be0ae3e3b7\",\n        \"quantity\": 7118,\n        \"requisitionIntentId\": \"5777fb41-7c3c-92c0-ea7b-cc0bc762aac9\"\n      },\n      {\n        \"assemblyId\": \"1e335fcf-7e55-f046-78c8-de433452ecf7\",\n        \"quantity\": 1991,\n        \"requisitionIntentId\": \"54b0aed7-a9a6-5ec5-1f1e-c454bff1c3f2\"\n      }\n    ],\n    \"ccCustomerIds\": [\n      6104,\n      4860\n    ],\n    \"currency\": \"PHP\",\n    \"expenses\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"markPaymentConfirmed\": false,\n    \"requisitions\": [\n      {\n        \"comments\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"constraints\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"materialId\": 6033,\n        \"partRevisionId\": \"bb9e88af-5c18-0fe0-83a9-dade44bd3f71\",\n        \"postProcessing\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"processPricesId\": \"890a861b-ed82-f177-66f3-8197346490c9\",\n        \"quantity\": 4745,\n        \"requisitionIntentId\": \"66f6632d-519d-afe5-5887-0ecd26ee88ef\",\n        \"units\": \"MILLIMETERS\",\n        \"variables\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"infillId\": 1867,\n        \"precisionId\": 6377,\n        \"colorId\": 8298,\n        \"manualPrice\": 7103.040352108335,\n        \"leadTimeId\": \"cfb4ac30-6cba-8443-791a-0cfdc11ecadc\",\n        \"name\": \"string\"\n      },\n      {\n        \"comments\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"constraints\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"materialId\": 9227,\n        \"partRevisionId\": \"b4de6281-82d8-c0f3-96bb-9a7d66adc4d3\",\n        \"postProcessing\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"processPricesId\": \"7cc33808-1290-9ad7-13d6-e3e183609b09\",\n        \"quantity\": 7143,\n        \"requisitionIntentId\": \"92b1143c-5f64-9179-0cfa-e367a689a314\",\n        \"units\": \"METRES\",\n        \"variables\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_3\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"infillId\": 1017,\n        \"precisionId\": 9921,\n        \"colorId\": 2687,\n        \"manualPrice\": 2168.945123973998,\n        \"leadTimeId\": \"714bbb8d-4248-4256-b234-978b0f13d8e9\",\n        \"name\": \"string\"\n      }\n    ],\n    \"source\": \"string\",\n    \"discountId\": 8290,\n    \"operatorNote\": \"string\",\n    \"isSilent\": true,\n    \"affiliate\": \"string\",\n    \"paymentDueDate\": \"1971-02-27T00:09:45.479Z\",\n    \"discount\": {\n      \"code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"customerId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"endTime\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"startTime\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"discountType\": 5667.476117869956,\n      \"percentage\": 2338\n    },\n    \"shipment\": {\n      \"toAddressDto\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountProvider\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountServiceType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountServiceName\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"estimatedRate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"finalRatePaid\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"trackingDto\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"billingAddressId\": 6274,\n    \"customReference\": \"string\"\n  },\n  \"customerOrganisationId\": 4922,\n  \"type\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b09190c6-bc60-4345-982c-931149aeab2f",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"createOrderDto\": {\n    \"assemblyRequisitions\": [\n      {\n        \"assemblyId\": \"75a291ee-0624-1491-bbb3-24be0ae3e3b7\",\n        \"quantity\": 7118,\n        \"requisitionIntentId\": \"5777fb41-7c3c-92c0-ea7b-cc0bc762aac9\"\n      },\n      {\n        \"assemblyId\": \"1e335fcf-7e55-f046-78c8-de433452ecf7\",\n        \"quantity\": 1991,\n        \"requisitionIntentId\": \"54b0aed7-a9a6-5ec5-1f1e-c454bff1c3f2\"\n      }\n    ],\n    \"ccCustomerIds\": [\n      6104,\n      4860\n    ],\n    \"currency\": \"PHP\",\n    \"expenses\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"markPaymentConfirmed\": false,\n    \"requisitions\": [\n      {\n        \"comments\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"constraints\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"materialId\": 6033,\n        \"partRevisionId\": \"bb9e88af-5c18-0fe0-83a9-dade44bd3f71\",\n        \"postProcessing\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"processPricesId\": \"890a861b-ed82-f177-66f3-8197346490c9\",\n        \"quantity\": 4745,\n        \"requisitionIntentId\": \"66f6632d-519d-afe5-5887-0ecd26ee88ef\",\n        \"units\": \"MILLIMETERS\",\n        \"variables\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"infillId\": 1867,\n        \"precisionId\": 6377,\n        \"colorId\": 8298,\n        \"manualPrice\": 7103.040352108335,\n        \"leadTimeId\": \"cfb4ac30-6cba-8443-791a-0cfdc11ecadc\",\n        \"name\": \"string\"\n      },\n      {\n        \"comments\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"constraints\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"materialId\": 9227,\n        \"partRevisionId\": \"b4de6281-82d8-c0f3-96bb-9a7d66adc4d3\",\n        \"postProcessing\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"processPricesId\": \"7cc33808-1290-9ad7-13d6-e3e183609b09\",\n        \"quantity\": 7143,\n        \"requisitionIntentId\": \"92b1143c-5f64-9179-0cfa-e367a689a314\",\n        \"units\": \"METRES\",\n        \"variables\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_3\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"infillId\": 1017,\n        \"precisionId\": 9921,\n        \"colorId\": 2687,\n        \"manualPrice\": 2168.945123973998,\n        \"leadTimeId\": \"714bbb8d-4248-4256-b234-978b0f13d8e9\",\n        \"name\": \"string\"\n      }\n    ],\n    \"source\": \"string\",\n    \"discountId\": 8290,\n    \"operatorNote\": \"string\",\n    \"isSilent\": true,\n    \"affiliate\": \"string\",\n    \"paymentDueDate\": \"1971-02-27T00:09:45.479Z\",\n    \"discount\": {\n      \"code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"customerId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"endTime\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"startTime\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"discountType\": 5667.476117869956,\n      \"percentage\": 2338\n    },\n    \"shipment\": {\n      \"toAddressDto\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountProvider\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountServiceType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountServiceName\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"estimatedRate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"finalRatePaid\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"trackingDto\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"billingAddressId\": 6274,\n    \"customReference\": \"string\"\n  },\n  \"customerOrganisationId\": 4922,\n  \"type\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a441af1-97b9-42d0-8485-3bd34eb103b9",
+          "name": "Merge threads",
+          "request": {
+            "name": "Merge threads",
+            "description": {
+              "content": "Merges a source thread into a destination thread",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "thread",
+                "merge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destinationThreadId\": \"<long>\",\n  \"sourceThreadId\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1b2df9e2-f95d-48d7-96f6-55ca7c29091a",
+              "name": "Threads merged successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    "merge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationThreadId\": \"<long>\",\n  \"sourceThreadId\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "5251",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2fbec80f-b082-45f7-9ea2-f049bf100129",
+              "name": "Invalid merge data or threads not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    "merge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationThreadId\": \"<long>\",\n  \"sourceThreadId\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c38a1db4-1f83-4462-abfb-375c16027d5d",
+          "name": "Convert job to project",
+          "request": {
+            "name": "Convert job to project",
+            "description": {
+              "content": "Converts a manufacturing job thread to a project thread",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "thread",
+                "job-to-project"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jobId\": \"<long>\",\n  \"name\": \"<string>\",\n  \"notificationsEnabled\": \"<boolean>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "13b6fdf1-3fef-41b9-918e-575e36de2011",
+              "name": "Job converted to project successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    "job-to-project"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jobId\": \"<long>\",\n  \"name\": \"<string>\",\n  \"notificationsEnabled\": \"<boolean>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "5251",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cec3ed3-09dd-4733-a76c-35776bdabce1",
+              "name": "Invalid conversion data or job not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    "job-to-project"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jobId\": \"<long>\",\n  \"name\": \"<string>\",\n  \"notificationsEnabled\": \"<boolean>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "507981b4-de56-4f67-b0b8-b737dedb7793",
+          "name": "Get thread by ID",
+          "request": {
+            "name": "Get thread by ID",
+            "description": {
+              "content": "Retrieves a specific thread by its ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "thread",
+                ":threadId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "threadId",
+                  "description": "(Required) ID of the thread to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e37ce6a-3821-4029-90eb-8c926623bce6",
+              "name": "Thread retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    ":threadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"filesCount\": 7037,\n  \"id\": 645,\n  \"operatorId\": 3188,\n  \"organisationId\": 5768,\n  \"subscribedCustomerIds\": [\n    2113,\n    9757\n  ],\n  \"type\": \"PROJECT\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa85a033-60c7-441e-b4f1-e9523b4bce19",
+              "name": "Thread not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    ":threadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e4913ee-bda8-43cb-9778-af43566b813f",
+          "name": "Delete thread",
+          "request": {
+            "name": "Delete thread",
+            "description": {
+              "content": "Marks a thread as deleted (soft delete)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "thread",
+                ":threadId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "threadId",
+                  "description": "(Required) ID of the thread to delete"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "59b9cd1a-cc38-4259-8dc4-3b01829866e1",
+              "name": "Thread deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    ":threadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6870e20a-42ff-4bd5-9cb1-779bf4cdb57b",
+              "name": "Delete failed or thread not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    ":threadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0f02554-b260-46b0-81e1-f2c0dda82b4b",
+          "name": "Update thread",
+          "request": {
+            "name": "Update thread",
+            "description": {
+              "content": "Updates an existing thread",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "thread",
+                ":threadId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "threadId",
+                  "description": "(Required) ID of the thread to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"createOrderDto\": {\n    \"assemblyRequisitions\": [\n      {\n        \"assemblyId\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"requisitionIntentId\": \"<uuid>\"\n      },\n      {\n        \"assemblyId\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"requisitionIntentId\": \"<uuid>\"\n      }\n    ],\n    \"ccCustomerIds\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"currency\": \"<string>\",\n    \"expenses\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"markPaymentConfirmed\": \"<boolean>\",\n    \"requisitions\": [\n      {\n        \"comments\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"constraints\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"materialId\": \"<long>\",\n        \"partRevisionId\": \"<uuid>\",\n        \"postProcessing\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"processPricesId\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"requisitionIntentId\": \"<uuid>\",\n        \"units\": \"<string>\",\n        \"variables\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"infillId\": \"<long>\",\n        \"precisionId\": \"<long>\",\n        \"colorId\": \"<long>\",\n        \"manualPrice\": \"<number>\",\n        \"leadTimeId\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"comments\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"constraints\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"materialId\": \"<long>\",\n        \"partRevisionId\": \"<uuid>\",\n        \"postProcessing\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"processPricesId\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"requisitionIntentId\": \"<uuid>\",\n        \"units\": \"<string>\",\n        \"variables\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"infillId\": \"<long>\",\n        \"precisionId\": \"<long>\",\n        \"colorId\": \"<long>\",\n        \"manualPrice\": \"<number>\",\n        \"leadTimeId\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"source\": \"<string>\",\n    \"discountId\": \"<long>\",\n    \"operatorNote\": \"<string>\",\n    \"isSilent\": \"<boolean>\",\n    \"affiliate\": \"<string>\",\n    \"paymentDueDate\": \"<dateTime>\",\n    \"discount\": {\n      \"code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"customerId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"endTime\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"startTime\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"discountType\": 6381.4265960803095,\n      \"percentage\": 6715.590314125011\n    },\n    \"shipment\": {\n      \"toAddressDto\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountProvider\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountServiceType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountServiceName\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"estimatedRate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"finalRatePaid\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"trackingDto\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"billingAddressId\": \"<long>\",\n    \"customReference\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6aff7a0d-dacf-4622-8340-5bea99ab1e3d",
+              "name": "Thread updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    ":threadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"createOrderDto\": {\n    \"assemblyRequisitions\": [\n      {\n        \"assemblyId\": \"58f3c68d-d344-c511-9e9b-1ea8f33aac75\",\n        \"quantity\": 1053,\n        \"requisitionIntentId\": \"2d52d0d6-96f7-5310-6ec9-16fed9bea8ab\"\n      },\n      {\n        \"assemblyId\": \"eee317e8-0870-b1d0-ff22-f1dc3b2ad60a\",\n        \"quantity\": 4880,\n        \"requisitionIntentId\": \"be2c6ea5-2ab2-6acc-899b-fe06d083effb\"\n      }\n    ],\n    \"ccCustomerIds\": [\n      5567,\n      7707\n    ],\n    \"currency\": \"DKK\",\n    \"expenses\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"markPaymentConfirmed\": false,\n    \"requisitions\": [\n      {\n        \"comments\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"constraints\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"materialId\": 4510,\n        \"partRevisionId\": \"d665b5ed-671b-43ee-dd24-eec96828ce5d\",\n        \"postProcessing\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"processPricesId\": \"86bbcf83-ba7d-df3b-dbf7-ac664e33c8ef\",\n        \"quantity\": 7797,\n        \"requisitionIntentId\": \"18cc7795-683d-b2af-b779-5ea7e02f81ee\",\n        \"units\": \"MILLIMETERS\",\n        \"variables\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"infillId\": 2815,\n        \"precisionId\": 2797,\n        \"colorId\": 443,\n        \"manualPrice\": 8119.2773241185005,\n        \"leadTimeId\": \"0b0110d5-8d0f-a1ac-2342-bdcc02e75646\",\n        \"name\": \"string\"\n      },\n      {\n        \"comments\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"constraints\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"materialId\": 5103,\n        \"partRevisionId\": \"1b79bd3f-ffff-8410-7fa5-270e4aa43294\",\n        \"postProcessing\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"processPricesId\": \"986b2b4a-9357-925e-46dc-fd2e7cae9ee6\",\n        \"quantity\": 9597,\n        \"requisitionIntentId\": \"10abee5e-7fc9-92e6-c3cd-dac8123349bd\",\n        \"units\": \"INCHES\",\n        \"variables\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"infillId\": 4455,\n        \"precisionId\": 6506,\n        \"colorId\": 8561,\n        \"manualPrice\": 6121.101767777061,\n        \"leadTimeId\": \"e3e34da2-3e5a-bbd6-8d98-55312605ee9c\",\n        \"name\": \"string\"\n      }\n    ],\n    \"source\": \"string\",\n    \"discountId\": 136,\n    \"operatorNote\": \"string\",\n    \"isSilent\": true,\n    \"affiliate\": \"string\",\n    \"paymentDueDate\": \"1983-05-20T00:22:11.647Z\",\n    \"discount\": {\n      \"code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"customerId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"endTime\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"startTime\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"discountType\": 6830,\n      \"percentage\": \"string\"\n    },\n    \"shipment\": {\n      \"toAddressDto\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountProvider\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountServiceType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountServiceName\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"estimatedRate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"finalRatePaid\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"trackingDto\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"billingAddressId\": 8847,\n    \"customReference\": \"string\"\n  },\n  \"type\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7df1f409-3aa3-4773-96c8-9f09328ed91c",
+              "name": "Invalid update data or thread not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    ":threadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"createOrderDto\": {\n    \"assemblyRequisitions\": [\n      {\n        \"assemblyId\": \"58f3c68d-d344-c511-9e9b-1ea8f33aac75\",\n        \"quantity\": 1053,\n        \"requisitionIntentId\": \"2d52d0d6-96f7-5310-6ec9-16fed9bea8ab\"\n      },\n      {\n        \"assemblyId\": \"eee317e8-0870-b1d0-ff22-f1dc3b2ad60a\",\n        \"quantity\": 4880,\n        \"requisitionIntentId\": \"be2c6ea5-2ab2-6acc-899b-fe06d083effb\"\n      }\n    ],\n    \"ccCustomerIds\": [\n      5567,\n      7707\n    ],\n    \"currency\": \"DKK\",\n    \"expenses\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"markPaymentConfirmed\": false,\n    \"requisitions\": [\n      {\n        \"comments\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"constraints\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"materialId\": 4510,\n        \"partRevisionId\": \"d665b5ed-671b-43ee-dd24-eec96828ce5d\",\n        \"postProcessing\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"processPricesId\": \"86bbcf83-ba7d-df3b-dbf7-ac664e33c8ef\",\n        \"quantity\": 7797,\n        \"requisitionIntentId\": \"18cc7795-683d-b2af-b779-5ea7e02f81ee\",\n        \"units\": \"MILLIMETERS\",\n        \"variables\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"infillId\": 2815,\n        \"precisionId\": 2797,\n        \"colorId\": 443,\n        \"manualPrice\": 8119.2773241185005,\n        \"leadTimeId\": \"0b0110d5-8d0f-a1ac-2342-bdcc02e75646\",\n        \"name\": \"string\"\n      },\n      {\n        \"comments\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"constraints\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"materialId\": 5103,\n        \"partRevisionId\": \"1b79bd3f-ffff-8410-7fa5-270e4aa43294\",\n        \"postProcessing\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"processPricesId\": \"986b2b4a-9357-925e-46dc-fd2e7cae9ee6\",\n        \"quantity\": 9597,\n        \"requisitionIntentId\": \"10abee5e-7fc9-92e6-c3cd-dac8123349bd\",\n        \"units\": \"INCHES\",\n        \"variables\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"infillId\": 4455,\n        \"precisionId\": 6506,\n        \"colorId\": 8561,\n        \"manualPrice\": 6121.101767777061,\n        \"leadTimeId\": \"e3e34da2-3e5a-bbd6-8d98-55312605ee9c\",\n        \"name\": \"string\"\n      }\n    ],\n    \"source\": \"string\",\n    \"discountId\": 136,\n    \"operatorNote\": \"string\",\n    \"isSilent\": true,\n    \"affiliate\": \"string\",\n    \"paymentDueDate\": \"1983-05-20T00:22:11.647Z\",\n    \"discount\": {\n      \"code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"customerId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"endTime\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"startTime\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"discountType\": 6830,\n      \"percentage\": \"string\"\n    },\n    \"shipment\": {\n      \"toAddressDto\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountProvider\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountServiceType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountServiceName\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"estimatedRate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"finalRatePaid\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"trackingDto\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"billingAddressId\": 8847,\n    \"customReference\": \"string\"\n  },\n  \"type\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7cd4ef7-b14c-4325-a001-c86f9f5a8cef",
+          "name": "Update project status",
+          "request": {
+            "name": "Update project status",
+            "description": {
+              "content": "Updates the status of a project thread",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "thread",
+                ":threadId",
+                "status",
+                ":status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "threadId",
+                  "description": "(Required) ID of the thread to update"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "status",
+                  "description": "(Required) New status for the project"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f16ff16f-982d-41a6-98c4-0d4b04d63ad5",
+              "name": "Project status updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    ":threadId",
+                    "status",
+                    ":status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread to update"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "status",
+                      "description": "(Required) New status for the project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5bd5b182-9d60-41e3-8ed7-06bbbd1e5d83",
+              "name": "Invalid status or thread not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    ":threadId",
+                    "status",
+                    ":status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread to update"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "status",
+                      "description": "(Required) New status for the project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39ea6f19-e8a1-419b-b283-f239bc84b38f",
+          "name": "Toggle project notifications",
+          "request": {
+            "name": "Toggle project notifications",
+            "description": {
+              "content": "Enables or disables notifications for a project",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "thread",
+                ":threadId",
+                "notifications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "enable",
+                  "value": "<boolean>",
+                  "description": "(Required) Whether to enable or disable notifications"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "threadId",
+                  "description": "(Required) ID of the thread to update"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6df1aefe-d5ae-48fb-a2d7-49d5138b54f6",
+              "name": "Project notifications toggled successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    ":threadId",
+                    "notifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "enable",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c716f56-0ec6-426a-8448-5ab84ed547fc",
+              "name": "Toggle failed or thread not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    ":threadId",
+                    "notifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "enable",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) ID of the thread to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da8222b7-6b83-4a92-9326-dcb0795c09f1",
+          "name": "Get operator thread summary",
+          "request": {
+            "name": "Get operator thread summary",
+            "description": {
+              "content": "Retrieves a summary of threads for the current operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "thread",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "<integer>",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Page size for pagination"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d62e972-8784-401f-86d8-2852fe8deb2a",
+              "name": "Thread summaries retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"customerName\": \"string\",\n    \"customerOrganisationId\": 5425,\n    \"lastMessageHint\": \"string\",\n    \"lastMessageTime\": \"2024-05-28T21:21:28.378Z\",\n    \"threadId\": 6795,\n    \"type\": \"string\",\n    \"projectName\": \"string\",\n    \"orderId\": 2352,\n    \"orderNumber\": 4574,\n    \"quoteNumber\": 5628\n  },\n  {\n    \"customerName\": \"string\",\n    \"customerOrganisationId\": 1933,\n    \"lastMessageHint\": \"string\",\n    \"lastMessageTime\": \"2008-10-29T09:10:39.648Z\",\n    \"threadId\": 3984,\n    \"type\": \"string\",\n    \"projectName\": \"string\",\n    \"orderId\": 3518,\n    \"orderNumber\": 4605,\n    \"quoteNumber\": 4177\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d803801-3516-4c65-9573-7af6a6eadac2",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "thread",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aca1112b-0f34-4f99-a20b-9308c967dc2b",
+    "name": "Phasio Activity Internal Manufacturer Thread Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

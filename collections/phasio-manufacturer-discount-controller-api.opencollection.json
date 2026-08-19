@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Discount Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Discount Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all discounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/discount",
+            "params": [
+              {
+                "name": "active",
+                "value": "true",
+                "type": "query",
+                "description": "Filter for active discounts"
+              },
+              {
+                "name": "discountType",
+                "value": "GENERIC",
+                "type": "query",
+                "description": "Filter by discount type (GENERIC, CUSTOMER, INSTANT)"
+              }
+            ]
+          },
+          "docs": "Get all discounts"
+        },
+        {
+          "info": {
+            "name": "Create a new discount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/discount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new discount"
+        },
+        {
+          "info": {
+            "name": "Validate a discount code for a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/discount/validate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate a discount code for a customer"
+        },
+        {
+          "info": {
+            "name": "Expire a discount immediately",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/discount/:discountId/expire",
+            "params": [
+              {
+                "name": "discountId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the discount to expire"
+              }
+            ]
+          },
+          "docs": "Expire a discount immediately"
+        },
+        {
+          "info": {
+            "name": "Update the time range of a discount",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/discount/update-time-range",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the time range of a discount"
+        },
+        {
+          "info": {
+            "name": "Get a specific discount by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/discount/:discountId",
+            "params": [
+              {
+                "name": "discountId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the discount to retrieve"
+              }
+            ]
+          },
+          "docs": "Get a specific discount by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

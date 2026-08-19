@@ -1,0 +1,323 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal Manufacturer Process Prices Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manufacturer Process Prices Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update bounding box limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes/:processPricesId/bounding-box-limit",
+            "params": [
+              {
+                "name": "processPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the process pricing to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the maximum build volume dimensions for a process pricing configuration"
+        },
+        {
+          "info": {
+            "name": "Delete bounding box limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes/:processPricesId/bounding-box-limit",
+            "params": [
+              {
+                "name": "processPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the process pricing from which to remove the bounding box limit"
+              }
+            ]
+          },
+          "docs": "Removes the maximum build volume dimensions constraint from a process pricing configuration"
+        },
+        {
+          "info": {
+            "name": "Get all process pricings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes"
+          },
+          "docs": "Retrieves all manufacturing process pricing configurations for the current operator"
+        },
+        {
+          "info": {
+            "name": "Create process pricing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes",
+            "params": [
+              {
+                "name": "organisationId",
+                "value": "",
+                "type": "query",
+                "description": "Optional organization ID to associate with this pricing"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new manufacturing process pricing configuration"
+        },
+        {
+          "info": {
+            "name": "Apply a stereotype to an existing process",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes/:processPricesId/stereotype",
+            "params": [
+              {
+                "name": "processPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the process pricing to apply the stereotype to"
+              }
+            ]
+          },
+          "docs": "Generates the technology-default equation and variable schema, appending them to the target process. Fails if equations already exist or variable names collide."
+        },
+        {
+          "info": {
+            "name": "createMaterialVariable",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes/:processPricesId/material-variable",
+            "params": [
+              {
+                "name": "processPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the process to create a material variable for"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Duplicate process pricing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes/:processPricesId/duplicate",
+            "params": [
+              {
+                "name": "processPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the process pricing to duplicate"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a duplicate of an existing process pricing configuration with new settings"
+        },
+        {
+          "info": {
+            "name": "Create process pricing with an initial stereotype",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes/stereotype",
+            "params": [
+              {
+                "name": "technology",
+                "value": "",
+                "type": "query",
+                "description": "The technology that this process is based upon"
+              }
+            ]
+          },
+          "docs": "Creates a new manufacturing process pricing configuration with a skeleton stereotype structure"
+        },
+        {
+          "info": {
+            "name": "Get process pricing by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes/:processPricesId",
+            "params": [
+              {
+                "name": "processPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the process pricing to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific manufacturing process pricing configuration by its ID"
+        },
+        {
+          "info": {
+            "name": "Update process pricing",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes/:processPricesId",
+            "params": [
+              {
+                "name": "processPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the process pricing to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing manufacturing process pricing configuration"
+        },
+        {
+          "info": {
+            "name": "Delete process pricing",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes/:processPricesId",
+            "params": [
+              {
+                "name": "processPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the process pricing to delete"
+              }
+            ]
+          },
+          "docs": "Deletes an existing manufacturing process pricing configuration"
+        },
+        {
+          "info": {
+            "name": "Update available post-processings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes/:processPricesId/post-processings",
+            "params": [
+              {
+                "name": "processPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the process pricing to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates which post-processing options are available for a process pricing configuration"
+        },
+        {
+          "info": {
+            "name": "Set process pricing as default",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes/:processPricesId/default",
+            "params": [
+              {
+                "name": "processPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the process pricing to set as default"
+              }
+            ]
+          },
+          "docs": "Sets a process pricing configuration as the default for its technology"
+        },
+        {
+          "info": {
+            "name": "Unset process pricing as default",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes/:processPricesId/default/unselect",
+            "params": [
+              {
+                "name": "processPricesId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the process pricing to unset as default"
+              }
+            ]
+          },
+          "docs": "Removes the default status from a process pricing configuration"
+        },
+        {
+          "info": {
+            "name": "deleteMaterialVariable",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/processes/material-variable/:materialVariableId",
+            "params": [
+              {
+                "name": "materialVariableId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the material variable to delete"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,454 @@
+{
+  "item": [
+    {
+      "id": "d6149687-8164-43c3-b426-7ef10931715d",
+      "name": "Activity Internal",
+      "description": {
+        "content": "Internal API for activity operations including conversation creation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "29102008-0e0f-4b0c-b918-34e5b56108c8",
+          "name": "Create new conversations",
+          "request": {
+            "name": "Create new conversations",
+            "description": {
+              "content": "Creates new conversations, as either the customer or manufacturer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "internal",
+                "v1",
+                "activity",
+                "conversation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activityType\": \"<string>\",\n  \"conversationType\": \"<string>\",\n  \"message\": \"<string>\",\n  \"threadId\": \"<long>\",\n  \"requisitionTagged\": {\n    \"requisitionId\": \"<long>\"\n  },\n  \"locationTagged\": {\n    \"cameraPositionX\": \"<number>\",\n    \"cameraPositionY\": \"<number>\",\n    \"cameraPositionZ\": \"<number>\",\n    \"cameraRotationX\": \"<number>\",\n    \"cameraRotationY\": \"<number>\",\n    \"cameraRotationZ\": \"<number>\",\n    \"locationX\": \"<number>\",\n    \"locationY\": \"<number>\",\n    \"locationZ\": \"<number>\",\n    \"requisitionId\": \"<long>\"\n  },\n  \"orderId\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "625a4f1a-41be-4042-b18f-6c7ce829dcf3",
+              "name": "Conversation successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "activity",
+                    "conversation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activityType\": \"string\",\n  \"conversationType\": \"<string>\",\n  \"message\": \"<string>\",\n  \"threadId\": 341,\n  \"requisitionTagged\": {\n    \"requisitionId\": 2873\n  },\n  \"locationTagged\": {\n    \"cameraPositionX\": 745.9485750601913,\n    \"cameraPositionY\": 3354.7921296990526,\n    \"cameraPositionZ\": 8231.215688472055,\n    \"cameraRotationX\": 6806.341578980511,\n    \"cameraRotationY\": 6932.761726082165,\n    \"cameraRotationZ\": 7183.59990503876,\n    \"locationX\": 7585.8441879815,\n    \"locationY\": 2580.8437948635565,\n    \"locationZ\": 4694.552936721168,\n    \"requisitionId\": 9814\n  },\n  \"orderId\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd6c58da-86e3-471c-8960-37f4aa8b2064",
+              "name": "Invalid conversation data or operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "activity",
+                    "conversation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activityType\": \"string\",\n  \"conversationType\": \"<string>\",\n  \"message\": \"<string>\",\n  \"threadId\": 341,\n  \"requisitionTagged\": {\n    \"requisitionId\": 2873\n  },\n  \"locationTagged\": {\n    \"cameraPositionX\": 745.9485750601913,\n    \"cameraPositionY\": 3354.7921296990526,\n    \"cameraPositionZ\": 8231.215688472055,\n    \"cameraRotationX\": 6806.341578980511,\n    \"cameraRotationY\": 6932.761726082165,\n    \"cameraRotationZ\": 7183.59990503876,\n    \"locationX\": 7585.8441879815,\n    \"locationY\": 2580.8437948635565,\n    \"locationZ\": 4694.552936721168,\n    \"requisitionId\": 9814\n  },\n  \"orderId\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "06819069-4970-4f60-bd5f-2092f6f6258f",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "activity",
+                    "conversation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activityType\": \"string\",\n  \"conversationType\": \"<string>\",\n  \"message\": \"<string>\",\n  \"threadId\": 341,\n  \"requisitionTagged\": {\n    \"requisitionId\": 2873\n  },\n  \"locationTagged\": {\n    \"cameraPositionX\": 745.9485750601913,\n    \"cameraPositionY\": 3354.7921296990526,\n    \"cameraPositionZ\": 8231.215688472055,\n    \"cameraRotationX\": 6806.341578980511,\n    \"cameraRotationY\": 6932.761726082165,\n    \"cameraRotationZ\": 7183.59990503876,\n    \"locationX\": 7585.8441879815,\n    \"locationY\": 2580.8437948635565,\n    \"locationZ\": 4694.552936721168,\n    \"requisitionId\": 9814\n  },\n  \"orderId\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1bbd7923-50ea-4c53-a10c-4cc4f11afa04",
+          "name": "Get thread organisation ID",
+          "request": {
+            "name": "Get thread organisation ID",
+            "description": {
+              "content": "Retrieves the organisation ID associated with a specific thread",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "internal",
+                "v1",
+                "activity",
+                "thread",
+                ":threadId",
+                "organisation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "threadId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4179e1e4-bd6b-48f1-b097-a63455d983ec",
+              "name": "Successfully retrieved organisation ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "activity",
+                    "thread",
+                    ":threadId",
+                    "organisation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "9034",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cfa2e3b6-808b-4194-a162-18b12664358b",
+              "name": "Unauthorized - missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "activity",
+                    "thread",
+                    ":threadId",
+                    "organisation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b691b51a-bad6-4d2e-b8ea-dec506b98520",
+              "name": "Thread not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internal",
+                    "v1",
+                    "activity",
+                    "thread",
+                    ":threadId",
+                    "organisation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "threadId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a78875ba-a33c-4b80-a34f-74b15dac28dc",
+    "name": "Phasio Activity Internal API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

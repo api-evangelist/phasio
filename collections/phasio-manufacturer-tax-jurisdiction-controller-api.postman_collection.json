@@ -1,0 +1,987 @@
+{
+  "item": [
+    {
+      "id": "3ba1b98f-cc3e-44f1-9f57-40c04f85a4a5",
+      "name": "Manufacturer Tax Jurisdiction Controller",
+      "description": {
+        "content": "Endpoints for managing tax jurisdictions and their associated tax components",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "64e52fd8-484c-4f2c-8e8d-bacafb311c42",
+          "name": "Get all tax jurisdictions",
+          "request": {
+            "name": "Get all tax jurisdictions",
+            "description": {
+              "content": "Retrieves all tax jurisdictions in the system",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "tax-jurisdiction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeAccountingSystemAssociated",
+                  "value": "<boolean>",
+                  "description": "Whether to include accounting system associated jurisdictions"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d8cf29ea-3a21-46bb-8a9d-082e1cd68c70",
+              "name": "Tax jurisdictions retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "tax-jurisdiction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeAccountingSystemAssociated",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"allowExemption\": true,\n    \"applyToShippingCost\": false,\n    \"id\": \"da708228-3060-2c44-4cfd-44927aad12ce\",\n    \"jurisdictionName\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"taxComponentIds\": [\n      \"0b468ebe-46e2-a595-0d6f-695599827408\",\n      \"3088b819-c1fa-3900-81c3-1eb1648b73de\"\n    ],\n    \"country\": \"string\",\n    \"state\": \"string\",\n    \"taxComponents\": [\n      {\n        \"longName\": \"string\",\n        \"percentage\": 9759.239433465214,\n        \"shortName\": \"string\",\n        \"id\": \"5e51835a-4c8c-9c5b-3167-dd00ef12c620\",\n        \"createdAt\": \"1984-11-26T05:26:54.894Z\",\n        \"updatedAt\": \"2026-04-24T16:52:08.434Z\"\n      },\n      {\n        \"longName\": \"string\",\n        \"percentage\": 1527.4984231873268,\n        \"shortName\": \"string\",\n        \"id\": \"76f1b5e6-5c5c-6a52-ee25-d020b3dfda46\",\n        \"createdAt\": \"1951-06-11T06:34:20.495Z\",\n        \"updatedAt\": \"1957-09-24T02:04:33.683Z\"\n      }\n    ],\n    \"accountingSystemTaxId\": \"string\",\n    \"createdAt\": \"2026-02-26T17:57:59.373Z\",\n    \"updatedAt\": \"1953-08-24T03:31:22.748Z\"\n  },\n  {\n    \"allowExemption\": true,\n    \"applyToShippingCost\": false,\n    \"id\": \"6bc29269-287a-08b4-9030-70d1e5cad9e0\",\n    \"jurisdictionName\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"taxComponentIds\": [\n      \"908bbced-a4a3-6c96-b052-4246b2b389b0\",\n      \"181ed716-5f51-e49f-05b3-6581e61b7173\"\n    ],\n    \"country\": \"string\",\n    \"state\": \"string\",\n    \"taxComponents\": [\n      {\n        \"longName\": \"string\",\n        \"percentage\": 965.3598636215754,\n        \"shortName\": \"string\",\n        \"id\": \"9f690eb9-dfa1-0051-aa6d-5039bced499b\",\n        \"createdAt\": \"1946-10-14T12:21:50.742Z\",\n        \"updatedAt\": \"1967-09-21T19:31:08.900Z\"\n      },\n      {\n        \"longName\": \"string\",\n        \"percentage\": 3430.677229625967,\n        \"shortName\": \"string\",\n        \"id\": \"4d2892ab-17f8-ac5d-9397-25a0e184886b\",\n        \"createdAt\": \"1946-12-04T02:33:44.104Z\",\n        \"updatedAt\": \"1980-09-30T11:21:39.379Z\"\n      }\n    ],\n    \"accountingSystemTaxId\": \"string\",\n    \"createdAt\": \"2006-03-20T09:08:52.647Z\",\n    \"updatedAt\": \"2022-11-28T16:31:28.752Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e4cb128-7bf6-43dd-a69c-f599a92f181f",
+          "name": "Create tax jurisdiction",
+          "request": {
+            "name": "Create tax jurisdiction",
+            "description": {
+              "content": "Creates a new tax jurisdiction with associated tax components",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "tax-jurisdiction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"allowExemption\": \"<boolean>\",\n  \"applyToShippingCost\": \"<boolean>\",\n  \"id\": \"<uuid>\",\n  \"jurisdictionName\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\",\n  \"taxComponentIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"country\": \"<string>\",\n  \"state\": \"<string>\",\n  \"taxComponents\": [\n    {\n      \"longName\": \"<string>\",\n      \"percentage\": \"<number>\",\n      \"shortName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"longName\": \"<string>\",\n      \"percentage\": \"<number>\",\n      \"shortName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ],\n  \"accountingSystemTaxId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f418ea4a-7579-4e20-8ecf-a187882ccf67",
+              "name": "Tax jurisdiction created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "tax-jurisdiction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"allowExemption\": \"<boolean>\",\n  \"applyToShippingCost\": \"<boolean>\",\n  \"id\": \"<uuid>\",\n  \"jurisdictionName\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\",\n  \"taxComponentIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"country\": \"<string>\",\n  \"state\": \"<string>\",\n  \"taxComponents\": [\n    {\n      \"longName\": \"string\",\n      \"percentage\": 6766.906090118284,\n      \"shortName\": \"string\",\n      \"id\": \"86bab046-65dd-43ad-2865-2bf4ffb56ed8\",\n      \"createdAt\": \"1985-06-07T07:26:46.115Z\",\n      \"updatedAt\": \"1958-02-15T19:50:42.640Z\"\n    },\n    {\n      \"longName\": \"string\",\n      \"percentage\": 1466.8904692134322,\n      \"shortName\": \"string\",\n      \"id\": \"16970791-2c93-d4f9-17d5-59677b3c31ff\",\n      \"createdAt\": \"1966-04-15T02:12:32.780Z\",\n      \"updatedAt\": \"2009-05-21T19:15:50.028Z\"\n    }\n  ],\n  \"accountingSystemTaxId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"allowExemption\": false,\n  \"applyToShippingCost\": false,\n  \"id\": \"be125e8a-9f11-dd8a-25bf-47568b109e78\",\n  \"jurisdictionName\": \"string\",\n  \"jurisdictionIsoCode\": \"string\",\n  \"taxComponentIds\": [\n    \"a099dd76-305f-7b10-b82e-d9d7f940ca32\",\n    \"a9b1b0ed-0449-6f90-0fd3-998af3c51037\"\n  ],\n  \"country\": \"string\",\n  \"state\": \"string\",\n  \"taxComponents\": [\n    {\n      \"longName\": \"string\",\n      \"percentage\": 5292.62955884999,\n      \"shortName\": \"string\",\n      \"id\": \"e9bd640f-93b4-b5bb-27dc-3114f2be6b3d\",\n      \"createdAt\": \"1994-09-11T21:18:09.170Z\",\n      \"updatedAt\": \"1979-04-12T10:57:44.707Z\"\n    },\n    {\n      \"longName\": \"string\",\n      \"percentage\": 1171.6751959148296,\n      \"shortName\": \"string\",\n      \"id\": \"651fa86c-919d-dd1c-b093-5f06f24feaff\",\n      \"createdAt\": \"2023-07-27T23:16:38.217Z\",\n      \"updatedAt\": \"1994-01-20T12:22:31.667Z\"\n    }\n  ],\n  \"accountingSystemTaxId\": \"string\",\n  \"createdAt\": \"1990-05-21T10:13:39.692Z\",\n  \"updatedAt\": \"1963-02-26T17:46:30.579Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0089ddb8-1535-47b7-8afa-ceea782a77ff",
+              "name": "Invalid tax jurisdiction data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "tax-jurisdiction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"allowExemption\": \"<boolean>\",\n  \"applyToShippingCost\": \"<boolean>\",\n  \"id\": \"<uuid>\",\n  \"jurisdictionName\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\",\n  \"taxComponentIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"country\": \"<string>\",\n  \"state\": \"<string>\",\n  \"taxComponents\": [\n    {\n      \"longName\": \"string\",\n      \"percentage\": 6766.906090118284,\n      \"shortName\": \"string\",\n      \"id\": \"86bab046-65dd-43ad-2865-2bf4ffb56ed8\",\n      \"createdAt\": \"1985-06-07T07:26:46.115Z\",\n      \"updatedAt\": \"1958-02-15T19:50:42.640Z\"\n    },\n    {\n      \"longName\": \"string\",\n      \"percentage\": 1466.8904692134322,\n      \"shortName\": \"string\",\n      \"id\": \"16970791-2c93-d4f9-17d5-59677b3c31ff\",\n      \"createdAt\": \"1966-04-15T02:12:32.780Z\",\n      \"updatedAt\": \"2009-05-21T19:15:50.028Z\"\n    }\n  ],\n  \"accountingSystemTaxId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f50e0681-40c3-49cb-a113-b33450b02753",
+          "name": "Batch create tax jurisdictions",
+          "request": {
+            "name": "Batch create tax jurisdictions",
+            "description": {
+              "content": "Creates multiple tax jurisdictions with the same tax components and settings. Silently skips jurisdictions that already exist.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "tax-jurisdiction",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"allowExemption\": \"<boolean>\",\n  \"applyToShippingCost\": \"<boolean>\",\n  \"jurisdictionIsoCodes\": [\n    \"<string>\"\n  ],\n  \"taxComponentIds\": [\n    \"<uuid>\"\n  ],\n  \"accountingSystemTaxId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5a071d8f-5d62-45e5-8274-cdc9b019c5e9",
+              "name": "Tax jurisdictions created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "tax-jurisdiction",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"allowExemption\": \"<boolean>\",\n  \"applyToShippingCost\": \"<boolean>\",\n  \"jurisdictionIsoCodes\": [\n    \"<string>\"\n  ],\n  \"taxComponentIds\": [\n    \"<uuid>\"\n  ],\n  \"accountingSystemTaxId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"allowExemption\": true,\n    \"applyToShippingCost\": false,\n    \"id\": \"da708228-3060-2c44-4cfd-44927aad12ce\",\n    \"jurisdictionName\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"taxComponentIds\": [\n      \"0b468ebe-46e2-a595-0d6f-695599827408\",\n      \"3088b819-c1fa-3900-81c3-1eb1648b73de\"\n    ],\n    \"country\": \"string\",\n    \"state\": \"string\",\n    \"taxComponents\": [\n      {\n        \"longName\": \"string\",\n        \"percentage\": 9759.239433465214,\n        \"shortName\": \"string\",\n        \"id\": \"5e51835a-4c8c-9c5b-3167-dd00ef12c620\",\n        \"createdAt\": \"1984-11-26T05:26:54.894Z\",\n        \"updatedAt\": \"2026-04-24T16:52:08.434Z\"\n      },\n      {\n        \"longName\": \"string\",\n        \"percentage\": 1527.4984231873268,\n        \"shortName\": \"string\",\n        \"id\": \"76f1b5e6-5c5c-6a52-ee25-d020b3dfda46\",\n        \"createdAt\": \"1951-06-11T06:34:20.495Z\",\n        \"updatedAt\": \"1957-09-24T02:04:33.683Z\"\n      }\n    ],\n    \"accountingSystemTaxId\": \"string\",\n    \"createdAt\": \"2026-02-26T17:57:59.373Z\",\n    \"updatedAt\": \"1953-08-24T03:31:22.748Z\"\n  },\n  {\n    \"allowExemption\": true,\n    \"applyToShippingCost\": false,\n    \"id\": \"6bc29269-287a-08b4-9030-70d1e5cad9e0\",\n    \"jurisdictionName\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"taxComponentIds\": [\n      \"908bbced-a4a3-6c96-b052-4246b2b389b0\",\n      \"181ed716-5f51-e49f-05b3-6581e61b7173\"\n    ],\n    \"country\": \"string\",\n    \"state\": \"string\",\n    \"taxComponents\": [\n      {\n        \"longName\": \"string\",\n        \"percentage\": 965.3598636215754,\n        \"shortName\": \"string\",\n        \"id\": \"9f690eb9-dfa1-0051-aa6d-5039bced499b\",\n        \"createdAt\": \"1946-10-14T12:21:50.742Z\",\n        \"updatedAt\": \"1967-09-21T19:31:08.900Z\"\n      },\n      {\n        \"longName\": \"string\",\n        \"percentage\": 3430.677229625967,\n        \"shortName\": \"string\",\n        \"id\": \"4d2892ab-17f8-ac5d-9397-25a0e184886b\",\n        \"createdAt\": \"1946-12-04T02:33:44.104Z\",\n        \"updatedAt\": \"1980-09-30T11:21:39.379Z\"\n      }\n    ],\n    \"accountingSystemTaxId\": \"string\",\n    \"createdAt\": \"2006-03-20T09:08:52.647Z\",\n    \"updatedAt\": \"2022-11-28T16:31:28.752Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5af63bb-83a0-425b-938a-d3f6fa763281",
+              "name": "Invalid tax jurisdiction data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "tax-jurisdiction",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"allowExemption\": \"<boolean>\",\n  \"applyToShippingCost\": \"<boolean>\",\n  \"jurisdictionIsoCodes\": [\n    \"<string>\"\n  ],\n  \"taxComponentIds\": [\n    \"<uuid>\"\n  ],\n  \"accountingSystemTaxId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11b42669-e956-462b-a90c-429a2426e096",
+          "name": "Delete tax jurisdiction",
+          "request": {
+            "name": "Delete tax jurisdiction",
+            "description": {
+              "content": "Deletes an existing tax jurisdiction",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "tax-jurisdiction",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the tax jurisdiction to delete"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b138f7f-d042-4092-b605-d39e6ada32af",
+              "name": "Tax jurisdiction deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "tax-jurisdiction",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the tax jurisdiction to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bfd2a493-5636-4221-baf6-97e367a93abb",
+              "name": "Tax jurisdiction not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "tax-jurisdiction",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the tax jurisdiction to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2703d550-cf8c-4fd6-85a7-50836ef9d82c",
+          "name": "Update tax jurisdiction",
+          "request": {
+            "name": "Update tax jurisdiction",
+            "description": {
+              "content": "Updates an existing tax jurisdiction",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "tax-jurisdiction",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the tax jurisdiction to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"allowExemption\": \"<boolean>\",\n  \"applyToShippingCost\": \"<boolean>\",\n  \"id\": \"<uuid>\",\n  \"jurisdictionName\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\",\n  \"taxComponentIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"country\": \"<string>\",\n  \"state\": \"<string>\",\n  \"taxComponents\": [\n    {\n      \"longName\": \"<string>\",\n      \"percentage\": \"<number>\",\n      \"shortName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"longName\": \"<string>\",\n      \"percentage\": \"<number>\",\n      \"shortName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ],\n  \"accountingSystemTaxId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f238a2ec-47ee-42b6-8311-5abc45f49155",
+              "name": "Tax jurisdiction updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "tax-jurisdiction",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the tax jurisdiction to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"allowExemption\": \"<boolean>\",\n  \"applyToShippingCost\": \"<boolean>\",\n  \"id\": \"<uuid>\",\n  \"jurisdictionName\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\",\n  \"taxComponentIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"country\": \"<string>\",\n  \"state\": \"<string>\",\n  \"taxComponents\": [\n    {\n      \"longName\": \"string\",\n      \"percentage\": 6766.906090118284,\n      \"shortName\": \"string\",\n      \"id\": \"86bab046-65dd-43ad-2865-2bf4ffb56ed8\",\n      \"createdAt\": \"1985-06-07T07:26:46.115Z\",\n      \"updatedAt\": \"1958-02-15T19:50:42.640Z\"\n    },\n    {\n      \"longName\": \"string\",\n      \"percentage\": 1466.8904692134322,\n      \"shortName\": \"string\",\n      \"id\": \"16970791-2c93-d4f9-17d5-59677b3c31ff\",\n      \"createdAt\": \"1966-04-15T02:12:32.780Z\",\n      \"updatedAt\": \"2009-05-21T19:15:50.028Z\"\n    }\n  ],\n  \"accountingSystemTaxId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"allowExemption\": false,\n  \"applyToShippingCost\": false,\n  \"id\": \"be125e8a-9f11-dd8a-25bf-47568b109e78\",\n  \"jurisdictionName\": \"string\",\n  \"jurisdictionIsoCode\": \"string\",\n  \"taxComponentIds\": [\n    \"a099dd76-305f-7b10-b82e-d9d7f940ca32\",\n    \"a9b1b0ed-0449-6f90-0fd3-998af3c51037\"\n  ],\n  \"country\": \"string\",\n  \"state\": \"string\",\n  \"taxComponents\": [\n    {\n      \"longName\": \"string\",\n      \"percentage\": 5292.62955884999,\n      \"shortName\": \"string\",\n      \"id\": \"e9bd640f-93b4-b5bb-27dc-3114f2be6b3d\",\n      \"createdAt\": \"1994-09-11T21:18:09.170Z\",\n      \"updatedAt\": \"1979-04-12T10:57:44.707Z\"\n    },\n    {\n      \"longName\": \"string\",\n      \"percentage\": 1171.6751959148296,\n      \"shortName\": \"string\",\n      \"id\": \"651fa86c-919d-dd1c-b093-5f06f24feaff\",\n      \"createdAt\": \"2023-07-27T23:16:38.217Z\",\n      \"updatedAt\": \"1994-01-20T12:22:31.667Z\"\n    }\n  ],\n  \"accountingSystemTaxId\": \"string\",\n  \"createdAt\": \"1990-05-21T10:13:39.692Z\",\n  \"updatedAt\": \"1963-02-26T17:46:30.579Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3900ae18-6abb-4de1-9c4b-933b80f0f53e",
+              "name": "Invalid update data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "tax-jurisdiction",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the tax jurisdiction to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"allowExemption\": \"<boolean>\",\n  \"applyToShippingCost\": \"<boolean>\",\n  \"id\": \"<uuid>\",\n  \"jurisdictionName\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\",\n  \"taxComponentIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"country\": \"<string>\",\n  \"state\": \"<string>\",\n  \"taxComponents\": [\n    {\n      \"longName\": \"string\",\n      \"percentage\": 6766.906090118284,\n      \"shortName\": \"string\",\n      \"id\": \"86bab046-65dd-43ad-2865-2bf4ffb56ed8\",\n      \"createdAt\": \"1985-06-07T07:26:46.115Z\",\n      \"updatedAt\": \"1958-02-15T19:50:42.640Z\"\n    },\n    {\n      \"longName\": \"string\",\n      \"percentage\": 1466.8904692134322,\n      \"shortName\": \"string\",\n      \"id\": \"16970791-2c93-d4f9-17d5-59677b3c31ff\",\n      \"createdAt\": \"1966-04-15T02:12:32.780Z\",\n      \"updatedAt\": \"2009-05-21T19:15:50.028Z\"\n    }\n  ],\n  \"accountingSystemTaxId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "14683518-19e0-4bdb-9483-d9471dbf4725",
+              "name": "Tax jurisdiction not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "tax-jurisdiction",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the tax jurisdiction to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"allowExemption\": \"<boolean>\",\n  \"applyToShippingCost\": \"<boolean>\",\n  \"id\": \"<uuid>\",\n  \"jurisdictionName\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\",\n  \"taxComponentIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"country\": \"<string>\",\n  \"state\": \"<string>\",\n  \"taxComponents\": [\n    {\n      \"longName\": \"string\",\n      \"percentage\": 6766.906090118284,\n      \"shortName\": \"string\",\n      \"id\": \"86bab046-65dd-43ad-2865-2bf4ffb56ed8\",\n      \"createdAt\": \"1985-06-07T07:26:46.115Z\",\n      \"updatedAt\": \"1958-02-15T19:50:42.640Z\"\n    },\n    {\n      \"longName\": \"string\",\n      \"percentage\": 1466.8904692134322,\n      \"shortName\": \"string\",\n      \"id\": \"16970791-2c93-d4f9-17d5-59677b3c31ff\",\n      \"createdAt\": \"1966-04-15T02:12:32.780Z\",\n      \"updatedAt\": \"2009-05-21T19:15:50.028Z\"\n    }\n  ],\n  \"accountingSystemTaxId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6ff3cc4-ee55-4e28-af0e-a4c13cb4a92a",
+          "name": "Associate accounting system taxes",
+          "request": {
+            "name": "Associate accounting system taxes",
+            "description": {
+              "content": "Associates tax jurisdictions with accounting system tax codes (Deprecated)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "tax-jurisdiction",
+                "accounting-system",
+                "associate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"taxes\": [\n    {\n      \"accountingSystemTaxId\": \"<string>\",\n      \"taxJurisdictionId\": \"<uuid>\"\n    },\n    {\n      \"accountingSystemTaxId\": \"<string>\",\n      \"taxJurisdictionId\": \"<uuid>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ed466f17-ab15-4959-9016-6675e930af17",
+              "name": "Accounting system taxes associated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "tax-jurisdiction",
+                    "accounting-system",
+                    "associate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taxes\": [\n    {\n      \"accountingSystemTaxId\": \"string\",\n      \"taxJurisdictionId\": \"678a20a6-5ac8-6925-4fc6-743b7444cba7\"\n    },\n    {\n      \"accountingSystemTaxId\": \"string\",\n      \"taxJurisdictionId\": \"4650893e-8c04-7712-c8a1-36f638ef37a7\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "56a7eb5a-0482-416d-bf78-2b7cff74c2b6",
+              "name": "Invalid association data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "tax-jurisdiction",
+                    "accounting-system",
+                    "associate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taxes\": [\n    {\n      \"accountingSystemTaxId\": \"string\",\n      \"taxJurisdictionId\": \"678a20a6-5ac8-6925-4fc6-743b7444cba7\"\n    },\n    {\n      \"accountingSystemTaxId\": \"string\",\n      \"taxJurisdictionId\": \"4650893e-8c04-7712-c8a1-36f638ef37a7\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "118ccd4c-e97b-460a-b77a-ca9957f5d47c",
+    "name": "Phasio Activity Internal Manufacturer Tax Jurisdiction Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

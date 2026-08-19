@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Activity Internal File Analysis Controller API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "File Analysis Controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Save file analysis results",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/file-analysis/results/:analysisId",
+            "params": [
+              {
+                "name": "analysisId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Accepts a fully-encrypted msgpack payload from Gina-Three"
+        },
+        {
+          "info": {
+            "name": "Update analysis status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/file-analysis/status/:analysisId/:status",
+            "params": [
+              {
+                "name": "analysisId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Receives status callbacks from Gina during processing"
+        },
+        {
+          "info": {
+            "name": "Get pre-analysis file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/internal/v1/file-analysis/pre-analysis/:analysisId",
+            "params": [
+              {
+                "name": "analysisId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a file prepared for analysis based on the analysis ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

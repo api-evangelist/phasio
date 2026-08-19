@@ -1,0 +1,288 @@
+{
+  "item": [
+    {
+      "id": "c2e99e61-e686-4508-8798-9f4c103584ff",
+      "name": "Manufacturer Work Order Controller",
+      "description": {
+        "content": "Manage individual work orders, including downstream routing mutations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4ddda61a-3e0c-49a0-ad6c-70078883839a",
+          "name": "Add parts to a work order",
+          "request": {
+            "name": "Add parts to a work order",
+            "description": {
+              "content": "Schedules more parts into an existing work order's first operation. Always additive, distinct from the idempotent bulk schedule path.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "work-orders",
+                ":id",
+                "parts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": \"<integer>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d6d8acbc-7495-4857-a3c9-2705569c9b4e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "work-orders",
+                    ":id",
+                    "parts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quantity\": \"<integer>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2007-10-09T21:21:05.508Z\",\n  \"id\": \"1b1f9092-b10b-a112-13e8-4e356bb9719b\",\n  \"quantity\": 3931,\n  \"routing\": [\n    {\n      \"operationId\": \"c77bbe4a-d755-7750-3b97-ae64a9f7cf25\",\n      \"sequence\": 1117,\n      \"statusId\": \"f6a558ed-3837-ed40-5b09-b41465d767bf\"\n    },\n    {\n      \"operationId\": \"5dfe8ffa-11fb-c2dc-f4a0-64d6bbc7880f\",\n      \"sequence\": 9720,\n      \"statusId\": \"89e25658-a714-b72a-fcd8-005dd2416bbd\"\n    }\n  ],\n  \"workOrderNumber\": 9269,\n  \"routingTemplateId\": \"fcc65452-d7b0-c906-e7cf-8eb0e3ef25af\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3185304-131c-4220-ba8e-806b13767417",
+          "name": "update Routing",
+          "request": {
+            "name": "update Routing",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "work-orders",
+                ":id",
+                "routing"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"steps\": [\n    {\n      \"operationId\": \"<uuid>\",\n      \"sequence\": \"<integer>\"\n    },\n    {\n      \"operationId\": \"<uuid>\",\n      \"sequence\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5a2b4079-6bab-433d-b13f-44d79b4471d6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "work-orders",
+                    ":id",
+                    "routing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"steps\": [\n    {\n      \"operationId\": \"ee6b552b-6419-00a3-7df2-4cfae44ee49f\",\n      \"sequence\": 7763\n    },\n    {\n      \"operationId\": \"e9655cd7-0bb0-70bf-99ed-b80b785fc9c9\",\n      \"sequence\": 6166\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2007-10-09T21:21:05.508Z\",\n  \"id\": \"1b1f9092-b10b-a112-13e8-4e356bb9719b\",\n  \"quantity\": 3931,\n  \"routing\": [\n    {\n      \"operationId\": \"c77bbe4a-d755-7750-3b97-ae64a9f7cf25\",\n      \"sequence\": 1117,\n      \"statusId\": \"f6a558ed-3837-ed40-5b09-b41465d767bf\"\n    },\n    {\n      \"operationId\": \"5dfe8ffa-11fb-c2dc-f4a0-64d6bbc7880f\",\n      \"sequence\": 9720,\n      \"statusId\": \"89e25658-a714-b72a-fcd8-005dd2416bbd\"\n    }\n  ],\n  \"workOrderNumber\": 9269,\n  \"routingTemplateId\": \"fcc65452-d7b0-c906-e7cf-8eb0e3ef25af\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c6d54bdf-ec3b-428a-af57-160b48707715",
+    "name": "Phasio Activity Internal Manufacturer Work Order Controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}
