@@ -11,6 +11,18 @@ description: >-
   specifications and revisions, shipments, production steps, discounts, expenses,
   taxes, and webhooks, secured with OAuth 2.0 client-credentials Bearer JWTs.
 url: https://raw.githubusercontent.com/api-evangelist/phasio/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -1178,6 +1190,9 @@ apis:
   - type: Webhooks
     url: asyncapi/phasio-webhooks.yml
 common:
+- type: CapabilityMap
+  url: capabilities/phasio-capability-edges.yml
+  name: Phasio Business Capability Map
 - type: Overlay
   url: overlays/phasio-manufacturer-overlay.yaml
 - type: Website
