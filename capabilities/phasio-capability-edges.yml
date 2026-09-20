@@ -1,0 +1,213 @@
+slug: phasio
+provider: Phasio
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 19
+edges:
+- tag: Manufacturer Customer Controller
+  spec_file: phasio-manufacturer-customer-controller-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.9
+  evidence: '"createCustomer  Create a new customer", "uploadCustomers  Upload customers from a file",
+    "getCustomerByEmail  Get a customer by email", schema "CustomerDto"'
+  reason: Full CRUD, bulk upload, and identity lookup (email, phone, principal) over customer records
+    — this is customer master data maintenance.
+- tag: Manufacturer Discount Controller
+  spec_file: phasio-manufacturer-discount-controller-api-openapi.yml
+  capability_id: BC-440.30
+  capability_id_l1: BC-440
+  capability_name: Discount & Promotion Management
+  confidence: 0.9
+  evidence: '"createDiscount  Create a new discount", "validateDiscount  Validate a discount code for
+    a customer", "expireDiscount  Expire a discount immediately"'
+  reason: Lifecycle of discount definitions and codes, including customer-specific and instant discounts
+    and validation at order time — Discount & Promotion Management.
+- tag: Manufacturer Customer Organisation Controller
+  spec_file: phasio-manufacturer-customer-organisation-controller-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.85
+  evidence: '"Get a customer organization by ID", "mergeIndividualToOrganisation  Transfer an individual
+    customer to an organization", "previewMerge  Preview a merge", schema "CustomerOrganisationMetadataDto"'
+  reason: Manages customer organisation records, their metadata, and merging of individual customers into
+    organisations — identity resolution and golden-record maintenance for customer data.
+- tag: Pre-Order
+  spec_file: phasio-pre-order-api-openapi.yml
+  capability_id: BC-410.40
+  capability_id_l1: BC-410
+  capability_name: Quote & Configuration Management
+  confidence: 0.85
+  evidence: POST /api/customer/v1/pre-order  createQuote  Perform validation and get a quote; POST .../bulk-quote  generateBulkQuote  Get
+    a bulk quote; schemas QuoteLineItemDto, CreateDiscountDto, TaxQuoteComponentDto
+  reason: The operations generate priced quotes with line items, discounts and tax components from a customer
+    requisition — configure/price/quote for the manufacturing service. Maps to Quote & Configuration Management;
+    slight ambiguity with pricing/discount management keeps it below 0.95.
+- tag: User Authentication Controller
+  spec_file: phasio-user-authentication-controller-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: beginMultiFactorSetup  Begin multi-factor authentication setup; PATCH /api/internal/v1/user-auth/password  changePassword  Change
+    user password
+  reason: MFA enrolment and password change are user authentication credential management, i.e. identity
+    and access management. This is security plumbing but the frame has an explicit IAM capability that
+    it plainly realises.
+- tag: Manufacturer Material Prices Controller
+  spec_file: phasio-manufacturer-material-prices-controller-api-openapi.yml
+  capability_id: BC-440.20
+  capability_id_l1: BC-440
+  capability_name: Price List Management
+  confidence: 0.8
+  evidence: POST /api/manufacturer/v1/material-prices "Create material prices"; schemas EquationMaterialPricesDto,
+    PricingEquationVariableValueDto
+  reason: Operations create, update, duplicate and set default price sets for materials with pricing equations
+    — maintenance of the price book used to compute quotes. Sub-capability between price list and pricing
+    strategy is the only ambiguity.
+- tag: Manufacturer Quote Controller
+  spec_file: phasio-manufacturer-quote-controller-api-openapi.yml
+  capability_id: BC-410.40
+  capability_id_l1: BC-410
+  capability_name: Quote & Configuration Management
+  confidence: 0.8
+  evidence: '"Generate pre-order quote", "Generate order quote", schemas QuoteDto, QuoteLineItemDto, CreateDiscountDto'
+  reason: Generates priced quotes with line items, discounts, expenses and tax components for customer
+    orders — configure/price/quote capability, consistent with the vendor's 'CAD-based quotes in seconds'.
+- tag: Manufacturer Shipment Controller
+  spec_file: phasio-manufacturer-shipment-controller-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.8
+  evidence: POST /api/manufacturer/v1/shipment/rates 'Calculate the shipping rates for a group of parts';
+    schemas ShipmentDto, ShippingRateDto
+  reason: Shipment retrieval and carrier rate calculation are outbound transport/logistics execution.
+- tag: Customer Discount Controller
+  spec_file: phasio-customer-discount-controller-api-openapi.yml
+  capability_id: BC-440.30
+  capability_id_l1: BC-440
+  capability_name: Discount & Promotion Management
+  confidence: 0.75
+  evidence: POST /api/customer/v1/discount/validate 'Validate a discount code'; schemas ValidateDiscountDto,
+    DiscountDto
+  reason: Operations validate and retrieve discount codes applied to customer orders, which realises discount/promotion
+    administration. Confidence moderate as the surface is read/validate only, with no discount policy
+    authoring.
+- tag: Manufacturer Operator Controller
+  spec_file: phasio-manufacturer-operator-controller-api-openapi.yml
+  capability_id: BC-4230.20
+  capability_id_l1: BC-4230
+  capability_name: Tenant Configuration Management
+  confidence: 0.75
+  evidence: '"Update operator settings"; "Upload operator logo"; schemas UpdateStoreNameDto, UpdateLandingPageMessageDto,
+    UpdateMinimumOrderAmountDto, UpdateLoginMethodDto'
+  reason: These operations configure a tenant's branding (logo, store name, landing page), limits (min/max
+    order amount, max file size), login method and domain authentication above the shared product — per-tenant
+    configuration of the white-labelled storefront. Onboarding-progress and payment-account endpoints
+    add some tenant-lifecycle overlap.
+- tag: Manufacturer Tax Jurisdiction Controller
+  spec_file: phasio-manufacturer-tax-jurisdiction-controller-api-openapi.yml
+  capability_id: BC-220.20
+  capability_id_l1: BC-220
+  capability_name: Indirect Tax Management
+  confidence: 0.75
+  evidence: POST /api/manufacturer/v1/tax-jurisdiction 'Create tax jurisdiction'; PATCH '/tax-jurisdiction/accounting-system/associate'
+    'Associate accounting system taxes'; schemas TaxJurisdictionDto, TaxComponentDto
+  reason: Jurisdiction-level tax determination and mapping to the accounting system for transaction taxes
+    — indirect tax management.
+- tag: Manufacturer Tracking Controller
+  spec_file: phasio-manufacturer-tracking-controller-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.75
+  evidence: GET /api/manufacturer/v1/tracking getTracking 'Get tracking information by shipment ID'; schemas
+    CreateTrackingDto, TrackingDto
+  reason: Shipment tracking records against shipments — outbound transport/logistics execution visibility.
+- tag: Customer Controller
+  spec_file: phasio-customer-controller-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.7
+  evidence: GET /api/customer/v1/customer 'Get current customer profile'; PATCH 'Update customer profile';
+    schemas UpdateCustomerDto, CustomerDto
+  reason: Operations maintain the customer's own profile record (read, update, delete), which is customer
+    master/profile data management in the storefront context. Kept at moderate confidence because it is
+    a self-service account profile rather than a full CRM master-data surface.
+- tag: Customer Organisation Controller
+  spec_file: phasio-customer-organisation-controller-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.7
+  evidence: GET /api/customer/v1/customer-organisation 'Get customer organisation'; PATCH 'Update customer
+    organisation'; schemas CustomerOrganisationDto, CustomerAddressDto
+  reason: Maintains the customer account/organisation record and its addresses — customer master data
+    for the buying entity. Moderate confidence as it is a narrow self-service account record rather than
+    a full golden-record capability.
+- tag: Internal Customer Controller
+  spec_file: phasio-internal-customer-controller-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.7
+  evidence: POST /api/internal/v1/customer  createCustomer_1  Create new customer; schemas CreateCustomerDto,
+    CustomerDto
+  reason: CRUD on the customer master record (create customer, look up customer by principal). Maps to
+    customer data management, though the surface is small and partly identity-lookup oriented.
+- tag: Internal Customer Organisation Controller
+  spec_file: phasio-internal-customer-organisation-controller-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.7
+  evidence: GET /api/internal/v1/customer-organisation/{organisationId}  get_28  Get customer organisation
+    by ID; schemas CustomerOrganisationDto, CustomerAddressDto
+  reason: Reads the customer organisation master record including addresses and its link to individual
+    customers — customer master/golden-record data. The custom-pricing flag hints at pricing but the operations
+    are read-only lookups of customer data.
+- tag: Manufacturer Shipping Method Controller
+  spec_file: phasio-manufacturer-shipping-method-controller-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.7
+  evidence: POST /api/manufacturer/v1/shipping-method 'Create new shipping method'; schemas CarrierAccountShippingMethodDto,
+    FixedPriceShippingWeightTierDto, SelfCollectionShippingMethodDto
+  reason: Defines carrier accounts, self-collection and fixed-price weight-tier shipping options — transport/logistics
+    operations setup.
+- tag: Manufacturer Tax Component Controller
+  spec_file: phasio-manufacturer-tax-component-controller-api-openapi.yml
+  capability_id: BC-220.20
+  capability_id_l1: BC-220
+  capability_name: Indirect Tax Management
+  confidence: 0.7
+  evidence: GET /api/manufacturer/v1/tax-component 'Get all tax components'; POST 'Create tax component';
+    schema TaxComponentDto
+  reason: Maintains tax rate components applied to customer quotes/invoices, i.e. indirect (VAT/GST/sales
+    tax) configuration. Thin context so confidence moderate.
+- tag: Webhooks
+  spec_file: phasio-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.7
+  evidence: GET /api/manufacturer/v1/webhook  getWebhooks  Retrieve all webhooks; POST createWebhook;
+    schemas CreateWebhookDto, WebhookDto
+  reason: CRUD over outbound webhook subscriptions exposed to manufacturer tenants matches Webhook & Event
+    Subscription Management in the developer-platform capability. Confidence moderated because the surface
+    is minimal (no event schema or delivery-reliability operations) and could be read as pure integration
+    plumbing.
