@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Manufacturer Countries Controller API
+  title: Phasio Manufacturer Countries Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -25,6 +25,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/DMZCountryDto'
+      summary: Get 25
+      x-summary-source: derived
   /api/manufacturer/v1/countries/{country}/jurisdictions:
     get:
       tags:
@@ -45,6 +47,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/DMZJurisdictionDto'
+      summary: Get jurisdictions
+      x-summary-source: derived
 components:
   schemas:
     DMZJurisdictionDto:
@@ -77,7 +81,7 @@ components:
       - country
       - name
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

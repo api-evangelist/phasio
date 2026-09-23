@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal constraint-resource API
+  title: Phasio Constraint Resource API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -32,6 +32,8 @@ paths:
                 oneOf:
                 - $ref: '#/components/schemas/ConstraintDto'
                 - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+      summary: Get constraint
+      x-summary-source: derived
     put:
       tags:
       - constraint-resource
@@ -59,6 +61,8 @@ paths:
                 oneOf:
                 - $ref: '#/components/schemas/ConstraintDto'
                 - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+      summary: Update constraint
+      x-summary-source: derived
     delete:
       tags:
       - constraint-resource
@@ -73,6 +77,8 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Delete constraint
+      x-summary-source: derived
   /api/manufacturer/v1/constraints:
     post:
       tags:
@@ -94,6 +100,8 @@ paths:
                 oneOf:
                 - $ref: '#/components/schemas/ConstraintDto'
                 - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+      summary: Create constraint
+      x-summary-source: derived
   /api/manufacturer/v1/constraints/part-specification/{partSpecificationId}:
     get:
       tags:
@@ -117,6 +125,8 @@ paths:
                   oneOf:
                   - $ref: '#/components/schemas/ConstraintDto'
                   - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+      summary: Get constraints by part specification
+      x-summary-source: derived
   /api/manufacturer/v1/constraints/part-specification/{partSpecificationId}/type/{constraintType}:
     delete:
       tags:
@@ -139,38 +149,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Delete constraint by type
+      x-summary-source: derived
 components:
   schemas:
-    FixedOrientationConstraintDto:
-      allOf:
-      - $ref: '#/components/schemas/ConstraintDto'
-      - type: object
-        properties:
-          rotationMatrix:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - rotationMatrix
-      - updatedAt
-    ConstraintRequestDto:
-      type: object
-      discriminator:
-        propertyName: constraintType
-      properties:
-        partSpecificationId:
-          type: string
-          format: uuid
-        constraintType:
-          type: string
-      required:
-      - constraintType
     ConstraintDto:
       type: object
       discriminator:
@@ -196,6 +178,18 @@ components:
       - id
       - partSpecificationId
       - updatedAt
+    ConstraintRequestDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        partSpecificationId:
+          type: string
+          format: uuid
+        constraintType:
+          type: string
+      required:
+      - constraintType
     FixedOrientationConstraintRequestDto:
       allOf:
       - $ref: '#/components/schemas/ConstraintRequestDto'
@@ -209,8 +203,26 @@ components:
                 type: number
       required:
       - constraintType
+    FixedOrientationConstraintDto:
+      allOf:
+      - $ref: '#/components/schemas/ConstraintDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - rotationMatrix
+      - updatedAt
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

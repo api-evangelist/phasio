@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Manufacturer Customer Organisation Controller API
+  title: Phasio Manufacturer Customer Organisation Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -430,6 +430,63 @@ paths:
           description: Unauthorized - missing operator context
 components:
   schemas:
+    OrganisationUpdateDto:
+      type: object
+      properties:
+        name:
+          type: string
+        canAccessDashboard:
+          type: boolean
+        taxExempt:
+          type: boolean
+        language:
+          type: string
+        accountingSystemId:
+          type: string
+        isApproved:
+          type: boolean
+        customerType:
+          type: string
+        paymentTermId:
+          type: string
+        clearPaymentTerm:
+          type: boolean
+      required:
+      - clearPaymentTerm
+    MergePreview:
+      type: object
+      properties:
+        sourceOrganisationId:
+          type: integer
+          format: int64
+        destinationOrganisationId:
+          type: integer
+          format: int64
+        eligible:
+          type: boolean
+        blockReason:
+          type: string
+        counts:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+        totalRows:
+          type: integer
+          format: int32
+      required:
+      - counts
+      - destinationOrganisationId
+      - eligible
+      - sourceOrganisationId
+      - totalRows
+    SetCustomerOrganisationMetadataValueDto:
+      type: object
+      properties:
+        value:
+          type: string
+      required:
+      - value
     CustomerAddressDto:
       type: object
       properties:
@@ -470,39 +527,47 @@ components:
           type: boolean
         taxId:
           type: string
-    CustomerOrganisationDto:
+    CreateCustomerOrganisationMetadataDto:
       type: object
       properties:
-        id:
+        metadataKey:
+          type: string
+        value:
+          type: string
+      required:
+      - metadataKey
+      - value
+    CustomerDto:
+      type: object
+      properties:
+        email:
+          type: string
+        customerId:
           type: integer
           format: int64
-        name:
+        organisationName:
           type: string
-        taxExempt:
-          type: boolean
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        language:
+          type: string
+        notificationPreference:
+          type: string
+        discountId:
+          type: integer
+          format: int64
+        discountPercentage:
+          type: number
         customerType:
           type: string
-        createdAt:
-          type: string
-          format: date-time
-        lastUpdated:
-          type: string
-          format: date-time
-        customers:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerDto'
-        addresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerAddressDto'
       required:
-      - addresses
-      - createdAt
       - customerType
-      - customers
-      - lastUpdated
-      - taxExempt
+      - language
+      - notificationPreference
     CustomerOrganisationMetadataDto:
       type: object
       properties:
@@ -546,67 +611,6 @@ components:
       - pageSize
       - totalElements
       - totalPages
-    CustomerDto:
-      type: object
-      properties:
-        email:
-          type: string
-        customerId:
-          type: integer
-          format: int64
-        organisationName:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        phoneNumber:
-          type: string
-        language:
-          type: string
-        notificationPreference:
-          type: string
-        discountId:
-          type: integer
-          format: int64
-        discountPercentage:
-          type: number
-        customerType:
-          type: string
-      required:
-      - customerType
-      - language
-      - notificationPreference
-    OrganisationUpdateDto:
-      type: object
-      properties:
-        name:
-          type: string
-        canAccessDashboard:
-          type: boolean
-        taxExempt:
-          type: boolean
-        language:
-          type: string
-        accountingSystemId:
-          type: string
-        isApproved:
-          type: boolean
-        customerType:
-          type: string
-        paymentTermId:
-          type: string
-        clearPaymentTerm:
-          type: boolean
-      required:
-      - clearPaymentTerm
-    SetCustomerOrganisationMetadataValueDto:
-      type: object
-      properties:
-        value:
-          type: string
-      required:
-      - value
     UpdateCustomerOrganisationMetadataDto:
       type: object
       properties:
@@ -614,43 +618,6 @@ components:
           type: string
         value:
           type: string
-    CreateCustomerOrganisationMetadataDto:
-      type: object
-      properties:
-        metadataKey:
-          type: string
-        value:
-          type: string
-      required:
-      - metadataKey
-      - value
-    MergePreview:
-      type: object
-      properties:
-        sourceOrganisationId:
-          type: integer
-          format: int64
-        destinationOrganisationId:
-          type: integer
-          format: int64
-        eligible:
-          type: boolean
-        blockReason:
-          type: string
-        counts:
-          type: object
-          additionalProperties:
-            type: integer
-            format: int32
-        totalRows:
-          type: integer
-          format: int32
-      required:
-      - counts
-      - destinationOrganisationId
-      - eligible
-      - sourceOrganisationId
-      - totalRows
     CustomerOrganisationSummaryDto:
       type: object
       properties:
@@ -679,8 +646,41 @@ components:
       - createdAt
       - taxExempt
       - updateDt
+    CustomerOrganisationDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        taxExempt:
+          type: boolean
+        customerType:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+        customers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerDto'
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerAddressDto'
+      required:
+      - addresses
+      - createdAt
+      - customerType
+      - customers
+      - lastUpdated
+      - taxExempt
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

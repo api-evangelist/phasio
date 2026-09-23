@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Manufacturer Production Step Controller API
+  title: Phasio Manufacturer Production Step Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -437,6 +437,37 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
+    MoveBatchesDto:
+      type: object
+      properties:
+        toOperationId:
+          type: string
+          format: uuid
+        scrapReason:
+          type: string
+        batches:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductionStepTransitionDto'
+        name:
+          type: string
+      required:
+      - batches
+    ProductionStepTransitionDto:
+      type: object
+      properties:
+        workOrderId:
+          type: string
+          format: uuid
+        productionStepId:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+      required:
+      - productionStepId
+      - quantity
+      - workOrderId
     BatchBalanceDto:
       type: object
       properties:
@@ -521,66 +552,6 @@ components:
       - stepId
       - stepType
       - workOrderId
-    Paginated:
-      type: object
-      properties:
-        content:
-          type: array
-          items: {}
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
-          type: boolean
-        isFirst:
-          type: boolean
-        isLast:
-          type: boolean
-      required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
-    ProductionStepTransitionDto:
-      type: object
-      properties:
-        workOrderId:
-          type: string
-          format: uuid
-        productionStepId:
-          type: string
-          format: uuid
-        quantity:
-          type: integer
-      required:
-      - productionStepId
-      - quantity
-      - workOrderId
-    MoveBatchesDto:
-      type: object
-      properties:
-        toOperationId:
-          type: string
-          format: uuid
-        scrapReason:
-          type: string
-        batches:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductionStepTransitionDto'
-        name:
-          type: string
-      required:
-      - batches
     BatchTransitionDto:
       type: object
       discriminator:
@@ -681,8 +652,37 @@ components:
       - productionStatusName
       - type
       - updateDt
+    Paginated:
+      type: object
+      properties:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

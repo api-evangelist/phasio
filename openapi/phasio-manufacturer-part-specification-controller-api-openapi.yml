@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Manufacturer Part Specification Controller API
+  title: Phasio Manufacturer Part Specification Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -293,76 +293,6 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
-    FixedOrientationConstraintDto:
-      allOf:
-      - $ref: '#/components/schemas/ConstraintDto'
-      - type: object
-        properties:
-          rotationMatrix:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - rotationMatrix
-      - updatedAt
-    CustomerArticleReferenceDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        customerOrganisationId:
-          type: integer
-          format: int64
-        customerOrganisationName:
-          type: string
-        reference:
-          type: string
-        pricingTiers:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
-        showInCatalog:
-          type: boolean
-      required:
-      - customerOrganisationId
-      - pricingTiers
-      - reference
-    Paginated:
-      type: object
-      properties:
-        content:
-          type: array
-          items: {}
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
-          type: boolean
-        isFirst:
-          type: boolean
-        isLast:
-          type: boolean
-      required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
     PartSpecificationDto:
       type: object
       properties:
@@ -428,42 +358,47 @@ components:
       - partRevisionName
       - postProcessingIds
       - units
-    LookupString:
-      type: object
-      description: Reference string to search for
-      properties:
-        value:
-          type: string
-      required:
-      - value
-    CustomerArticleReferencePricingTierDto:
+    CustomerArticleReferenceDto:
       type: object
       properties:
         id:
           type: string
           format: uuid
-        quantity:
+        customerOrganisationId:
           type: integer
-          format: int32
-        price:
-          type: number
-      required:
-      - price
-      - quantity
-    DerivedRoutingStepDto:
-      type: object
-      properties:
-        operationId:
+          format: int64
+        customerOrganisationName:
           type: string
-          format: uuid
-        operationName:
+        reference:
           type: string
-        sequence:
-          type: integer
-          format: int32
+        pricingTiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
+        showInCatalog:
+          type: boolean
       required:
-      - operationId
-      - sequence
+      - customerOrganisationId
+      - pricingTiers
+      - reference
+    FixedOrientationConstraintDto:
+      allOf:
+      - $ref: '#/components/schemas/ConstraintDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - rotationMatrix
+      - updatedAt
     ConstraintDto:
       type: object
       discriminator:
@@ -489,8 +424,73 @@ components:
       - id
       - partSpecificationId
       - updatedAt
+    LookupString:
+      type: object
+      description: Reference string to search for
+      properties:
+        value:
+          type: string
+      required:
+      - value
+    DerivedRoutingStepDto:
+      type: object
+      properties:
+        operationId:
+          type: string
+          format: uuid
+        operationName:
+          type: string
+        sequence:
+          type: integer
+          format: int32
+      required:
+      - operationId
+      - sequence
+    Paginated:
+      type: object
+      properties:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
+    CustomerArticleReferencePricingTierDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+          format: int32
+        price:
+          type: number
+      required:
+      - price
+      - quantity
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

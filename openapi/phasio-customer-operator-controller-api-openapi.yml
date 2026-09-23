@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Customer Operator Controller API
+  title: Phasio Customer Operator Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -102,7 +102,7 @@ paths:
           description: Unauthorized - missing customer or operator context
 components:
   schemas:
-    InfillDto:
+    ColorDto:
       type: object
       properties:
         id:
@@ -110,15 +110,29 @@ components:
           format: int64
         name:
           type: string
-        value:
-          type: number
-        default:
-          type: boolean
+        code:
+          type: string
       required:
-      - default
+      - code
       - id
       - name
-      - value
+    PrecisionPricesDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        price:
+          type: number
+        isActive:
+          type: boolean
+      required:
+      - id
+      - isActive
+      - name
+      - price
     LeadTimeDto:
       type: object
       properties:
@@ -136,7 +150,7 @@ components:
       - isDefault
       - isDeleted
       - name
-    ColorDto:
+    PostProcessingDto:
       type: object
       properties:
         id:
@@ -144,23 +158,44 @@ components:
           format: int64
         name:
           type: string
-        code:
+        purchasable:
+          type: boolean
+        isDefault:
+          type: boolean
+        colors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColorDto'
+        incompatibleMaterialIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        mutuallyExclusiveGroup:
           type: string
       required:
-      - code
-      - id
+      - colors
+      - incompatibleMaterialIds
+      - isDefault
       - name
-    ShippingMethodDto:
+      - purchasable
+    InfillDto:
       type: object
       properties:
-        shippingMethodId:
+        id:
           type: integer
           format: int64
-        shippingMode:
+        name:
           type: string
+        value:
+          type: number
+        default:
+          type: boolean
       required:
-      - shippingMethodId
-      - shippingMode
+      - default
+      - id
+      - name
+      - value
     ProcessPricesDto:
       type: object
       properties:
@@ -205,52 +240,17 @@ components:
       - postProcessings
       - precisions
       - technology
-    PrecisionPricesDto:
+    ShippingMethodDto:
       type: object
       properties:
-        id:
+        shippingMethodId:
           type: integer
           format: int64
-        name:
-          type: string
-        price:
-          type: number
-        isActive:
-          type: boolean
-      required:
-      - id
-      - isActive
-      - name
-      - price
-    PostProcessingDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        purchasable:
-          type: boolean
-        isDefault:
-          type: boolean
-        colors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColorDto'
-        incompatibleMaterialIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-        mutuallyExclusiveGroup:
+        shippingMode:
           type: string
       required:
-      - colors
-      - incompatibleMaterialIds
-      - isDefault
-      - name
-      - purchasable
+      - shippingMethodId
+      - shippingMode
     OperatorDto:
       type: object
       properties:
@@ -384,7 +384,7 @@ components:
       - name
       - quoteOnly
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

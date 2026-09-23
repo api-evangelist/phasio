@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Customer Discount Controller API
+  title: Phasio Customer Discount Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -63,17 +63,6 @@ paths:
           description: Discount not found
 components:
   schemas:
-    ValidateDiscountDto:
-      type: object
-      properties:
-        customerId:
-          type: integer
-          format: int64
-        discountCode:
-          type: string
-      required:
-      - customerId
-      - discountCode
     DiscountDto:
       type: object
       properties:
@@ -98,8 +87,19 @@ components:
       - endTime
       - percentage
       - startTime
+    ValidateDiscountDto:
+      type: object
+      properties:
+        customerId:
+          type: integer
+          format: int64
+        discountCode:
+          type: string
+      required:
+      - customerId
+      - discountCode
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

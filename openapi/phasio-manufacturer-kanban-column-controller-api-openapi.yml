@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Manufacturer Kanban Column Controller API
+  title: Phasio Manufacturer Kanban Column Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -134,21 +134,6 @@ components:
       - kanbanColumnId
       - type
       - updatedAt
-    UpdateKanbanColumnDto:
-      type: object
-      description: Kanban column update details
-      properties:
-        name:
-          type: string
-        sequence:
-          type: integer
-          format: int32
-        orderStatus:
-          type: string
-        automations:
-          type: array
-          items:
-            type: string
     CreateKanbanColumnDto:
       type: object
       description: Kanban column creation details
@@ -169,6 +154,21 @@ components:
       - name
       - orderStatus
       - sequence
+    UpdateKanbanColumnDto:
+      type: object
+      description: Kanban column update details
+      properties:
+        name:
+          type: string
+        sequence:
+          type: integer
+          format: int32
+        orderStatus:
+          type: string
+        automations:
+          type: array
+          items:
+            type: string
     KanbanColumnDto:
       type: object
       properties:
@@ -201,7 +201,7 @@ components:
       - sequence
       - updatedAt
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

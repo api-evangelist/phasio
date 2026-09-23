@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Manufacturer Document Template Controller API
+  title: Phasio Manufacturer Document Template Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -124,6 +124,39 @@ paths:
           description: Invalid document template ID or deletion failed
 components:
   schemas:
+    UpdateDocumentTemplateDto:
+      type: object
+      description: Document template update details
+      properties:
+        documentTemplateId:
+          type: integer
+          format: int64
+        content:
+          type: string
+      required:
+      - content
+      - documentTemplateId
+    CreateDocumentTemplateDto:
+      type: object
+      description: Document template creation details
+      properties:
+        language:
+          type: string
+        type:
+          type: string
+        consignmentLabelSize:
+          type: string
+        name:
+          type: string
+        pageWidth:
+          type: number
+          format: double
+        pageHeight:
+          type: number
+          format: double
+      required:
+      - language
+      - type
     DocumentTemplateDto:
       type: object
       properties:
@@ -151,41 +184,8 @@ components:
       - documentTemplateId
       - language
       - type
-    CreateDocumentTemplateDto:
-      type: object
-      description: Document template creation details
-      properties:
-        language:
-          type: string
-        type:
-          type: string
-        consignmentLabelSize:
-          type: string
-        name:
-          type: string
-        pageWidth:
-          type: number
-          format: double
-        pageHeight:
-          type: number
-          format: double
-      required:
-      - language
-      - type
-    UpdateDocumentTemplateDto:
-      type: object
-      description: Document template update details
-      properties:
-        documentTemplateId:
-          type: integer
-          format: int64
-        content:
-          type: string
-      required:
-      - content
-      - documentTemplateId
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

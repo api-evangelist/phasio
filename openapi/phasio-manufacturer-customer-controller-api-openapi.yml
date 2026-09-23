@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Manufacturer Customer Controller API
+  title: Phasio Manufacturer Customer Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -378,6 +378,36 @@ paths:
                 type: string
 components:
   schemas:
+    PaginatedCustomerDto:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerDto'
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
     CreateCustomerDto:
       type: object
       description: Customer data to create
@@ -422,37 +452,6 @@ components:
           type: boolean
       required:
       - notificationPreference
-    CustomerPhoneLookupDto:
-      type: object
-      properties:
-        isDuplicate:
-          type: boolean
-        customer:
-          $ref: '#/components/schemas/CustomerDto'
-        message:
-          type: string
-      required:
-      - isDuplicate
-    CustomerUpdateDto:
-      type: object
-      properties:
-        customerId:
-          type: integer
-          format: int64
-        email:
-          type: string
-        phoneNumber:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        notificationPreference:
-          type: string
-        language:
-          type: string
-      required:
-      - customerId
     CustomerDto:
       type: object
       properties:
@@ -484,36 +483,17 @@ components:
       - customerType
       - language
       - notificationPreference
-    PaginatedCustomerDto:
+    CustomerPhoneLookupDto:
       type: object
       properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerDto'
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
+        isDuplicate:
           type: boolean
-        isFirst:
-          type: boolean
-        isLast:
-          type: boolean
+        customer:
+          $ref: '#/components/schemas/CustomerDto'
+        message:
+          type: string
       required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
+      - isDuplicate
     CustomerRequestDto:
       type: object
       description: Customer request data containing the principal
@@ -522,6 +502,26 @@ components:
           type: string
       required:
       - customerPrincipal
+    CustomerUpdateDto:
+      type: object
+      properties:
+        customerId:
+          type: integer
+          format: int64
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        notificationPreference:
+          type: string
+        language:
+          type: string
+      required:
+      - customerId
     CustomerEmailLookupDto:
       type: object
       properties:
@@ -534,7 +534,7 @@ components:
       required:
       - isDuplicate
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

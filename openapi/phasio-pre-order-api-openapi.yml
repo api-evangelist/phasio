@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Pre-Order API
+  title: Phasio Pre Order API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -85,6 +85,77 @@ paths:
           description: Unauthorized - missing or invalid authentication
 components:
   schemas:
+    TaxQuoteDto:
+      type: object
+      properties:
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxQuoteComponentDto'
+        totalPrice:
+          type: number
+        totalPercentage:
+          type: number
+        isTaxAppliedToShipping:
+          type: boolean
+        isTaxExempted:
+          type: boolean
+        isTaxReverseCharged:
+          type: boolean
+      required:
+      - components
+      - isTaxAppliedToShipping
+      - isTaxExempted
+      - isTaxReverseCharged
+      - totalPercentage
+      - totalPrice
+    PreOrderPurchasabilityDto:
+      type: object
+      properties:
+        parts:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/PartManufacturabilityDto'
+        withinWallThicknessLimit:
+          type: boolean
+        withinBoundingBoxLimit:
+          type: boolean
+        withinMaximumOrderValue:
+          type: boolean
+        isMaterialPurchasable:
+          type: boolean
+        isPostProcessingPurchasable:
+          type: boolean
+        isPriceReviewRequired:
+          type: boolean
+        canBePurchased:
+          type: boolean
+      required:
+      - canBePurchased
+      - isMaterialPurchasable
+      - isPostProcessingPurchasable
+      - isPriceReviewRequired
+      - parts
+      - withinBoundingBoxLimit
+      - withinMaximumOrderValue
+      - withinWallThicknessLimit
+    PartManufacturabilityDto:
+      type: object
+      properties:
+        partRevisionId:
+          type: string
+          format: uuid
+        warnings:
+          $ref: '#/components/schemas/PartManufacturabilityWarningsDto'
+        limits:
+          $ref: '#/components/schemas/PartManufacturabilityLimitsDto'
+        values:
+          $ref: '#/components/schemas/PartManufacturabilityValuesDto'
+      required:
+      - limits
+      - partRevisionId
+      - values
+      - warnings
     FixedOrientationConstraintDto:
       allOf:
       - $ref: '#/components/schemas/ConstraintDto'
@@ -103,141 +174,16 @@ components:
       - partSpecificationId
       - rotationMatrix
       - updatedAt
-    RequisitionQuoteDto:
+    QuoteLineItemDto:
       type: object
       properties:
-        partRevisionId:
+        name:
           type: string
-          format: uuid
-        quantity:
-          type: integer
         price:
           type: number
-        manufacturingPrice:
-          type: number
-        postProcessingPrice:
-          type: number
-        unitPrice:
-          type: number
-        postProcessingOptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/PostProcessingOptionQuoteDto'
       required:
-      - manufacturingPrice
-      - partRevisionId
-      - postProcessingOptions
-      - postProcessingPrice
-      - price
-      - quantity
-      - unitPrice
-    FixedPriceShipmentDto:
-      allOf:
-      - $ref: '#/components/schemas/ShipmentDto'
-      - type: object
-        properties:
-          rate:
-            type: number
-          toAddressDto:
-            $ref: '#/components/schemas/CustomerAddressDto'
-          trackingDto:
-            $ref: '#/components/schemas/TrackingDto'
-          name:
-            type: string
-      required:
-      - shippingMode
-    SelfCollectionShipmentDto:
-      allOf:
-      - $ref: '#/components/schemas/ShipmentDto'
-      - type: object
-        properties:
-          contactName:
-            type: string
-          contactPhoneNumber:
-            type: string
-          rate:
-            type: number
-          name:
-            type: string
-      required:
-      - shippingMode
-    CreateOrderCommentDto:
-      type: object
-      discriminator:
-        propertyName: conversationType
-      properties:
-        message:
-          type: string
-        customerId:
-          type: integer
-          format: int64
-        actorType:
-          type: string
-        conversationType:
-          type: string
-      required:
-      - conversationType
-      - message
-    CreateDiscountDto:
-      type: object
-      properties:
-        discountType:
-          type: string
-        percentage:
-          type: number
-      required:
-      - discountType
-      - percentage
-    CreateInstantDiscountDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateDiscountDto'
-      - type: object
-        properties:
-          note:
-            type: string
-      required:
-      - discountType
-      - note
-      - percentage
-    ConstraintDto:
-      type: object
-      discriminator:
-        propertyName: constraintType
-      properties:
-        id:
-          type: string
-          format: uuid
-        constraintType:
-          type: string
-        partSpecificationId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - updatedAt
-    CreateHourlyExpenseDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateExpenseDto'
-      - type: object
-        properties:
-          hours:
-            type: number
-          rate:
-            type: number
-      required:
-      - hours
       - name
-      - rate
-      - type
+      - price
     TrackingDto:
       type: object
       properties:
@@ -253,107 +199,89 @@ components:
       - id
       - shipmentId
       - trackingNumber
-    PartManufacturabilityLimitsDto:
-      type: object
-      properties:
-        withinBoundingBoxLimit:
-          type: boolean
-        withinWallThicknessLimit:
-          type: boolean
-      required:
-      - withinBoundingBoxLimit
-      - withinWallThicknessLimit
-    PreOrderDto:
-      type: object
-      properties:
-        quote:
-          $ref: '#/components/schemas/QuoteDtoUUID'
-        purchasability:
-          $ref: '#/components/schemas/PreOrderPurchasabilityDto'
-        constraints:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              oneOf:
-              - $ref: '#/components/schemas/ConstraintDto'
-              - $ref: '#/components/schemas/FixedOrientationConstraintDto'
-      required:
-      - constraints
-      - purchasability
-      - quote
-    CreateLocationCommentDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateOrderCommentDto'
-      - type: object
-        properties:
-          locationX:
-            type: number
-          locationY:
-            type: number
-          locationZ:
-            type: number
-          cameraPositionX:
-            type: number
-          cameraPositionY:
-            type: number
-          cameraPositionZ:
-            type: number
-          cameraRotationX:
-            type: number
-          cameraRotationY:
-            type: number
-          cameraRotationZ:
-            type: number
-      required:
-      - cameraPositionX
-      - cameraPositionY
-      - cameraPositionZ
-      - cameraRotationX
-      - cameraRotationY
-      - cameraRotationZ
-      - conversationType
-      - locationX
-      - locationY
-      - locationZ
-      - message
-    CreateAssemblyRequisitionDto:
+    CreateRequisitionDto:
       type: object
       properties:
         requisitionIntentId:
           type: string
           format: uuid
-        assemblyId:
+        partRevisionId:
           type: string
           format: uuid
+        units:
+          type: string
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
         quantity:
           type: integer
+        materialId:
+          type: integer
+          format: int64
+        processPricesId:
+          type: string
+          format: uuid
+        infillId:
+          type: integer
+          format: int64
+        precisionId:
+          type: integer
+          format: int64
+        colorId:
+          type: integer
+          format: int64
+        postProcessing:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateRequisitionPostProcessingDto'
+          uniqueItems: true
+        variables:
+          type: object
+          additionalProperties:
+            type: number
+        manualPrice:
+          type: number
+        leadTimeId:
+          type: string
+          format: uuid
+        comments:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/CreateLocationCommentDto'
+            - $ref: '#/components/schemas/CreateRequisitionCommentDto'
+        name:
+          type: string
+        constraints:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/CreateFixedOrientationRequisitionConstraintDto'
       required:
-      - assemblyId
+      - comments
+      - constraints
+      - materialId
+      - partRevisionId
+      - postProcessing
+      - processPricesId
       - quantity
       - requisitionIntentId
-    CreateGenericDiscountDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateDiscountDto'
-      - type: object
-        properties:
-          code:
-            type: string
-          startTime:
-            type: string
-            format: date-time
-          endTime:
-            type: string
-            format: date-time
-          genericDiscountNoe:
-            type: string
-      required:
-      - code
-      - discountType
-      - endTime
-      - genericDiscountNoe
-      - percentage
-      - startTime
+      - units
+      - variables
+    PartManufacturabilityValuesDto:
+      type: object
+      properties:
+        boundingBox:
+          type: array
+          items:
+            type: number
+        wallThicknessLimit:
+          type: number
+        wallThicknessWarning:
+          type: number
     CreateOrderDto:
       type: object
       description: Updated order details
@@ -439,22 +367,42 @@ components:
       - markPaymentConfirmed
       - requisitions
       - source
-    TaxQuoteComponentDto:
+    CarrierAccountShipmentDto:
+      allOf:
+      - $ref: '#/components/schemas/ShipmentDto'
+      - type: object
+        properties:
+          toAddressDto:
+            $ref: '#/components/schemas/CustomerAddressDto'
+          carrierAccountProvider:
+            type: string
+          carrierAccountServiceType:
+            type: string
+          carrierAccountServiceName:
+            type: string
+          estimatedRate:
+            type: number
+          finalRatePaid:
+            type: number
+          trackingDto:
+            $ref: '#/components/schemas/TrackingDto'
+      required:
+      - shippingMode
+    CreateAssemblyRequisitionDto:
       type: object
       properties:
-        shortName:
+        requisitionIntentId:
           type: string
-        longName:
+          format: uuid
+        assemblyId:
           type: string
-        percentage:
-          type: number
-        amount:
-          type: number
+          format: uuid
+        quantity:
+          type: integer
       required:
-      - amount
-      - longName
-      - percentage
-      - shortName
+      - assemblyId
+      - quantity
+      - requisitionIntentId
     ShipmentDto:
       type: object
       discriminator:
@@ -484,6 +432,39 @@ components:
           format: date
       required:
       - shippingMode
+    CreateHourlyExpenseDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateExpenseDto'
+      - type: object
+        properties:
+          hours:
+            type: number
+          rate:
+            type: number
+      required:
+      - hours
+      - name
+      - rate
+      - type
+    PartManufacturabilityLimitsDto:
+      type: object
+      properties:
+        withinBoundingBoxLimit:
+          type: boolean
+        withinWallThicknessLimit:
+          type: boolean
+      required:
+      - withinBoundingBoxLimit
+      - withinWallThicknessLimit
+    CreateRequisitionConstraintDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        constraintType:
+          type: string
+      required:
+      - constraintType
     QuoteDtoUUID:
       type: object
       properties:
@@ -521,172 +502,6 @@ components:
       - shipment
       - subtotal
       - tax
-    CreateRequisitionCommentDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateOrderCommentDto'
-      required:
-      - conversationType
-      - message
-    PreOrderPurchasabilityDto:
-      type: object
-      properties:
-        parts:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/PartManufacturabilityDto'
-        withinWallThicknessLimit:
-          type: boolean
-        withinBoundingBoxLimit:
-          type: boolean
-        withinMaximumOrderValue:
-          type: boolean
-        isMaterialPurchasable:
-          type: boolean
-        isPostProcessingPurchasable:
-          type: boolean
-        isPriceReviewRequired:
-          type: boolean
-        canBePurchased:
-          type: boolean
-      required:
-      - canBePurchased
-      - isMaterialPurchasable
-      - isPostProcessingPurchasable
-      - isPriceReviewRequired
-      - parts
-      - withinBoundingBoxLimit
-      - withinMaximumOrderValue
-      - withinWallThicknessLimit
-    CreateFixedOrientationRequisitionConstraintDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateRequisitionConstraintDto'
-      - type: object
-        properties:
-          rotationMatrix:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-            maxItems: 3
-            minItems: 3
-      required:
-      - constraintType
-      - rotationMatrix
-    PartManufacturabilityWarningsDto:
-      type: object
-      properties:
-        hasOptimalWallThickness:
-          type: boolean
-      required:
-      - hasOptimalWallThickness
-    CreateRequisitionConstraintDto:
-      type: object
-      discriminator:
-        propertyName: constraintType
-      properties:
-        constraintType:
-          type: string
-      required:
-      - constraintType
-    CreateRequisitionPostProcessingDto:
-      type: object
-      properties:
-        postProcessingId:
-          type: integer
-          format: int64
-        variables:
-          type: object
-          additionalProperties:
-            type: number
-      required:
-      - postProcessingId
-      - variables
-    CreateExpenseDto:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-      required:
-      - name
-      - type
-    QuoteLineItemDto:
-      type: object
-      properties:
-        name:
-          type: string
-        price:
-          type: number
-      required:
-      - name
-      - price
-    CustomerAddressDto:
-      type: object
-      properties:
-        addressId:
-          type: integer
-          format: int64
-        isBillingAddress:
-          type: boolean
-        isShippingAddress:
-          type: boolean
-        street1:
-          type: string
-        street2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        countryAlpha2Code:
-          type: string
-        countryAlpha3Code:
-          type: string
-        jurisdictionIsoCode:
-          type: string
-        zip:
-          type: string
-        name:
-          type: string
-        company:
-          type: string
-        phone:
-          type: string
-        email:
-          type: string
-        residential:
-          type: boolean
-        taxId:
-          type: string
-    CreateCustomerDiscountDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateDiscountDto'
-      - type: object
-        properties:
-          code:
-            type: string
-          startTime:
-            type: string
-            format: date-time
-          endTime:
-            type: string
-            format: date-time
-          customerId:
-            type: integer
-            format: int64
-      required:
-      - code
-      - customerId
-      - discountType
-      - endTime
-      - percentage
-      - startTime
     GenerateBulkQuoteDto:
       type: object
       description: Parameters for bulk quote generation
@@ -731,38 +546,83 @@ components:
       - postProcessingIds
       - processPricesId
       - units
-    CarrierAccountShipmentDto:
+    CustomerAddressDto:
+      type: object
+      properties:
+        addressId:
+          type: integer
+          format: int64
+        isBillingAddress:
+          type: boolean
+        isShippingAddress:
+          type: boolean
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        countryAlpha2Code:
+          type: string
+        countryAlpha3Code:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        taxId:
+          type: string
+    FixedPriceShipmentDto:
       allOf:
       - $ref: '#/components/schemas/ShipmentDto'
       - type: object
         properties:
+          rate:
+            type: number
           toAddressDto:
             $ref: '#/components/schemas/CustomerAddressDto'
-          carrierAccountProvider:
-            type: string
-          carrierAccountServiceType:
-            type: string
-          carrierAccountServiceName:
-            type: string
-          estimatedRate:
-            type: number
-          finalRatePaid:
-            type: number
           trackingDto:
             $ref: '#/components/schemas/TrackingDto'
+          name:
+            type: string
       required:
       - shippingMode
-    PartManufacturabilityValuesDto:
-      type: object
-      properties:
-        boundingBox:
-          type: array
-          items:
-            type: number
-        wallThicknessLimit:
-          type: number
-        wallThicknessWarning:
-          type: number
+    CreateFixedOrientationRequisitionConstraintDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateRequisitionConstraintDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+            maxItems: 3
+            minItems: 3
+      required:
+      - constraintType
+      - rotationMatrix
+    CreateRequisitionCommentDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateOrderCommentDto'
+      required:
+      - conversationType
+      - message
     CreateFixedExpenseDto:
       allOf:
       - $ref: '#/components/schemas/CreateExpenseDto'
@@ -780,119 +640,130 @@ components:
       - quantity
       - type
       - unitPrice
-    PartManufacturabilityDto:
+    CreateOrderCommentDto:
+      type: object
+      discriminator:
+        propertyName: conversationType
+      properties:
+        message:
+          type: string
+        customerId:
+          type: integer
+          format: int64
+        actorType:
+          type: string
+        conversationType:
+          type: string
+      required:
+      - conversationType
+      - message
+    CreateGenericDiscountDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateDiscountDto'
+      - type: object
+        properties:
+          code:
+            type: string
+          startTime:
+            type: string
+            format: date-time
+          endTime:
+            type: string
+            format: date-time
+          genericDiscountNoe:
+            type: string
+      required:
+      - code
+      - discountType
+      - endTime
+      - genericDiscountNoe
+      - percentage
+      - startTime
+    ConstraintDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        id:
+          type: string
+          format: uuid
+        constraintType:
+          type: string
+        partSpecificationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - updatedAt
+    SelfCollectionShipmentDto:
+      allOf:
+      - $ref: '#/components/schemas/ShipmentDto'
+      - type: object
+        properties:
+          contactName:
+            type: string
+          contactPhoneNumber:
+            type: string
+          rate:
+            type: number
+          name:
+            type: string
+      required:
+      - shippingMode
+    PartManufacturabilityWarningsDto:
+      type: object
+      properties:
+        hasOptimalWallThickness:
+          type: boolean
+      required:
+      - hasOptimalWallThickness
+    RequisitionQuoteDto:
       type: object
       properties:
         partRevisionId:
           type: string
           format: uuid
-        warnings:
-          $ref: '#/components/schemas/PartManufacturabilityWarningsDto'
-        limits:
-          $ref: '#/components/schemas/PartManufacturabilityLimitsDto'
-        values:
-          $ref: '#/components/schemas/PartManufacturabilityValuesDto'
-      required:
-      - limits
-      - partRevisionId
-      - values
-      - warnings
-    TaxQuoteDto:
-      type: object
-      properties:
-        components:
-          type: array
-          items:
-            $ref: '#/components/schemas/TaxQuoteComponentDto'
-        totalPrice:
-          type: number
-        totalPercentage:
-          type: number
-        isTaxAppliedToShipping:
-          type: boolean
-        isTaxExempted:
-          type: boolean
-        isTaxReverseCharged:
-          type: boolean
-      required:
-      - components
-      - isTaxAppliedToShipping
-      - isTaxExempted
-      - isTaxReverseCharged
-      - totalPercentage
-      - totalPrice
-    CreateRequisitionDto:
-      type: object
-      properties:
-        requisitionIntentId:
-          type: string
-          format: uuid
-        partRevisionId:
-          type: string
-          format: uuid
-        units:
-          type: string
-          enum:
-          - CENTIMETERS
-          - MILLIMETERS
-          - METRES
-          - INCHES
-          - FEET
         quantity:
           type: integer
-        materialId:
-          type: integer
-          format: int64
-        processPricesId:
-          type: string
-          format: uuid
-        infillId:
-          type: integer
-          format: int64
-        precisionId:
-          type: integer
-          format: int64
-        colorId:
-          type: integer
-          format: int64
-        postProcessing:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateRequisitionPostProcessingDto'
-          uniqueItems: true
-        variables:
-          type: object
-          additionalProperties:
-            type: number
-        manualPrice:
+        price:
           type: number
-        leadTimeId:
-          type: string
-          format: uuid
-        comments:
+        manufacturingPrice:
+          type: number
+        postProcessingPrice:
+          type: number
+        unitPrice:
+          type: number
+        postProcessingOptions:
           type: array
           items:
-            oneOf:
-            - $ref: '#/components/schemas/CreateLocationCommentDto'
-            - $ref: '#/components/schemas/CreateRequisitionCommentDto'
-        name:
-          type: string
-        constraints:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/CreateFixedOrientationRequisitionConstraintDto'
+            $ref: '#/components/schemas/PostProcessingOptionQuoteDto'
       required:
-      - comments
-      - constraints
-      - materialId
+      - manufacturingPrice
       - partRevisionId
-      - postProcessing
-      - processPricesId
+      - postProcessingOptions
+      - postProcessingPrice
+      - price
       - quantity
-      - requisitionIntentId
-      - units
-      - variables
+      - unitPrice
+    CreateDiscountDto:
+      type: object
+      properties:
+        discountType:
+          type: string
+        percentage:
+          type: number
+      required:
+      - discountType
+      - percentage
     PostProcessingOptionQuoteDto:
       type: object
       properties:
@@ -904,8 +775,137 @@ components:
       required:
       - id
       - price
+    CreateExpenseDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
+    CreateInstantDiscountDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateDiscountDto'
+      - type: object
+        properties:
+          note:
+            type: string
+      required:
+      - discountType
+      - note
+      - percentage
+    CreateRequisitionPostProcessingDto:
+      type: object
+      properties:
+        postProcessingId:
+          type: integer
+          format: int64
+        variables:
+          type: object
+          additionalProperties:
+            type: number
+      required:
+      - postProcessingId
+      - variables
+    TaxQuoteComponentDto:
+      type: object
+      properties:
+        shortName:
+          type: string
+        longName:
+          type: string
+        percentage:
+          type: number
+        amount:
+          type: number
+      required:
+      - amount
+      - longName
+      - percentage
+      - shortName
+    PreOrderDto:
+      type: object
+      properties:
+        quote:
+          $ref: '#/components/schemas/QuoteDtoUUID'
+        purchasability:
+          $ref: '#/components/schemas/PreOrderPurchasabilityDto'
+        constraints:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              oneOf:
+              - $ref: '#/components/schemas/ConstraintDto'
+              - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+      required:
+      - constraints
+      - purchasability
+      - quote
+    CreateCustomerDiscountDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateDiscountDto'
+      - type: object
+        properties:
+          code:
+            type: string
+          startTime:
+            type: string
+            format: date-time
+          endTime:
+            type: string
+            format: date-time
+          customerId:
+            type: integer
+            format: int64
+      required:
+      - code
+      - customerId
+      - discountType
+      - endTime
+      - percentage
+      - startTime
+    CreateLocationCommentDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateOrderCommentDto'
+      - type: object
+        properties:
+          locationX:
+            type: number
+          locationY:
+            type: number
+          locationZ:
+            type: number
+          cameraPositionX:
+            type: number
+          cameraPositionY:
+            type: number
+          cameraPositionZ:
+            type: number
+          cameraRotationX:
+            type: number
+          cameraRotationY:
+            type: number
+          cameraRotationZ:
+            type: number
+      required:
+      - cameraPositionX
+      - cameraPositionY
+      - cameraPositionZ
+      - cameraRotationX
+      - cameraRotationY
+      - cameraRotationZ
+      - conversationType
+      - locationX
+      - locationY
+      - locationZ
+      - message
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

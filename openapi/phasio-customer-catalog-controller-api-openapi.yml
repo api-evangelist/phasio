@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Customer Catalog Controller API
+  title: Phasio Customer Catalog Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -112,6 +112,146 @@ paths:
           description: Accessory file not found
 components:
   schemas:
+    CatalogAssemblyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        assemblyId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        reference:
+          type: string
+        assemblyPrice:
+          type: number
+        price:
+          type: number
+        currency:
+          type: string
+        partCount:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+      required:
+      - assemblyId
+      - assemblyPrice
+      - createdAt
+      - currency
+      - id
+      - lastUpdated
+      - name
+      - partCount
+      - price
+      - reference
+    ColorDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - id
+      - name
+    CatalogItemDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        partRevisionId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        reference:
+          type: string
+        units:
+          type: string
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        processPricesId:
+          type: string
+          format: uuid
+        materialId:
+          type: integer
+          format: int64
+        materialName:
+          type: string
+        color:
+          $ref: '#/components/schemas/ColorDto'
+        precisionPrices:
+          $ref: '#/components/schemas/PrecisionPricesDto'
+        infill:
+          $ref: '#/components/schemas/InfillDto'
+        postProcessings:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostProcessingDto'
+        price:
+          type: number
+        currency:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+        constraints:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/ConstraintDto'
+            - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+      required:
+      - constraints
+      - createdAt
+      - currency
+      - id
+      - lastUpdated
+      - materialId
+      - materialName
+      - name
+      - partRevisionId
+      - postProcessings
+      - price
+      - processPricesId
+      - reference
+      - units
+    PrecisionPricesDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        price:
+          type: number
+        isActive:
+          type: boolean
+      required:
+      - id
+      - isActive
+      - name
+      - price
     FixedOrientationConstraintDto:
       allOf:
       - $ref: '#/components/schemas/ConstraintDto'
@@ -130,7 +270,32 @@ components:
       - partSpecificationId
       - rotationMatrix
       - updatedAt
-    InfillDto:
+    ConstraintDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        id:
+          type: string
+          format: uuid
+        constraintType:
+          type: string
+        partSpecificationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - updatedAt
+    PostProcessingDto:
       type: object
       properties:
         id:
@@ -138,15 +303,27 @@ components:
           format: int64
         name:
           type: string
-        value:
-          type: number
-        default:
+        purchasable:
           type: boolean
+        isDefault:
+          type: boolean
+        colors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColorDto'
+        incompatibleMaterialIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        mutuallyExclusiveGroup:
+          type: string
       required:
-      - default
-      - id
+      - colors
+      - incompatibleMaterialIds
+      - isDefault
       - name
-      - value
+      - purchasable
     PartRevisionDto:
       type: object
       properties:
@@ -241,6 +418,23 @@ components:
       - availableAccessories
       - deleted
       - designName
+    InfillDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        value:
+          type: number
+        default:
+          type: boolean
+      required:
+      - default
+      - id
+      - name
+      - value
     CatalogDto:
       type: object
       properties:
@@ -255,202 +449,8 @@ components:
       required:
       - assemblies
       - parts
-    ColorDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - id
-      - name
-    CatalogAssemblyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        assemblyId:
-          type: string
-          format: uuid
-        name:
-          type: string
-        reference:
-          type: string
-        assemblyPrice:
-          type: number
-        price:
-          type: number
-        currency:
-          type: string
-        partCount:
-          type: integer
-          format: int32
-        createdAt:
-          type: string
-          format: date-time
-        lastUpdated:
-          type: string
-          format: date-time
-      required:
-      - assemblyId
-      - assemblyPrice
-      - createdAt
-      - currency
-      - id
-      - lastUpdated
-      - name
-      - partCount
-      - price
-      - reference
-    PostProcessingDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        purchasable:
-          type: boolean
-        isDefault:
-          type: boolean
-        colors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColorDto'
-        incompatibleMaterialIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-        mutuallyExclusiveGroup:
-          type: string
-      required:
-      - colors
-      - incompatibleMaterialIds
-      - isDefault
-      - name
-      - purchasable
-    CatalogItemDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        partRevisionId:
-          type: string
-          format: uuid
-        name:
-          type: string
-        reference:
-          type: string
-        units:
-          type: string
-          enum:
-          - CENTIMETERS
-          - MILLIMETERS
-          - METRES
-          - INCHES
-          - FEET
-        processPricesId:
-          type: string
-          format: uuid
-        materialId:
-          type: integer
-          format: int64
-        materialName:
-          type: string
-        color:
-          $ref: '#/components/schemas/ColorDto'
-        precisionPrices:
-          $ref: '#/components/schemas/PrecisionPricesDto'
-        infill:
-          $ref: '#/components/schemas/InfillDto'
-        postProcessings:
-          type: array
-          items:
-            $ref: '#/components/schemas/PostProcessingDto'
-        price:
-          type: number
-        currency:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        lastUpdated:
-          type: string
-          format: date-time
-        constraints:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/ConstraintDto'
-            - $ref: '#/components/schemas/FixedOrientationConstraintDto'
-      required:
-      - constraints
-      - createdAt
-      - currency
-      - id
-      - lastUpdated
-      - materialId
-      - materialName
-      - name
-      - partRevisionId
-      - postProcessings
-      - price
-      - processPricesId
-      - reference
-      - units
-    PrecisionPricesDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        price:
-          type: number
-        isActive:
-          type: boolean
-      required:
-      - id
-      - isActive
-      - name
-      - price
-    ConstraintDto:
-      type: object
-      discriminator:
-        propertyName: constraintType
-      properties:
-        id:
-          type: string
-          format: uuid
-        constraintType:
-          type: string
-        partSpecificationId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - updatedAt
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

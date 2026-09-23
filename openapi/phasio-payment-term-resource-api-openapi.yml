@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal payment-term-resource API
+  title: Phasio Payment Term Resource API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -25,6 +25,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PaymentTermDto'
+      summary: List
+      x-summary-source: derived
     post:
       tags:
       - payment-term-resource
@@ -42,6 +44,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/PaymentTermDto'
+      summary: Create 8
+      x-summary-source: derived
   /api/manufacturer/v1/payment-term/{id}:
     delete:
       tags:
@@ -61,6 +65,8 @@ paths:
             '*/*':
               schema:
                 type: object
+      summary: Delete 8
+      x-summary-source: derived
     patch:
       tags:
       - payment-term-resource
@@ -85,6 +91,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/PaymentTermDto'
+      summary: Update 10
+      x-summary-source: derived
 components:
   schemas:
     CreatePaymentTermDto:
@@ -93,16 +101,6 @@ components:
         name:
           type: string
           minLength: 1
-      required:
-      - name
-    UpdatePaymentTermDto:
-      type: object
-      properties:
-        name:
-          type: string
-          minLength: 1
-        accountingSystemTermId:
-          type: string
       required:
       - name
     PaymentTermDto:
@@ -118,8 +116,18 @@ components:
       required:
       - id
       - name
+    UpdatePaymentTermDto:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        accountingSystemTermId:
+          type: string
+      required:
+      - name
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

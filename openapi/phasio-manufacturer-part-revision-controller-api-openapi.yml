@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Manufacturer Part Revision Controller API
+  title: Phasio Manufacturer Part Revision Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -752,35 +752,65 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
-    Paginated:
+    PartManufacturabilityDto:
       type: object
       properties:
-        content:
-          type: array
-          items: {}
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
+        partRevisionId:
+          type: string
+          format: uuid
+        warnings:
+          $ref: '#/components/schemas/PartManufacturabilityWarningsDto'
+        limits:
+          $ref: '#/components/schemas/PartManufacturabilityLimitsDto'
+        values:
+          $ref: '#/components/schemas/PartManufacturabilityValuesDto'
+      required:
+      - limits
+      - partRevisionId
+      - values
+      - warnings
+    PartManufacturabilityLimitsDto:
+      type: object
+      properties:
+        withinBoundingBoxLimit:
           type: boolean
-        isFirst:
-          type: boolean
-        isLast:
+        withinWallThicknessLimit:
           type: boolean
       required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
+      - withinBoundingBoxLimit
+      - withinWallThicknessLimit
+    PartImageDetectionResponseDto:
+      type: object
+      properties:
+        detections:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartImageDetectionDto'
+      required:
+      - detections
+    PartImageDetectionDto:
+      type: object
+      properties:
+        bbox:
+          type: array
+          items:
+            type: integer
+            format: int32
+        matches:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
+      required:
+      - bbox
+      - matches
+    PartManufacturabilityWarningsDto:
+      type: object
+      properties:
+        hasOptimalWallThickness:
+          type: boolean
+      required:
+      - hasOptimalWallThickness
     PartManufacturabilityRequestDto:
       type: object
       properties:
@@ -900,32 +930,46 @@ components:
       - availableAccessories
       - deleted
       - designName
-    PartManufacturabilityLimitsDto:
+    PartManufacturabilityValuesDto:
       type: object
       properties:
-        withinBoundingBoxLimit:
-          type: boolean
-        withinWallThicknessLimit:
-          type: boolean
-      required:
-      - withinBoundingBoxLimit
-      - withinWallThicknessLimit
-    PartImageDetectionDto:
-      type: object
-      properties:
-        bbox:
+        boundingBox:
           type: array
           items:
-            type: integer
-            format: int32
-        matches:
-          type: object
-          additionalProperties:
             type: number
-            format: double
+        wallThicknessLimit:
+          type: number
+        wallThicknessWarning:
+          type: number
+    Paginated:
+      type: object
+      properties:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
       required:
-      - bbox
-      - matches
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
     PartRevisionZipRequestDto:
       type: object
       properties:
@@ -946,52 +990,8 @@ components:
       required:
       - revisions
       - type
-    PartImageDetectionResponseDto:
-      type: object
-      properties:
-        detections:
-          type: array
-          items:
-            $ref: '#/components/schemas/PartImageDetectionDto'
-      required:
-      - detections
-    PartManufacturabilityWarningsDto:
-      type: object
-      properties:
-        hasOptimalWallThickness:
-          type: boolean
-      required:
-      - hasOptimalWallThickness
-    PartManufacturabilityValuesDto:
-      type: object
-      properties:
-        boundingBox:
-          type: array
-          items:
-            type: number
-        wallThicknessLimit:
-          type: number
-        wallThicknessWarning:
-          type: number
-    PartManufacturabilityDto:
-      type: object
-      properties:
-        partRevisionId:
-          type: string
-          format: uuid
-        warnings:
-          $ref: '#/components/schemas/PartManufacturabilityWarningsDto'
-        limits:
-          $ref: '#/components/schemas/PartManufacturabilityLimitsDto'
-        values:
-          $ref: '#/components/schemas/PartManufacturabilityValuesDto'
-      required:
-      - limits
-      - partRevisionId
-      - values
-      - warnings
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

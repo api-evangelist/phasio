@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Internal Operator Controller API
+  title: Phasio Internal Operator Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -150,101 +150,6 @@ paths:
           description: Unauthorized - missing or invalid authentication
 components:
   schemas:
-    InfillDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        value:
-          type: number
-        default:
-          type: boolean
-      required:
-      - default
-      - id
-      - name
-      - value
-    MaterialDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        datasheetSummary:
-          type: string
-        quoteOnly:
-          type: boolean
-        colorDtos:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColorDto'
-        isDefault:
-          type: boolean
-        wallThicknessWarning:
-          type: number
-        wallThicknessLimit:
-          type: number
-      required:
-      - colorDtos
-      - id
-      - isDefault
-      - name
-      - quoteOnly
-    CreateUserDto:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        phoneNumber:
-          type: string
-        email:
-          type: string
-        password:
-          type: string
-      required:
-      - email
-      - firstName
-      - lastName
-      - password
-      - phoneNumber
-    OperatorEmailCredentialsDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        smtpHost:
-          type: string
-        smtpPort:
-          type: integer
-          format: int32
-        fromAddress:
-          type: string
-        smtpUsername:
-          type: string
-        smtpPassword:
-          type: string
-      required:
-      - fromAddress
-      - id
-      - smtpHost
-      - smtpPassword
-      - smtpPort
-      - smtpUsername
-    UpdateSubscriptionStatusDto:
-      type: object
-      properties:
-        status:
-          type: string
-      required:
-      - status
     ColorDto:
       type: object
       properties:
@@ -259,50 +164,6 @@ components:
       - code
       - id
       - name
-    ProcessPricesDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        technology:
-          type: string
-        description:
-          type: string
-        materials:
-          type: array
-          items:
-            $ref: '#/components/schemas/MaterialDto'
-        infills:
-          type: array
-          items:
-            $ref: '#/components/schemas/InfillDto'
-        precisions:
-          type: array
-          items:
-            $ref: '#/components/schemas/PrecisionPricesDto'
-        postProcessings:
-          type: array
-          items:
-            $ref: '#/components/schemas/PostProcessingDto'
-        isInternal:
-          type: boolean
-        isDefault:
-          type: boolean
-        bulkPricingQuantities:
-          type: array
-          items:
-            type: integer
-      required:
-      - bulkPricingQuantities
-      - id
-      - infills
-      - isDefault
-      - isInternal
-      - materials
-      - postProcessings
-      - precisions
-      - technology
     PrecisionPricesDto:
       type: object
       properties:
@@ -349,6 +210,13 @@ components:
       - isDefault
       - name
       - purchasable
+    OperatorDomainFromAddressDto:
+      type: object
+      properties:
+        fromAddress:
+          type: string
+      required:
+      - fromAddress
     OperatorDto:
       type: object
       properties:
@@ -453,13 +321,117 @@ components:
       - permittedDomains
       - storefrontTheme
       - subscribedModules
-    OperatorDomainFromAddressDto:
+    InfillDto:
       type: object
       properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        value:
+          type: number
+        default:
+          type: boolean
+      required:
+      - default
+      - id
+      - name
+      - value
+    ProcessPricesDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        technology:
+          type: string
+        description:
+          type: string
+        materials:
+          type: array
+          items:
+            $ref: '#/components/schemas/MaterialDto'
+        infills:
+          type: array
+          items:
+            $ref: '#/components/schemas/InfillDto'
+        precisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrecisionPricesDto'
+        postProcessings:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostProcessingDto'
+        isInternal:
+          type: boolean
+        isDefault:
+          type: boolean
+        bulkPricingQuantities:
+          type: array
+          items:
+            type: integer
+      required:
+      - bulkPricingQuantities
+      - id
+      - infills
+      - isDefault
+      - isInternal
+      - materials
+      - postProcessings
+      - precisions
+      - technology
+    CreateUserDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      required:
+      - email
+      - firstName
+      - lastName
+      - password
+      - phoneNumber
+    UpdateSubscriptionStatusDto:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+      - status
+    OperatorEmailCredentialsDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        smtpHost:
+          type: string
+        smtpPort:
+          type: integer
+          format: int32
         fromAddress:
+          type: string
+        smtpUsername:
+          type: string
+        smtpPassword:
           type: string
       required:
       - fromAddress
+      - id
+      - smtpHost
+      - smtpPassword
+      - smtpPort
+      - smtpUsername
     InitializeOperatorRequestDto:
       type: object
       description: Operator initialization details
@@ -477,8 +449,36 @@ components:
       - currency
       - organizationName
       - userRequest
+    MaterialDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        datasheetSummary:
+          type: string
+        quoteOnly:
+          type: boolean
+        colorDtos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColorDto'
+        isDefault:
+          type: boolean
+        wallThicknessWarning:
+          type: number
+        wallThicknessLimit:
+          type: number
+      required:
+      - colorDtos
+      - id
+      - isDefault
+      - name
+      - quoteOnly
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

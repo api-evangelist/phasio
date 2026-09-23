@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Customer Authentication API
+  title: Phasio Customer Authentication API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -69,14 +69,6 @@ paths:
           description: Customer not found
 components:
   schemas:
-    CustomerRequestDto:
-      type: object
-      description: Customer request data containing the principal
-      properties:
-        customerPrincipal:
-          type: string
-      required:
-      - customerPrincipal
     CustomerAuthDto:
       type: object
       description: Customer authentication data
@@ -87,8 +79,16 @@ components:
           type: string
       required:
       - authMethod
+    CustomerRequestDto:
+      type: object
+      description: Customer request data containing the principal
+      properties:
+        customerPrincipal:
+          type: string
+      required:
+      - customerPrincipal
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

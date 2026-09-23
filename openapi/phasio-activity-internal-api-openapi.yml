@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Phasio Activity Internal API
   description: This is the API documentation for the Phasio application.
@@ -60,6 +60,35 @@ paths:
           description: Unauthorized - missing or invalid authentication
 components:
   schemas:
+    RequisitionTaggedDto:
+      type: object
+      properties:
+        requisitionId:
+          type: integer
+          format: int64
+      required:
+      - requisitionId
+    CreateConversationDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateActivityDto'
+      - type: object
+        properties:
+          conversationType:
+            type: string
+          message:
+            type: string
+          requisitionTagged:
+            $ref: '#/components/schemas/RequisitionTaggedDto'
+          locationTagged:
+            $ref: '#/components/schemas/LocationTaggedDto'
+          orderId:
+            type: integer
+            format: int64
+      required:
+      - activityType
+      - conversationType
+      - message
+      - threadId
     CreateActivityDto:
       type: object
       properties:
@@ -106,37 +135,8 @@ components:
       - locationY
       - locationZ
       - requisitionId
-    RequisitionTaggedDto:
-      type: object
-      properties:
-        requisitionId:
-          type: integer
-          format: int64
-      required:
-      - requisitionId
-    CreateConversationDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateActivityDto'
-      - type: object
-        properties:
-          conversationType:
-            type: string
-          message:
-            type: string
-          requisitionTagged:
-            $ref: '#/components/schemas/RequisitionTaggedDto'
-          locationTagged:
-            $ref: '#/components/schemas/LocationTaggedDto'
-          orderId:
-            type: integer
-            format: int64
-      required:
-      - activityType
-      - conversationType
-      - message
-      - threadId
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

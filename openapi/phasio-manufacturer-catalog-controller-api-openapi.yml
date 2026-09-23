@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Manufacturer Catalog Controller API
+  title: Phasio Manufacturer Catalog Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -43,47 +43,6 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
-    FixedOrientationConstraintDto:
-      allOf:
-      - $ref: '#/components/schemas/ConstraintDto'
-      - type: object
-        properties:
-          rotationMatrix:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - rotationMatrix
-      - updatedAt
-    CustomerArticleReferenceDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        customerOrganisationId:
-          type: integer
-          format: int64
-        customerOrganisationName:
-          type: string
-        reference:
-          type: string
-        pricingTiers:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
-        showInCatalog:
-          type: boolean
-      required:
-      - customerOrganisationId
-      - pricingTiers
-      - reference
     PartSpecificationDto:
       type: object
       properties:
@@ -149,6 +108,72 @@ components:
       - partRevisionName
       - postProcessingIds
       - units
+    CustomerArticleReferenceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        customerOrganisationId:
+          type: integer
+          format: int64
+        customerOrganisationName:
+          type: string
+        reference:
+          type: string
+        pricingTiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
+        showInCatalog:
+          type: boolean
+      required:
+      - customerOrganisationId
+      - pricingTiers
+      - reference
+    FixedOrientationConstraintDto:
+      allOf:
+      - $ref: '#/components/schemas/ConstraintDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - rotationMatrix
+      - updatedAt
+    ConstraintDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        id:
+          type: string
+          format: uuid
+        constraintType:
+          type: string
+        partSpecificationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - updatedAt
     CustomerArticleReferencePricingTierDto:
       type: object
       properties:
@@ -215,33 +240,8 @@ components:
       - processPricesId
       - reference
       - units
-    ConstraintDto:
-      type: object
-      discriminator:
-        propertyName: constraintType
-      properties:
-        id:
-          type: string
-          format: uuid
-        constraintType:
-          type: string
-        partSpecificationId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - updatedAt
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

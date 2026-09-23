@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Manufacturer Post Processing Controller API
+  title: Phasio Manufacturer Post Processing Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -154,37 +154,20 @@ paths:
                   $ref: '#/components/schemas/PricingEquationVariableDto'
 components:
   schemas:
-    EquationPostProcessingDto:
-      allOf:
-      - $ref: '#/components/schemas/PostProcessingDto'
-      - type: object
-        properties:
-          activeEquationId:
-            type: string
-            format: uuid
-          equations:
-            type: array
-            items:
-              $ref: '#/components/schemas/TypescriptEquationDto'
-      required:
-      - effectiveFrom
-      - isDefault
-      - isDeleted
-      - name
-      - purchasable
-      - type
-    PricingEquationVariableDto:
+    ColorDto:
       type: object
       properties:
+        id:
+          type: integer
+          format: int64
         name:
           type: string
-        placeholder:
-          type: string
-        type:
+        code:
           type: string
       required:
+      - code
+      - id
       - name
-      - placeholder
     LegacyEquationPostProcessingDto:
       allOf:
       - $ref: '#/components/schemas/PostProcessingDto'
@@ -200,20 +183,6 @@ components:
       - name
       - purchasable
       - type
-    ColorDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - id
-      - name
     PostProcessingDto:
       type: object
       properties:
@@ -243,6 +212,25 @@ components:
       - isDefault
       - name
       - purchasable
+    EquationPostProcessingDto:
+      allOf:
+      - $ref: '#/components/schemas/PostProcessingDto'
+      - type: object
+        properties:
+          activeEquationId:
+            type: string
+            format: uuid
+          equations:
+            type: array
+            items:
+              $ref: '#/components/schemas/TypescriptEquationDto'
+      required:
+      - effectiveFrom
+      - isDefault
+      - isDeleted
+      - name
+      - purchasable
+      - type
     TypescriptEquationDto:
       type: object
       properties:
@@ -265,8 +253,20 @@ components:
       - id
       - lastUpdated
       - variables
+    PricingEquationVariableDto:
+      type: object
+      properties:
+        name:
+          type: string
+        placeholder:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - placeholder
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

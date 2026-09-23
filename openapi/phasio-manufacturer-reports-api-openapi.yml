@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Manufacturer Reports API
+  title: Phasio Manufacturer Reports API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -30,6 +30,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/StreamingResponseBody'
+      summary: Download orders
+      x-summary-source: derived
     post:
       tags:
       - Manufacturer Reports
@@ -47,6 +49,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/StreamingResponseBody'
+      summary: Download orders 1
+      x-summary-source: derived
   /api/manufacturer/v1/reports/customers/download:
     get:
       tags:
@@ -65,6 +69,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/StreamingResponseBody'
+      summary: Download customers
+      x-summary-source: derived
     post:
       tags:
       - Manufacturer Reports
@@ -82,6 +88,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/StreamingResponseBody'
+      summary: Download customers 1
+      x-summary-source: derived
   /api/manufacturer/v1/reports/orders/estimate:
     get:
       tags:
@@ -100,6 +108,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/OrderReportEstimateDto'
+      summary: Estimate orders
+      x-summary-source: derived
   /api/manufacturer/v1/reports/orders/columns:
     get:
       tags:
@@ -112,6 +122,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/OrderReportColumnsDto'
+      summary: List order columns
+      x-summary-source: derived
   /api/manufacturer/v1/reports/customers/estimate:
     get:
       tags:
@@ -130,6 +142,8 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/CustomerReportEstimateDto'
+      summary: Estimate customers
+      x-summary-source: derived
   /api/manufacturer/v1/reports/customers/columns:
     get:
       tags:
@@ -142,52 +156,10 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/CustomerReportColumnsDto'
+      summary: List customer columns
+      x-summary-source: derived
 components:
   schemas:
-    CustomerReportFilterDto:
-      type: object
-      properties:
-        filter:
-          type: string
-        searchQuery:
-          type: string
-        columns:
-          type: array
-          items:
-            type: string
-    OrderReportDownloadRequestDto:
-      type: object
-      properties:
-        filters:
-          $ref: '#/components/schemas/OrderReportFilterDto'
-        format:
-          type: string
-      required:
-      - filters
-      - format
-    CustomerReportEstimateDto:
-      type: object
-      properties:
-        estimatedCustomerRows:
-          type: integer
-          format: int64
-        estimatedWorkbookRows:
-          type: integer
-          format: int64
-      required:
-      - estimatedCustomerRows
-      - estimatedWorkbookRows
-    StreamingResponseBody: {}
-    CustomerReportDownloadRequestDto:
-      type: object
-      properties:
-        filters:
-          $ref: '#/components/schemas/CustomerReportFilterDto'
-        format:
-          type: string
-      required:
-      - filters
-      - format
     OrderReportEstimateDto:
       type: object
       properties:
@@ -204,6 +176,16 @@ components:
       - estimatedLineItemRows
       - estimatedOrderRows
       - estimatedWorkbookRows
+    OrderReportDownloadRequestDto:
+      type: object
+      properties:
+        filters:
+          $ref: '#/components/schemas/OrderReportFilterDto'
+        format:
+          type: string
+      required:
+      - filters
+      - format
     OrderReportFilterDto:
       type: object
       properties:
@@ -248,28 +230,6 @@ components:
             type: string
       required:
       - includeArchived
-    OrderReportColumnDto:
-      type: object
-      properties:
-        key:
-          type: string
-        label:
-          type: string
-        description:
-          type: string
-      required:
-      - description
-      - key
-      - label
-    CustomerReportColumnsDto:
-      type: object
-      properties:
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderReportColumnDto'
-      required:
-      - columns
     OrderReportColumnsDto:
       type: object
       properties:
@@ -284,8 +244,64 @@ components:
       required:
       - lineItemColumns
       - orderColumns
+    StreamingResponseBody: {}
+    OrderReportColumnDto:
+      type: object
+      properties:
+        key:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+      required:
+      - description
+      - key
+      - label
+    CustomerReportEstimateDto:
+      type: object
+      properties:
+        estimatedCustomerRows:
+          type: integer
+          format: int64
+        estimatedWorkbookRows:
+          type: integer
+          format: int64
+      required:
+      - estimatedCustomerRows
+      - estimatedWorkbookRows
+    CustomerReportColumnsDto:
+      type: object
+      properties:
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderReportColumnDto'
+      required:
+      - columns
+    CustomerReportFilterDto:
+      type: object
+      properties:
+        filter:
+          type: string
+        searchQuery:
+          type: string
+        columns:
+          type: array
+          items:
+            type: string
+    CustomerReportDownloadRequestDto:
+      type: object
+      properties:
+        filters:
+          $ref: '#/components/schemas/CustomerReportFilterDto'
+        format:
+          type: string
+      required:
+      - filters
+      - format
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header

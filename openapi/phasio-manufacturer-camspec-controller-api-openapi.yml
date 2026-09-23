@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Phasio Activity Internal Manufacturer CAMSPEC Controller API
+  title: Phasio Manufacturer CAMSPEC Controller API
   description: This is the API documentation for the Phasio application.
   version: '1.0'
 servers:
@@ -139,6 +139,7 @@ paths:
                 $ref: '#/components/schemas/CamspecManifestMappingDto'
 components:
   schemas:
+    StreamingResponseBody: {}
     CamspecExportRequestDto:
       type: object
       description: CAMSPEC export request containing requisition IDs with quantities and priority
@@ -162,6 +163,18 @@ components:
       - fileType
       - priority
       - requisitionEntries
+    CamspecRequisitionEntryDto:
+      type: object
+      properties:
+        requisitionId:
+          type: integer
+          format: int64
+        quantity:
+          type: integer
+          format: int32
+      required:
+      - quantity
+      - requisitionId
     CamspecManifestMappingDto:
       type: object
       properties:
@@ -178,21 +191,8 @@ components:
       - createdAt
       - id
       - requisitionId
-    CamspecRequisitionEntryDto:
-      type: object
-      properties:
-        requisitionId:
-          type: integer
-          format: int64
-        quantity:
-          type: integer
-          format: int32
-      required:
-      - quantity
-      - requisitionId
-    StreamingResponseBody: {}
   securitySchemes:
-    Phasio API Bearer Token:
+    Phasio_API_Bearer_Token:
       type: http
       name: Authorization
       in: header
