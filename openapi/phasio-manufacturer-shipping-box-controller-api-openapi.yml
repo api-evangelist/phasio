@@ -117,41 +117,6 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
-    UpdateShippingBoxDto:
-      type: object
-      description: Updated shipping box data
-      properties:
-        shippingBoxId:
-          type: integer
-          format: int64
-        length:
-          type: number
-        width:
-          type: number
-        height:
-          type: number
-      required:
-      - height
-      - length
-      - shippingBoxId
-      - width
-    CreateShippingBoxDto:
-      type: object
-      description: Shipping box data to create
-      properties:
-        name:
-          type: string
-        length:
-          type: number
-        width:
-          type: number
-        height:
-          type: number
-      required:
-      - height
-      - length
-      - name
-      - width
     ShippingBoxDto:
       type: object
       properties:
@@ -174,6 +139,41 @@ components:
       - name
       - shippingBoxId
       - unit
+      - width
+    CreateShippingBoxDto:
+      type: object
+      description: Shipping box data to create
+      properties:
+        name:
+          type: string
+        length:
+          type: number
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - height
+      - length
+      - name
+      - width
+    UpdateShippingBoxDto:
+      type: object
+      description: Updated shipping box data
+      properties:
+        shippingBoxId:
+          type: integer
+          format: int64
+        length:
+          type: number
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - height
+      - length
+      - shippingBoxId
       - width
   securitySchemes:
     Phasio_API_Bearer_Token:

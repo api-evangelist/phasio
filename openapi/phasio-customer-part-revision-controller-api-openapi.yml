@@ -184,6 +184,31 @@ paths:
           description: Unauthorized - missing or invalid authentication
 components:
   schemas:
+    PartManufacturabilityRequestDto:
+      type: object
+      properties:
+        partRevisionId:
+          type: string
+          format: uuid
+        units:
+          type: string
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        processPricesId:
+          type: string
+          format: uuid
+        materialId:
+          type: integer
+          format: int64
+      required:
+      - materialId
+      - partRevisionId
+      - processPricesId
+      - units
     PartRevisionDto:
       type: object
       properties:
@@ -278,31 +303,6 @@ components:
       - availableAccessories
       - deleted
       - designName
-    PartManufacturabilityRequestDto:
-      type: object
-      properties:
-        partRevisionId:
-          type: string
-          format: uuid
-        units:
-          type: string
-          enum:
-          - CENTIMETERS
-          - MILLIMETERS
-          - METRES
-          - INCHES
-          - FEET
-        processPricesId:
-          type: string
-          format: uuid
-        materialId:
-          type: integer
-          format: int64
-      required:
-      - materialId
-      - partRevisionId
-      - processPricesId
-      - units
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

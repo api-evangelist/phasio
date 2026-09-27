@@ -160,32 +160,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OrderReportEstimateDto:
+    OrderReportColumnDto:
       type: object
       properties:
-        estimatedOrderRows:
-          type: integer
-          format: int64
-        estimatedLineItemRows:
-          type: integer
-          format: int64
-        estimatedWorkbookRows:
-          type: integer
-          format: int64
-      required:
-      - estimatedLineItemRows
-      - estimatedOrderRows
-      - estimatedWorkbookRows
-    OrderReportDownloadRequestDto:
-      type: object
-      properties:
-        filters:
-          $ref: '#/components/schemas/OrderReportFilterDto'
-        format:
+        key:
+          type: string
+        label:
+          type: string
+        description:
           type: string
       required:
-      - filters
-      - format
+      - description
+      - key
+      - label
+    StreamingResponseBody: {}
     OrderReportFilterDto:
       type: object
       properties:
@@ -244,20 +232,32 @@ components:
       required:
       - lineItemColumns
       - orderColumns
-    StreamingResponseBody: {}
-    OrderReportColumnDto:
+    OrderReportDownloadRequestDto:
       type: object
       properties:
-        key:
-          type: string
-        label:
-          type: string
-        description:
+        filters:
+          $ref: '#/components/schemas/OrderReportFilterDto'
+        format:
           type: string
       required:
-      - description
-      - key
-      - label
+      - filters
+      - format
+    OrderReportEstimateDto:
+      type: object
+      properties:
+        estimatedOrderRows:
+          type: integer
+          format: int64
+        estimatedLineItemRows:
+          type: integer
+          format: int64
+        estimatedWorkbookRows:
+          type: integer
+          format: int64
+      required:
+      - estimatedLineItemRows
+      - estimatedOrderRows
+      - estimatedWorkbookRows
     CustomerReportEstimateDto:
       type: object
       properties:

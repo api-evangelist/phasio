@@ -134,6 +134,48 @@ paths:
           description: Unauthorized - missing or invalid authentication
 components:
   schemas:
+    CreateThreadDto:
+      type: object
+      discriminator:
+        propertyName: type
+      properties:
+        type:
+          type: string
+        customerOrganisationId:
+          type: integer
+          format: int64
+      required:
+      - customerOrganisationId
+      - type
+    CreateProjectDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateThreadDto'
+      - type: object
+        properties:
+          name:
+            type: string
+          description:
+            type: string
+          status:
+            type: string
+          estimatedCost:
+            type: number
+          estimatedIterations:
+            type: integer
+            format: int64
+          notificationsEnabled:
+            type: boolean
+          subscribedCustomerIds:
+            type: array
+            items:
+              type: integer
+              format: int64
+      description: Project data to create
+      required:
+      - customerOrganisationId
+      - notificationsEnabled
+      - status
+      - type
     ProjectDto:
       type: object
       properties:
@@ -168,48 +210,6 @@ components:
       - name
       - status
       - subscribedCustomerIds
-    CreateProjectDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateThreadDto'
-      - type: object
-        properties:
-          name:
-            type: string
-          description:
-            type: string
-          status:
-            type: string
-          estimatedCost:
-            type: number
-          estimatedIterations:
-            type: integer
-            format: int64
-          notificationsEnabled:
-            type: boolean
-          subscribedCustomerIds:
-            type: array
-            items:
-              type: integer
-              format: int64
-      description: Project data to create
-      required:
-      - customerOrganisationId
-      - notificationsEnabled
-      - status
-      - type
-    CreateThreadDto:
-      type: object
-      discriminator:
-        propertyName: type
-      properties:
-        type:
-          type: string
-        customerOrganisationId:
-          type: integer
-          format: int64
-      required:
-      - customerOrganisationId
-      - type
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

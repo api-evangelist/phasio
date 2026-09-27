@@ -154,64 +154,6 @@ paths:
                   $ref: '#/components/schemas/PricingEquationVariableDto'
 components:
   schemas:
-    ColorDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - id
-      - name
-    LegacyEquationPostProcessingDto:
-      allOf:
-      - $ref: '#/components/schemas/PostProcessingDto'
-      - type: object
-        properties:
-          equation:
-            type: string
-      required:
-      - effectiveFrom
-      - equation
-      - isDefault
-      - isDeleted
-      - name
-      - purchasable
-      - type
-    PostProcessingDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        purchasable:
-          type: boolean
-        isDefault:
-          type: boolean
-        colors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColorDto'
-        incompatibleMaterialIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-        mutuallyExclusiveGroup:
-          type: string
-      required:
-      - colors
-      - incompatibleMaterialIds
-      - isDefault
-      - name
-      - purchasable
     EquationPostProcessingDto:
       allOf:
       - $ref: '#/components/schemas/PostProcessingDto'
@@ -253,6 +195,35 @@ components:
       - id
       - lastUpdated
       - variables
+    ColorDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - id
+      - name
+    LegacyEquationPostProcessingDto:
+      allOf:
+      - $ref: '#/components/schemas/PostProcessingDto'
+      - type: object
+        properties:
+          equation:
+            type: string
+      required:
+      - effectiveFrom
+      - equation
+      - isDefault
+      - isDeleted
+      - name
+      - purchasable
+      - type
     PricingEquationVariableDto:
       type: object
       properties:
@@ -265,6 +236,35 @@ components:
       required:
       - name
       - placeholder
+    PostProcessingDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        purchasable:
+          type: boolean
+        isDefault:
+          type: boolean
+        colors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColorDto'
+        incompatibleMaterialIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        mutuallyExclusiveGroup:
+          type: string
+      required:
+      - colors
+      - incompatibleMaterialIds
+      - isDefault
+      - name
+      - purchasable
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

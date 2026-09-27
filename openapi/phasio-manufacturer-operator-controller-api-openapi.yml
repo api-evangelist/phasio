@@ -356,127 +356,14 @@ paths:
           description: Unauthorized - missing or invalid authentication
 components:
   schemas:
-    UpdateDashboardEnabledByDefaultDto:
+    UpdateMaximumOrderAmountDto:
       allOf:
       - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
       - type: object
         properties:
-          dashboardEnabledByDefault:
-            type: boolean
-      required:
-      - dashboardEnabledByDefault
-      - settingType
-    DnsRecordInfoDto:
-      type: object
-      properties:
-        valid:
-          type: boolean
-        type:
-          type: string
-        host:
-          type: string
-        data:
-          type: string
-    UpdateAllowGstDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          allowGst:
-            type: boolean
-      required:
-      - allowGst
-      - settingType
-    UpdateRoundPriceToWholeNumberDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          roundPriceToWholeNumber:
-            type: boolean
-      required:
-      - roundPriceToWholeNumber
-      - settingType
-    UpdateEnableCustomerDashboardDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          enableCustomerDashboard:
-            type: boolean
-      required:
-      - enableCustomerDashboard
-      - settingType
-    UpdateApprovedRoutingTemplateRequiredDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          approvedRoutingTemplateRequired:
-            type: boolean
-      required:
-      - approvedRoutingTemplateRequired
-      - settingType
-    DomainAuthenticationDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        domain:
-          type: string
-        subdomain:
-          type: string
-        fromAddress:
-          type: string
-        status:
-          type: string
-        dnsRecords:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/DnsRecordInfoDto'
-      required:
-      - domain
-      - fromAddress
-      - id
-      - status
-      - subdomain
-    UpdateMinimumOrderAmountDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          minimumOrderAmount:
+          maximumOrderAmount:
             type: number
       required:
-      - minimumOrderAmount
-      - settingType
-    UpdateOperatorSettingsDto:
-      type: object
-      properties:
-        settingType:
-          type: string
-      required:
-      - settingType
-    OnboardingProgressItemUpdateDto:
-      type: object
-      properties:
-        itemId:
-          type: string
-        status:
-          type: string
-      required:
-      - itemId
-      - status
-    UpdatePaymentProviderDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          paymentProvider:
-            type: string
-      required:
-      - paymentProvider
       - settingType
     UpdateLandingPageMessageDto:
       allOf:
@@ -497,22 +384,6 @@ components:
       required:
       - paymentCurrency
       - settingType
-    RegisterForPaymentsDto:
-      type: object
-      description: Payment registration details
-      properties:
-        merchantId:
-          type: string
-    UpdateShowPropertiesWizardDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          showPropertiesWizard:
-            type: boolean
-      required:
-      - settingType
-      - showPropertiesWizard
     UpdateOperatorDto:
       type: object
       description: Operator profile update details
@@ -588,6 +459,149 @@ components:
           - SYSTEM
           - LIGHT
           - DARK
+    UpdateStoreNameDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          storeName:
+            type: string
+      required:
+      - settingType
+      - storeName
+    UpdateAllowPayByPurchaseOrderDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          allowPayByPurchaseOrder:
+            type: boolean
+      required:
+      - allowPayByPurchaseOrder
+      - settingType
+    UpdateTermsOfServiceLinkDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          termsOfServiceLink:
+            type: string
+      required:
+      - settingType
+      - termsOfServiceLink
+    CreateDomainAuthenticationDto:
+      type: object
+      properties:
+        domain:
+          type: string
+        fromAddress:
+          type: string
+      required:
+      - domain
+      - fromAddress
+    UpdateCountryDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          country:
+            type: string
+      required:
+      - country
+      - settingType
+    UpdateOnboardingProgressDto:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OnboardingProgressItemUpdateDto'
+      required:
+      - items
+    UpdateRoundPriceToWholeNumberDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          roundPriceToWholeNumber:
+            type: boolean
+      required:
+      - roundPriceToWholeNumber
+      - settingType
+    UpdateWorkOrderCreationOrderStatusDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          kanbanColumnId:
+            type: string
+      required:
+      - settingType
+    PaymentRegistrationDto:
+      type: object
+      properties:
+        redirectUri:
+          type: string
+          format: uri
+    UpdateEnableCustomerDashboardDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          enableCustomerDashboard:
+            type: boolean
+      required:
+      - enableCustomerDashboard
+      - settingType
+    UpdateAllowGstDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          allowGst:
+            type: boolean
+      required:
+      - allowGst
+      - settingType
+    OnboardingProgressDto:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OnboardingProgressItemDto'
+      required:
+      - items
+    UpdateVideoLinkDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          videoLink:
+            type: string
+      required:
+      - settingType
+      - videoLink
+    UpdateLoginMethodDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          loginMethod:
+            type: string
+      required:
+      - loginMethod
+      - settingType
+    UpdateAllowPayByInvoiceDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          allowPayByInvoice:
+            type: boolean
+      required:
+      - allowPayByInvoice
+      - settingType
     UpdateAssociationStatusDto:
       allOf:
       - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
@@ -597,16 +611,6 @@ components:
             type: string
       required:
       - associationStatus
-      - settingType
-    UpdateMaximumFileSizeDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          maximumFileSize:
-            type: integer
-            format: int64
-      required:
       - settingType
     UpdateCustomerLoginStageDto:
       allOf:
@@ -641,159 +645,52 @@ components:
       - mfaEnabled
       - phoneNumber
       - teamId
-    UpdateStoreNameDto:
+    UpdateShowPropertiesWizardDto:
       allOf:
       - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
       - type: object
         properties:
-          storeName:
-            type: string
-      required:
-      - settingType
-      - storeName
-    CreateDomainAuthenticationDto:
-      type: object
-      properties:
-        domain:
-          type: string
-        fromAddress:
-          type: string
-      required:
-      - domain
-      - fromAddress
-    OnboardingProgressDto:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/OnboardingProgressItemDto'
-      required:
-      - items
-    UpdateLoginMethodDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          loginMethod:
-            type: string
-      required:
-      - loginMethod
-      - settingType
-    UpdateCountryDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          country:
-            type: string
-      required:
-      - country
-      - settingType
-    UpdateOnboardingProgressDto:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/OnboardingProgressItemUpdateDto'
-      required:
-      - items
-    UpdateAllowPayByPurchaseOrderDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          allowPayByPurchaseOrder:
+          showPropertiesWizard:
             type: boolean
       required:
-      - allowPayByPurchaseOrder
       - settingType
-    PaymentRegistrationDto:
+      - showPropertiesWizard
+    RegisterForPaymentsDto:
+      type: object
+      description: Payment registration details
+      properties:
+        merchantId:
+          type: string
+    DnsRecordInfoDto:
       type: object
       properties:
-        redirectUri:
+        valid:
+          type: boolean
+        type:
           type: string
-          format: uri
-    UpdateVideoLinkDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          videoLink:
-            type: string
-      required:
-      - settingType
-      - videoLink
-    UpdateOrderNumberPrefixDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          orderNumberPrefix:
-            type: string
-      required:
-      - orderNumberPrefix
-      - settingType
-    AddOperatorPermittedDomainDto:
-      type: object
-      description: Domain to be added
-      properties:
-        domainUrl:
+        host:
           type: string
-      required:
-      - domainUrl
-    OnboardingProgressItemDto:
+        data:
+          type: string
+    OnboardingProgressItemUpdateDto:
       type: object
       properties:
         itemId:
           type: string
         status:
           type: string
-        completedAt:
-          type: string
-          format: date-time
       required:
-      - completedAt
       - itemId
       - status
-    UpdateQuoteNumberPrefixDto:
+    UpdateDashboardEnabledByDefaultDto:
       allOf:
       - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
       - type: object
         properties:
-          quoteNumberPrefix:
-            type: string
-      required:
-      - quoteNumberPrefix
-      - settingType
-    UpdateWorkOrderCreationOrderStatusDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          kanbanColumnId:
-            type: string
-      required:
-      - settingType
-    UpdateMaximumOrderAmountDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          maximumOrderAmount:
-            type: number
-      required:
-      - settingType
-    UpdateAllowPayByInvoiceDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
-      - type: object
-        properties:
-          allowPayByInvoice:
+          dashboardEnabledByDefault:
             type: boolean
       required:
-      - allowPayByInvoice
+      - dashboardEnabledByDefault
       - settingType
     UpdateEnableWallThicknessDto:
       allOf:
@@ -805,16 +702,40 @@ components:
       required:
       - enableWallThickness
       - settingType
-    UpdateTermsOfServiceLinkDto:
+    UpdateApprovedRoutingTemplateRequiredDto:
       allOf:
       - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
       - type: object
         properties:
-          termsOfServiceLink:
-            type: string
+          approvedRoutingTemplateRequired:
+            type: boolean
       required:
+      - approvedRoutingTemplateRequired
       - settingType
-      - termsOfServiceLink
+    DomainAuthenticationDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        domain:
+          type: string
+        subdomain:
+          type: string
+        fromAddress:
+          type: string
+        status:
+          type: string
+        dnsRecords:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/DnsRecordInfoDto'
+      required:
+      - domain
+      - fromAddress
+      - id
+      - status
+      - subdomain
     OperatorDto:
       type: object
       properties:
@@ -919,6 +840,85 @@ components:
       - permittedDomains
       - storefrontTheme
       - subscribedModules
+    UpdateQuoteNumberPrefixDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          quoteNumberPrefix:
+            type: string
+      required:
+      - quoteNumberPrefix
+      - settingType
+    UpdatePaymentProviderDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          paymentProvider:
+            type: string
+      required:
+      - paymentProvider
+      - settingType
+    UpdateOrderNumberPrefixDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          orderNumberPrefix:
+            type: string
+      required:
+      - orderNumberPrefix
+      - settingType
+    UpdateMinimumOrderAmountDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          minimumOrderAmount:
+            type: number
+      required:
+      - minimumOrderAmount
+      - settingType
+    OnboardingProgressItemDto:
+      type: object
+      properties:
+        itemId:
+          type: string
+        status:
+          type: string
+        completedAt:
+          type: string
+          format: date-time
+      required:
+      - completedAt
+      - itemId
+      - status
+    UpdateOperatorSettingsDto:
+      type: object
+      properties:
+        settingType:
+          type: string
+      required:
+      - settingType
+    AddOperatorPermittedDomainDto:
+      type: object
+      description: Domain to be added
+      properties:
+        domainUrl:
+          type: string
+      required:
+      - domainUrl
+    UpdateMaximumFileSizeDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateOperatorSettingsDto'
+      - type: object
+        properties:
+          maximumFileSize:
+            type: integer
+            format: int64
+      required:
+      - settingType
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

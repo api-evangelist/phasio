@@ -378,6 +378,34 @@ paths:
                 type: string
 components:
   schemas:
+    CustomerRequestDto:
+      type: object
+      description: Customer request data containing the principal
+      properties:
+        customerPrincipal:
+          type: string
+      required:
+      - customerPrincipal
+    CustomerUpdateDto:
+      type: object
+      properties:
+        customerId:
+          type: integer
+          format: int64
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        notificationPreference:
+          type: string
+        language:
+          type: string
+      required:
+      - customerId
     PaginatedCustomerDto:
       type: object
       properties:
@@ -452,6 +480,28 @@ components:
           type: boolean
       required:
       - notificationPreference
+    CustomerEmailLookupDto:
+      type: object
+      properties:
+        isDuplicate:
+          type: boolean
+        customer:
+          $ref: '#/components/schemas/CustomerDto'
+        message:
+          type: string
+      required:
+      - isDuplicate
+    CustomerPhoneLookupDto:
+      type: object
+      properties:
+        isDuplicate:
+          type: boolean
+        customer:
+          $ref: '#/components/schemas/CustomerDto'
+        message:
+          type: string
+      required:
+      - isDuplicate
     CustomerDto:
       type: object
       properties:
@@ -483,56 +533,6 @@ components:
       - customerType
       - language
       - notificationPreference
-    CustomerPhoneLookupDto:
-      type: object
-      properties:
-        isDuplicate:
-          type: boolean
-        customer:
-          $ref: '#/components/schemas/CustomerDto'
-        message:
-          type: string
-      required:
-      - isDuplicate
-    CustomerRequestDto:
-      type: object
-      description: Customer request data containing the principal
-      properties:
-        customerPrincipal:
-          type: string
-      required:
-      - customerPrincipal
-    CustomerUpdateDto:
-      type: object
-      properties:
-        customerId:
-          type: integer
-          format: int64
-        email:
-          type: string
-        phoneNumber:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        notificationPreference:
-          type: string
-        language:
-          type: string
-      required:
-      - customerId
-    CustomerEmailLookupDto:
-      type: object
-      properties:
-        isDuplicate:
-          type: boolean
-        customer:
-          $ref: '#/components/schemas/CustomerDto'
-        message:
-          type: string
-      required:
-      - isDuplicate
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

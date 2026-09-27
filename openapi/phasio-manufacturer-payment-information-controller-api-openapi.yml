@@ -106,16 +106,6 @@ paths:
           description: Invalid payment information ID or deletion failed
 components:
   schemas:
-    UpdateOperatorPaymentInformationDto:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-      required:
-      - name
-      - value
     OperatorPaymentInformationDto:
       type: object
       properties:
@@ -129,6 +119,16 @@ components:
       required:
       - name
       - paymentInformationId
+      - value
+    UpdateOperatorPaymentInformationDto:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+      required:
+      - name
       - value
   securitySchemes:
     Phasio_API_Bearer_Token:

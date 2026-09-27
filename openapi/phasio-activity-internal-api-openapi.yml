@@ -60,35 +60,6 @@ paths:
           description: Unauthorized - missing or invalid authentication
 components:
   schemas:
-    RequisitionTaggedDto:
-      type: object
-      properties:
-        requisitionId:
-          type: integer
-          format: int64
-      required:
-      - requisitionId
-    CreateConversationDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateActivityDto'
-      - type: object
-        properties:
-          conversationType:
-            type: string
-          message:
-            type: string
-          requisitionTagged:
-            $ref: '#/components/schemas/RequisitionTaggedDto'
-          locationTagged:
-            $ref: '#/components/schemas/LocationTaggedDto'
-          orderId:
-            type: integer
-            format: int64
-      required:
-      - activityType
-      - conversationType
-      - message
-      - threadId
     CreateActivityDto:
       type: object
       properties:
@@ -100,6 +71,14 @@ components:
       required:
       - activityType
       - threadId
+    RequisitionTaggedDto:
+      type: object
+      properties:
+        requisitionId:
+          type: integer
+          format: int64
+      required:
+      - requisitionId
     LocationTaggedDto:
       type: object
       properties:
@@ -135,6 +114,27 @@ components:
       - locationY
       - locationZ
       - requisitionId
+    CreateConversationDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateActivityDto'
+      - type: object
+        properties:
+          conversationType:
+            type: string
+          message:
+            type: string
+          requisitionTagged:
+            $ref: '#/components/schemas/RequisitionTaggedDto'
+          locationTagged:
+            $ref: '#/components/schemas/LocationTaggedDto'
+          orderId:
+            type: integer
+            format: int64
+      required:
+      - activityType
+      - conversationType
+      - message
+      - threadId
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

@@ -153,6 +153,49 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    FixedOrientationConstraintDto:
+      allOf:
+      - $ref: '#/components/schemas/ConstraintDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - rotationMatrix
+      - updatedAt
+    FixedOrientationConstraintRequestDto:
+      allOf:
+      - $ref: '#/components/schemas/ConstraintRequestDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+      required:
+      - constraintType
+    ConstraintRequestDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        partSpecificationId:
+          type: string
+          format: uuid
+        constraintType:
+          type: string
+      required:
+      - constraintType
     ConstraintDto:
       type: object
       discriminator:
@@ -177,49 +220,6 @@ components:
       - createdAt
       - id
       - partSpecificationId
-      - updatedAt
-    ConstraintRequestDto:
-      type: object
-      discriminator:
-        propertyName: constraintType
-      properties:
-        partSpecificationId:
-          type: string
-          format: uuid
-        constraintType:
-          type: string
-      required:
-      - constraintType
-    FixedOrientationConstraintRequestDto:
-      allOf:
-      - $ref: '#/components/schemas/ConstraintRequestDto'
-      - type: object
-        properties:
-          rotationMatrix:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-      required:
-      - constraintType
-    FixedOrientationConstraintDto:
-      allOf:
-      - $ref: '#/components/schemas/ConstraintDto'
-      - type: object
-        properties:
-          rotationMatrix:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - rotationMatrix
       - updatedAt
   securitySchemes:
     Phasio_API_Bearer_Token:

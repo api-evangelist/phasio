@@ -125,6 +125,29 @@ components:
       - operatorContactId
       - organizationName
       - phoneNumber
+    CreateOperatorContactDto:
+      type: object
+      description: Operator contact creation details
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        organizationName:
+          type: string
+        notificationEmail:
+          type: string
+        phoneNumber:
+          type: string
+        address:
+          type: string
+      required:
+      - address
+      - firstName
+      - lastName
+      - notificationEmail
+      - organizationName
+      - phoneNumber
     OperatorContactDto:
       type: object
       properties:
@@ -149,29 +172,6 @@ components:
       - notificationEmail
       - operatorContactId
       - organizationName
-    CreateOperatorContactDto:
-      type: object
-      description: Operator contact creation details
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        organizationName:
-          type: string
-        notificationEmail:
-          type: string
-        phoneNumber:
-          type: string
-        address:
-          type: string
-      required:
-      - address
-      - firstName
-      - lastName
-      - notificationEmail
-      - organizationName
-      - phoneNumber
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

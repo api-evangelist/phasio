@@ -430,29 +430,6 @@ paths:
           description: Unauthorized - missing operator context
 components:
   schemas:
-    OrganisationUpdateDto:
-      type: object
-      properties:
-        name:
-          type: string
-        canAccessDashboard:
-          type: boolean
-        taxExempt:
-          type: boolean
-        language:
-          type: string
-        accountingSystemId:
-          type: string
-        isApproved:
-          type: boolean
-        customerType:
-          type: string
-        paymentTermId:
-          type: string
-        clearPaymentTerm:
-          type: boolean
-      required:
-      - clearPaymentTerm
     MergePreview:
       type: object
       properties:
@@ -480,13 +457,73 @@ components:
       - eligible
       - sourceOrganisationId
       - totalRows
-    SetCustomerOrganisationMetadataValueDto:
+    CreateCustomerOrganisationMetadataDto:
       type: object
       properties:
+        metadataKey:
+          type: string
         value:
           type: string
       required:
+      - metadataKey
       - value
+    Paginated:
+      type: object
+      properties:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
+    CustomerOrganisationSummaryDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        taxExempt:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updateDt:
+          type: string
+          format: date-time
+        firstTouchSource:
+          type: string
+        language:
+          type: string
+        isApproved:
+          type: boolean
+        accountingSystemId:
+          type: string
+      required:
+      - createdAt
+      - taxExempt
+      - updateDt
     CustomerAddressDto:
       type: object
       properties:
@@ -527,47 +564,36 @@ components:
           type: boolean
         taxId:
           type: string
-    CreateCustomerOrganisationMetadataDto:
+    OrganisationUpdateDto:
+      type: object
+      properties:
+        name:
+          type: string
+        canAccessDashboard:
+          type: boolean
+        taxExempt:
+          type: boolean
+        language:
+          type: string
+        accountingSystemId:
+          type: string
+        isApproved:
+          type: boolean
+        customerType:
+          type: string
+        paymentTermId:
+          type: string
+        clearPaymentTerm:
+          type: boolean
+      required:
+      - clearPaymentTerm
+    UpdateCustomerOrganisationMetadataDto:
       type: object
       properties:
         metadataKey:
           type: string
         value:
           type: string
-      required:
-      - metadataKey
-      - value
-    CustomerDto:
-      type: object
-      properties:
-        email:
-          type: string
-        customerId:
-          type: integer
-          format: int64
-        organisationName:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        phoneNumber:
-          type: string
-        language:
-          type: string
-        notificationPreference:
-          type: string
-        discountId:
-          type: integer
-          format: int64
-        discountPercentage:
-          type: number
-        customerType:
-          type: string
-      required:
-      - customerType
-      - language
-      - notificationPreference
     CustomerOrganisationMetadataDto:
       type: object
       properties:
@@ -582,70 +608,13 @@ components:
       - id
       - metadataKey
       - value
-    Paginated:
+    SetCustomerOrganisationMetadataValueDto:
       type: object
       properties:
-        content:
-          type: array
-          items: {}
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
-          type: boolean
-        isFirst:
-          type: boolean
-        isLast:
-          type: boolean
-      required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
-    UpdateCustomerOrganisationMetadataDto:
-      type: object
-      properties:
-        metadataKey:
-          type: string
         value:
           type: string
-    CustomerOrganisationSummaryDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        taxExempt:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
-        updateDt:
-          type: string
-          format: date-time
-        firstTouchSource:
-          type: string
-        language:
-          type: string
-        isApproved:
-          type: boolean
-        accountingSystemId:
-          type: string
       required:
-      - createdAt
-      - taxExempt
-      - updateDt
+      - value
     CustomerOrganisationDto:
       type: object
       properties:
@@ -679,6 +648,37 @@ components:
       - customers
       - lastUpdated
       - taxExempt
+    CustomerDto:
+      type: object
+      properties:
+        email:
+          type: string
+        customerId:
+          type: integer
+          format: int64
+        organisationName:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        language:
+          type: string
+        notificationPreference:
+          type: string
+        discountId:
+          type: integer
+          format: int64
+        discountPercentage:
+          type: number
+        customerType:
+          type: string
+      required:
+      - customerType
+      - language
+      - notificationPreference
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

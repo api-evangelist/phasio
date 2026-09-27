@@ -293,91 +293,6 @@ components:
       - customerOrganisationId
       - pricingTiers
       - reference
-    UpdateAssemblyDto:
-      type: object
-      description: Assembly update request
-      properties:
-        name:
-          type: string
-          minLength: 1
-        assemblyPrice:
-          type: number
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateAssemblyItemDto'
-          minItems: 1
-      required:
-      - assemblyPrice
-      - items
-      - name
-    CustomerArticleReferencePricingTierDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        quantity:
-          type: integer
-          format: int32
-        price:
-          type: number
-      required:
-      - price
-      - quantity
-    CreateAssemblyDto:
-      type: object
-      description: Assembly creation request
-      properties:
-        name:
-          type: string
-          minLength: 1
-        assemblyPrice:
-          type: number
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateAssemblyItemDto'
-          minItems: 1
-      required:
-      - assemblyPrice
-      - items
-      - name
-    AssemblyItemDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        partSpecificationId:
-          type: string
-          format: uuid
-        partRevisionId:
-          type: string
-          format: uuid
-        partName:
-          type: string
-        positionX:
-          type: number
-        positionY:
-          type: number
-        positionZ:
-          type: number
-        rotationX:
-          type: number
-        rotationY:
-          type: number
-        rotationZ:
-          type: number
-      required:
-      - id
-      - partSpecificationId
-      - positionX
-      - positionY
-      - positionZ
-      - rotationX
-      - rotationY
-      - rotationZ
     Paginated:
       type: object
       properties:
@@ -407,6 +322,32 @@ components:
       - pageSize
       - totalElements
       - totalPages
+    CreateAssemblyItemDto:
+      type: object
+      properties:
+        partSpecificationId:
+          type: string
+          format: uuid
+        positionX:
+          type: number
+        positionY:
+          type: number
+        positionZ:
+          type: number
+        rotationX:
+          type: number
+        rotationY:
+          type: number
+        rotationZ:
+          type: number
+      required:
+      - partSpecificationId
+      - positionX
+      - positionY
+      - positionZ
+      - rotationX
+      - rotationY
+      - rotationZ
     AssemblyDto:
       type: object
       properties:
@@ -437,12 +378,70 @@ components:
       - id
       - items
       - name
-    CreateAssemblyItemDto:
+    UpdateAssemblyDto:
+      type: object
+      description: Assembly update request
+      properties:
+        name:
+          type: string
+          minLength: 1
+        assemblyPrice:
+          type: number
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateAssemblyItemDto'
+          minItems: 1
+      required:
+      - assemblyPrice
+      - items
+      - name
+    CreateAssemblyDto:
+      type: object
+      description: Assembly creation request
+      properties:
+        name:
+          type: string
+          minLength: 1
+        assemblyPrice:
+          type: number
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateAssemblyItemDto'
+          minItems: 1
+      required:
+      - assemblyPrice
+      - items
+      - name
+    CustomerArticleReferencePricingTierDto:
       type: object
       properties:
+        id:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+          format: int32
+        price:
+          type: number
+      required:
+      - price
+      - quantity
+    AssemblyItemDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
         partSpecificationId:
           type: string
           format: uuid
+        partRevisionId:
+          type: string
+          format: uuid
+        partName:
+          type: string
         positionX:
           type: number
         positionY:
@@ -456,6 +455,7 @@ components:
         rotationZ:
           type: number
       required:
+      - id
       - partSpecificationId
       - positionX
       - positionY

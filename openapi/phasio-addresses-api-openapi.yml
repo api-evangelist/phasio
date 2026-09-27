@@ -223,7 +223,7 @@ paths:
                   $ref: '#/components/schemas/AddressDto'
 components:
   schemas:
-    EditAddressDto:
+    CreateAddressDto:
       type: object
       properties:
         street1:
@@ -250,6 +250,9 @@ components:
           type: string
         residential:
           type: boolean
+        organisationId:
+          type: integer
+          format: int64
         taxId:
           type: string
       required:
@@ -258,6 +261,7 @@ components:
       - country
       - email
       - name
+      - organisationId
       - phone
       - residential
       - state
@@ -328,7 +332,7 @@ components:
       - street1
       - street2
       - zip
-    CreateAddressDto:
+    EditAddressDto:
       type: object
       properties:
         street1:
@@ -355,9 +359,6 @@ components:
           type: string
         residential:
           type: boolean
-        organisationId:
-          type: integer
-          format: int64
         taxId:
           type: string
       required:
@@ -366,7 +367,6 @@ components:
       - country
       - email
       - name
-      - organisationId
       - phone
       - residential
       - state

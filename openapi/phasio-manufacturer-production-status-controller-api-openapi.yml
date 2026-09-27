@@ -288,28 +288,6 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
-    OperationAutomationDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        operationId:
-          type: string
-          format: uuid
-        type:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        productionStatusId:
-          type: string
-          format: uuid
-      required:
-      - type
     OperationDto:
       type: object
       properties:
@@ -358,6 +336,28 @@ components:
       - statusName
       - stepNamingStrategy
       - viewType
+    OperationAutomationDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        operationId:
+          type: string
+          format: uuid
+        type:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        productionStatusId:
+          type: string
+          format: uuid
+      required:
+      - type
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

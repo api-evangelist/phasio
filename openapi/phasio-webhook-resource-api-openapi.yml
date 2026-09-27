@@ -71,6 +71,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CreateWebhookDto:
+      type: object
+      properties:
+        url:
+          type: string
+        type:
+          type: string
+      required:
+      - type
+      - url
     ExistingWebhook:
       type: object
       properties:
@@ -92,16 +102,6 @@ components:
       - webhookSecret
       - webhookType
       - webhookUrl
-    CreateWebhookDto:
-      type: object
-      properties:
-        url:
-          type: string
-        type:
-          type: string
-      required:
-      - type
-      - url
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

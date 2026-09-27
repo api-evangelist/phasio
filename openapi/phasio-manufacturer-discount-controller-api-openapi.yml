@@ -149,6 +149,17 @@ paths:
           description: Discount not found
 components:
   schemas:
+    CreateInstantDiscountDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateDiscountDto'
+      - type: object
+        properties:
+          note:
+            type: string
+      required:
+      - discountType
+      - note
+      - percentage
     UpdateDiscountTimeRangeDto:
       type: object
       properties:
@@ -165,26 +176,25 @@ components:
       - discountId
       - endTime
       - startTime
-    DiscountDto:
-      type: object
-      properties:
-        discountId:
-          type: integer
-          format: int64
-        discountType:
-          type: string
-        code:
-          type: string
-        percentage:
-          type: number
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
+    CreateCustomerDiscountDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateDiscountDto'
+      - type: object
+        properties:
+          code:
+            type: string
+          startTime:
+            type: string
+            format: date-time
+          endTime:
+            type: string
+            format: date-time
+          customerId:
+            type: integer
+            format: int64
       required:
-      - discountId
+      - code
+      - customerId
       - discountType
       - endTime
       - percentage
@@ -211,17 +221,6 @@ components:
       - genericDiscountNoe
       - percentage
       - startTime
-    CreateInstantDiscountDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateDiscountDto'
-      - type: object
-        properties:
-          note:
-            type: string
-      required:
-      - discountType
-      - note
-      - percentage
     CreateDiscountDto:
       type: object
       properties:
@@ -232,6 +231,30 @@ components:
       required:
       - discountType
       - percentage
+    DiscountDto:
+      type: object
+      properties:
+        discountId:
+          type: integer
+          format: int64
+        discountType:
+          type: string
+        code:
+          type: string
+        percentage:
+          type: number
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+      required:
+      - discountId
+      - discountType
+      - endTime
+      - percentage
+      - startTime
     ValidateDiscountDto:
       type: object
       properties:
@@ -243,29 +266,6 @@ components:
       required:
       - customerId
       - discountCode
-    CreateCustomerDiscountDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateDiscountDto'
-      - type: object
-        properties:
-          code:
-            type: string
-          startTime:
-            type: string
-            format: date-time
-          endTime:
-            type: string
-            format: date-time
-          customerId:
-            type: integer
-            format: int64
-      required:
-      - code
-      - customerId
-      - discountType
-      - endTime
-      - percentage
-      - startTime
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

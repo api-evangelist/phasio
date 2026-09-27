@@ -153,6 +153,18 @@ components:
       - expenseId
       - name
       - type
+    CreateExpenseDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
     CreateHourlyExpenseDto:
       allOf:
       - $ref: '#/components/schemas/CreateExpenseDto'
@@ -166,18 +178,6 @@ components:
       - hours
       - name
       - rate
-      - type
-    CreateExpenseDto:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-      required:
-      - name
       - type
   securitySchemes:
     Phasio_API_Bearer_Token:

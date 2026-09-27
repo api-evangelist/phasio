@@ -139,6 +139,18 @@ paths:
                 $ref: '#/components/schemas/CamspecManifestMappingDto'
 components:
   schemas:
+    CamspecRequisitionEntryDto:
+      type: object
+      properties:
+        requisitionId:
+          type: integer
+          format: int64
+        quantity:
+          type: integer
+          format: int32
+      required:
+      - quantity
+      - requisitionId
     StreamingResponseBody: {}
     CamspecExportRequestDto:
       type: object
@@ -163,18 +175,6 @@ components:
       - fileType
       - priority
       - requisitionEntries
-    CamspecRequisitionEntryDto:
-      type: object
-      properties:
-        requisitionId:
-          type: integer
-          format: int64
-        quantity:
-          type: integer
-          format: int32
-      required:
-      - quantity
-      - requisitionId
     CamspecManifestMappingDto:
       type: object
       properties:

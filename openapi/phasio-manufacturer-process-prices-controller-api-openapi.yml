@@ -375,37 +375,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ColorDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - id
-      - name
-    PrecisionPricesDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        price:
-          type: number
-        isActive:
-          type: boolean
-      required:
-      - id
-      - isActive
-      - name
-      - price
     MaterialPricesVariableSchemaRequest:
       type: object
       properties:
@@ -413,48 +382,6 @@ components:
           type: string
       required:
       - name
-    PostProcessingDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        purchasable:
-          type: boolean
-        isDefault:
-          type: boolean
-        colors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColorDto'
-        incompatibleMaterialIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-        mutuallyExclusiveGroup:
-          type: string
-      required:
-      - colors
-      - incompatibleMaterialIds
-      - isDefault
-      - name
-      - purchasable
-    DuplicateProcessPricesDto:
-      type: object
-      description: Duplication details
-      properties:
-        technology:
-          type: string
-        newOrganisationId:
-          type: integer
-          format: int64
-        description:
-          type: string
-      required:
-      - technology
     UpdateBoundingBoxLimitDto:
       type: object
       description: Bounding box limit dimensions
@@ -469,6 +396,46 @@ components:
       - height
       - length
       - width
+    ColorDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - id
+      - name
+    UpdateProcessPricesDto:
+      type: object
+      description: Updated process pricing data
+      properties:
+        pricingAlgorithm:
+          type: string
+        description:
+          type: string
+        isInternal:
+          type: boolean
+        operationIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+          uniqueItems: true
+        bulkPricingQuantities:
+          type: array
+          items:
+            type: integer
+          uniqueItems: true
+      required:
+      - bulkPricingQuantities
+      - isInternal
+      - operationIds
+      - pricingAlgorithm
     InfillDto:
       type: object
       properties:
@@ -486,17 +453,6 @@ components:
       - id
       - name
       - value
-    MaterialPricesPropertySchemaDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-      required:
-      - id
-      - name
     ProcessPricesDto:
       type: object
       properties:
@@ -541,32 +497,68 @@ components:
       - postProcessings
       - precisions
       - technology
-    UpdateProcessPricesDto:
+    CreateProcessPricesDto:
       type: object
-      description: Updated process pricing data
+      description: Process pricing data to create
       properties:
-        pricingAlgorithm:
+        technology:
+          type: string
+        pricingAlgo:
           type: string
         description:
           type: string
         isInternal:
           type: boolean
-        operationIds:
+      required:
+      - isInternal
+      - pricingAlgo
+      - technology
+    PostProcessingDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        purchasable:
+          type: boolean
+        isDefault:
+          type: boolean
+        colors:
           type: array
           items:
-            type: string
-            format: uuid
-          uniqueItems: true
-        bulkPricingQuantities:
+            $ref: '#/components/schemas/ColorDto'
+        incompatibleMaterialIds:
           type: array
           items:
             type: integer
-          uniqueItems: true
+            format: int64
+        mutuallyExclusiveGroup:
+          type: string
       required:
-      - bulkPricingQuantities
-      - isInternal
-      - operationIds
-      - pricingAlgorithm
+      - colors
+      - incompatibleMaterialIds
+      - isDefault
+      - name
+      - purchasable
+    PrecisionPricesDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        price:
+          type: number
+        isActive:
+          type: boolean
+      required:
+      - id
+      - isActive
+      - name
+      - price
     MaterialDto:
       type: object
       properties:
@@ -595,22 +587,30 @@ components:
       - isDefault
       - name
       - quoteOnly
-    CreateProcessPricesDto:
+    DuplicateProcessPricesDto:
       type: object
-      description: Process pricing data to create
+      description: Duplication details
       properties:
         technology:
           type: string
-        pricingAlgo:
-          type: string
+        newOrganisationId:
+          type: integer
+          format: int64
         description:
           type: string
-        isInternal:
-          type: boolean
       required:
-      - isInternal
-      - pricingAlgo
       - technology
+    MaterialPricesPropertySchemaDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+      required:
+      - id
+      - name
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

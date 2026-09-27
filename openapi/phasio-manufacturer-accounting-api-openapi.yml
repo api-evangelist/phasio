@@ -466,47 +466,30 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ZohoAccountingSystemDto:
+    TaxAssociationDto:
+      type: object
+      properties:
+        taxJurisdictionId:
+          type: string
+          format: uuid
+        accountingSystemTaxId:
+          type: string
+      required:
+      - taxJurisdictionId
+    WeclappAccountingSystemTaxDto:
       allOf:
-      - $ref: '#/components/schemas/AccountingSystemDto'
+      - $ref: '#/components/schemas/AccountingSystemTaxDto'
       - type: object
         properties:
-          dataCenter:
-            type: string
-          estimateTemplateName:
-            type: string
-          invoiceTemplateName:
+          taxType:
             type: string
       required:
-      - createdAt
-      - isExpired
-      - isRegistered
-      - type
-    OdooAccountingSystemDto:
-      allOf:
-      - $ref: '#/components/schemas/AccountingSystemDto'
-      required:
-      - createdAt
-      - isExpired
-      - isRegistered
-      - type
-    WeclappAccountingSystemDto:
-      allOf:
-      - $ref: '#/components/schemas/AccountingSystemDto'
-      required:
-      - createdAt
-      - isExpired
-      - isRegistered
-      - type
-    QuickbooksAccountingSystemDto:
-      allOf:
-      - $ref: '#/components/schemas/AccountingSystemDto'
-      required:
-      - createdAt
-      - isExpired
-      - isRegistered
-      - type
-    BexioAccountingSystemTaxDto:
+      - accountingSystem
+      - id
+      - name
+      - percentage
+      - taxType
+    ComaticAccountingSystemTaxDto:
       allOf:
       - $ref: '#/components/schemas/AccountingSystemTaxDto'
       required:
@@ -514,28 +497,57 @@ components:
       - id
       - name
       - percentage
-    QuickbooksTaxComponentDto:
+    AccountingSystemCategoryCodeDto:
       type: object
       properties:
+        id:
+          type: string
         name:
           type: string
-        rate:
-          type: number
       required:
+      - id
       - name
-      - rate
-    AuthorizeAccountingSystemDto:
+    AccountingSystemDto:
       type: object
+      discriminator:
+        propertyName: type
       properties:
-        redirectUrl:
+        type:
           type: string
-    SearchAccountingSystemDto:
-      type: object
-      properties:
-        searchQuery:
+        isExpired:
+          type: boolean
+        organisationId:
           type: string
+        organisationName:
+          type: string
+        isRegistered:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
       required:
-      - searchQuery
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
+    BexioAccountingSystemDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemDto'
+      - type: object
+        properties:
+          invoiceAccountCode:
+            type: string
+          invoiceAccountName:
+            type: string
+          paymentAccountCode:
+            type: string
+          paymentAccountName:
+            type: string
+      required:
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
     CustomerOrganisationDto:
       type: object
       properties:
@@ -569,39 +581,31 @@ components:
       - customers
       - lastUpdated
       - taxExempt
-    AccountingSystemOrganisationDto:
+    PaginatedAccountingSystemSyncResultDto:
       type: object
       properties:
-        id:
-          type: string
-        name:
-          type: string
-      required:
-      - id
-      - name
-    TaxAssociationDto:
-      type: object
-      properties:
-        taxJurisdictionId:
-          type: string
-          format: uuid
-        accountingSystemTaxId:
-          type: string
-      required:
-      - taxJurisdictionId
-    XeroTaxComponentDto:
-      type: object
-      properties:
-        name:
-          type: string
-        rate:
-          type: number
-        isCompound:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountingSystemSyncResultDto'
+        page:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        hasMore:
           type: boolean
       required:
-      - isCompound
-      - name
-      - rate
+      - content
+      - hasMore
+      - page
+      - pageSize
+    AuthorizeAccountingSystemDto:
+      type: object
+      properties:
+        redirectUrl:
+          type: string
     CustomerDto:
       type: object
       properties:
@@ -633,11 +637,16 @@ components:
       - customerType
       - language
       - notificationPreference
-    TopupAssociationDto:
+    AccountingSystemOrganisationDto:
       type: object
       properties:
-        accountingSystemId:
+        id:
           type: string
+        name:
+          type: string
+      required:
+      - id
+      - name
     XeroAccountingSystemTaxDto:
       allOf:
       - $ref: '#/components/schemas/AccountingSystemTaxDto'
@@ -653,29 +662,27 @@ components:
       - name
       - percentage
       - taxComponents
-    AccountingSystemDto:
+    ShippingAssociationDto:
       type: object
-      discriminator:
-        propertyName: type
       properties:
-        type:
+        accountingSystemId:
           type: string
-        isExpired:
-          type: boolean
-        organisationId:
+    SearchAccountingSystemDto:
+      type: object
+      properties:
+        searchQuery:
           type: string
-        organisationName:
-          type: string
-        isRegistered:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
       required:
-      - createdAt
-      - isExpired
-      - isRegistered
-      - type
+      - searchQuery
+    AuthorizeOAuthAccountingSystemRequestDto:
+      type: object
+      properties:
+        accountingSystem:
+          type: string
+        dataCenter:
+          type: string
+      required:
+      - accountingSystem
     AccountingSystemTaxDto:
       type: object
       discriminator:
@@ -694,18 +701,34 @@ components:
       - id
       - name
       - percentage
-    AccountingSystemAccountDto:
+    AccountingSystemAssociationsDto:
       type: object
       properties:
-        code:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
+        processes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessAssociationDto'
+        postProcesses:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostProcessAssociationDto'
+        taxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxAssociationDto'
+        shipping:
+          $ref: '#/components/schemas/ShippingAssociationDto'
+        topup:
+          $ref: '#/components/schemas/TopupAssociationDto'
+        separatePostProcessingLineItems:
+          type: boolean
+    QuickbooksAccountingSystemDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemDto'
       required:
-      - code
-      - name
+      - createdAt
+      - isExpired
+      - isRegistered
       - type
     ComaticAccountingSystemDto:
       allOf:
@@ -715,19 +738,72 @@ components:
       - isExpired
       - isRegistered
       - type
-    WeclappAccountingSystemTaxDto:
-      allOf:
-      - $ref: '#/components/schemas/AccountingSystemTaxDto'
-      - type: object
-        properties:
-          taxType:
-            type: string
+    XeroTaxComponentDto:
+      type: object
+      properties:
+        name:
+          type: string
+        rate:
+          type: number
+        isCompound:
+          type: boolean
       required:
-      - accountingSystem
-      - id
+      - isCompound
       - name
-      - percentage
-      - taxType
+      - rate
+    LexofficeAccountingSystemDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemDto'
+      required:
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
+    AccountingSystemSyncResultDto:
+      type: object
+      properties:
+        accountingSystemId:
+          type: string
+        name:
+          type: string
+        alreadyAssociated:
+          type: boolean
+        associatedOrganisationId:
+          type: integer
+          format: int64
+        associatedOrganisationName:
+          type: string
+      required:
+      - accountingSystemId
+      - alreadyAssociated
+    PostProcessAssociationDto:
+      type: object
+      properties:
+        postProcessingId:
+          type: integer
+          format: int64
+        accountingSystemCategoryCode:
+          type: string
+      required:
+      - postProcessingId
+    UpdateAccountingSystemTemplateDto:
+      type: object
+      properties:
+        templateId:
+          type: string
+        templateType:
+          type: string
+      required:
+      - templateId
+      - templateType
+    WeclappAccountingSystemDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemDto'
+      required:
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
     XeroAccountingSystemDto:
       allOf:
       - $ref: '#/components/schemas/AccountingSystemDto'
@@ -750,6 +826,83 @@ components:
       - isExpired
       - isRegistered
       - type
+    ZohoAccountingSystemDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemDto'
+      - type: object
+        properties:
+          dataCenter:
+            type: string
+          estimateTemplateName:
+            type: string
+          invoiceTemplateName:
+            type: string
+      required:
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
+    QuickbooksTaxComponentDto:
+      type: object
+      properties:
+        name:
+          type: string
+        rate:
+          type: number
+      required:
+      - name
+      - rate
+    AccountingSystemAccountDto:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - code
+      - name
+      - type
+    TopupAssociationDto:
+      type: object
+      properties:
+        accountingSystemId:
+          type: string
+    OdooAccountingSystemDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemDto'
+      required:
+      - createdAt
+      - isExpired
+      - isRegistered
+      - type
+    AccountingSystemTemplateDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - id
+      - name
+      - type
+    AuthorizeApiKeyAccountingSystemRequestDto:
+      type: object
+      properties:
+        accountingSystem:
+          type: string
+        apiKey:
+          type: string
+        organisationId:
+          type: string
+      required:
+      - accountingSystem
+      - apiKey
     CustomerAddressDto:
       type: object
       properties:
@@ -790,167 +943,6 @@ components:
           type: boolean
         taxId:
           type: string
-    QuickbooksAccountingSystemTaxDto:
-      allOf:
-      - $ref: '#/components/schemas/AccountingSystemTaxDto'
-      - type: object
-        properties:
-          taxComponents:
-            type: array
-            items:
-              $ref: '#/components/schemas/QuickbooksTaxComponentDto'
-      required:
-      - accountingSystem
-      - id
-      - name
-      - percentage
-      - taxComponents
-    AccountingSystemTemplateDto:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-      required:
-      - id
-      - name
-      - type
-    UpdateAccountingSystemTemplateDto:
-      type: object
-      properties:
-        templateId:
-          type: string
-        templateType:
-          type: string
-      required:
-      - templateId
-      - templateType
-    ComaticAccountingSystemTaxDto:
-      allOf:
-      - $ref: '#/components/schemas/AccountingSystemTaxDto'
-      required:
-      - accountingSystem
-      - id
-      - name
-      - percentage
-    ShippingAssociationDto:
-      type: object
-      properties:
-        accountingSystemId:
-          type: string
-    AuthorizeApiKeyAccountingSystemRequestDto:
-      type: object
-      properties:
-        accountingSystem:
-          type: string
-        apiKey:
-          type: string
-        organisationId:
-          type: string
-      required:
-      - accountingSystem
-      - apiKey
-    ProcessAssociationDto:
-      type: object
-      properties:
-        processId:
-          type: string
-          format: uuid
-        processName:
-          type: string
-        customerOrganisationName:
-          type: string
-        accountingSystemCategoryCode:
-          type: string
-      required:
-      - processId
-    PostProcessAssociationDto:
-      type: object
-      properties:
-        postProcessingId:
-          type: integer
-          format: int64
-        accountingSystemCategoryCode:
-          type: string
-      required:
-      - postProcessingId
-    AccountingSystemCategoryCodeDto:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      required:
-      - id
-      - name
-    BexioAccountingSystemDto:
-      allOf:
-      - $ref: '#/components/schemas/AccountingSystemDto'
-      - type: object
-        properties:
-          invoiceAccountCode:
-            type: string
-          invoiceAccountName:
-            type: string
-          paymentAccountCode:
-            type: string
-          paymentAccountName:
-            type: string
-      required:
-      - createdAt
-      - isExpired
-      - isRegistered
-      - type
-    AuthorizeOAuthAccountingSystemRequestDto:
-      type: object
-      properties:
-        accountingSystem:
-          type: string
-        dataCenter:
-          type: string
-      required:
-      - accountingSystem
-    PaginatedAccountingSystemSyncResultDto:
-      type: object
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccountingSystemSyncResultDto'
-        page:
-          type: integer
-          format: int32
-        pageSize:
-          type: integer
-          format: int32
-        hasMore:
-          type: boolean
-      required:
-      - content
-      - hasMore
-      - page
-      - pageSize
-    AccountingSystemSyncResultDto:
-      type: object
-      properties:
-        accountingSystemId:
-          type: string
-        name:
-          type: string
-        alreadyAssociated:
-          type: boolean
-        associatedOrganisationId:
-          type: integer
-          format: int64
-        associatedOrganisationName:
-          type: string
-      required:
-      - accountingSystemId
-      - alreadyAssociated
     ZohoAccountingSystemTaxDto:
       allOf:
       - $ref: '#/components/schemas/AccountingSystemTaxDto'
@@ -967,35 +959,43 @@ components:
       - id
       - name
       - percentage
-    LexofficeAccountingSystemDto:
+    QuickbooksAccountingSystemTaxDto:
       allOf:
-      - $ref: '#/components/schemas/AccountingSystemDto'
+      - $ref: '#/components/schemas/AccountingSystemTaxDto'
+      - type: object
+        properties:
+          taxComponents:
+            type: array
+            items:
+              $ref: '#/components/schemas/QuickbooksTaxComponentDto'
       required:
-      - createdAt
-      - isExpired
-      - isRegistered
-      - type
-    AccountingSystemAssociationsDto:
+      - accountingSystem
+      - id
+      - name
+      - percentage
+      - taxComponents
+    BexioAccountingSystemTaxDto:
+      allOf:
+      - $ref: '#/components/schemas/AccountingSystemTaxDto'
+      required:
+      - accountingSystem
+      - id
+      - name
+      - percentage
+    ProcessAssociationDto:
       type: object
       properties:
-        processes:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProcessAssociationDto'
-        postProcesses:
-          type: array
-          items:
-            $ref: '#/components/schemas/PostProcessAssociationDto'
-        taxes:
-          type: array
-          items:
-            $ref: '#/components/schemas/TaxAssociationDto'
-        shipping:
-          $ref: '#/components/schemas/ShippingAssociationDto'
-        topup:
-          $ref: '#/components/schemas/TopupAssociationDto'
-        separatePostProcessingLineItems:
-          type: boolean
+        processId:
+          type: string
+          format: uuid
+        processName:
+          type: string
+        customerOrganisationName:
+          type: string
+        accountingSystemCategoryCode:
+          type: string
+      required:
+      - processId
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

@@ -124,6 +124,61 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
+    UpdateThreadDto:
+      type: object
+      properties:
+        type:
+          type: string
+      required:
+      - type
+    UpdateProjectDto:
+      allOf:
+      - $ref: '#/components/schemas/UpdateThreadDto'
+      - type: object
+        properties:
+          name:
+            type: string
+          description:
+            type: string
+          subscribedCustomerIds:
+            type: array
+            items:
+              type: integer
+              format: int64
+      description: Updated project data
+      required:
+      - name
+      - subscribedCustomerIds
+      - type
+    Paginated:
+      type: object
+      properties:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
     ProjectDto:
       type: object
       properties:
@@ -158,61 +213,6 @@ components:
       - name
       - status
       - subscribedCustomerIds
-    Paginated:
-      type: object
-      properties:
-        content:
-          type: array
-          items: {}
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
-          type: boolean
-        isFirst:
-          type: boolean
-        isLast:
-          type: boolean
-      required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
-    UpdateProjectDto:
-      allOf:
-      - $ref: '#/components/schemas/UpdateThreadDto'
-      - type: object
-        properties:
-          name:
-            type: string
-          description:
-            type: string
-          subscribedCustomerIds:
-            type: array
-            items:
-              type: integer
-              format: int64
-      description: Updated project data
-      required:
-      - name
-      - subscribedCustomerIds
-      - type
-    UpdateThreadDto:
-      type: object
-      properties:
-        type:
-          type: string
-      required:
-      - type
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

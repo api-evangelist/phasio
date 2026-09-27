@@ -102,155 +102,6 @@ paths:
           description: Unauthorized - missing customer or operator context
 components:
   schemas:
-    ColorDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - id
-      - name
-    PrecisionPricesDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        price:
-          type: number
-        isActive:
-          type: boolean
-      required:
-      - id
-      - isActive
-      - name
-      - price
-    LeadTimeDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        isDefault:
-          type: boolean
-        isDeleted:
-          type: boolean
-      required:
-      - id
-      - isDefault
-      - isDeleted
-      - name
-    PostProcessingDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        purchasable:
-          type: boolean
-        isDefault:
-          type: boolean
-        colors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColorDto'
-        incompatibleMaterialIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-        mutuallyExclusiveGroup:
-          type: string
-      required:
-      - colors
-      - incompatibleMaterialIds
-      - isDefault
-      - name
-      - purchasable
-    InfillDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        value:
-          type: number
-        default:
-          type: boolean
-      required:
-      - default
-      - id
-      - name
-      - value
-    ProcessPricesDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        technology:
-          type: string
-        description:
-          type: string
-        materials:
-          type: array
-          items:
-            $ref: '#/components/schemas/MaterialDto'
-        infills:
-          type: array
-          items:
-            $ref: '#/components/schemas/InfillDto'
-        precisions:
-          type: array
-          items:
-            $ref: '#/components/schemas/PrecisionPricesDto'
-        postProcessings:
-          type: array
-          items:
-            $ref: '#/components/schemas/PostProcessingDto'
-        isInternal:
-          type: boolean
-        isDefault:
-          type: boolean
-        bulkPricingQuantities:
-          type: array
-          items:
-            type: integer
-      required:
-      - bulkPricingQuantities
-      - id
-      - infills
-      - isDefault
-      - isInternal
-      - materials
-      - postProcessings
-      - precisions
-      - technology
-    ShippingMethodDto:
-      type: object
-      properties:
-        shippingMethodId:
-          type: integer
-          format: int64
-        shippingMode:
-          type: string
-      required:
-      - shippingMethodId
-      - shippingMode
     OperatorDto:
       type: object
       properties:
@@ -355,6 +206,138 @@ components:
       - permittedDomains
       - storefrontTheme
       - subscribedModules
+    ColorDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - id
+      - name
+    InfillDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        value:
+          type: number
+        default:
+          type: boolean
+      required:
+      - default
+      - id
+      - name
+      - value
+    ProcessPricesDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        technology:
+          type: string
+        description:
+          type: string
+        materials:
+          type: array
+          items:
+            $ref: '#/components/schemas/MaterialDto'
+        infills:
+          type: array
+          items:
+            $ref: '#/components/schemas/InfillDto'
+        precisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrecisionPricesDto'
+        postProcessings:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostProcessingDto'
+        isInternal:
+          type: boolean
+        isDefault:
+          type: boolean
+        bulkPricingQuantities:
+          type: array
+          items:
+            type: integer
+      required:
+      - bulkPricingQuantities
+      - id
+      - infills
+      - isDefault
+      - isInternal
+      - materials
+      - postProcessings
+      - precisions
+      - technology
+    PostProcessingDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        purchasable:
+          type: boolean
+        isDefault:
+          type: boolean
+        colors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColorDto'
+        incompatibleMaterialIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        mutuallyExclusiveGroup:
+          type: string
+      required:
+      - colors
+      - incompatibleMaterialIds
+      - isDefault
+      - name
+      - purchasable
+    ShippingMethodDto:
+      type: object
+      properties:
+        shippingMethodId:
+          type: integer
+          format: int64
+        shippingMode:
+          type: string
+      required:
+      - shippingMethodId
+      - shippingMode
+    PrecisionPricesDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        price:
+          type: number
+        isActive:
+          type: boolean
+      required:
+      - id
+      - isActive
+      - name
+      - price
     MaterialDto:
       type: object
       properties:
@@ -383,6 +366,23 @@ components:
       - isDefault
       - name
       - quoteOnly
+    LeadTimeDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        isDefault:
+          type: boolean
+        isDeleted:
+          type: boolean
+      required:
+      - id
+      - isDefault
+      - isDeleted
+      - name
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

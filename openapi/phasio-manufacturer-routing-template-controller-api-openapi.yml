@@ -194,18 +194,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    RoutingTemplateStepInput:
+    CreateRoutingTemplateRequest:
       type: object
       properties:
-        operationId:
+        name:
+          type: string
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoutingTemplateStepInput'
+        replacesRoutingTemplateId:
           type: string
           format: uuid
-        sequence:
-          type: integer
-          format: int32
       required:
-      - operationId
-      - sequence
+      - steps
     RoutingTemplateStepDto:
       type: object
       properties:
@@ -222,6 +224,35 @@ components:
           format: int32
       required:
       - id
+      - operationId
+      - sequence
+    DeprecateRoutingTemplateRequest:
+      type: object
+      properties:
+        replacedByRoutingTemplateId:
+          type: string
+          format: uuid
+    UpdateRoutingTemplateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoutingTemplateStepInput'
+        approved:
+          type: boolean
+    RoutingTemplateStepInput:
+      type: object
+      properties:
+        operationId:
+          type: string
+          format: uuid
+        sequence:
+          type: integer
+          format: int32
+      required:
       - operationId
       - sequence
     RoutingTemplateDto:
@@ -271,37 +302,6 @@ components:
       - steps
       - updateDt
       - workOrderReferences
-    UpdateRoutingTemplateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        steps:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoutingTemplateStepInput'
-        approved:
-          type: boolean
-    CreateRoutingTemplateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        steps:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoutingTemplateStepInput'
-        replacesRoutingTemplateId:
-          type: string
-          format: uuid
-      required:
-      - steps
-    DeprecateRoutingTemplateRequest:
-      type: object
-      properties:
-        replacedByRoutingTemplateId:
-          type: string
-          format: uuid
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

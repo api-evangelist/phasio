@@ -152,42 +152,6 @@ paths:
       deprecated: true
 components:
   schemas:
-    AssociateAccountingSystemTaxesDto:
-      type: object
-      description: Tax association data
-      properties:
-        taxes:
-          type: array
-          items:
-            $ref: '#/components/schemas/AssociateAccountingSystemTaxDto'
-      required:
-      - taxes
-    BatchCreateTaxJurisdictionDto:
-      type: object
-      description: Batch tax jurisdiction data to create
-      properties:
-        jurisdictionIsoCodes:
-          type: array
-          items:
-            type: string
-          minItems: 1
-        taxComponentIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-          minItems: 1
-        allowExemption:
-          type: boolean
-        applyToShippingCost:
-          type: boolean
-        accountingSystemTaxId:
-          type: string
-      required:
-      - allowExemption
-      - applyToShippingCost
-      - jurisdictionIsoCodes
-      - taxComponentIds
     TaxJurisdictionDto:
       type: object
       properties:
@@ -248,6 +212,16 @@ components:
       - longName
       - percentage
       - shortName
+    AssociateAccountingSystemTaxesDto:
+      type: object
+      description: Tax association data
+      properties:
+        taxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssociateAccountingSystemTaxDto'
+      required:
+      - taxes
     AssociateAccountingSystemTaxDto:
       type: object
       properties:
@@ -259,6 +233,32 @@ components:
       required:
       - accountingSystemTaxId
       - taxJurisdictionId
+    BatchCreateTaxJurisdictionDto:
+      type: object
+      description: Batch tax jurisdiction data to create
+      properties:
+        jurisdictionIsoCodes:
+          type: array
+          items:
+            type: string
+          minItems: 1
+        taxComponentIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 1
+        allowExemption:
+          type: boolean
+        applyToShippingCost:
+          type: boolean
+        accountingSystemTaxId:
+          type: string
+      required:
+      - allowExemption
+      - applyToShippingCost
+      - jurisdictionIsoCodes
+      - taxComponentIds
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

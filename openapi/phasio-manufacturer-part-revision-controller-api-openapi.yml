@@ -769,48 +769,55 @@ components:
       - partRevisionId
       - values
       - warnings
-    PartManufacturabilityLimitsDto:
+    Paginated:
       type: object
       properties:
-        withinBoundingBoxLimit:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
           type: boolean
-        withinWallThicknessLimit:
+        isFirst:
+          type: boolean
+        isLast:
           type: boolean
       required:
-      - withinBoundingBoxLimit
-      - withinWallThicknessLimit
-    PartImageDetectionResponseDto:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
+    PartRevisionZipRequestDto:
       type: object
       properties:
-        detections:
-          type: array
-          items:
-            $ref: '#/components/schemas/PartImageDetectionDto'
-      required:
-      - detections
-    PartImageDetectionDto:
-      type: object
-      properties:
-        bbox:
-          type: array
-          items:
-            type: integer
-            format: int32
-        matches:
+        type:
+          type: string
+          enum:
+          - ORIGINAL_CAD_FILE
+          - CORE_GEOMETRY
+          - THUMBNAIL
+          - PDF_DESIGN_FILE
+          - WALL_THICKNESS_ANALYSIS
+        revisions:
           type: object
           additionalProperties:
-            type: number
-            format: double
+            type: array
+            items:
+              type: string
       required:
-      - bbox
-      - matches
-    PartManufacturabilityWarningsDto:
-      type: object
-      properties:
-        hasOptimalWallThickness:
-          type: boolean
-      required:
-      - hasOptimalWallThickness
+      - revisions
+      - type
     PartManufacturabilityRequestDto:
       type: object
       properties:
@@ -836,6 +843,50 @@ components:
       - partRevisionId
       - processPricesId
       - units
+    PartManufacturabilityWarningsDto:
+      type: object
+      properties:
+        hasOptimalWallThickness:
+          type: boolean
+      required:
+      - hasOptimalWallThickness
+    PartManufacturabilityLimitsDto:
+      type: object
+      properties:
+        withinBoundingBoxLimit:
+          type: boolean
+        withinWallThicknessLimit:
+          type: boolean
+      required:
+      - withinBoundingBoxLimit
+      - withinWallThicknessLimit
+    PartImageDetectionDto:
+      type: object
+      properties:
+        bbox:
+          type: array
+          items:
+            type: integer
+            format: int32
+        matches:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
+      required:
+      - bbox
+      - matches
+    PartManufacturabilityValuesDto:
+      type: object
+      properties:
+        boundingBox:
+          type: array
+          items:
+            type: number
+        wallThicknessLimit:
+          type: number
+        wallThicknessWarning:
+          type: number
     PartRevisionDto:
       type: object
       properties:
@@ -930,66 +981,15 @@ components:
       - availableAccessories
       - deleted
       - designName
-    PartManufacturabilityValuesDto:
+    PartImageDetectionResponseDto:
       type: object
       properties:
-        boundingBox:
+        detections:
           type: array
           items:
-            type: number
-        wallThicknessLimit:
-          type: number
-        wallThicknessWarning:
-          type: number
-    Paginated:
-      type: object
-      properties:
-        content:
-          type: array
-          items: {}
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
-          type: boolean
-        isFirst:
-          type: boolean
-        isLast:
-          type: boolean
+            $ref: '#/components/schemas/PartImageDetectionDto'
       required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
-    PartRevisionZipRequestDto:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - ORIGINAL_CAD_FILE
-          - CORE_GEOMETRY
-          - THUMBNAIL
-          - PDF_DESIGN_FILE
-          - WALL_THICKNESS_ANALYSIS
-        revisions:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-      required:
-      - revisions
-      - type
+      - detections
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

@@ -437,22 +437,14 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
-    MoveBatchesDto:
+    RenameStepDto:
       type: object
+      description: New name for the production step
       properties:
-        toOperationId:
-          type: string
-          format: uuid
-        scrapReason:
-          type: string
-        batches:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductionStepTransitionDto'
         name:
           type: string
       required:
-      - batches
+      - name
     ProductionStepTransitionDto:
       type: object
       properties:
@@ -468,6 +460,35 @@ components:
       - productionStepId
       - quantity
       - workOrderId
+    Paginated:
+      type: object
+      properties:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
     BatchBalanceDto:
       type: object
       properties:
@@ -595,14 +616,6 @@ components:
           type: string
       required:
       - type
-    RenameStepDto:
-      type: object
-      description: New name for the production step
-      properties:
-        name:
-          type: string
-      required:
-      - name
     ProductionStepDto:
       type: object
       properties:
@@ -652,35 +665,22 @@ components:
       - productionStatusName
       - type
       - updateDt
-    Paginated:
+    MoveBatchesDto:
       type: object
       properties:
-        content:
+        toOperationId:
+          type: string
+          format: uuid
+        scrapReason:
+          type: string
+        batches:
           type: array
-          items: {}
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
-          type: boolean
-        isFirst:
-          type: boolean
-        isLast:
-          type: boolean
+          items:
+            $ref: '#/components/schemas/ProductionStepTransitionDto'
+        name:
+          type: string
       required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
+      - batches
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

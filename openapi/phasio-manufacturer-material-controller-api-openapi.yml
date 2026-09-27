@@ -66,20 +66,6 @@ paths:
           description: Material not found
 components:
   schemas:
-    ColorDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - id
-      - name
     MaterialDto:
       type: object
       properties:
@@ -108,6 +94,20 @@ components:
       - isDefault
       - name
       - quoteOnly
+    ColorDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - id
+      - name
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

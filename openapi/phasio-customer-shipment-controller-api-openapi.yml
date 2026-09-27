@@ -40,70 +40,6 @@ paths:
           description: Unauthorized - missing or invalid authentication
 components:
   schemas:
-    ShippingRateDto:
-      type: object
-      properties:
-        id:
-          type: string
-        rate:
-          type: number
-        currency:
-          type: string
-        serviceType:
-          type: string
-        serviceName:
-          type: string
-        shippingMethodId:
-          type: integer
-          format: int64
-      required:
-      - currency
-      - id
-      - rate
-      - serviceName
-      - serviceType
-      - shippingMethodId
-    CalculateRatesDtov2:
-      type: object
-      description: Rate calculation parameters
-      properties:
-        currency:
-          type: string
-          enum:
-          - USD
-          - SGD
-          - EUR
-          - INR
-          - JPY
-          - AUD
-          - GBP
-          - NZD
-          - MYR
-          - CAD
-          - CHF
-          - DKK
-          - SEK
-          - MXN
-          - ZAR
-          - UAH
-          - NOK
-          - PHP
-          - TRY
-        organisationId:
-          type: integer
-          format: int64
-        toAddressId:
-          type: integer
-          format: int64
-        parts:
-          type: array
-          items:
-            $ref: '#/components/schemas/PartShippingDetailDto'
-      required:
-      - currency
-      - organisationId
-      - parts
-      - toAddressId
     PartShippingDetailDto:
       type: object
       properties:
@@ -150,6 +86,70 @@ components:
       - errorWithCarrier
       - rates
       - tooLargeForBoxes
+    CalculateRatesDtov2:
+      type: object
+      description: Rate calculation parameters
+      properties:
+        currency:
+          type: string
+          enum:
+          - USD
+          - SGD
+          - EUR
+          - INR
+          - JPY
+          - AUD
+          - GBP
+          - NZD
+          - MYR
+          - CAD
+          - CHF
+          - DKK
+          - SEK
+          - MXN
+          - ZAR
+          - UAH
+          - NOK
+          - PHP
+          - TRY
+        organisationId:
+          type: integer
+          format: int64
+        toAddressId:
+          type: integer
+          format: int64
+        parts:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartShippingDetailDto'
+      required:
+      - currency
+      - organisationId
+      - parts
+      - toAddressId
+    ShippingRateDto:
+      type: object
+      properties:
+        id:
+          type: string
+        rate:
+          type: number
+        currency:
+          type: string
+        serviceType:
+          type: string
+        serviceName:
+          type: string
+        shippingMethodId:
+          type: integer
+          format: int64
+      required:
+      - currency
+      - id
+      - rate
+      - serviceName
+      - serviceType
+      - shippingMethodId
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

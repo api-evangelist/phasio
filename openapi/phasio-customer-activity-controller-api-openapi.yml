@@ -109,6 +109,27 @@ components:
       - createdAt
       - id
       - threadId
+    CreateConversationDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateActivityDto'
+      - type: object
+        properties:
+          conversationType:
+            type: string
+          message:
+            type: string
+          requisitionTagged:
+            $ref: '#/components/schemas/RequisitionTaggedDto'
+          locationTagged:
+            $ref: '#/components/schemas/LocationTaggedDto'
+          orderId:
+            type: integer
+            format: int64
+      required:
+      - activityType
+      - conversationType
+      - message
+      - threadId
     RequisitionTaggedDto:
       type: object
       properties:
@@ -117,17 +138,6 @@ components:
           format: int64
       required:
       - requisitionId
-    CreateActivityDto:
-      type: object
-      properties:
-        activityType:
-          type: string
-        threadId:
-          type: integer
-          format: int64
-      required:
-      - activityType
-      - threadId
     LocationTaggedDto:
       type: object
       properties:
@@ -163,26 +173,16 @@ components:
       - locationY
       - locationZ
       - requisitionId
-    CreateConversationDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateActivityDto'
-      - type: object
-        properties:
-          conversationType:
-            type: string
-          message:
-            type: string
-          requisitionTagged:
-            $ref: '#/components/schemas/RequisitionTaggedDto'
-          locationTagged:
-            $ref: '#/components/schemas/LocationTaggedDto'
-          orderId:
-            type: integer
-            format: int64
+    CreateActivityDto:
+      type: object
+      properties:
+        activityType:
+          type: string
+        threadId:
+          type: integer
+          format: int64
       required:
       - activityType
-      - conversationType
-      - message
       - threadId
   securitySchemes:
     Phasio_API_Bearer_Token:

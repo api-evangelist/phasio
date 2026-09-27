@@ -64,45 +64,6 @@ paths:
           description: Customer not found
 components:
   schemas:
-    CustomerRequestDto:
-      type: object
-      description: Customer request data containing the principal
-      properties:
-        customerPrincipal:
-          type: string
-      required:
-      - customerPrincipal
-    CustomerDto:
-      type: object
-      properties:
-        email:
-          type: string
-        customerId:
-          type: integer
-          format: int64
-        organisationName:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        phoneNumber:
-          type: string
-        language:
-          type: string
-        notificationPreference:
-          type: string
-        discountId:
-          type: integer
-          format: int64
-        discountPercentage:
-          type: number
-        customerType:
-          type: string
-      required:
-      - customerType
-      - language
-      - notificationPreference
     CreateCustomerDto:
       type: object
       description: Customer data to create
@@ -146,6 +107,45 @@ components:
         taxExempt:
           type: boolean
       required:
+      - notificationPreference
+    CustomerRequestDto:
+      type: object
+      description: Customer request data containing the principal
+      properties:
+        customerPrincipal:
+          type: string
+      required:
+      - customerPrincipal
+    CustomerDto:
+      type: object
+      properties:
+        email:
+          type: string
+        customerId:
+          type: integer
+          format: int64
+        organisationName:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        language:
+          type: string
+        notificationPreference:
+          type: string
+        discountId:
+          type: integer
+          format: int64
+        discountPercentage:
+          type: number
+        customerType:
+          type: string
+      required:
+      - customerType
+      - language
       - notificationPreference
   securitySchemes:
     Phasio_API_Bearer_Token:

@@ -62,24 +62,6 @@ paths:
           description: Shipment not found
 components:
   schemas:
-    ShippingRatesDto:
-      type: object
-      properties:
-        shippingMethodId:
-          type: integer
-          format: int64
-        tooLargeForBoxes:
-          type: boolean
-        errorWithCarrier:
-          type: boolean
-        rates:
-          type: array
-          items:
-            $ref: '#/components/schemas/ShippingRateDto'
-      required:
-      - errorWithCarrier
-      - rates
-      - tooLargeForBoxes
     CalculateRatesDtov2:
       type: object
       description: Rate calculation parameters
@@ -149,6 +131,24 @@ components:
       - processPricesId
       - quantity
       - units
+    ShippingRatesDto:
+      type: object
+      properties:
+        shippingMethodId:
+          type: integer
+          format: int64
+        tooLargeForBoxes:
+          type: boolean
+        errorWithCarrier:
+          type: boolean
+        rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShippingRateDto'
+      required:
+      - errorWithCarrier
+      - rates
+      - tooLargeForBoxes
     ShipmentDto:
       type: object
       discriminator:

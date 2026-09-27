@@ -106,6 +106,27 @@ components:
             - $ref: '#/components/schemas/OperatorAddressDto'
       required:
       - shippingMode
+    OperatorAddressDto:
+      allOf:
+      - $ref: '#/components/schemas/AddressDto'
+      required:
+      - addressId
+      - addressType
+      - city
+      - company
+      - country
+      - countryAlpha2Code
+      - countryAlpha3Code
+      - email
+      - isBillingAddress
+      - isShippingAddress
+      - name
+      - phone
+      - platformEncryptedAesKey
+      - residential
+      - street1
+      - street2
+      - zip
     AddressDto:
       type: object
       discriminator:
@@ -170,27 +191,6 @@ components:
       - street1
       - street2
       - zip
-    CustomerOrganisationAddressDto:
-      allOf:
-      - $ref: '#/components/schemas/AddressDto'
-      required:
-      - addressId
-      - addressType
-      - city
-      - company
-      - country
-      - countryAlpha2Code
-      - countryAlpha3Code
-      - email
-      - isBillingAddress
-      - isShippingAddress
-      - name
-      - phone
-      - platformEncryptedAesKey
-      - residential
-      - street1
-      - street2
-      - zip
     ShippingMethodDto:
       type: object
       properties:
@@ -213,19 +213,7 @@ components:
             type: boolean
       required:
       - shippingMode
-    FixedPriceShippingWeightTierDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        lowerWeightLimit:
-          type: number
-        upperWeightLimit:
-          type: number
-        price:
-          type: number
-    OperatorAddressDto:
+    CustomerOrganisationAddressDto:
       allOf:
       - $ref: '#/components/schemas/AddressDto'
       required:
@@ -450,6 +438,18 @@ components:
               - EXEMPT
       required:
       - shippingMode
+    FixedPriceShippingWeightTierDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        lowerWeightLimit:
+          type: number
+        upperWeightLimit:
+          type: number
+        price:
+          type: number
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

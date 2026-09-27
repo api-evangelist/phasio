@@ -95,14 +95,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CreatePaymentTermDto:
-      type: object
-      properties:
-        name:
-          type: string
-          minLength: 1
-      required:
-      - name
     PaymentTermDto:
       type: object
       properties:
@@ -124,6 +116,14 @@ components:
           minLength: 1
         accountingSystemTermId:
           type: string
+      required:
+      - name
+    CreatePaymentTermDto:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
       required:
       - name
   securitySchemes:
