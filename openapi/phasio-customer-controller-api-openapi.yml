@@ -70,6 +70,27 @@ paths:
           description: Customer not found
 components:
   schemas:
+    UpdateCustomerDto:
+      type: object
+      description: Customer information to update
+      properties:
+        customerId:
+          type: integer
+          format: int64
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        notificationPreference:
+          type: string
+        language:
+          type: string
+      required:
+      - customerId
     CustomerDto:
       type: object
       properties:
@@ -101,27 +122,6 @@ components:
       - customerType
       - language
       - notificationPreference
-    UpdateCustomerDto:
-      type: object
-      description: Customer information to update
-      properties:
-        customerId:
-          type: integer
-          format: int64
-        email:
-          type: string
-        phoneNumber:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        notificationPreference:
-          type: string
-        language:
-          type: string
-      required:
-      - customerId
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

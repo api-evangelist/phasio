@@ -68,6 +68,15 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UpdateWorkOrderRoutingRequest:
+      type: object
+      properties:
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkOrderRoutingStepInput'
+      required:
+      - steps
     WorkOrderDto:
       type: object
       properties:
@@ -96,6 +105,22 @@ components:
       - id
       - quantity
       - routing
+    RoutingStepDto:
+      type: object
+      properties:
+        operationId:
+          type: string
+          format: uuid
+        sequence:
+          type: integer
+          format: int32
+        statusId:
+          type: string
+          format: uuid
+      required:
+      - operationId
+      - sequence
+      - statusId
     AddPartsRequest:
       type: object
       properties:
@@ -117,31 +142,6 @@ components:
       required:
       - operationId
       - sequence
-    UpdateWorkOrderRoutingRequest:
-      type: object
-      properties:
-        steps:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkOrderRoutingStepInput'
-      required:
-      - steps
-    RoutingStepDto:
-      type: object
-      properties:
-        operationId:
-          type: string
-          format: uuid
-        sequence:
-          type: integer
-          format: int32
-        statusId:
-          type: string
-          format: uuid
-      required:
-      - operationId
-      - sequence
-      - statusId
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

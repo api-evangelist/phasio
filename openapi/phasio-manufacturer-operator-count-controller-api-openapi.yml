@@ -63,18 +63,6 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
-    UpdateOperatorCountDto:
-      type: object
-      description: Counter update details
-      properties:
-        count:
-          type: integer
-          format: int64
-        type:
-          type: string
-      required:
-      - count
-      - type
     OperatorCountDto:
       type: object
       properties:
@@ -89,6 +77,18 @@ components:
       required:
       - count
       - id
+      - type
+    UpdateOperatorCountDto:
+      type: object
+      description: Counter update details
+      properties:
+        count:
+          type: integer
+          format: int64
+        type:
+          type: string
+      required:
+      - count
       - type
   securitySchemes:
     Phasio_API_Bearer_Token:

@@ -119,6 +119,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    EquationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        equation:
+          type: string
+      required:
+      - equation
+      - name
     TypescriptEquationDto:
       type: object
       properties:
@@ -141,16 +151,6 @@ components:
       - id
       - lastUpdated
       - variables
-    EquationRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        equation:
-          type: string
-      required:
-      - equation
-      - name
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

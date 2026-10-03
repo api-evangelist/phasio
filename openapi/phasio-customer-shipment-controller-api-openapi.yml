@@ -40,34 +40,29 @@ paths:
           description: Unauthorized - missing or invalid authentication
 components:
   schemas:
-    PartShippingDetailDto:
+    ShippingRateDto:
       type: object
       properties:
-        partRevisionId:
+        id:
           type: string
-          format: uuid
-        units:
+        rate:
+          type: number
+        currency:
           type: string
-          enum:
-          - CENTIMETERS
-          - MILLIMETERS
-          - METRES
-          - INCHES
-          - FEET
-        quantity:
-          type: integer
-        processPricesId:
+        serviceType:
           type: string
-          format: uuid
-        materialId:
+        serviceName:
+          type: string
+        shippingMethodId:
           type: integer
           format: int64
       required:
-      - materialId
-      - partRevisionId
-      - processPricesId
-      - quantity
-      - units
+      - currency
+      - id
+      - rate
+      - serviceName
+      - serviceType
+      - shippingMethodId
     ShippingRatesDto:
       type: object
       properties:
@@ -127,29 +122,34 @@ components:
       - organisationId
       - parts
       - toAddressId
-    ShippingRateDto:
+    PartShippingDetailDto:
       type: object
       properties:
-        id:
+        partRevisionId:
           type: string
-        rate:
-          type: number
-        currency:
+          format: uuid
+        units:
           type: string
-        serviceType:
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        quantity:
+          type: integer
+        processPricesId:
           type: string
-        serviceName:
-          type: string
-        shippingMethodId:
+          format: uuid
+        materialId:
           type: integer
           format: int64
       required:
-      - currency
-      - id
-      - rate
-      - serviceName
-      - serviceType
-      - shippingMethodId
+      - materialId
+      - partRevisionId
+      - processPricesId
+      - quantity
+      - units
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

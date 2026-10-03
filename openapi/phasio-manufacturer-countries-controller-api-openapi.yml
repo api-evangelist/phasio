@@ -51,19 +51,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DMZJurisdictionDto:
-      type: object
-      properties:
-        country:
-          type: string
-        name:
-          type: string
-        iso:
-          type: string
-      required:
-      - country
-      - iso
-      - name
     DMZCountryDto:
       type: object
       properties:
@@ -79,6 +66,19 @@ components:
       - alpha2Code
       - alpha3Code
       - country
+      - name
+    DMZJurisdictionDto:
+      type: object
+      properties:
+        country:
+          type: string
+        name:
+          type: string
+        iso:
+          type: string
+      required:
+      - country
+      - iso
       - name
   securitySchemes:
     Phasio_API_Bearer_Token:

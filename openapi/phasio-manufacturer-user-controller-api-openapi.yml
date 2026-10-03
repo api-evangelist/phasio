@@ -68,16 +68,6 @@ paths:
                 type: boolean
 components:
   schemas:
-    UpdateUserDto:
-      type: object
-      description: Updated user information
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        phoneNumber:
-          type: string
     UserDto:
       type: object
       properties:
@@ -101,6 +91,16 @@ components:
       - mfaEnabled
       - phoneNumber
       - teamId
+    UpdateUserDto:
+      type: object
+      description: Updated user information
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

@@ -752,23 +752,31 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
-    PartManufacturabilityDto:
+    PartImageDetectionDto:
       type: object
       properties:
-        partRevisionId:
-          type: string
-          format: uuid
-        warnings:
-          $ref: '#/components/schemas/PartManufacturabilityWarningsDto'
-        limits:
-          $ref: '#/components/schemas/PartManufacturabilityLimitsDto'
-        values:
-          $ref: '#/components/schemas/PartManufacturabilityValuesDto'
+        bbox:
+          type: array
+          items:
+            type: integer
+            format: int32
+        matches:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
       required:
-      - limits
-      - partRevisionId
-      - values
-      - warnings
+      - bbox
+      - matches
+    PartImageDetectionResponseDto:
+      type: object
+      properties:
+        detections:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartImageDetectionDto'
+      required:
+      - detections
     Paginated:
       type: object
       properties:
@@ -798,26 +806,6 @@ components:
       - pageSize
       - totalElements
       - totalPages
-    PartRevisionZipRequestDto:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - ORIGINAL_CAD_FILE
-          - CORE_GEOMETRY
-          - THUMBNAIL
-          - PDF_DESIGN_FILE
-          - WALL_THICKNESS_ANALYSIS
-        revisions:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-      required:
-      - revisions
-      - type
     PartManufacturabilityRequestDto:
       type: object
       properties:
@@ -843,39 +831,6 @@ components:
       - partRevisionId
       - processPricesId
       - units
-    PartManufacturabilityWarningsDto:
-      type: object
-      properties:
-        hasOptimalWallThickness:
-          type: boolean
-      required:
-      - hasOptimalWallThickness
-    PartManufacturabilityLimitsDto:
-      type: object
-      properties:
-        withinBoundingBoxLimit:
-          type: boolean
-        withinWallThicknessLimit:
-          type: boolean
-      required:
-      - withinBoundingBoxLimit
-      - withinWallThicknessLimit
-    PartImageDetectionDto:
-      type: object
-      properties:
-        bbox:
-          type: array
-          items:
-            type: integer
-            format: int32
-        matches:
-          type: object
-          additionalProperties:
-            type: number
-            format: double
-      required:
-      - bbox
-      - matches
     PartManufacturabilityValuesDto:
       type: object
       properties:
@@ -887,6 +842,60 @@ components:
           type: number
         wallThicknessWarning:
           type: number
+    PartManufacturabilityDto:
+      type: object
+      properties:
+        partRevisionId:
+          type: string
+          format: uuid
+        warnings:
+          $ref: '#/components/schemas/PartManufacturabilityWarningsDto'
+        limits:
+          $ref: '#/components/schemas/PartManufacturabilityLimitsDto'
+        values:
+          $ref: '#/components/schemas/PartManufacturabilityValuesDto'
+      required:
+      - limits
+      - partRevisionId
+      - values
+      - warnings
+    PartRevisionZipRequestDto:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - ORIGINAL_CAD_FILE
+          - CORE_GEOMETRY
+          - THUMBNAIL
+          - PDF_DESIGN_FILE
+          - WALL_THICKNESS_ANALYSIS
+        revisions:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+      required:
+      - revisions
+      - type
+    PartManufacturabilityLimitsDto:
+      type: object
+      properties:
+        withinBoundingBoxLimit:
+          type: boolean
+        withinWallThicknessLimit:
+          type: boolean
+      required:
+      - withinBoundingBoxLimit
+      - withinWallThicknessLimit
+    PartManufacturabilityWarningsDto:
+      type: object
+      properties:
+        hasOptimalWallThickness:
+          type: boolean
+      required:
+      - hasOptimalWallThickness
     PartRevisionDto:
       type: object
       properties:
@@ -981,15 +990,6 @@ components:
       - availableAccessories
       - deleted
       - designName
-    PartImageDetectionResponseDto:
-      type: object
-      properties:
-        detections:
-          type: array
-          items:
-            $ref: '#/components/schemas/PartImageDetectionDto'
-      required:
-      - detections
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

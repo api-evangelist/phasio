@@ -43,47 +43,6 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
-    CustomerArticleReferenceDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        customerOrganisationId:
-          type: integer
-          format: int64
-        customerOrganisationName:
-          type: string
-        reference:
-          type: string
-        pricingTiers:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
-        showInCatalog:
-          type: boolean
-      required:
-      - customerOrganisationId
-      - pricingTiers
-      - reference
-    FixedOrientationConstraintDto:
-      allOf:
-      - $ref: '#/components/schemas/ConstraintDto'
-      - type: object
-        properties:
-          rotationMatrix:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - rotationMatrix
-      - updatedAt
     PartSpecificationDto:
       type: object
       properties:
@@ -149,6 +108,29 @@ components:
       - partRevisionName
       - postProcessingIds
       - units
+    CustomerArticleReferenceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        customerOrganisationId:
+          type: integer
+          format: int64
+        customerOrganisationName:
+          type: string
+        reference:
+          type: string
+        pricingTiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
+        showInCatalog:
+          type: boolean
+      required:
+      - customerOrganisationId
+      - pricingTiers
+      - reference
     CreateCatalogItemDto:
       type: object
       properties:
@@ -240,6 +222,24 @@ components:
       required:
       - price
       - quantity
+    FixedOrientationConstraintDto:
+      allOf:
+      - $ref: '#/components/schemas/ConstraintDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - rotationMatrix
+      - updatedAt
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

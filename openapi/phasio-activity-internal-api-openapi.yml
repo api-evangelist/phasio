@@ -60,25 +60,6 @@ paths:
           description: Unauthorized - missing or invalid authentication
 components:
   schemas:
-    CreateActivityDto:
-      type: object
-      properties:
-        activityType:
-          type: string
-        threadId:
-          type: integer
-          format: int64
-      required:
-      - activityType
-      - threadId
-    RequisitionTaggedDto:
-      type: object
-      properties:
-        requisitionId:
-          type: integer
-          format: int64
-      required:
-      - requisitionId
     LocationTaggedDto:
       type: object
       properties:
@@ -135,6 +116,25 @@ components:
       - conversationType
       - message
       - threadId
+    CreateActivityDto:
+      type: object
+      properties:
+        activityType:
+          type: string
+        threadId:
+          type: integer
+          format: int64
+      required:
+      - activityType
+      - threadId
+    RequisitionTaggedDto:
+      type: object
+      properties:
+        requisitionId:
+          type: integer
+          format: int64
+      required:
+      - requisitionId
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

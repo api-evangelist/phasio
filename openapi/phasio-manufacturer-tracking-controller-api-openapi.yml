@@ -97,18 +97,6 @@ paths:
           description: Delete failed or tracking not found
 components:
   schemas:
-    CreateTrackingDto:
-      type: object
-      description: Tracking information to create
-      properties:
-        shipmentId:
-          type: integer
-          format: int64
-        trackingNumber:
-          type: string
-      required:
-      - shipmentId
-      - trackingNumber
     TrackingDto:
       type: object
       properties:
@@ -122,6 +110,18 @@ components:
           type: string
       required:
       - id
+      - shipmentId
+      - trackingNumber
+    CreateTrackingDto:
+      type: object
+      description: Tracking information to create
+      properties:
+        shipmentId:
+          type: integer
+          format: int64
+        trackingNumber:
+          type: string
+      required:
       - shipmentId
       - trackingNumber
     UpdateTrackingDto:

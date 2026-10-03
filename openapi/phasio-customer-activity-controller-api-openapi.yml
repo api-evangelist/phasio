@@ -109,27 +109,6 @@ components:
       - createdAt
       - id
       - threadId
-    CreateConversationDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateActivityDto'
-      - type: object
-        properties:
-          conversationType:
-            type: string
-          message:
-            type: string
-          requisitionTagged:
-            $ref: '#/components/schemas/RequisitionTaggedDto'
-          locationTagged:
-            $ref: '#/components/schemas/LocationTaggedDto'
-          orderId:
-            type: integer
-            format: int64
-      required:
-      - activityType
-      - conversationType
-      - message
-      - threadId
     RequisitionTaggedDto:
       type: object
       properties:
@@ -173,6 +152,27 @@ components:
       - locationY
       - locationZ
       - requisitionId
+    CreateConversationDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateActivityDto'
+      - type: object
+        properties:
+          conversationType:
+            type: string
+          message:
+            type: string
+          requisitionTagged:
+            $ref: '#/components/schemas/RequisitionTaggedDto'
+          locationTagged:
+            $ref: '#/components/schemas/LocationTaggedDto'
+          orderId:
+            type: integer
+            format: int64
+      required:
+      - activityType
+      - conversationType
+      - message
+      - threadId
     CreateActivityDto:
       type: object
       properties:

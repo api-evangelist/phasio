@@ -149,88 +149,6 @@ paths:
           description: Discount not found
 components:
   schemas:
-    CreateInstantDiscountDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateDiscountDto'
-      - type: object
-        properties:
-          note:
-            type: string
-      required:
-      - discountType
-      - note
-      - percentage
-    UpdateDiscountTimeRangeDto:
-      type: object
-      properties:
-        discountId:
-          type: integer
-          format: int64
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-      required:
-      - discountId
-      - endTime
-      - startTime
-    CreateCustomerDiscountDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateDiscountDto'
-      - type: object
-        properties:
-          code:
-            type: string
-          startTime:
-            type: string
-            format: date-time
-          endTime:
-            type: string
-            format: date-time
-          customerId:
-            type: integer
-            format: int64
-      required:
-      - code
-      - customerId
-      - discountType
-      - endTime
-      - percentage
-      - startTime
-    CreateGenericDiscountDto:
-      allOf:
-      - $ref: '#/components/schemas/CreateDiscountDto'
-      - type: object
-        properties:
-          code:
-            type: string
-          startTime:
-            type: string
-            format: date-time
-          endTime:
-            type: string
-            format: date-time
-          genericDiscountNoe:
-            type: string
-      required:
-      - code
-      - discountType
-      - endTime
-      - genericDiscountNoe
-      - percentage
-      - startTime
-    CreateDiscountDto:
-      type: object
-      properties:
-        discountType:
-          type: string
-        percentage:
-          type: number
-      required:
-      - discountType
-      - percentage
     DiscountDto:
       type: object
       properties:
@@ -266,6 +184,88 @@ components:
       required:
       - customerId
       - discountCode
+    CreateGenericDiscountDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateDiscountDto'
+      - type: object
+        properties:
+          code:
+            type: string
+          startTime:
+            type: string
+            format: date-time
+          endTime:
+            type: string
+            format: date-time
+          genericDiscountNoe:
+            type: string
+      required:
+      - code
+      - discountType
+      - endTime
+      - genericDiscountNoe
+      - percentage
+      - startTime
+    CreateCustomerDiscountDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateDiscountDto'
+      - type: object
+        properties:
+          code:
+            type: string
+          startTime:
+            type: string
+            format: date-time
+          endTime:
+            type: string
+            format: date-time
+          customerId:
+            type: integer
+            format: int64
+      required:
+      - code
+      - customerId
+      - discountType
+      - endTime
+      - percentage
+      - startTime
+    CreateDiscountDto:
+      type: object
+      properties:
+        discountType:
+          type: string
+        percentage:
+          type: number
+      required:
+      - discountType
+      - percentage
+    UpdateDiscountTimeRangeDto:
+      type: object
+      properties:
+        discountId:
+          type: integer
+          format: int64
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+      required:
+      - discountId
+      - endTime
+      - startTime
+    CreateInstantDiscountDto:
+      allOf:
+      - $ref: '#/components/schemas/CreateDiscountDto'
+      - type: object
+        properties:
+          note:
+            type: string
+      required:
+      - discountType
+      - note
+      - percentage
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

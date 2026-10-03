@@ -163,62 +163,6 @@ paths:
           description: Invalid material prices ID or deletion failed
 components:
   schemas:
-    CreateMaterialPricesDto:
-      type: object
-      description: Material prices to create
-      properties:
-        customerOrganisationId:
-          type: integer
-          format: int64
-        processPricesId:
-          type: string
-          format: uuid
-        datasheet:
-          type: string
-        name:
-          type: string
-        quoteOnly:
-          type: boolean
-        effectiveFrom:
-          type: string
-          format: date
-        colors:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateColorDto'
-        referenceText:
-          type: string
-        wallThicknessWarning:
-          type: number
-        wallThicknessLimit:
-          type: number
-        density:
-          type: number
-        variableValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/VariableValueDto'
-      required:
-      - colors
-      - datasheet
-      - density
-      - effectiveFrom
-      - name
-      - processPricesId
-      - quoteOnly
-      - variableValues
-    DuplicateMaterialPricesDto:
-      type: object
-      description: Duplication details
-      properties:
-        materialPricesId:
-          type: integer
-          format: int64
-        materialName:
-          type: string
-      required:
-      - materialName
-      - materialPricesId
     EquationMaterialPricesDto:
       type: object
       properties:
@@ -277,20 +221,6 @@ components:
       - pricingEquationVariableValueDtos
       - quoteOnly
       - technology
-    ColorDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - id
-      - name
     CreateColorDto:
       type: object
       properties:
@@ -301,34 +231,6 @@ components:
       required:
       - code
       - name
-    PricingEquationVariableValueDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        placeholder:
-          type: string
-        value:
-          type: number
-      required:
-      - id
-      - name
-      - placeholder
-      - value
-    VariableValueDto:
-      type: object
-      properties:
-        variableId:
-          type: string
-          format: uuid
-        value:
-          type: number
-      required:
-      - value
-      - variableId
     UpdateMaterialPricesDto:
       type: object
       description: Updated material prices data
@@ -367,6 +269,104 @@ components:
       - materialPricesId
       - quoteOnly
       - variableValues
+    CreateMaterialPricesDto:
+      type: object
+      description: Material prices to create
+      properties:
+        customerOrganisationId:
+          type: integer
+          format: int64
+        processPricesId:
+          type: string
+          format: uuid
+        datasheet:
+          type: string
+        name:
+          type: string
+        quoteOnly:
+          type: boolean
+        effectiveFrom:
+          type: string
+          format: date
+        colors:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateColorDto'
+        referenceText:
+          type: string
+        wallThicknessWarning:
+          type: number
+        wallThicknessLimit:
+          type: number
+        density:
+          type: number
+        variableValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariableValueDto'
+      required:
+      - colors
+      - datasheet
+      - density
+      - effectiveFrom
+      - name
+      - processPricesId
+      - quoteOnly
+      - variableValues
+    VariableValueDto:
+      type: object
+      properties:
+        variableId:
+          type: string
+          format: uuid
+        value:
+          type: number
+      required:
+      - value
+      - variableId
+    PricingEquationVariableValueDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        placeholder:
+          type: string
+        value:
+          type: number
+      required:
+      - id
+      - name
+      - placeholder
+      - value
+    ColorDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - id
+      - name
+    DuplicateMaterialPricesDto:
+      type: object
+      description: Duplication details
+      properties:
+        materialPricesId:
+          type: integer
+          format: int64
+        materialName:
+          type: string
+      required:
+      - materialName
+      - materialPricesId
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

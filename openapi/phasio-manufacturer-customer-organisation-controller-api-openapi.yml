@@ -430,33 +430,6 @@ paths:
           description: Unauthorized - missing operator context
 components:
   schemas:
-    MergePreview:
-      type: object
-      properties:
-        sourceOrganisationId:
-          type: integer
-          format: int64
-        destinationOrganisationId:
-          type: integer
-          format: int64
-        eligible:
-          type: boolean
-        blockReason:
-          type: string
-        counts:
-          type: object
-          additionalProperties:
-            type: integer
-            format: int32
-        totalRows:
-          type: integer
-          format: int32
-      required:
-      - counts
-      - destinationOrganisationId
-      - eligible
-      - sourceOrganisationId
-      - totalRows
     CreateCustomerOrganisationMetadataDto:
       type: object
       properties:
@@ -467,35 +440,6 @@ components:
       required:
       - metadataKey
       - value
-    Paginated:
-      type: object
-      properties:
-        content:
-          type: array
-          items: {}
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
-          type: boolean
-        isFirst:
-          type: boolean
-        isLast:
-          type: boolean
-      required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
     CustomerOrganisationSummaryDto:
       type: object
       properties:
@@ -564,50 +508,35 @@ components:
           type: boolean
         taxId:
           type: string
-    OrganisationUpdateDto:
+    Paginated:
       type: object
       properties:
-        name:
-          type: string
-        canAccessDashboard:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
           type: boolean
-        taxExempt:
+        isFirst:
           type: boolean
-        language:
-          type: string
-        accountingSystemId:
-          type: string
-        isApproved:
-          type: boolean
-        customerType:
-          type: string
-        paymentTermId:
-          type: string
-        clearPaymentTerm:
+        isLast:
           type: boolean
       required:
-      - clearPaymentTerm
-    UpdateCustomerOrganisationMetadataDto:
-      type: object
-      properties:
-        metadataKey:
-          type: string
-        value:
-          type: string
-    CustomerOrganisationMetadataDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        metadataKey:
-          type: string
-        value:
-          type: string
-      required:
-      - id
-      - metadataKey
-      - value
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
     SetCustomerOrganisationMetadataValueDto:
       type: object
       properties:
@@ -648,6 +577,40 @@ components:
       - customers
       - lastUpdated
       - taxExempt
+    UpdateCustomerOrganisationMetadataDto:
+      type: object
+      properties:
+        metadataKey:
+          type: string
+        value:
+          type: string
+    MergePreview:
+      type: object
+      properties:
+        sourceOrganisationId:
+          type: integer
+          format: int64
+        destinationOrganisationId:
+          type: integer
+          format: int64
+        eligible:
+          type: boolean
+        blockReason:
+          type: string
+        counts:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+        totalRows:
+          type: integer
+          format: int32
+      required:
+      - counts
+      - destinationOrganisationId
+      - eligible
+      - sourceOrganisationId
+      - totalRows
     CustomerDto:
       type: object
       properties:
@@ -679,6 +642,43 @@ components:
       - customerType
       - language
       - notificationPreference
+    CustomerOrganisationMetadataDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        metadataKey:
+          type: string
+        value:
+          type: string
+      required:
+      - id
+      - metadataKey
+      - value
+    OrganisationUpdateDto:
+      type: object
+      properties:
+        name:
+          type: string
+        canAccessDashboard:
+          type: boolean
+        taxExempt:
+          type: boolean
+        language:
+          type: string
+        accountingSystemId:
+          type: string
+        isApproved:
+          type: boolean
+        customerType:
+          type: string
+        paymentTermId:
+          type: string
+        clearPaymentTerm:
+          type: boolean
+      required:
+      - clearPaymentTerm
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

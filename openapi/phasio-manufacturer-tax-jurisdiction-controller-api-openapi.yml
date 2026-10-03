@@ -212,27 +212,6 @@ components:
       - longName
       - percentage
       - shortName
-    AssociateAccountingSystemTaxesDto:
-      type: object
-      description: Tax association data
-      properties:
-        taxes:
-          type: array
-          items:
-            $ref: '#/components/schemas/AssociateAccountingSystemTaxDto'
-      required:
-      - taxes
-    AssociateAccountingSystemTaxDto:
-      type: object
-      properties:
-        taxJurisdictionId:
-          type: string
-          format: uuid
-        accountingSystemTaxId:
-          type: string
-      required:
-      - accountingSystemTaxId
-      - taxJurisdictionId
     BatchCreateTaxJurisdictionDto:
       type: object
       description: Batch tax jurisdiction data to create
@@ -259,6 +238,27 @@ components:
       - applyToShippingCost
       - jurisdictionIsoCodes
       - taxComponentIds
+    AssociateAccountingSystemTaxDto:
+      type: object
+      properties:
+        taxJurisdictionId:
+          type: string
+          format: uuid
+        accountingSystemTaxId:
+          type: string
+      required:
+      - accountingSystemTaxId
+      - taxJurisdictionId
+    AssociateAccountingSystemTaxesDto:
+      type: object
+      description: Tax association data
+      properties:
+        taxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssociateAccountingSystemTaxDto'
+      required:
+      - taxes
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

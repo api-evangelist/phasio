@@ -111,60 +111,6 @@ paths:
           description: Invalid update data or Kanban column not found
 components:
   schemas:
-    KanbanColumnDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        sequence:
-          type: integer
-          format: int32
-        orderStatus:
-          type: string
-        automations:
-          type: array
-          items:
-            $ref: '#/components/schemas/KanbanColumnAutomationDto'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - automations
-      - createdAt
-      - id
-      - name
-      - orderStatus
-      - sequence
-      - updatedAt
-    KanbanColumnAutomationDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        kanbanColumnId:
-          type: string
-          format: uuid
-        type:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - createdAt
-      - id
-      - kanbanColumnId
-      - type
-      - updatedAt
     CreateKanbanColumnDto:
       type: object
       description: Kanban column creation details
@@ -200,6 +146,60 @@ components:
           type: array
           items:
             type: string
+    KanbanColumnAutomationDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        kanbanColumnId:
+          type: string
+          format: uuid
+        type:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - createdAt
+      - id
+      - kanbanColumnId
+      - type
+      - updatedAt
+    KanbanColumnDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        sequence:
+          type: integer
+          format: int32
+        orderStatus:
+          type: string
+        automations:
+          type: array
+          items:
+            $ref: '#/components/schemas/KanbanColumnAutomationDto'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - automations
+      - createdAt
+      - id
+      - name
+      - orderStatus
+      - sequence
+      - updatedAt
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

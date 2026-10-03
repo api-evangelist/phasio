@@ -153,6 +153,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ConstraintRequestDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        partSpecificationId:
+          type: string
+          format: uuid
+        constraintType:
+          type: string
+      required:
+      - constraintType
     FixedOrientationConstraintDto:
       allOf:
       - $ref: '#/components/schemas/ConstraintDto'
@@ -171,31 +183,6 @@ components:
       - partSpecificationId
       - rotationMatrix
       - updatedAt
-    FixedOrientationConstraintRequestDto:
-      allOf:
-      - $ref: '#/components/schemas/ConstraintRequestDto'
-      - type: object
-        properties:
-          rotationMatrix:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-      required:
-      - constraintType
-    ConstraintRequestDto:
-      type: object
-      discriminator:
-        propertyName: constraintType
-      properties:
-        partSpecificationId:
-          type: string
-          format: uuid
-        constraintType:
-          type: string
-      required:
-      - constraintType
     ConstraintDto:
       type: object
       discriminator:
@@ -221,6 +208,19 @@ components:
       - id
       - partSpecificationId
       - updatedAt
+    FixedOrientationConstraintRequestDto:
+      allOf:
+      - $ref: '#/components/schemas/ConstraintRequestDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+      required:
+      - constraintType
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

@@ -437,142 +437,6 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
-    RenameStepDto:
-      type: object
-      description: New name for the production step
-      properties:
-        name:
-          type: string
-      required:
-      - name
-    ProductionStepTransitionDto:
-      type: object
-      properties:
-        workOrderId:
-          type: string
-          format: uuid
-        productionStepId:
-          type: string
-          format: uuid
-        quantity:
-          type: integer
-      required:
-      - productionStepId
-      - quantity
-      - workOrderId
-    Paginated:
-      type: object
-      properties:
-        content:
-          type: array
-          items: {}
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
-          type: boolean
-        isFirst:
-          type: boolean
-        isLast:
-          type: boolean
-      required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
-    BatchBalanceDto:
-      type: object
-      properties:
-        operationId:
-          type: string
-          format: uuid
-        operationName:
-          type: string
-        sequence:
-          type: integer
-          format: int64
-        requisitionId:
-          type: integer
-          format: int64
-        workOrderId:
-          type: string
-          format: uuid
-        processPricesId:
-          type: string
-          format: uuid
-        materialId:
-          type: integer
-          format: int64
-        colorId:
-          type: integer
-          format: int64
-        dispatchDate:
-          type: string
-          format: date
-        requisitionDuration:
-          type: integer
-        quantity:
-          type: integer
-        stepId:
-          type: string
-          format: uuid
-        groupId:
-          type: string
-        prefix:
-          type: string
-        stepType:
-          type: string
-        orderId:
-          type: integer
-          format: int64
-        orderNumber:
-          type: integer
-          format: int64
-        threadId:
-          type: integer
-          format: int64
-        purchaseOrderNumber:
-          type: string
-        commentCount:
-          type: integer
-          format: int64
-        closedAt:
-          type: string
-          format: date-time
-        outstandingAt:
-          type: string
-          format: date-time
-        batchStatusId:
-          type: string
-          format: uuid
-        batchStatusName:
-          type: string
-      required:
-      - batchStatusId
-      - batchStatusName
-      - commentCount
-      - groupId
-      - materialId
-      - operationId
-      - operationName
-      - outstandingAt
-      - prefix
-      - processPricesId
-      - quantity
-      - requisitionId
-      - sequence
-      - stepId
-      - stepType
-      - workOrderId
     BatchTransitionDto:
       type: object
       discriminator:
@@ -665,6 +529,43 @@ components:
       - productionStatusName
       - type
       - updateDt
+    RenameStepDto:
+      type: object
+      description: New name for the production step
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    Paginated:
+      type: object
+      properties:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
     MoveBatchesDto:
       type: object
       properties:
@@ -681,6 +582,105 @@ components:
           type: string
       required:
       - batches
+    BatchBalanceDto:
+      type: object
+      properties:
+        operationId:
+          type: string
+          format: uuid
+        operationName:
+          type: string
+        sequence:
+          type: integer
+          format: int64
+        requisitionId:
+          type: integer
+          format: int64
+        workOrderId:
+          type: string
+          format: uuid
+        processPricesId:
+          type: string
+          format: uuid
+        materialId:
+          type: integer
+          format: int64
+        colorId:
+          type: integer
+          format: int64
+        dispatchDate:
+          type: string
+          format: date
+        requisitionDuration:
+          type: integer
+        quantity:
+          type: integer
+        stepId:
+          type: string
+          format: uuid
+        groupId:
+          type: string
+        prefix:
+          type: string
+        stepType:
+          type: string
+        orderId:
+          type: integer
+          format: int64
+        orderNumber:
+          type: integer
+          format: int64
+        threadId:
+          type: integer
+          format: int64
+        purchaseOrderNumber:
+          type: string
+        commentCount:
+          type: integer
+          format: int64
+        closedAt:
+          type: string
+          format: date-time
+        outstandingAt:
+          type: string
+          format: date-time
+        batchStatusId:
+          type: string
+          format: uuid
+        batchStatusName:
+          type: string
+      required:
+      - batchStatusId
+      - batchStatusName
+      - commentCount
+      - groupId
+      - materialId
+      - operationId
+      - operationName
+      - outstandingAt
+      - prefix
+      - processPricesId
+      - quantity
+      - requisitionId
+      - sequence
+      - stepId
+      - stepType
+      - workOrderId
+    ProductionStepTransitionDto:
+      type: object
+      properties:
+        workOrderId:
+          type: string
+          format: uuid
+        productionStepId:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+      required:
+      - productionStepId
+      - quantity
+      - workOrderId
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

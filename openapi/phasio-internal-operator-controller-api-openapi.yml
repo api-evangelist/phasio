@@ -150,6 +150,215 @@ paths:
           description: Unauthorized - missing or invalid authentication
 components:
   schemas:
+    InfillDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        value:
+          type: number
+        default:
+          type: boolean
+      required:
+      - default
+      - id
+      - name
+      - value
+    UpdateSubscriptionStatusDto:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+      - status
+    ProcessPricesDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        technology:
+          type: string
+        description:
+          type: string
+        materials:
+          type: array
+          items:
+            $ref: '#/components/schemas/MaterialDto'
+        infills:
+          type: array
+          items:
+            $ref: '#/components/schemas/InfillDto'
+        precisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrecisionPricesDto'
+        postProcessings:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostProcessingDto'
+        isInternal:
+          type: boolean
+        isDefault:
+          type: boolean
+        bulkPricingQuantities:
+          type: array
+          items:
+            type: integer
+      required:
+      - bulkPricingQuantities
+      - id
+      - infills
+      - isDefault
+      - isInternal
+      - materials
+      - postProcessings
+      - precisions
+      - technology
+    PostProcessingDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        purchasable:
+          type: boolean
+        isDefault:
+          type: boolean
+        colors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColorDto'
+        incompatibleMaterialIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        mutuallyExclusiveGroup:
+          type: string
+      required:
+      - colors
+      - incompatibleMaterialIds
+      - isDefault
+      - name
+      - purchasable
+    PrecisionPricesDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        price:
+          type: number
+        isActive:
+          type: boolean
+      required:
+      - id
+      - isActive
+      - name
+      - price
+    InitializeOperatorRequestDto:
+      type: object
+      description: Operator initialization details
+      properties:
+        organizationName:
+          type: string
+        currency:
+          type: string
+        country:
+          type: string
+        userRequest:
+          $ref: '#/components/schemas/CreateUserDto'
+      required:
+      - country
+      - currency
+      - organizationName
+      - userRequest
+    MaterialDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        datasheetSummary:
+          type: string
+        quoteOnly:
+          type: boolean
+        colorDtos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColorDto'
+        isDefault:
+          type: boolean
+        wallThicknessWarning:
+          type: number
+        wallThicknessLimit:
+          type: number
+      required:
+      - colorDtos
+      - id
+      - isDefault
+      - name
+      - quoteOnly
+    CreateUserDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      required:
+      - email
+      - firstName
+      - lastName
+      - password
+      - phoneNumber
+    OperatorEmailCredentialsDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        smtpHost:
+          type: string
+        smtpPort:
+          type: integer
+          format: int32
+        fromAddress:
+          type: string
+        smtpUsername:
+          type: string
+        smtpPassword:
+          type: string
+      required:
+      - fromAddress
+      - id
+      - smtpHost
+      - smtpPassword
+      - smtpPort
+      - smtpUsername
+    OperatorDomainFromAddressDto:
+      type: object
+      properties:
+        fromAddress:
+          type: string
+      required:
+      - fromAddress
     OperatorDto:
       type: object
       properties:
@@ -268,215 +477,6 @@ components:
       - code
       - id
       - name
-    OperatorEmailCredentialsDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        smtpHost:
-          type: string
-        smtpPort:
-          type: integer
-          format: int32
-        fromAddress:
-          type: string
-        smtpUsername:
-          type: string
-        smtpPassword:
-          type: string
-      required:
-      - fromAddress
-      - id
-      - smtpHost
-      - smtpPassword
-      - smtpPort
-      - smtpUsername
-    MaterialDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        datasheetSummary:
-          type: string
-        quoteOnly:
-          type: boolean
-        colorDtos:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColorDto'
-        isDefault:
-          type: boolean
-        wallThicknessWarning:
-          type: number
-        wallThicknessLimit:
-          type: number
-      required:
-      - colorDtos
-      - id
-      - isDefault
-      - name
-      - quoteOnly
-    InitializeOperatorRequestDto:
-      type: object
-      description: Operator initialization details
-      properties:
-        organizationName:
-          type: string
-        currency:
-          type: string
-        country:
-          type: string
-        userRequest:
-          $ref: '#/components/schemas/CreateUserDto'
-      required:
-      - country
-      - currency
-      - organizationName
-      - userRequest
-    InfillDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        value:
-          type: number
-        default:
-          type: boolean
-      required:
-      - default
-      - id
-      - name
-      - value
-    ProcessPricesDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        technology:
-          type: string
-        description:
-          type: string
-        materials:
-          type: array
-          items:
-            $ref: '#/components/schemas/MaterialDto'
-        infills:
-          type: array
-          items:
-            $ref: '#/components/schemas/InfillDto'
-        precisions:
-          type: array
-          items:
-            $ref: '#/components/schemas/PrecisionPricesDto'
-        postProcessings:
-          type: array
-          items:
-            $ref: '#/components/schemas/PostProcessingDto'
-        isInternal:
-          type: boolean
-        isDefault:
-          type: boolean
-        bulkPricingQuantities:
-          type: array
-          items:
-            type: integer
-      required:
-      - bulkPricingQuantities
-      - id
-      - infills
-      - isDefault
-      - isInternal
-      - materials
-      - postProcessings
-      - precisions
-      - technology
-    PostProcessingDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        purchasable:
-          type: boolean
-        isDefault:
-          type: boolean
-        colors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColorDto'
-        incompatibleMaterialIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-        mutuallyExclusiveGroup:
-          type: string
-      required:
-      - colors
-      - incompatibleMaterialIds
-      - isDefault
-      - name
-      - purchasable
-    PrecisionPricesDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        price:
-          type: number
-        isActive:
-          type: boolean
-      required:
-      - id
-      - isActive
-      - name
-      - price
-    CreateUserDto:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        phoneNumber:
-          type: string
-        email:
-          type: string
-        password:
-          type: string
-      required:
-      - email
-      - firstName
-      - lastName
-      - password
-      - phoneNumber
-    UpdateSubscriptionStatusDto:
-      type: object
-      properties:
-        status:
-          type: string
-      required:
-      - status
-    OperatorDomainFromAddressDto:
-      type: object
-      properties:
-        fromAddress:
-          type: string
-      required:
-      - fromAddress
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

@@ -127,6 +127,23 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    PrecisionPricesDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        price:
+          type: number
+        isActive:
+          type: boolean
+      required:
+      - id
+      - isActive
+      - name
+      - price
     UpdatePrecisionPricesDto:
       type: object
       description: Precision prices data to update
@@ -171,23 +188,6 @@ components:
       - price
       - pricingGroupId
       - technology
-    PrecisionPricesDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        price:
-          type: number
-        isActive:
-          type: boolean
-      required:
-      - id
-      - isActive
-      - name
-      - price
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

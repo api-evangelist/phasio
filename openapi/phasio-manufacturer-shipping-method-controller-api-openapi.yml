@@ -86,27 +86,19 @@ paths:
           description: Shipping method not found
 components:
   schemas:
-    CarrierAccountShippingMethodDto:
-      allOf:
-      - $ref: '#/components/schemas/ShippingMethodDto'
-      - type: object
-        properties:
-          carrierAccountProvider:
-            type: string
-          carrierAccountCredentials:
-            type: object
-            additionalProperties:
-              type: string
-          addressId:
-            type: integer
-            format: int64
-          addressDto:
-            oneOf:
-            - $ref: '#/components/schemas/CustomerOrganisationAddressDto'
-            - $ref: '#/components/schemas/OperatorAddressDto'
-      required:
-      - shippingMode
-    OperatorAddressDto:
+    FixedPriceShippingWeightTierDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        lowerWeightLimit:
+          type: number
+        upperWeightLimit:
+          type: number
+        price:
+          type: number
+    CustomerOrganisationAddressDto:
       allOf:
       - $ref: '#/components/schemas/AddressDto'
       required:
@@ -127,6 +119,48 @@ components:
       - street1
       - street2
       - zip
+    ShippingMethodDto:
+      type: object
+      properties:
+        shippingMethodId:
+          type: integer
+          format: int64
+        shippingMode:
+          type: string
+      required:
+      - shippingMethodId
+      - shippingMode
+    SelfCollectionShippingMethodDto:
+      allOf:
+      - $ref: '#/components/schemas/ShippingMethodDto'
+      - type: object
+        properties:
+          name:
+            type: string
+          enableContactInfoCollection:
+            type: boolean
+      required:
+      - shippingMode
+    CarrierAccountShippingMethodDto:
+      allOf:
+      - $ref: '#/components/schemas/ShippingMethodDto'
+      - type: object
+        properties:
+          carrierAccountProvider:
+            type: string
+          carrierAccountCredentials:
+            type: object
+            additionalProperties:
+              type: string
+          addressId:
+            type: integer
+            format: int64
+          addressDto:
+            oneOf:
+            - $ref: '#/components/schemas/CustomerOrganisationAddressDto'
+            - $ref: '#/components/schemas/OperatorAddressDto'
+      required:
+      - shippingMode
     AddressDto:
       type: object
       discriminator:
@@ -191,29 +225,7 @@ components:
       - street1
       - street2
       - zip
-    ShippingMethodDto:
-      type: object
-      properties:
-        shippingMethodId:
-          type: integer
-          format: int64
-        shippingMode:
-          type: string
-      required:
-      - shippingMethodId
-      - shippingMode
-    SelfCollectionShippingMethodDto:
-      allOf:
-      - $ref: '#/components/schemas/ShippingMethodDto'
-      - type: object
-        properties:
-          name:
-            type: string
-          enableContactInfoCollection:
-            type: boolean
-      required:
-      - shippingMode
-    CustomerOrganisationAddressDto:
+    OperatorAddressDto:
       allOf:
       - $ref: '#/components/schemas/AddressDto'
       required:
@@ -438,18 +450,6 @@ components:
               - EXEMPT
       required:
       - shippingMode
-    FixedPriceShippingWeightTierDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        lowerWeightLimit:
-          type: number
-        upperWeightLimit:
-          type: number
-        price:
-          type: number
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

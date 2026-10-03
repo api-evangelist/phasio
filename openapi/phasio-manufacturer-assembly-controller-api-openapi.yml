@@ -270,6 +270,36 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
+    AssemblyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        assemblyPrice:
+          type: number
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssemblyItemDto'
+        customerReferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferenceDto'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - assemblyPrice
+      - customerReferences
+      - id
+      - items
+      - name
     CustomerArticleReferenceDto:
       type: object
       properties:
@@ -322,62 +352,6 @@ components:
       - pageSize
       - totalElements
       - totalPages
-    CreateAssemblyItemDto:
-      type: object
-      properties:
-        partSpecificationId:
-          type: string
-          format: uuid
-        positionX:
-          type: number
-        positionY:
-          type: number
-        positionZ:
-          type: number
-        rotationX:
-          type: number
-        rotationY:
-          type: number
-        rotationZ:
-          type: number
-      required:
-      - partSpecificationId
-      - positionX
-      - positionY
-      - positionZ
-      - rotationX
-      - rotationY
-      - rotationZ
-    AssemblyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        assemblyPrice:
-          type: number
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/AssemblyItemDto'
-        customerReferences:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerArticleReferenceDto'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - assemblyPrice
-      - customerReferences
-      - id
-      - items
-      - name
     UpdateAssemblyDto:
       type: object
       description: Assembly update request
@@ -456,6 +430,32 @@ components:
           type: number
       required:
       - id
+      - partSpecificationId
+      - positionX
+      - positionY
+      - positionZ
+      - rotationX
+      - rotationY
+      - rotationZ
+    CreateAssemblyItemDto:
+      type: object
+      properties:
+        partSpecificationId:
+          type: string
+          format: uuid
+        positionX:
+          type: number
+        positionY:
+          type: number
+        positionZ:
+          type: number
+        rotationX:
+          type: number
+        rotationY:
+          type: number
+        rotationZ:
+          type: number
+      required:
       - partSpecificationId
       - positionX
       - positionY

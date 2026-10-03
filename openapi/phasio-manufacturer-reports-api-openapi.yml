@@ -160,6 +160,79 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CustomerReportEstimateDto:
+      type: object
+      properties:
+        estimatedCustomerRows:
+          type: integer
+          format: int64
+        estimatedWorkbookRows:
+          type: integer
+          format: int64
+      required:
+      - estimatedCustomerRows
+      - estimatedWorkbookRows
+    StreamingResponseBody: {}
+    CustomerReportColumnsDto:
+      type: object
+      properties:
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderReportColumnDto'
+      required:
+      - columns
+    OrderReportEstimateDto:
+      type: object
+      properties:
+        estimatedOrderRows:
+          type: integer
+          format: int64
+        estimatedLineItemRows:
+          type: integer
+          format: int64
+        estimatedWorkbookRows:
+          type: integer
+          format: int64
+      required:
+      - estimatedLineItemRows
+      - estimatedOrderRows
+      - estimatedWorkbookRows
+    OrderReportColumnsDto:
+      type: object
+      properties:
+        orderColumns:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderReportColumnDto'
+        lineItemColumns:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderReportColumnDto'
+      required:
+      - lineItemColumns
+      - orderColumns
+    CustomerReportFilterDto:
+      type: object
+      properties:
+        filter:
+          type: string
+        searchQuery:
+          type: string
+        columns:
+          type: array
+          items:
+            type: string
+    CustomerReportDownloadRequestDto:
+      type: object
+      properties:
+        filters:
+          $ref: '#/components/schemas/CustomerReportFilterDto'
+        format:
+          type: string
+      required:
+      - filters
+      - format
     OrderReportColumnDto:
       type: object
       properties:
@@ -173,7 +246,16 @@ components:
       - description
       - key
       - label
-    StreamingResponseBody: {}
+    OrderReportDownloadRequestDto:
+      type: object
+      properties:
+        filters:
+          $ref: '#/components/schemas/OrderReportFilterDto'
+        format:
+          type: string
+      required:
+      - filters
+      - format
     OrderReportFilterDto:
       type: object
       properties:
@@ -218,88 +300,6 @@ components:
             type: string
       required:
       - includeArchived
-    OrderReportColumnsDto:
-      type: object
-      properties:
-        orderColumns:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderReportColumnDto'
-        lineItemColumns:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderReportColumnDto'
-      required:
-      - lineItemColumns
-      - orderColumns
-    OrderReportDownloadRequestDto:
-      type: object
-      properties:
-        filters:
-          $ref: '#/components/schemas/OrderReportFilterDto'
-        format:
-          type: string
-      required:
-      - filters
-      - format
-    OrderReportEstimateDto:
-      type: object
-      properties:
-        estimatedOrderRows:
-          type: integer
-          format: int64
-        estimatedLineItemRows:
-          type: integer
-          format: int64
-        estimatedWorkbookRows:
-          type: integer
-          format: int64
-      required:
-      - estimatedLineItemRows
-      - estimatedOrderRows
-      - estimatedWorkbookRows
-    CustomerReportEstimateDto:
-      type: object
-      properties:
-        estimatedCustomerRows:
-          type: integer
-          format: int64
-        estimatedWorkbookRows:
-          type: integer
-          format: int64
-      required:
-      - estimatedCustomerRows
-      - estimatedWorkbookRows
-    CustomerReportColumnsDto:
-      type: object
-      properties:
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderReportColumnDto'
-      required:
-      - columns
-    CustomerReportFilterDto:
-      type: object
-      properties:
-        filter:
-          type: string
-        searchQuery:
-          type: string
-        columns:
-          type: array
-          items:
-            type: string
-    CustomerReportDownloadRequestDto:
-      type: object
-      properties:
-        filters:
-          $ref: '#/components/schemas/CustomerReportFilterDto'
-        format:
-          type: string
-      required:
-      - filters
-      - format
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

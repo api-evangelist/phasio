@@ -62,6 +62,75 @@ paths:
           description: Shipment not found
 components:
   schemas:
+    PartShippingDetailDto:
+      type: object
+      properties:
+        partRevisionId:
+          type: string
+          format: uuid
+        units:
+          type: string
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        quantity:
+          type: integer
+        processPricesId:
+          type: string
+          format: uuid
+        materialId:
+          type: integer
+          format: int64
+      required:
+      - materialId
+      - partRevisionId
+      - processPricesId
+      - quantity
+      - units
+    ShippingRateDto:
+      type: object
+      properties:
+        id:
+          type: string
+        rate:
+          type: number
+        currency:
+          type: string
+        serviceType:
+          type: string
+        serviceName:
+          type: string
+        shippingMethodId:
+          type: integer
+          format: int64
+      required:
+      - currency
+      - id
+      - rate
+      - serviceName
+      - serviceType
+      - shippingMethodId
+    ShippingRatesDto:
+      type: object
+      properties:
+        shippingMethodId:
+          type: integer
+          format: int64
+        tooLargeForBoxes:
+          type: boolean
+        errorWithCarrier:
+          type: boolean
+        rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShippingRateDto'
+      required:
+      - errorWithCarrier
+      - rates
+      - tooLargeForBoxes
     CalculateRatesDtov2:
       type: object
       description: Rate calculation parameters
@@ -103,52 +172,6 @@ components:
       - organisationId
       - parts
       - toAddressId
-    PartShippingDetailDto:
-      type: object
-      properties:
-        partRevisionId:
-          type: string
-          format: uuid
-        units:
-          type: string
-          enum:
-          - CENTIMETERS
-          - MILLIMETERS
-          - METRES
-          - INCHES
-          - FEET
-        quantity:
-          type: integer
-        processPricesId:
-          type: string
-          format: uuid
-        materialId:
-          type: integer
-          format: int64
-      required:
-      - materialId
-      - partRevisionId
-      - processPricesId
-      - quantity
-      - units
-    ShippingRatesDto:
-      type: object
-      properties:
-        shippingMethodId:
-          type: integer
-          format: int64
-        tooLargeForBoxes:
-          type: boolean
-        errorWithCarrier:
-          type: boolean
-        rates:
-          type: array
-          items:
-            $ref: '#/components/schemas/ShippingRateDto'
-      required:
-      - errorWithCarrier
-      - rates
-      - tooLargeForBoxes
     ShipmentDto:
       type: object
       discriminator:
@@ -178,29 +201,6 @@ components:
           format: date
       required:
       - shippingMode
-    ShippingRateDto:
-      type: object
-      properties:
-        id:
-          type: string
-        rate:
-          type: number
-        currency:
-          type: string
-        serviceType:
-          type: string
-        serviceName:
-          type: string
-        shippingMethodId:
-          type: integer
-          format: int64
-      required:
-      - currency
-      - id
-      - rate
-      - serviceName
-      - serviceType
-      - shippingMethodId
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http
