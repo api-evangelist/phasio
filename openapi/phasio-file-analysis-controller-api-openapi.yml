@@ -101,21 +101,6 @@ paths:
           description: Pre-analysis file not found
 components:
   schemas:
-    ThumbnailPayload:
-      type: object
-      properties:
-        direction:
-          type: string
-        data:
-          type: string
-          format: byte
-        similarityVector:
-          type: array
-          items:
-            type: number
-      required:
-      - data
-      - direction
     AnalysisResults:
       type: object
       properties:
@@ -208,6 +193,21 @@ components:
       - volume
       - watertight
       - width
+    ThumbnailPayload:
+      type: object
+      properties:
+        direction:
+          type: string
+        data:
+          type: string
+          format: byte
+        similarityVector:
+          type: array
+          items:
+            type: number
+      required:
+      - data
+      - direction
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

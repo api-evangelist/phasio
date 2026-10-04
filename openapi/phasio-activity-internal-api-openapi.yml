@@ -95,6 +95,17 @@ components:
       - locationY
       - locationZ
       - requisitionId
+    CreateActivityDto:
+      type: object
+      properties:
+        activityType:
+          type: string
+        threadId:
+          type: integer
+          format: int64
+      required:
+      - activityType
+      - threadId
     CreateConversationDto:
       allOf:
       - $ref: '#/components/schemas/CreateActivityDto'
@@ -115,17 +126,6 @@ components:
       - activityType
       - conversationType
       - message
-      - threadId
-    CreateActivityDto:
-      type: object
-      properties:
-        activityType:
-          type: string
-        threadId:
-          type: integer
-          format: int64
-      required:
-      - activityType
       - threadId
     RequisitionTaggedDto:
       type: object

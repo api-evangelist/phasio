@@ -98,7 +98,7 @@ components:
           type: number
         price:
           type: number
-    CustomerOrganisationAddressDto:
+    OperatorAddressDto:
       allOf:
       - $ref: '#/components/schemas/AddressDto'
       required:
@@ -130,17 +130,6 @@ components:
       required:
       - shippingMethodId
       - shippingMode
-    SelfCollectionShippingMethodDto:
-      allOf:
-      - $ref: '#/components/schemas/ShippingMethodDto'
-      - type: object
-        properties:
-          name:
-            type: string
-          enableContactInfoCollection:
-            type: boolean
-      required:
-      - shippingMode
     CarrierAccountShippingMethodDto:
       allOf:
       - $ref: '#/components/schemas/ShippingMethodDto'
@@ -161,91 +150,6 @@ components:
             - $ref: '#/components/schemas/OperatorAddressDto'
       required:
       - shippingMode
-    AddressDto:
-      type: object
-      discriminator:
-        propertyName: addressType
-      properties:
-        addressId:
-          type: integer
-          format: int64
-        isBillingAddress:
-          type: boolean
-        isShippingAddress:
-          type: boolean
-        street1:
-          type: string
-        street2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        countryAlpha2Code:
-          type: string
-        countryAlpha3Code:
-          type: string
-        jurisdictionIsoCode:
-          type: string
-        zip:
-          type: string
-        name:
-          type: string
-        company:
-          type: string
-        phone:
-          type: string
-        email:
-          type: string
-        residential:
-          type: boolean
-        addressType:
-          type: string
-        platformEncryptedAesKey:
-          type: string
-        taxId:
-          type: string
-      required:
-      - addressId
-      - addressType
-      - city
-      - company
-      - country
-      - countryAlpha2Code
-      - countryAlpha3Code
-      - email
-      - isBillingAddress
-      - isShippingAddress
-      - name
-      - phone
-      - platformEncryptedAesKey
-      - residential
-      - street1
-      - street2
-      - zip
-    OperatorAddressDto:
-      allOf:
-      - $ref: '#/components/schemas/AddressDto'
-      required:
-      - addressId
-      - addressType
-      - city
-      - company
-      - country
-      - countryAlpha2Code
-      - countryAlpha3Code
-      - email
-      - isBillingAddress
-      - isShippingAddress
-      - name
-      - phone
-      - platformEncryptedAesKey
-      - residential
-      - street1
-      - street2
-      - zip
     FixedPriceShippingMethodDto:
       allOf:
       - $ref: '#/components/schemas/ShippingMethodDto'
@@ -448,6 +352,102 @@ components:
               - ZAMBIA
               - DEFAULT
               - EXEMPT
+      required:
+      - shippingMode
+    AddressDto:
+      type: object
+      discriminator:
+        propertyName: addressType
+      properties:
+        addressId:
+          type: integer
+          format: int64
+        isBillingAddress:
+          type: boolean
+        isShippingAddress:
+          type: boolean
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        countryAlpha2Code:
+          type: string
+        countryAlpha3Code:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        addressType:
+          type: string
+        platformEncryptedAesKey:
+          type: string
+        taxId:
+          type: string
+      required:
+      - addressId
+      - addressType
+      - city
+      - company
+      - country
+      - countryAlpha2Code
+      - countryAlpha3Code
+      - email
+      - isBillingAddress
+      - isShippingAddress
+      - name
+      - phone
+      - platformEncryptedAesKey
+      - residential
+      - street1
+      - street2
+      - zip
+    CustomerOrganisationAddressDto:
+      allOf:
+      - $ref: '#/components/schemas/AddressDto'
+      required:
+      - addressId
+      - addressType
+      - city
+      - company
+      - country
+      - countryAlpha2Code
+      - countryAlpha3Code
+      - email
+      - isBillingAddress
+      - isShippingAddress
+      - name
+      - phone
+      - platformEncryptedAesKey
+      - residential
+      - street1
+      - street2
+      - zip
+    SelfCollectionShippingMethodDto:
+      allOf:
+      - $ref: '#/components/schemas/ShippingMethodDto'
+      - type: object
+        properties:
+          name:
+            type: string
+          enableContactInfoCollection:
+            type: boolean
       required:
       - shippingMode
   securitySchemes:

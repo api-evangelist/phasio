@@ -90,47 +90,35 @@ components:
       - processPricesId
       - quantity
       - units
-    ShippingRateDto:
+    ShipmentDto:
       type: object
+      discriminator:
+        propertyName: shippingMode
       properties:
         id:
+          type: integer
+          format: int64
+        shippingMode:
           type: string
-        rate:
-          type: number
-        currency:
-          type: string
-        serviceType:
-          type: string
-        serviceName:
-          type: string
+          enum:
+          - SELF_COLLECTION
+          - FIXED_PRICE
+          - CARRIER_ACCOUNT
         shippingMethodId:
           type: integer
           format: int64
-      required:
-      - currency
-      - id
-      - rate
-      - serviceName
-      - serviceType
-      - shippingMethodId
-    ShippingRatesDto:
-      type: object
-      properties:
-        shippingMethodId:
+        rateId:
+          type: string
+        toAddressId:
           type: integer
           format: int64
-        tooLargeForBoxes:
-          type: boolean
-        errorWithCarrier:
-          type: boolean
-        rates:
-          type: array
-          items:
-            $ref: '#/components/schemas/ShippingRateDto'
+        status:
+          type: string
+        dispatchDate:
+          type: string
+          format: date
       required:
-      - errorWithCarrier
-      - rates
-      - tooLargeForBoxes
+      - shippingMode
     CalculateRatesDtov2:
       type: object
       description: Rate calculation parameters
@@ -172,35 +160,47 @@ components:
       - organisationId
       - parts
       - toAddressId
-    ShipmentDto:
+    ShippingRateDto:
       type: object
-      discriminator:
-        propertyName: shippingMode
       properties:
         id:
-          type: integer
-          format: int64
-        shippingMode:
           type: string
-          enum:
-          - SELF_COLLECTION
-          - FIXED_PRICE
-          - CARRIER_ACCOUNT
+        rate:
+          type: number
+        currency:
+          type: string
+        serviceType:
+          type: string
+        serviceName:
+          type: string
         shippingMethodId:
           type: integer
           format: int64
-        rateId:
-          type: string
-        toAddressId:
+      required:
+      - currency
+      - id
+      - rate
+      - serviceName
+      - serviceType
+      - shippingMethodId
+    ShippingRatesDto:
+      type: object
+      properties:
+        shippingMethodId:
           type: integer
           format: int64
-        status:
-          type: string
-        dispatchDate:
-          type: string
-          format: date
+        tooLargeForBoxes:
+          type: boolean
+        errorWithCarrier:
+          type: boolean
+        rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShippingRateDto'
       required:
-      - shippingMode
+      - errorWithCarrier
+      - rates
+      - tooLargeForBoxes
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

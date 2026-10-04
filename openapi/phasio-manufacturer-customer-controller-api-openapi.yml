@@ -378,15 +378,38 @@ paths:
                 type: string
 components:
   schemas:
-    CustomerRequestDto:
+    CustomerEmailLookupDto:
       type: object
-      description: Customer request data containing the principal
       properties:
-        customerPrincipal:
+        isDuplicate:
+          type: boolean
+        customer:
+          $ref: '#/components/schemas/CustomerDto'
+        message:
           type: string
       required:
-      - customerPrincipal
-    CustomerEmailLookupDto:
+      - isDuplicate
+    CustomerUpdateDto:
+      type: object
+      properties:
+        customerId:
+          type: integer
+          format: int64
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        notificationPreference:
+          type: string
+        language:
+          type: string
+      required:
+      - customerId
+    CustomerPhoneLookupDto:
       type: object
       properties:
         isDuplicate:
@@ -441,26 +464,44 @@ components:
           type: boolean
       required:
       - notificationPreference
-    CustomerUpdateDto:
+    CustomerRequestDto:
       type: object
+      description: Customer request data containing the principal
       properties:
-        customerId:
-          type: integer
-          format: int64
-        email:
-          type: string
-        phoneNumber:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        notificationPreference:
-          type: string
-        language:
+        customerPrincipal:
           type: string
       required:
-      - customerId
+      - customerPrincipal
+    PaginatedCustomerDto:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerDto'
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
     CustomerDto:
       type: object
       properties:
@@ -492,47 +533,6 @@ components:
       - customerType
       - language
       - notificationPreference
-    PaginatedCustomerDto:
-      type: object
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerDto'
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
-          type: boolean
-        isFirst:
-          type: boolean
-        isLast:
-          type: boolean
-      required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
-    CustomerPhoneLookupDto:
-      type: object
-      properties:
-        isDuplicate:
-          type: boolean
-        customer:
-          $ref: '#/components/schemas/CustomerDto'
-        message:
-          type: string
-      required:
-      - isDuplicate
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

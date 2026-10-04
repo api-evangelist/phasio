@@ -194,6 +194,26 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CreateRoutingTemplateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoutingTemplateStepInput'
+        replacesRoutingTemplateId:
+          type: string
+          format: uuid
+      required:
+      - steps
+    DeprecateRoutingTemplateRequest:
+      type: object
+      properties:
+        replacedByRoutingTemplateId:
+          type: string
+          format: uuid
     UpdateRoutingTemplateRequest:
       type: object
       properties:
@@ -217,12 +237,24 @@ components:
       required:
       - operationId
       - sequence
-    DeprecateRoutingTemplateRequest:
+    RoutingTemplateStepDto:
       type: object
       properties:
-        replacedByRoutingTemplateId:
+        id:
           type: string
           format: uuid
+        operationId:
+          type: string
+          format: uuid
+        operationName:
+          type: string
+        sequence:
+          type: integer
+          format: int32
+      required:
+      - id
+      - operationId
+      - sequence
     RoutingTemplateDto:
       type: object
       properties:
@@ -270,38 +302,6 @@ components:
       - steps
       - updateDt
       - workOrderReferences
-    CreateRoutingTemplateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        steps:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoutingTemplateStepInput'
-        replacesRoutingTemplateId:
-          type: string
-          format: uuid
-      required:
-      - steps
-    RoutingTemplateStepDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        operationId:
-          type: string
-          format: uuid
-        operationName:
-          type: string
-        sequence:
-          type: integer
-          format: int32
-      required:
-      - id
-      - operationId
-      - sequence
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

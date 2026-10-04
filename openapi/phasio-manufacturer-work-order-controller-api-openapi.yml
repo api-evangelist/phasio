@@ -77,6 +77,15 @@ components:
             $ref: '#/components/schemas/WorkOrderRoutingStepInput'
       required:
       - steps
+    AddPartsRequest:
+      type: object
+      properties:
+        quantity:
+          type: integer
+        name:
+          type: string
+      required:
+      - quantity
     WorkOrderDto:
       type: object
       properties:
@@ -121,15 +130,6 @@ components:
       - operationId
       - sequence
       - statusId
-    AddPartsRequest:
-      type: object
-      properties:
-        quantity:
-          type: integer
-        name:
-          type: string
-      required:
-      - quantity
     WorkOrderRoutingStepInput:
       type: object
       properties:

@@ -153,13 +153,6 @@ components:
       - pageSize
       - totalElements
       - totalPages
-    UpdateThreadDto:
-      type: object
-      properties:
-        type:
-          type: string
-      required:
-      - type
     ProjectDto:
       type: object
       properties:
@@ -194,6 +187,13 @@ components:
       - name
       - status
       - subscribedCustomerIds
+    UpdateThreadDto:
+      type: object
+      properties:
+        type:
+          type: string
+      required:
+      - type
     UpdateProjectDto:
       allOf:
       - $ref: '#/components/schemas/UpdateThreadDto'

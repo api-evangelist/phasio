@@ -137,25 +137,6 @@ components:
       - id
       - name
       - value
-    UpdateInfillDto:
-      type: object
-      description: Infill update details
-      properties:
-        infillId:
-          type: integer
-          format: int64
-        name:
-          type: string
-        value:
-          type: number
-        effectiveFrom:
-          type: string
-          format: date
-      required:
-      - effectiveFrom
-      - infillId
-      - name
-      - value
     CreateInfillDto:
       type: object
       description: Infill creation details
@@ -180,6 +161,25 @@ components:
       - name
       - pricingGroupId
       - technology
+      - value
+    UpdateInfillDto:
+      type: object
+      description: Infill update details
+      properties:
+        infillId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        value:
+          type: number
+        effectiveFrom:
+          type: string
+          format: date
+      required:
+      - effectiveFrom
+      - infillId
+      - name
       - value
   securitySchemes:
     Phasio_API_Bearer_Token:

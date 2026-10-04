@@ -137,6 +137,18 @@ components:
       - quantity
       - type
       - unitPrice
+    CreateExpenseDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
     ExpenseDto:
       type: object
       properties:
@@ -151,18 +163,6 @@ components:
           type: string
       required:
       - expenseId
-      - name
-      - type
-    CreateExpenseDto:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-      required:
       - name
       - type
     CreateHourlyExpenseDto:

@@ -152,6 +152,16 @@ paths:
       deprecated: true
 components:
   schemas:
+    AssociateAccountingSystemTaxesDto:
+      type: object
+      description: Tax association data
+      properties:
+        taxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssociateAccountingSystemTaxDto'
+      required:
+      - taxes
     TaxJurisdictionDto:
       type: object
       properties:
@@ -190,28 +200,6 @@ components:
       required:
       - allowExemption
       - applyToShippingCost
-    TaxComponentDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        shortName:
-          type: string
-        longName:
-          type: string
-        percentage:
-          type: number
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - longName
-      - percentage
-      - shortName
     BatchCreateTaxJurisdictionDto:
       type: object
       description: Batch tax jurisdiction data to create
@@ -249,16 +237,28 @@ components:
       required:
       - accountingSystemTaxId
       - taxJurisdictionId
-    AssociateAccountingSystemTaxesDto:
+    TaxComponentDto:
       type: object
-      description: Tax association data
       properties:
-        taxes:
-          type: array
-          items:
-            $ref: '#/components/schemas/AssociateAccountingSystemTaxDto'
+        id:
+          type: string
+          format: uuid
+        shortName:
+          type: string
+        longName:
+          type: string
+        percentage:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
       required:
-      - taxes
+      - longName
+      - percentage
+      - shortName
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

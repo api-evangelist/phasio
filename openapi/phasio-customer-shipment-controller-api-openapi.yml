@@ -40,29 +40,6 @@ paths:
           description: Unauthorized - missing or invalid authentication
 components:
   schemas:
-    ShippingRateDto:
-      type: object
-      properties:
-        id:
-          type: string
-        rate:
-          type: number
-        currency:
-          type: string
-        serviceType:
-          type: string
-        serviceName:
-          type: string
-        shippingMethodId:
-          type: integer
-          format: int64
-      required:
-      - currency
-      - id
-      - rate
-      - serviceName
-      - serviceType
-      - shippingMethodId
     ShippingRatesDto:
       type: object
       properties:
@@ -122,6 +99,29 @@ components:
       - organisationId
       - parts
       - toAddressId
+    ShippingRateDto:
+      type: object
+      properties:
+        id:
+          type: string
+        rate:
+          type: number
+        currency:
+          type: string
+        serviceType:
+          type: string
+        serviceName:
+          type: string
+        shippingMethodId:
+          type: integer
+          format: int64
+      required:
+      - currency
+      - id
+      - rate
+      - serviceName
+      - serviceType
+      - shippingMethodId
     PartShippingDetailDto:
       type: object
       properties:

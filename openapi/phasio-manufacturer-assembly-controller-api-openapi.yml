@@ -270,36 +270,6 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
-    AssemblyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        assemblyPrice:
-          type: number
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/AssemblyItemDto'
-        customerReferences:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerArticleReferenceDto'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - assemblyPrice
-      - customerReferences
-      - id
-      - items
-      - name
     CustomerArticleReferenceDto:
       type: object
       properties:
@@ -352,24 +322,32 @@ components:
       - pageSize
       - totalElements
       - totalPages
-    UpdateAssemblyDto:
+    CreateAssemblyItemDto:
       type: object
-      description: Assembly update request
       properties:
-        name:
+        partSpecificationId:
           type: string
-          minLength: 1
-        assemblyPrice:
+          format: uuid
+        positionX:
           type: number
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateAssemblyItemDto'
-          minItems: 1
+        positionY:
+          type: number
+        positionZ:
+          type: number
+        rotationX:
+          type: number
+        rotationY:
+          type: number
+        rotationZ:
+          type: number
       required:
-      - assemblyPrice
-      - items
-      - name
+      - partSpecificationId
+      - positionX
+      - positionY
+      - positionZ
+      - rotationX
+      - rotationY
+      - rotationZ
     CreateAssemblyDto:
       type: object
       description: Assembly creation request
@@ -388,20 +366,24 @@ components:
       - assemblyPrice
       - items
       - name
-    CustomerArticleReferencePricingTierDto:
+    UpdateAssemblyDto:
       type: object
+      description: Assembly update request
       properties:
-        id:
+        name:
           type: string
-          format: uuid
-        quantity:
-          type: integer
-          format: int32
-        price:
+          minLength: 1
+        assemblyPrice:
           type: number
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateAssemblyItemDto'
+          minItems: 1
       required:
-      - price
-      - quantity
+      - assemblyPrice
+      - items
+      - name
     AssemblyItemDto:
       type: object
       properties:
@@ -437,32 +419,50 @@ components:
       - rotationX
       - rotationY
       - rotationZ
-    CreateAssemblyItemDto:
+    CustomerArticleReferencePricingTierDto:
       type: object
       properties:
-        partSpecificationId:
+        id:
           type: string
           format: uuid
-        positionX:
-          type: number
-        positionY:
-          type: number
-        positionZ:
-          type: number
-        rotationX:
-          type: number
-        rotationY:
-          type: number
-        rotationZ:
+        quantity:
+          type: integer
+          format: int32
+        price:
           type: number
       required:
-      - partSpecificationId
-      - positionX
-      - positionY
-      - positionZ
-      - rotationX
-      - rotationY
-      - rotationZ
+      - price
+      - quantity
+    AssemblyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        assemblyPrice:
+          type: number
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssemblyItemDto'
+        customerReferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferenceDto'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - assemblyPrice
+      - customerReferences
+      - id
+      - items
+      - name
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

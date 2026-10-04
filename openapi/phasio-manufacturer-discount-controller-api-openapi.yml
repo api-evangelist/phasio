@@ -149,18 +149,12 @@ paths:
           description: Discount not found
 components:
   schemas:
-    DiscountDto:
+    UpdateDiscountTimeRangeDto:
       type: object
       properties:
         discountId:
           type: integer
           format: int64
-        discountType:
-          type: string
-        code:
-          type: string
-        percentage:
-          type: number
         startTime:
           type: string
           format: date-time
@@ -169,9 +163,7 @@ components:
           format: date-time
       required:
       - discountId
-      - discountType
       - endTime
-      - percentage
       - startTime
     ValidateDiscountDto:
       type: object
@@ -184,6 +176,16 @@ components:
       required:
       - customerId
       - discountCode
+    CreateDiscountDto:
+      type: object
+      properties:
+        discountType:
+          type: string
+        percentage:
+          type: number
+      required:
+      - discountType
+      - percentage
     CreateGenericDiscountDto:
       allOf:
       - $ref: '#/components/schemas/CreateDiscountDto'
@@ -229,32 +231,6 @@ components:
       - endTime
       - percentage
       - startTime
-    CreateDiscountDto:
-      type: object
-      properties:
-        discountType:
-          type: string
-        percentage:
-          type: number
-      required:
-      - discountType
-      - percentage
-    UpdateDiscountTimeRangeDto:
-      type: object
-      properties:
-        discountId:
-          type: integer
-          format: int64
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-      required:
-      - discountId
-      - endTime
-      - startTime
     CreateInstantDiscountDto:
       allOf:
       - $ref: '#/components/schemas/CreateDiscountDto'
@@ -266,6 +242,30 @@ components:
       - discountType
       - note
       - percentage
+    DiscountDto:
+      type: object
+      properties:
+        discountId:
+          type: integer
+          format: int64
+        discountType:
+          type: string
+        code:
+          type: string
+        percentage:
+          type: number
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+      required:
+      - discountId
+      - discountType
+      - endTime
+      - percentage
+      - startTime
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

@@ -437,6 +437,50 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
+    Paginated:
+      type: object
+      properties:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
+    ProductionStepTransitionDto:
+      type: object
+      properties:
+        workOrderId:
+          type: string
+          format: uuid
+        productionStepId:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+      required:
+      - productionStepId
+      - quantity
+      - workOrderId
     BatchTransitionDto:
       type: object
       discriminator:
@@ -480,6 +524,14 @@ components:
           type: string
       required:
       - type
+    RenameStepDto:
+      type: object
+      description: New name for the production step
+      properties:
+        name:
+          type: string
+      required:
+      - name
     ProductionStepDto:
       type: object
       properties:
@@ -529,43 +581,6 @@ components:
       - productionStatusName
       - type
       - updateDt
-    RenameStepDto:
-      type: object
-      description: New name for the production step
-      properties:
-        name:
-          type: string
-      required:
-      - name
-    Paginated:
-      type: object
-      properties:
-        content:
-          type: array
-          items: {}
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
-          type: boolean
-        isFirst:
-          type: boolean
-        isLast:
-          type: boolean
-      required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
     MoveBatchesDto:
       type: object
       properties:
@@ -665,21 +680,6 @@ components:
       - sequence
       - stepId
       - stepType
-      - workOrderId
-    ProductionStepTransitionDto:
-      type: object
-      properties:
-        workOrderId:
-          type: string
-          format: uuid
-        productionStepId:
-          type: string
-          format: uuid
-        quantity:
-          type: integer
-      required:
-      - productionStepId
-      - quantity
       - workOrderId
   securitySchemes:
     Phasio_API_Bearer_Token:

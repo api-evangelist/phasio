@@ -69,6 +69,14 @@ paths:
           description: Customer not found
 components:
   schemas:
+    CustomerRequestDto:
+      type: object
+      description: Customer request data containing the principal
+      properties:
+        customerPrincipal:
+          type: string
+      required:
+      - customerPrincipal
     CustomerAuthDto:
       type: object
       description: Customer authentication data
@@ -79,14 +87,6 @@ components:
           type: string
       required:
       - authMethod
-    CustomerRequestDto:
-      type: object
-      description: Customer request data containing the principal
-      properties:
-        customerPrincipal:
-          type: string
-      required:
-      - customerPrincipal
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

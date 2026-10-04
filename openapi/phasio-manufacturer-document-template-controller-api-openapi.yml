@@ -124,6 +124,18 @@ paths:
           description: Invalid document template ID or deletion failed
 components:
   schemas:
+    UpdateDocumentTemplateDto:
+      type: object
+      description: Document template update details
+      properties:
+        documentTemplateId:
+          type: integer
+          format: int64
+        content:
+          type: string
+      required:
+      - content
+      - documentTemplateId
     CreateDocumentTemplateDto:
       type: object
       description: Document template creation details
@@ -172,18 +184,6 @@ components:
       - documentTemplateId
       - language
       - type
-    UpdateDocumentTemplateDto:
-      type: object
-      description: Document template update details
-      properties:
-        documentTemplateId:
-          type: integer
-          format: int64
-        content:
-          type: string
-      required:
-      - content
-      - documentTemplateId
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

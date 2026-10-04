@@ -109,14 +109,6 @@ components:
       - createdAt
       - id
       - threadId
-    RequisitionTaggedDto:
-      type: object
-      properties:
-        requisitionId:
-          type: integer
-          format: int64
-      required:
-      - requisitionId
     LocationTaggedDto:
       type: object
       properties:
@@ -152,6 +144,25 @@ components:
       - locationY
       - locationZ
       - requisitionId
+    CreateActivityDto:
+      type: object
+      properties:
+        activityType:
+          type: string
+        threadId:
+          type: integer
+          format: int64
+      required:
+      - activityType
+      - threadId
+    RequisitionTaggedDto:
+      type: object
+      properties:
+        requisitionId:
+          type: integer
+          format: int64
+      required:
+      - requisitionId
     CreateConversationDto:
       allOf:
       - $ref: '#/components/schemas/CreateActivityDto'
@@ -172,17 +183,6 @@ components:
       - activityType
       - conversationType
       - message
-      - threadId
-    CreateActivityDto:
-      type: object
-      properties:
-        activityType:
-          type: string
-        threadId:
-          type: integer
-          format: int64
-      required:
-      - activityType
       - threadId
   securitySchemes:
     Phasio_API_Bearer_Token:

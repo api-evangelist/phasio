@@ -57,6 +57,45 @@ paths:
           description: Customer organisation not found
 components:
   schemas:
+    UpdateCustomerOrganisationDto:
+      type: object
+      description: Update details for the customer organisation
+      properties:
+        name:
+          type: string
+        language:
+          type: string
+    CustomerDto:
+      type: object
+      properties:
+        email:
+          type: string
+        customerId:
+          type: integer
+          format: int64
+        organisationName:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        language:
+          type: string
+        notificationPreference:
+          type: string
+        discountId:
+          type: integer
+          format: int64
+        discountPercentage:
+          type: number
+        customerType:
+          type: string
+      required:
+      - customerType
+      - language
+      - notificationPreference
     CustomerAddressDto:
       type: object
       properties:
@@ -97,37 +136,6 @@ components:
           type: boolean
         taxId:
           type: string
-    CustomerDto:
-      type: object
-      properties:
-        email:
-          type: string
-        customerId:
-          type: integer
-          format: int64
-        organisationName:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        phoneNumber:
-          type: string
-        language:
-          type: string
-        notificationPreference:
-          type: string
-        discountId:
-          type: integer
-          format: int64
-        discountPercentage:
-          type: number
-        customerType:
-          type: string
-      required:
-      - customerType
-      - language
-      - notificationPreference
     CustomerOrganisationDto:
       type: object
       properties:
@@ -161,14 +169,6 @@ components:
       - customers
       - lastUpdated
       - taxExempt
-    UpdateCustomerOrganisationDto:
-      type: object
-      description: Update details for the customer organisation
-      properties:
-        name:
-          type: string
-        language:
-          type: string
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

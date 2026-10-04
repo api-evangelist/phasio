@@ -752,31 +752,6 @@ paths:
           description: Unauthorized - operator not found
 components:
   schemas:
-    PartImageDetectionDto:
-      type: object
-      properties:
-        bbox:
-          type: array
-          items:
-            type: integer
-            format: int32
-        matches:
-          type: object
-          additionalProperties:
-            type: number
-            format: double
-      required:
-      - bbox
-      - matches
-    PartImageDetectionResponseDto:
-      type: object
-      properties:
-        detections:
-          type: array
-          items:
-            $ref: '#/components/schemas/PartImageDetectionDto'
-      required:
-      - detections
     Paginated:
       type: object
       properties:
@@ -806,42 +781,6 @@ components:
       - pageSize
       - totalElements
       - totalPages
-    PartManufacturabilityRequestDto:
-      type: object
-      properties:
-        partRevisionId:
-          type: string
-          format: uuid
-        units:
-          type: string
-          enum:
-          - CENTIMETERS
-          - MILLIMETERS
-          - METRES
-          - INCHES
-          - FEET
-        processPricesId:
-          type: string
-          format: uuid
-        materialId:
-          type: integer
-          format: int64
-      required:
-      - materialId
-      - partRevisionId
-      - processPricesId
-      - units
-    PartManufacturabilityValuesDto:
-      type: object
-      properties:
-        boundingBox:
-          type: array
-          items:
-            type: number
-        wallThicknessLimit:
-          type: number
-        wallThicknessWarning:
-          type: number
     PartManufacturabilityDto:
       type: object
       properties:
@@ -859,6 +798,36 @@ components:
       - partRevisionId
       - values
       - warnings
+    PartImageDetectionResponseDto:
+      type: object
+      properties:
+        detections:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartImageDetectionDto'
+      required:
+      - detections
+    PartManufacturabilityLimitsDto:
+      type: object
+      properties:
+        withinBoundingBoxLimit:
+          type: boolean
+        withinWallThicknessLimit:
+          type: boolean
+      required:
+      - withinBoundingBoxLimit
+      - withinWallThicknessLimit
+    PartManufacturabilityValuesDto:
+      type: object
+      properties:
+        boundingBox:
+          type: array
+          items:
+            type: number
+        wallThicknessLimit:
+          type: number
+        wallThicknessWarning:
+          type: number
     PartRevisionZipRequestDto:
       type: object
       properties:
@@ -879,23 +848,22 @@ components:
       required:
       - revisions
       - type
-    PartManufacturabilityLimitsDto:
+    PartImageDetectionDto:
       type: object
       properties:
-        withinBoundingBoxLimit:
-          type: boolean
-        withinWallThicknessLimit:
-          type: boolean
+        bbox:
+          type: array
+          items:
+            type: integer
+            format: int32
+        matches:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
       required:
-      - withinBoundingBoxLimit
-      - withinWallThicknessLimit
-    PartManufacturabilityWarningsDto:
-      type: object
-      properties:
-        hasOptimalWallThickness:
-          type: boolean
-      required:
-      - hasOptimalWallThickness
+      - bbox
+      - matches
     PartRevisionDto:
       type: object
       properties:
@@ -990,6 +958,38 @@ components:
       - availableAccessories
       - deleted
       - designName
+    PartManufacturabilityRequestDto:
+      type: object
+      properties:
+        partRevisionId:
+          type: string
+          format: uuid
+        units:
+          type: string
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        processPricesId:
+          type: string
+          format: uuid
+        materialId:
+          type: integer
+          format: int64
+      required:
+      - materialId
+      - partRevisionId
+      - processPricesId
+      - units
+    PartManufacturabilityWarningsDto:
+      type: object
+      properties:
+        hasOptimalWallThickness:
+          type: boolean
+      required:
+      - hasOptimalWallThickness
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

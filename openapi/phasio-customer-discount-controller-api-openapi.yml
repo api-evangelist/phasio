@@ -63,6 +63,17 @@ paths:
           description: Discount not found
 components:
   schemas:
+    ValidateDiscountDto:
+      type: object
+      properties:
+        customerId:
+          type: integer
+          format: int64
+        discountCode:
+          type: string
+      required:
+      - customerId
+      - discountCode
     DiscountDto:
       type: object
       properties:
@@ -87,17 +98,6 @@ components:
       - endTime
       - percentage
       - startTime
-    ValidateDiscountDto:
-      type: object
-      properties:
-        customerId:
-          type: integer
-          format: int64
-        discountCode:
-          type: string
-      required:
-      - customerId
-      - discountCode
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

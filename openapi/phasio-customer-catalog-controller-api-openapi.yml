@@ -112,7 +112,32 @@ paths:
           description: Accessory file not found
 components:
   schemas:
-    InfillDto:
+    ConstraintDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        id:
+          type: string
+          format: uuid
+        constraintType:
+          type: string
+        partSpecificationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - updatedAt
+    PostProcessingDto:
       type: object
       properties:
         id:
@@ -120,15 +145,98 @@ components:
           format: int64
         name:
           type: string
-        value:
-          type: number
-        default:
+        purchasable:
           type: boolean
+        isDefault:
+          type: boolean
+        colors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColorDto'
+        incompatibleMaterialIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        mutuallyExclusiveGroup:
+          type: string
       required:
-      - default
-      - id
+      - colors
+      - incompatibleMaterialIds
+      - isDefault
       - name
-      - value
+      - purchasable
+    CatalogAssemblyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        assemblyId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        reference:
+          type: string
+        assemblyPrice:
+          type: number
+        price:
+          type: number
+        currency:
+          type: string
+        partCount:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+      required:
+      - assemblyId
+      - assemblyPrice
+      - createdAt
+      - currency
+      - id
+      - lastUpdated
+      - name
+      - partCount
+      - price
+      - reference
+    CatalogDto:
+      type: object
+      properties:
+        parts:
+          type: array
+          items:
+            $ref: '#/components/schemas/CatalogItemDto'
+        assemblies:
+          type: array
+          items:
+            $ref: '#/components/schemas/CatalogAssemblyDto'
+      required:
+      - assemblies
+      - parts
+    FixedOrientationConstraintDto:
+      allOf:
+      - $ref: '#/components/schemas/ConstraintDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - rotationMatrix
+      - updatedAt
     CatalogItemDto:
       type: object
       properties:
@@ -199,148 +307,6 @@ components:
       - processPricesId
       - reference
       - units
-    CatalogDto:
-      type: object
-      properties:
-        parts:
-          type: array
-          items:
-            $ref: '#/components/schemas/CatalogItemDto'
-        assemblies:
-          type: array
-          items:
-            $ref: '#/components/schemas/CatalogAssemblyDto'
-      required:
-      - assemblies
-      - parts
-    PostProcessingDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        purchasable:
-          type: boolean
-        isDefault:
-          type: boolean
-        colors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColorDto'
-        incompatibleMaterialIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-        mutuallyExclusiveGroup:
-          type: string
-      required:
-      - colors
-      - incompatibleMaterialIds
-      - isDefault
-      - name
-      - purchasable
-    ConstraintDto:
-      type: object
-      discriminator:
-        propertyName: constraintType
-      properties:
-        id:
-          type: string
-          format: uuid
-        constraintType:
-          type: string
-        partSpecificationId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - updatedAt
-    PrecisionPricesDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        price:
-          type: number
-        isActive:
-          type: boolean
-      required:
-      - id
-      - isActive
-      - name
-      - price
-    CatalogAssemblyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        assemblyId:
-          type: string
-          format: uuid
-        name:
-          type: string
-        reference:
-          type: string
-        assemblyPrice:
-          type: number
-        price:
-          type: number
-        currency:
-          type: string
-        partCount:
-          type: integer
-          format: int32
-        createdAt:
-          type: string
-          format: date-time
-        lastUpdated:
-          type: string
-          format: date-time
-      required:
-      - assemblyId
-      - assemblyPrice
-      - createdAt
-      - currency
-      - id
-      - lastUpdated
-      - name
-      - partCount
-      - price
-      - reference
-    FixedOrientationConstraintDto:
-      allOf:
-      - $ref: '#/components/schemas/ConstraintDto'
-      - type: object
-        properties:
-          rotationMatrix:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - rotationMatrix
-      - updatedAt
     PartRevisionDto:
       type: object
       properties:
@@ -435,6 +401,23 @@ components:
       - availableAccessories
       - deleted
       - designName
+    InfillDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        value:
+          type: number
+        default:
+          type: boolean
+      required:
+      - default
+      - id
+      - name
+      - value
     ColorDto:
       type: object
       properties:
@@ -449,6 +432,23 @@ components:
       - code
       - id
       - name
+    PrecisionPricesDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        price:
+          type: number
+        isActive:
+          type: boolean
+      required:
+      - id
+      - isActive
+      - name
+      - price
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

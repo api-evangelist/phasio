@@ -97,6 +97,30 @@ paths:
           description: Delete failed or tracking not found
 components:
   schemas:
+    UpdateTrackingDto:
+      type: object
+      description: Updated tracking information
+      properties:
+        trackingId:
+          type: integer
+          format: int64
+        trackingNumber:
+          type: string
+      required:
+      - trackingId
+      - trackingNumber
+    CreateTrackingDto:
+      type: object
+      description: Tracking information to create
+      properties:
+        shipmentId:
+          type: integer
+          format: int64
+        trackingNumber:
+          type: string
+      required:
+      - shipmentId
+      - trackingNumber
     TrackingDto:
       type: object
       properties:
@@ -111,30 +135,6 @@ components:
       required:
       - id
       - shipmentId
-      - trackingNumber
-    CreateTrackingDto:
-      type: object
-      description: Tracking information to create
-      properties:
-        shipmentId:
-          type: integer
-          format: int64
-        trackingNumber:
-          type: string
-      required:
-      - shipmentId
-      - trackingNumber
-    UpdateTrackingDto:
-      type: object
-      description: Updated tracking information
-      properties:
-        trackingId:
-          type: integer
-          format: int64
-        trackingNumber:
-          type: string
-      required:
-      - trackingId
       - trackingNumber
   securitySchemes:
     Phasio_API_Bearer_Token:

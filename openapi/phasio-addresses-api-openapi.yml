@@ -223,92 +223,6 @@ paths:
                   $ref: '#/components/schemas/AddressDto'
 components:
   schemas:
-    CreateAddressDto:
-      type: object
-      properties:
-        street1:
-          type: string
-        street2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        jurisdictionIsoCode:
-          type: string
-        zip:
-          type: string
-        name:
-          type: string
-        company:
-          type: string
-        phone:
-          type: string
-        email:
-          type: string
-        residential:
-          type: boolean
-        organisationId:
-          type: integer
-          format: int64
-        taxId:
-          type: string
-      required:
-      - city
-      - company
-      - country
-      - email
-      - name
-      - organisationId
-      - phone
-      - residential
-      - state
-      - street1
-      - street2
-      - zip
-    EditAddressDto:
-      type: object
-      properties:
-        street1:
-          type: string
-        street2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        jurisdictionIsoCode:
-          type: string
-        zip:
-          type: string
-        name:
-          type: string
-        company:
-          type: string
-        phone:
-          type: string
-        email:
-          type: string
-        residential:
-          type: boolean
-        taxId:
-          type: string
-      required:
-      - city
-      - company
-      - country
-      - email
-      - name
-      - phone
-      - residential
-      - state
-      - street1
-      - street2
-      - zip
     AddressDto:
       type: object
       discriminator:
@@ -370,6 +284,92 @@ components:
       - phone
       - platformEncryptedAesKey
       - residential
+      - street1
+      - street2
+      - zip
+    EditAddressDto:
+      type: object
+      properties:
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        taxId:
+          type: string
+      required:
+      - city
+      - company
+      - country
+      - email
+      - name
+      - phone
+      - residential
+      - state
+      - street1
+      - street2
+      - zip
+    CreateAddressDto:
+      type: object
+      properties:
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        organisationId:
+          type: integer
+          format: int64
+        taxId:
+          type: string
+      required:
+      - city
+      - company
+      - country
+      - email
+      - name
+      - organisationId
+      - phone
+      - residential
+      - state
       - street1
       - street2
       - zip

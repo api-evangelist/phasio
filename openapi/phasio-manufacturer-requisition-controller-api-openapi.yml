@@ -410,102 +410,6 @@ paths:
           description: Unauthorized - missing operator context
 components:
   schemas:
-    BatchTransitionDto:
-      type: object
-      discriminator:
-        propertyName: type
-      properties:
-        id:
-          type: string
-          format: uuid
-        requisitionId:
-          type: integer
-          format: int64
-        workOrderId:
-          type: string
-          format: uuid
-        fromOperationId:
-          type: string
-          format: uuid
-        fromOperationName:
-          type: string
-        fromStepId:
-          type: string
-          format: uuid
-        fromStepBuildId:
-          type: string
-        fromStepPrefix:
-          type: string
-        batchSize:
-          type: integer
-        createdAt:
-          type: string
-          format: date-time
-        updateDt:
-          type: string
-          format: date-time
-        type:
-          type: string
-        fromStatusId:
-          type: string
-          format: uuid
-        fromStatusName:
-          type: string
-      required:
-      - type
-    ConstraintDto:
-      type: object
-      discriminator:
-        propertyName: constraintType
-      properties:
-        id:
-          type: string
-          format: uuid
-        constraintType:
-          type: string
-        partSpecificationId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - updatedAt
-    WorkOrderDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        workOrderNumber:
-          type: integer
-          format: int64
-        routingTemplateId:
-          type: string
-          format: uuid
-        name:
-          type: string
-        quantity:
-          type: integer
-        routing:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoutingStepDto'
-        createdAt:
-          type: string
-          format: date-time
-      required:
-      - createdAt
-      - id
-      - quantity
-      - routing
     RequisitionDto:
       type: object
       properties:
@@ -583,22 +487,91 @@ components:
       - quantity
       - units
       - watertight
-    RoutingStepDto:
+    ConstraintDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        id:
+          type: string
+          format: uuid
+        constraintType:
+          type: string
+        partSpecificationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - updatedAt
+    CreateWorkOrderRequest:
       type: object
       properties:
-        operationId:
-          type: string
-          format: uuid
-        sequence:
+        quantity:
           type: integer
-          format: int32
-        statusId:
+        name:
+          type: string
+        routingTemplateId:
           type: string
           format: uuid
+        operationIds:
+          type: array
+          items:
+            type: string
+            format: uuid
       required:
-      - operationId
-      - sequence
-      - statusId
+      - quantity
+    BatchTransitionDto:
+      type: object
+      discriminator:
+        propertyName: type
+      properties:
+        id:
+          type: string
+          format: uuid
+        requisitionId:
+          type: integer
+          format: int64
+        workOrderId:
+          type: string
+          format: uuid
+        fromOperationId:
+          type: string
+          format: uuid
+        fromOperationName:
+          type: string
+        fromStepId:
+          type: string
+          format: uuid
+        fromStepBuildId:
+          type: string
+        fromStepPrefix:
+          type: string
+        batchSize:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updateDt:
+          type: string
+          format: date-time
+        type:
+          type: string
+        fromStatusId:
+          type: string
+          format: uuid
+        fromStatusName:
+          type: string
+      required:
+      - type
     FixedOrientationConstraintDto:
       allOf:
       - $ref: '#/components/schemas/ConstraintDto'
@@ -617,6 +590,71 @@ components:
       - partSpecificationId
       - rotationMatrix
       - updatedAt
+    ScheduleBatchesDto:
+      type: object
+      properties:
+        requisitionId:
+          type: integer
+          format: int64
+        quantity:
+          type: integer
+        name:
+          type: string
+        routingTemplateId:
+          type: string
+          format: uuid
+        operationIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+      required:
+      - quantity
+      - requisitionId
+    WorkOrderDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        workOrderNumber:
+          type: integer
+          format: int64
+        routingTemplateId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        quantity:
+          type: integer
+        routing:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoutingStepDto'
+        createdAt:
+          type: string
+          format: date-time
+      required:
+      - createdAt
+      - id
+      - quantity
+      - routing
+    RoutingStepDto:
+      type: object
+      properties:
+        operationId:
+          type: string
+          format: uuid
+        sequence:
+          type: integer
+          format: int32
+        statusId:
+          type: string
+          format: uuid
+      required:
+      - operationId
+      - sequence
+      - statusId
     BatchBalanceDto:
       type: object
       properties:
@@ -701,44 +739,6 @@ components:
       - stepId
       - stepType
       - workOrderId
-    CreateWorkOrderRequest:
-      type: object
-      properties:
-        quantity:
-          type: integer
-        name:
-          type: string
-        routingTemplateId:
-          type: string
-          format: uuid
-        operationIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-      required:
-      - quantity
-    ScheduleBatchesDto:
-      type: object
-      properties:
-        requisitionId:
-          type: integer
-          format: int64
-        quantity:
-          type: integer
-        name:
-          type: string
-        routingTemplateId:
-          type: string
-          format: uuid
-        operationIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-      required:
-      - quantity
-      - requisitionId
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

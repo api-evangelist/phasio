@@ -375,23 +375,32 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    InfillDto:
+    UpdateProcessPricesDto:
       type: object
+      description: Updated process pricing data
       properties:
-        id:
-          type: integer
-          format: int64
-        name:
+        pricingAlgorithm:
           type: string
-        value:
-          type: number
-        default:
+        description:
+          type: string
+        isInternal:
           type: boolean
+        operationIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+          uniqueItems: true
+        bulkPricingQuantities:
+          type: array
+          items:
+            type: integer
+          uniqueItems: true
       required:
-      - default
-      - id
-      - name
-      - value
+      - bulkPricingQuantities
+      - isInternal
+      - operationIds
+      - pricingAlgorithm
     PostProcessingDto:
       type: object
       properties:
@@ -421,33 +430,6 @@ components:
       - isDefault
       - name
       - purchasable
-    CreateProcessPricesDto:
-      type: object
-      description: Process pricing data to create
-      properties:
-        technology:
-          type: string
-        pricingAlgo:
-          type: string
-        description:
-          type: string
-        isInternal:
-          type: boolean
-      required:
-      - isInternal
-      - pricingAlgo
-      - technology
-    MaterialPricesPropertySchemaDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-      required:
-      - id
-      - name
     PrecisionPricesDto:
       type: object
       properties:
@@ -465,93 +447,21 @@ components:
       - isActive
       - name
       - price
-    UpdateBoundingBoxLimitDto:
+    CreateProcessPricesDto:
       type: object
-      description: Bounding box limit dimensions
+      description: Process pricing data to create
       properties:
-        length:
-          type: number
-        width:
-          type: number
-        height:
-          type: number
-      required:
-      - height
-      - length
-      - width
-    MaterialDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
+        technology:
           type: string
-        datasheetSummary:
-          type: string
-        quoteOnly:
-          type: boolean
-        colorDtos:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColorDto'
-        isDefault:
-          type: boolean
-        wallThicknessWarning:
-          type: number
-        wallThicknessLimit:
-          type: number
-      required:
-      - colorDtos
-      - id
-      - isDefault
-      - name
-      - quoteOnly
-    MaterialPricesVariableSchemaRequest:
-      type: object
-      properties:
-        name:
-          type: string
-      required:
-      - name
-    UpdateProcessPricesDto:
-      type: object
-      description: Updated process pricing data
-      properties:
-        pricingAlgorithm:
+        pricingAlgo:
           type: string
         description:
           type: string
         isInternal:
           type: boolean
-        operationIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-          uniqueItems: true
-        bulkPricingQuantities:
-          type: array
-          items:
-            type: integer
-          uniqueItems: true
       required:
-      - bulkPricingQuantities
       - isInternal
-      - operationIds
-      - pricingAlgorithm
-    DuplicateProcessPricesDto:
-      type: object
-      description: Duplication details
-      properties:
-        technology:
-          type: string
-        newOrganisationId:
-          type: integer
-          format: int64
-        description:
-          type: string
-      required:
+      - pricingAlgo
       - technology
     ProcessPricesDto:
       type: object
@@ -597,6 +507,20 @@ components:
       - postProcessings
       - precisions
       - technology
+    UpdateBoundingBoxLimitDto:
+      type: object
+      description: Bounding box limit dimensions
+      properties:
+        length:
+          type: number
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - height
+      - length
+      - width
     ColorDto:
       type: object
       properties:
@@ -611,6 +535,82 @@ components:
       - code
       - id
       - name
+    MaterialDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        datasheetSummary:
+          type: string
+        quoteOnly:
+          type: boolean
+        colorDtos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColorDto'
+        isDefault:
+          type: boolean
+        wallThicknessWarning:
+          type: number
+        wallThicknessLimit:
+          type: number
+      required:
+      - colorDtos
+      - id
+      - isDefault
+      - name
+      - quoteOnly
+    MaterialPricesVariableSchemaRequest:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    InfillDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        value:
+          type: number
+        default:
+          type: boolean
+      required:
+      - default
+      - id
+      - name
+      - value
+    MaterialPricesPropertySchemaDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+      required:
+      - id
+      - name
+    DuplicateProcessPricesDto:
+      type: object
+      description: Duplication details
+      properties:
+        technology:
+          type: string
+        newOrganisationId:
+          type: integer
+          format: int64
+        description:
+          type: string
+      required:
+      - technology
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

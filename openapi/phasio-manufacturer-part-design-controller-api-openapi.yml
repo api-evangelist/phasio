@@ -89,6 +89,12 @@ paths:
           description: Unauthorized - missing operator context
 components:
   schemas:
+    PartDesignUpdateRequestDto:
+      type: object
+      description: Update request containing fields to modify
+      properties:
+        name:
+          type: string
     PartDesignDto:
       type: object
       properties:
@@ -110,12 +116,6 @@ components:
       - id
       - name
       - revisions
-    PartDesignUpdateRequestDto:
-      type: object
-      description: Update request containing fields to modify
-      properties:
-        name:
-          type: string
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http
