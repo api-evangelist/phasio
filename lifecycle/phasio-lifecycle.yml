@@ -15,4 +15,11 @@ sla:
 status_page: null
 status_page_note: No public status page found (status.phas.io does not resolve; /status 404).
 deprecated_operations: []
-deprecated_operations_note: No operations flagged deprecated in openapi/phasio-openapi-original.json.
+deprecated_operations_note: No operations flagged deprecated in openapi/_original/phasio-openapi.json (the current published contract, 2026-10-06). The earlier contract (openapi/_superseded/) carried 381 operations, including the /api/customer/v1 and /api/internal/v1 surfaces, that Phasio has since removed from its public API.
+migration_guides:
+- name: Shipment to Shipping API migration guide
+  url: https://docs.phas.io/developers/migrations/shipment-to-shipping-migration
+  note: /shipment paths and shipment/shipmentId/dispatchDate keys are deprecated and will be removed in October 2026; use /shipping, shippingId and expectedDispatchDate.
+- name: Production Routing API migration guide
+  url: https://docs.phas.io/developers/migrations/production-routing-migration
+changelog: https://docs.phas.io/changelogs

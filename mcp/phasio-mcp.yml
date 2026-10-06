@@ -1,7 +1,7 @@
 generated: '2026-07-20'
 method: derived
 status: candidate
-source: openapi/phasio-openapi-original.json
+source: openapi/_original/phasio-openapi.json
 description: Candidate MCP tool surface derived from the Phasio Manufacturer API OpenAPI. No official
   hosted/remote Phasio MCP server was found (docs, npm, MCP registries). This is a curated candidate set
   over the marquee read/act operations, not a published server.
@@ -10,32 +10,30 @@ server:
   transport: http
   url: null
 auth:
-  type: oauth2-client-credentials
+  type: bearer
+  note: API key from Settings > API Keys sent as a Bearer token (docs.phas.io/developers, 2026-10-06). OAuth 2.0 server at https://auth.eu.phas.io.
   token_endpoint: https://auth.eu.phas.io/oauth2/token
 tools:
 - name: list_orders
   description: List orders with RSQL filtering, search, and pagination.
-  source_operation: openapi/phasio-openapi-original.json#get_7
+  source_operation: openapi/_original/phasio-openapi.json#get_2
 - name: get_order
   description: Retrieve a single order by id.
-  source_operation: openapi/phasio-openapi-original.json#getById_2
+  source_operation: openapi/_original/phasio-openapi.json#getById_5
 - name: create_order
   description: Create a new manufacturing order.
-  source_operation: openapi/phasio-openapi-original.json#create_10
+  source_operation: openapi/_original/phasio-openapi.json#create_2
 - name: list_part_specifications
   description: List part specifications (process/material/color/precision/infill).
-  source_operation: openapi/phasio-openapi-original.json#get_18
-- name: validate_order_manufacturability
-  description: Validate part manufacturability for an order.
-  source_operation: openapi/phasio-openapi-original.json#validatePartManufacturabilityForOrder
+  source_operation: openapi/_original/phasio-openapi.json#get_1
 - name: create_webhook
   description: Register a webhook endpoint for order/quote/customer events.
-  source_operation: openapi/phasio-openapi-original.json#createWebhook
-notes: Full API exposes 481 operations across 85 controllers; a production MCP server should scope to
+  source_operation: openapi/_original/phasio-openapi.json#createWebhook
+notes: The current published contract (2026-10-06) exposes 130 operations across 32 resource groups; a production MCP server should scope to
   a task-oriented subset with human-in-the-loop on write ops.
 deployment:
   mode: none
   verified: derived
-  tools: 6
+  tools: 5
   checked: '2026-08-12'
   source: catalog MCP census

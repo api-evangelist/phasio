@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "cc2f0817-62ff-463b-9f5e-68c6008cb8a1",
+      "id": "12f48a68-a981-4994-ae4a-9fa71243f0e6",
       "name": "Manufacturer Customer Organisation Controller",
       "description": {
         "content": "API for managing customer organizations",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "ae087b4f-d62a-4e4d-a9f2-dc0d3c1bb769",
+          "id": "692899f9-1501-4749-9393-f8efd93b367e",
           "name": "Upsert customer organisation metadata by key",
           "request": {
             "name": "Upsert customer organisation metadata by key",
@@ -73,7 +73,7 @@
           },
           "response": [
             {
-              "id": "32cd104a-8428-48a7-9dd3-2d316d4f0607",
+              "id": "bf059d78-b95e-4205-866e-307935742853",
               "name": "Metadata upserted successfully",
               "originalRequest": {
                 "url": {
@@ -110,14 +110,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/json"
                   }
@@ -141,13 +133,13 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"e7c80985-298d-2f3f-a850-75a102d4472e\",\n  \"metadataKey\": \"string\",\n  \"value\": \"string\"\n}",
+              "body": "{\n  \"id\": \"8599ba17-1717-9b36-2469-b7e1d25f0ee4\",\n  \"metadataKey\": \"string\",\n  \"value\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "1ed43fd6-79e3-4694-82c2-57b0a2ca4a91",
-              "name": "Organisation not found",
+              "id": "481e1a57-301d-46b9-b3af-47ce0b42bb52",
+              "name": "Organization not found",
               "originalRequest": {
                 "url": {
                   "path": [
@@ -183,12 +175,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "PUT",
@@ -202,17 +190,17 @@
                   }
                 }
               },
-              "status": "Bad Request",
-              "code": 400,
+              "status": "Not Found",
+              "code": 404,
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -221,7 +209,7 @@
           }
         },
         {
-          "id": "772ecc81-247f-4ecd-a951-f05ed5fbd827",
+          "id": "f668d75e-65a5-4508-9de8-f7b11c9d616b",
           "name": "Add metadata to a customer organisation",
           "request": {
             "name": "Add metadata to a customer organisation",
@@ -276,7 +264,7 @@
           },
           "response": [
             {
-              "id": "cbac85b2-6a66-4ab9-895e-ea7d77ad6f2f",
+              "id": "6f4cf671-0882-483e-8626-edca60b2980a",
               "name": "Metadata added successfully",
               "originalRequest": {
                 "url": {
@@ -304,14 +292,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/json"
                   }
@@ -335,13 +315,13 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"e7c80985-298d-2f3f-a850-75a102d4472e\",\n  \"metadataKey\": \"string\",\n  \"value\": \"string\"\n}",
+              "body": "{\n  \"id\": \"8599ba17-1717-9b36-2469-b7e1d25f0ee4\",\n  \"metadataKey\": \"string\",\n  \"value\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "4b015fe9-9397-418a-bbb2-f7d8a6dda89d",
-              "name": "Invalid organisation ID or metadata already exists for the given key",
+              "id": "552f5f60-15bc-44c2-9e4d-7c80b5495baa",
+              "name": "Organization not found",
               "originalRequest": {
                 "url": {
                   "path": [
@@ -368,12 +348,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "POST",
@@ -387,17 +363,73 @@
                   }
                 }
               },
-              "status": "Bad Request",
-              "code": 400,
+              "status": "Not Found",
+              "code": 404,
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9909a5a-74c7-4fcc-bf3f-38d4548aad8c",
+              "name": "Metadata key already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organisation to add metadata to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadataKey\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -406,7 +438,7 @@
           }
         },
         {
-          "id": "e1bba178-d01b-4b9a-9bb4-b3cfd598542d",
+          "id": "665dea46-839d-4750-be61-c3063d796f22",
           "name": "Get a customer organization by ID",
           "request": {
             "name": "Get a customer organization by ID",
@@ -447,7 +479,7 @@
           },
           "response": [
             {
-              "id": "9f7c74ec-d15a-4a76-8840-de370b1c032a",
+              "id": "ee8f8bd6-023d-49e2-a05a-5c290aa9e28d",
               "name": "Organization retrieved successfully",
               "originalRequest": {
                 "url": {
@@ -474,14 +506,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/json"
                   }
@@ -497,63 +521,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8722,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 7231,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1970-04-07T18:27:12.484Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 1134,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 6407,\n      \"discountPercentage\": 6527.685947614203\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 5254,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 5208,\n      \"discountPercentage\": 9209.736403259672\n    }\n  ],\n  \"lastUpdated\": \"2026-08-08T22:45:50.411Z\",\n  \"taxExempt\": false,\n  \"id\": 8911,\n  \"name\": \"string\"\n}",
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8659,\n      \"addressType\": \"string\",\n      \"city\": \"string\",\n      \"company\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"email\": \"string\",\n      \"isBillingAddress\": false,\n      \"isDeleted\": false,\n      \"isShippingAddress\": false,\n      \"name\": \"string\",\n      \"phone\": \"string\",\n      \"residential\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"zip\": \"string\",\n      \"state\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 8786,\n      \"addressType\": \"string\",\n      \"city\": \"string\",\n      \"company\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"email\": \"string\",\n      \"isBillingAddress\": false,\n      \"isDeleted\": true,\n      \"isShippingAddress\": false,\n      \"name\": \"string\",\n      \"phone\": \"string\",\n      \"residential\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"zip\": \"string\",\n      \"state\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1980-10-21T06:46:50.876Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerId\": 4332,\n      \"firstName\": \"string\",\n      \"isApproved\": true,\n      \"lastName\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"organisationId\": 3429,\n      \"phoneNumber\": \"string\",\n      \"email\": \"string\",\n      \"organisationName\": \"string\",\n      \"discountId\": 7853,\n      \"discountPercentage\": 2898.7804841803545,\n      \"language\": \"string\"\n    },\n    {\n      \"customerId\": 9019,\n      \"firstName\": \"string\",\n      \"isApproved\": false,\n      \"lastName\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"organisationId\": 3442,\n      \"phoneNumber\": \"string\",\n      \"email\": \"string\",\n      \"organisationName\": \"string\",\n      \"discountId\": 2422,\n      \"discountPercentage\": 3231.6723875691555,\n      \"language\": \"string\"\n    }\n  ],\n  \"deleted\": false,\n  \"hasCustomPricing\": true,\n  \"id\": 7834,\n  \"isApproved\": true,\n  \"metadata\": [\n    {\n      \"id\": \"b755a018-8784-4bc2-2bd3-96c981ce0be4\",\n      \"metadataKey\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"id\": \"d497f015-504a-cf13-c56a-7ca4ad61d98c\",\n      \"metadataKey\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"taxExempt\": true,\n  \"updateDt\": \"2003-10-13T04:09:50.116Z\",\n  \"name\": \"string\",\n  \"companyName\": \"string\",\n  \"paymentTerm\": {\n    \"id\": \"4b1a0a3c-c711-21f3-7769-f3b9bf395f29\",\n    \"name\": \"string\",\n    \"accountingSystemTermId\": \"string\"\n  },\n  \"incoterm\": \"DDP\",\n  \"encryptionKeyId\": \"string\",\n  \"firstTouchSource\": \"string\",\n  \"language\": \"string\",\n  \"accountingSystemId\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "d7e953ca-4161-46ed-828b-79ceb8be5bfa",
-              "name": "Invalid organization ID",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "organisation",
-                    ":organisationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "organisationId",
-                      "description": "(Required) ID of the organization to retrieve"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5bc4b163-657c-4fef-94a9-62afe3754049",
+              "id": "45755b83-aed5-4c2d-aa60-c1751d39bc97",
               "name": "Unauthorized - missing operator context",
               "originalRequest": {
                 "url": {
@@ -580,12 +553,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -596,12 +565,59 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0396e6a-9e6b-435d-8bc3-45fb18ea34de",
+              "name": "Organization not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organization to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -610,7 +626,7 @@
           }
         },
         {
-          "id": "079c70b8-8170-442c-828d-0ae3f6e8d0ba",
+          "id": "1c9d7a95-cac2-4e3f-8326-661debaef564",
           "name": "Delete a customer organization",
           "request": {
             "name": "Delete a customer organization",
@@ -651,7 +667,7 @@
           },
           "response": [
             {
-              "id": "a4ff188c-e1c4-4e3b-9a5c-e38ce9046c5f",
+              "id": "d121d026-8748-422a-a309-18123fb3c92f",
               "name": "Organization deleted successfully",
               "originalRequest": {
                 "url": {
@@ -678,14 +694,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "*/*"
                   }
@@ -701,67 +709,12 @@
                   "value": "*/*"
                 }
               ],
-              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8722,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 7231,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1970-04-07T18:27:12.484Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 1134,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 6407,\n      \"discountPercentage\": 6527.685947614203\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 5254,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 5208,\n      \"discountPercentage\": 9209.736403259672\n    }\n  ],\n  \"lastUpdated\": \"2026-08-08T22:45:50.411Z\",\n  \"taxExempt\": false,\n  \"id\": 8911,\n  \"name\": \"string\"\n}",
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 5508,\n      \"addressType\": \"string\",\n      \"city\": \"string\",\n      \"company\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"email\": \"string\",\n      \"isBillingAddress\": false,\n      \"isDeleted\": true,\n      \"isShippingAddress\": false,\n      \"name\": \"string\",\n      \"phone\": \"string\",\n      \"residential\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"zip\": \"string\",\n      \"state\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 3147,\n      \"addressType\": \"string\",\n      \"city\": \"string\",\n      \"company\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"email\": \"string\",\n      \"isBillingAddress\": false,\n      \"isDeleted\": false,\n      \"isShippingAddress\": false,\n      \"name\": \"string\",\n      \"phone\": \"string\",\n      \"residential\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"zip\": \"string\",\n      \"state\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1974-12-22T01:50:03.838Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerId\": 9984,\n      \"firstName\": \"string\",\n      \"isApproved\": false,\n      \"lastName\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"organisationId\": 269,\n      \"phoneNumber\": \"string\",\n      \"email\": \"string\",\n      \"organisationName\": \"string\",\n      \"discountId\": 4080,\n      \"discountPercentage\": 1750.0120433538568,\n      \"language\": \"string\"\n    },\n    {\n      \"customerId\": 4008,\n      \"firstName\": \"string\",\n      \"isApproved\": true,\n      \"lastName\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"organisationId\": 628,\n      \"phoneNumber\": \"string\",\n      \"email\": \"string\",\n      \"organisationName\": \"string\",\n      \"discountId\": 8021,\n      \"discountPercentage\": 2571.203700656601,\n      \"language\": \"string\"\n    }\n  ],\n  \"deleted\": false,\n  \"hasCustomPricing\": true,\n  \"id\": 4094,\n  \"isApproved\": false,\n  \"metadata\": [\n    {\n      \"id\": \"adaa9743-e916-68c5-f736-0d56c6006549\",\n      \"metadataKey\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"id\": \"6c57cf17-4422-8071-33c3-f3f3e0f3417c\",\n      \"metadataKey\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"taxExempt\": true,\n  \"updateDt\": \"1991-03-10T16:23:03.277Z\",\n  \"name\": \"string\",\n  \"companyName\": \"string\",\n  \"paymentTerm\": {\n    \"id\": \"dcd15854-d1f4-cf0b-d573-ed1b9256760f\",\n    \"name\": \"string\",\n    \"accountingSystemTermId\": \"string\"\n  },\n  \"incoterm\": \"CFR\",\n  \"encryptionKeyId\": \"string\",\n  \"firstTouchSource\": \"string\",\n  \"language\": \"string\",\n  \"accountingSystemId\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "d78f4cf5-2e9f-4fa4-841e-2b5b7a55a083",
-              "name": "Organization could not be deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "organisation",
-                    ":organisationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "organisationId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8722,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 7231,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1970-04-07T18:27:12.484Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 1134,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 6407,\n      \"discountPercentage\": 6527.685947614203\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 5254,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 5208,\n      \"discountPercentage\": 9209.736403259672\n    }\n  ],\n  \"lastUpdated\": \"2026-08-08T22:45:50.411Z\",\n  \"taxExempt\": false,\n  \"id\": 8911,\n  \"name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e5f44e51-86d5-4339-982f-aa3cd8b429fa",
+              "id": "4a1c837b-2414-4c7b-abeb-fd06e3074c03",
               "name": "Organization not found",
               "originalRequest": {
                 "url": {
@@ -788,14 +741,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "*/*"
                   }
@@ -811,7 +756,7 @@
                   "value": "*/*"
                 }
               ],
-              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8722,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 7231,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1970-04-07T18:27:12.484Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 1134,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 6407,\n      \"discountPercentage\": 6527.685947614203\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 5254,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 5208,\n      \"discountPercentage\": 9209.736403259672\n    }\n  ],\n  \"lastUpdated\": \"2026-08-08T22:45:50.411Z\",\n  \"taxExempt\": false,\n  \"id\": 8911,\n  \"name\": \"string\"\n}",
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 5508,\n      \"addressType\": \"string\",\n      \"city\": \"string\",\n      \"company\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"email\": \"string\",\n      \"isBillingAddress\": false,\n      \"isDeleted\": true,\n      \"isShippingAddress\": false,\n      \"name\": \"string\",\n      \"phone\": \"string\",\n      \"residential\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"zip\": \"string\",\n      \"state\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 3147,\n      \"addressType\": \"string\",\n      \"city\": \"string\",\n      \"company\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"email\": \"string\",\n      \"isBillingAddress\": false,\n      \"isDeleted\": false,\n      \"isShippingAddress\": false,\n      \"name\": \"string\",\n      \"phone\": \"string\",\n      \"residential\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"zip\": \"string\",\n      \"state\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1974-12-22T01:50:03.838Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerId\": 9984,\n      \"firstName\": \"string\",\n      \"isApproved\": false,\n      \"lastName\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"organisationId\": 269,\n      \"phoneNumber\": \"string\",\n      \"email\": \"string\",\n      \"organisationName\": \"string\",\n      \"discountId\": 4080,\n      \"discountPercentage\": 1750.0120433538568,\n      \"language\": \"string\"\n    },\n    {\n      \"customerId\": 4008,\n      \"firstName\": \"string\",\n      \"isApproved\": true,\n      \"lastName\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"organisationId\": 628,\n      \"phoneNumber\": \"string\",\n      \"email\": \"string\",\n      \"organisationName\": \"string\",\n      \"discountId\": 8021,\n      \"discountPercentage\": 2571.203700656601,\n      \"language\": \"string\"\n    }\n  ],\n  \"deleted\": false,\n  \"hasCustomPricing\": true,\n  \"id\": 4094,\n  \"isApproved\": false,\n  \"metadata\": [\n    {\n      \"id\": \"adaa9743-e916-68c5-f736-0d56c6006549\",\n      \"metadataKey\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"id\": \"6c57cf17-4422-8071-33c3-f3f3e0f3417c\",\n      \"metadataKey\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"taxExempt\": true,\n  \"updateDt\": \"1991-03-10T16:23:03.277Z\",\n  \"name\": \"string\",\n  \"companyName\": \"string\",\n  \"paymentTerm\": {\n    \"id\": \"dcd15854-d1f4-cf0b-d573-ed1b9256760f\",\n    \"name\": \"string\",\n    \"accountingSystemTermId\": \"string\"\n  },\n  \"incoterm\": \"CFR\",\n  \"encryptionKeyId\": \"string\",\n  \"firstTouchSource\": \"string\",\n  \"language\": \"string\",\n  \"accountingSystemId\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -822,7 +767,7 @@
           }
         },
         {
-          "id": "eb0c030d-265d-4250-9101-aa7acc17b911",
+          "id": "c5dbc3c7-39e8-4b7f-9183-d780c7d5a080",
           "name": "Update a customer organization",
           "request": {
             "name": "Update a customer organization",
@@ -866,7 +811,7 @@
             "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"clearPaymentTerm\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"canAccessDashboard\": \"<boolean>\",\n  \"taxExempt\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"accountingSystemId\": \"<string>\",\n  \"isApproved\": \"<boolean>\",\n  \"customerType\": \"<string>\",\n  \"paymentTermId\": \"<string>\"\n}",
+              "raw": "{\n  \"clearIncoterm\": \"<boolean>\",\n  \"clearPaymentTerm\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"canAccessDashboard\": \"<boolean>\",\n  \"taxExempt\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"accountingSystemId\": \"<string>\",\n  \"isApproved\": \"<boolean>\",\n  \"customerType\": \"<string>\",\n  \"paymentTermId\": \"<uuid>\",\n  \"incoterm\": \"<string>\",\n  \"companyName\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -876,7 +821,7 @@
           },
           "response": [
             {
-              "id": "2dac2eb4-f7d4-4660-baf1-293b02fa2892",
+              "id": "8c71ca0a-c798-4ad0-a4fd-9911e864dcaf",
               "name": "Organization updated successfully",
               "originalRequest": {
                 "url": {
@@ -903,14 +848,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/json"
                   }
@@ -918,7 +855,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"clearPaymentTerm\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"canAccessDashboard\": \"<boolean>\",\n  \"taxExempt\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"accountingSystemId\": \"<string>\",\n  \"isApproved\": \"<boolean>\",\n  \"customerType\": \"<string>\",\n  \"paymentTermId\": \"<string>\"\n}",
+                  "raw": "{\n  \"clearIncoterm\": \"<boolean>\",\n  \"clearPaymentTerm\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"canAccessDashboard\": \"<boolean>\",\n  \"taxExempt\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"accountingSystemId\": \"<string>\",\n  \"isApproved\": \"<boolean>\",\n  \"customerType\": \"<string>\",\n  \"paymentTermId\": \"<uuid>\",\n  \"incoterm\": \"<string>\",\n  \"companyName\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -934,13 +871,13 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8722,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 7231,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1970-04-07T18:27:12.484Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 1134,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 6407,\n      \"discountPercentage\": 6527.685947614203\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 5254,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 5208,\n      \"discountPercentage\": 9209.736403259672\n    }\n  ],\n  \"lastUpdated\": \"2026-08-08T22:45:50.411Z\",\n  \"taxExempt\": false,\n  \"id\": 8911,\n  \"name\": \"string\"\n}",
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 5508,\n      \"addressType\": \"string\",\n      \"city\": \"string\",\n      \"company\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"email\": \"string\",\n      \"isBillingAddress\": false,\n      \"isDeleted\": true,\n      \"isShippingAddress\": false,\n      \"name\": \"string\",\n      \"phone\": \"string\",\n      \"residential\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"zip\": \"string\",\n      \"state\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 3147,\n      \"addressType\": \"string\",\n      \"city\": \"string\",\n      \"company\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"email\": \"string\",\n      \"isBillingAddress\": false,\n      \"isDeleted\": false,\n      \"isShippingAddress\": false,\n      \"name\": \"string\",\n      \"phone\": \"string\",\n      \"residential\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"zip\": \"string\",\n      \"state\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1974-12-22T01:50:03.838Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerId\": 9984,\n      \"firstName\": \"string\",\n      \"isApproved\": false,\n      \"lastName\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"organisationId\": 269,\n      \"phoneNumber\": \"string\",\n      \"email\": \"string\",\n      \"organisationName\": \"string\",\n      \"discountId\": 4080,\n      \"discountPercentage\": 1750.0120433538568,\n      \"language\": \"string\"\n    },\n    {\n      \"customerId\": 4008,\n      \"firstName\": \"string\",\n      \"isApproved\": true,\n      \"lastName\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"organisationId\": 628,\n      \"phoneNumber\": \"string\",\n      \"email\": \"string\",\n      \"organisationName\": \"string\",\n      \"discountId\": 8021,\n      \"discountPercentage\": 2571.203700656601,\n      \"language\": \"string\"\n    }\n  ],\n  \"deleted\": false,\n  \"hasCustomPricing\": true,\n  \"id\": 4094,\n  \"isApproved\": false,\n  \"metadata\": [\n    {\n      \"id\": \"adaa9743-e916-68c5-f736-0d56c6006549\",\n      \"metadataKey\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"id\": \"6c57cf17-4422-8071-33c3-f3f3e0f3417c\",\n      \"metadataKey\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"taxExempt\": true,\n  \"updateDt\": \"1991-03-10T16:23:03.277Z\",\n  \"name\": \"string\",\n  \"companyName\": \"string\",\n  \"paymentTerm\": {\n    \"id\": \"dcd15854-d1f4-cf0b-d573-ed1b9256760f\",\n    \"name\": \"string\",\n    \"accountingSystemTermId\": \"string\"\n  },\n  \"incoterm\": \"CFR\",\n  \"encryptionKeyId\": \"string\",\n  \"firstTouchSource\": \"string\",\n  \"language\": \"string\",\n  \"accountingSystemId\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3eed4291-6c31-401b-a108-847edcb9f209",
-              "name": "Invalid organization ID or update data",
+              "id": "b6c09eee-e2ed-40d7-8ae7-56d803bc730b",
+              "name": "Invalid organization payload or payment term ID",
               "originalRequest": {
                 "url": {
                   "path": [
@@ -966,18 +903,14 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"clearPaymentTerm\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"canAccessDashboard\": \"<boolean>\",\n  \"taxExempt\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"accountingSystemId\": \"<string>\",\n  \"isApproved\": \"<boolean>\",\n  \"customerType\": \"<string>\",\n  \"paymentTermId\": \"<string>\"\n}",
+                  "raw": "{\n  \"clearIncoterm\": \"<boolean>\",\n  \"clearPaymentTerm\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"canAccessDashboard\": \"<boolean>\",\n  \"taxExempt\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"accountingSystemId\": \"<string>\",\n  \"isApproved\": \"<boolean>\",\n  \"customerType\": \"<string>\",\n  \"paymentTermId\": \"<uuid>\",\n  \"incoterm\": \"<string>\",\n  \"companyName\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -990,12 +923,122 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46c2b431-8d47-4811-8108-e7d41f7991c5",
+              "name": "Organization or payment term not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organization to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clearIncoterm\": \"<boolean>\",\n  \"clearPaymentTerm\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"canAccessDashboard\": \"<boolean>\",\n  \"taxExempt\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"accountingSystemId\": \"<string>\",\n  \"isApproved\": \"<boolean>\",\n  \"customerType\": \"<string>\",\n  \"paymentTermId\": \"<uuid>\",\n  \"incoterm\": \"<string>\",\n  \"companyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc578b86-f6fa-4e0f-8f51-d513b6c42ae4",
+              "name": "Organization name already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organization to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clearIncoterm\": \"<boolean>\",\n  \"clearPaymentTerm\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"canAccessDashboard\": \"<boolean>\",\n  \"taxExempt\": \"<boolean>\",\n  \"language\": \"<string>\",\n  \"accountingSystemId\": \"<string>\",\n  \"isApproved\": \"<boolean>\",\n  \"customerType\": \"<string>\",\n  \"paymentTermId\": \"<uuid>\",\n  \"incoterm\": \"<string>\",\n  \"companyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -1004,7 +1047,7 @@
           }
         },
         {
-          "id": "be3716a1-6562-43a9-a6eb-6ea0088d0ca7",
+          "id": "5e20e7f2-170d-45b7-8ca8-0759fc7d867d",
           "name": "Delete customer organisation metadata",
           "request": {
             "name": "Delete customer organisation metadata",
@@ -1043,12 +1086,18 @@
                 }
               ]
             },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "method": "DELETE",
             "auth": null
           },
           "response": [
             {
-              "id": "282ad63e-d324-4bb8-a110-6b5f9f02f12f",
+              "id": "6ed79b96-a599-4f6c-a5f2-5b0a154fcab6",
               "name": "Metadata deleted successfully",
               "originalRequest": {
                 "url": {
@@ -1082,16 +1131,6 @@
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
                 "method": "DELETE",
                 "body": {}
               },
@@ -1108,7 +1147,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "6fe539bc-5616-4ca0-92c1-d8281ec4e57e",
+              "id": "4380dbb5-45cd-472e-b7cf-3adffdbf9a34",
               "name": "Metadata not found for the given organisation",
               "originalRequest": {
                 "url": {
@@ -1144,12 +1183,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "DELETE",
@@ -1160,12 +1195,12 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -1174,7 +1209,7 @@
           }
         },
         {
-          "id": "9d018c48-2ac9-4dd3-89af-28cf8ef4f842",
+          "id": "9b34897e-f683-48c3-b87b-4603623ae4e1",
           "name": "Update customer organisation metadata",
           "request": {
             "name": "Update customer organisation metadata",
@@ -1237,7 +1272,7 @@
           },
           "response": [
             {
-              "id": "99155ee7-0f28-45b6-9189-dd9edd89d719",
+              "id": "78db86e3-9275-4337-9662-6828bdaf9f2e",
               "name": "Metadata updated successfully",
               "originalRequest": {
                 "url": {
@@ -1273,14 +1308,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/json"
                   }
@@ -1304,13 +1331,13 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"e7c80985-298d-2f3f-a850-75a102d4472e\",\n  \"metadataKey\": \"string\",\n  \"value\": \"string\"\n}",
+              "body": "{\n  \"id\": \"8599ba17-1717-9b36-2469-b7e1d25f0ee4\",\n  \"metadataKey\": \"string\",\n  \"value\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "ca6588df-7aad-4171-8bbd-28b11ab62a4e",
-              "name": "Metadata not found or key conflict",
+              "id": "8915927d-8195-4bcb-b3d7-72529ec32ca6",
+              "name": "Metadata not found",
               "originalRequest": {
                 "url": {
                   "path": [
@@ -1345,12 +1372,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "PATCH",
@@ -1364,17 +1387,81 @@
                   }
                 }
               },
-              "status": "Bad Request",
-              "code": 400,
+              "status": "Not Found",
+              "code": 404,
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32c3be75-83d3-403b-8b05-5be0d4553de2",
+              "name": "Metadata key already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    ":organisationId",
+                    "metadata",
+                    ":metadataId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organisationId",
+                      "description": "(Required) ID of the organisation"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "metadataId",
+                      "description": "(Required) ID of the metadata entry to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadataKey\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -1383,184 +1470,7 @@
           }
         },
         {
-          "id": "c0d05579-3b0e-42be-8c76-5c277e820d77",
-          "name": "Transfer an individual customer to an organization",
-          "request": {
-            "name": "Transfer an individual customer to an organization",
-            "description": {
-              "content": "Merges an individual customer into a corporate organization",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "manufacturer",
-                "v1",
-                "organisation",
-                ":destinationOrgId",
-                "transfer"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "sourceOrgId",
-                  "value": "<long>",
-                  "description": "(Required) ID of the source individual organization"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "destinationOrgId",
-                  "description": "(Required) ID of the destination corporate organization"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "text/plain"
-              }
-            ],
-            "method": "PATCH",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a55eeb2b-6ed4-47f3-9543-0aef2fb6850c",
-              "name": "Customer transferred successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "organisation",
-                    ":destinationOrgId",
-                    "transfer"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "sourceOrgId",
-                      "value": "1"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "destinationOrgId",
-                      "description": "(Required) ID of the destination corporate organization"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "text/plain"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "string",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7b4c8485-da3c-47b5-a0dc-9242e2cc9da6",
-              "name": "Invalid organization IDs or transfer failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "organisation",
-                    ":destinationOrgId",
-                    "transfer"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "sourceOrgId",
-                      "value": "1"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "destinationOrgId",
-                      "description": "(Required) ID of the destination corporate organization"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "text/plain"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "string",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "35a29ed3-72f5-4a85-b866-704ab56dc0df",
+          "id": "77c399ee-455a-4bf7-8d33-786b90779d1d",
           "name": "Get customer organisation summaries",
           "request": {
             "name": "Get customer organisation summaries",
@@ -1592,7 +1502,7 @@
           },
           "response": [
             {
-              "id": "13791a31-950c-4667-9fb9-678de80e9b19",
+              "id": "cb02097c-175a-431c-877c-2cb7496e83e4",
               "name": "Customer organisations retrieved successfully",
               "originalRequest": {
                 "url": {
@@ -1610,14 +1520,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/json"
                   }
@@ -1633,12 +1535,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  {\n    \"createdAt\": \"2020-08-10T18:44:07.321Z\",\n    \"taxExempt\": true,\n    \"updateDt\": \"1976-04-05T21:26:44.455Z\",\n    \"id\": 6776,\n    \"name\": \"string\",\n    \"firstTouchSource\": \"string\",\n    \"language\": \"string\",\n    \"isApproved\": false,\n    \"accountingSystemId\": \"string\"\n  },\n  {\n    \"createdAt\": \"1988-03-19T05:24:43.832Z\",\n    \"taxExempt\": true,\n    \"updateDt\": \"2007-10-11T02:02:33.492Z\",\n    \"id\": 6450,\n    \"name\": \"string\",\n    \"firstTouchSource\": \"string\",\n    \"language\": \"string\",\n    \"isApproved\": true,\n    \"accountingSystemId\": \"string\"\n  }\n]",
+              "body": "[\n  {\n    \"createdAt\": \"1948-01-13T04:20:45.159Z\",\n    \"taxExempt\": true,\n    \"updateDt\": \"1959-11-04T18:21:19.351Z\",\n    \"id\": 3603,\n    \"name\": \"string\",\n    \"firstTouchSource\": \"string\",\n    \"language\": \"string\",\n    \"isApproved\": false,\n    \"accountingSystemId\": \"string\"\n  },\n  {\n    \"createdAt\": \"1980-05-07T00:03:20.823Z\",\n    \"taxExempt\": true,\n    \"updateDt\": \"1969-01-31T19:15:48.637Z\",\n    \"id\": 4898,\n    \"name\": \"string\",\n    \"firstTouchSource\": \"string\",\n    \"language\": \"string\",\n    \"isApproved\": false,\n    \"accountingSystemId\": \"string\"\n  }\n]",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "7b3fce0f-c7fb-4fb4-867b-506a5fef0658",
+              "id": "8864bf46-89f5-4359-8975-03eed2665c32",
               "name": "Unauthorized - missing operator context",
               "originalRequest": {
                 "url": {
@@ -1656,232 +1558,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "5fc4fd4f-0898-4995-b4f2-a953acb6db2c",
-          "name": "Preview a merge",
-          "request": {
-            "name": "Preview a merge",
-            "description": {
-              "content": "Read-only dry run: per-entity counts that would move plus whether the merge is eligible and why not.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "manufacturer",
-                "v1",
-                "organisation",
-                ":destinationOrgId",
-                "transfer",
-                "preview"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "sourceOrgId",
-                  "value": "<long>",
-                  "description": "(Required) "
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "destinationOrgId",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "*/*"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "622ffece-73fa-4fbc-8efd-5ef4b0c36c6e",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "organisation",
-                    ":destinationOrgId",
-                    "transfer",
-                    "preview"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "sourceOrgId",
-                      "value": "<long>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "destinationOrgId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "body": "{\n  \"counts\": {\n    \"key_0\": 3679\n  },\n  \"destinationOrganisationId\": 502,\n  \"eligible\": false,\n  \"sourceOrganisationId\": 7370,\n  \"totalRows\": 7314,\n  \"blockReason\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "7986ea5d-233d-4356-83a8-770ca2581dd8",
-          "name": "Get organization by thread ID",
-          "request": {
-            "name": "Get organization by thread ID",
-            "description": {
-              "content": "Retrieves the organization associated with a specific thread",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "manufacturer",
-                "v1",
-                "organisation",
-                "thread",
-                ":threadId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "threadId",
-                  "description": "(Required) ID of the thread to get organization for"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "19c74703-a4cb-44df-a959-1d2948e4c3e0",
-              "name": "Organization retrieved successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "organisation",
-                    "thread",
-                    ":threadId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "threadId",
-                      "description": "(Required) ID of the thread to get organization for"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/json"
                   }
@@ -1889,121 +1565,17 @@
                 "method": "GET",
                 "body": {}
               },
-              "status": "OK",
-              "code": 200,
+              "status": "Unauthorized",
+              "code": 401,
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8722,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 7231,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1970-04-07T18:27:12.484Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 1134,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 6407,\n      \"discountPercentage\": 6527.685947614203\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 5254,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 5208,\n      \"discountPercentage\": 9209.736403259672\n    }\n  ],\n  \"lastUpdated\": \"2026-08-08T22:45:50.411Z\",\n  \"taxExempt\": false,\n  \"id\": 8911,\n  \"name\": \"string\"\n}",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "3e1cde67-6582-4876-a945-cdd0a6322cbb",
-              "name": "Invalid thread ID or thread not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "organisation",
-                    "thread",
-                    ":threadId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "threadId",
-                      "description": "(Required) ID of the thread to get organization for"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "cdbfc5e1-1525-4351-9e5c-7dafc28e60e7",
-              "name": "Unauthorized - missing operator context",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "organisation",
-                    "thread",
-                    ":threadId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "threadId",
-                      "description": "(Required) ID of the thread to get organization for"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
             }
           ],
           "event": [],
@@ -2012,7 +1584,7 @@
           }
         },
         {
-          "id": "aba91bc7-9365-4788-94bc-e0b258faf52c",
+          "id": "18c70c67-3403-43dc-ba8d-8090ea64f872",
           "name": "Get customer organisations with filtering",
           "request": {
             "name": "Get customer organisations with filtering",
@@ -2076,7 +1648,7 @@
           },
           "response": [
             {
-              "id": "2af1d30f-2946-4199-8e4e-c21297a844a1",
+              "id": "64f4ef49-e46f-4b96-ab3f-c2af95111e81",
               "name": "Customer organisations retrieved successfully",
               "originalRequest": {
                 "url": {
@@ -2116,14 +1688,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/json"
                   }
@@ -2139,12 +1703,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"content\": [],\n  \"isEmpty\": true,\n  \"isFirst\": true,\n  \"isLast\": true,\n  \"pageNumber\": 8865,\n  \"pageSize\": 3163,\n  \"totalElements\": 5357,\n  \"totalPages\": 4664\n}",
+              "body": "{\n  \"content\": [],\n  \"isEmpty\": true,\n  \"isFirst\": false,\n  \"isLast\": true,\n  \"pageNumber\": 624,\n  \"pageSize\": 6065,\n  \"totalElements\": 8057,\n  \"totalPages\": 7814\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "8494c095-1c47-4520-8048-af6c97c2c015",
+              "id": "07b54902-bc35-4d99-ba61-1f2a650b9376",
               "name": "Invalid filter specification",
               "originalRequest": {
                 "url": {
@@ -2184,12 +1748,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -2200,15 +1760,15 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
             },
             {
-              "id": "afcec4ac-3061-448f-b5e4-931d6f6dc1d4",
+              "id": "2e331ccc-c74d-40bf-95a7-1abd38c1e327",
               "name": "Unauthorized - missing operator context",
               "originalRequest": {
                 "url": {
@@ -2248,12 +1808,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -2264,12 +1820,12 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -2278,7 +1834,7 @@
           }
         },
         {
-          "id": "cdcc39cf-a47b-48ac-9692-38d79c09d172",
+          "id": "35517c00-8abc-49e1-9c98-0172c19a6144",
           "name": "Get organization by customer ID",
           "request": {
             "name": "Get organization by customer ID",
@@ -2320,7 +1876,7 @@
           },
           "response": [
             {
-              "id": "f863b369-db9d-4756-a2d4-ba20e2f3a0bf",
+              "id": "42061a90-22c1-4dcb-86fd-55c3eaebe487",
               "name": "Organization retrieved successfully",
               "originalRequest": {
                 "url": {
@@ -2348,14 +1904,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/json"
                   }
@@ -2371,64 +1919,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 8722,\n      \"isBillingAddress\": false,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": true,\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 7231,\n      \"isBillingAddress\": true,\n      \"isShippingAddress\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"zip\": \"string\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"residential\": false,\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1970-04-07T18:27:12.484Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 1134,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 6407,\n      \"discountPercentage\": 6527.685947614203\n    },\n    {\n      \"customerType\": \"string\",\n      \"language\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"email\": \"string\",\n      \"customerId\": 5254,\n      \"organisationName\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"discountId\": 5208,\n      \"discountPercentage\": 9209.736403259672\n    }\n  ],\n  \"lastUpdated\": \"2026-08-08T22:45:50.411Z\",\n  \"taxExempt\": false,\n  \"id\": 8911,\n  \"name\": \"string\"\n}",
+              "body": "{\n  \"addresses\": [\n    {\n      \"addressId\": 5508,\n      \"addressType\": \"string\",\n      \"city\": \"string\",\n      \"company\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"email\": \"string\",\n      \"isBillingAddress\": false,\n      \"isDeleted\": true,\n      \"isShippingAddress\": false,\n      \"name\": \"string\",\n      \"phone\": \"string\",\n      \"residential\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"zip\": \"string\",\n      \"state\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"taxId\": \"string\"\n    },\n    {\n      \"addressId\": 3147,\n      \"addressType\": \"string\",\n      \"city\": \"string\",\n      \"company\": \"string\",\n      \"country\": \"string\",\n      \"countryAlpha2Code\": \"string\",\n      \"countryAlpha3Code\": \"string\",\n      \"email\": \"string\",\n      \"isBillingAddress\": false,\n      \"isDeleted\": false,\n      \"isShippingAddress\": false,\n      \"name\": \"string\",\n      \"phone\": \"string\",\n      \"residential\": true,\n      \"street1\": \"string\",\n      \"street2\": \"string\",\n      \"zip\": \"string\",\n      \"state\": \"string\",\n      \"jurisdictionIsoCode\": \"string\",\n      \"taxId\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1974-12-22T01:50:03.838Z\",\n  \"customerType\": \"string\",\n  \"customers\": [\n    {\n      \"customerId\": 9984,\n      \"firstName\": \"string\",\n      \"isApproved\": false,\n      \"lastName\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"organisationId\": 269,\n      \"phoneNumber\": \"string\",\n      \"email\": \"string\",\n      \"organisationName\": \"string\",\n      \"discountId\": 4080,\n      \"discountPercentage\": 1750.0120433538568,\n      \"language\": \"string\"\n    },\n    {\n      \"customerId\": 4008,\n      \"firstName\": \"string\",\n      \"isApproved\": true,\n      \"lastName\": \"string\",\n      \"notificationPreference\": \"string\",\n      \"organisationId\": 628,\n      \"phoneNumber\": \"string\",\n      \"email\": \"string\",\n      \"organisationName\": \"string\",\n      \"discountId\": 8021,\n      \"discountPercentage\": 2571.203700656601,\n      \"language\": \"string\"\n    }\n  ],\n  \"deleted\": false,\n  \"hasCustomPricing\": true,\n  \"id\": 4094,\n  \"isApproved\": false,\n  \"metadata\": [\n    {\n      \"id\": \"adaa9743-e916-68c5-f736-0d56c6006549\",\n      \"metadataKey\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"id\": \"6c57cf17-4422-8071-33c3-f3f3e0f3417c\",\n      \"metadataKey\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"taxExempt\": true,\n  \"updateDt\": \"1991-03-10T16:23:03.277Z\",\n  \"name\": \"string\",\n  \"companyName\": \"string\",\n  \"paymentTerm\": {\n    \"id\": \"dcd15854-d1f4-cf0b-d573-ed1b9256760f\",\n    \"name\": \"string\",\n    \"accountingSystemTermId\": \"string\"\n  },\n  \"incoterm\": \"CFR\",\n  \"encryptionKeyId\": \"string\",\n  \"firstTouchSource\": \"string\",\n  \"language\": \"string\",\n  \"accountingSystemId\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "84491e1b-e9f1-43a0-b05c-6cf35758d809",
-              "name": "Invalid customer ID or customer not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "organisation",
-                    "customer",
-                    ":customerId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "customerId",
-                      "description": "(Required) ID of the customer to get organization for"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "999de30e-d7ce-4f82-9f1d-058a4c6d17d0",
+              "id": "f491998a-fbce-4069-9397-1f2096773fef",
               "name": "Unauthorized - missing operator context",
               "originalRequest": {
                 "url": {
@@ -2456,12 +1952,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -2472,12 +1964,60 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a96d7cb-539a-4ece-91ff-b65d8609b665",
+              "name": "Organization not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "organisation",
+                    "customer",
+                    ":customerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "customerId",
+                      "description": "(Required) ID of the customer to get organization for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -2497,18 +2037,9 @@
       "key": "baseUrl"
     }
   ],
-  "auth": {
-    "type": "bearer",
-    "bearer": [
-      {
-        "key": "token",
-        "value": "{{bearerToken}}"
-      }
-    ]
-  },
   "info": {
-    "_postman_id": "6a141cc2-c280-473c-b475-60df4d25709b",
-    "name": "Phasio Activity Internal Manufacturer Customer Organisation Controller API",
+    "_postman_id": "ec0b8df6-64bc-4d2d-96e7-30eae899222b",
+    "name": "Phasio Manufacturer Customer Organisation Controller API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "This is the API documentation for the Phasio application.",

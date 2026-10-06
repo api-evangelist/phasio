@@ -1,0 +1,538 @@
+{
+  "item": [
+    {
+      "id": "7b08bbf5-da85-40b3-a249-c95b6d322a2f",
+      "name": "Payments",
+      "description": {
+        "content": "Manage payments for orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "08f47a8b-f2df-45be-ba5c-70b9cc08d106",
+          "name": "Accept an offline payment obligation",
+          "request": {
+            "name": "Accept an offline payment obligation",
+            "description": {
+              "content": "Converts a quote to an accepted order without marking its payment as paid",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":orderId",
+                "payment",
+                "confirm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "purchaseOrderNumber",
+                  "value": "<string>",
+                  "description": "Purchase order number"
+                },
+                {
+                  "disabled": false,
+                  "key": "message",
+                  "value": "<string>",
+                  "description": "Message"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order to confirm payment for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"file\": \"<binary>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d926715-73b8-47d9-97bb-a8d1c6bdeaea",
+              "name": "Offline payment obligation accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "purchaseOrderNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to confirm payment for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"file\": \"<binary>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4cbb78ee-5290-4d69-a5cd-bfa91ea318ac",
+              "name": "Failed to confirm payment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "purchaseOrderNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to confirm payment for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"file\": \"<binary>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "68774552-cda3-4f7e-a007-9c23cdb1422f",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "purchaseOrderNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to confirm payment for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"file\": \"<binary>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "abba6266-f249-4772-a5f6-b0911540ced6",
+          "name": "Update payment status",
+          "request": {
+            "name": "Update payment status",
+            "description": {
+              "content": "Modifies an order's payment status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":orderId",
+                "payment",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9eb3c59c-3f46-4f22-9e31-0ab58ce7e5ca",
+              "name": "Payment status successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"387ae75a-c34a-948f-61c7-9dd8a45f6185\",\n      \"assemblyName\": \"string\",\n      \"assemblyPricePaid\": 5991.039955567532,\n      \"id\": 3915,\n      \"partCount\": 3095,\n      \"quantity\": 8542,\n      \"totalPricePaid\": 4608.48986491785,\n      \"createdAt\": \"2019-08-29T03:54:56.232Z\"\n    },\n    {\n      \"assemblyId\": \"c668692d-64f6-fb34-2fdb-8c705fd5b422\",\n      \"assemblyName\": \"string\",\n      \"assemblyPricePaid\": 5079.7830714531365,\n      \"id\": 9297,\n      \"partCount\": 4239,\n      \"quantity\": 7857,\n      \"totalPricePaid\": 9455.32725835122,\n      \"createdAt\": \"2021-06-11T06:47:22.561Z\"\n    }\n  ],\n  \"awaitingStatus\": \"string\",\n  \"bypassPurchasabilityChecks\": false,\n  \"createdAt\": \"1969-06-13T05:01:20.087Z\",\n  \"currency\": \"string\",\n  \"expenses\": [\n    {\n      \"costForOperator\": 9316.060476658757,\n      \"expenseId\": 9183,\n      \"localUnitPrice\": 441.60978447294497,\n      \"name\": \"string\",\n      \"price\": 2576.1876667720117,\n      \"quantity\": 2709.9842948155883,\n      \"type\": \"string\",\n      \"unitPrice\": 803.5416602172885,\n      \"description\": \"string\",\n      \"accountingCategoryCode\": \"string\"\n    },\n    {\n      \"costForOperator\": 6035.708689385191,\n      \"expenseId\": 833,\n      \"localUnitPrice\": 6987.7872397969095,\n      \"name\": \"string\",\n      \"price\": 6195.395962727115,\n      \"quantity\": 3964.0757793446023,\n      \"type\": \"string\",\n      \"unitPrice\": 8210.130744931372,\n      \"description\": \"string\",\n      \"accountingCategoryCode\": \"string\"\n    }\n  ],\n  \"hasWorkOrders\": true,\n  \"id\": 7539,\n  \"isArchived\": true,\n  \"isEditable\": false,\n  \"isInProject\": true,\n  \"isPurchaseOrder\": true,\n  \"isSilent\": false,\n  \"isVoided\": false,\n  \"localCurrency\": \"string\",\n  \"paymentStatus\": \"string\",\n  \"requisitionIds\": [\n    4499,\n    475\n  ],\n  \"shipments\": [\n    {\n      \"documents\": [\n        {\n          \"contentType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"createdAt\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"uploadedBy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"contentType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"createdAt\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"uploadedBy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"fromAddress\": {\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"email\": \"string\",\n        \"name\": \"string\",\n        \"phone\": \"string\",\n        \"residential\": true,\n        \"street1\": \"string\",\n        \"street2\": \"string\",\n        \"zip\": \"string\",\n        \"state\": \"string\",\n        \"company\": \"string\",\n        \"jurisdictionIsoCode\": \"string\",\n        \"taxId\": \"string\"\n      },\n      \"parcels\": [\n        {\n          \"allocations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"grossWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"height\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"length\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"netWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"width\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"allocations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"grossWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"height\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"length\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"netWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"width\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"type\": \"COURIER\",\n      \"id\": \"e9e4145b-16f1-ef85-11b1-9f579cdbbf0f\",\n      \"status\": \"FULFILLED\",\n      \"incoterm\": \"DDP\",\n      \"preparedAt\": \"2013-06-20T07:43:47.425Z\",\n      \"preparedBy\": {\n        \"firstName\": \"string\",\n        \"id\": \"9d587770-3149-7be0-e3e1-a890a8539123\",\n        \"lastName\": \"string\",\n        \"displayName\": \"string\"\n      },\n      \"releasedAt\": \"1978-04-02T18:24:24.783Z\",\n      \"releasedBy\": {\n        \"firstName\": \"string\",\n        \"id\": \"8cd2e132-32bc-7347-d15a-2c85d1746150\",\n        \"lastName\": \"string\",\n        \"displayName\": \"string\"\n      },\n      \"fulfilledAt\": \"1965-04-09T01:29:28.716Z\",\n      \"fulfilledBy\": {\n        \"firstName\": \"string\",\n        \"id\": \"f9d46bc0-9761-f3ed-8b96-31d17ea71d93\",\n        \"lastName\": \"string\",\n        \"displayName\": \"string\"\n      }\n    },\n    {\n      \"documents\": [\n        {\n          \"contentType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"createdAt\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"uploadedBy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"contentType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"createdAt\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"uploadedBy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"fromAddress\": {\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"email\": \"string\",\n        \"name\": \"string\",\n        \"phone\": \"string\",\n        \"residential\": true,\n        \"street1\": \"string\",\n        \"street2\": \"string\",\n        \"zip\": \"string\",\n        \"state\": \"string\",\n        \"company\": \"string\",\n        \"jurisdictionIsoCode\": \"string\",\n        \"taxId\": \"string\"\n      },\n      \"parcels\": [\n        {\n          \"allocations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"grossWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"height\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"length\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"netWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"width\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"allocations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"grossWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"height\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"length\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"netWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"width\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"type\": \"COURIER\",\n      \"id\": \"fb199e20-9d49-0051-181e-1ef0a4803c04\",\n      \"status\": \"RELEASED\",\n      \"incoterm\": \"DPU\",\n      \"preparedAt\": \"2000-01-02T06:26:19.095Z\",\n      \"preparedBy\": {\n        \"firstName\": \"string\",\n        \"id\": \"5f1f95ef-8206-badf-a599-7262faec7398\",\n        \"lastName\": \"string\",\n        \"displayName\": \"string\"\n      },\n      \"releasedAt\": \"1973-12-07T00:30:29.769Z\",\n      \"releasedBy\": {\n        \"firstName\": \"string\",\n        \"id\": \"708e39c7-9c2a-36ff-25ad-dbd7434f53ea\",\n        \"lastName\": \"string\",\n        \"displayName\": \"string\"\n      },\n      \"fulfilledAt\": \"1951-01-20T18:50:33.025Z\",\n      \"fulfilledBy\": {\n        \"firstName\": \"string\",\n        \"id\": \"4ad0557c-ab07-671f-30a9-33b75778fe0e\",\n        \"lastName\": \"string\",\n        \"displayName\": \"string\"\n      }\n    }\n  ],\n  \"source\": \"string\",\n  \"state\": \"DRAFT\",\n  \"subscribedCustomerIds\": [\n    3222,\n    751\n  ],\n  \"threadId\": 8172,\n  \"updateDt\": \"1965-01-28T16:36:13.832Z\",\n  \"workOrders\": [\n    {\n      \"id\": \"714be7d4-66e7-3dd2-3c21-f39b8749b8ec\",\n      \"quantity\": 3839,\n      \"stages\": [\n        {\n          \"name\": \"string\",\n          \"operationId\": \"bdcba0fa-fc31-e113-cfa1-934c782e6aa6\",\n          \"quantity\": 8671\n        },\n        {\n          \"name\": \"string\",\n          \"operationId\": \"ef740bec-f8da-226e-03eb-c2ca34107417\",\n          \"quantity\": 8524\n        }\n      ],\n      \"startDate\": \"1971-04-19T22:07:09.002Z\",\n      \"workOrderNumber\": 8146,\n      \"partName\": \"string\",\n      \"dueDate\": \"1984-07-22T18:28:29.304Z\"\n    },\n    {\n      \"id\": \"55028e4f-2a0c-f497-9a90-500e5ddd46df\",\n      \"quantity\": 8127,\n      \"stages\": [\n        {\n          \"name\": \"string\",\n          \"operationId\": \"06d032ee-102b-2cf8-d6cd-de2d0f3c621f\",\n          \"quantity\": 8620\n        },\n        {\n          \"name\": \"string\",\n          \"operationId\": \"52374bdb-22b3-a07a-f182-8e54e691aa42\",\n          \"quantity\": 482\n        }\n      ],\n      \"startDate\": \"1970-04-08T10:46:42.050Z\",\n      \"workOrderNumber\": 2561,\n      \"partName\": \"string\",\n      \"dueDate\": \"1971-09-30T15:56:19.019Z\"\n    }\n  ],\n  \"customerOrganisationId\": 2472,\n  \"customerOrganisationName\": \"string\",\n  \"billingAddressId\": 4402,\n  \"kanbanColumnId\": \"string\",\n  \"quoteNumber\": \"string\",\n  \"orderNumber\": \"string\",\n  \"accountingSystemEstimateId\": \"string\",\n  \"accountingSystemEstimateNumber\": \"string\",\n  \"accountingSystemConfirmationId\": \"string\",\n  \"accountingSystemConfirmationNumber\": \"string\",\n  \"accountingSystemInvoiceId\": \"string\",\n  \"accountingSystemInvoiceNumber\": \"string\",\n  \"affiliate\": \"string\",\n  \"createdBy\": {\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"owner\": {\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"actorType\": \"string\",\n  \"paymentDueDate\": \"2005-04-01T03:43:30.760Z\",\n  \"productionProgress\": {\n    \"quantity\": 2655.5365940525635,\n    \"volume\": 3986.486282400292\n  },\n  \"shipping\": {\n    \"operatorId\": 661,\n    \"shippingMode\": \"FIXED_PRICE\",\n    \"id\": 2963,\n    \"shippingMethodId\": 7495,\n    \"customerOrganisationId\": 6624,\n    \"rateId\": \"string\",\n    \"toAddressId\": 858,\n    \"expectedDispatchDate\": \"1955-10-24\",\n    \"incoterm\": \"EXW\",\n    \"dispatchDate\": \"2025-03-21\",\n    \"toAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"fromAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"carrierAccountProvider\": \"string\",\n    \"carrierAccountServiceType\": \"string\",\n    \"carrierAccountServiceName\": \"string\",\n    \"estimatedRate\": 8030.952339819957,\n    \"finalRatePaid\": 5506.8959269819115\n  },\n  \"discount\": {\n    \"discountId\": 7145,\n    \"discountType\": \"string\",\n    \"endTime\": \"1966-09-07T05:22:08.052Z\",\n    \"percentage\": 6868.371377914766,\n    \"startTime\": \"2002-06-02T01:41:41.403Z\",\n    \"code\": \"string\",\n    \"customerId\": 1754,\n    \"customerEmail\": \"string\",\n    \"customerPhoneNumber\": \"string\"\n  },\n  \"tax\": {\n    \"components\": [\n      {\n        \"amount\": 4461.255443955254,\n        \"id\": \"da657255-ad0f-05ab-2720-dd9ec777e6f2\",\n        \"localAmount\": 9959.021438467262,\n        \"longName\": \"string\",\n        \"percentage\": 7481.869708301323,\n        \"shortName\": \"string\"\n      },\n      {\n        \"amount\": 7416.617773135583,\n        \"id\": \"8a1e8a15-1e02-3bd8-d8a0-c6d338aefe58\",\n        \"localAmount\": 9535.873711905248,\n        \"longName\": \"string\",\n        \"percentage\": 4155.6744537624345,\n        \"shortName\": \"string\"\n      }\n    ],\n    \"id\": \"94d28d18-5385-549f-65b7-09a55926d594\",\n    \"isTaxAppliedToShipping\": true,\n    \"isTaxExempted\": true,\n    \"localTotalPrice\": 9012.137218859883,\n    \"totalPrice\": 850.8999821867724,\n    \"accountingSystemTaxId\": \"string\",\n    \"taxNumber\": \"string\"\n  },\n  \"price\": 9552.25486295546,\n  \"localPrice\": 6918.607929279908,\n  \"topUpPrice\": 3837.1123818958795,\n  \"purchaseOrderNumber\": \"string\",\n  \"customerAcceptedTime\": \"1991-07-04T09:26:57.557Z\",\n  \"operatorNote\": \"string\",\n  \"customReference\": \"string\",\n  \"shipment\": {\n    \"operatorId\": 4175,\n    \"shippingMode\": \"SELF_COLLECTION\",\n    \"id\": 6008,\n    \"shippingMethodId\": 8084,\n    \"customerOrganisationId\": 5625,\n    \"rateId\": \"string\",\n    \"toAddressId\": 8616,\n    \"expectedDispatchDate\": \"1967-09-16\",\n    \"incoterm\": \"CPT\",\n    \"dispatchDate\": \"2009-12-03\",\n    \"toAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"fromAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"carrierAccountProvider\": \"string\",\n    \"carrierAccountServiceType\": \"string\",\n    \"carrierAccountServiceName\": \"string\",\n    \"estimatedRate\": 9383.154442027384,\n    \"finalRatePaid\": 5177.278191934766\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "911af00a-6581-460f-9a70-2afbda73513c",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f70d49c3-bbe1-4e34-8f2c-ed9380450e38",
+              "name": "Order has not converted from quote state or is being moved to Externally Tracked; error codes: ORDER_NOT_FOUND, ORDER_WRONG_STATE, ORDER_EXTERNALLY_TRACKED",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "payment",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "32ef7ff1-0fc8-426f-84db-6eaf52e6a40a",
+    "name": "Phasio Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

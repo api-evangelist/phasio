@@ -35,18 +35,36 @@ paths:
               schema:
                 $ref: '#/components/schemas/ColorDto'
         '404':
-          description: Color not found
+          description: Color not found (COLOR_NOT_FOUND)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
     ColorDto:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        name:
-          type: string
         code:
+          type: string
+        name:
           type: string
       required:
       - code

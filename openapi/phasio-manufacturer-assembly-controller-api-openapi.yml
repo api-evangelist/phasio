@@ -35,7 +35,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/AssemblyDto'
         '404':
-          description: Assembly not found
+          description: 'Assembly not found (error code: ASSEMBLY_NOT_FOUND)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
     put:
       tags:
       - Manufacturer Assembly Controller
@@ -65,8 +69,16 @@ paths:
                 $ref: '#/components/schemas/AssemblyDto'
         '400':
           description: Invalid request data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
         '404':
-          description: Assembly not found
+          description: 'Assembly not found (error code: ASSEMBLY_NOT_FOUND)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
     delete:
       tags:
       - Manufacturer Assembly Controller
@@ -86,38 +98,10 @@ paths:
           description: Assembly successfully deleted
         '404':
           description: Assembly not found
-  /api/manufacturer/v1/assemblies/{id}/customer-reference:
-    put:
-      tags:
-      - Manufacturer Assembly Controller
-      summary: Update customer article reference
-      description: Updates the customer's article reference for a specific assembly
-      operationId: updateCustomerReference_1
-      parameters:
-      - name: id
-        in: path
-        description: Assembly ID
-        required: true
-        schema:
-          type: string
-          format: uuid
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CustomerArticleReferenceDto'
-        required: true
-      responses:
-        '200':
-          description: Customer reference successfully updated
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AssemblyDto'
-        '400':
-          description: Invalid request data
-        '401':
-          description: Unauthorized - operator not found
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/assemblies:
     get:
       tags:
@@ -172,7 +156,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Paginated'
         '400':
-          description: Invalid filter specification
+          description: 'Invalid filter specification (error code: INVALID_FILTER)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
     post:
       tags:
       - Manufacturer Assembly Controller
@@ -192,10 +180,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssemblyDto'
-        '400':
-          description: Invalid request data or referenced entities not found
         '401':
           description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Part specification not found (error code PART_SPECIFICATION_NOT_FOUND)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/assemblies/{id}/catalog:
     post:
       tags:
@@ -233,66 +229,54 @@ paths:
                 $ref: '#/components/schemas/AssemblyDto'
         '400':
           description: Invalid request data
-        '404':
-          description: Assembly or customer organisation not found
-  /api/manufacturer/v1/assemblies/{id}/customer-reference/{customerOrganisationId}:
-    delete:
-      tags:
-      - Manufacturer Assembly Controller
-      summary: Delete customer article reference
-      description: Removes the customer's article reference from a specific assembly
-      operationId: deleteCustomerReference_1
-      parameters:
-      - name: id
-        in: path
-        description: Assembly ID
-        required: true
-        schema:
-          type: string
-          format: uuid
-      - name: customerOrganisationId
-        in: path
-        description: ID of the customer organization whose reference should be deleted
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        '200':
-          description: Customer reference successfully deleted
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AssemblyDto'
+                $ref: '#/components/schemas/ApiError'
         '404':
-          description: Assembly or customer reference not found
-        '401':
-          description: Unauthorized - operator not found
+          description: Assembly or customer organisation not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
-    CustomerArticleReferenceDto:
+    UpdateAssemblyDto:
       type: object
+      description: Assembly update request
       properties:
-        id:
+        name:
           type: string
-          format: uuid
-        customerOrganisationId:
-          type: integer
-          format: int64
-        customerOrganisationName:
-          type: string
-        reference:
-          type: string
-        pricingTiers:
+          minLength: 1
+        assemblyPrice:
+          type: number
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
-        showInCatalog:
-          type: boolean
+            $ref: '#/components/schemas/CreateAssemblyItemDto'
+          minItems: 1
       required:
-      - customerOrganisationId
-      - pricingTiers
-      - reference
+      - assemblyPrice
+      - items
+      - name
+    CreateAssemblyDto:
+      type: object
+      description: Assembly creation request
+      properties:
+        name:
+          type: string
+          minLength: 1
+        assemblyPrice:
+          type: number
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateAssemblyItemDto'
+          minItems: 1
+      required:
+      - assemblyPrice
+      - items
+      - name
     Paginated:
       type: object
       properties:
@@ -322,6 +306,29 @@ components:
       - pageSize
       - totalElements
       - totalPages
+    CustomerArticleReferenceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        customerOrganisationId:
+          type: integer
+          format: int64
+        customerOrganisationName:
+          type: string
+        reference:
+          type: string
+        pricingTiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
+        showInCatalog:
+          type: boolean
+      required:
+      - customerOrganisationId
+      - pricingTiers
+      - reference
     CreateAssemblyItemDto:
       type: object
       properties:
@@ -348,42 +355,6 @@ components:
       - rotationX
       - rotationY
       - rotationZ
-    CreateAssemblyDto:
-      type: object
-      description: Assembly creation request
-      properties:
-        name:
-          type: string
-          minLength: 1
-        assemblyPrice:
-          type: number
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateAssemblyItemDto'
-          minItems: 1
-      required:
-      - assemblyPrice
-      - items
-      - name
-    UpdateAssemblyDto:
-      type: object
-      description: Assembly update request
-      properties:
-        name:
-          type: string
-          minLength: 1
-        assemblyPrice:
-          type: number
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateAssemblyItemDto'
-          minItems: 1
-      required:
-      - assemblyPrice
-      - items
-      - name
     AssemblyItemDto:
       type: object
       properties:
@@ -433,6 +404,20 @@ components:
       required:
       - price
       - quantity
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
     AssemblyDto:
       type: object
       properties:

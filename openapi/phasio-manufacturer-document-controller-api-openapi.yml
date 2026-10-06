@@ -33,10 +33,78 @@ paths:
           description: PDF generated successfully
           content:
             application/pdf: {}
-        '400':
-          description: Invalid order ID or generation failed
         '401':
           description: Unauthorized - missing operator context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Document generation failed - error code DOCUMENT_GENERATION_FAILED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /api/manufacturer/v1/document/{orderId}/shipments/{shipmentId}/invoice:
+    get:
+      tags:
+      - Manufacturer Document Controller
+      summary: Generate shipment invoice document
+      description: Generates a PDF document using an invoice template for the parts allocated to a shipment
+      operationId: generateShipmentInvoiceDocument
+      parameters:
+      - name: orderId
+        in: path
+        description: ID of the order
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      - name: shipmentId
+        in: path
+        description: ID of the shipment
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: templateId
+        in: query
+        description: ID of the invoice template
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 42
+      responses:
+        '200':
+          description: PDF generated successfully
+          content:
+            application/pdf: {}
+        '401':
+          description: Unauthorized - missing operator context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Order, shipment, template, or quote not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Document generation failed - error code DOCUMENT_GENERATION_FAILED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/document/{orderId}/order-traveller:
     get:
       tags:
@@ -64,10 +132,24 @@ paths:
           description: PDF generated successfully
           content:
             application/pdf: {}
-        '400':
-          description: Invalid order ID or generation failed
         '401':
           description: Unauthorized - missing operator context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Document generation failed - error code DOCUMENT_GENERATION_FAILED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/document/{orderId}/invoice:
     get:
       tags:
@@ -89,12 +171,77 @@ paths:
           description: PDF generated successfully
           content:
             application/pdf: {}
-        '400':
-          description: Invalid order ID or generation failed
         '401':
           description: Unauthorized - missing operator context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
         '403':
-          description: Invoice downloads are disabled for this operator
+          description: Invoice downloads are disabled for this operator - error code INVOICE_DOWNLOAD_DISABLED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Order or quote not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Document generation failed - error code DOCUMENT_GENERATION_FAILED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /api/manufacturer/v1/document/{orderId}/invoice-document:
+    get:
+      tags:
+      - Manufacturer Document Controller
+      summary: Generate invoice document
+      description: Generates a PDF document using an invoice template for the specified order
+      operationId: generateInvoiceDocument
+      parameters:
+      - name: orderId
+        in: path
+        description: ID of the order
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      - name: templateId
+        in: query
+        description: ID of the invoice template
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 42
+      responses:
+        '200':
+          description: PDF generated successfully
+          content:
+            application/pdf: {}
+        '401':
+          description: Unauthorized - missing operator context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Order, template, or quote not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Document generation failed - error code DOCUMENT_GENERATION_FAILED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/document/{orderId}/estimate:
     get:
       tags:
@@ -116,10 +263,24 @@ paths:
           description: PDF generated successfully
           content:
             application/pdf: {}
-        '400':
-          description: Invalid order ID or generation failed
         '401':
           description: Unauthorized - missing operator context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Order or quote not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Document generation failed - error code DOCUMENT_GENERATION_FAILED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/document/{orderId}/custom:
     get:
       tags:
@@ -149,10 +310,24 @@ paths:
           description: PDF generated successfully
           content:
             application/pdf: {}
-        '400':
-          description: Invalid order ID, template ID, or generation failed
         '401':
           description: Unauthorized - missing operator context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Order, template, or quote not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Document generation failed - error code DOCUMENT_GENERATION_FAILED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/document/{orderId}/consignment-label:
     get:
       tags:
@@ -174,10 +349,24 @@ paths:
           description: PDF generated successfully
           content:
             application/pdf: {}
-        '400':
-          description: Invalid order ID or generation failed
         '401':
           description: Unauthorized - missing operator context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Document generation failed - error code DOCUMENT_GENERATION_FAILED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/document/{orderId}/confirmation:
     get:
       tags:
@@ -199,34 +388,24 @@ paths:
           description: PDF generated successfully
           content:
             application/pdf: {}
-        '400':
-          description: Invalid order ID or generation failed
         '401':
           description: Unauthorized - missing operator context
-  /api/manufacturer/v1/document/test/operator:
-    get:
-      tags:
-      - Manufacturer Document Controller
-      summary: Generate test document
-      description: Generates a test document of the specified type and language
-      operationId: getTestDocument
-      parameters:
-      - name: templateId
-        in: query
-        description: Document template ID
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        '200':
-          description: Test document generated successfully
           content:
-            application/pdf: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
         '404':
-          description: Document template not found
-        '401':
-          description: Unauthorized - missing operator context
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Document generation failed - error code DOCUMENT_GENERATION_FAILED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/document/invoice:
     get:
       tags:
@@ -248,11 +427,34 @@ paths:
           description: Excel file generated successfully
           content:
             application/octet-stream: {}
-        '400':
-          description: Invalid operator ID or generation failed
         '403':
-          description: Invoice downloads are disabled for this operator
+          description: Invoice downloads are disabled for this operator - error code INVOICE_DOWNLOAD_DISABLED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Document generation failed - error code DOCUMENT_GENERATION_FAILED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
+  schemas:
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

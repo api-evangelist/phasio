@@ -48,8 +48,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomerOrganisationMetadataDto'
-        '400':
-          description: Organisation not found
+        '404':
+          description: Organization not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/organisation/{organisationId}/metadata:
     post:
       tags:
@@ -79,15 +83,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomerOrganisationMetadataDto'
-        '400':
-          description: Invalid organisation ID or metadata already exists for the given key
+        '404':
+          description: Organization not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '409':
+          description: Metadata key already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/organisation/{organisationId}:
     get:
       tags:
       - Manufacturer Customer Organisation Controller
       summary: Get a customer organization by ID
       description: Retrieves details of a specific customer organization
-      operationId: get_14
+      operationId: get_3
       parameters:
       - name: organisationId
         in: path
@@ -104,10 +118,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomerOrganisationDto'
-        '400':
-          description: Invalid organization ID
         '401':
           description: Unauthorized - missing operator context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Organization not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
     delete:
       tags:
       - Manufacturer Customer Organisation Controller
@@ -128,12 +150,6 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/CustomerOrganisationDto'
-        '400':
-          description: Organization could not be deleted
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/CustomerOrganisationDto'
         '404':
           description: Organization not found
           content:
@@ -145,7 +161,7 @@ paths:
       - Manufacturer Customer Organisation Controller
       summary: Update a customer organization
       description: Updates details of an existing customer organization
-      operationId: update_12
+      operationId: update
       parameters:
       - name: organisationId
         in: path
@@ -169,7 +185,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/CustomerOrganisationDto'
         '400':
-          description: Invalid organization ID or update data
+          description: Invalid organization payload or payment term ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Organization or payment term not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '409':
+          description: Organization name already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/organisation/{organisationId}/metadata/{metadataId}:
     delete:
       tags:
@@ -198,6 +230,10 @@ paths:
           description: Metadata deleted successfully
         '404':
           description: Metadata not found for the given organisation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
     patch:
       tags:
       - Manufacturer Customer Organisation Controller
@@ -233,45 +269,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomerOrganisationMetadataDto'
-        '400':
-          description: Metadata not found or key conflict
-  /api/manufacturer/v1/organisation/{destinationOrgId}/transfer:
-    patch:
-      tags:
-      - Manufacturer Customer Organisation Controller
-      summary: Transfer an individual customer to an organization
-      description: Merges an individual customer into a corporate organization
-      operationId: mergeIndividualToOrganisation
-      parameters:
-      - name: sourceOrgId
-        in: query
-        description: ID of the source individual organization
-        required: true
-        schema:
-          type: integer
-          format: int64
-        example: 1
-      - name: destinationOrgId
-        in: path
-        description: ID of the destination corporate organization
-        required: true
-        schema:
-          type: integer
-          format: int64
-        example: 2
-      responses:
-        '200':
-          description: Customer transferred successfully
+        '404':
+          description: Metadata not found
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-        '400':
-          description: Invalid organization IDs or transfer failed
+                $ref: '#/components/schemas/ApiError'
+        '409':
+          description: Metadata key already exists
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/organisation:
     get:
       tags:
@@ -290,60 +299,10 @@ paths:
                   $ref: '#/components/schemas/CustomerOrganisationSummaryDto'
         '401':
           description: Unauthorized - missing operator context
-  /api/manufacturer/v1/organisation/{destinationOrgId}/transfer/preview:
-    get:
-      tags:
-      - Manufacturer Customer Organisation Controller
-      summary: Preview a merge
-      description: 'Read-only dry run: per-entity counts that would move plus whether the merge is eligible and why not.'
-      operationId: previewMerge
-      parameters:
-      - name: sourceOrgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
-      - name: destinationOrgId
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        '200':
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/MergePreview'
-  /api/manufacturer/v1/organisation/thread/{threadId}:
-    get:
-      tags:
-      - Manufacturer Customer Organisation Controller
-      summary: Get organization by thread ID
-      description: Retrieves the organization associated with a specific thread
-      operationId: getByThread
-      parameters:
-      - name: threadId
-        in: path
-        description: ID of the thread to get organization for
-        required: true
-        schema:
-          type: integer
-          format: int64
-        example: 1
-      responses:
-        '200':
-          description: Organization retrieved successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerOrganisationDto'
-        '400':
-          description: Invalid thread ID or thread not found
-        '401':
-          description: Unauthorized - missing operator context
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/organisation/paginated:
     get:
       tags:
@@ -399,8 +358,16 @@ paths:
                 $ref: '#/components/schemas/Paginated'
         '400':
           description: Invalid filter specification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
         '401':
           description: Unauthorized - missing operator context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/organisation/customer/{customerId}:
     get:
       tags:
@@ -424,12 +391,123 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomerOrganisationDto'
-        '400':
-          description: Invalid customer ID or customer not found
         '401':
           description: Unauthorized - missing operator context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Organization not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
+    OrganisationUpdateDto:
+      type: object
+      properties:
+        name:
+          type: string
+        canAccessDashboard:
+          type: boolean
+        taxExempt:
+          type: boolean
+        language:
+          type: string
+        accountingSystemId:
+          type: string
+        isApproved:
+          type: boolean
+        customerType:
+          type: string
+          enum:
+          - PRO_FORMA
+          - ACCOUNT
+          - INTERNAL
+        paymentTermId:
+          type: string
+          format: uuid
+        clearPaymentTerm:
+          type: boolean
+        incoterm:
+          type: string
+          enum:
+          - EXW
+          - FCA
+          - CPT
+          - CIP
+          - DAP
+          - DPU
+          - DDP
+          - FAS
+          - FOB
+          - CFR
+          - CIF
+        clearIncoterm:
+          type: boolean
+        companyName:
+          type: string
+          description: Name synced to the accounting system; may repeat across organisations
+      required:
+      - clearIncoterm
+      - clearPaymentTerm
+    CustomerDto:
+      type: object
+      properties:
+        email:
+          type: string
+        customerId:
+          type: integer
+          format: int64
+        organisationId:
+          type: integer
+          format: int64
+        organisationName:
+          type: string
+        isApproved:
+          type: boolean
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        notificationPreference:
+          type: string
+        discountId:
+          type: integer
+          format: int64
+        discountPercentage:
+          type: number
+        language:
+          type: string
+      required:
+      - customerId
+      - firstName
+      - isApproved
+      - lastName
+      - notificationPreference
+      - organisationId
+      - phoneNumber
+    UpdateCustomerOrganisationMetadataDto:
+      type: object
+      properties:
+        metadataKey:
+          type: string
+        value:
+          type: string
+    CreateCustomerOrganisationMetadataDto:
+      type: object
+      properties:
+        metadataKey:
+          type: string
+        value:
+          type: string
+      required:
+      - metadataKey
+      - value
     Paginated:
       type: object
       properties:
@@ -459,29 +537,99 @@ components:
       - pageSize
       - totalElements
       - totalPages
-    SetCustomerOrganisationMetadataValueDto:
+    OperatorAddressDto:
+      allOf:
+      - $ref: '#/components/schemas/AddressDto'
+      required:
+      - addressId
+      - addressType
+      - city
+      - company
+      - country
+      - countryAlpha2Code
+      - countryAlpha3Code
+      - email
+      - isBillingAddress
+      - isDeleted
+      - isShippingAddress
+      - name
+      - phone
+      - residential
+      - street1
+      - street2
+      - zip
+    PaymentTermDto:
       type: object
       properties:
-        value:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        accountingSystemTermId:
           type: string
       required:
-      - value
+      - id
+      - name
+    CustomerOrganisationAddressDto:
+      allOf:
+      - $ref: '#/components/schemas/AddressDto'
+      required:
+      - addressId
+      - addressType
+      - city
+      - company
+      - country
+      - countryAlpha2Code
+      - countryAlpha3Code
+      - email
+      - isBillingAddress
+      - isDeleted
+      - isShippingAddress
+      - name
+      - phone
+      - residential
+      - street1
+      - street2
+      - zip
     CustomerOrganisationDto:
       type: object
       properties:
         id:
           type: integer
           format: int64
+        hasCustomPricing:
+          type: boolean
         name:
+          type: string
+        companyName:
           type: string
         taxExempt:
           type: boolean
+        isApproved:
+          type: boolean
         customerType:
           type: string
+        paymentTerm:
+          $ref: '#/components/schemas/PaymentTermDto'
+        incoterm:
+          type: string
+          enum:
+          - EXW
+          - FCA
+          - CPT
+          - CIP
+          - DAP
+          - DPU
+          - DDP
+          - FAS
+          - FOB
+          - CFR
+          - CIF
         createdAt:
           type: string
           format: date-time
-        lastUpdated:
+        updateDt:
           type: string
           format: date-time
         customers:
@@ -491,119 +639,35 @@ components:
         addresses:
           type: array
           items:
-            $ref: '#/components/schemas/CustomerAddressDto'
+            oneOf:
+            - $ref: '#/components/schemas/CustomerOrganisationAddressDto'
+            - $ref: '#/components/schemas/OperatorAddressDto'
+        encryptionKeyId:
+          type: string
+        firstTouchSource:
+          type: string
+        language:
+          type: string
+        accountingSystemId:
+          type: string
+        deleted:
+          type: boolean
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerOrganisationMetadataDto'
       required:
       - addresses
       - createdAt
       - customerType
       - customers
-      - lastUpdated
-      - taxExempt
-    CustomerOrganisationMetadataDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        metadataKey:
-          type: string
-        value:
-          type: string
-      required:
+      - deleted
+      - hasCustomPricing
       - id
-      - metadataKey
-      - value
-    CreateCustomerOrganisationMetadataDto:
-      type: object
-      properties:
-        metadataKey:
-          type: string
-        value:
-          type: string
-      required:
-      - metadataKey
-      - value
-    MergePreview:
-      type: object
-      properties:
-        sourceOrganisationId:
-          type: integer
-          format: int64
-        destinationOrganisationId:
-          type: integer
-          format: int64
-        eligible:
-          type: boolean
-        blockReason:
-          type: string
-        counts:
-          type: object
-          additionalProperties:
-            type: integer
-            format: int32
-        totalRows:
-          type: integer
-          format: int32
-      required:
-      - counts
-      - destinationOrganisationId
-      - eligible
-      - sourceOrganisationId
-      - totalRows
-    CustomerDto:
-      type: object
-      properties:
-        email:
-          type: string
-        customerId:
-          type: integer
-          format: int64
-        organisationName:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        phoneNumber:
-          type: string
-        language:
-          type: string
-        notificationPreference:
-          type: string
-        discountId:
-          type: integer
-          format: int64
-        discountPercentage:
-          type: number
-        customerType:
-          type: string
-      required:
-      - customerType
-      - language
-      - notificationPreference
-    OrganisationUpdateDto:
-      type: object
-      properties:
-        name:
-          type: string
-        canAccessDashboard:
-          type: boolean
-        taxExempt:
-          type: boolean
-        language:
-          type: string
-        accountingSystemId:
-          type: string
-        isApproved:
-          type: boolean
-        customerType:
-          type: string
-        paymentTermId:
-          type: string
-        clearPaymentTerm:
-          type: boolean
-      required:
-      - clearPaymentTerm
+      - isApproved
+      - metadata
+      - taxExempt
+      - updateDt
     CustomerOrganisationSummaryDto:
       type: object
       properties:
@@ -632,15 +696,48 @@ components:
       - createdAt
       - taxExempt
       - updateDt
-    UpdateCustomerOrganisationMetadataDto:
+    SetCustomerOrganisationMetadataValueDto:
       type: object
       properties:
+        value:
+          type: string
+      required:
+      - value
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
+    CustomerOrganisationMetadataDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
         metadataKey:
           type: string
         value:
           type: string
-    CustomerAddressDto:
+      required:
+      - id
+      - metadataKey
+      - value
+    AddressDto:
       type: object
+      discriminator:
+        propertyName: addressType
+        mapping:
+          OPERATOR: '#/components/schemas/OperatorAddressDto'
+          CUSTOMER_ORGANISATION: '#/components/schemas/CustomerOrganisationAddressDto'
       properties:
         addressId:
           type: integer
@@ -677,8 +774,30 @@ components:
           type: string
         residential:
           type: boolean
+        addressType:
+          type: string
+        isDeleted:
+          type: boolean
         taxId:
           type: string
+      required:
+      - addressId
+      - addressType
+      - city
+      - company
+      - country
+      - countryAlpha2Code
+      - countryAlpha3Code
+      - email
+      - isBillingAddress
+      - isDeleted
+      - isShippingAddress
+      - name
+      - phone
+      - residential
+      - street1
+      - street2
+      - zip
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

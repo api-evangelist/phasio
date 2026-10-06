@@ -18,7 +18,7 @@ paths:
       - Addresses
       summary: Get an address by ID
       description: Retrieves address details for the specified ID
-      operationId: getById
+      operationId: getById_1
       parameters:
       - name: addressId
         in: path
@@ -36,13 +36,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/AddressDto'
         '404':
-          description: Address not found
+          description: 'Address not found; error code: ADDRESS_NOT_FOUND'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
     put:
       tags:
       - Addresses
       summary: Edit an existing address
       description: Creates a new address with the updated details, soft-deletes the old address, and transfers billing status if applicable
-      operationId: edit
+      operationId: edit_1
       parameters:
       - name: addressId
         in: path
@@ -66,44 +70,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/AddressDto'
         '404':
-          description: Address not found or already deleted
-    delete:
-      tags:
-      - Addresses
-      summary: Delete an address
-      description: Deletes the specified address
-      operationId: delete_1
-      parameters:
-      - name: addressId
-        in: path
-        description: ID of the address to delete
-        required: true
-        schema:
-          type: integer
-          format: int64
-        example: 1
-      responses:
-        '200':
-          description: Address deleted successfully
+          description: 'Address not found or already deleted; error code: ADDRESS_NOT_FOUND'
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-        '400':
-          description: Invalid address ID or address cannot be deleted
-          content:
-            text/plain:
-              schema:
-                type: string
-        '401':
-          description: Unauthorized - missing operator context
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/address/create:
     post:
       tags:
       - Addresses
       summary: Create a new address
       description: Creates a new address using the provided details
-      operationId: create_16
+      operationId: create_5
       requestBody:
         content:
           application/json:
@@ -119,13 +97,17 @@ paths:
                 $ref: '#/components/schemas/AddressDto'
         '400':
           description: Invalid address data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/address/{addressId}/shipping:
     patch:
       tags:
       - Addresses
       summary: Set address as default shipping address
       description: Marks an address as the default shipping address
-      operationId: setShippingAddress
+      operationId: setShippingAddress_1
       parameters:
       - name: addressId
         in: path
@@ -138,15 +120,19 @@ paths:
       responses:
         '200':
           description: Address set as shipping address successfully
-        '400':
-          description: Invalid address ID or operation failed
+        '404':
+          description: 'Address not found; error code: ADDRESS_NOT_FOUND'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/address/{addressId}/billing:
     patch:
       tags:
       - Addresses
       summary: Set address as default billing address
       description: Marks an address as the default billing address
-      operationId: setBillingAddress
+      operationId: setBillingAddress_1
       parameters:
       - name: addressId
         in: path
@@ -159,25 +145,19 @@ paths:
       responses:
         '200':
           description: Address set as billing address successfully
-        '400':
-          description: Invalid address ID or operation failed
-  /api/manufacturer/v1/address/jurisdiction:
-    patch:
-      tags:
-      - Addresses
-      summary: Update jurisdiction for all addresses
-      description: Updates the jurisdiction information for all addresses in the system
-      operationId: updateJurisdiction
-      responses:
-        '204':
-          description: Jurisdictions updated successfully
+        '404':
+          description: 'Address not found; error code: ADDRESS_NOT_FOUND'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/address/organisation/{organisationId}:
     get:
       tags:
       - Addresses
       summary: Get addresses by customer organization
       description: Retrieves all addresses associated with the specified customer organization
-      operationId: getByCustomerOrganisation_2
+      operationId: getByCustomerOrganisation_1
       parameters:
       - name: organisationId
         in: path
@@ -223,111 +203,6 @@ paths:
                   $ref: '#/components/schemas/AddressDto'
 components:
   schemas:
-    AddressDto:
-      type: object
-      discriminator:
-        propertyName: addressType
-      properties:
-        addressId:
-          type: integer
-          format: int64
-        isBillingAddress:
-          type: boolean
-        isShippingAddress:
-          type: boolean
-        street1:
-          type: string
-        street2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        countryAlpha2Code:
-          type: string
-        countryAlpha3Code:
-          type: string
-        jurisdictionIsoCode:
-          type: string
-        zip:
-          type: string
-        name:
-          type: string
-        company:
-          type: string
-        phone:
-          type: string
-        email:
-          type: string
-        residential:
-          type: boolean
-        addressType:
-          type: string
-        platformEncryptedAesKey:
-          type: string
-        taxId:
-          type: string
-      required:
-      - addressId
-      - addressType
-      - city
-      - company
-      - country
-      - countryAlpha2Code
-      - countryAlpha3Code
-      - email
-      - isBillingAddress
-      - isShippingAddress
-      - name
-      - phone
-      - platformEncryptedAesKey
-      - residential
-      - street1
-      - street2
-      - zip
-    EditAddressDto:
-      type: object
-      properties:
-        street1:
-          type: string
-        street2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        jurisdictionIsoCode:
-          type: string
-        zip:
-          type: string
-        name:
-          type: string
-        company:
-          type: string
-        phone:
-          type: string
-        email:
-          type: string
-        residential:
-          type: boolean
-        taxId:
-          type: string
-      required:
-      - city
-      - company
-      - country
-      - email
-      - name
-      - phone
-      - residential
-      - state
-      - street1
-      - street2
-      - zip
     CreateAddressDto:
       type: object
       properties:
@@ -370,6 +245,128 @@ components:
       - phone
       - residential
       - state
+      - street1
+      - street2
+      - zip
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
+    EditAddressDto:
+      type: object
+      properties:
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        taxId:
+          type: string
+      required:
+      - city
+      - company
+      - country
+      - email
+      - name
+      - phone
+      - residential
+      - state
+      - street1
+      - street2
+      - zip
+    AddressDto:
+      type: object
+      discriminator:
+        propertyName: addressType
+        mapping:
+          OPERATOR: '#/components/schemas/OperatorAddressDto'
+          CUSTOMER_ORGANISATION: '#/components/schemas/CustomerOrganisationAddressDto'
+      properties:
+        addressId:
+          type: integer
+          format: int64
+        isBillingAddress:
+          type: boolean
+        isShippingAddress:
+          type: boolean
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        countryAlpha2Code:
+          type: string
+        countryAlpha3Code:
+          type: string
+        jurisdictionIsoCode:
+          type: string
+        zip:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        residential:
+          type: boolean
+        addressType:
+          type: string
+        isDeleted:
+          type: boolean
+        taxId:
+          type: string
+      required:
+      - addressId
+      - addressType
+      - city
+      - company
+      - country
+      - countryAlpha2Code
+      - countryAlpha3Code
+      - email
+      - isBillingAddress
+      - isDeleted
+      - isShippingAddress
+      - name
+      - phone
+      - residential
       - street1
       - street2
       - zip

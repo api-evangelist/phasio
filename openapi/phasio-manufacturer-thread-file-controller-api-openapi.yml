@@ -12,52 +12,6 @@ tags:
 - name: Manufacturer Thread File Controller
   description: API for managing files attached to threads
 paths:
-  /api/manufacturer/v1/thread-file/{threadId}:
-    put:
-      tags:
-      - Manufacturer Thread File Controller
-      summary: Upload a file to a thread
-      description: Uploads and attaches a file to a specified thread
-      operationId: upload
-      parameters:
-      - name: threadId
-        in: path
-        description: ID of the thread to attach the file to
-        required: true
-        schema:
-          type: integer
-          format: int64
-        example: 1
-      - name: requisitionId
-        in: query
-        description: RequisitionId to attach the file to
-        required: false
-        schema:
-          type: integer
-          format: int64
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                file:
-                  type: string
-                  format: binary
-                  description: File to upload
-              required:
-              - file
-      responses:
-        '200':
-          description: File uploaded successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ThreadFileDto'
-        '400':
-          description: Invalid request or file upload failed
-        '401':
-          description: Unauthorized - missing operator context
   /api/manufacturer/v1/thread-file/{fileId}:
     get:
       tags:
@@ -79,66 +33,34 @@ paths:
           description: File downloaded successfully
           content:
             application/octet-stream: {}
-        '400':
-          description: Invalid request or file not found
         '401':
           description: Unauthorized - missing operator context
-  /api/manufacturer/v1/thread-file/thread/{threadId}:
-    get:
-      tags:
-      - Manufacturer Thread File Controller
-      summary: Get files by thread ID
-      description: Retrieves all files attached to the specified thread
-      operationId: getFilesByThread_1
-      parameters:
-      - name: threadId
-        in: path
-        description: ID of the thread to get files for
-        required: true
-        schema:
-          type: integer
-          format: int64
-        example: 1
-      responses:
-        '200':
-          description: Files retrieved successfully
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ThreadFileDto'
-        '400':
-          description: Invalid request or thread not found
-        '401':
-          description: Unauthorized - missing operator context
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: 'File not found (error code: THREAD_FILE_NOT_FOUND)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
-    ThreadFileDto:
+    ApiError:
       type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
       properties:
-        id:
+        error:
           type: string
-          format: uuid
-        name:
+          example: ORDER_NOT_FOUND
+        message:
           type: string
-        createdAt:
-          type: string
-          format: date-time
-        size:
-          type: integer
-          format: int64
-        uploader:
-          type: string
-        requisitionId:
-          type: integer
-          format: int64
+          example: Order not found
       required:
-      - createdAt
-      - id
-      - name
-      - size
-      - uploader
+      - error
+      - message
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

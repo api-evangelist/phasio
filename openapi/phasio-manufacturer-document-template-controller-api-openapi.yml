@@ -30,54 +30,17 @@ paths:
                   $ref: '#/components/schemas/DocumentTemplateDto'
         '401':
           description: Unauthorized - operator not found
-    post:
-      tags:
-      - Manufacturer Document Template Controller
-      summary: Create document template
-      description: Creates a new document template for a specific language and template type
-      operationId: create_15
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateDocumentTemplateDto'
-        required: true
-      responses:
-        '200':
-          description: Document template successfully created
           content:
             application/json:
               schema:
-                type: integer
-                format: int64
-        '400':
-          description: Invalid document template data
-        '401':
-          description: Unauthorized - operator not found
-    patch:
-      tags:
-      - Manufacturer Document Template Controller
-      summary: Update document template
-      description: Updates the content of an existing document template
-      operationId: update_4
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateDocumentTemplateDto'
-        required: true
-      responses:
-        '204':
-          description: Document template successfully updated
-        '400':
-          description: Invalid update data or document template not found
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/document-template/operator:
     get:
       tags:
       - Manufacturer Document Template Controller
       summary: Get document template by language and type
       description: Retrieves a specific document template for the current operator by language and template type
-      operationId: get_24
+      operationId: get_10
       parameters:
       - name: language
         in: query
@@ -98,65 +61,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DocumentTemplateDto'
-        '404':
-          description: Document template not found
         '401':
           description: Unauthorized - operator not found
-  /api/manufacturer/v1/document-template/{documentTemplateId}:
-    delete:
-      tags:
-      - Manufacturer Document Template Controller
-      summary: Delete document template
-      description: Deletes an existing document template
-      operationId: delete_17
-      parameters:
-      - name: documentTemplateId
-        in: path
-        description: ID of the document template to delete
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        '204':
-          description: Document template successfully deleted
-        '400':
-          description: Invalid document template ID or deletion failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: 'Document template not found (error code: DOCUMENT_TEMPLATE_NOT_FOUND)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
-    UpdateDocumentTemplateDto:
+    ApiError:
       type: object
-      description: Document template update details
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
       properties:
-        documentTemplateId:
-          type: integer
-          format: int64
-        content:
+        error:
           type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
       required:
-      - content
-      - documentTemplateId
-    CreateDocumentTemplateDto:
-      type: object
-      description: Document template creation details
-      properties:
-        language:
-          type: string
-        type:
-          type: string
-        consignmentLabelSize:
-          type: string
-        name:
-          type: string
-        pageWidth:
-          type: number
-          format: double
-        pageHeight:
-          type: number
-          format: double
-      required:
-      - language
-      - type
+      - error
+      - message
     DocumentTemplateDto:
       type: object
       properties:

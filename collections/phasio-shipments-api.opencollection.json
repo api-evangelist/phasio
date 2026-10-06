@@ -1,0 +1,327 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Shipments API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:orderId/shipments/:shipmentId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order the shipment belongs to"
+              },
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the shipment to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a single shipment on the order by ID"
+        },
+        {
+          "info": {
+            "name": "Replace a prepared shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:orderId/shipments/:shipmentId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order the shipment belongs to"
+              },
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the prepared shipment to replace"
+              },
+              {
+                "name": "release",
+                "value": "",
+                "type": "query",
+                "description": "If true, the shipment is released after replace"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces a prepared shipment"
+        },
+        {
+          "info": {
+            "name": "Delete a shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:orderId/shipments/:shipmentId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order the shipment belongs to"
+              },
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the shipment to delete"
+              }
+            ]
+          },
+          "docs": "Deletes a shipment that has not been fulfilled."
+        },
+        {
+          "info": {
+            "name": "Update courier tracking",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:orderId/shipments/:shipmentId/tracking",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order the shipment belongs to"
+              },
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the courier shipment to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets or clears tracking on a courier shipment"
+        },
+        {
+          "info": {
+            "name": "List shipments on an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:orderId/shipments",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to list shipments for"
+              }
+            ]
+          },
+          "docs": "Returns every shipment currently attached to the order, including parcel allocations and tracking where present."
+        },
+        {
+          "info": {
+            "name": "Create a shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:orderId/shipments",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to attach the shipment to"
+              },
+              {
+                "name": "release",
+                "value": "",
+                "type": "query",
+                "description": "If true, the shipment is created in RELEASED status"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a PREPARED courier or collection shipment on the order. Courier shipments require a destination address snapshot. Pass `release=true` to release immediately after create."
+        },
+        {
+          "info": {
+            "name": "Release a prepared shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:orderId/shipments/:shipmentId/release",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order the shipment belongs to"
+              },
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the prepared shipment to release"
+              }
+            ]
+          },
+          "docs": "Moves a prepared shipment to released."
+        },
+        {
+          "info": {
+            "name": "Fulfil a released shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:orderId/shipments/:shipmentId/fulfil",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order the shipment belongs to"
+              },
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the released shipment to fulfil"
+              }
+            ]
+          },
+          "docs": "Moves a RELEASED shipment to FULFILLED. Courier shipments must already have tracking."
+        },
+        {
+          "info": {
+            "name": "Attach a shipment document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:orderId/shipments/:shipmentId/documents",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order the shipment belongs to"
+              },
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the shipment to attach the document to"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Attaches a file to a shipment. Files larger than 25 MB are rejected."
+        },
+        {
+          "info": {
+            "name": "Download a shipment document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:orderId/shipments/:shipmentId/documents/:documentId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order the shipment belongs to"
+              },
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the shipment the document belongs to"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the document to download"
+              }
+            ]
+          },
+          "docs": "Returns the decrypted file bytes with the stored content type."
+        },
+        {
+          "info": {
+            "name": "Delete a shipment document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:orderId/shipments/:shipmentId/documents/:documentId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order the shipment belongs to"
+              },
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the shipment the document belongs to"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the document to delete"
+              }
+            ]
+          },
+          "docs": "Deletes a file attached to a shipment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

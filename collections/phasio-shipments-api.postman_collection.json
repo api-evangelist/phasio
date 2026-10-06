@@ -1,0 +1,3103 @@
+{
+  "item": [
+    {
+      "id": "c69ed246-85f4-44b2-9892-2d03caac728a",
+      "name": "Shipments",
+      "description": {
+        "content": "Create, replace, and progress shipments on an order",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "47a190bd-cca6-48f3-ad94-eff332dae75e",
+          "name": "Get a shipment",
+          "request": {
+            "name": "Get a shipment",
+            "description": {
+              "content": "Retrieves a single shipment on the order by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":orderId",
+                "shipments",
+                ":shipmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order the shipment belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipmentId",
+                  "description": "(Required) ID of the shipment to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "73ead000-cebb-43f5-b7b0-3e2b1bcaed36",
+              "name": "Shipment retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"documents\": [\n    {\n      \"contentType\": \"string\",\n      \"createdAt\": \"2000-02-25T18:16:27.174Z\",\n      \"id\": \"75a449a2-ddfb-6e42-64c1-859c833ffb24\",\n      \"name\": \"string\",\n      \"size\": 3444,\n      \"uploadedBy\": {\n        \"firstName\": \"string\",\n        \"id\": \"d2c9a922-53a2-0ffd-b030-d2b40ce81621\",\n        \"lastName\": \"string\",\n        \"displayName\": \"string\"\n      }\n    },\n    {\n      \"contentType\": \"string\",\n      \"createdAt\": \"1992-08-06T00:55:46.776Z\",\n      \"id\": \"15bb42ed-fd7b-6a1c-be5e-82e75442006b\",\n      \"name\": \"string\",\n      \"size\": 4946,\n      \"uploadedBy\": {\n        \"firstName\": \"string\",\n        \"id\": \"e1869d92-40ca-99bd-f252-3655b75a6d4e\",\n        \"lastName\": \"string\",\n        \"displayName\": \"string\"\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"email\": \"string\",\n    \"name\": \"string\",\n    \"phone\": \"string\",\n    \"residential\": false,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"zip\": \"string\",\n    \"state\": \"string\",\n    \"company\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"taxId\": \"string\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"quantity\": 5807,\n          \"requisitionId\": 6132\n        },\n        {\n          \"quantity\": 1187,\n          \"requisitionId\": 4318\n        }\n      ],\n      \"grossWeightGrams\": 2583,\n      \"height\": 511,\n      \"length\": 8611,\n      \"netWeightGrams\": 8151,\n      \"value\": 6523.377438266535,\n      \"width\": 3964,\n      \"id\": \"dc971fbf-0e62-abcc-63bf-381d7edb1b38\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"quantity\": 763,\n          \"requisitionId\": 5736\n        },\n        {\n          \"quantity\": 1419,\n          \"requisitionId\": 4302\n        }\n      ],\n      \"grossWeightGrams\": 7454,\n      \"height\": 2764,\n      \"length\": 9969,\n      \"netWeightGrams\": 6139,\n      \"value\": 8564.686177943557,\n      \"width\": 839,\n      \"id\": \"8530505b-f51d-5c82-d2f8-ffdb84b65475\"\n    }\n  ],\n  \"type\": \"COLLECTION\",\n  \"id\": \"9686a26a-20a7-3cf0-3a97-927a37484602\",\n  \"status\": \"PREPARED\",\n  \"incoterm\": \"EXW\",\n  \"preparedAt\": \"1985-03-28T00:34:09.019Z\",\n  \"preparedBy\": {\n    \"firstName\": \"string\",\n    \"id\": \"dd1e030a-8919-013d-0de1-2ba735f8c5f7\",\n    \"lastName\": \"string\",\n    \"displayName\": \"string\"\n  },\n  \"releasedAt\": \"1977-03-12T00:49:13.583Z\",\n  \"releasedBy\": {\n    \"firstName\": \"string\",\n    \"id\": \"a4611ad5-4865-c45f-036f-081ef8175133\",\n    \"lastName\": \"string\",\n    \"displayName\": \"string\"\n  },\n  \"fulfilledAt\": \"1964-07-09T22:53:02.924Z\",\n  \"fulfilledBy\": {\n    \"firstName\": \"string\",\n    \"id\": \"d51c41bd-8d9c-16c0-3b99-af8a9dc6b3d1\",\n    \"lastName\": \"string\",\n    \"displayName\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "783a3608-66bf-4bd1-9143-d4b9f4914666",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f64cf6a-1237-464d-86fb-829f0311fb44",
+              "name": "Shipment not found; error code: SHIPMENT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2c051f4-2ad2-4f5a-b6f3-17362b794bd7",
+          "name": "Replace a prepared shipment",
+          "request": {
+            "name": "Replace a prepared shipment",
+            "description": {
+              "content": "Replaces a prepared shipment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":orderId",
+                "shipments",
+                ":shipmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "release",
+                  "value": "false",
+                  "description": "If true, the shipment is released after replace"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order the shipment belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipmentId",
+                  "description": "(Required) ID of the prepared shipment to replace"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5959a84c-d1f7-4851-aabf-7936e61faac2",
+              "name": "Shipment replaced successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "release",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the prepared shipment to replace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"lastName\": \"<string>\",\n        \"displayName\": \"<string>\"\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"lastName\": \"<string>\",\n        \"displayName\": \"<string>\"\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"quantity\": 4871,\n          \"requisitionId\": 9315\n        },\n        {\n          \"quantity\": 6521,\n          \"requisitionId\": 7319\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"quantity\": 744,\n          \"requisitionId\": 7972\n        },\n        {\n          \"quantity\": 3052,\n          \"requisitionId\": 5014\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07946fcc-e5fb-49b6-9082-ce9c12b59d6a",
+              "name": "Invalid shipment; error codes: SHIPMENT_STRUCTURE_FROZEN, SHIPMENT_ADDRESS_REQUIRED, SHIPMENT_PACKING_INVALID, SHIPMENT_OVER_ALLOCATED, SHIPMENT_INCOTERM_INVALID, SHIPMENT_TYPE_INVALID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "release",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the prepared shipment to replace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a82eedc-501e-4273-8e55-363ff5c42253",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "release",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the prepared shipment to replace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "edbeb2a2-1b07-4280-bc54-dbabde4c1da3",
+              "name": "Shipment not found; error code: SHIPMENT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "release",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the prepared shipment to replace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54a7bc8e-ad2a-40a2-ad68-37aca710a8fb",
+          "name": "Delete a shipment",
+          "request": {
+            "name": "Delete a shipment",
+            "description": {
+              "content": "Deletes a shipment that has not been fulfilled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":orderId",
+                "shipments",
+                ":shipmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order the shipment belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipmentId",
+                  "description": "(Required) ID of the shipment to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48b517ba-8ab7-4bdc-9a52-0faeff3e6b3c",
+              "name": "Shipment deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment to delete"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "06cb4190-d613-4aab-ac56-7b06bd89a547",
+              "name": "Fulfilled shipments cannot be deleted; error code: SHIPMENT_DELETE_FORBIDDEN",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb5034ed-8ff8-4c8e-91bb-c52456136421",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6168e027-a580-4e9d-8e43-e07f2e54d239",
+              "name": "Shipment not found; error code: SHIPMENT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a033c3dc-a800-4065-a236-4f803084afb1",
+          "name": "Update courier tracking",
+          "request": {
+            "name": "Update courier tracking",
+            "description": {
+              "content": "Sets or clears tracking on a courier shipment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":orderId",
+                "shipments",
+                ":shipmentId",
+                "tracking"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order the shipment belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipmentId",
+                  "description": "(Required) ID of the courier shipment to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracking\": {\n    \"provider\": \"<string>\",\n    \"providerService\": \"<string>\",\n    \"trackingNumber\": \"<string>\",\n    \"trackingUrl\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80971415-d7dc-4186-8c68-609bb6262b31",
+              "name": "Tracking updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "tracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the courier shipment to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tracking\": {\n    \"provider\": \"<string>\",\n    \"providerService\": \"<string>\",\n    \"trackingNumber\": \"<string>\",\n    \"trackingUrl\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"lastName\": \"<string>\",\n        \"displayName\": \"<string>\"\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"lastName\": \"<string>\",\n        \"displayName\": \"<string>\"\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"quantity\": 4871,\n          \"requisitionId\": 9315\n        },\n        {\n          \"quantity\": 6521,\n          \"requisitionId\": 7319\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"quantity\": 744,\n          \"requisitionId\": 7972\n        },\n        {\n          \"quantity\": 3052,\n          \"requisitionId\": 5014\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bad6714-d513-4dbb-bf60-06654350c8d6",
+              "name": "Tracking is only allowed on courier shipments; error code: SHIPMENT_TRACKING_FORBIDDEN",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "tracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the courier shipment to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tracking\": {\n    \"provider\": \"<string>\",\n    \"providerService\": \"<string>\",\n    \"trackingNumber\": \"<string>\",\n    \"trackingUrl\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8cf9fd33-9fdd-44c9-85bd-9ce4022a4a8b",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "tracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the courier shipment to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tracking\": {\n    \"provider\": \"<string>\",\n    \"providerService\": \"<string>\",\n    \"trackingNumber\": \"<string>\",\n    \"trackingUrl\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ae0f76f-c31e-4bea-a790-e2cbaab3ab80",
+              "name": "Shipment not found; error code: SHIPMENT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "tracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the courier shipment to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tracking\": {\n    \"provider\": \"<string>\",\n    \"providerService\": \"<string>\",\n    \"trackingNumber\": \"<string>\",\n    \"trackingUrl\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0fd7436-5e7b-4a45-a1af-e2a1b2f7cd33",
+          "name": "List shipments on an order",
+          "request": {
+            "name": "List shipments on an order",
+            "description": {
+              "content": "Returns every shipment currently attached to the order, including parcel allocations and tracking where present.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":orderId",
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order to list shipments for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fc3d1e3f-2666-4142-996c-77722fe55ece",
+              "name": "Shipments retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to list shipments for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"documents\": [\n      {\n        \"contentType\": \"<string>\",\n        \"createdAt\": \"<dateTime>\",\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"size\": \"<long>\",\n        \"uploadedBy\": {\n          \"firstName\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"lastName\": \"<string>\",\n          \"displayName\": \"<string>\"\n        }\n      },\n      {\n        \"contentType\": \"<string>\",\n        \"createdAt\": \"<dateTime>\",\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"size\": \"<long>\",\n        \"uploadedBy\": {\n          \"firstName\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"lastName\": \"<string>\",\n          \"displayName\": \"<string>\"\n        }\n      }\n    ],\n    \"fromAddress\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"residential\": \"<boolean>\",\n      \"street1\": \"<string>\",\n      \"street2\": \"<string>\",\n      \"zip\": \"<string>\",\n      \"state\": \"<string>\",\n      \"company\": \"<string>\",\n      \"jurisdictionIsoCode\": \"<string>\",\n      \"taxId\": \"<string>\"\n    },\n    \"parcels\": [\n      {\n        \"allocations\": [\n          {\n            \"quantity\": 2629,\n            \"requisitionId\": 2104\n          },\n          {\n            \"quantity\": 8950,\n            \"requisitionId\": 4048\n          }\n        ],\n        \"grossWeightGrams\": \"<integer>\",\n        \"height\": \"<integer>\",\n        \"length\": \"<integer>\",\n        \"netWeightGrams\": \"<integer>\",\n        \"value\": \"<number>\",\n        \"width\": \"<integer>\",\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"allocations\": [\n          {\n            \"quantity\": 9794,\n            \"requisitionId\": 5733\n          },\n          {\n            \"quantity\": 1775,\n            \"requisitionId\": 619\n          }\n        ],\n        \"grossWeightGrams\": \"<integer>\",\n        \"height\": \"<integer>\",\n        \"length\": \"<integer>\",\n        \"netWeightGrams\": \"<integer>\",\n        \"value\": \"<number>\",\n        \"width\": \"<integer>\",\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"type\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"status\": \"<string>\",\n    \"incoterm\": \"<string>\",\n    \"preparedAt\": \"<dateTime>\",\n    \"preparedBy\": {\n      \"firstName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"lastName\": \"<string>\",\n      \"displayName\": \"<string>\"\n    },\n    \"releasedAt\": \"<dateTime>\",\n    \"releasedBy\": {\n      \"firstName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"lastName\": \"<string>\",\n      \"displayName\": \"<string>\"\n    },\n    \"fulfilledAt\": \"<dateTime>\",\n    \"fulfilledBy\": {\n      \"firstName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"lastName\": \"<string>\",\n      \"displayName\": \"<string>\"\n    }\n  },\n  {\n    \"documents\": [\n      {\n        \"contentType\": \"<string>\",\n        \"createdAt\": \"<dateTime>\",\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"size\": \"<long>\",\n        \"uploadedBy\": {\n          \"firstName\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"lastName\": \"<string>\",\n          \"displayName\": \"<string>\"\n        }\n      },\n      {\n        \"contentType\": \"<string>\",\n        \"createdAt\": \"<dateTime>\",\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"size\": \"<long>\",\n        \"uploadedBy\": {\n          \"firstName\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"lastName\": \"<string>\",\n          \"displayName\": \"<string>\"\n        }\n      }\n    ],\n    \"fromAddress\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"residential\": \"<boolean>\",\n      \"street1\": \"<string>\",\n      \"street2\": \"<string>\",\n      \"zip\": \"<string>\",\n      \"state\": \"<string>\",\n      \"company\": \"<string>\",\n      \"jurisdictionIsoCode\": \"<string>\",\n      \"taxId\": \"<string>\"\n    },\n    \"parcels\": [\n      {\n        \"allocations\": [\n          {\n            \"quantity\": 5599,\n            \"requisitionId\": 7267\n          },\n          {\n            \"quantity\": 7282,\n            \"requisitionId\": 1931\n          }\n        ],\n        \"grossWeightGrams\": \"<integer>\",\n        \"height\": \"<integer>\",\n        \"length\": \"<integer>\",\n        \"netWeightGrams\": \"<integer>\",\n        \"value\": \"<number>\",\n        \"width\": \"<integer>\",\n        \"id\": \"<uuid>\"\n      },\n      {\n        \"allocations\": [\n          {\n            \"quantity\": 1627,\n            \"requisitionId\": 323\n          },\n          {\n            \"quantity\": 2251,\n            \"requisitionId\": 6608\n          }\n        ],\n        \"grossWeightGrams\": \"<integer>\",\n        \"height\": \"<integer>\",\n        \"length\": \"<integer>\",\n        \"netWeightGrams\": \"<integer>\",\n        \"value\": \"<number>\",\n        \"width\": \"<integer>\",\n        \"id\": \"<uuid>\"\n      }\n    ],\n    \"type\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"status\": \"<string>\",\n    \"incoterm\": \"<string>\",\n    \"preparedAt\": \"<dateTime>\",\n    \"preparedBy\": {\n      \"firstName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"lastName\": \"<string>\",\n      \"displayName\": \"<string>\"\n    },\n    \"releasedAt\": \"<dateTime>\",\n    \"releasedBy\": {\n      \"firstName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"lastName\": \"<string>\",\n      \"displayName\": \"<string>\"\n    },\n    \"fulfilledAt\": \"<dateTime>\",\n    \"fulfilledBy\": {\n      \"firstName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"lastName\": \"<string>\",\n      \"displayName\": \"<string>\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3e4f6c9-3809-4a80-bf59-f9f47eba5540",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to list shipments for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a98f937b-e61b-48fd-a4d8-0aedf0c290be",
+          "name": "Create a shipment",
+          "request": {
+            "name": "Create a shipment",
+            "description": {
+              "content": "Creates a PREPARED courier or collection shipment on the order. Courier shipments require a destination address snapshot. Pass `release=true` to release immediately after create.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":orderId",
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "release",
+                  "value": "false",
+                  "description": "If true, the shipment is created in RELEASED status"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order to attach the shipment to"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c863c01e-d60e-40d5-81d2-7a266e3af216",
+              "name": "Shipment created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "release",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to attach the shipment to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"lastName\": \"<string>\",\n        \"displayName\": \"<string>\"\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"lastName\": \"<string>\",\n        \"displayName\": \"<string>\"\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"quantity\": 4871,\n          \"requisitionId\": 9315\n        },\n        {\n          \"quantity\": 6521,\n          \"requisitionId\": 7319\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"quantity\": 744,\n          \"requisitionId\": 7972\n        },\n        {\n          \"quantity\": 3052,\n          \"requisitionId\": 5014\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3b2dd23-363c-4a3e-8f40-b60a02bdf62d",
+              "name": "Invalid shipment; error codes: SHIPMENT_QUOTE_FORBIDDEN, SHIPMENT_ADDRESS_REQUIRED, SHIPMENT_PACKING_INVALID, SHIPMENT_OVER_ALLOCATED, SHIPMENT_INCOTERM_INVALID, SHIPMENT_TYPE_INVALID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "release",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to attach the shipment to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4305ab0-777e-4baf-b747-5e280af20c3a",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "release",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to attach the shipment to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99e11228-b20f-4075-94c9-c7bbfc93c392",
+              "name": "Order not found; error code: ORDER_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "release",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to attach the shipment to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"displayName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15d377dc-3ff2-4e6a-a773-46b61784dc12",
+          "name": "Release a prepared shipment",
+          "request": {
+            "name": "Release a prepared shipment",
+            "description": {
+              "content": "Moves a prepared shipment to released.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":orderId",
+                "shipments",
+                ":shipmentId",
+                "release"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order the shipment belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipmentId",
+                  "description": "(Required) ID of the prepared shipment to release"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d8cd049f-0a44-450f-b624-664d2e6d3a35",
+              "name": "Shipment released successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the prepared shipment to release"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"lastName\": \"<string>\",\n        \"displayName\": \"<string>\"\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"lastName\": \"<string>\",\n        \"displayName\": \"<string>\"\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"quantity\": 4871,\n          \"requisitionId\": 9315\n        },\n        {\n          \"quantity\": 6521,\n          \"requisitionId\": 7319\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"quantity\": 744,\n          \"requisitionId\": 7972\n        },\n        {\n          \"quantity\": 3052,\n          \"requisitionId\": 5014\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3691d91f-42cb-43f5-9a03-e1b356df5737",
+              "name": "Shipment is not PREPARED; error code: SHIPMENT_STATUS_INVALID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the prepared shipment to release"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ea71fbb-7684-49fc-bf6f-17da274b823b",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the prepared shipment to release"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a098c94c-fd45-451e-a028-112ce7e09d53",
+              "name": "Shipment not found; error code: SHIPMENT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the prepared shipment to release"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1c200e2-4049-4d2d-b448-544411624746",
+          "name": "Fulfil a released shipment",
+          "request": {
+            "name": "Fulfil a released shipment",
+            "description": {
+              "content": "Moves a RELEASED shipment to FULFILLED. Courier shipments must already have tracking.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":orderId",
+                "shipments",
+                ":shipmentId",
+                "fulfil"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order the shipment belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipmentId",
+                  "description": "(Required) ID of the released shipment to fulfil"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec69fc6b-7a93-4fd0-920d-550688ad0bc8",
+              "name": "Shipment fulfilled successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "fulfil"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the released shipment to fulfil"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"documents\": [\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"lastName\": \"<string>\",\n        \"displayName\": \"<string>\"\n      }\n    },\n    {\n      \"contentType\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"size\": \"<long>\",\n      \"uploadedBy\": {\n        \"firstName\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"lastName\": \"<string>\",\n        \"displayName\": \"<string>\"\n      }\n    }\n  ],\n  \"fromAddress\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"residential\": \"<boolean>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"state\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jurisdictionIsoCode\": \"<string>\",\n    \"taxId\": \"<string>\"\n  },\n  \"parcels\": [\n    {\n      \"allocations\": [\n        {\n          \"quantity\": 4871,\n          \"requisitionId\": 9315\n        },\n        {\n          \"quantity\": 6521,\n          \"requisitionId\": 7319\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"allocations\": [\n        {\n          \"quantity\": 744,\n          \"requisitionId\": 7972\n        },\n        {\n          \"quantity\": 3052,\n          \"requisitionId\": 5014\n        }\n      ],\n      \"grossWeightGrams\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"length\": \"<integer>\",\n      \"netWeightGrams\": \"<integer>\",\n      \"value\": \"<number>\",\n      \"width\": \"<integer>\",\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"incoterm\": \"<string>\",\n  \"preparedAt\": \"<dateTime>\",\n  \"preparedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"releasedAt\": \"<dateTime>\",\n  \"releasedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"fulfilledAt\": \"<dateTime>\",\n  \"fulfilledBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2d55c1d-e595-4498-969b-3dd7b2fa5561",
+              "name": "Shipment cannot be fulfilled; error codes: SHIPMENT_STATUS_INVALID, SHIPMENT_TRACKING_REQUIRED",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "fulfil"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the released shipment to fulfil"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f9b6e5f-9684-4536-bb7e-d3714724bcf6",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "fulfil"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the released shipment to fulfil"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0289ddbf-b090-43ce-9027-ebe2a4abd296",
+              "name": "Shipment not found; error code: SHIPMENT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "fulfil"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the released shipment to fulfil"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa146e4f-6842-4cf7-9afd-b2351200b19f",
+          "name": "Attach a shipment document",
+          "request": {
+            "name": "Attach a shipment document",
+            "description": {
+              "content": "Attaches a file to a shipment. Files larger than 25 MB are rejected.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":orderId",
+                "shipments",
+                ":shipmentId",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order the shipment belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipmentId",
+                  "description": "(Required) ID of the shipment to attach the document to"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) File to upload"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5be6542f-d978-4f6a-abb3-df11658396fa",
+              "name": "Document uploaded successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment to attach the document to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contentType\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"size\": \"<long>\",\n  \"uploadedBy\": {\n    \"firstName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"lastName\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "070f7cbf-e8dc-4b9b-9d62-eb88a6ab343d",
+              "name": "File exceeds 25 MB; error code: SHIPMENT_DOCUMENT_TOO_LARGE",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment to attach the document to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3839638-0c4e-4c4b-b313-7623cdf89f7e",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment to attach the document to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3618d4d8-78c2-491a-bccd-8f9c6730893e",
+              "name": "Shipment not found; error code: SHIPMENT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment to attach the document to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4831443f-fa21-42f0-a129-18e5e6904f09",
+          "name": "Download a shipment document",
+          "request": {
+            "name": "Download a shipment document",
+            "description": {
+              "content": "Returns the decrypted file bytes with the stored content type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":orderId",
+                "shipments",
+                ":shipmentId",
+                "documents",
+                ":documentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order the shipment belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipmentId",
+                  "description": "(Required) ID of the shipment the document belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "documentId",
+                  "description": "(Required) ID of the document to download"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00f390dc-a1e3-4317-ade5-1b15ada121db",
+              "name": "Document downloaded successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "documents",
+                    ":documentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment the document belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "documentId",
+                      "description": "(Required) ID of the document to download"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "af47db2e-d762-4a34-9477-a3aec6a6b095",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "documents",
+                    ":documentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment the document belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "documentId",
+                      "description": "(Required) ID of the document to download"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a419ce7-c69a-469c-b187-65dba88d6a42",
+              "name": "Document not found; error code: SHIPMENT_DOCUMENT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "documents",
+                    ":documentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment the document belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "documentId",
+                      "description": "(Required) ID of the document to download"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52e738e6-af7d-4bf7-b5e9-d4b15fd08574",
+          "name": "Delete a shipment document",
+          "request": {
+            "name": "Delete a shipment document",
+            "description": {
+              "content": "Deletes a file attached to a shipment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":orderId",
+                "shipments",
+                ":shipmentId",
+                "documents",
+                ":documentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order the shipment belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipmentId",
+                  "description": "(Required) ID of the shipment the document belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "documentId",
+                  "description": "(Required) ID of the document to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6893e42-0031-4acb-ba02-3a7dffbe57f3",
+              "name": "Document deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "documents",
+                    ":documentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment the document belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "documentId",
+                      "description": "(Required) ID of the document to delete"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8abf1bdd-43a7-4e6f-bab8-313874abbb52",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "documents",
+                    ":documentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment the document belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "documentId",
+                      "description": "(Required) ID of the document to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa18822c-d141-4bfd-bba7-3fbcce0bf560",
+              "name": "Document not found; error code: SHIPMENT_DOCUMENT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "documents",
+                    ":documentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order the shipment belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment the document belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "documentId",
+                      "description": "(Required) ID of the document to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "76ed48d8-7131-4670-8290-35da586d398e",
+    "name": "Phasio Shipments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -12,31 +12,6 @@ tags:
 - name: Manufacturer Cart Item Controller
   description: API for managing cart items
 paths:
-  /api/manufacturer/v1/cart-item/{id}:
-    get:
-      tags:
-      - Manufacturer Cart Item Controller
-      summary: Get a cart item by ID
-      description: Retrieves a specific cart item by its ID
-      operationId: getById_10
-      parameters:
-      - name: id
-        in: path
-        description: ID of the cart item to retrieve
-        required: true
-        schema:
-          type: integer
-          format: int64
-        example: 1
-      responses:
-        '200':
-          description: Cart item retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CartItemDto'
-        '404':
-          description: Cart item not found
   /api/manufacturer/v1/cart-item/cart/{cartId}:
     get:
       tags:

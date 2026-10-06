@@ -12,33 +12,6 @@ tags:
 - name: Manufacturer Requisition Controller
   description: API for managing part requisitions and production batches
 paths:
-  /api/manufacturer/v1/requisition/{requisitionId}/work-order:
-    post:
-      tags:
-      - Manufacturer Requisition Controller
-      summary: Create an additional work order
-      description: Creates a new work order on the requisition and schedules the requested quantity into its first operation, distinct from the idempotent bulk schedule path. Uses the ad-hoc routing given by optional ordered operationIds, else the template given by optional routingTemplateId, else the spec's designated default template, else a system-derived routing. routingTemplateId alongside operationIds records which template the ad-hoc steps were customized from. Its routing can be diverged afterward via the routing editor.
-      operationId: addWorkOrder
-      parameters:
-      - name: requisitionId
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateWorkOrderRequest'
-        required: true
-      responses:
-        '200':
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/WorkOrderDto'
   /api/manufacturer/v1/requisition/work-orders:
     post:
       tags:
@@ -65,6 +38,10 @@ paths:
                   $ref: '#/components/schemas/BatchBalanceDto'
         '400':
           description: Failed to create work orders
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/requisition/batch-status:
     post:
       tags:
@@ -91,6 +68,10 @@ paths:
                   $ref: '#/components/schemas/BatchBalanceDto'
         '400':
           description: Failed to create production batches
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/requisition/create-batches:
     post:
       tags:
@@ -117,116 +98,17 @@ paths:
                   $ref: '#/components/schemas/BatchBalanceDto'
         '400':
           description: Failed to create production batches
-  /api/manufacturer/v1/requisition/bulk:
-    post:
-      tags:
-      - Manufacturer Requisition Controller
-      summary: Get requisitions by ids
-      description: Retrieves requisitions for the given ids, regardless of current step. Used to hydrate paginated completed-order rows whose requisitions fall outside the operation-scoped set.
-      operationId: getByIds
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                type: integer
-                format: int64
-              uniqueItems: true
-        required: true
-      responses:
-        '200':
-          description: Successfully retrieved requisitions
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/RequisitionDto'
-  /api/manufacturer/v1/requisition/auto-create-batches/{orderId}:
-    post:
-      tags:
-      - Manufacturer Requisition Controller
-      summary: Automatically create batches for an order
-      description: Creates production batches for all parts in the specified order
-      operationId: autoCreateBatches
-      parameters:
-      - name: orderId
-        in: path
-        description: ID of the order to create batches for
-        required: true
-        schema:
-          type: integer
-          format: int64
-        example: 1
-      responses:
-        '200':
-          description: Successfully created production batches
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/BatchBalanceDto'
-        '400':
-          description: Failed to create production batches
-  /api/manufacturer/v1/requisition:
-    get:
-      tags:
-      - Manufacturer Requisition Controller
-      summary: Get all requisitions for current operator
-      description: Retrieves all requisitions for the current operator
-      operationId: getByOperator_1
-      parameters:
-      - name: archived
-        in: query
-        description: Include archived requisitions
-        required: true
-        schema:
-          type: boolean
-        example: false
-      responses:
-        '200':
-          description: Successfully retrieved requisitions
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/RequisitionDto'
-        '401':
-          description: Unauthorized - missing operator context
-  /api/manufacturer/v1/requisition/{requisitionId}/thumbnail:
-    get:
-      tags:
-      - Manufacturer Requisition Controller
-      summary: Download requisition part thumbnail
-      description: Downloads the thumbnail image for a requisition's part
-      operationId: downloadThumbnail
-      parameters:
-      - name: requisitionId
-        in: path
-        description: ID of the requisition
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        '200':
-          description: Thumbnail successfully downloaded
-          content:
-            image/png: {}
-        '400':
-          description: Invalid requisition ID or thumbnail not available
-        '401':
-          description: Unauthorized - missing or invalid authentication
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/requisition/{id}:
     get:
       tags:
       - Manufacturer Requisition Controller
       summary: Get requisition by ID
       description: Retrieves a specific requisition by its ID
-      operationId: get_16
+      operationId: get_4
       parameters:
       - name: id
         in: path
@@ -244,69 +126,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/RequisitionDto'
         '404':
-          description: Requisition not found
-  /api/manufacturer/v1/requisition/production-step/{stepId}:
-    get:
-      tags:
-      - Manufacturer Requisition Controller
-      summary: Get requisitions by production step
-      description: Retrieves all requisitions at the specified production step
-      operationId: getByProductionStep
-      parameters:
-      - name: stepId
-        in: path
-        description: UUID of the production step to filter by
-        required: true
-        schema:
-          type: string
-          format: uuid
-      - name: archived
-        in: query
-        description: Include archived requisitions
-        required: true
-        schema:
-          type: boolean
-        example: false
-      responses:
-        '200':
-          description: Successfully retrieved requisitions
+          description: 'Requisition not found (error code: REQUISITION_NOT_FOUND)'
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/RequisitionDto'
-  /api/manufacturer/v1/requisition/part-specification/{specificationId}:
-    get:
-      tags:
-      - Manufacturer Requisition Controller
-      summary: Get requisitions by part specification ID
-      description: Retrieves all requisitions for the specified part specification
-      operationId: getByPartSpecification
-      parameters:
-      - name: specificationId
-        in: path
-        description: UUID of the part specification to filter by
-        required: true
-        schema:
-          type: string
-          format: uuid
-      - name: archived
-        in: query
-        description: Include archived requisitions
-        required: false
-        schema:
-          type: boolean
-        example: false
-      responses:
-        '200':
-          description: Successfully retrieved requisitions
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/RequisitionDto'
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/requisition/order:
     get:
       tags:
@@ -332,313 +156,21 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/RequisitionDto'
-  /api/manufacturer/v1/requisition/operation/{operationId}:
-    get:
-      tags:
-      - Manufacturer Requisition Controller
-      summary: Get requisitions by operation
-      description: Retrieves all requisitions with the specified operation
-      operationId: getByOperation
-      parameters:
-      - name: operationId
-        in: path
-        description: UUID of the operation to filter by
-        required: true
-        schema:
-          type: string
-          format: uuid
-      - name: archived
-        in: query
-        description: Include archived requisitions
-        required: false
-        schema:
-          type: boolean
-        example: false
-      responses:
-        '200':
-          description: Successfully retrieved requisitions
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/RequisitionDto'
-  /api/manufacturer/v1/requisition/batch-transitions:
-    get:
-      tags:
-      - Manufacturer Requisition Controller
-      summary: Get batch transitions for parts
-      description: Retrieves all batch transitions for the specified part IDs
-      operationId: getBatchTransitions
-      parameters:
-      - name: requisitionIds
-        in: query
-        description: List of part IDs to get transitions for
-        required: true
-        schema:
-          type: array
-          items:
-            type: integer
-            format: int64
-          uniqueItems: true
-      responses:
-        '200':
-          description: Successfully retrieved batch transitions
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/BatchTransitionDto'
-  /api/manufacturer/v1/requisition/backlog:
-    get:
-      tags:
-      - Manufacturer Requisition Controller
-      summary: Get backlogged requisitions
-      description: Retrieves all requisitions in the operator's backlog
-      operationId: getBacklogByOperator
-      responses:
-        '200':
-          description: Successfully retrieved backlogged requisitions
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/RequisitionDto'
-        '401':
-          description: Unauthorized - missing operator context
 components:
   schemas:
-    RequisitionDto:
+    PostProcessingVariablesDto:
       type: object
       properties:
-        id:
+        postProcessingId:
           type: integer
           format: int64
-        orderId:
-          type: integer
-          format: int64
-        partRevisionId:
-          type: string
-          format: uuid
-        units:
-          type: string
-          enum:
-          - CENTIMETERS
-          - MILLIMETERS
-          - METRES
-          - INCHES
-          - FEET
-        name:
-          type: string
-        quantity:
-          type: integer
-        colorId:
-          type: integer
-          format: int64
-        precisionId:
-          type: integer
-          format: int64
-        materialId:
-          type: integer
-          format: int64
-        processPricesId:
-          type: string
-          format: uuid
-        infillId:
-          type: integer
-          format: int64
-        pricePaid:
-          type: number
-        postProcessingIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-        watertight:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
-        lastUpdated:
-          type: string
-          format: date-time
-        leadTimeId:
-          type: string
-          format: uuid
-        constraints:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/ConstraintDto'
-            - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+        variables:
+          type: object
+          additionalProperties:
+            type: number
       required:
-      - constraints
-      - createdAt
-      - id
-      - lastUpdated
-      - materialId
-      - name
-      - orderId
-      - partRevisionId
-      - postProcessingIds
-      - processPricesId
-      - quantity
-      - units
-      - watertight
-    ConstraintDto:
-      type: object
-      discriminator:
-        propertyName: constraintType
-      properties:
-        id:
-          type: string
-          format: uuid
-        constraintType:
-          type: string
-        partSpecificationId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - updatedAt
-    CreateWorkOrderRequest:
-      type: object
-      properties:
-        quantity:
-          type: integer
-        name:
-          type: string
-        routingTemplateId:
-          type: string
-          format: uuid
-        operationIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-      required:
-      - quantity
-    BatchTransitionDto:
-      type: object
-      discriminator:
-        propertyName: type
-      properties:
-        id:
-          type: string
-          format: uuid
-        requisitionId:
-          type: integer
-          format: int64
-        workOrderId:
-          type: string
-          format: uuid
-        fromOperationId:
-          type: string
-          format: uuid
-        fromOperationName:
-          type: string
-        fromStepId:
-          type: string
-          format: uuid
-        fromStepBuildId:
-          type: string
-        fromStepPrefix:
-          type: string
-        batchSize:
-          type: integer
-        createdAt:
-          type: string
-          format: date-time
-        updateDt:
-          type: string
-          format: date-time
-        type:
-          type: string
-        fromStatusId:
-          type: string
-          format: uuid
-        fromStatusName:
-          type: string
-      required:
-      - type
-    FixedOrientationConstraintDto:
-      allOf:
-      - $ref: '#/components/schemas/ConstraintDto'
-      - type: object
-        properties:
-          rotationMatrix:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - rotationMatrix
-      - updatedAt
-    ScheduleBatchesDto:
-      type: object
-      properties:
-        requisitionId:
-          type: integer
-          format: int64
-        quantity:
-          type: integer
-        name:
-          type: string
-        routingTemplateId:
-          type: string
-          format: uuid
-        operationIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-      required:
-      - quantity
-      - requisitionId
-    WorkOrderDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        workOrderNumber:
-          type: integer
-          format: int64
-        routingTemplateId:
-          type: string
-          format: uuid
-        name:
-          type: string
-        quantity:
-          type: integer
-        routing:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoutingStepDto'
-        createdAt:
-          type: string
-          format: date-time
-      required:
-      - createdAt
-      - id
-      - quantity
-      - routing
+      - postProcessingId
+      - variables
     RoutingStepDto:
       type: object
       properties:
@@ -684,6 +216,12 @@ components:
         dispatchDate:
           type: string
           format: date
+        workOrderStartDate:
+          type: string
+          format: date-time
+        workOrderDueDate:
+          type: string
+          format: date-time
         requisitionDuration:
           type: integer
         quantity:
@@ -739,6 +277,158 @@ components:
       - stepId
       - stepType
       - workOrderId
+      - workOrderStartDate
+    WorkOrderDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        workOrderNumber:
+          type: integer
+          format: int64
+        routingTemplateId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        quantity:
+          type: integer
+        routing:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoutingStepDto'
+        createdAt:
+          type: string
+          format: date-time
+        startDate:
+          type: string
+          format: date-time
+        dueDate:
+          type: string
+          format: date-time
+      required:
+      - createdAt
+      - id
+      - quantity
+      - routing
+      - startDate
+    RequisitionDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        partSpecificationId:
+          type: string
+          format: uuid
+        partRevisionId:
+          type: string
+          format: uuid
+        orderId:
+          type: integer
+          format: int64
+        orderNumber:
+          type: string
+        customReference:
+          type: string
+        customerOrganisationId:
+          type: integer
+          format: int64
+        customerOrganisationName:
+          type: string
+        pricingType:
+          type: string
+        manualPrice:
+          type: number
+        pricePaid:
+          type: number
+        quantity:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+        leadTimeId:
+          type: string
+          format: uuid
+        workOrders:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkOrderDto'
+        variables:
+          type: object
+          additionalProperties:
+            type: number
+        postProcessingVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostProcessingVariablesDto'
+        duration:
+          type: integer
+        name:
+          type: string
+        sequence:
+          type: integer
+          format: int32
+      required:
+      - createdAt
+      - id
+      - lastUpdated
+      - name
+      - orderId
+      - orderNumber
+      - partRevisionId
+      - partSpecificationId
+      - postProcessingVariables
+      - pricingType
+      - quantity
+      - sequence
+      - variables
+      - workOrders
+    ScheduleBatchesDto:
+      type: object
+      properties:
+        requisitionId:
+          type: integer
+          format: int64
+        quantity:
+          type: integer
+        name:
+          type: string
+        routingTemplateId:
+          type: string
+          format: uuid
+        operationIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        startDate:
+          type: string
+          format: date-time
+        dueDate:
+          type: string
+          format: date-time
+      required:
+      - quantity
+      - requisitionId
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

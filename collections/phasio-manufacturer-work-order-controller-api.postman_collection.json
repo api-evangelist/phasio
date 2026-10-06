@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "c2e99e61-e686-4508-8798-9f4c103584ff",
+      "id": "02f60279-ae83-4bfe-968b-2a4e741e2bc1",
       "name": "Manufacturer Work Order Controller",
       "description": {
         "content": "Manage individual work orders, including downstream routing mutations",
@@ -9,135 +9,10 @@
       },
       "item": [
         {
-          "id": "4ddda61a-3e0c-49a0-ad6c-70078883839a",
-          "name": "Add parts to a work order",
+          "id": "497047b1-db50-4376-b493-9e51298e57d8",
+          "name": "Update routing",
           "request": {
-            "name": "Add parts to a work order",
-            "description": {
-              "content": "Schedules more parts into an existing work order's first operation. Always additive, distinct from the idempotent bulk schedule path.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "manufacturer",
-                "v1",
-                "work-orders",
-                ":id",
-                "parts"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "*/*"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"quantity\": \"<integer>\",\n  \"name\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "d6d8acbc-7495-4857-a3c9-2705569c9b4e",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "work-orders",
-                    ":id",
-                    "parts"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"quantity\": \"<integer>\",\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "body": "{\n  \"createdAt\": \"2007-10-09T21:21:05.508Z\",\n  \"id\": \"1b1f9092-b10b-a112-13e8-4e356bb9719b\",\n  \"quantity\": 3931,\n  \"routing\": [\n    {\n      \"operationId\": \"c77bbe4a-d755-7750-3b97-ae64a9f7cf25\",\n      \"sequence\": 1117,\n      \"statusId\": \"f6a558ed-3837-ed40-5b09-b41465d767bf\"\n    },\n    {\n      \"operationId\": \"5dfe8ffa-11fb-c2dc-f4a0-64d6bbc7880f\",\n      \"sequence\": 9720,\n      \"statusId\": \"89e25658-a714-b72a-fcd8-005dd2416bbd\"\n    }\n  ],\n  \"workOrderNumber\": 9269,\n  \"routingTemplateId\": \"fcc65452-d7b0-c906-e7cf-8eb0e3ef25af\",\n  \"name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d3185304-131c-4220-ba8e-806b13767417",
-          "name": "update Routing",
-          "request": {
-            "name": "update Routing",
+            "name": "Update routing",
             "description": {},
             "url": {
               "path": [
@@ -186,7 +61,7 @@
           },
           "response": [
             {
-              "id": "5a2b4079-6bab-433d-b13f-44d79b4471d6",
+              "id": "3cc7a560-78b1-4bf8-b774-7270d68a3a23",
               "name": "OK",
               "originalRequest": {
                 "url": {
@@ -214,14 +89,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "*/*"
                   }
@@ -229,7 +96,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"steps\": [\n    {\n      \"operationId\": \"ee6b552b-6419-00a3-7df2-4cfae44ee49f\",\n      \"sequence\": 7763\n    },\n    {\n      \"operationId\": \"e9655cd7-0bb0-70bf-99ed-b80b785fc9c9\",\n      \"sequence\": 6166\n    }\n  ]\n}",
+                  "raw": "{\n  \"steps\": [\n    {\n      \"operationId\": \"<uuid>\",\n      \"sequence\": \"<integer>\"\n    },\n    {\n      \"operationId\": \"<uuid>\",\n      \"sequence\": \"<integer>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -245,7 +112,236 @@
                   "value": "*/*"
                 }
               ],
-              "body": "{\n  \"createdAt\": \"2007-10-09T21:21:05.508Z\",\n  \"id\": \"1b1f9092-b10b-a112-13e8-4e356bb9719b\",\n  \"quantity\": 3931,\n  \"routing\": [\n    {\n      \"operationId\": \"c77bbe4a-d755-7750-3b97-ae64a9f7cf25\",\n      \"sequence\": 1117,\n      \"statusId\": \"f6a558ed-3837-ed40-5b09-b41465d767bf\"\n    },\n    {\n      \"operationId\": \"5dfe8ffa-11fb-c2dc-f4a0-64d6bbc7880f\",\n      \"sequence\": 9720,\n      \"statusId\": \"89e25658-a714-b72a-fcd8-005dd2416bbd\"\n    }\n  ],\n  \"workOrderNumber\": 9269,\n  \"routingTemplateId\": \"fcc65452-d7b0-c906-e7cf-8eb0e3ef25af\",\n  \"name\": \"string\"\n}",
+              "body": "{\n  \"createdAt\": \"1958-04-22T16:46:17.426Z\",\n  \"id\": \"d62b1899-b195-f29e-dcc6-17d53de1f2ca\",\n  \"quantity\": 6793,\n  \"routing\": [\n    {\n      \"operationId\": \"fbbcbf4a-8e71-528c-85fb-824cfb541f72\",\n      \"sequence\": 4613,\n      \"statusId\": \"a7404179-37be-4301-1655-e99dc6eca0af\"\n    },\n    {\n      \"operationId\": \"df2046a1-c51b-06d0-8709-a741cb5ee5d8\",\n      \"sequence\": 5527,\n      \"statusId\": \"4d373166-26c7-9130-09e6-747f218b7561\"\n    }\n  ],\n  \"startDate\": \"1995-01-14T07:56:52.968Z\",\n  \"workOrderNumber\": 1434,\n  \"routingTemplateId\": \"8ae8db4a-a20d-796d-42d3-ba6c20a8aab4\",\n  \"name\": \"string\",\n  \"dueDate\": \"2004-12-03T14:43:22.300Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0551756b-5870-4ff7-9237-f4f02f1b2818",
+          "name": "Update a work order's start and due dates",
+          "request": {
+            "name": "Update a work order's start and due dates",
+            "description": {
+              "content": "Sets the start date (when the work order enters the backlog) and the due date (explicit deadline; null falls back to the order's expected dispatch date).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "work-orders",
+                ":id",
+                "dates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startDate\": \"<dateTime>\",\n  \"dueDate\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "77cbe7b9-a7a1-4b96-b19b-7638d9dfb47f",
+              "name": "Successfully updated the work order dates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "work-orders",
+                    ":id",
+                    "dates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startDate\": \"<dateTime>\",\n  \"dueDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"1990-08-18T03:33:39.791Z\",\n  \"id\": \"6f8bb34c-2310-e146-1c01-c5b181b24967\",\n  \"quantity\": 4955,\n  \"routing\": [\n    {\n      \"operationId\": \"1ae0f7b0-130f-584a-1f97-0c81b1034299\",\n      \"sequence\": 7259,\n      \"statusId\": \"ee43d1a1-4201-be97-80ec-469efde76064\"\n    },\n    {\n      \"operationId\": \"975a6b12-e493-60ea-5841-280d5d429a16\",\n      \"sequence\": 1437,\n      \"statusId\": \"b6043986-2461-c171-66df-916670c25662\"\n    }\n  ],\n  \"startDate\": \"2014-02-23T14:19:42.524Z\",\n  \"workOrderNumber\": 6029,\n  \"routingTemplateId\": \"89ddca64-916a-30be-91a3-86a64d79eac1\",\n  \"name\": \"string\",\n  \"dueDate\": \"2018-11-24T13:02:47.241Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60f0075e-a79b-4290-ac4f-45bc15c3e681",
+              "name": "Work order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "work-orders",
+                    ":id",
+                    "dates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startDate\": \"<dateTime>\",\n  \"dueDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb529b5b-fbdf-49a9-b5fc-5be281e32fb4",
+              "name": "The work order has started; a future start date would hide partially completed parts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "work-orders",
+                    ":id",
+                    "dates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startDate\": \"<dateTime>\",\n  \"dueDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -267,18 +363,9 @@
       "key": "baseUrl"
     }
   ],
-  "auth": {
-    "type": "bearer",
-    "bearer": [
-      {
-        "key": "token",
-        "value": "{{bearerToken}}"
-      }
-    ]
-  },
   "info": {
-    "_postman_id": "c6d54bdf-ec3b-428a-af57-160b48707715",
-    "name": "Phasio Activity Internal Manufacturer Work Order Controller API",
+    "_postman_id": "632adf2e-a1ce-4e90-90f8-1b203b9a0bb8",
+    "name": "Phasio Manufacturer Work Order Controller API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "This is the API documentation for the Phasio application.",

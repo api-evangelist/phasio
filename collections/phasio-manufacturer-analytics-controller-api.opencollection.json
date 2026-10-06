@@ -1,14 +1,8 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Phasio Activity Internal Manufacturer Analytics Controller API",
+    "name": "Phasio Manufacturer Analytics Controller API",
     "version": "1.0"
-  },
-  "request": {
-    "auth": {
-      "type": "bearer",
-      "token": "{{bearerToken}}"
-    }
   },
   "items": [
     {
@@ -19,50 +13,6 @@
       "items": [
         {
           "info": {
-            "name": "Get website visit statistics for the current month",
-            "type": "http"
-          },
-          "http": {
-            "method": "GET",
-            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/analytics/operator/website-visits"
-          },
-          "docs": "Retrieves website traffic and visitor data for the current month"
-        },
-        {
-          "info": {
-            "name": "Get revenue analytics for the current month",
-            "type": "http"
-          },
-          "http": {
-            "method": "GET",
-            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/analytics/operator/revenue"
-          },
-          "docs": "Retrieves revenue data for the current month"
-        },
-        {
-          "info": {
-            "name": "Get overview analytics for the current month",
-            "type": "http"
-          },
-          "http": {
-            "method": "GET",
-            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/analytics/operator/overview"
-          },
-          "docs": "Retrieves a comprehensive overview of key analytics metrics for the current month"
-        },
-        {
-          "info": {
-            "name": "Get orders by payment status for the current month",
-            "type": "http"
-          },
-          "http": {
-            "method": "GET",
-            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/analytics/operator/orders/payment-status"
-          },
-          "docs": "Retrieves order information categorized by payment status for the current month"
-        },
-        {
-          "info": {
             "name": "Get time series metrics for the operator",
             "type": "http"
           },
@@ -71,17 +21,6 @@
             "url": "https://m-api.eu.phas.io/api/manufacturer/v1/analytics/operator/metrics"
           },
           "docs": "Retrieves a collection of time-based metrics for the operator"
-        },
-        {
-          "info": {
-            "name": "Get quotes generated in the current month",
-            "type": "http"
-          },
-          "http": {
-            "method": "GET",
-            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/analytics/operator/generated-quotes"
-          },
-          "docs": "Retrieves data on quotes generated during the current month"
         },
         {
           "info": {
@@ -148,7 +87,7 @@
               }
             ]
           },
-          "docs": "Returns the manufacturer analytics dashboard in one call, including revenue, funnel, production, customer and material insights. Use this endpoint for reporting dashboards and external BI syncs that need the same aggregates shown in the manufacturer app. The response is scoped to the authenticated operator. Supply a `period` preset or an explicit `from`/`to` range, which wins over `period`. Aggregation is computed at the database level. All period math is in UTC. The `funnel` section returns thr"
+          "docs": "$a6"
         }
       ]
     }

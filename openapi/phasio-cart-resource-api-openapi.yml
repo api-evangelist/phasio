@@ -58,11 +58,17 @@ paths:
           type: string
       responses:
         '200':
-          description: OK
+          description: Carts retrieved successfully
           content:
-            '*/*':
+            application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedCartDto'
+                $ref: '#/components/schemas/Paginated'
+        '400':
+          description: 'Invalid filter specification (error code: INVALID_FILTER)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/cart/{cartId}:
     get:
       tags:
@@ -87,6 +93,10 @@ paths:
                 $ref: '#/components/schemas/CartDto'
         '404':
           description: Cart not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/cart/{cartId}/pre-order:
     get:
       tags:
@@ -109,206 +119,146 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CartPreOrderDto'
-        '404':
-          description: Cart not found
-  /api/manufacturer/v1/cart/operator:
-    get:
-      tags:
-      - cart-resource
-      summary: Get all carts for the operator
-      description: Retrieves all shopping carts associated with the current operator
-      operationId: getByOperator_2
-      responses:
-        '200':
-          description: Carts retrieved successfully
+        '400':
+          description: 'Invalid cart request (error code: INVALID_REQUEST)'
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/CartDto'
-        '401':
-          description: Unauthorized - missing operator context
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Cart not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
+    TaxQuoteComponentDto:
+      type: object
+      properties:
+        shortName:
+          type: string
+        longName:
+          type: string
+        percentage:
+          type: number
+        amount:
+          type: number
+        localAmount:
+          type: number
+      required:
+      - amount
+      - localAmount
+      - longName
+      - percentage
+      - shortName
     QuoteLineItemDto:
       type: object
       properties:
         name:
           type: string
-        price:
+        basePrice:
+          type: number
+        termPrice:
           type: number
       required:
+      - basePrice
       - name
-      - price
-    CartItemDto:
+      - termPrice
+    PartManufacturabilityWarningsDto:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-        partRevisionId:
-          type: string
-          format: uuid
-        partName:
-          type: string
-        quantity:
-          type: integer
-        colorId:
-          type: integer
-          format: int64
-        precisionPricesId:
-          type: integer
-          format: int64
-        infillId:
-          type: integer
-          format: int64
-        processPricesId:
-          type: string
-          format: uuid
-        materialPricesId:
-          type: integer
-          format: int64
-        leadTimeId:
-          type: string
-          format: uuid
-        units:
-          type: string
-          enum:
-          - CENTIMETERS
-          - MILLIMETERS
-          - METRES
-          - INCHES
-          - FEET
-        postProcessingIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - id
-      - quantity
-    RequisitionQuoteDto:
-      type: object
-      properties:
-        partRevisionId:
-          type: string
-          format: uuid
-        quantity:
-          type: integer
-        price:
-          type: number
-        manufacturingPrice:
-          type: number
-        postProcessingPrice:
-          type: number
-        unitPrice:
-          type: number
-        postProcessingOptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/PostProcessingOptionQuoteDto'
-      required:
-      - manufacturingPrice
-      - partRevisionId
-      - postProcessingOptions
-      - postProcessingPrice
-      - price
-      - quantity
-      - unitPrice
-    CartPreOrderDto:
-      type: object
-      properties:
-        quote:
-          $ref: '#/components/schemas/QuoteDtoLong'
-        purchasability:
-          $ref: '#/components/schemas/OrderPurchasabilityDto'
-      required:
-      - purchasability
-      - quote
-    PostProcessingOptionQuoteDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        price:
-          type: number
-      required:
-      - id
-      - price
-    PartManufacturabilityLimitsDto:
-      type: object
-      properties:
-        withinBoundingBoxLimit:
-          type: boolean
-        withinWallThicknessLimit:
+        hasOptimalWallThickness:
           type: boolean
       required:
-      - withinBoundingBoxLimit
-      - withinWallThicknessLimit
-    QuoteDtoLong:
+      - hasOptimalWallThickness
+    AccountingCategoryTaggedPriceDto:
       type: object
       properties:
-        currency:
-          type: string
-        localCurrency:
-          type: string
         price:
           type: number
         localPrice:
           type: number
-        subtotal:
-          type: number
-        localSubtotal:
-          type: number
-        tax:
-          $ref: '#/components/schemas/TaxQuoteDto'
-        lineItems:
+        accountingCategory:
+          type: string
+      required:
+      - localPrice
+      - price
+    Paginated:
+      type: object
+      properties:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
+    TaxQuoteDto:
+      type: object
+      properties:
+        components:
           type: array
           items:
-            $ref: '#/components/schemas/QuoteLineItemDto'
-        discount:
+            $ref: '#/components/schemas/TaxQuoteComponentDto'
+        totalPrice:
           type: number
-        localDiscount:
+        localTotalPrice:
           type: number
-        shipment:
-          $ref: '#/components/schemas/AccountingCategoryTaggedPriceDto'
-        topUp:
-          $ref: '#/components/schemas/AccountingCategoryTaggedPriceDto'
-        requisitions:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/RequisitionQuoteDto'
-        exchangeRate:
+        totalPercentage:
           type: number
-        expenses:
-          type: object
-          additionalProperties:
-            type: number
-        dispatchDate:
+        isTaxAppliedToShipping:
+          type: boolean
+        isTaxExempted:
+          type: boolean
+        isTaxReverseCharged:
+          type: boolean
+        accountingSystemTaxId:
           type: string
-          format: date
       required:
-      - currency
-      - discount
-      - exchangeRate
-      - expenses
-      - lineItems
-      - localCurrency
-      - localDiscount
-      - localPrice
-      - localSubtotal
-      - price
-      - requisitions
-      - subtotal
-      - tax
+      - components
+      - isTaxAppliedToShipping
+      - isTaxExempted
+      - isTaxReverseCharged
+      - localTotalPrice
+      - totalPercentage
+      - totalPrice
+    PartManufacturabilityDto:
+      type: object
+      properties:
+        partRevisionId:
+          type: string
+          format: uuid
+        warnings:
+          $ref: '#/components/schemas/PartManufacturabilityWarningsDto'
+        limits:
+          $ref: '#/components/schemas/PartManufacturabilityLimitsDto'
+        values:
+          $ref: '#/components/schemas/PartManufacturabilityValuesDto'
+      required:
+      - limits
+      - partRevisionId
+      - values
+      - warnings
     CartDto:
       type: object
       properties:
@@ -386,66 +336,192 @@ components:
       - items
       - status
       - updateDt
-    AccountingCategoryTaggedPriceDto:
+    PartManufacturabilityLimitsDto:
       type: object
       properties:
+        withinBoundingBoxLimit:
+          type: boolean
+        withinWallThicknessLimit:
+          type: boolean
+      required:
+      - withinBoundingBoxLimit
+      - withinWallThicknessLimit
+    CartItemDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        partRevisionId:
+          type: string
+          format: uuid
+        partName:
+          type: string
+        quantity:
+          type: integer
+        colorId:
+          type: integer
+          format: int64
+        precisionPricesId:
+          type: integer
+          format: int64
+        infillId:
+          type: integer
+          format: int64
+        processPricesId:
+          type: string
+          format: uuid
+        materialPricesId:
+          type: integer
+          format: int64
+        leadTimeId:
+          type: string
+          format: uuid
+        units:
+          type: string
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        postProcessingIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - id
+      - quantity
+    CartPreOrderDto:
+      type: object
+      properties:
+        quote:
+          $ref: '#/components/schemas/QuoteDtoLong'
+        purchasability:
+          $ref: '#/components/schemas/OrderPurchasabilityDto'
+      required:
+      - purchasability
+      - quote
+    RequisitionQuoteDto:
+      type: object
+      properties:
+        partRevisionId:
+          type: string
+          format: uuid
+        localManufacturingPrice:
+          type: number
+        manufacturingPrice:
+          type: number
+        localPostProcessingPrice:
+          type: number
+        postProcessingPrice:
+          type: number
+        localUnitPrice:
+          type: number
+        unitPrice:
+          type: number
+        localPrice:
+          type: number
+        price:
+          type: number
+        postProcessingOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostProcessingQuoteOptionDto'
+        accountingCategoryCode:
+          type: string
+        quantity:
+          type: integer
+        variables:
+          type: object
+          additionalProperties:
+            type: number
+        reviewRequired:
+          type: boolean
+      required:
+      - localManufacturingPrice
+      - localPostProcessingPrice
+      - localPrice
+      - localUnitPrice
+      - manufacturingPrice
+      - partRevisionId
+      - postProcessingOptions
+      - postProcessingPrice
+      - price
+      - quantity
+      - reviewRequired
+      - unitPrice
+      - variables
+    QuoteDtoLong:
+      type: object
+      properties:
+        currency:
+          type: string
+        localCurrency:
+          type: string
         price:
           type: number
         localPrice:
           type: number
-        accountingCategory:
-          type: string
-      required:
-      - localPrice
-      - price
-    PartManufacturabilityValuesDto:
-      type: object
-      properties:
-        boundingBox:
+        subtotal:
+          type: number
+        localSubtotal:
+          type: number
+        tax:
+          $ref: '#/components/schemas/TaxQuoteDto'
+        lineItems:
           type: array
           items:
+            $ref: '#/components/schemas/QuoteLineItemDto'
+        discount:
+          type: number
+        localDiscount:
+          type: number
+        shipping:
+          $ref: '#/components/schemas/AccountingCategoryTaggedPriceDto'
+        topUp:
+          $ref: '#/components/schemas/AccountingCategoryTaggedPriceDto'
+        requisitions:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/RequisitionQuoteDto'
+        exchangeRate:
+          type: number
+        expenses:
+          type: object
+          additionalProperties:
             type: number
-        wallThicknessLimit:
-          type: number
-        wallThicknessWarning:
-          type: number
-    PartManufacturabilityWarningsDto:
-      type: object
-      properties:
-        hasOptimalWallThickness:
-          type: boolean
+        expectedDispatchDate:
+          type: string
+          format: date
+        shipment:
+          $ref: '#/components/schemas/AccountingCategoryTaggedPriceDto'
+          readOnly: true
+        dispatchDate:
+          type: string
+          format: date
+          readOnly: true
       required:
-      - hasOptimalWallThickness
-    PaginatedCartDto:
-      type: object
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/CartDto'
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
-          type: boolean
-        isFirst:
-          type: boolean
-        isLast:
-          type: boolean
-      required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
+      - currency
+      - discount
+      - exchangeRate
+      - expenses
+      - lineItems
+      - localCurrency
+      - localDiscount
+      - localPrice
+      - localSubtotal
+      - price
+      - requisitions
+      - subtotal
+      - tax
     OrderPurchasabilityDto:
       type: object
       properties:
@@ -461,6 +537,8 @@ components:
           type: boolean
         isPostProcessingPurchasable:
           type: boolean
+        withinWallThicknessLimit:
+          type: boolean
         isPriceReviewRequired:
           type: boolean
         canBePurchased:
@@ -473,63 +551,58 @@ components:
       - parts
       - withinBoundingBoxLimit
       - withinMaximumOrderValue
-    TaxQuoteDto:
+      - withinWallThicknessLimit
+    PostProcessingQuoteOptionDto:
       type: object
       properties:
-        components:
+        id:
+          type: integer
+          format: int64
+        price:
+          type: number
+        localPrice:
+          type: number
+        variables:
+          type: object
+          additionalProperties:
+            type: number
+      required:
+      - id
+      - localPrice
+      - price
+      - variables
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
+    PartManufacturabilityValuesDto:
+      type: object
+      properties:
+        boundingBox:
           type: array
           items:
-            $ref: '#/components/schemas/TaxQuoteComponentDto'
-        totalPrice:
+            type: number
+        wallThicknessLimit:
           type: number
-        totalPercentage:
+        wallThicknessWarning:
           type: number
-        isTaxAppliedToShipping:
+        bendingEnabled:
           type: boolean
-        isTaxExempted:
-          type: boolean
-        isTaxReverseCharged:
+        machiningEnabled:
           type: boolean
       required:
-      - components
-      - isTaxAppliedToShipping
-      - isTaxExempted
-      - isTaxReverseCharged
-      - totalPercentage
-      - totalPrice
-    TaxQuoteComponentDto:
-      type: object
-      properties:
-        shortName:
-          type: string
-        longName:
-          type: string
-        percentage:
-          type: number
-        amount:
-          type: number
-      required:
-      - amount
-      - longName
-      - percentage
-      - shortName
-    PartManufacturabilityDto:
-      type: object
-      properties:
-        partRevisionId:
-          type: string
-          format: uuid
-        warnings:
-          $ref: '#/components/schemas/PartManufacturabilityWarningsDto'
-        limits:
-          $ref: '#/components/schemas/PartManufacturabilityLimitsDto'
-        values:
-          $ref: '#/components/schemas/PartManufacturabilityValuesDto'
-      required:
-      - limits
-      - partRevisionId
-      - values
-      - warnings
+      - bendingEnabled
+      - machiningEnabled
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

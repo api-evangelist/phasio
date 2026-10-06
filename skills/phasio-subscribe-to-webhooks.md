@@ -1,7 +1,7 @@
 ---
 name: Subscribe to Phasio order and quote webhooks
 description: Register, list, and remove Phasio webhooks and verify signed, encrypted event payloads.
-api: openapi/phasio-openapi-original.json
+api: openapi/_original/phasio-openapi.json
 operations: [createWebhook, getWebhooks, deleteWebhook]
 ---
 
@@ -9,12 +9,12 @@ operations: [createWebhook, getWebhooks, deleteWebhook]
 
 Operating instructions for the Phasio webhook surface
 (`/api/manufacturer/v1/webhook`). operationIds verified against
-`openapi/phasio-openapi-original.json`; event and signature details from
+`openapi/_original/phasio-openapi.json`; event and signature details from
 `asyncapi/phasio-webhooks.yml`.
 
 ## Authenticate
-Use an `Authorization: Bearer <access_token>` obtained from
-`https://auth.eu.phas.io/oauth2/token` (client-credentials).
+Use `Authorization: Bearer <api_key>` with an API key created under
+Settings > API Keys in the manufacturer dashboard.
 
 ## Steps
 1. **Register an endpoint** — `POST /webhook` (`createWebhook`) with an

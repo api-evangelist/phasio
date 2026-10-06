@@ -33,129 +33,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/CustomerDto'
         '400':
-          description: Invalid customer data
+          description: Invalid customer data (error code INVALID_CUSTOMER_PAYLOAD)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
         '401':
           description: Unauthorized - missing operator context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
         '409':
-          description: Customer with the same email or phone number already exists
+          description: Customer with the same email or phone number, or an organisation with the same name, already exists (error codes CUSTOMER_VALIDATION_ERROR, CUSTOMER_ORGANISATION_DUPLICATE_NAME)
           content:
             application/json: {}
-    patch:
-      tags:
-      - Manufacturer Customer Controller
-      summary: Update a customer
-      description: Updates an existing customer record
-      operationId: updateCustomer
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CustomerUpdateDto'
-        required: true
-      responses:
-        '200':
-          description: Customer updated successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CustomerDto'
-        '400':
-          description: Invalid customer data or customer not found
-  /api/manufacturer/v1/customer/upload:
-    post:
-      tags:
-      - Manufacturer Customer Controller
-      summary: Upload customers from a file
-      description: Imports multiple customers from a CSV or Excel file
-      operationId: uploadCustomers
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                file:
-                  type: string
-                  format: binary
-                  description: CSV or Excel file containing customer data
-              required:
-              - file
-      responses:
-        '204':
-          description: Customers uploaded successfully
-        '400':
-          description: Invalid file format or operator ID mismatch
-  /api/manufacturer/v1/customer/principal:
-    post:
-      tags:
-      - Manufacturer Customer Controller
-      summary: Get a customer by principal
-      description: Retrieves a customer using their principal identifier (username, email, etc.)
-      operationId: getCustomer
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CustomerRequestDto'
-        required: true
-      responses:
-        '200':
-          description: Customer retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CustomerDto'
-        '404':
-          description: Customer not found
-        '401':
-          description: Unauthorized - missing operator context
-  /api/manufacturer/v1/customer/phone:
-    post:
-      tags:
-      - Manufacturer Customer Controller
-      summary: Get a customer by phone number
-      description: Retrieves a customer using their phone number. Always returns 200 - exists flag indicates whether a match was found.
-      operationId: getCustomerByPhone
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CustomerRequestDto'
-        required: true
-      responses:
-        '200':
-          description: Lookup completed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CustomerPhoneLookupDto'
-        '401':
-          description: Unauthorized - missing operator context
   /api/manufacturer/v1/customer/organisation/{organisationId}:
-    get:
-      tags:
-      - Manufacturer Customer Controller
-      summary: Get customers by organization
-      description: Retrieves all customers belonging to a specific organization
-      operationId: getCustomersByOrganisation
-      parameters:
-      - name: organisationId
-        in: path
-        description: ID of the organization to get customers for
-        required: true
-        schema:
-          type: integer
-          format: int64
-        example: 1
-      responses:
-        '200':
-          description: Customers retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/CustomerDto'
     post:
       tags:
       - Manufacturer Customer Controller
@@ -181,46 +74,34 @@ paths:
         '200':
           description: Customer created successfully
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/CustomerDto'
         '400':
-          description: Invalid customer data or organization ID
-          content:
-            text/plain:
-              schema:
-                type: string
-        '401':
-          description: Unauthorized - missing operator context
-  /api/manufacturer/v1/customer/email:
-    post:
-      tags:
-      - Manufacturer Customer Controller
-      summary: Get a customer by email
-      description: Retrieves a customer using their email address. Always returns 200 - exists flag indicates whether a match was found.
-      operationId: getCustomerByEmail
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CustomerRequestDto'
-        required: true
-      responses:
-        '200':
-          description: Lookup completed
+          description: Invalid customer data (error code INVALID_CUSTOMER_PAYLOAD)
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerEmailLookupDto'
+                $ref: '#/components/schemas/ApiError'
         '401':
           description: Unauthorized - missing operator context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Customer organisation not found (error code CUSTOMER_ORGANISATION_NOT_FOUND)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/customer/{customerId}:
     get:
       tags:
       - Manufacturer Customer Controller
       summary: Get a customer by ID
       description: Retrieves details of a specific customer by their ID
-      operationId: getCustomer_3
+      operationId: getCustomer
       parameters:
       - name: customerId
         in: path
@@ -239,12 +120,16 @@ paths:
                 $ref: '#/components/schemas/CustomerDto'
         '404':
           description: Customer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
     delete:
       tags:
       - Manufacturer Customer Controller
       summary: Delete a customer
-      description: Hard deletes a customer and removes PII data
-      operationId: deleteCustomer_1
+      description: Hard deletes a customer and removes PII data. The last customer in an organisation cannot be deleted; delete the organisation instead.
+      operationId: deleteCustomer
       parameters:
       - name: customerId
         in: path
@@ -259,14 +144,14 @@ paths:
             '*/*':
               schema:
                 type: string
-        '400':
-          description: Customer could not be deleted
+        '404':
+          description: Customer not found (error code CUSTOMER_NOT_FOUND)
           content:
             '*/*':
               schema:
                 type: string
-        '404':
-          description: Customer not found
+        '409':
+          description: The customer is the last one in its organisation and cannot be deleted (error code LAST_CUSTOMER_IN_ORGANISATION)
           content:
             '*/*':
               schema:
@@ -319,110 +204,88 @@ paths:
           type: string
       responses:
         '200':
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/PaginatedCustomerDto'
-  /api/manufacturer/v1/customer/count:
-    get:
-      tags:
-      - Manufacturer Customer Controller
-      summary: Get count of customers
-      description: Retrieves the total count of customers with optional filtering
-      operationId: getCount
-      parameters:
-      - name: searchQuery
-        in: query
-        description: Search query for filtering customers
-        required: false
-        schema:
-          type: string
-        example: john
-      responses:
-        '200':
-          description: Count retrieved successfully
+          description: Customers retrieved successfully
           content:
             application/json:
               schema:
-                type: integer
-                format: int64
-        '401':
-          description: Unauthorized - missing operator context
-  /api/manufacturer/v1/customer/{customerId}/auth:
-    delete:
-      tags:
-      - Manufacturer Customer Controller
-      summary: Reset customer authentication
-      description: Resets customer to OTP-only auth, clearing their password
-      operationId: resetCustomerAuth
-      parameters:
-      - name: customerId
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        '204':
-          description: Customer auth reset successfully
+                $ref: '#/components/schemas/Paginated'
+        '400':
+          description: Invalid filter or query (error code INVALID_FILTER)
           content:
-            '*/*':
+            application/json:
               schema:
-                type: string
-        '404':
-          description: Customer not found
-          content:
-            '*/*':
-              schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
-    CustomerEmailLookupDto:
+    Paginated:
       type: object
       properties:
-        isDuplicate:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
           type: boolean
-        customer:
-          $ref: '#/components/schemas/CustomerDto'
-        message:
-          type: string
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
       required:
-      - isDuplicate
-    CustomerUpdateDto:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
+    CustomerDto:
       type: object
       properties:
+        email:
+          type: string
         customerId:
           type: integer
           format: int64
-        email:
+        organisationId:
+          type: integer
+          format: int64
+        organisationName:
           type: string
-        phoneNumber:
-          type: string
+        isApproved:
+          type: boolean
         firstName:
           type: string
         lastName:
           type: string
+        phoneNumber:
+          type: string
         notificationPreference:
           type: string
+        discountId:
+          type: integer
+          format: int64
+        discountPercentage:
+          type: number
         language:
           type: string
       required:
       - customerId
-    CustomerPhoneLookupDto:
-      type: object
-      properties:
-        isDuplicate:
-          type: boolean
-        customer:
-          $ref: '#/components/schemas/CustomerDto'
-        message:
-          type: string
-      required:
-      - isDuplicate
+      - firstName
+      - isApproved
+      - lastName
+      - notificationPreference
+      - organisationId
+      - phoneNumber
     CreateCustomerDto:
       type: object
-      description: Customer data to create
       properties:
         firstName:
           type: string
@@ -462,77 +325,24 @@ components:
           type: string
         taxExempt:
           type: boolean
+        authCustomerId:
+          type: string
       required:
       - notificationPreference
-    CustomerRequestDto:
+    ApiError:
       type: object
-      description: Customer request data containing the principal
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
       properties:
-        customerPrincipal:
+        error:
           type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
       required:
-      - customerPrincipal
-    PaginatedCustomerDto:
-      type: object
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerDto'
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
-          type: boolean
-        isFirst:
-          type: boolean
-        isLast:
-          type: boolean
-      required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
-    CustomerDto:
-      type: object
-      properties:
-        email:
-          type: string
-        customerId:
-          type: integer
-          format: int64
-        organisationName:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        phoneNumber:
-          type: string
-        language:
-          type: string
-        notificationPreference:
-          type: string
-        discountId:
-          type: integer
-          format: int64
-        discountPercentage:
-          type: number
-        customerType:
-          type: string
-      required:
-      - customerType
-      - language
-      - notificationPreference
+      - error
+      - message
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

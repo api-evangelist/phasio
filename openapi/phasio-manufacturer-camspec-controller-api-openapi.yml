@@ -12,41 +12,6 @@ tags:
 - name: Manufacturer CAMSPEC Controller
   description: Endpoints for exporting CAMSPEC files and managing manifest mappings
 paths:
-  /api/manufacturer/v1/camspec/manifest-mappings/lookup:
-    post:
-      tags:
-      - Manufacturer CAMSPEC Controller
-      summary: Get manifest mappings by manifest IDs (bulk lookup)
-      description: Retrieves the mapping between CAMSPEC manifest IDs and requisition IDs for the specified manifest IDs. Supports hundreds of manifest IDs.
-      operationId: getManifestMappings
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              description: Set of manifest IDs to look up
-              items:
-                type: string
-                format: uuid
-              uniqueItems: true
-        required: true
-      responses:
-        '200':
-          description: Manifest mappings retrieved successfully
-          content:
-            '*/*':
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/CamspecManifestMappingDto'
-        '400':
-          description: Invalid request parameters
-          content:
-            '*/*':
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/CamspecManifestMappingDto'
   /api/manufacturer/v1/camspec/export:
     post:
       tags:
@@ -66,7 +31,7 @@ paths:
           content:
             application/zip: {}
         '400':
-          description: Invalid request parameters
+          description: 'Invalid request: CAMSPEC_ENTRIES_EMPTY, CAMSPEC_PRIORITY_INVALID, CAMSPEC_QUANTITY_INVALID, INVALID_CAMSPEC_REQUEST, or other validation errors'
           content:
             '*/*':
               schema:
@@ -77,70 +42,39 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/StreamingResponseBody'
-  /api/manufacturer/v1/camspec/requisitions/{requisitionId}/manifest-mappings:
-    get:
+  /api/manufacturer/v1/camspec/download:
+    post:
       tags:
       - Manufacturer CAMSPEC Controller
-      summary: Get manifest mappings by requisition ID
-      description: Retrieves all CAMSPEC manifest mappings for a specific requisition ID (reverse lookup)
-      operationId: getManifestMappingsByRequisition
-      parameters:
-      - name: requisitionId
-        in: path
-        description: The requisition ID to look up
+      summary: Download CAMSPEC archive for requisitions without tracking a work order
+      description: Creates and downloads a CAMSPEC archive (.camspec file) containing manufacturing constraints and CAD files for the specified requisitions, without persisting any manifest mapping
+      operationId: downloadCamspec
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CamspecDownloadRequestDto'
         required: true
-        schema:
-          type: integer
-          format: int64
       responses:
         '200':
-          description: Manifest mappings retrieved successfully
+          description: CAMSPEC archive created successfully
+          content:
+            application/zip: {}
+        '400':
+          description: 'Invalid request: CAMSPEC_ENTRIES_EMPTY, CAMSPEC_PRIORITY_INVALID, CAMSPEC_QUANTITY_INVALID, INVALID_CAMSPEC_REQUEST, or other validation errors'
           content:
             '*/*':
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/CamspecManifestMappingDto'
+                $ref: '#/components/schemas/StreamingResponseBody'
         '404':
-          description: Requisition not found
+          description: One or more requisitions not found
           content:
             '*/*':
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/CamspecManifestMappingDto'
-  /api/manufacturer/v1/camspec/manifest-mappings/{manifestId}:
-    get:
-      tags:
-      - Manufacturer CAMSPEC Controller
-      summary: Get manifest mapping by manifest ID
-      description: Retrieves the mapping between a single CAMSPEC manifest ID and its corresponding requisition ID
-      operationId: getManifestMapping
-      parameters:
-      - name: manifestId
-        in: path
-        description: The manifest ID to look up
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        '200':
-          description: Manifest mapping retrieved successfully
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/CamspecManifestMappingDto'
-        '404':
-          description: Manifest mapping not found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/CamspecManifestMappingDto'
+                $ref: '#/components/schemas/StreamingResponseBody'
 components:
   schemas:
-    StreamingResponseBody: {}
-    CamspecRequisitionEntryDto:
+    CamspecDownloadRequisitionEntryDto:
       type: object
       properties:
         requisitionId:
@@ -152,14 +86,15 @@ components:
       required:
       - quantity
       - requisitionId
-    CamspecExportRequestDto:
+    StreamingResponseBody: {}
+    CamspecDownloadRequestDto:
       type: object
-      description: CAMSPEC export request containing requisition IDs with quantities and priority
+      description: CAMSPEC download request containing requisition IDs and quantities, with no work-order tracking
       properties:
         requisitionEntries:
           type: array
           items:
-            $ref: '#/components/schemas/CamspecRequisitionEntryDto'
+            $ref: '#/components/schemas/CamspecDownloadRequisitionEntryDto'
         fileType:
           type: string
           enum:
@@ -175,22 +110,45 @@ components:
       - fileType
       - priority
       - requisitionEntries
-    CamspecManifestMappingDto:
+    CamspecExportRequestDto:
+      type: object
+      description: CAMSPEC export request containing requisition IDs, required work-order IDs, quantities, and priority
+      properties:
+        requisitionEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/CamspecExportRequisitionEntryDto'
+        fileType:
+          type: string
+          enum:
+          - ORIGINAL_CAD_FILE
+          - CORE_GEOMETRY
+          - THUMBNAIL
+          - PDF_DESIGN_FILE
+          - WALL_THICKNESS_ANALYSIS
+        priority:
+          type: integer
+          format: int32
+      required:
+      - fileType
+      - priority
+      - requisitionEntries
+    CamspecExportRequisitionEntryDto:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
         requisitionId:
           type: integer
           format: int64
-        createdAt:
+        workOrderId:
           type: string
-          format: date-time
+          format: uuid
+        quantity:
+          type: integer
+          format: int32
       required:
-      - createdAt
-      - id
+      - quantity
       - requisitionId
+      - workOrderId
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

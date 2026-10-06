@@ -1,11 +1,9 @@
-generated: '2026-07-20'
+generated: '2026-10-06'
 method: derived
-source: openapi/phasio-openapi-original.json
+source: openapi/_original/phasio-openapi.json
 format: json
-description: >-
-  Error catalog derived from the HTTP status responses declared across the 481
-  operations of the Phasio Manufacturer API. Error bodies are returned as
-  application/json (some plain text); the API does not use RFC 9457
+description: Error catalog derived from the HTTP status responses declared across the 130 operations of the Phasio
+  Manufacturer API. Error bodies are returned as application/json (some plain text); the API does not use RFC 9457
   application/problem+json.
 envelope:
   media_types:
@@ -15,23 +13,23 @@ problems:
 - status: 400
   title: Bad Request
   meaning: Malformed request, invalid RSQL filter, or failed validation.
-  occurrences: 231
+  occurrences: 46
 - status: 401
   title: Unauthorized
   meaning: Missing, expired, or invalid Bearer token.
-  occurrences: 261
+  occurrences: 59
 - status: 403
   title: Forbidden
   meaning: Authenticated client lacks permission for the resource.
-  occurrences: 9
+  occurrences: 2
 - status: 404
   title: Not Found
   meaning: Referenced resource does not exist.
-  occurrences: 128
+  occurrences: 72
 - status: 409
   title: Conflict
   meaning: Request conflicts with current resource state (e.g. duplicate or concurrent update).
-  occurrences: 5
+  occurrences: 8
 - status: 429
   title: Too Many Requests
   meaning: Rate limit exceeded; retry after backoff.
@@ -39,8 +37,4 @@ problems:
 - status: 500
   title: Internal Server Error
   meaning: Unexpected server-side failure.
-  occurrences: 5
-- status: 503
-  title: Service Unavailable
-  meaning: Upstream/service temporarily unavailable.
-  occurrences: 2
+  occurrences: 10

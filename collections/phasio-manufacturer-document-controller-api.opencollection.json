@@ -1,14 +1,8 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Phasio Activity Internal Manufacturer Document Controller API",
+    "name": "Phasio Manufacturer Document Controller API",
     "version": "1.0"
-  },
-  "request": {
-    "auth": {
-      "type": "bearer",
-      "token": "{{bearerToken}}"
-    }
   },
   "items": [
     {
@@ -35,6 +29,37 @@
             ]
           },
           "docs": "Generates a traveller sheet PDF document for the specified order"
+        },
+        {
+          "info": {
+            "name": "Generate shipment invoice document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document/:orderId/shipments/:shipmentId/invoice",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order"
+              },
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the shipment"
+              },
+              {
+                "name": "templateId",
+                "value": "42",
+                "type": "query",
+                "description": "ID of the invoice template"
+              }
+            ]
+          },
+          "docs": "Generates a PDF document using an invoice template for the parts allocated to a shipment"
         },
         {
           "info": {
@@ -79,6 +104,31 @@
             ]
           },
           "docs": "Generates an invoice PDF document for the specified order"
+        },
+        {
+          "info": {
+            "name": "Generate invoice document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document/:orderId/invoice-document",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order"
+              },
+              {
+                "name": "templateId",
+                "value": "42",
+                "type": "query",
+                "description": "ID of the invoice template"
+              }
+            ]
+          },
+          "docs": "Generates a PDF document using an invoice template for the specified order"
         },
         {
           "info": {
@@ -161,25 +211,6 @@
             ]
           },
           "docs": "Generates an order confirmation PDF document for the specified order"
-        },
-        {
-          "info": {
-            "name": "Generate test document",
-            "type": "http"
-          },
-          "http": {
-            "method": "GET",
-            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/document/test/operator",
-            "params": [
-              {
-                "name": "templateId",
-                "value": "",
-                "type": "query",
-                "description": "Document template ID"
-              }
-            ]
-          },
-          "docs": "Generates a test document of the specified type and language"
         },
         {
           "info": {

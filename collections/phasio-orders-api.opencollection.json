@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Orders API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "RSQL query string for filtering (e.g. paymentStatus=in=(PAID,UNPAID);price>10)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Optional search term"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of orders with optional filtering and search"
+        },
+        {
+          "info": {
+            "name": "Create an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order",
+            "params": [
+              {
+                "name": "threadId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the thread to associate with the order"
+              },
+              {
+                "name": "customerOrganisationId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the customer organisation to associated with the order"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Whether to create an order, quote, or internal draft"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new order with the provided details"
+        },
+        {
+          "info": {
+            "name": "Update order kanban column",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id/kanban-column",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Moves an order to a different kanban column. Optional skipAutomationTypes field suppresses the named column automations for this request only."
+        },
+        {
+          "info": {
+            "name": "Retrieve an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific order by its ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

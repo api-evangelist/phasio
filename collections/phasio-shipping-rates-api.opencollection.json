@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Shipping Rates API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipping Rates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Calculate the shipping rates for a group of parts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/shipping-rates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint calculates the shipping rates for a group of parts. The request body should contain the list of parts and their quantities."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

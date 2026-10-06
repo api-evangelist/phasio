@@ -1,14 +1,8 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Phasio Activity Internal Manufacturer Assembly Controller API",
+    "name": "Phasio Manufacturer Assembly Controller API",
     "version": "1.0"
-  },
-  "request": {
-    "auth": {
-      "type": "bearer",
-      "token": "{{bearerToken}}"
-    }
   },
   "items": [
     {
@@ -77,29 +71,6 @@
             ]
           },
           "docs": "Deletes an assembly"
-        },
-        {
-          "info": {
-            "name": "Update customer article reference",
-            "type": "http"
-          },
-          "http": {
-            "method": "PUT",
-            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/assemblies/:id/customer-reference",
-            "params": [
-              {
-                "name": "id",
-                "value": "",
-                "type": "path",
-                "description": "Assembly ID"
-              }
-            ],
-            "body": {
-              "type": "json",
-              "data": "{}"
-            }
-          },
-          "docs": "Updates the customer's article reference for a specific assembly"
         },
         {
           "info": {
@@ -189,31 +160,6 @@
             ]
           },
           "docs": "Adds an assembly to a customer's catalog"
-        },
-        {
-          "info": {
-            "name": "Delete customer article reference",
-            "type": "http"
-          },
-          "http": {
-            "method": "DELETE",
-            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/assemblies/:id/customer-reference/:customerOrganisationId",
-            "params": [
-              {
-                "name": "id",
-                "value": "",
-                "type": "path",
-                "description": "Assembly ID"
-              },
-              {
-                "name": "customerOrganisationId",
-                "value": "",
-                "type": "path",
-                "description": "ID of the customer organization whose reference should be deleted"
-              }
-            ]
-          },
-          "docs": "Removes the customer's article reference from a specific assembly"
         }
       ]
     }

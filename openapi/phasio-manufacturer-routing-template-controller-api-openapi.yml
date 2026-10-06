@@ -104,7 +104,7 @@ paths:
     get:
       tags:
       - Manufacturer Routing Template Controller
-      operationId: list_1
+      operationId: list
       parameters:
       - name: specId
         in: path
@@ -121,12 +121,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/RoutingTemplateDto'
-      summary: List 1
+      summary: List
       x-summary-source: derived
     post:
       tags:
       - Manufacturer Routing Template Controller
-      operationId: create_9
+      operationId: create
       parameters:
       - name: specId
         in: path
@@ -147,13 +147,13 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/RoutingTemplateDto'
-      summary: Create 9
+      summary: Create
       x-summary-source: derived
   /api/manufacturer/v1/routing-templates/{id}:
     delete:
       tags:
       - Manufacturer Routing Template Controller
-      operationId: delete_5
+      operationId: delete_2
       parameters:
       - name: id
         in: path
@@ -164,7 +164,7 @@ paths:
       responses:
         '200':
           description: OK
-      summary: Delete 5
+      summary: Delete 2
       x-summary-source: derived
     patch:
       tags:
@@ -194,26 +194,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CreateRoutingTemplateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        steps:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoutingTemplateStepInput'
-        replacesRoutingTemplateId:
-          type: string
-          format: uuid
-      required:
-      - steps
-    DeprecateRoutingTemplateRequest:
-      type: object
-      properties:
-        replacedByRoutingTemplateId:
-          type: string
-          format: uuid
     UpdateRoutingTemplateRequest:
       type: object
       properties:
@@ -225,6 +205,12 @@ components:
             $ref: '#/components/schemas/RoutingTemplateStepInput'
         approved:
           type: boolean
+    DeprecateRoutingTemplateRequest:
+      type: object
+      properties:
+        replacedByRoutingTemplateId:
+          type: string
+          format: uuid
     RoutingTemplateStepInput:
       type: object
       properties:
@@ -302,6 +288,20 @@ components:
       - steps
       - updateDt
       - workOrderReferences
+    CreateRoutingTemplateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoutingTemplateStepInput'
+        replacesRoutingTemplateId:
+          type: string
+          format: uuid
+      required:
+      - steps
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

@@ -12,34 +12,6 @@ tags:
 - name: Manufacturer Material Controller
   description: Endpoints for managing manufacturing materials
 paths:
-  /api/manufacturer/v1/material:
-    get:
-      tags:
-      - Manufacturer Material Controller
-      summary: Get all materials for an operator
-      description: Retrieves all materials available to a specific manufacturer, including general materials
-      operationId: getAllMaterials
-      parameters:
-      - name: operatorId
-        in: query
-        description: ID of the operator to retrieve materials for
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        '200':
-          description: Successfully retrieved materials
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/MaterialDto'
-        '401':
-          description: Unauthorized - missing or invalid authentication
-        '403':
-          description: Forbidden - insufficient permissions to access materials
   /api/manufacturer/v1/material/{materialId}:
     get:
       tags:
@@ -63,51 +35,41 @@ paths:
               schema:
                 $ref: '#/components/schemas/MaterialDto'
         '404':
-          description: Material not found
+          description: Material not found (MATERIAL_NOT_FOUND)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
-    ColorDto:
+    ApiError:
       type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
       properties:
-        id:
-          type: integer
-          format: int64
-        name:
+        error:
           type: string
-        code:
+          example: ORDER_NOT_FOUND
+        message:
           type: string
+          example: Order not found
       required:
-      - code
-      - id
-      - name
+      - error
+      - message
     MaterialDto:
       type: object
       properties:
-        id:
+        materialId:
           type: integer
           format: int64
         name:
           type: string
-        datasheetSummary:
+        type:
           type: string
-        quoteOnly:
-          type: boolean
-        colorDtos:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColorDto'
-        isDefault:
-          type: boolean
-        wallThicknessWarning:
-          type: number
-        wallThicknessLimit:
-          type: number
       required:
-      - colorDtos
-      - id
-      - isDefault
+      - materialId
       - name
-      - quoteOnly
+      - type
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

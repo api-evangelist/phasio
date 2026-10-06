@@ -1,0 +1,993 @@
+{
+  "item": [
+    {
+      "id": "2f0c67c1-5d5b-4b73-b141-c51996414c58",
+      "name": "Operator Addresses",
+      "description": {
+        "content": "API for managing manufacturer operator addresses",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "984b5368-6a74-463c-b60c-41c4281c7f9c",
+          "name": "Get an operator address by ID",
+          "request": {
+            "name": "Get an operator address by ID",
+            "description": {
+              "content": "Retrieves address details for the specified operator address ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "operator",
+                "address",
+                ":addressId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "addressId",
+                  "description": "(Required) ID of the address to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65b1ac6d-4bed-45f6-89fd-e0ca6551ed80",
+              "name": "Address retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "operator",
+                    "address",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addressId\": 6063,\n  \"addressType\": \"string\",\n  \"city\": \"string\",\n  \"company\": \"string\",\n  \"country\": \"string\",\n  \"countryAlpha2Code\": \"string\",\n  \"countryAlpha3Code\": \"string\",\n  \"email\": \"string\",\n  \"isBillingAddress\": true,\n  \"isDeleted\": false,\n  \"isShippingAddress\": false,\n  \"name\": \"string\",\n  \"phone\": \"string\",\n  \"residential\": false,\n  \"street1\": \"string\",\n  \"street2\": \"string\",\n  \"zip\": \"string\",\n  \"state\": \"string\",\n  \"jurisdictionIsoCode\": \"string\",\n  \"taxId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72639b54-decf-40d4-8ba9-13acd9ee21e5",
+              "name": "Address not found; error code: ADDRESS_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "operator",
+                    "address",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1691708e-480c-433d-bf20-0ff21ab80b42",
+          "name": "Edit an existing operator address",
+          "request": {
+            "name": "Edit an existing operator address",
+            "description": {
+              "content": "Creates a new address with the updated details, soft-deletes the old address, and transfers billing and shipping defaults if applicable",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "operator",
+                "address",
+                ":addressId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "addressId",
+                  "description": "(Required) ID of the address to edit"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"city\": \"<string>\",\n  \"company\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"residential\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"street1\": \"<string>\",\n  \"street2\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6cfdbf2e-9c26-4002-a18b-b6063dc16945",
+              "name": "Address edited successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "operator",
+                    "address",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to edit"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"city\": \"<string>\",\n  \"company\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"residential\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"street1\": \"<string>\",\n  \"street2\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addressId\": 6063,\n  \"addressType\": \"string\",\n  \"city\": \"string\",\n  \"company\": \"string\",\n  \"country\": \"string\",\n  \"countryAlpha2Code\": \"string\",\n  \"countryAlpha3Code\": \"string\",\n  \"email\": \"string\",\n  \"isBillingAddress\": true,\n  \"isDeleted\": false,\n  \"isShippingAddress\": false,\n  \"name\": \"string\",\n  \"phone\": \"string\",\n  \"residential\": false,\n  \"street1\": \"string\",\n  \"street2\": \"string\",\n  \"zip\": \"string\",\n  \"state\": \"string\",\n  \"jurisdictionIsoCode\": \"string\",\n  \"taxId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e615f56-adcb-4cd2-abfb-c9b5385d4fa0",
+              "name": "Address not found or already deleted; error code: ADDRESS_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "operator",
+                    "address",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to edit"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"city\": \"<string>\",\n  \"company\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"residential\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"street1\": \"<string>\",\n  \"street2\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b369630-140d-494b-a6f4-a0b885eefd47",
+          "name": "Delete an operator address",
+          "request": {
+            "name": "Delete an operator address",
+            "description": {
+              "content": "Soft-deletes the specified operator address",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "operator",
+                "address",
+                ":addressId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "addressId",
+                  "description": "(Required) ID of the address to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2431fa65-877a-4a72-8fb9-73d9bdd96955",
+              "name": "Address deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "operator",
+                    "address",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to delete"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1347f234-a82f-4782-80a6-31fbfbbc61c8",
+              "name": "Address not found; error code: ADDRESS_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "operator",
+                    "address",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dac30588-3cb1-4242-9b4a-cc81cfcaccfd",
+          "name": "List operator addresses",
+          "request": {
+            "name": "List operator addresses",
+            "description": {
+              "content": "Retrieves all non-deleted addresses for the current operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "operator",
+                "address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90975a3c-1338-466f-81b5-3d0e5324b6d0",
+              "name": "Addresses retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "operator",
+                    "address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"addressId\": 7132,\n    \"addressType\": \"string\",\n    \"city\": \"string\",\n    \"company\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"email\": \"string\",\n    \"isBillingAddress\": false,\n    \"isDeleted\": true,\n    \"isShippingAddress\": true,\n    \"name\": \"string\",\n    \"phone\": \"string\",\n    \"residential\": false,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"zip\": \"string\",\n    \"state\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"taxId\": \"string\"\n  },\n  {\n    \"addressId\": 6059,\n    \"addressType\": \"string\",\n    \"city\": \"string\",\n    \"company\": \"string\",\n    \"country\": \"string\",\n    \"countryAlpha2Code\": \"string\",\n    \"countryAlpha3Code\": \"string\",\n    \"email\": \"string\",\n    \"isBillingAddress\": false,\n    \"isDeleted\": true,\n    \"isShippingAddress\": false,\n    \"name\": \"string\",\n    \"phone\": \"string\",\n    \"residential\": false,\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"zip\": \"string\",\n    \"state\": \"string\",\n    \"jurisdictionIsoCode\": \"string\",\n    \"taxId\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7da15613-cbe8-4242-b678-e6409c67342f",
+          "name": "Create a new operator address",
+          "request": {
+            "name": "Create a new operator address",
+            "description": {
+              "content": "Creates a new ship-from / facility address for the current operator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "operator",
+                "address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"city\": \"<string>\",\n  \"company\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"residential\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"street1\": \"<string>\",\n  \"street2\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9e258d45-ac33-4a83-b041-b85c2a4007cc",
+              "name": "Address created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "operator",
+                    "address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"city\": \"<string>\",\n  \"company\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"residential\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"street1\": \"<string>\",\n  \"street2\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addressId\": 6063,\n  \"addressType\": \"string\",\n  \"city\": \"string\",\n  \"company\": \"string\",\n  \"country\": \"string\",\n  \"countryAlpha2Code\": \"string\",\n  \"countryAlpha3Code\": \"string\",\n  \"email\": \"string\",\n  \"isBillingAddress\": true,\n  \"isDeleted\": false,\n  \"isShippingAddress\": false,\n  \"name\": \"string\",\n  \"phone\": \"string\",\n  \"residential\": false,\n  \"street1\": \"string\",\n  \"street2\": \"string\",\n  \"zip\": \"string\",\n  \"state\": \"string\",\n  \"jurisdictionIsoCode\": \"string\",\n  \"taxId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7c6ecb1-5cb8-4237-9369-64edd34195de",
+              "name": "Invalid address data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "operator",
+                    "address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"city\": \"<string>\",\n  \"company\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"residential\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"street1\": \"<string>\",\n  \"street2\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"jurisdictionIsoCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec001875-3ccc-4b8e-998d-2c4146601791",
+          "name": "Set address as default shipping address",
+          "request": {
+            "name": "Set address as default shipping address",
+            "description": {
+              "content": "Marks an operator address as the default shipping address",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "operator",
+                "address",
+                ":addressId",
+                "shipping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "addressId",
+                  "description": "(Required) ID of the address to set as shipping address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e0b6124-781e-44b4-b440-6ffc4a138694",
+              "name": "Address set as shipping address successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "operator",
+                    "address",
+                    ":addressId",
+                    "shipping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to set as shipping address"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28a91fe3-210a-43e1-85d1-9482970ab069",
+              "name": "Address not found; error code: ADDRESS_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "operator",
+                    "address",
+                    ":addressId",
+                    "shipping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to set as shipping address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82cc838f-43c0-468f-bfd5-1ad5c1d750f3",
+          "name": "Set address as default billing address",
+          "request": {
+            "name": "Set address as default billing address",
+            "description": {
+              "content": "Marks an operator address as the default billing address",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "operator",
+                "address",
+                ":addressId",
+                "billing"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "addressId",
+                  "description": "(Required) ID of the address to set as billing address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f9dd357-6dc4-4eac-be88-bb315e30dbb7",
+              "name": "Address set as billing address successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "operator",
+                    "address",
+                    ":addressId",
+                    "billing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to set as billing address"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ba30bcfa-4aed-4609-834a-0ddc29e382c4",
+              "name": "Address not found; error code: ADDRESS_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "operator",
+                    "address",
+                    ":addressId",
+                    "billing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "addressId",
+                      "description": "(Required) ID of the address to set as billing address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5d70a16a-42d9-4e01-bef9-11e9014a7781",
+    "name": "Phasio Operator Addresses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

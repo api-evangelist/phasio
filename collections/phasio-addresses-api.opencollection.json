@@ -1,14 +1,8 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Phasio Activity Internal Addresses API",
+    "name": "Phasio Addresses API",
     "version": "1.0"
-  },
-  "request": {
-    "auth": {
-      "type": "bearer",
-      "token": "{{bearerToken}}"
-    }
   },
   "items": [
     {
@@ -58,25 +52,6 @@
             }
           },
           "docs": "Creates a new address with the updated details, soft-deletes the old address, and transfers billing status if applicable"
-        },
-        {
-          "info": {
-            "name": "Delete an address",
-            "type": "http"
-          },
-          "http": {
-            "method": "DELETE",
-            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/address/:addressId",
-            "params": [
-              {
-                "name": "addressId",
-                "value": "1",
-                "type": "path",
-                "description": "ID of the address to delete"
-              }
-            ]
-          },
-          "docs": "Deletes the specified address"
         },
         {
           "info": {
@@ -130,17 +105,6 @@
             ]
           },
           "docs": "Marks an address as the default billing address"
-        },
-        {
-          "info": {
-            "name": "Update jurisdiction for all addresses",
-            "type": "http"
-          },
-          "http": {
-            "method": "PATCH",
-            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/address/jurisdiction"
-          },
-          "docs": "Updates the jurisdiction information for all addresses in the system"
         },
         {
           "info": {

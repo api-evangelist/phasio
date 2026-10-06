@@ -1,14 +1,8 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Phasio Activity Internal Manufacturer Work Order Controller API",
+    "name": "Phasio Manufacturer Work Order Controller API",
     "version": "1.0"
-  },
-  "request": {
-    "auth": {
-      "type": "bearer",
-      "token": "{{bearerToken}}"
-    }
   },
   "items": [
     {
@@ -19,29 +13,7 @@
       "items": [
         {
           "info": {
-            "name": "Add parts to a work order",
-            "type": "http"
-          },
-          "http": {
-            "method": "POST",
-            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/work-orders/:id/parts",
-            "params": [
-              {
-                "name": "id",
-                "value": "",
-                "type": "path"
-              }
-            ],
-            "body": {
-              "type": "json",
-              "data": "{}"
-            }
-          },
-          "docs": "Schedules more parts into an existing work order's first operation. Always additive, distinct from the idempotent bulk schedule path."
-        },
-        {
-          "info": {
-            "name": "updateRouting",
+            "name": "Update routing",
             "type": "http"
           },
           "http": {
@@ -58,7 +30,30 @@
               "type": "json",
               "data": "{}"
             }
-          }
+          },
+          "docs": "Update routing"
+        },
+        {
+          "info": {
+            "name": "Update a work order's start and due dates",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/work-orders/:id/dates",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the start date (when the work order enters the backlog) and the due date (explicit deadline; null falls back to the order's expected dispatch date)."
         }
       ]
     }

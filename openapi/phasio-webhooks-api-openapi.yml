@@ -30,11 +30,15 @@ paths:
                   $ref: '#/components/schemas/WebhookDto'
         '400':
           description: Bad Request - missing or invalid authentication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
     post:
       tags:
       - Webhooks
       summary: Create a webhook
-      description: Creates a new webhook on an account
+      description: Creates a webhook for one event type on the authenticated account. The URL must use HTTPS and resolve to a public address. Save the returned id for deletion and secret for decrypting deliveries. Deliveries contain a JSON payload field encrypted with AES-256-GCM and an X-Phasio-Signature HMAC-SHA256 header.
       operationId: createWebhook
       requestBody:
         content:
@@ -50,7 +54,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/WebhookDto'
         '400':
-          description: Bad Request - missing or invalid authentication
+          description: INVALID_WEBHOOK - Invalid webhook data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/webhook/{id}:
     delete:
       tags:
@@ -71,15 +79,48 @@ paths:
           description: Webhook successfully deleted
         '400':
           description: Bad Request - missing or invalid authentication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
     CreateWebhookDto:
       type: object
       properties:
         url:
           type: string
+          description: Public HTTPS URL that will receive webhook deliveries
         type:
           type: string
+          description: Event to subscribe to; ORDER means order created
+          enum:
+          - ORDER
+          - REVISION
+          - ORDER_UPDATED
+          - QUOTE_CONVERTED
+          - CUSTOMER_ORGANISATION_CREATED
+          - CUSTOMER_ORGANISATION_UPDATED
+          - SPECIFICATION_CREATED
+          - WORKFLOW_PROGRESS_PARTS
+          - CART_CREATED
+          - CART_UPDATED
+          - CUSTOMER_COMMENTED
+          - MANUFACTURER_COMMENTED
       required:
       - type
       - url

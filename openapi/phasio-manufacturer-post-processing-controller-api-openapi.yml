@@ -12,113 +12,13 @@ tags:
 - name: Manufacturer Post Processing Controller
   description: Endpoints for managing post-processing options for manufactured parts
 paths:
-  /api/manufacturer/v1/post-processing:
-    get:
-      tags:
-      - Manufacturer Post Processing Controller
-      summary: Get all post-processing options
-      description: Retrieves all post-processing options for the current operator
-      operationId: get_6
-      responses:
-        '200':
-          description: Post-processing options retrieved
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PostProcessingDto'
-        '401':
-          description: Unauthorized - operator not found
-    post:
-      tags:
-      - Manufacturer Post Processing Controller
-      summary: Create post-processing option
-      description: Creates a new post-processing option for manufactured parts
-      operationId: create_7
-      requestBody:
-        content:
-          application/json:
-            schema:
-              description: Post-processing data to create
-              oneOf:
-              - $ref: '#/components/schemas/EquationPostProcessingDto'
-              - $ref: '#/components/schemas/LegacyEquationPostProcessingDto'
-        required: true
-      responses:
-        '200':
-          description: Post-processing option successfully created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PostProcessingDto'
-        '400':
-          description: Invalid post-processing data
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/post-processing/{id}:
-    delete:
-      tags:
-      - Manufacturer Post Processing Controller
-      summary: Delete post-processing option
-      description: Deletes an existing post-processing option
-      operationId: delete_7
-      parameters:
-      - name: id
-        in: path
-        description: ID of the post-processing option to delete
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        '204':
-          description: Post-processing option successfully deleted
-        '404':
-          description: Post-processing option not found
-    patch:
-      tags:
-      - Manufacturer Post Processing Controller
-      summary: Update post-processing option
-      description: Updates an existing post-processing option
-      operationId: update_9
-      parameters:
-      - name: id
-        in: path
-        description: ID of the post-processing option to update
-        required: true
-        schema:
-          type: integer
-          format: int64
-      requestBody:
-        content:
-          application/json:
-            schema:
-              description: Updated post-processing data
-              oneOf:
-              - $ref: '#/components/schemas/EquationPostProcessingDto'
-              - $ref: '#/components/schemas/LegacyEquationPostProcessingDto'
-        required: true
-      responses:
-        '200':
-          description: Post-processing option successfully updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PostProcessingDto'
-        '400':
-          description: Invalid update data
-        '401':
-          description: Unauthorized - operator not found
-        '404':
-          description: Post-processing option not found
   /api/manufacturer/v1/post-processing/{postProcessingId}:
     get:
       tags:
       - Manufacturer Post Processing Controller
       summary: Get post-processing by ID
       description: Retrieves a specific post-processing option by its ID
-      operationId: get_17
+      operationId: get_7
       parameters:
       - name: postProcessingId
         in: path
@@ -135,51 +35,39 @@ paths:
               schema:
                 $ref: '#/components/schemas/PostProcessingDto'
         '404':
-          description: Post-processing option not found
-  /api/manufacturer/v1/post-processing/equation/variables:
-    get:
-      tags:
-      - Manufacturer Post Processing Controller
-      summary: Get pricing equation variables
-      description: Retrieves all available pricing equation variables for post-processing
-      operationId: getEquationVariables
-      responses:
-        '200':
-          description: Pricing equation variables retrieved
+          description: POST_PROCESSING_NOT_FOUND - Post-processing option not found
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PricingEquationVariableDto'
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
-    LegacyEquationPostProcessingDto:
-      allOf:
-      - $ref: '#/components/schemas/PostProcessingDto'
-      - type: object
-        properties:
-          equation:
-            type: string
-      required:
-      - effectiveFrom
-      - equation
-      - isDefault
-      - isDeleted
-      - name
-      - purchasable
-      - type
     PostProcessingDto:
       type: object
+      discriminator:
+        propertyName: type
       properties:
         id:
           type: integer
           format: int64
+        type:
+          type: string
         name:
           type: string
         purchasable:
           type: boolean
+        effectiveFrom:
+          type: string
+          format: date
+        operationIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+          uniqueItems: true
         isDefault:
+          type: boolean
+        isDeleted:
           type: boolean
         colors:
           type: array
@@ -190,80 +78,66 @@ components:
           items:
             type: integer
             format: int64
+        incompatibleMaterials:
+          type: array
+          items:
+            $ref: '#/components/schemas/MaterialDto'
         mutuallyExclusiveGroup:
           type: string
-      required:
-      - colors
-      - incompatibleMaterialIds
-      - isDefault
-      - name
-      - purchasable
-    TypescriptEquationDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        equation:
-          type: string
-        variables:
+        productionStatusIds:
           type: array
           items:
             type: string
-        lastUpdated:
-          type: string
-          format: date-time
-      required:
-      - equation
-      - id
-      - lastUpdated
-      - variables
-    PricingEquationVariableDto:
-      type: object
-      properties:
-        name:
-          type: string
-        placeholder:
-          type: string
-        type:
-          type: string
-      required:
-      - name
-      - placeholder
-    ColorDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - id
-      - name
-    EquationPostProcessingDto:
-      allOf:
-      - $ref: '#/components/schemas/PostProcessingDto'
-      - type: object
-        properties:
-          activeEquationId:
-            type: string
             format: uuid
-          equations:
-            type: array
-            items:
-              $ref: '#/components/schemas/TypescriptEquationDto'
+          uniqueItems: true
       required:
       - effectiveFrom
       - isDefault
       - isDeleted
       - name
       - purchasable
+      - type
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
+    ColorDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        code:
+          type: string
+        name:
+          type: string
+      required:
+      - code
+      - id
+      - name
+    MaterialDto:
+      type: object
+      properties:
+        materialId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - materialId
+      - name
       - type
   securitySchemes:
     Phasio_API_Bearer_Token:

@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "741fc7ba-14df-49c2-a726-998afab03900",
+      "id": "673fc98a-9296-4ff7-acca-3e6966f46b57",
       "name": "Manufacturer Color Controller",
       "description": {
         "content": "Endpoints for retrieving color options for manufactured parts",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "581cd908-16fb-4160-886f-e0ee4ecbc0f0",
+          "id": "e89c3d31-3f1d-4cba-879c-93bb48c73652",
           "name": "Get color by ID",
           "request": {
             "name": "Get color by ID",
@@ -50,7 +50,7 @@
           },
           "response": [
             {
-              "id": "e17a3ddf-b0f1-406a-970d-eddba95be179",
+              "id": "9430be1f-7cd8-41a7-98d9-c3c367c48be6",
               "name": "Color found",
               "originalRequest": {
                 "url": {
@@ -77,14 +77,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/json"
                   }
@@ -100,13 +92,13 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": \"string\",\n  \"id\": 1784,\n  \"name\": \"string\"\n}",
+              "body": "{\n  \"code\": \"string\",\n  \"id\": 9529,\n  \"name\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "6d3be2dd-2c66-4172-a223-e1fae3bb0575",
-              "name": "Color not found",
+              "id": "857b9e1c-6cd7-4447-a311-a89c692d2082",
+              "name": "Color not found (COLOR_NOT_FOUND)",
               "originalRequest": {
                 "url": {
                   "path": [
@@ -132,12 +124,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -148,12 +136,12 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -173,18 +161,9 @@
       "key": "baseUrl"
     }
   ],
-  "auth": {
-    "type": "bearer",
-    "bearer": [
-      {
-        "key": "token",
-        "value": "{{bearerToken}}"
-      }
-    ]
-  },
   "info": {
-    "_postman_id": "f04b64e1-ed50-4110-8d37-93ae57d2bbe8",
-    "name": "Phasio Activity Internal Manufacturer Color Controller API",
+    "_postman_id": "94c71584-3b2d-4509-8f83-10aaf9c5293a",
+    "name": "Phasio Manufacturer Color Controller API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "This is the API documentation for the Phasio application.",

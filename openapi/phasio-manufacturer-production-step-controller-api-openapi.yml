@@ -44,8 +44,16 @@ paths:
                   $ref: '#/components/schemas/ProductionStepDto'
         '400':
           description: Invalid step ID or name
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
         '401':
           description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/production-step/move-batches:
     patch:
       tags:
@@ -67,7 +75,9 @@ paths:
               type: array
               description: Batch movement instructions
               items:
-                $ref: '#/components/schemas/MoveBatchesDto'
+                oneOf:
+                - $ref: '#/components/schemas/MoveBatchesDto'
+                - $ref: '#/components/schemas/NestedMoveBatchesDto'
         required: true
       responses:
         '200':
@@ -80,97 +90,40 @@ paths:
                   $ref: '#/components/schemas/BatchBalanceDto'
         '400':
           description: Invalid batch movement request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
         '401':
           description: Unauthorized - operator not found
-  /api/manufacturer/v1/production-step:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /api/manufacturer/v1/production-step/{stepId}/nesting-placements:
     get:
       tags:
       - Manufacturer Production Step Controller
-      summary: Get production steps by IDs
-      description: Retrieves production steps with the specified IDs
-      operationId: getSteps
+      summary: Get a production group's nesting placements
+      description: Retrieves the nesting placements tagged to a production group (production step) — the part locations, scales, and orientations of its uploaded nesting file, in nesting order
+      operationId: getNestingPlacements
       parameters:
-      - name: stepIds
-        in: query
-        description: Set of production step IDs to retrieve
+      - name: stepId
+        in: path
+        description: ID of the production group (production step)
         required: true
         schema:
-          type: array
-          items:
-            type: string
-            format: uuid
-          uniqueItems: true
+          type: string
+          format: uuid
       responses:
         '200':
-          description: Production steps retrieved successfully
+          description: Placements retrieved successfully
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ProductionStepDto'
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/production-step/{stepId}/traveller:
-    get:
-      tags:
-      - Manufacturer Production Step Controller
-      summary: Generate group traveller PDF
-      description: Generates a traveller document PDF for the specified production step (group)
-      operationId: getGroupTraveller
-      parameters:
-      - name: stepId
-        in: path
-        description: ID of the production step to generate traveller for
-        required: true
-        schema:
-          type: string
-          format: uuid
-      - name: templateName
-        in: query
-        description: Name of the GROUP_LEVEL_TRAVELLER custom template to use (optional)
-        required: false
-        schema:
-          type: string
-      responses:
-        '200':
-          description: PDF generated successfully
-          content:
-            application/pdf: {}
-        '400':
-          description: Invalid step ID or generation failed
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/production-step/{stepId}/order-traveller:
-    get:
-      tags:
-      - Manufacturer Production Step Controller
-      summary: Generate combined order traveller PDF
-      description: Generates a single order traveller PDF combining all orders within the specified production step
-      operationId: getOrderTravellerForStep
-      parameters:
-      - name: stepId
-        in: path
-        description: ID of the production step
-        required: true
-        schema:
-          type: string
-          format: uuid
-      - name: templateName
-        in: query
-        description: Name of the ORDER_LEVEL_TRAVELLER custom template to use (optional)
-        required: false
-        schema:
-          type: string
-      responses:
-        '200':
-          description: PDF generated successfully
-          content:
-            application/pdf: {}
-        '400':
-          description: Invalid step ID, no orders found, or generation failed
-        '401':
-          description: Unauthorized - operator not found
+                  $ref: '#/components/schemas/NestingPlacementRecordDto'
   /api/manufacturer/v1/production-step/paginated:
     get:
       tags:
@@ -224,219 +177,153 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Paginated'
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/production-step/orders/completed:
-    get:
-      tags:
-      - Manufacturer Production Step Controller
-      summary: Orders completed past one or more production steps
-      description: For each given production step id, finds candidate orders (those containing requisitions ever associated with the step) and returns the subset whose every active balance, across every requisition in the order, sits at a production status with a sequence strictly greater than that step's status sequence. The response is the union across all supplied step ids.
-      operationId: getOrdersCompletedPastSteps
-      parameters:
-      - name: stepIds
-        in: query
-        description: Set of production step ids
-        required: true
-        schema:
-          type: array
-          items:
-            type: string
-            format: uuid
-          uniqueItems: true
-      responses:
-        '200':
-          description: Completed-past-step order ids retrieved
+        '400':
+          description: Invalid filter or query (error code INVALID_FILTER)
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: integer
-                  format: int64
+                $ref: '#/components/schemas/ApiError'
         '401':
           description: Unauthorized - operator not found
-  /api/manufacturer/v1/production-step/build-ids:
-    get:
-      tags:
-      - Manufacturer Production Step Controller
-      summary: Get production steps by build IDs
-      description: Retrieves production steps associated with the specified build IDs
-      operationId: getStepsByBuildIds
-      parameters:
-      - name: buildIds
-        in: query
-        description: Set of build IDs to retrieve steps for
-        required: true
-        schema:
-          type: array
-          items:
-            type: string
-          uniqueItems: true
-      responses:
-        '200':
-          description: Production steps retrieved successfully
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ProductionStepDto'
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/production-step/batch-transitions/step-ids:
+                $ref: '#/components/schemas/ApiError'
+  /api/manufacturer/v1/production-step/nesting-placements:
     get:
       tags:
       - Manufacturer Production Step Controller
-      summary: Get batch transitions by step IDs
-      description: Retrieves batch transitions for the specified production step IDs
-      operationId: getBatchTransitionsByStepIds
+      summary: Find nesting placements across production groups
+      description: Retrieves nesting placements across production groups, filtered by work order or requisition. Provide exactly one filter.
+      operationId: findNestingPlacements
       parameters:
-      - name: stepIds
+      - name: workOrderId
         in: query
-        description: Set of production step IDs to retrieve batch transitions for
-        required: true
-        schema:
-          type: array
-          items:
-            type: string
-            format: uuid
-          uniqueItems: true
-      responses:
-        '200':
-          description: Batch transitions retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/BatchTransitionDto'
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/production-step/batch-transitions/build-ids:
-    get:
-      tags:
-      - Manufacturer Production Step Controller
-      summary: Get batch transitions by build IDs
-      description: Retrieves batch transitions for the specified build IDs
-      operationId: getBatchTransitionsByBuildIds
-      parameters:
-      - name: buildIds
-        in: query
-        description: Set of build IDs to retrieve batch transitions for
-        required: true
-        schema:
-          type: array
-          items:
-            type: string
-          uniqueItems: true
-      responses:
-        '200':
-          description: Batch transitions retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/BatchTransitionDto'
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/production-step/batch-balances/status-ids:
-    get:
-      tags:
-      - Manufacturer Production Step Controller
-      summary: Get batch balances by status IDs
-      description: Retrieves batch balances for the specified production status IDs
-      operationId: getBatchBalancesByOperationId
-      parameters:
-      - name: operationIds
-        in: query
-        description: Set of operation IDs to retrieve batch balances for
-        required: true
-        schema:
-          type: array
-          items:
-            type: string
-            format: uuid
-          uniqueItems: true
-      - name: archived
-        in: query
-        description: Include archived requisitions
-        required: false
-        schema:
-          type: boolean
-        example: false
-      - name: completedAfter
-        in: query
-        description: Only return balances completed at or after this instant (inclusive). ISO-8601 with offset, e.g. 2026-05-01T00:00:00Z. Omit to apply no lower bound.
-        required: false
-        schema:
-          type: string
-          format: date-time
-      - name: completedBefore
-        in: query
-        description: Only return balances completed strictly before this instant (exclusive keyset cursor). ISO-8601 with offset, e.g. 2026-05-01T00:00:00Z. Omit to apply no upper bound.
-        required: false
-        schema:
-          type: string
-          format: date-time
-      - name: completedBeforeId
-        in: query
-        description: Step ID of the oldest loaded balance, paired with completedBefore as the keyset tiebreaker so rows sharing the boundary completion instant are not skipped.
+        description: Filter by work order ID
         required: false
         schema:
           type: string
           format: uuid
-      - name: limit
+      - name: requisitionId
         in: query
-        description: Maximum number of balances to return, newest completion first
+        description: Filter by requisition ID
         required: false
         schema:
           type: integer
-          format: int32
-        example: 100
+          format: int64
       responses:
         '200':
-          description: Batch balances retrieved successfully
+          description: Placements retrieved successfully
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BatchBalanceDto'
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/production-step/batch-balances/part-ids:
-    get:
+                  $ref: '#/components/schemas/NestingPlacementRecordDto'
+        '400':
+          description: No filter, or more than one filter, provided
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /api/manufacturer/v1/production-step/{stepId}:
+    delete:
       tags:
       - Manufacturer Production Step Controller
-      summary: Get batch balances by part IDs
-      description: Retrieves batch balances for the specified part IDs
-      operationId: getBatchBalancesByRequisitionId
+      summary: Roll back a production group
+      description: Deletes a production group (production step) and returns its parts to the steps they came from. Only possible while no parts have left the group.
+      operationId: rollbackStep
       parameters:
-      - name: partIds
-        in: query
-        description: Set of requisition IDs to retrieve batch balances for
+      - name: stepId
+        in: path
+        description: ID of the production group (production step) to roll back
         required: true
         schema:
-          type: array
-          items:
-            type: integer
-            format: int64
-          uniqueItems: true
+          type: string
+          format: uuid
       responses:
         '200':
-          description: Batch balances retrieved successfully
+          description: Group rolled back successfully; returns the updated batch balances
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/BatchBalanceDto'
-        '401':
-          description: Unauthorized - operator not found
+        '400':
+          description: Group not found (error code INVALID_BATCH_MOVE)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '409':
+          description: Parts have already left the group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
+    ProductionStepDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        groupId:
+          type: string
+        prefix:
+          type: string
+        type:
+          type: string
+        operationId:
+          type: string
+          format: uuid
+        operationName:
+          type: string
+        manufacturerUsername:
+          type: string
+        actorType:
+          type: string
+        isCompleted:
+          type: boolean
+        hasNestingPlacements:
+          type: boolean
+        completedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updateDt:
+          type: string
+          format: date-time
+        productionStatusId:
+          type: string
+          format: uuid
+        productionStatusName:
+          type: string
+      required:
+      - createdAt
+      - groupId
+      - hasNestingPlacements
+      - id
+      - isCompleted
+      - operationId
+      - operationName
+      - prefix
+      - productionStatusId
+      - productionStatusName
+      - type
+      - updateDt
+    RenameStepDto:
+      type: object
+      description: New name for the production step
+      properties:
+        name:
+          type: string
+      required:
+      - name
     Paginated:
       type: object
       properties:
@@ -466,6 +353,69 @@ components:
       - pageSize
       - totalElements
       - totalPages
+    NestingPlacementRecordDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        productionStepId:
+          type: string
+          format: uuid
+        workOrderId:
+          type: string
+          format: uuid
+        requisitionId:
+          type: integer
+          format: int64
+        manifestId:
+          type: string
+          format: uuid
+        transform:
+          type: array
+          items:
+            type: number
+            format: double
+        unit:
+          type: string
+        normalizedToStl:
+          type: boolean
+        sequence:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+          format: date-time
+      required:
+      - createdAt
+      - id
+      - normalizedToStl
+      - productionStepId
+      - requisitionId
+      - sequence
+      - transform
+      - unit
+      - workOrderId
+    NestingPlacementDto:
+      type: object
+      properties:
+        workOrderId:
+          type: string
+          format: uuid
+        manifestId:
+          type: string
+          format: uuid
+        transform:
+          type: array
+          items:
+            type: number
+            format: double
+        unit:
+          type: string
+      required:
+      - transform
+      - unit
+      - workOrderId
     ProductionStepTransitionDto:
       type: object
       properties:
@@ -481,106 +431,6 @@ components:
       - productionStepId
       - quantity
       - workOrderId
-    BatchTransitionDto:
-      type: object
-      discriminator:
-        propertyName: type
-      properties:
-        id:
-          type: string
-          format: uuid
-        requisitionId:
-          type: integer
-          format: int64
-        workOrderId:
-          type: string
-          format: uuid
-        fromOperationId:
-          type: string
-          format: uuid
-        fromOperationName:
-          type: string
-        fromStepId:
-          type: string
-          format: uuid
-        fromStepBuildId:
-          type: string
-        fromStepPrefix:
-          type: string
-        batchSize:
-          type: integer
-        createdAt:
-          type: string
-          format: date-time
-        updateDt:
-          type: string
-          format: date-time
-        type:
-          type: string
-        fromStatusId:
-          type: string
-          format: uuid
-        fromStatusName:
-          type: string
-      required:
-      - type
-    RenameStepDto:
-      type: object
-      description: New name for the production step
-      properties:
-        name:
-          type: string
-      required:
-      - name
-    ProductionStepDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        groupId:
-          type: string
-        prefix:
-          type: string
-        type:
-          type: string
-        operationId:
-          type: string
-          format: uuid
-        operationName:
-          type: string
-        manufacturerUsername:
-          type: string
-        actorType:
-          type: string
-        isCompleted:
-          type: boolean
-        completedAt:
-          type: string
-          format: date-time
-        createdAt:
-          type: string
-          format: date-time
-        updateDt:
-          type: string
-          format: date-time
-        productionStatusId:
-          type: string
-          format: uuid
-        productionStatusName:
-          type: string
-      required:
-      - createdAt
-      - groupId
-      - id
-      - isCompleted
-      - operationId
-      - operationName
-      - prefix
-      - productionStatusId
-      - productionStatusName
-      - type
-      - updateDt
     MoveBatchesDto:
       type: object
       properties:
@@ -626,6 +476,12 @@ components:
         dispatchDate:
           type: string
           format: date
+        workOrderStartDate:
+          type: string
+          format: date-time
+        workOrderDueDate:
+          type: string
+          format: date-time
         requisitionDuration:
           type: integer
         quantity:
@@ -681,6 +537,33 @@ components:
       - stepId
       - stepType
       - workOrderId
+      - workOrderStartDate
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
+    NestedMoveBatchesDto:
+      allOf:
+      - $ref: '#/components/schemas/MoveBatchesDto'
+      - type: object
+        properties:
+          placements:
+            type: array
+            items:
+              $ref: '#/components/schemas/NestingPlacementDto'
+      required:
+      - batches
+      - placements
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

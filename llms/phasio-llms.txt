@@ -1,12 +1,12 @@
 # Phasio
 
-> Phasio is an operating platform for manufacturing service providers, unifying intelligent CAD-based quoting, production operations, connected back-office/ERP integration, part intelligence, and white-labeled customer storefronts. The Manufacturer API (v1) exposes orders, quotes, requisitions, part specifications, shipments, production steps, and webhooks over OAuth 2.0.
+> Phasio is an operating platform for manufacturing service providers, unifying intelligent CAD-based quoting, production operations, connected back-office/ERP integration, part intelligence, and white-labeled customer storefronts. The Manufacturer API (v1) exposes orders, quotes, requisitions, part specifications, shipments, production steps, and webhooks, authenticated with a Bearer API key.
 
 ## API
-- [Phasio Manufacturer API v1](https://docs.phas.io/developers): OpenAPI 3.1 REST API, base https://m-api.eu.phas.io/api/manufacturer/v1, OAuth 2.0 client-credentials Bearer JWT, 481 operations across 85 controllers.
+- [Phasio Manufacturer API v1](https://docs.phas.io/developers): OpenAPI 3.2 REST API, base https://m-api.eu.phas.io/api/manufacturer/v1, Bearer API key (Settings > API Keys), 130 operations across 32 resource groups (current contract, 2026-10-06).
 
 ## Specs
-- [OpenAPI (original)](https://raw.githubusercontent.com/api-evangelist/phasio/refs/heads/main/openapi/phasio-openapi-original.json)
+- [OpenAPI (original)](https://raw.githubusercontent.com/api-evangelist/phasio/refs/heads/main/openapi/_original/phasio-openapi.json)
 - [Webhook event catalog](https://raw.githubusercontent.com/api-evangelist/phasio/refs/heads/main/asyncapi/phasio-webhooks.yml)
 - [Error catalog](https://raw.githubusercontent.com/api-evangelist/phasio/refs/heads/main/errors/phasio-problem-types.yml)
 - [Authentication profile](https://raw.githubusercontent.com/api-evangelist/phasio/refs/heads/main/authentication/phasio-authentication.yml)
@@ -16,10 +16,13 @@
 ## Docs
 - [Developer portal & API reference](https://docs.phas.io/developers)
 - [Webhooks](https://docs.phas.io/developers/webhooks)
+- [Docs llms.txt](https://docs.phas.io/llms.txt)
+- [Changelog](https://docs.phas.io/changelogs)
 - [Security & trust center](https://phas.io/security)
 - [Pricing](https://phas.io/pricing)
 - [Sign up](https://auth.phas.io/create)
 
 ## Auth
-- OAuth 2.0 client-credentials. Token endpoint: https://auth.eu.phas.io/oauth2/token
+- API key created under Settings > API Keys, sent as `Authorization: Bearer <key>`.
+- OAuth 2.0 authorization server: https://auth.eu.phas.io (token endpoint https://auth.eu.phas.io/oauth2/token)
 - OIDC discovery: https://auth.eu.phas.io/.well-known/openid-configuration

@@ -1,0 +1,176 @@
+openapi: 3.2.0
+info:
+  title: Phasio Shipping Rates API
+  description: This is the API documentation for the Phasio application.
+  version: '1.0'
+servers:
+- url: https://m-api.eu.phas.io
+  description: Generated server url
+security:
+- Phasio API Bearer Token: []
+tags:
+- name: Shipping Rates
+  description: API for retrieving shipping rates for parts
+paths:
+  /api/manufacturer/v1/shipping-rates:
+    post:
+      tags:
+      - Shipping Rates
+      summary: Calculate the shipping rates for a group of parts
+      description: This endpoint calculates the shipping rates for a group of parts. The request body should contain the list of parts and their quantities.
+      operationId: calculateRatesv2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculateRatesDtov2'
+        required: true
+      responses:
+        '200':
+          description: Shipping rates calculated successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShippingRatesDto'
+        '401':
+          description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+components:
+  schemas:
+    PartShippingDetailDto:
+      type: object
+      properties:
+        partRevisionId:
+          type: string
+          format: uuid
+        units:
+          type: string
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        quantity:
+          type: integer
+        processPricesId:
+          type: string
+          format: uuid
+        materialId:
+          type: integer
+          format: int64
+      required:
+      - materialId
+      - partRevisionId
+      - processPricesId
+      - quantity
+      - units
+    ShippingRateDto:
+      type: object
+      properties:
+        id:
+          type: string
+        rate:
+          type: number
+        currency:
+          type: string
+        serviceType:
+          type: string
+        serviceName:
+          type: string
+        shippingMethodId:
+          type: integer
+          format: int64
+      required:
+      - currency
+      - id
+      - rate
+      - serviceName
+      - serviceType
+      - shippingMethodId
+    CalculateRatesDtov2:
+      type: object
+      description: Rate calculation request with parts and quantities
+      properties:
+        currency:
+          type: string
+          enum:
+          - USD
+          - SGD
+          - EUR
+          - INR
+          - JPY
+          - AUD
+          - GBP
+          - NZD
+          - MYR
+          - CAD
+          - CHF
+          - DKK
+          - SEK
+          - MXN
+          - ZAR
+          - UAH
+          - NOK
+          - PHP
+          - TRY
+        organisationId:
+          type: integer
+          format: int64
+        toAddressId:
+          type: integer
+          format: int64
+        parts:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartShippingDetailDto'
+      required:
+      - currency
+      - organisationId
+      - parts
+      - toAddressId
+    ShippingRatesDto:
+      type: object
+      properties:
+        shippingMethodId:
+          type: integer
+          format: int64
+        tooLargeForBoxes:
+          type: boolean
+        errorWithCarrier:
+          type: boolean
+        rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShippingRateDto'
+      required:
+      - errorWithCarrier
+      - rates
+      - shippingMethodId
+      - tooLargeForBoxes
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
+  securitySchemes:
+    Phasio_API_Bearer_Token:
+      type: http
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

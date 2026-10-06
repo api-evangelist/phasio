@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phasio Payments API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Accept an offline payment obligation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:orderId/payment/confirm",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "1",
+                "type": "path",
+                "description": "ID of the order to confirm payment for"
+              },
+              {
+                "name": "purchaseOrderNumber",
+                "value": "",
+                "type": "query",
+                "description": "Purchase order number"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Converts a quote to an accepted order without marking its payment as paid"
+        },
+        {
+          "info": {
+            "name": "Update payment status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/order/:orderId/payment/status",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modifies an order's payment status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

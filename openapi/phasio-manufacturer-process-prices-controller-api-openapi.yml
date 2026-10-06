@@ -12,51 +12,6 @@ tags:
 - name: Manufacturer Process Prices Controller
   description: Endpoints for managing manufacturing process pricing configurations
 paths:
-  /api/manufacturer/v1/processes/{processPricesId}/bounding-box-limit:
-    put:
-      tags:
-      - Manufacturer Process Prices Controller
-      summary: Update bounding box limit
-      description: Updates the maximum build volume dimensions for a process pricing configuration
-      operationId: updateBoundingBoxLimit
-      parameters:
-      - name: processPricesId
-        in: path
-        description: ID of the process pricing to update
-        required: true
-        schema:
-          type: string
-          format: uuid
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateBoundingBoxLimitDto'
-        required: true
-      responses:
-        '204':
-          description: Bounding box limit successfully updated
-        '400':
-          description: Invalid bounding box data, process pricing not found, or operator not found
-    delete:
-      tags:
-      - Manufacturer Process Prices Controller
-      summary: Delete bounding box limit
-      description: Removes the maximum build volume dimensions constraint from a process pricing configuration
-      operationId: deleteBoundingBoxLimit
-      parameters:
-      - name: processPricesId
-        in: path
-        description: ID of the process pricing from which to remove the bounding box limit
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        '204':
-          description: Bounding box limit successfully deleted
-        '400':
-          description: Process pricing not found or operator not found
   /api/manufacturer/v1/processes:
     get:
       tags:
@@ -75,149 +30,17 @@ paths:
                   $ref: '#/components/schemas/ProcessPricesDto'
         '400':
           description: Operator not found
-    post:
-      tags:
-      - Manufacturer Process Prices Controller
-      summary: Create process pricing
-      description: Creates a new manufacturing process pricing configuration
-      operationId: create_6
-      parameters:
-      - name: organisationId
-        in: query
-        description: Optional organization ID to associate with this pricing
-        required: false
-        schema:
-          type: integer
-          format: int64
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateProcessPricesDto'
-        required: true
-      responses:
-        '200':
-          description: Process pricing successfully created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProcessPricesDto'
-        '400':
-          description: Invalid process pricing data or operator not found
-  /api/manufacturer/v1/processes/{processPricesId}/stereotype:
-    post:
-      tags:
-      - Manufacturer Process Prices Controller
-      summary: Apply a stereotype to an existing process
-      description: Generates the technology-default equation and variable schema, appending them to the target process. Fails if equations already exist or variable names collide.
-      operationId: applyStereotype
-      parameters:
-      - name: processPricesId
-        in: path
-        description: ID of the process pricing to apply the stereotype to
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        '200':
-          description: Stereotype applied
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProcessPricesDto'
-        '400':
-          description: Process not found, technology has no stereotype, or process already has equations
-        '409':
-          description: Variable name collision, or concurrent modification
-  /api/manufacturer/v1/processes/{processPricesId}/material-variable:
-    post:
-      tags:
-      - Manufacturer Process Prices Controller
-      operationId: createMaterialVariable
-      parameters:
-      - name: processPricesId
-        in: path
-        description: ID of the process to create a material variable for
-        required: true
-        schema:
-          type: string
-          format: uuid
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/MaterialPricesVariableSchemaRequest'
-        required: true
-      responses:
-        '200':
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/MaterialPricesPropertySchemaDto'
-      summary: Create material variable
-      x-summary-source: derived
-  /api/manufacturer/v1/processes/{processPricesId}/duplicate:
-    post:
-      tags:
-      - Manufacturer Process Prices Controller
-      summary: Duplicate process pricing
-      description: Creates a duplicate of an existing process pricing configuration with new settings
-      operationId: duplicate
-      parameters:
-      - name: processPricesId
-        in: path
-        description: ID of the process pricing to duplicate
-        required: true
-        schema:
-          type: string
-          format: uuid
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DuplicateProcessPricesDto'
-        required: true
-      responses:
-        '200':
-          description: Process pricing successfully duplicated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProcessPricesDto'
-        '400':
-          description: Invalid duplication data, process pricing not found, or operator not found
-  /api/manufacturer/v1/processes/stereotype:
-    post:
-      tags:
-      - Manufacturer Process Prices Controller
-      summary: Create process pricing with an initial stereotype
-      description: Creates a new manufacturing process pricing configuration with a skeleton stereotype structure
-      operationId: createStereotype
-      parameters:
-      - name: technology
-        in: query
-        description: The technology that this process is based upon
-        required: true
-        schema:
-          type: string
-      responses:
-        '200':
-          description: Process pricing successfully created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProcessPricesDto'
-        '400':
-          description: Invalid process pricing data or operator not found
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/processes/{processPricesId}:
     get:
       tags:
       - Manufacturer Process Prices Controller
       summary: Get process pricing by ID
       description: Retrieves a specific manufacturing process pricing configuration by its ID
-      operationId: get_13
+      operationId: get_6
       parameters:
       - name: processPricesId
         in: path
@@ -233,360 +56,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProcessPricesDto'
-        '400':
-          description: Process pricing not found or operator not found
-    delete:
-      tags:
-      - Manufacturer Process Prices Controller
-      summary: Delete process pricing
-      description: Deletes an existing manufacturing process pricing configuration
-      operationId: delete_6
-      parameters:
-      - name: processPricesId
-        in: path
-        description: ID of the process pricing to delete
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        '204':
-          description: Process pricing successfully deleted
-        '400':
-          description: Process pricing not found or operator not found
-    patch:
-      tags:
-      - Manufacturer Process Prices Controller
-      summary: Update process pricing
-      description: Updates an existing manufacturing process pricing configuration
-      operationId: update_8
-      parameters:
-      - name: processPricesId
-        in: path
-        description: ID of the process pricing to update
-        required: true
-        schema:
-          type: string
-          format: uuid
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateProcessPricesDto'
-        required: true
-      responses:
-        '204':
-          description: Process pricing successfully updated
-        '400':
-          description: Invalid update data, process pricing not found, or operator not found
-  /api/manufacturer/v1/processes/{processPricesId}/post-processings:
-    patch:
-      tags:
-      - Manufacturer Process Prices Controller
-      summary: Update available post-processings
-      description: Updates which post-processing options are available for a process pricing configuration
-      operationId: updatePostProcessings
-      parameters:
-      - name: processPricesId
-        in: path
-        description: ID of the process pricing to update
-        required: true
-        schema:
-          type: string
-          format: uuid
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              description: List of post-processing IDs to associate with this process pricing
-              items:
-                type: integer
-                format: int64
-        required: true
-      responses:
-        '204':
-          description: Available post-processings successfully updated
-        '400':
-          description: Invalid post-processing IDs, process pricing not found, or operator not found
-  /api/manufacturer/v1/processes/{processPricesId}/default:
-    patch:
-      tags:
-      - Manufacturer Process Prices Controller
-      summary: Set process pricing as default
-      description: Sets a process pricing configuration as the default for its technology
-      operationId: selectDefault
-      parameters:
-      - name: processPricesId
-        in: path
-        description: ID of the process pricing to set as default
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        '204':
-          description: Process pricing successfully set as default
-        '400':
-          description: Process pricing not found or operator not found
-  /api/manufacturer/v1/processes/{processPricesId}/default/unselect:
-    patch:
-      tags:
-      - Manufacturer Process Prices Controller
-      summary: Unset process pricing as default
-      description: Removes the default status from a process pricing configuration
-      operationId: unselectDefault
-      parameters:
-      - name: processPricesId
-        in: path
-        description: ID of the process pricing to unset as default
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        '204':
-          description: Process pricing default status successfully removed
-        '400':
-          description: Process pricing not found or operation failed
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/processes/material-variable/{materialVariableId}:
-    delete:
-      tags:
-      - Manufacturer Process Prices Controller
-      operationId: deleteMaterialVariable
-      parameters:
-      - name: materialVariableId
-        in: path
-        description: ID of the material variable to delete
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        '200':
-          description: OK
+        '404':
+          description: Process pricing not found
           content:
-            '*/*':
+            application/json:
               schema:
-                $ref: '#/components/schemas/MaterialPricesPropertySchemaDto'
-      summary: Delete material variable
-      x-summary-source: derived
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
-    UpdateProcessPricesDto:
-      type: object
-      description: Updated process pricing data
-      properties:
-        pricingAlgorithm:
-          type: string
-        description:
-          type: string
-        isInternal:
-          type: boolean
-        operationIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-          uniqueItems: true
-        bulkPricingQuantities:
-          type: array
-          items:
-            type: integer
-          uniqueItems: true
-      required:
-      - bulkPricingQuantities
-      - isInternal
-      - operationIds
-      - pricingAlgorithm
-    PostProcessingDto:
+    MaterialPricesVariableValueDto:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        purchasable:
-          type: boolean
-        isDefault:
-          type: boolean
-        colors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColorDto'
-        incompatibleMaterialIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-        mutuallyExclusiveGroup:
-          type: string
-      required:
-      - colors
-      - incompatibleMaterialIds
-      - isDefault
-      - name
-      - purchasable
-    PrecisionPricesDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        price:
-          type: number
-        isActive:
-          type: boolean
-      required:
-      - id
-      - isActive
-      - name
-      - price
-    CreateProcessPricesDto:
-      type: object
-      description: Process pricing data to create
-      properties:
-        technology:
-          type: string
-        pricingAlgo:
-          type: string
-        description:
-          type: string
-        isInternal:
-          type: boolean
-      required:
-      - isInternal
-      - pricingAlgo
-      - technology
-    ProcessPricesDto:
-      type: object
-      properties:
-        id:
+        variableId:
           type: string
           format: uuid
-        technology:
-          type: string
-        description:
-          type: string
-        materials:
-          type: array
-          items:
-            $ref: '#/components/schemas/MaterialDto'
-        infills:
-          type: array
-          items:
-            $ref: '#/components/schemas/InfillDto'
-        precisions:
-          type: array
-          items:
-            $ref: '#/components/schemas/PrecisionPricesDto'
-        postProcessings:
-          type: array
-          items:
-            $ref: '#/components/schemas/PostProcessingDto'
-        isInternal:
-          type: boolean
-        isDefault:
-          type: boolean
-        bulkPricingQuantities:
-          type: array
-          items:
-            type: integer
-      required:
-      - bulkPricingQuantities
-      - id
-      - infills
-      - isDefault
-      - isInternal
-      - materials
-      - postProcessings
-      - precisions
-      - technology
-    UpdateBoundingBoxLimitDto:
-      type: object
-      description: Bounding box limit dimensions
-      properties:
-        length:
-          type: number
-        width:
-          type: number
-        height:
-          type: number
-      required:
-      - height
-      - length
-      - width
-    ColorDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - id
-      - name
-    MaterialDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        datasheetSummary:
-          type: string
-        quoteOnly:
-          type: boolean
-        colorDtos:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColorDto'
-        isDefault:
-          type: boolean
-        wallThicknessWarning:
-          type: number
-        wallThicknessLimit:
-          type: number
-      required:
-      - colorDtos
-      - id
-      - isDefault
-      - name
-      - quoteOnly
-    MaterialPricesVariableSchemaRequest:
-      type: object
-      properties:
-        name:
-          type: string
-      required:
-      - name
-    InfillDto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
         value:
           type: number
-        default:
-          type: boolean
       required:
-      - default
-      - id
-      - name
       - value
+      - variableId
     MaterialPricesPropertySchemaDto:
       type: object
       properties:
@@ -598,18 +86,583 @@ components:
       required:
       - id
       - name
-    DuplicateProcessPricesDto:
+    PrecisionPricesDto:
       type: object
-      description: Duplication details
       properties:
-        technology:
-          type: string
-        newOrganisationId:
+        precisionPricesId:
           type: integer
           format: int64
+        operatorId:
+          type: integer
+          format: int64
+        technology:
+          type: string
+        name:
+          type: string
+        price:
+          type: number
+        isActive:
+          type: boolean
+        effectiveFrom:
+          type: string
+          format: date
+        isDeleted:
+          type: boolean
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
+    MaterialTierDto:
+      type: object
+      properties:
+        lowerBound:
+          type: number
+        upperBound:
+          type: number
+        pricePerGram:
+          type: number
+      required:
+      - pricePerGram
+    ProcessPricesDto:
+      type: object
+      properties:
+        processPricesId:
+          type: string
+          format: uuid
+        organisationId:
+          type: integer
+          format: int64
+        technology:
+          type: string
+        pricingAlgorithm:
+          type: string
         description:
           type: string
+        materials:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/CustomFixedPriceMaterialPricesDto'
+            - $ref: '#/components/schemas/EquationMaterialPricesDto'
+            - $ref: '#/components/schemas/TypescriptEquationMaterialPricesDto'
+            - $ref: '#/components/schemas/VAConvolutionMaterialPricesDto'
+            - $ref: '#/components/schemas/VHConvolutionMaterialPricesDto'
+            - $ref: '#/components/schemas/VacuumCastingMaterialPricesDto'
+        infills:
+          type: array
+          items:
+            $ref: '#/components/schemas/InfillDto'
+        leadTimes:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeadTimeDto'
+        precisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrecisionPricesDto'
+        boundingBoxLimit:
+          $ref: '#/components/schemas/BoundingBoxLimitDto'
+        pricingEquation:
+          $ref: '#/components/schemas/PricingEquationDto'
+        operationIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        postProcessingIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        bulkPricingQuantities:
+          type: array
+          items:
+            type: integer
+        isInternal:
+          type: boolean
+        isDefault:
+          type: boolean
+        bendingEnabled:
+          type: boolean
+        machiningEnabled:
+          type: boolean
+        isDeleted:
+          type: boolean
+        activeEquationId:
+          type: string
+          format: uuid
+        equations:
+          type: array
+          items:
+            $ref: '#/components/schemas/TypescriptEquationDto'
+        materialVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/MaterialPricesPropertySchemaDto'
       required:
+      - bendingEnabled
+      - bulkPricingQuantities
+      - infills
+      - isDefault
+      - isDeleted
+      - isInternal
+      - leadTimes
+      - machiningEnabled
+      - materialVariables
+      - materials
+      - operationIds
+      - postProcessingIds
+      - precisions
+      - pricingAlgorithm
+      - processPricesId
+      - technology
+    InfillDto:
+      type: object
+      properties:
+        infillId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        value:
+          type: number
+        effectiveFrom:
+          type: string
+          format: date
+        default:
+          type: boolean
+        isDeleted:
+          type: boolean
+      required:
+      - default
+      - effectiveFrom
+      - infillId
+      - isDeleted
+      - name
+      - value
+    VAConvolutionMaterialPricesDto:
+      allOf:
+      - $ref: '#/components/schemas/MaterialPricesDto'
+      - type: object
+        properties:
+          margin:
+            type: number
+          materialTierApplication:
+            type: string
+          density:
+            type: number
+          pricePerArea:
+            type: number
+          quantityTiers:
+            type: array
+            items:
+              $ref: '#/components/schemas/QuantityTierDto'
+          materialTiers:
+            type: array
+            items:
+              $ref: '#/components/schemas/MaterialTierDto'
+          startupCostApplication:
+            type: string
+          startupCostTiers:
+            $ref: '#/components/schemas/StartupCostTierDto'
+      required:
+      - colors
+      - density
+      - effectiveFrom
+      - isDefault
+      - margin
+      - materialId
+      - materialName
+      - materialPricesId
+      - materialTierApplication
+      - materialTiers
+      - operatorId
+      - pricePerArea
+      - pricingAlgoType
+      - quantityTiers
+      - quoteOnly
+      - startupCostApplication
+      - technology
+    TypescriptEquationMaterialPricesDto:
+      allOf:
+      - $ref: '#/components/schemas/MaterialPricesDto'
+      - type: object
+        properties:
+          variableValues:
+            type: array
+            items:
+              $ref: '#/components/schemas/MaterialPricesVariableValueDto'
+          density:
+            type: number
+      required:
+      - colors
+      - density
+      - effectiveFrom
+      - isDefault
+      - materialId
+      - materialName
+      - materialPricesId
+      - operatorId
+      - pricingAlgoType
+      - quoteOnly
+      - technology
+      - variableValues
+    BoundingBoxLimitDto:
+      type: object
+      properties:
+        boundingBoxLimitId:
+          type: integer
+          format: int64
+        technology:
+          type: string
+        length:
+          type: number
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - boundingBoxLimitId
+      - height
+      - length
+      - technology
+      - width
+    ColorDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        code:
+          type: string
+        name:
+          type: string
+      required:
+      - code
+      - id
+      - name
+    VHConvolutionMaterialPricesDto:
+      allOf:
+      - $ref: '#/components/schemas/MaterialPricesDto'
+      - type: object
+        properties:
+          margin:
+            type: number
+          materialTierApplication:
+            type: string
+          density:
+            type: number
+          pricePerHeight:
+            type: number
+          quantityTiers:
+            type: array
+            items:
+              $ref: '#/components/schemas/QuantityTierDto'
+          materialTiers:
+            type: array
+            items:
+              $ref: '#/components/schemas/MaterialTierDto'
+          startupCostApplication:
+            type: string
+          startupCostTiers:
+            $ref: '#/components/schemas/StartupCostTierDto'
+      required:
+      - colors
+      - density
+      - effectiveFrom
+      - isDefault
+      - margin
+      - materialId
+      - materialName
+      - materialPricesId
+      - materialTierApplication
+      - materialTiers
+      - operatorId
+      - pricePerHeight
+      - pricingAlgoType
+      - quantityTiers
+      - quoteOnly
+      - startupCostApplication
+      - technology
+    PricingEquationDto:
+      type: object
+      properties:
+        equation:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/PricingEquationVariableDto'
+        functions:
+          type: array
+          items:
+            $ref: '#/components/schemas/PricingEquationFunctionDto'
+      required:
+      - functions
+      - variables
+    LeadTimeDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+        buffer:
+          type: integer
+        isDefault:
+          type: boolean
+        isDeleted:
+          type: boolean
+      required:
+      - buffer
+      - isDefault
+      - name
+    CustomFixedPriceMaterialPricesDto:
+      allOf:
+      - $ref: '#/components/schemas/MaterialPricesDto'
+      - type: object
+        properties:
+          fixedPrice:
+            type: number
+          density:
+            type: number
+          dummy:
+            type: integer
+            format: int64
+      required:
+      - colors
+      - density
+      - dummy
+      - effectiveFrom
+      - fixedPrice
+      - isDefault
+      - materialId
+      - materialName
+      - materialPricesId
+      - operatorId
+      - pricingAlgoType
+      - quoteOnly
+      - technology
+    StartupCostTierDto:
+      type: object
+      properties:
+        lowerVolume:
+          type: number
+        upperVolume:
+          type: number
+        lowerCost:
+          type: number
+        upperCost:
+          type: number
+      required:
+      - lowerCost
+      - lowerVolume
+      - upperCost
+      - upperVolume
+    QuantityTierDto:
+      type: object
+      properties:
+        lowerBound:
+          type: integer
+        upperBound:
+          type: integer
+        percentage:
+          type: number
+      required:
+      - percentage
+    PricingEquationFunctionDto:
+      type: object
+      properties:
+        name:
+          type: string
+        placeholder:
+          type: string
+        numberArguments:
+          type: integer
+          format: int32
+        equation:
+          type: string
+      required:
+      - equation
+      - name
+      - numberArguments
+      - placeholder
+    PricingEquationVariableValueDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        placeholder:
+          type: string
+        value:
+          type: number
+      required:
+      - id
+      - name
+      - placeholder
+      - value
+    VacuumCastingMaterialPricesDto:
+      allOf:
+      - $ref: '#/components/schemas/MaterialPricesDto'
+      - type: object
+        properties:
+          minimumPartVolume:
+            type: number
+          pricePerGram:
+            type: number
+          polyurethaneDensity:
+            type: number
+          partsPerMould:
+            type: integer
+          slaCost:
+            type: number
+          siliconeCost:
+            type: number
+          wallThickness:
+            type: number
+          siliconeDensity:
+            type: number
+      required:
+      - colors
+      - effectiveFrom
+      - isDefault
+      - materialId
+      - materialName
+      - materialPricesId
+      - minimumPartVolume
+      - operatorId
+      - partsPerMould
+      - polyurethaneDensity
+      - pricePerGram
+      - pricingAlgoType
+      - quoteOnly
+      - siliconeCost
+      - siliconeDensity
+      - slaCost
+      - technology
+      - wallThickness
+    MaterialPricesDto:
+      type: object
+      properties:
+        materialPricesId:
+          type: integer
+          format: int64
+        operatorId:
+          type: integer
+          format: int64
+        technology:
+          type: string
+        materialId:
+          type: integer
+          format: int64
+        materialName:
+          type: string
+        effectiveFrom:
+          type: string
+          format: date
+        quoteOnly:
+          type: boolean
+        colors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColorDto'
+        referenceText:
+          type: string
+        pricingAlgoType:
+          type: string
+        isDefault:
+          type: boolean
+        datasheet:
+          type: string
+        wallThicknessWarning:
+          type: number
+        wallThicknessLimit:
+          type: number
+        isDeleted:
+          type: boolean
+      required:
+      - colors
+      - effectiveFrom
+      - isDefault
+      - materialId
+      - materialName
+      - materialPricesId
+      - operatorId
+      - pricingAlgoType
+      - quoteOnly
+      - technology
+    PricingEquationVariableDto:
+      type: object
+      properties:
+        name:
+          type: string
+        placeholder:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - placeholder
+    TypescriptEquationDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        equation:
+          type: string
+        variables:
+          type: array
+          items:
+            type: string
+        lastUpdated:
+          type: string
+          format: date-time
+      required:
+      - equation
+      - id
+      - lastUpdated
+      - variables
+    EquationMaterialPricesDto:
+      allOf:
+      - $ref: '#/components/schemas/MaterialPricesDto'
+      - type: object
+        properties:
+          pricingEquationVariableValues:
+            type: array
+            items:
+              $ref: '#/components/schemas/PricingEquationVariableValueDto'
+          density:
+            type: number
+      required:
+      - colors
+      - density
+      - effectiveFrom
+      - isDefault
+      - materialId
+      - materialName
+      - materialPricesId
+      - operatorId
+      - pricingAlgoType
+      - pricingEquationVariableValues
+      - quoteOnly
       - technology
   securitySchemes:
     Phasio_API_Bearer_Token:

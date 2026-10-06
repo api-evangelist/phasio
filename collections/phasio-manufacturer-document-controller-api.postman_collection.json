@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "30936114-06f7-49ac-b3f2-ec191ddfa4b0",
+      "id": "8569cfab-f3b0-4caf-95bc-12ab8c9513db",
       "name": "Manufacturer Document Controller",
       "description": {
         "content": "API for generating and downloading various document types",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "41100208-4f5e-4f96-b1ca-085a992a116d",
+          "id": "b095a04b-4aa1-4d72-b7c7-e216073e500e",
           "name": "Generate traveller sheet PDF",
           "request": {
             "name": "Generate traveller sheet PDF",
@@ -51,7 +51,7 @@
           },
           "response": [
             {
-              "id": "dfedd8fc-3b13-4bad-93a2-0e0564aee9ce",
+              "id": "2222b505-f8f3-4118-896f-0bc521308798",
               "name": "PDF generated successfully",
               "originalRequest": {
                 "url": {
@@ -79,14 +79,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/pdf"
                   }
@@ -107,59 +99,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "a0db4aa4-e52e-4907-8b2d-0a1664cb2be1",
-              "name": "Invalid order ID or generation failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "document",
-                    ":orderId",
-                    "traveller-sheet"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "orderId",
-                      "description": "(Required) ID of the order to generate traveller sheet for"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "44246c25-957a-48be-a79d-74907b036e75",
+              "id": "029a9f0b-7553-438f-8156-40268a2f17d9",
               "name": "Unauthorized - missing operator context",
               "originalRequest": {
                 "url": {
@@ -187,12 +127,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -203,12 +139,108 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77b66352-d87f-4891-9a09-229f3a1ef56e",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "traveller-sheet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to generate traveller sheet for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75a9e78f-e2c5-461e-be14-1de9421a31e4",
+              "name": "Document generation failed - error code DOCUMENT_GENERATION_FAILED",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "traveller-sheet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to generate traveller sheet for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -217,7 +249,319 @@
           }
         },
         {
-          "id": "f55f1be6-0fc3-465f-b275-10367d21bc13",
+          "id": "5033e979-2163-49d9-b7d0-b34a075107bd",
+          "name": "Generate shipment invoice document",
+          "request": {
+            "name": "Generate shipment invoice document",
+            "description": {
+              "content": "Generates a PDF document using an invoice template for the parts allocated to a shipment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "document",
+                ":orderId",
+                "shipments",
+                ":shipmentId",
+                "invoice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "templateId",
+                  "value": "<long>",
+                  "description": "(Required) ID of the invoice template"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipmentId",
+                  "description": "(Required) ID of the shipment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e5ddabb-3c72-40e7-bfde-26c0d0652a4f",
+              "name": "PDF generated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "invoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateId",
+                      "value": "42"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "82593872-7f0a-414b-9a8c-c9eb67b122c4",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "invoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateId",
+                      "value": "42"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5f1435a-5a79-4169-96df-31e73df965c0",
+              "name": "Order, shipment, template, or quote not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "invoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateId",
+                      "value": "42"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f01da697-fe10-4130-bbc6-e66f33ef7ab8",
+              "name": "Document generation failed - error code DOCUMENT_GENERATION_FAILED",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "shipments",
+                    ":shipmentId",
+                    "invoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateId",
+                      "value": "42"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipmentId",
+                      "description": "(Required) ID of the shipment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f70cd03c-0ffe-421a-a9f0-9eb3a9f55455",
           "name": "Generate order traveller PDF",
           "request": {
             "name": "Generate order traveller PDF",
@@ -266,7 +610,7 @@
           },
           "response": [
             {
-              "id": "c6a22e4c-6aa3-4924-a548-83e441d113d3",
+              "id": "545d95ae-07e4-45cb-bc45-bba060bd029c",
               "name": "PDF generated successfully",
               "originalRequest": {
                 "url": {
@@ -299,14 +643,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/pdf"
                   }
@@ -327,64 +663,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "3ec4d53a-02d6-4fab-881e-bd0d174b938b",
-              "name": "Invalid order ID or generation failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "document",
-                    ":orderId",
-                    "order-traveller"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "templateName",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "orderId",
-                      "description": "(Required) ID of the order"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d994d076-b7e5-49ef-a5f4-f46dada1c0f5",
+              "id": "0b7b3bb1-ddec-4cf8-aa63-47c8aafcd350",
               "name": "Unauthorized - missing operator context",
               "originalRequest": {
                 "url": {
@@ -417,12 +696,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -433,12 +708,118 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2160888-063d-42db-9baa-f942c7792968",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "order-traveller"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateName",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66e9dbb2-6f03-4c3d-965e-79956d647ff0",
+              "name": "Document generation failed - error code DOCUMENT_GENERATION_FAILED",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "order-traveller"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateName",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -447,7 +828,7 @@
           }
         },
         {
-          "id": "300668f1-3804-4c98-97f4-8922ff25b860",
+          "id": "96f8ccc2-b980-4ea8-8add-494ab24a6ad0",
           "name": "Generate invoice PDF",
           "request": {
             "name": "Generate invoice PDF",
@@ -489,7 +870,7 @@
           },
           "response": [
             {
-              "id": "1af9a56f-51b4-4c14-a760-a8e22bad6bf3",
+              "id": "c32e52dd-0276-4489-b575-912439334f8b",
               "name": "PDF generated successfully",
               "originalRequest": {
                 "url": {
@@ -517,14 +898,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/pdf"
                   }
@@ -545,59 +918,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "0b468047-2bcb-44b4-94e9-f06c85874259",
-              "name": "Invalid order ID or generation failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "document",
-                    ":orderId",
-                    "invoice"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "orderId",
-                      "description": "(Required) ID of the order to generate invoice for"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "fe07a291-9265-4a26-9008-6f1c9f859ea7",
+              "id": "f7de27ab-7b25-4296-8d12-753d7274bf93",
               "name": "Unauthorized - missing operator context",
               "originalRequest": {
                 "url": {
@@ -625,12 +946,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -641,16 +958,16 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
             },
             {
-              "id": "9a25db29-a75a-4162-86e4-0ee074508bb9",
-              "name": "Invoice downloads are disabled for this operator",
+              "id": "8841e472-ead1-45bf-a21e-6048e6bd3d60",
+              "name": "Invoice downloads are disabled for this operator - error code INVOICE_DOWNLOAD_DISABLED",
               "originalRequest": {
                 "url": {
                   "path": [
@@ -677,12 +994,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -693,12 +1006,108 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3489ad05-6cff-4d28-a212-3d5294caf7bc",
+              "name": "Order or quote not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "invoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to generate invoice for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8759daf-2c2b-411f-9ed2-01a8e40f5588",
+              "name": "Document generation failed - error code DOCUMENT_GENERATION_FAILED",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "invoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to generate invoice for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -707,7 +1116,274 @@
           }
         },
         {
-          "id": "55f1590c-53ed-41c5-8cd0-a0abad666578",
+          "id": "ec3af1d5-2fea-46e1-a2d3-2c37e3e63871",
+          "name": "Generate invoice document",
+          "request": {
+            "name": "Generate invoice document",
+            "description": {
+              "content": "Generates a PDF document using an invoice template for the specified order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "document",
+                ":orderId",
+                "invoice-document"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "templateId",
+                  "value": "<long>",
+                  "description": "(Required) ID of the invoice template"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "orderId",
+                  "description": "(Required) ID of the order"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "798c8a7c-d496-4c7c-aa5e-3a76574fae02",
+              "name": "PDF generated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "invoice-document"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateId",
+                      "value": "42"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7693a3c6-d6c2-4da0-bc52-1cb4e231d7be",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "invoice-document"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateId",
+                      "value": "42"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d899b4a2-f6ab-4154-8afc-6889549db23d",
+              "name": "Order, template, or quote not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "invoice-document"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateId",
+                      "value": "42"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "850be2fd-4795-438f-8f3b-ec0406f96568",
+              "name": "Document generation failed - error code DOCUMENT_GENERATION_FAILED",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "invoice-document"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateId",
+                      "value": "42"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f34b597-62ab-4a3e-ac4e-0c714372b1bc",
           "name": "Generate estimate PDF",
           "request": {
             "name": "Generate estimate PDF",
@@ -749,7 +1425,7 @@
           },
           "response": [
             {
-              "id": "fd645365-f4e6-4f73-b32c-f57b15f0c971",
+              "id": "a60621a4-2c92-4fef-89dd-232ba25a0850",
               "name": "PDF generated successfully",
               "originalRequest": {
                 "url": {
@@ -777,14 +1453,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/pdf"
                   }
@@ -805,59 +1473,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "c8b6a1cb-6eaf-4b28-bd11-a50d8c03508d",
-              "name": "Invalid order ID or generation failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "document",
-                    ":orderId",
-                    "estimate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "orderId",
-                      "description": "(Required) ID of the order to generate estimate for"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bde48e61-73ba-4a07-acec-4ef2e7ad3e59",
+              "id": "ccaa6b1b-def1-4310-8afe-cc2cc5873ad2",
               "name": "Unauthorized - missing operator context",
               "originalRequest": {
                 "url": {
@@ -885,12 +1501,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -901,12 +1513,108 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0543ff6e-0cf2-4a75-96f6-9dcba6666e0b",
+              "name": "Order or quote not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "estimate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to generate estimate for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "134c7fde-48a3-4495-971e-eadd8679f8be",
+              "name": "Document generation failed - error code DOCUMENT_GENERATION_FAILED",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "estimate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to generate estimate for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -915,7 +1623,7 @@
           }
         },
         {
-          "id": "1fe8c3e6-eae0-4575-b5a4-0c03471b280c",
+          "id": "4da2749d-4ae8-4a0d-98a7-acf7c27f9f7d",
           "name": "Generate custom template document",
           "request": {
             "name": "Generate custom template document",
@@ -964,7 +1672,7 @@
           },
           "response": [
             {
-              "id": "16944c7a-2fa1-4fd0-aaa3-d7a6a6dceb74",
+              "id": "08f98f2a-d3c0-49bd-9d6c-910ef99591c3",
               "name": "PDF generated successfully",
               "originalRequest": {
                 "url": {
@@ -997,14 +1705,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/pdf"
                   }
@@ -1025,64 +1725,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "5ac8f6f1-ca12-460a-8e57-f14fbc216910",
-              "name": "Invalid order ID, template ID, or generation failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "document",
-                    ":orderId",
-                    "custom"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "templateId",
-                      "value": "42"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "orderId",
-                      "description": "(Required) ID of the order"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "11a95317-44c1-40e5-a8e4-3b8f8dbc678d",
+              "id": "3c880507-600b-4a64-ab3d-5d44e19027e9",
               "name": "Unauthorized - missing operator context",
               "originalRequest": {
                 "url": {
@@ -1115,12 +1758,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -1131,12 +1770,118 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "421cbe7e-26d5-4bfd-99e6-388bf68f463c",
+              "name": "Order, template, or quote not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "custom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateId",
+                      "value": "42"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "703b74e7-b500-4659-8125-6a62a2bb01a7",
+              "name": "Document generation failed - error code DOCUMENT_GENERATION_FAILED",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "custom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templateId",
+                      "value": "42"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -1145,7 +1890,7 @@
           }
         },
         {
-          "id": "4b1d379a-ba67-455f-adf8-f643be08e191",
+          "id": "97df79c6-0abd-4fff-bc3f-c6ca7506df21",
           "name": "Generate consignment label PDF",
           "request": {
             "name": "Generate consignment label PDF",
@@ -1187,7 +1932,7 @@
           },
           "response": [
             {
-              "id": "9a7b3838-3ad6-41bd-b60a-60fd64aa1b98",
+              "id": "adbfca52-9b76-4f64-a531-c1a0f70ce443",
               "name": "PDF generated successfully",
               "originalRequest": {
                 "url": {
@@ -1215,14 +1960,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/pdf"
                   }
@@ -1243,59 +1980,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "7f74e4ea-258f-43d3-903e-8a19cf7832e7",
-              "name": "Invalid order ID or generation failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "document",
-                    ":orderId",
-                    "consignment-label"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "orderId",
-                      "description": "(Required) ID of the order to generate consignment label for"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "71e574ea-04db-4412-86d6-ffa17ea5d0b9",
+              "id": "6da2bf0f-2f85-495f-a671-592768b6899f",
               "name": "Unauthorized - missing operator context",
               "originalRequest": {
                 "url": {
@@ -1323,12 +2008,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -1339,12 +2020,108 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8722942-831b-4c48-a666-39c0cbc3036f",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "consignment-label"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to generate consignment label for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3f14d89-c548-4630-bf7d-f622d3d34769",
+              "name": "Document generation failed - error code DOCUMENT_GENERATION_FAILED",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "consignment-label"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to generate consignment label for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -1353,7 +2130,7 @@
           }
         },
         {
-          "id": "09cd07e8-91ad-4782-a2a7-84bc4ab96b39",
+          "id": "a178d471-28cd-4cd5-88ac-7fa070500d4e",
           "name": "Generate confirmation PDF",
           "request": {
             "name": "Generate confirmation PDF",
@@ -1395,7 +2172,7 @@
           },
           "response": [
             {
-              "id": "ad2df330-2f4b-4ac9-9851-bd7b676513c1",
+              "id": "26110072-4385-4183-a55f-b3cae53a4e1e",
               "name": "PDF generated successfully",
               "originalRequest": {
                 "url": {
@@ -1423,14 +2200,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/pdf"
                   }
@@ -1451,59 +2220,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "68f24098-83be-4b67-8685-40e1a7509911",
-              "name": "Invalid order ID or generation failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "document",
-                    ":orderId",
-                    "confirmation"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "orderId",
-                      "description": "(Required) ID of the order to generate confirmation for"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1842e0d2-c184-4a2b-a01a-e65de4b365a7",
+              "id": "39da68d5-97a8-4838-a2a3-2b2c866d1289",
               "name": "Unauthorized - missing operator context",
               "originalRequest": {
                 "url": {
@@ -1531,12 +2248,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -1547,63 +2260,16 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e01cc3d1-3b56-443a-9517-9271aac2d7ab",
-          "name": "Generate test document",
-          "request": {
-            "name": "Generate test document",
-            "description": {
-              "content": "Generates a test document of the specified type and language",
-              "type": "text/plain"
+              "_postman_previewlanguage": "json"
             },
-            "url": {
-              "path": [
-                "api",
-                "manufacturer",
-                "v1",
-                "document",
-                "test",
-                "operator"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "templateId",
-                  "value": "<long>",
-                  "description": "(Required) Document template ID"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/pdf"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "fa130bb8-b639-45fa-aab4-a5a2486130e3",
-              "name": "Test document generated successfully",
+              "id": "2c977e49-bedb-4209-a84e-632bfec615ab",
+              "name": "Order not found",
               "originalRequest": {
                 "url": {
                   "path": [
@@ -1611,130 +2277,27 @@
                     "manufacturer",
                     "v1",
                     "document",
-                    "test",
-                    "operator"
+                    ":orderId",
+                    "confirmation"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
+                  "query": [],
+                  "variable": [
                     {
-                      "key": "templateId",
-                      "value": "<long>"
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to generate confirmation for"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
-                    "value": "application/pdf"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/pdf"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5832a09d-9728-4894-b18d-9b5be1d1bdf9",
-              "name": "Unauthorized - missing operator context",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "document",
-                    "test",
-                    "operator"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "templateId",
-                      "value": "<long>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "849383b7-7823-4d90-ab9c-a6d4a0e9eb0d",
-              "name": "Document template not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "document",
-                    "test",
-                    "operator"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "templateId",
-                      "value": "<long>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -1745,12 +2308,60 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fc643f0-beed-4d24-84f2-b2489fb65d6d",
+              "name": "Document generation failed - error code DOCUMENT_GENERATION_FAILED",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    ":orderId",
+                    "confirmation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "orderId",
+                      "description": "(Required) ID of the order to generate confirmation for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -1759,7 +2370,7 @@
           }
         },
         {
-          "id": "41c0f055-9b79-48e2-8de9-301e8f8f7e63",
+          "id": "0cfc3ab8-cdd6-4635-86fc-2abaa0ac0658",
           "name": "Generate invoice Excel file",
           "request": {
             "name": "Generate invoice Excel file",
@@ -1799,7 +2410,7 @@
           },
           "response": [
             {
-              "id": "dbb15bde-b59b-44f8-aeb9-0bc4c8800f45",
+              "id": "a240a41d-b9cc-42f1-8dba-2b66927c0ea5",
               "name": "Excel file generated successfully",
               "originalRequest": {
                 "url": {
@@ -1823,14 +2434,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/octet-stream"
                   }
@@ -1851,8 +2454,8 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "4dbdac7a-fedf-4e2b-b018-fc8f240ef138",
-              "name": "Invalid operator ID or generation failed",
+              "id": "933e52fe-d04b-487d-b5c2-5e4d9f1ca8fc",
+              "name": "Invoice downloads are disabled for this operator - error code INVOICE_DOWNLOAD_DISABLED",
               "originalRequest": {
                 "url": {
                   "path": [
@@ -1875,60 +2478,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e19d5872-19a7-40d6-ac0d-9550836ee660",
-              "name": "Invoice downloads are disabled for this operator",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "manufacturer",
-                    "v1",
-                    "document",
-                    "invoice"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "isArchived",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -1939,12 +2490,56 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3fcf321-653b-48ae-a93c-dab6701a402a",
+              "name": "Document generation failed - error code DOCUMENT_GENERATION_FAILED",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "document",
+                    "invoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "isArchived",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -1964,18 +2559,9 @@
       "key": "baseUrl"
     }
   ],
-  "auth": {
-    "type": "bearer",
-    "bearer": [
-      {
-        "key": "token",
-        "value": "{{bearerToken}}"
-      }
-    ]
-  },
   "info": {
-    "_postman_id": "0fa47597-bf76-473a-be51-1c46a197be19",
-    "name": "Phasio Activity Internal Manufacturer Document Controller API",
+    "_postman_id": "eefbcc62-d729-4dfe-b20c-8029b5fa1a49",
+    "name": "Phasio Manufacturer Document Controller API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "This is the API documentation for the Phasio application.",

@@ -12,33 +12,6 @@ tags:
 - name: Manufacturer Work Order Controller
   description: Manage individual work orders, including downstream routing mutations
 paths:
-  /api/manufacturer/v1/work-orders/{id}/parts:
-    post:
-      tags:
-      - Manufacturer Work Order Controller
-      summary: Add parts to a work order
-      description: Schedules more parts into an existing work order's first operation. Always additive, distinct from the idempotent bulk schedule path.
-      operationId: addParts
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-          format: uuid
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AddPartsRequest'
-        required: true
-      responses:
-        '200':
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/WorkOrderDto'
   /api/manufacturer/v1/work-orders/{id}/routing:
     patch:
       tags:
@@ -66,8 +39,63 @@ paths:
                 $ref: '#/components/schemas/WorkOrderDto'
       summary: Update routing
       x-summary-source: derived
+  /api/manufacturer/v1/work-orders/{id}/dates:
+    patch:
+      tags:
+      - Manufacturer Work Order Controller
+      summary: Update a work order's start and due dates
+      description: Sets the start date (when the work order enters the backlog) and the due date (explicit deadline; null falls back to the order's expected dispatch date).
+      operationId: updateDates
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWorkOrderDatesRequest'
+        required: true
+      responses:
+        '200':
+          description: Successfully updated the work order dates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkOrderDto'
+        '404':
+          description: Work order not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '409':
+          description: The work order has started; a future start date would hide partially completed parts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
+    RoutingStepDto:
+      type: object
+      properties:
+        operationId:
+          type: string
+          format: uuid
+        sequence:
+          type: integer
+          format: int32
+        statusId:
+          type: string
+          format: uuid
+      required:
+      - operationId
+      - sequence
+      - statusId
     UpdateWorkOrderRoutingRequest:
       type: object
       properties:
@@ -77,15 +105,17 @@ components:
             $ref: '#/components/schemas/WorkOrderRoutingStepInput'
       required:
       - steps
-    AddPartsRequest:
+    UpdateWorkOrderDatesRequest:
       type: object
       properties:
-        quantity:
-          type: integer
-        name:
+        startDate:
           type: string
+          format: date-time
+        dueDate:
+          type: string
+          format: date-time
       required:
-      - quantity
+      - startDate
     WorkOrderDto:
       type: object
       properties:
@@ -109,27 +139,18 @@ components:
         createdAt:
           type: string
           format: date-time
+        startDate:
+          type: string
+          format: date-time
+        dueDate:
+          type: string
+          format: date-time
       required:
       - createdAt
       - id
       - quantity
       - routing
-    RoutingStepDto:
-      type: object
-      properties:
-        operationId:
-          type: string
-          format: uuid
-        sequence:
-          type: integer
-          format: int32
-        statusId:
-          type: string
-          format: uuid
-      required:
-      - operationId
-      - sequence
-      - statusId
+      - startDate
     WorkOrderRoutingStepInput:
       type: object
       properties:
@@ -142,6 +163,20 @@ components:
       required:
       - operationId
       - sequence
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

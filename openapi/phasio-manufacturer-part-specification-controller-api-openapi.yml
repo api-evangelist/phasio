@@ -12,74 +12,13 @@ tags:
 - name: Manufacturer Part Specification Controller
   description: Endpoints for managing part specifications and customer article references
 paths:
-  /api/manufacturer/v1/part-specification/{partSpecificationId}/customer-reference:
-    put:
-      tags:
-      - Manufacturer Part Specification Controller
-      summary: Update customer article reference
-      description: Updates the customer's article reference for a specific part specification
-      operationId: updateCustomerReference
-      parameters:
-      - name: partSpecificationId
-        in: path
-        description: ID of the part specification to update
-        required: true
-        schema:
-          type: string
-          format: uuid
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CustomerArticleReferenceDto'
-        required: true
-      responses:
-        '200':
-          description: Customer reference successfully updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PartSpecificationDto'
-        '400':
-          description: Invalid request data
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/part-specification/bulk:
-    post:
-      tags:
-      - Manufacturer Part Specification Controller
-      summary: Get part specifications by IDs
-      description: Retrieves part specifications by a list of unique identifiers
-      operationId: getByIds_1
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              description: Set of part specification IDs to retrieve
-              items:
-                type: string
-                format: uuid
-              uniqueItems: true
-        required: true
-      responses:
-        '200':
-          description: Part specifications retrieved
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PartSpecificationDto'
-        '401':
-          description: Unauthorized - operator not found
   /api/manufacturer/v1/part-specification:
     get:
       tags:
       - Manufacturer Part Specification Controller
       summary: Get part specifications with filtering
       description: Retrieves a paginated list of part specifications with optional filtering and search
-      operationId: get_18
+      operationId: get_1
       parameters:
       - name: filter
         in: query
@@ -119,6 +58,13 @@ paths:
         required: false
         schema:
           type: string
+      - name: customerOrganisationId
+        in: query
+        description: Optional customer organisation. Restricts results to specifications whose part revision is claimed by that customer organisation.
+        required: false
+        schema:
+          type: integer
+          format: int64
       responses:
         '200':
           description: Successfully retrieved part specifications
@@ -127,14 +73,88 @@ paths:
               schema:
                 $ref: '#/components/schemas/Paginated'
         '400':
-          description: Invalid filter specification
+          description: 'Invalid filter specification (error code: INVALID_FILTER)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+    post:
+      tags:
+      - Manufacturer Part Specification Controller
+      summary: Create a part specification
+      description: Creates a part specification from a part revision and a set of manufacturing parameters. If a part specification with the same manufacturing parameters already exists for the part revision, it is returned instead of creating a duplicate.
+      operationId: create_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePartSpecificationDto'
+        required: true
+      responses:
+        '200':
+          description: Part specification created or existing part specification returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartSpecificationDto'
+        '400':
+          description: 'Post-processing selection is invalid (error codes: POST_PROCESSING_MATERIAL_INCOMPATIBLE, POST_PROCESSING_MUTUALLY_EXCLUSIVE)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: 'A referenced entity was not found (error codes: PART_REVISION_NOT_FOUND, PROCESS_PRICES_NOT_FOUND, MATERIAL_NOT_FOUND, COLOR_NOT_FOUND, INFILL_NOT_FOUND, PRECISION_PRICES_NOT_FOUND, POST_PROCESSING_NOT_FOUND)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /api/manufacturer/v1/part-specification/bulk:
+    post:
+      tags:
+      - Manufacturer Part Specification Controller
+      summary: Get part specifications by IDs
+      description: Retrieves part specifications by a list of unique identifiers
+      operationId: getByIds
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              description: Set of part specification IDs to retrieve
+              items:
+                type: string
+                format: uuid
+              uniqueItems: true
+        required: true
+      responses:
+        '200':
+          description: Part specifications retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PartSpecificationDto'
+        '401':
+          description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-specification/{id}:
     get:
       tags:
       - Manufacturer Part Specification Controller
       summary: Get part specification by ID
       description: Retrieves a specific part specification by its unique identifier
-      operationId: getById_4
+      operationId: getById_3
       parameters:
       - name: id
         in: path
@@ -150,10 +170,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PartSpecificationDto'
-        '404':
-          description: Part specification not found
         '401':
           description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: 'Part specification not found (error code: PART_SPECIFICATION_NOT_FOUND)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-specification/{id}/derived-routing:
     get:
       tags:
@@ -178,10 +206,18 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/DerivedRoutingStepDto'
-        '404':
-          description: Part specification not found
         '401':
           description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: 'Part specification not found (error code: PART_SPECIFICATION_NOT_FOUND)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-specification/part-revision/{partRevisionId}:
     get:
       tags:
@@ -208,6 +244,10 @@ paths:
                   $ref: '#/components/schemas/PartSpecificationDto'
         '401':
           description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-specification/customer-reference:
     get:
       tags:
@@ -232,13 +272,17 @@ paths:
                   $ref: '#/components/schemas/PartSpecificationDto'
         '401':
           description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-specification/customer-organisation/{customerOrganisationId}:
     get:
       tags:
       - Manufacturer Part Specification Controller
       summary: Get part specifications by customer organization
       description: Retrieves all part specifications associated with a specific customer organization
-      operationId: getByCustomerOrganisation_1
+      operationId: getByCustomerOrganisation
       parameters:
       - name: customerOrganisationId
         in: path
@@ -258,118 +302,12 @@ paths:
                   $ref: '#/components/schemas/PartSpecificationDto'
         '401':
           description: Unauthorized - operator not found
-  /api/manufacturer/v1/part-specification/{partSpecificationId}/customer-reference/{customerOrganisationId}:
-    delete:
-      tags:
-      - Manufacturer Part Specification Controller
-      summary: Delete customer article reference
-      description: Removes the customer's article reference from a specific part specification
-      operationId: deleteCustomerReference
-      parameters:
-      - name: partSpecificationId
-        in: path
-        description: ID of the part specification to update
-        required: true
-        schema:
-          type: string
-          format: uuid
-      - name: customerOrganisationId
-        in: path
-        description: ID of the customer organization whose reference should be deleted
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        '200':
-          description: Customer reference successfully deleted
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PartSpecificationDto'
-        '404':
-          description: Part specification or customer reference not found
-        '401':
-          description: Unauthorized - operator not found
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
-    CustomerArticleReferenceDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        customerOrganisationId:
-          type: integer
-          format: int64
-        customerOrganisationName:
-          type: string
-        reference:
-          type: string
-        pricingTiers:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
-        showInCatalog:
-          type: boolean
-      required:
-      - customerOrganisationId
-      - pricingTiers
-      - reference
-    Paginated:
-      type: object
-      properties:
-        content:
-          type: array
-          items: {}
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        isEmpty:
-          type: boolean
-        isFirst:
-          type: boolean
-        isLast:
-          type: boolean
-      required:
-      - content
-      - isEmpty
-      - isFirst
-      - isLast
-      - pageNumber
-      - pageSize
-      - totalElements
-      - totalPages
-    ConstraintDto:
-      type: object
-      discriminator:
-        propertyName: constraintType
-      properties:
-        id:
-          type: string
-          format: uuid
-        constraintType:
-          type: string
-        partSpecificationId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - updatedAt
     DerivedRoutingStepDto:
       type: object
       properties:
@@ -384,32 +322,6 @@ components:
       required:
       - operationId
       - sequence
-    LookupString:
-      type: object
-      description: Reference string to search for
-      properties:
-        value:
-          type: string
-      required:
-      - value
-    FixedOrientationConstraintDto:
-      allOf:
-      - $ref: '#/components/schemas/ConstraintDto'
-      - type: object
-        properties:
-          rotationMatrix:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - rotationMatrix
-      - updatedAt
     PartSpecificationDto:
       type: object
       properties:
@@ -465,6 +377,8 @@ components:
             oneOf:
             - $ref: '#/components/schemas/ConstraintDto'
             - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+        weight:
+          type: number
       required:
       - createdAt
       - customerReferences
@@ -475,6 +389,110 @@ components:
       - partRevisionName
       - postProcessingIds
       - units
+      - weight
+    Paginated:
+      type: object
+      properties:
+        content:
+          type: array
+          items: {}
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        isEmpty:
+          type: boolean
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+      required:
+      - content
+      - isEmpty
+      - isFirst
+      - isLast
+      - pageNumber
+      - pageSize
+      - totalElements
+      - totalPages
+    CustomerArticleReferenceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        customerOrganisationId:
+          type: integer
+          format: int64
+        customerOrganisationName:
+          type: string
+        reference:
+          type: string
+        pricingTiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
+        showInCatalog:
+          type: boolean
+      required:
+      - customerOrganisationId
+      - pricingTiers
+      - reference
+    FixedOrientationConstraintDto:
+      allOf:
+      - $ref: '#/components/schemas/ConstraintDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - rotationMatrix
+      - updatedAt
+    LookupString:
+      type: object
+      description: Reference string to search for
+      properties:
+        value:
+          type: string
+      required:
+      - value
+    ConstraintDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        id:
+          type: string
+          format: uuid
+        constraintType:
+          type: string
+        partSpecificationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - updatedAt
     CustomerArticleReferencePricingTierDto:
       type: object
       properties:
@@ -489,6 +507,69 @@ components:
       required:
       - price
       - quantity
+    CreatePartSpecificationDto:
+      type: object
+      description: Manufacturing parameters of the part specification
+      properties:
+        partRevisionId:
+          type: string
+          format: uuid
+          description: ID of the part revision the specification is for
+        processPricesId:
+          type: string
+          format: uuid
+          description: ID of the process prices (technology) to manufacture the part with
+        materialId:
+          type: integer
+          format: int64
+          description: ID of the material to manufacture the part with
+        units:
+          type: string
+          description: Measurement units of the part revision geometry
+          enum:
+          - CENTIMETERS
+          - MILLIMETERS
+          - METRES
+          - INCHES
+          - FEET
+        colorId:
+          type: integer
+          format: int64
+          description: Optional ID of the color
+        infillId:
+          type: integer
+          format: int64
+          description: Optional ID of the infill
+        precisionId:
+          type: integer
+          format: int64
+          description: Optional ID of the precision prices
+        postProcessingIds:
+          type: array
+          description: Optional IDs of the post-processings to apply
+          items:
+            type: integer
+            format: int64
+      required:
+      - materialId
+      - partRevisionId
+      - postProcessingIds
+      - processPricesId
+      - units
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

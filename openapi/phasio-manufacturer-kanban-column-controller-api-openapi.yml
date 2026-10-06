@@ -37,131 +37,26 @@ paths:
                   $ref: '#/components/schemas/KanbanColumnDto'
         '401':
           description: Unauthorized - operator not found
-    post:
-      tags:
-      - Manufacturer Kanban Column Controller
-      summary: Create Kanban column
-      description: Creates a new Kanban column for the order processing workflow
-      operationId: create_12
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateKanbanColumnDto'
-        required: true
-      responses:
-        '200':
-          description: Kanban column successfully created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/KanbanColumnDto'
-        '400':
-          description: Invalid Kanban column data
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/kanban-column/{id}:
-    delete:
-      tags:
-      - Manufacturer Kanban Column Controller
-      summary: Delete Kanban column
-      description: Deletes an existing Kanban column
-      operationId: delete_10
-      parameters:
-      - name: id
-        in: path
-        description: ID of the Kanban column to delete
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        '204':
-          description: Kanban column successfully deleted
-        '400':
-          description: Invalid Kanban column ID or deletion failed
-    patch:
-      tags:
-      - Manufacturer Kanban Column Controller
-      summary: Update Kanban column
-      description: Updates an existing Kanban column's properties
-      operationId: update_15
-      parameters:
-      - name: id
-        in: path
-        description: ID of the Kanban column to update
-        required: true
-        schema:
-          type: string
-          format: uuid
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateKanbanColumnDto'
-        required: true
-      responses:
-        '200':
-          description: Kanban column successfully updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/KanbanColumnDto'
-        '400':
-          description: Invalid update data or Kanban column not found
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
-    KanbanColumnDto:
+    ApiError:
       type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
       properties:
-        id:
+        error:
           type: string
-          format: uuid
-        name:
+          example: ORDER_NOT_FOUND
+        message:
           type: string
-        sequence:
-          type: integer
-          format: int32
-        orderStatus:
-          type: string
-        automations:
-          type: array
-          items:
-            $ref: '#/components/schemas/KanbanColumnAutomationDto'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
+          example: Order not found
       required:
-      - automations
-      - createdAt
-      - id
-      - name
-      - orderStatus
-      - sequence
-      - updatedAt
-    CreateKanbanColumnDto:
-      type: object
-      description: Kanban column creation details
-      properties:
-        name:
-          type: string
-        sequence:
-          type: integer
-          format: int32
-        orderStatus:
-          type: string
-        automations:
-          type: array
-          items:
-            type: string
-      required:
-      - automations
-      - name
-      - orderStatus
-      - sequence
+      - error
+      - message
     KanbanColumnAutomationDto:
       type: object
       properties:
@@ -185,10 +80,12 @@ components:
       - kanbanColumnId
       - type
       - updatedAt
-    UpdateKanbanColumnDto:
+    KanbanColumnDto:
       type: object
-      description: Kanban column update details
       properties:
+        id:
+          type: string
+          format: uuid
         name:
           type: string
         sequence:
@@ -199,7 +96,23 @@ components:
         automations:
           type: array
           items:
-            type: string
+            $ref: '#/components/schemas/KanbanColumnAutomationDto'
+        color:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - automations
+      - createdAt
+      - id
+      - name
+      - orderStatus
+      - sequence
+      - updatedAt
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

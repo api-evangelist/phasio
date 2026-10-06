@@ -1,0 +1,830 @@
+{
+  "item": [
+    {
+      "id": "6f028a9d-5f80-4d28-93fe-9cb353faf928",
+      "name": "Orders",
+      "description": {
+        "content": "API for managing orders and their lifecycle",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b0f954b4-7ab9-4782-99e8-bc5b6e0c01d8",
+          "name": "Retrieve orders",
+          "request": {
+            "name": "Retrieve orders",
+            "description": {
+              "content": "Retrieves a paginated list of orders with optional filtering and search",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "(Required) RSQL query string for filtering (e.g. paymentStatus=in=(PAID,UNPAID);price>10)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "createdAt,DESC",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Optional search term"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "415ea27a-836d-4c47-8d10-61edba1cb7f8",
+              "name": "Successfully retrieved orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "createdAt,DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"content\": [],\n  \"isEmpty\": false,\n  \"isFirst\": false,\n  \"isLast\": false,\n  \"pageNumber\": 7768,\n  \"pageSize\": 9040,\n  \"totalElements\": 4473,\n  \"totalPages\": 1606\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d6cafce-b750-46b6-9d36-3266ba27c02b",
+              "name": "Invalid filter specification",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "createdAt,DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eec42373-1eba-492b-9414-d89800200fde",
+          "name": "Create an order",
+          "request": {
+            "name": "Create an order",
+            "description": {
+              "content": "Creates a new order with the provided details",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "threadId",
+                  "value": "<long>",
+                  "description": "ID of the thread to associate with the order"
+                },
+                {
+                  "disabled": false,
+                  "key": "customerOrganisationId",
+                  "value": "<long>",
+                  "description": "(Required) ID of the customer organisation to associated with the order"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "QUOTE",
+                  "description": "Whether to create an order, quote, or internal draft"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\"\n    },\n    {\n      \"assemblyId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\"\n    }\n  ],\n  \"ccCustomerIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"currency\": \"<string>\",\n  \"expenses\": [\n    {\n      \"costForOperator\": \"<number>\",\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"type\": \"<string>\",\n      \"unitPrice\": \"<number>\",\n      \"description\": \"<string>\",\n      \"accountingCategoryCode\": \"<string>\"\n    },\n    {\n      \"costForOperator\": \"<number>\",\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"type\": \"<string>\",\n      \"unitPrice\": \"<number>\",\n      \"description\": \"<string>\",\n      \"accountingCategoryCode\": \"<string>\"\n    }\n  ],\n  \"requisitions\": [\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\",\n            \"key_1\": \"<number>\"\n          }\n        },\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\",\n            \"key_1\": \"<number>\"\n          }\n        }\n      ],\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\",\n      \"sequence\": \"<integer>\",\n      \"units\": \"<string>\",\n      \"variables\": {\n        \"key_0\": \"<number>\"\n      },\n      \"infillId\": \"<long>\",\n      \"precisionId\": \"<long>\",\n      \"colorId\": \"<long>\",\n      \"manualPrice\": \"<number>\",\n      \"leadTimeId\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\",\n            \"key_1\": \"<number>\",\n            \"key_2\": \"<number>\",\n            \"key_3\": \"<number>\"\n          }\n        },\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\",\n            \"key_1\": \"<number>\"\n          }\n        }\n      ],\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\",\n      \"sequence\": \"<integer>\",\n      \"units\": \"<string>\",\n      \"variables\": {\n        \"key_0\": \"<number>\"\n      },\n      \"infillId\": \"<long>\",\n      \"precisionId\": \"<long>\",\n      \"colorId\": \"<long>\",\n      \"manualPrice\": \"<number>\",\n      \"leadTimeId\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"discountId\": \"<long>\",\n  \"operatorNote\": \"<string>\",\n  \"isSilent\": \"<boolean>\",\n  \"affiliate\": \"<string>\",\n  \"paymentDueDate\": \"<dateTime>\",\n  \"discount\": {\n    \"code\": \"<string>\",\n    \"customerId\": \"<long>\",\n    \"discountType\": \"<string>\",\n    \"endTime\": \"<dateTime>\",\n    \"percentage\": \"<number>\",\n    \"startTime\": \"<dateTime>\"\n  },\n  \"shipping\": {\n    \"operatorId\": \"<long>\",\n    \"shippingMode\": \"<string>\",\n    \"id\": \"<long>\",\n    \"shippingMethodId\": \"<long>\",\n    \"customerOrganisationId\": \"<long>\",\n    \"rateId\": \"<string>\",\n    \"toAddressId\": \"<long>\",\n    \"expectedDispatchDate\": \"<date>\",\n    \"incoterm\": \"<string>\",\n    \"toAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"fromAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"carrierAccountProvider\": \"<string>\",\n    \"carrierAccountServiceType\": \"<string>\",\n    \"carrierAccountServiceName\": \"<string>\",\n    \"estimatedRate\": \"<number>\",\n    \"finalRatePaid\": \"<number>\"\n  },\n  \"billingAddressId\": \"<long>\",\n  \"customReference\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4b70b775-f704-4681-86b4-8232265b09e8",
+              "name": "Order successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "threadId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "customerOrganisationId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "QUOTE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\"\n    },\n    {\n      \"assemblyId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\"\n    }\n  ],\n  \"ccCustomerIds\": [\n    \"<long>\"\n  ],\n  \"currency\": \"<string>\",\n  \"expenses\": [\n    {\n      \"costForOperator\": \"<number>\",\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"type\": \"<string>\",\n      \"unitPrice\": \"<number>\",\n      \"description\": \"<string>\",\n      \"accountingCategoryCode\": \"<string>\"\n    },\n    {\n      \"costForOperator\": \"<number>\",\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"type\": \"<string>\",\n      \"unitPrice\": \"<number>\",\n      \"description\": \"<string>\",\n      \"accountingCategoryCode\": \"<string>\"\n    }\n  ],\n  \"requisitions\": [\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\",\n            \"key_1\": \"<number>\"\n          }\n        },\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\"\n          }\n        }\n      ],\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\",\n      \"sequence\": \"<integer>\",\n      \"units\": \"<string>\",\n      \"variables\": {\n        \"key_0\": \"<number>\"\n      },\n      \"infillId\": \"<long>\",\n      \"precisionId\": \"<long>\",\n      \"colorId\": \"<long>\",\n      \"manualPrice\": \"<number>\",\n      \"leadTimeId\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\"\n          }\n        },\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\",\n            \"key_1\": \"<number>\"\n          }\n        }\n      ],\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\",\n      \"sequence\": \"<integer>\",\n      \"units\": \"<string>\",\n      \"variables\": {\n        \"key_0\": \"<number>\",\n        \"key_1\": \"<number>\"\n      },\n      \"infillId\": \"<long>\",\n      \"precisionId\": \"<long>\",\n      \"colorId\": \"<long>\",\n      \"manualPrice\": \"<number>\",\n      \"leadTimeId\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"discountId\": \"<long>\",\n  \"operatorNote\": \"<string>\",\n  \"isSilent\": \"<boolean>\",\n  \"affiliate\": \"<string>\",\n  \"paymentDueDate\": \"<dateTime>\",\n  \"discount\": {\n    \"code\": \"<string>\",\n    \"customerId\": \"<long>\",\n    \"discountType\": \"<string>\",\n    \"endTime\": \"<dateTime>\",\n    \"percentage\": \"<number>\",\n    \"startTime\": \"<dateTime>\"\n  },\n  \"shipping\": {\n    \"operatorId\": \"<long>\",\n    \"shippingMode\": \"<string>\",\n    \"id\": \"<long>\",\n    \"shippingMethodId\": \"<long>\",\n    \"customerOrganisationId\": \"<long>\",\n    \"rateId\": \"<string>\",\n    \"toAddressId\": \"<long>\",\n    \"expectedDispatchDate\": \"<date>\",\n    \"incoterm\": \"<string>\",\n    \"toAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"fromAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"carrierAccountProvider\": \"<string>\",\n    \"carrierAccountServiceType\": \"<string>\",\n    \"carrierAccountServiceName\": \"<string>\",\n    \"estimatedRate\": \"<number>\",\n    \"finalRatePaid\": \"<number>\"\n  },\n  \"billingAddressId\": \"<long>\",\n  \"customReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requisitions\": {\n    \"key_0\": {\n      \"createdAt\": \"1971-01-04T07:46:22.248Z\",\n      \"id\": 3079,\n      \"lastUpdated\": \"1995-04-04T23:43:27.348Z\",\n      \"name\": \"string\",\n      \"orderId\": 6163,\n      \"orderNumber\": \"string\",\n      \"partRevisionId\": \"f72aea68-f410-bbea-c3e9-1f659d5fb2f8\",\n      \"partSpecificationId\": \"ac9e77a9-926f-5e20-2502-fc0ed55a649c\",\n      \"postProcessingVariables\": [\n        {\n          \"postProcessingId\": 956,\n          \"variables\": {\n            \"key_0\": 2624.162428639316,\n            \"key_1\": 997.9850832930625,\n            \"key_2\": 4796.321859941421\n          }\n        },\n        {\n          \"postProcessingId\": 9712,\n          \"variables\": {\n            \"key_0\": 4982.673948600866\n          }\n        }\n      ],\n      \"pricingType\": \"string\",\n      \"quantity\": 8425,\n      \"sequence\": 2294,\n      \"variables\": {\n        \"key_0\": 5325.04952143302\n      },\n      \"workOrders\": [\n        {\n          \"createdAt\": \"2002-11-12T02:52:26.254Z\",\n          \"id\": \"66d9cfcc-fa9d-80ff-70dc-834ec3b3d588\",\n          \"quantity\": 2373,\n          \"routing\": [\n            {\n              \"operationId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"statusId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"operationId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"statusId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"startDate\": \"1996-02-27T23:50:08.611Z\",\n          \"workOrderNumber\": 2516,\n          \"routingTemplateId\": \"1d0a710d-3fbd-3451-271a-8ff17ae25023\",\n          \"name\": \"string\",\n          \"dueDate\": \"1964-09-02T12:42:24.590Z\"\n        },\n        {\n          \"createdAt\": \"1997-02-18T22:36:18.637Z\",\n          \"id\": \"4d93d4ef-affc-29c2-60af-975702ec75d5\",\n          \"quantity\": 8850,\n          \"routing\": [\n            {\n              \"operationId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"statusId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"operationId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"statusId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"startDate\": \"1973-06-12T07:14:29.924Z\",\n          \"workOrderNumber\": 7000,\n          \"routingTemplateId\": \"9400e842-046a-b32e-1764-c52bd17ecf3e\",\n          \"name\": \"string\",\n          \"dueDate\": \"1960-05-10T02:50:00.793Z\"\n        }\n      ],\n      \"customReference\": \"string\",\n      \"customerOrganisationId\": 5063,\n      \"customerOrganisationName\": \"string\",\n      \"manualPrice\": 2321.045609896244,\n      \"pricePaid\": 9777.619129764416,\n      \"leadTimeId\": \"f813c0de-e8a3-7afe-245c-97b9e7fa96d2\",\n      \"duration\": 7170\n    },\n    \"key_1\": {\n      \"createdAt\": \"2001-08-02T14:03:10.296Z\",\n      \"id\": 497,\n      \"lastUpdated\": \"2007-12-28T01:34:30.528Z\",\n      \"name\": \"string\",\n      \"orderId\": 8329,\n      \"orderNumber\": \"string\",\n      \"partRevisionId\": \"9c516940-03c4-aedc-5a97-e8698dd7c847\",\n      \"partSpecificationId\": \"e4108fb8-f92f-d41c-f94c-22b95f3fc530\",\n      \"postProcessingVariables\": [\n        {\n          \"postProcessingId\": 3978,\n          \"variables\": {\n            \"key_0\": 238.77843160013956,\n            \"key_1\": 6416.703178385787,\n            \"key_2\": 6376.81228156294,\n            \"key_3\": 2517.9971758520405\n          }\n        },\n        {\n          \"postProcessingId\": 1574,\n          \"variables\": {\n            \"key_0\": 4892.716802590719,\n            \"key_1\": 1994.3375428287636,\n            \"key_2\": 7252.424862504592,\n            \"key_3\": 1707.9919725890845\n          }\n        }\n      ],\n      \"pricingType\": \"string\",\n      \"quantity\": 4006,\n      \"sequence\": 5574,\n      \"variables\": {\n        \"key_0\": 1700.8443552025064\n      },\n      \"workOrders\": [\n        {\n          \"createdAt\": \"1967-12-04T20:35:29.057Z\",\n          \"id\": \"51251e6f-4b73-5934-910d-fe9a00f98df2\",\n          \"quantity\": 3060,\n          \"routing\": [\n            {\n              \"operationId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"statusId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"operationId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"statusId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"startDate\": \"1990-10-06T10:00:55.534Z\",\n          \"workOrderNumber\": 1672,\n          \"routingTemplateId\": \"7dcb2e68-d53e-10d0-9823-af60fc1228bf\",\n          \"name\": \"string\",\n          \"dueDate\": \"1958-06-30T13:45:46.115Z\"\n        },\n        {\n          \"createdAt\": \"2017-05-12T10:11:18.161Z\",\n          \"id\": \"0b6fc4ea-1fa3-72ef-2f1d-d4c6ee82acc5\",\n          \"quantity\": 5196,\n          \"routing\": [\n            {\n              \"operationId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"statusId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"operationId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"statusId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"startDate\": \"2011-09-08T11:29:21.621Z\",\n          \"workOrderNumber\": 2381,\n          \"routingTemplateId\": \"6948ec26-6d55-3a57-2705-7f6f0c74b752\",\n          \"name\": \"string\",\n          \"dueDate\": \"2008-01-17T09:20:13.667Z\"\n        }\n      ],\n      \"customReference\": \"string\",\n      \"customerOrganisationId\": 3422,\n      \"customerOrganisationName\": \"string\",\n      \"manualPrice\": 6124.46902218974,\n      \"pricePaid\": 5999.656950124184,\n      \"leadTimeId\": \"259e5508-0649-2eac-a6ae-53a4d7ed3c80\",\n      \"duration\": 5844\n    }\n  },\n  \"order\": {\n    \"assemblyRequisitions\": [\n      {\n        \"assemblyId\": \"f1f42201-7fdc-0bd8-58fe-6667735be04b\",\n        \"assemblyName\": \"string\",\n        \"assemblyPricePaid\": 8474.62074089947,\n        \"id\": 2989,\n        \"partCount\": 9333,\n        \"quantity\": 3473,\n        \"totalPricePaid\": 840.4694406231262,\n        \"createdAt\": \"1949-03-06T16:35:53.181Z\"\n      },\n      {\n        \"assemblyId\": \"4bc70dd0-ce34-d0ab-37a2-b7d82862aae8\",\n        \"assemblyName\": \"string\",\n        \"assemblyPricePaid\": 6576.129130313182,\n        \"id\": 6191,\n        \"partCount\": 516,\n        \"quantity\": 5363,\n        \"totalPricePaid\": 7911.156656117983,\n        \"createdAt\": \"1952-09-18T21:03:50.868Z\"\n      }\n    ],\n    \"awaitingStatus\": \"string\",\n    \"bypassPurchasabilityChecks\": false,\n    \"createdAt\": \"1989-02-19T10:50:30.790Z\",\n    \"currency\": \"string\",\n    \"expenses\": [\n      {\n        \"costForOperator\": 6386.96830806855,\n        \"expenseId\": 6634,\n        \"localUnitPrice\": 9687.960823857029,\n        \"name\": \"string\",\n        \"price\": 970.5705329066983,\n        \"quantity\": 7367.7737514817945,\n        \"type\": \"string\",\n        \"unitPrice\": 7722.84447853352,\n        \"description\": \"string\",\n        \"accountingCategoryCode\": \"string\"\n      },\n      {\n        \"costForOperator\": 4904.892062503014,\n        \"expenseId\": 8105,\n        \"localUnitPrice\": 932.4033861753355,\n        \"name\": \"string\",\n        \"price\": 6538.609920397147,\n        \"quantity\": 9453.377378023277,\n        \"type\": \"string\",\n        \"unitPrice\": 7206.493866102522,\n        \"description\": \"string\",\n        \"accountingCategoryCode\": \"string\"\n      }\n    ],\n    \"hasWorkOrders\": true,\n    \"id\": 8372,\n    \"isArchived\": true,\n    \"isEditable\": true,\n    \"isInProject\": true,\n    \"isPurchaseOrder\": true,\n    \"isSilent\": false,\n    \"isVoided\": true,\n    \"localCurrency\": \"string\",\n    \"paymentStatus\": \"string\",\n    \"requisitionIds\": [\n      9547,\n      5971\n    ],\n    \"shipments\": [\n      {\n        \"documents\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"fromAddress\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parcels\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"type\": \"COURIER\",\n        \"id\": \"e085a4e0-6cb4-0f27-d56c-eb795070b429\",\n        \"status\": \"PREPARED\",\n        \"incoterm\": \"CFR\",\n        \"preparedAt\": \"1973-04-28T23:34:38.508Z\",\n        \"preparedBy\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"releasedAt\": \"2019-04-29T09:26:41.077Z\",\n        \"releasedBy\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fulfilledAt\": \"2021-08-23T20:44:29.676Z\",\n        \"fulfilledBy\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"documents\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"fromAddress\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"parcels\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"type\": \"COURIER\",\n        \"id\": \"3fc7c94c-e10a-17a6-66d4-734abcb70ecc\",\n        \"status\": \"PREPARED\",\n        \"incoterm\": \"DPU\",\n        \"preparedAt\": \"2003-01-28T13:23:52.926Z\",\n        \"preparedBy\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"releasedAt\": \"1979-07-13T18:23:12.425Z\",\n        \"releasedBy\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fulfilledAt\": \"2007-06-09T11:03:56.600Z\",\n        \"fulfilledBy\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"source\": \"string\",\n    \"state\": \"QUOTE\",\n    \"subscribedCustomerIds\": [\n      802,\n      8885\n    ],\n    \"threadId\": 5205,\n    \"updateDt\": \"1965-09-17T13:21:08.356Z\",\n    \"workOrders\": [\n      {\n        \"id\": \"58ff8de4-bada-049c-d894-f8fd0f129a76\",\n        \"quantity\": 6596,\n        \"stages\": [\n          {\n            \"name\": \"string\",\n            \"operationId\": \"b97c0d28-5def-eab0-2a46-be50efebb821\",\n            \"quantity\": 3490\n          },\n          {\n            \"name\": \"string\",\n            \"operationId\": \"8ecbaed4-c75e-281d-4c05-46b76a6d0652\",\n            \"quantity\": 2469\n          }\n        ],\n        \"startDate\": \"1955-12-01T17:57:23.795Z\",\n        \"workOrderNumber\": 3130,\n        \"partName\": \"string\",\n        \"dueDate\": \"1953-01-24T19:04:55.818Z\"\n      },\n      {\n        \"id\": \"53387074-4b7e-ae4c-bbb1-cadaa488e15b\",\n        \"quantity\": 6196,\n        \"stages\": [\n          {\n            \"name\": \"string\",\n            \"operationId\": \"9c2ae4e6-2a07-a963-1c5a-8bb752a35305\",\n            \"quantity\": 4136\n          },\n          {\n            \"name\": \"string\",\n            \"operationId\": \"6f08c7f8-a1aa-4e91-4e59-8aa9de615de0\",\n            \"quantity\": 7313\n          }\n        ],\n        \"startDate\": \"1991-07-30T20:43:41.419Z\",\n        \"workOrderNumber\": 8341,\n        \"partName\": \"string\",\n        \"dueDate\": \"1984-07-08T04:40:56.099Z\"\n      }\n    ],\n    \"customerOrganisationId\": 4550,\n    \"customerOrganisationName\": \"string\",\n    \"billingAddressId\": 1021,\n    \"kanbanColumnId\": \"string\",\n    \"quoteNumber\": \"string\",\n    \"orderNumber\": \"string\",\n    \"accountingSystemEstimateId\": \"string\",\n    \"accountingSystemEstimateNumber\": \"string\",\n    \"accountingSystemConfirmationId\": \"string\",\n    \"accountingSystemConfirmationNumber\": \"string\",\n    \"accountingSystemInvoiceId\": \"string\",\n    \"accountingSystemInvoiceNumber\": \"string\",\n    \"affiliate\": \"string\",\n    \"createdBy\": {\n      \"email\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\"\n    },\n    \"owner\": {\n      \"email\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\"\n    },\n    \"actorType\": \"string\",\n    \"paymentDueDate\": \"1973-04-16T10:00:23.184Z\",\n    \"productionProgress\": {\n      \"quantity\": 3419.063953680306,\n      \"volume\": 7706.555940694028\n    },\n    \"shipping\": {\n      \"operatorId\": \"<long>\",\n      \"shippingMode\": \"<string>\",\n      \"id\": \"<long>\",\n      \"shippingMethodId\": \"<long>\",\n      \"customerOrganisationId\": \"<long>\",\n      \"rateId\": \"<string>\",\n      \"toAddressId\": \"<long>\",\n      \"expectedDispatchDate\": \"<date>\",\n      \"incoterm\": \"<string>\",\n      \"dispatchDate\": \"1992-05-17\",\n      \"toAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"fromAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountProvider\": \"<string>\",\n      \"carrierAccountServiceType\": \"<string>\",\n      \"carrierAccountServiceName\": \"<string>\",\n      \"estimatedRate\": \"<number>\",\n      \"finalRatePaid\": \"<number>\"\n    },\n    \"discount\": {\n      \"discountId\": 6150,\n      \"discountType\": \"string\",\n      \"endTime\": \"1953-06-25T23:05:08.567Z\",\n      \"percentage\": 7950.26336112767,\n      \"startTime\": \"1969-05-11T04:52:56.534Z\",\n      \"code\": \"string\",\n      \"customerId\": 893,\n      \"customerEmail\": \"string\",\n      \"customerPhoneNumber\": \"string\"\n    },\n    \"tax\": {\n      \"components\": [\n        {\n          \"amount\": 5575.538378825775,\n          \"id\": \"cc999646-a706-0701-6b35-d625addceda5\",\n          \"localAmount\": 9031.528677553591,\n          \"longName\": \"string\",\n          \"percentage\": 8049.237175271553,\n          \"shortName\": \"string\"\n        },\n        {\n          \"amount\": 4705.3149047076695,\n          \"id\": \"398b55f8-2a25-61ed-d6d1-dbcb0517183b\",\n          \"localAmount\": 7767.8126143631325,\n          \"longName\": \"string\",\n          \"percentage\": 2704.001836979244,\n          \"shortName\": \"string\"\n        }\n      ],\n      \"id\": \"b91d1d14-d72c-710b-bfdd-a28dc3c3e671\",\n      \"isTaxAppliedToShipping\": false,\n      \"isTaxExempted\": true,\n      \"localTotalPrice\": 4511.674018096718,\n      \"totalPrice\": 5424.679453649104,\n      \"accountingSystemTaxId\": \"string\",\n      \"taxNumber\": \"string\"\n    },\n    \"price\": 8028.9833213106385,\n    \"localPrice\": 2757.779824772344,\n    \"topUpPrice\": 8814.340325900637,\n    \"purchaseOrderNumber\": \"string\",\n    \"customerAcceptedTime\": \"1977-07-01T01:59:12.986Z\",\n    \"operatorNote\": \"string\",\n    \"customReference\": \"string\",\n    \"shipment\": {\n      \"operatorId\": \"<long>\",\n      \"shippingMode\": \"<string>\",\n      \"id\": \"<long>\",\n      \"shippingMethodId\": \"<long>\",\n      \"customerOrganisationId\": \"<long>\",\n      \"rateId\": \"<string>\",\n      \"toAddressId\": \"<long>\",\n      \"expectedDispatchDate\": \"<date>\",\n      \"incoterm\": \"<string>\",\n      \"dispatchDate\": \"1965-11-25\",\n      \"toAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"fromAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"carrierAccountProvider\": \"<string>\",\n      \"carrierAccountServiceType\": \"<string>\",\n      \"carrierAccountServiceName\": \"<string>\",\n      \"estimatedRate\": \"<number>\",\n      \"finalRatePaid\": \"<number>\"\n    }\n  },\n  \"accountingSyncWarning\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b16c4d0-14d6-48cf-8bf0-c402da90cf72",
+              "name": "Invalid order data or creation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "threadId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "customerOrganisationId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "QUOTE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\"\n    },\n    {\n      \"assemblyId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\"\n    }\n  ],\n  \"ccCustomerIds\": [\n    \"<long>\"\n  ],\n  \"currency\": \"<string>\",\n  \"expenses\": [\n    {\n      \"costForOperator\": \"<number>\",\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"type\": \"<string>\",\n      \"unitPrice\": \"<number>\",\n      \"description\": \"<string>\",\n      \"accountingCategoryCode\": \"<string>\"\n    },\n    {\n      \"costForOperator\": \"<number>\",\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"type\": \"<string>\",\n      \"unitPrice\": \"<number>\",\n      \"description\": \"<string>\",\n      \"accountingCategoryCode\": \"<string>\"\n    }\n  ],\n  \"requisitions\": [\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\",\n            \"key_1\": \"<number>\"\n          }\n        },\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\"\n          }\n        }\n      ],\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\",\n      \"sequence\": \"<integer>\",\n      \"units\": \"<string>\",\n      \"variables\": {\n        \"key_0\": \"<number>\"\n      },\n      \"infillId\": \"<long>\",\n      \"precisionId\": \"<long>\",\n      \"colorId\": \"<long>\",\n      \"manualPrice\": \"<number>\",\n      \"leadTimeId\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\"\n          }\n        },\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\",\n            \"key_1\": \"<number>\"\n          }\n        }\n      ],\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\",\n      \"sequence\": \"<integer>\",\n      \"units\": \"<string>\",\n      \"variables\": {\n        \"key_0\": \"<number>\",\n        \"key_1\": \"<number>\"\n      },\n      \"infillId\": \"<long>\",\n      \"precisionId\": \"<long>\",\n      \"colorId\": \"<long>\",\n      \"manualPrice\": \"<number>\",\n      \"leadTimeId\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"discountId\": \"<long>\",\n  \"operatorNote\": \"<string>\",\n  \"isSilent\": \"<boolean>\",\n  \"affiliate\": \"<string>\",\n  \"paymentDueDate\": \"<dateTime>\",\n  \"discount\": {\n    \"code\": \"<string>\",\n    \"customerId\": \"<long>\",\n    \"discountType\": \"<string>\",\n    \"endTime\": \"<dateTime>\",\n    \"percentage\": \"<number>\",\n    \"startTime\": \"<dateTime>\"\n  },\n  \"shipping\": {\n    \"operatorId\": \"<long>\",\n    \"shippingMode\": \"<string>\",\n    \"id\": \"<long>\",\n    \"shippingMethodId\": \"<long>\",\n    \"customerOrganisationId\": \"<long>\",\n    \"rateId\": \"<string>\",\n    \"toAddressId\": \"<long>\",\n    \"expectedDispatchDate\": \"<date>\",\n    \"incoterm\": \"<string>\",\n    \"toAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"fromAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"carrierAccountProvider\": \"<string>\",\n    \"carrierAccountServiceType\": \"<string>\",\n    \"carrierAccountServiceName\": \"<string>\",\n    \"estimatedRate\": \"<number>\",\n    \"finalRatePaid\": \"<number>\"\n  },\n  \"billingAddressId\": \"<long>\",\n  \"customReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6abc232-0d08-4315-9154-e21518523445",
+              "name": "Unauthorized - missing operator context",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "threadId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "customerOrganisationId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "QUOTE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\"\n    },\n    {\n      \"assemblyId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\"\n    }\n  ],\n  \"ccCustomerIds\": [\n    \"<long>\"\n  ],\n  \"currency\": \"<string>\",\n  \"expenses\": [\n    {\n      \"costForOperator\": \"<number>\",\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"type\": \"<string>\",\n      \"unitPrice\": \"<number>\",\n      \"description\": \"<string>\",\n      \"accountingCategoryCode\": \"<string>\"\n    },\n    {\n      \"costForOperator\": \"<number>\",\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"type\": \"<string>\",\n      \"unitPrice\": \"<number>\",\n      \"description\": \"<string>\",\n      \"accountingCategoryCode\": \"<string>\"\n    }\n  ],\n  \"requisitions\": [\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\",\n            \"key_1\": \"<number>\"\n          }\n        },\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\"\n          }\n        }\n      ],\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\",\n      \"sequence\": \"<integer>\",\n      \"units\": \"<string>\",\n      \"variables\": {\n        \"key_0\": \"<number>\"\n      },\n      \"infillId\": \"<long>\",\n      \"precisionId\": \"<long>\",\n      \"colorId\": \"<long>\",\n      \"manualPrice\": \"<number>\",\n      \"leadTimeId\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"comments\": [\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"cameraPositionX\": \"<number>\",\n          \"cameraPositionY\": \"<number>\",\n          \"cameraPositionZ\": \"<number>\",\n          \"cameraRotationX\": \"<number>\",\n          \"cameraRotationY\": \"<number>\",\n          \"cameraRotationZ\": \"<number>\",\n          \"conversationType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locationX\": \"<number>\",\n          \"locationY\": \"<number>\",\n          \"locationZ\": \"<number>\",\n          \"message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"customerId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"actorType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"constraints\": [\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"constraintType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rotationMatrix\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"postProcessing\": [\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\"\n          }\n        },\n        {\n          \"postProcessingId\": \"<long>\",\n          \"variables\": {\n            \"key_0\": \"<number>\",\n            \"key_1\": \"<number>\"\n          }\n        }\n      ],\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"requisitionIntentId\": \"<uuid>\",\n      \"sequence\": \"<integer>\",\n      \"units\": \"<string>\",\n      \"variables\": {\n        \"key_0\": \"<number>\",\n        \"key_1\": \"<number>\"\n      },\n      \"infillId\": \"<long>\",\n      \"precisionId\": \"<long>\",\n      \"colorId\": \"<long>\",\n      \"manualPrice\": \"<number>\",\n      \"leadTimeId\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"source\": \"<string>\",\n  \"discountId\": \"<long>\",\n  \"operatorNote\": \"<string>\",\n  \"isSilent\": \"<boolean>\",\n  \"affiliate\": \"<string>\",\n  \"paymentDueDate\": \"<dateTime>\",\n  \"discount\": {\n    \"code\": \"<string>\",\n    \"customerId\": \"<long>\",\n    \"discountType\": \"<string>\",\n    \"endTime\": \"<dateTime>\",\n    \"percentage\": \"<number>\",\n    \"startTime\": \"<dateTime>\"\n  },\n  \"shipping\": {\n    \"operatorId\": \"<long>\",\n    \"shippingMode\": \"<string>\",\n    \"id\": \"<long>\",\n    \"shippingMethodId\": \"<long>\",\n    \"customerOrganisationId\": \"<long>\",\n    \"rateId\": \"<string>\",\n    \"toAddressId\": \"<long>\",\n    \"expectedDispatchDate\": \"<date>\",\n    \"incoterm\": \"<string>\",\n    \"toAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"fromAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"carrierAccountProvider\": \"<string>\",\n    \"carrierAccountServiceType\": \"<string>\",\n    \"carrierAccountServiceName\": \"<string>\",\n    \"estimatedRate\": \"<number>\",\n    \"finalRatePaid\": \"<number>\"\n  },\n  \"billingAddressId\": \"<long>\",\n  \"customReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14019ec8-67fe-4e51-b112-8d9fff6b8802",
+          "name": "Update order kanban column",
+          "request": {
+            "name": "Update order kanban column",
+            "description": {
+              "content": "Moves an order to a different kanban column. Optional skipAutomationTypes field suppresses the named column automations for this request only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":id",
+                "kanban-column"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) ID of the order to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"kanbanColumnAutomationRequests\": [\n    {\n      \"parcelContentsDescription\": \"<string>\",\n      \"parcelContentsType\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"parcelContentsDescription\": \"<string>\",\n      \"parcelContentsType\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"kanbanColumnId\": \"<uuid>\",\n  \"skipAutomationTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b7e8e55-4e4d-4611-9c5e-61e7b7df67a8",
+              "name": "Kanban column successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":id",
+                    "kanban-column"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) ID of the order to update"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"kanbanColumnAutomationRequests\": [\n    {\n      \"parcelContentsDescription\": \"<string>\",\n      \"parcelContentsType\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"parcelContentsDescription\": \"<string>\",\n      \"parcelContentsType\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"kanbanColumnId\": \"<uuid>\",\n  \"skipAutomationTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0d052b28-fd58-43ec-a33f-abb1b4029ec0",
+              "name": "Failed to update kanban column",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":id",
+                    "kanban-column"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) ID of the order to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"kanbanColumnAutomationRequests\": [\n    {\n      \"parcelContentsDescription\": \"<string>\",\n      \"parcelContentsType\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"parcelContentsDescription\": \"<string>\",\n      \"parcelContentsType\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"kanbanColumnId\": \"<uuid>\",\n  \"skipAutomationTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "984940a0-ddde-41f3-8ece-8b729a8ec9bd",
+              "name": "Order or kanban column not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":id",
+                    "kanban-column"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) ID of the order to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"kanbanColumnAutomationRequests\": [\n    {\n      \"parcelContentsDescription\": \"<string>\",\n      \"parcelContentsType\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"parcelContentsDescription\": \"<string>\",\n      \"parcelContentsType\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"kanbanColumnId\": \"<uuid>\",\n  \"skipAutomationTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e564f372-31a1-4238-86e2-38cbdd2f355a",
+          "name": "Retrieve an order",
+          "request": {
+            "name": "Retrieve an order",
+            "description": {
+              "content": "Retrieves a specific order by its ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "order",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) ID of the order to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "21b929cf-6cfe-4d98-b12c-8ce483ad7419",
+              "name": "Successfully retrieved order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) ID of the order to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assemblyRequisitions\": [\n    {\n      \"assemblyId\": \"9edb7027-3987-8a3a-576a-2adce54e9dd9\",\n      \"assemblyName\": \"string\",\n      \"assemblyPricePaid\": 6639.164373802462,\n      \"id\": 4843,\n      \"partCount\": 9331,\n      \"quantity\": 3610,\n      \"totalPricePaid\": 8514.201682992169,\n      \"createdAt\": \"1961-03-19T22:12:42.512Z\"\n    },\n    {\n      \"assemblyId\": \"70f5eee9-49db-d8c0-198e-914394f13b7e\",\n      \"assemblyName\": \"string\",\n      \"assemblyPricePaid\": 4400.223076247394,\n      \"id\": 1742,\n      \"partCount\": 4441,\n      \"quantity\": 4213,\n      \"totalPricePaid\": 3265.8091407892507,\n      \"createdAt\": \"1975-02-25T21:48:27.456Z\"\n    }\n  ],\n  \"awaitingStatus\": \"string\",\n  \"bypassPurchasabilityChecks\": true,\n  \"createdAt\": \"1993-06-15T23:27:35.784Z\",\n  \"currency\": \"string\",\n  \"expenses\": [\n    {\n      \"costForOperator\": 2550.633552459705,\n      \"expenseId\": 2164,\n      \"localUnitPrice\": 787.8511163920421,\n      \"name\": \"string\",\n      \"price\": 8022.086258826597,\n      \"quantity\": 5693.583526099171,\n      \"type\": \"string\",\n      \"unitPrice\": 2276.7879005304903,\n      \"description\": \"string\",\n      \"accountingCategoryCode\": \"string\"\n    },\n    {\n      \"costForOperator\": 4297.415466901575,\n      \"expenseId\": 670,\n      \"localUnitPrice\": 8754.21211969538,\n      \"name\": \"string\",\n      \"price\": 637.9881685339006,\n      \"quantity\": 687.9747683176918,\n      \"type\": \"string\",\n      \"unitPrice\": 2632.1310782182604,\n      \"description\": \"string\",\n      \"accountingCategoryCode\": \"string\"\n    }\n  ],\n  \"hasWorkOrders\": false,\n  \"id\": 8068,\n  \"isArchived\": true,\n  \"isEditable\": false,\n  \"isInProject\": false,\n  \"isPurchaseOrder\": false,\n  \"isSilent\": false,\n  \"isVoided\": true,\n  \"localCurrency\": \"string\",\n  \"paymentStatus\": \"string\",\n  \"requisitionIds\": [\n    3328,\n    1590\n  ],\n  \"shipments\": [\n    {\n      \"documents\": [\n        {\n          \"contentType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"createdAt\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"uploadedBy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"contentType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"createdAt\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"uploadedBy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"fromAddress\": {\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"email\": \"string\",\n        \"name\": \"string\",\n        \"phone\": \"string\",\n        \"residential\": false,\n        \"street1\": \"string\",\n        \"street2\": \"string\",\n        \"zip\": \"string\",\n        \"state\": \"string\",\n        \"company\": \"string\",\n        \"jurisdictionIsoCode\": \"string\",\n        \"taxId\": \"string\"\n      },\n      \"parcels\": [\n        {\n          \"allocations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"grossWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"height\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"length\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"netWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"width\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"allocations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"grossWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"height\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"length\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"netWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"width\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"type\": \"COLLECTION\",\n      \"id\": \"73b9f251-c4fc-3a44-46a4-e212b6c3da01\",\n      \"status\": \"PREPARED\",\n      \"incoterm\": \"CFR\",\n      \"preparedAt\": \"1974-04-18T00:50:12.932Z\",\n      \"preparedBy\": {\n        \"firstName\": \"string\",\n        \"id\": \"0e79f59e-06f4-6c74-cd46-7a6d9b34ac27\",\n        \"lastName\": \"string\",\n        \"displayName\": \"string\"\n      },\n      \"releasedAt\": \"1996-03-15T15:12:23.181Z\",\n      \"releasedBy\": {\n        \"firstName\": \"string\",\n        \"id\": \"4d176e18-42ac-0384-9a8a-bd89b0b18297\",\n        \"lastName\": \"string\",\n        \"displayName\": \"string\"\n      },\n      \"fulfilledAt\": \"1986-01-09T00:58:45.898Z\",\n      \"fulfilledBy\": {\n        \"firstName\": \"string\",\n        \"id\": \"aa83b095-c466-9c7c-8741-9982adc08e94\",\n        \"lastName\": \"string\",\n        \"displayName\": \"string\"\n      }\n    },\n    {\n      \"documents\": [\n        {\n          \"contentType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"createdAt\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"uploadedBy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"contentType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"createdAt\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"uploadedBy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"fromAddress\": {\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"email\": \"string\",\n        \"name\": \"string\",\n        \"phone\": \"string\",\n        \"residential\": false,\n        \"street1\": \"string\",\n        \"street2\": \"string\",\n        \"zip\": \"string\",\n        \"state\": \"string\",\n        \"company\": \"string\",\n        \"jurisdictionIsoCode\": \"string\",\n        \"taxId\": \"string\"\n      },\n      \"parcels\": [\n        {\n          \"allocations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"grossWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"height\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"length\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"netWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"width\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"allocations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"grossWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"height\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"length\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"netWeightGrams\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"width\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"type\": \"COLLECTION\",\n      \"id\": \"2be9cb76-43fd-afbc-7c6a-d3f2a6582bc4\",\n      \"status\": \"PREPARED\",\n      \"incoterm\": \"EXW\",\n      \"preparedAt\": \"2021-10-16T21:23:01.608Z\",\n      \"preparedBy\": {\n        \"firstName\": \"string\",\n        \"id\": \"076f450a-7411-b7bc-d8b2-4acc73dbb45c\",\n        \"lastName\": \"string\",\n        \"displayName\": \"string\"\n      },\n      \"releasedAt\": \"2001-02-09T17:52:58.607Z\",\n      \"releasedBy\": {\n        \"firstName\": \"string\",\n        \"id\": \"1362011c-e18c-fd7e-723e-4448bc220a65\",\n        \"lastName\": \"string\",\n        \"displayName\": \"string\"\n      },\n      \"fulfilledAt\": \"2002-08-30T17:58:31.996Z\",\n      \"fulfilledBy\": {\n        \"firstName\": \"string\",\n        \"id\": \"7ca5c059-8efd-fb08-7fb7-470b1d4ecfcd\",\n        \"lastName\": \"string\",\n        \"displayName\": \"string\"\n      }\n    }\n  ],\n  \"source\": \"string\",\n  \"state\": \"QUOTE\",\n  \"subscribedCustomerIds\": [\n    6255,\n    3079\n  ],\n  \"threadId\": 6588,\n  \"updateDt\": \"1953-06-17T08:47:21.562Z\",\n  \"workOrders\": [\n    {\n      \"id\": \"6849b7a5-ed46-6500-986b-1d59e25e5525\",\n      \"quantity\": 8356,\n      \"stages\": [\n        {\n          \"name\": \"string\",\n          \"operationId\": \"ec40b90b-a082-2f7f-f06f-2922fa3faab4\",\n          \"quantity\": 5036\n        },\n        {\n          \"name\": \"string\",\n          \"operationId\": \"f5672d05-adf7-8d70-ce8c-e1d469ba5896\",\n          \"quantity\": 705\n        }\n      ],\n      \"startDate\": \"1958-01-31T07:55:29.311Z\",\n      \"workOrderNumber\": 5161,\n      \"partName\": \"string\",\n      \"dueDate\": \"1994-03-29T12:15:14.350Z\"\n    },\n    {\n      \"id\": \"74e298d3-c1c6-f31e-7853-4450bf3dc0b3\",\n      \"quantity\": 2844,\n      \"stages\": [\n        {\n          \"name\": \"string\",\n          \"operationId\": \"a84df734-c46b-13c3-ad6d-0910f373e71f\",\n          \"quantity\": 5901\n        },\n        {\n          \"name\": \"string\",\n          \"operationId\": \"60fe4ab6-a970-d82c-d969-2453b3936136\",\n          \"quantity\": 9735\n        }\n      ],\n      \"startDate\": \"1984-09-16T06:12:51.781Z\",\n      \"workOrderNumber\": 351,\n      \"partName\": \"string\",\n      \"dueDate\": \"2008-07-27T00:32:52.078Z\"\n    }\n  ],\n  \"customerOrganisationId\": 3489,\n  \"customerOrganisationName\": \"string\",\n  \"billingAddressId\": 1244,\n  \"kanbanColumnId\": \"string\",\n  \"quoteNumber\": \"string\",\n  \"orderNumber\": \"string\",\n  \"accountingSystemEstimateId\": \"string\",\n  \"accountingSystemEstimateNumber\": \"string\",\n  \"accountingSystemConfirmationId\": \"string\",\n  \"accountingSystemConfirmationNumber\": \"string\",\n  \"accountingSystemInvoiceId\": \"string\",\n  \"accountingSystemInvoiceNumber\": \"string\",\n  \"affiliate\": \"string\",\n  \"createdBy\": {\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"owner\": {\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"actorType\": \"string\",\n  \"paymentDueDate\": \"2023-04-24T05:27:03.856Z\",\n  \"productionProgress\": {\n    \"quantity\": 2908.7502103363818,\n    \"volume\": 7529.3024741580975\n  },\n  \"shipping\": {\n    \"operatorId\": \"<long>\",\n    \"shippingMode\": \"<string>\",\n    \"id\": \"<long>\",\n    \"shippingMethodId\": \"<long>\",\n    \"customerOrganisationId\": \"<long>\",\n    \"rateId\": \"<string>\",\n    \"toAddressId\": \"<long>\",\n    \"expectedDispatchDate\": \"<date>\",\n    \"incoterm\": \"<string>\",\n    \"dispatchDate\": \"1975-12-20\",\n    \"toAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"fromAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"carrierAccountProvider\": \"<string>\",\n    \"carrierAccountServiceType\": \"<string>\",\n    \"carrierAccountServiceName\": \"<string>\",\n    \"estimatedRate\": \"<number>\",\n    \"finalRatePaid\": \"<number>\"\n  },\n  \"discount\": {\n    \"discountId\": 5851,\n    \"discountType\": \"string\",\n    \"endTime\": \"2012-12-06T09:56:55.948Z\",\n    \"percentage\": 2284.5760818446315,\n    \"startTime\": \"2007-01-21T08:39:23.985Z\",\n    \"code\": \"string\",\n    \"customerId\": 4507,\n    \"customerEmail\": \"string\",\n    \"customerPhoneNumber\": \"string\"\n  },\n  \"tax\": {\n    \"components\": [\n      {\n        \"amount\": 9028.82987950754,\n        \"id\": \"2fddeaa8-9d68-08cb-33b5-9e32f28af9f5\",\n        \"localAmount\": 2570.123305703571,\n        \"longName\": \"string\",\n        \"percentage\": 2538.237113646449,\n        \"shortName\": \"string\"\n      },\n      {\n        \"amount\": 7608.556760872418,\n        \"id\": \"d00e8240-59f6-71c5-4cca-fcc17eec357c\",\n        \"localAmount\": 3551.9781461053058,\n        \"longName\": \"string\",\n        \"percentage\": 609.4638326207602,\n        \"shortName\": \"string\"\n      }\n    ],\n    \"id\": \"3e0eeb09-f952-0d97-4054-85ad7fd1e5c3\",\n    \"isTaxAppliedToShipping\": false,\n    \"isTaxExempted\": false,\n    \"localTotalPrice\": 9788.069746860014,\n    \"totalPrice\": 7726.75695429416,\n    \"accountingSystemTaxId\": \"string\",\n    \"taxNumber\": \"string\"\n  },\n  \"price\": 9876.79104131094,\n  \"localPrice\": 819.6651548290146,\n  \"topUpPrice\": 5730.637798651644,\n  \"purchaseOrderNumber\": \"string\",\n  \"customerAcceptedTime\": \"2019-12-03T09:00:18.727Z\",\n  \"operatorNote\": \"string\",\n  \"customReference\": \"string\",\n  \"shipment\": {\n    \"operatorId\": \"<long>\",\n    \"shippingMode\": \"<string>\",\n    \"id\": \"<long>\",\n    \"shippingMethodId\": \"<long>\",\n    \"customerOrganisationId\": \"<long>\",\n    \"rateId\": \"<string>\",\n    \"toAddressId\": \"<long>\",\n    \"expectedDispatchDate\": \"<date>\",\n    \"incoterm\": \"<string>\",\n    \"dispatchDate\": \"2012-04-19\",\n    \"toAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"fromAddress\": {\n      \"addressId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"addressType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"city\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"company\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"country\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha2Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"countryAlpha3Code\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"email\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isBillingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"isShippingAddress\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"phone\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"residential\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"street2\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"zip\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"state\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"jurisdictionIsoCode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taxId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"carrierAccountProvider\": \"<string>\",\n    \"carrierAccountServiceType\": \"<string>\",\n    \"carrierAccountServiceName\": \"<string>\",\n    \"estimatedRate\": \"<number>\",\n    \"finalRatePaid\": \"<number>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0533cc6b-c13f-422e-95c5-c1e37c8862df",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "order",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) ID of the order to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e54565f1-3f7a-4355-9aa6-21c942ce09f9",
+    "name": "Phasio Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}

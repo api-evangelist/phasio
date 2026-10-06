@@ -12,6 +12,52 @@ tags:
 - name: Manufacturer Part Revision Controller
   description: Endpoints for managing part geometry revisions and 3D file analysis
 paths:
+  /api/manufacturer/v1/part-revision/{partRevisionId}/version-name:
+    put:
+      tags:
+      - Manufacturer Part Revision Controller
+      summary: Set part revision version name
+      description: Sets a custom revision name (e.g. the customer's own revision reference) shown in place of the version number
+      operationId: updateVersionName
+      parameters:
+      - name: partRevisionId
+        in: path
+        description: ID of the part revision to update
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePartRevisionVersionNameDto'
+        required: true
+      responses:
+        '200':
+          description: Version name updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartRevisionDto'
+        '400':
+          description: Version name exceeds 64 characters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: 'Part revision not found (error code: PART_REVISION_NOT_FOUND)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-revision/upload:
     put:
       tags:
@@ -62,8 +108,16 @@ paths:
                 format: uuid
         '400':
           description: Invalid file or parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
         '401':
           description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-revision/recognize:
     post:
       tags:
@@ -98,129 +152,16 @@ paths:
                 type: string
         '400':
           description: Empty or invalid image body
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/part-revision/merge/{partRevisionId}/into/{targetPartRevisionId}:
-    post:
-      tags:
-      - Manufacturer Part Revision Controller
-      summary: Merge part revisions
-      description: Merges one part revision into another, combining their properties
-      operationId: merge_1
-      parameters:
-      - name: partRevisionId
-        in: path
-        description: ID of the part revision to merge (source)
-        required: true
-        schema:
-          type: string
-          format: uuid
-      - name: targetPartRevisionId
-        in: path
-        description: ID of the part revision to merge into (target)
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        '200':
-          description: Part revisions successfully merged
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PartRevisionDto'
-        '400':
-          description: Invalid merge operation
+                $ref: '#/components/schemas/ApiError'
         '401':
           description: Unauthorized - operator not found
-  /api/manufacturer/v1/part-revision/manufacturability/validate:
-    post:
-      tags:
-      - Manufacturer Part Revision Controller
-      summary: Validate part manufacturability
-      description: Validates if parts can be manufactured with specified processes and materials
-      operationId: validatePartManufacturability
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              description: List of part manufacturability validation requests
-              items:
-                $ref: '#/components/schemas/PartManufacturabilityRequestDto'
-        required: true
-      responses:
-        '200':
-          description: Manufacturability validation completed
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PartManufacturabilityDto'
-        '400':
-          description: Invalid validation request
-  /api/manufacturer/v1/part-revision/hash-conflicts/{targetPartRevisionId}/merge:
-    post:
-      tags:
-      - Manufacturer Part Revision Controller
-      summary: Merge hash conflicts
-      description: Resolves hash conflicts by merging duplicate part revisions into the target revision
-      operationId: resolveHashConflicts
-      parameters:
-      - name: targetPartRevisionId
-        in: path
-        description: ID of the target part revision to keep
-        required: true
-        schema:
-          type: string
-          format: uuid
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              description: Set of duplicate part revision IDs to merge into the target
-              items:
-                type: string
-                format: uuid
-              uniqueItems: true
-        required: true
-      responses:
-        '200':
-          description: Hash conflicts resolved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PartRevisionDto'
-        '400':
-          description: Invalid request or resolution failed
-        '404':
-          description: Target part revision not found
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/part-revision/download/zip:
-    post:
-      tags:
-      - Manufacturer Part Revision Controller
-      summary: Download part revision files as ZIP
-      description: Downloads multiple part revision files as a single ZIP archive
-      operationId: downloadZip
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PartRevisionZipRequestDto'
-        required: true
-      responses:
-        '200':
-          description: ZIP archive created successfully
-          content:
-            application/zip: {}
-        '400':
-          description: Invalid request parameters
-        '401':
-          description: Unauthorized - operator not found
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-revision/detect-and-embed:
     post:
       tags:
@@ -255,66 +196,16 @@ paths:
                 $ref: '#/components/schemas/PartImageDetectionResponseDto'
         '400':
           description: Empty or invalid image body
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/part-revision/design/{designId}:
-    get:
-      tags:
-      - Manufacturer Part Revision Controller
-      summary: Get part revisions by design ID
-      description: Retrieves all part revisions associated with a specific design
-      operationId: getByDesign
-      parameters:
-      - name: designId
-        in: path
-        description: ID of the design to get part revisions for
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        '200':
-          description: Part revisions retrieved
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PartRevisionDto'
+                $ref: '#/components/schemas/ApiError'
         '401':
           description: Unauthorized - operator not found
-    post:
-      tags:
-      - Manufacturer Part Revision Controller
-      summary: Move part revision to design
-      description: Moves a part revision from its current design to the specified design
-      operationId: moveRevisionToDesign
-      parameters:
-      - name: designId
-        in: path
-        description: ID of the target design to move the revision to
-        required: true
-        schema:
-          type: string
-          format: uuid
-      - name: revisionId
-        in: query
-        description: ID of the part revision to move
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        '200':
-          description: Part revision successfully moved
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PartRevisionDto'
-        '404':
-          description: Part revision or target design not found
-        '401':
-          description: Unauthorized - operator not found
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-revision/bulk:
     post:
       tags:
@@ -344,13 +235,17 @@ paths:
                   $ref: '#/components/schemas/PartRevisionDto'
         '401':
           description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-revision:
     get:
       tags:
       - Manufacturer Part Revision Controller
       summary: Get part revisions with filtering
       description: Retrieves a paginated list of part revisions with optional filtering and search
-      operationId: get_19
+      operationId: get_8
       parameters:
       - name: filter
         in: query
@@ -398,14 +293,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/Paginated'
         '400':
-          description: Invalid filter specification
+          description: 'Invalid filter specification (error code: INVALID_FILTER)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-revision/{partRevisionId}:
     get:
       tags:
       - Manufacturer Part Revision Controller
       summary: Get part revision by ID
       description: Retrieves a specific part revision by its ID
-      operationId: getById_5
+      operationId: getById_4
       parameters:
       - name: partRevisionId
         in: path
@@ -421,42 +320,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PartRevisionDto'
-        '404':
-          description: Part revision not found
         '401':
           description: Unauthorized - operator not found
-    delete:
-      tags:
-      - Manufacturer Part Revision Controller
-      summary: Scrub part revision content
-      description: Removes all accessory files and content-derivable signals (geometry, thumbnails, hashes, similarity vectors) for a part revision and marks it as deleted. The PartRevision row itself is preserved so inbound references (orders, cart items, etc.) remain intact; the frontend should render the deleted state from the returned DTO.
-      operationId: scrub
-      parameters:
-      - name: partRevisionId
-        in: path
-        description: ID of the part revision to scrub
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        '200':
-          description: Part revision successfully scrubbed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PartRevisionDto'
-        '400':
-          description: Scrub failed or part revision not found
-        '401':
-          description: Unauthorized - operator not found
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: 'Part revision not found (error code: PART_REVISION_NOT_FOUND)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-revision/{partRevisionId}/thumbnail:
     get:
       tags:
       - Manufacturer Part Revision Controller
       summary: Retrieve a thumbnail image of a part revision
       description: Retrieves a PNG format thumbnail image for a part revision
-      operationId: downloadThumbnail_1
+      operationId: downloadThumbnail
       parameters:
       - name: partRevisionId
         in: path
@@ -469,92 +351,12 @@ paths:
           description: Thumbnail retrieved successfully
           content:
             image/png: {}
-        '400':
-          description: Thumbnail not found or download failed
-  /api/manufacturer/v1/part-revision/{partRevisionId}/similar:
-    get:
-      tags:
-      - Manufacturer Part Revision Controller
-      summary: Find similar part revisions
-      description: Finds part revisions that are geometrically similar to the specified part
-      operationId: getSimilarPartRevisions
-      parameters:
-      - name: partRevisionId
-        in: path
-        description: ID of the part revision to find similar parts for
-        required: true
-        schema:
-          type: string
-          format: uuid
-      - name: count
-        in: query
-        description: Maximum number of similar parts to return (1-100)
-        required: false
-        schema:
-          type: integer
-          format: int64
-          maximum: 100
-          minimum: 1
-        example: 5
-      - name: threshold
-        in: query
-        description: Maximum L2 distance threshold for similarity (default 0.08)
-        required: false
-        schema:
-          type: number
-          format: double
-        example: 0.15
-      responses:
-        '200':
-          description: Similar parts found
+        '404':
+          description: Thumbnail not found (error code REQUISITION_THUMBNAIL_NOT_FOUND)
           content:
             application/json:
               schema:
-                type: string
-        '401':
-          description: Unauthorized - operator not found
-  /api/manufacturer/v1/part-revision/{partRevisionId}/possible-duplicates:
-    get:
-      tags:
-      - Manufacturer Part Revision Controller
-      summary: Find possible duplicate part revisions
-      description: Finds part revisions that may be duplicates of the specified part
-      operationId: getPossibleDuplicatePartRevisions
-      parameters:
-      - name: partRevisionId
-        in: path
-        description: ID of the part revision to find duplicates for
-        required: true
-        schema:
-          type: string
-          format: uuid
-      - name: count
-        in: query
-        description: Maximum number of possible duplicates to return (1-100)
-        required: false
-        schema:
-          type: integer
-          format: int64
-          maximum: 100
-          minimum: 1
-        example: 5
-      - name: threshold
-        in: query
-        description: Maximum L2 distance threshold for duplicate detection (default 0.08)
-        required: false
-        schema:
-          type: number
-          format: double
-        example: 0.08
-      responses:
-        '200':
-          description: Possible duplicates found
-          content:
-            application/json:
-              schema:
-                type: string
-        '401':
-          description: Unauthorized - operator not found
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-revision/{partRevisionId}/download/{type}:
     get:
       tags:
@@ -587,34 +389,18 @@ paths:
           description: File downloaded successfully
           content:
             application/octet-stream: {}
-        '400':
-          description: File not found or download failed
         '401':
           description: Unauthorized - operator not found
-  /api/manufacturer/v1/part-revision/{partRevisionId}/claims:
-    get:
-      tags:
-      - Manufacturer Part Revision Controller
-      summary: Get part revision claims
-      description: Gets all customer organizations that have claimed this part revision
-      operationId: getClaims
-      parameters:
-      - name: partRevisionId
-        in: path
-        description: ID of the part revision to get claims for
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        '200':
-          description: Claims retrieved successfully
           content:
             application/json:
               schema:
-                type: string
-        '401':
-          description: Unauthorized - operator not found
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: File not found (error code PART_REVISION_FILE_NOT_FOUND)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-revision/upload/{analysisId}/results:
     get:
       tags:
@@ -635,10 +421,18 @@ paths:
           description: Analysis results retrieved
           content:
             application/msgpack: {}
-        '404':
-          description: Analysis results not found
         '401':
           description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Analysis results not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-revision/upload/status:
     get:
       tags:
@@ -666,6 +460,10 @@ paths:
                 type: string
         '401':
           description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-revision/requisition/{requisitionId}:
     get:
       tags:
@@ -692,6 +490,10 @@ paths:
                   $ref: '#/components/schemas/PartRevisionDto'
         '401':
           description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /api/manufacturer/v1/part-revision/order/{orderId}:
     get:
       tags:
@@ -725,23 +527,28 @@ paths:
                   $ref: '#/components/schemas/PartRevisionDto'
         '401':
           description: Unauthorized - operator not found
-  /api/manufacturer/v1/part-revision/hash-conflicts/{hash}:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /api/manufacturer/v1/part-revision/design/{designId}:
     get:
       tags:
       - Manufacturer Part Revision Controller
-      summary: Get part revisions with hash conflicts
-      description: Retrieves all part revisions that have a hash conflict with the specified hash
-      operationId: getHashConflicts
+      summary: Get part revisions by design ID
+      description: Retrieves all part revisions associated with a specific design
+      operationId: getByDesign
       parameters:
-      - name: hash
+      - name: designId
         in: path
-        description: Hash value to check for conflicts
+        description: ID of the design to get part revisions for
         required: true
         schema:
           type: string
+          format: uuid
       responses:
         '200':
-          description: Hash conflicts retrieved successfully
+          description: Part revisions retrieved
           content:
             application/json:
               schema:
@@ -750,8 +557,134 @@ paths:
                   $ref: '#/components/schemas/PartRevisionDto'
         '401':
           description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
+    BendDetailDto:
+      type: object
+      properties:
+        radiusInner:
+          type: number
+        sweepDeg:
+          type: number
+        length:
+          type: number
+        axisStart:
+          type: array
+          items:
+            type: number
+        axisEnd:
+          type: array
+          items:
+            type: number
+        axisDir:
+          type: array
+          items:
+            type: number
+        arcStartDir:
+          type: array
+          items:
+            type: number
+      required:
+      - arcStartDir
+      - axisDir
+      - axisEnd
+      - axisStart
+      - length
+      - radiusInner
+      - sweepDeg
+    MachiningSetupsDto:
+      type: object
+      properties:
+        threeAxis:
+          $ref: '#/components/schemas/AxisSetupsDto'
+        fiveAxis:
+          $ref: '#/components/schemas/FiveAxisSetupsDto'
+        accessibleAreaFraction:
+          $ref: '#/components/schemas/ObbAccessibilityDto'
+        sampleCount:
+          type: integer
+      required:
+      - accessibleAreaFraction
+      - fiveAxis
+      - sampleCount
+      - threeAxis
+    SetupDirectionDto:
+      type: object
+      properties:
+        direction:
+          type: array
+          items:
+            type: number
+        assignedAreaFraction:
+          type: number
+        holeCount:
+          type: integer
+      required:
+      - assignedAreaFraction
+      - direction
+      - holeCount
+    HoleGroupDto:
+      type: object
+      properties:
+        diameter:
+          type: number
+        depth:
+          type: number
+        through:
+          type: boolean
+        flatBottom:
+          type: boolean
+        counterboreDiameter:
+          type: number
+        counterboreDepth:
+          type: number
+        countersinkDiameter:
+          type: number
+        axis:
+          type: array
+          items:
+            type: number
+        entryPoint:
+          type: array
+          items:
+            type: number
+        count:
+          type: integer
+        entryPoints:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+      required:
+      - axis
+      - count
+      - depth
+      - diameter
+      - entryPoint
+      - entryPoints
+      - flatBottom
+      - through
+    PartImageDetectionDto:
+      type: object
+      properties:
+        bbox:
+          type: array
+          items:
+            type: integer
+            format: int32
+        matches:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
+      required:
+      - bbox
+      - matches
     Paginated:
       type: object
       properties:
@@ -781,23 +714,142 @@ components:
       - pageSize
       - totalElements
       - totalPages
-    PartManufacturabilityDto:
+    MachiningDetailsDto:
       type: object
       properties:
-        partRevisionId:
-          type: string
-          format: uuid
+        schemaVersion:
+          type: integer
+          format: int32
+        holes:
+          type: array
+          items:
+            $ref: '#/components/schemas/HoleGroupDto'
+        pockets:
+          type: array
+          items:
+            $ref: '#/components/schemas/PocketGroupDto'
+        totalFaceArea:
+          type: number
+        setups:
+          $ref: '#/components/schemas/MachiningSetupsDto'
+        finishing:
+          $ref: '#/components/schemas/MachiningFinishingDto'
         warnings:
-          $ref: '#/components/schemas/PartManufacturabilityWarningsDto'
-        limits:
-          $ref: '#/components/schemas/PartManufacturabilityLimitsDto'
-        values:
-          $ref: '#/components/schemas/PartManufacturabilityValuesDto'
+          type: array
+          items:
+            type: string
       required:
-      - limits
-      - partRevisionId
-      - values
+      - schemaVersion
+      - totalFaceArea
       - warnings
+    MachiningFinishingDto:
+      type: object
+      properties:
+        floorArea:
+          type: number
+        wallArea:
+          type: number
+        ballEndArea:
+          type: number
+        unreachableArea:
+          type: number
+      required:
+      - ballEndArea
+      - floorArea
+      - unreachableArea
+      - wallArea
+    UpdatePartRevisionVersionNameDto:
+      type: object
+      properties:
+        versionName:
+          type: string
+          maxLength: 64
+          minLength: 0
+    FiveAxisSetupsDto:
+      type: object
+      properties:
+        count:
+          type: integer
+        tiltLimitDeg:
+          type: number
+        setups:
+          type: array
+          items:
+            $ref: '#/components/schemas/SetupDirectionDto'
+        unreachableAreaFraction:
+          type: number
+      required:
+      - count
+      - setups
+      - tiltLimitDeg
+      - unreachableAreaFraction
+    PocketGroupDto:
+      type: object
+      properties:
+        depth:
+          type: number
+        mouthArea:
+          type: number
+        volume:
+          type: number
+        volumeExact:
+          type: boolean
+        minCornerRadius:
+          type: number
+        minWidth:
+          type: number
+        through:
+          type: boolean
+        direction:
+          type: array
+          items:
+            type: number
+        count:
+          type: integer
+        mouthCenters:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+      required:
+      - count
+      - depth
+      - direction
+      - mouthArea
+      - mouthCenters
+      - through
+      - volume
+      - volumeExact
+    AxisSetupsDto:
+      type: object
+      properties:
+        count:
+          type: integer
+        setups:
+          type: array
+          items:
+            $ref: '#/components/schemas/SetupDirectionDto'
+        unreachableAreaFraction:
+          type: number
+      required:
+      - count
+      - setups
+      - unreachableAreaFraction
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
     PartImageDetectionResponseDto:
       type: object
       properties:
@@ -807,63 +859,28 @@ components:
             $ref: '#/components/schemas/PartImageDetectionDto'
       required:
       - detections
-    PartManufacturabilityLimitsDto:
+    ObbAccessibilityDto:
       type: object
       properties:
-        withinBoundingBoxLimit:
-          type: boolean
-        withinWallThicknessLimit:
-          type: boolean
-      required:
-      - withinBoundingBoxLimit
-      - withinWallThicknessLimit
-    PartManufacturabilityValuesDto:
-      type: object
-      properties:
-        boundingBox:
-          type: array
-          items:
-            type: number
-        wallThicknessLimit:
+        xPlus:
           type: number
-        wallThicknessWarning:
+        xMinus:
           type: number
-    PartRevisionZipRequestDto:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - ORIGINAL_CAD_FILE
-          - CORE_GEOMETRY
-          - THUMBNAIL
-          - PDF_DESIGN_FILE
-          - WALL_THICKNESS_ANALYSIS
-        revisions:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
+        yPlus:
+          type: number
+        yMinus:
+          type: number
+        zPlus:
+          type: number
+        zMinus:
+          type: number
       required:
-      - revisions
-      - type
-    PartImageDetectionDto:
-      type: object
-      properties:
-        bbox:
-          type: array
-          items:
-            type: integer
-            format: int32
-        matches:
-          type: object
-          additionalProperties:
-            type: number
-            format: double
-      required:
-      - bbox
-      - matches
+      - xMinus
+      - xPlus
+      - yMinus
+      - yPlus
+      - zMinus
+      - zPlus
     PartRevisionDto:
       type: object
       properties:
@@ -903,12 +920,38 @@ components:
           type: number
         shrinkWrapVolume:
           type: number
+        bendCount:
+          type: integer
+        sheetThickness:
+          type: number
+        blankArea:
+          type: number
+        bendDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/BendDetailDto'
+        holeCount:
+          type: integer
+        pocketCount:
+          type: integer
+        threeAxisSetupCount:
+          type: integer
+        fiveAxisSetupCount:
+          type: integer
+        minInternalCornerRadius:
+          type: number
+        unrecognizedConcaveArea:
+          type: number
+        machiningDetails:
+          $ref: '#/components/schemas/MachiningDetailsDto'
         createdAt:
           type: string
           format: date-time
         versionNumber:
           type: integer
           format: int64
+        versionName:
+          type: string
         isLatestRevision:
           type: boolean
         repaired:
@@ -946,6 +989,8 @@ components:
           - XAML
           - THREEDXML
           - XYZ
+          - X_T
+          - SLDPRT
         conflictOnHash:
           type: string
         baseRotationMatrix:
@@ -958,38 +1003,6 @@ components:
       - availableAccessories
       - deleted
       - designName
-    PartManufacturabilityRequestDto:
-      type: object
-      properties:
-        partRevisionId:
-          type: string
-          format: uuid
-        units:
-          type: string
-          enum:
-          - CENTIMETERS
-          - MILLIMETERS
-          - METRES
-          - INCHES
-          - FEET
-        processPricesId:
-          type: string
-          format: uuid
-        materialId:
-          type: integer
-          format: int64
-      required:
-      - materialId
-      - partRevisionId
-      - processPricesId
-      - units
-    PartManufacturabilityWarningsDto:
-      type: object
-      properties:
-        hasOptimalWallThickness:
-          type: boolean
-      required:
-      - hasOptimalWallThickness
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

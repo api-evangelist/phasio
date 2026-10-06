@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "cfb43329-f391-4bd1-bc38-6767762806d5",
+      "id": "cbb885f0-e69d-4cde-883d-5e48b70e58a3",
       "name": "Webhooks",
       "description": {
         "content": "Endpoints for managing webhooks",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "1d43d866-bbf9-4681-a1c2-1abf992fe62c",
+          "id": "b1591f91-9069-4998-8c02-943d38968f07",
           "name": "Retrieve all webhooks",
           "request": {
             "name": "Retrieve all webhooks",
@@ -41,7 +41,7 @@
           },
           "response": [
             {
-              "id": "038ad6b4-961e-492c-81cc-a0f970260584",
+              "id": "f2fe7867-08d8-4dad-b0ed-adb4cf2f9e0f",
               "name": "Webhooks retrieved successfully",
               "originalRequest": {
                 "url": {
@@ -59,14 +59,6 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
                     "key": "Accept",
                     "value": "application/json"
                   }
@@ -82,12 +74,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  {\n    \"id\": \"881550e2-a2ba-13d4-35fb-822c70b22f02\",\n    \"secret\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"string\"\n  },\n  {\n    \"id\": \"644a9718-4277-27e6-27ce-2198b617ac2b\",\n    \"secret\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"string\"\n  }\n]",
+              "body": "[\n  {\n    \"id\": \"2cb8e864-20a3-aa88-065c-52643cd121e9\",\n    \"secret\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"string\"\n  },\n  {\n    \"id\": \"f157354b-8e75-e0a6-4f87-65ce75c3cdac\",\n    \"secret\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"string\"\n  }\n]",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "d40fe24e-3587-405a-9865-008d61876a30",
+              "id": "e6dd044e-7c67-4c17-9a09-8864b3d47a1e",
               "name": "Bad Request - missing or invalid authentication",
               "originalRequest": {
                 "url": {
@@ -105,12 +97,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -121,12 +109,12 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -135,12 +123,12 @@
           }
         },
         {
-          "id": "61cc6dea-3aec-4535-839a-2c3b79f62d5b",
+          "id": "d9c0694f-c7c4-4f86-bb70-a8eb95d2cdbc",
           "name": "Create a webhook",
           "request": {
             "name": "Create a webhook",
             "description": {
-              "content": "Creates a new webhook on an account",
+              "content": "Creates a webhook for one event type on the authenticated account. The URL must use HTTPS and resolve to a public address. Save the returned id for deletion and secret for decrypting deliveries. Deliveries contain a JSON payload field encrypted with AES-256-GCM and an X-Phasio-Signature HMAC-SHA256 header.",
               "type": "text/plain"
             },
             "url": {
@@ -180,7 +168,7 @@
           },
           "response": [
             {
-              "id": "86f8ebcf-6b42-440c-9cfb-095f4469744d",
+              "id": "760e0f6b-c1ed-4888-a32b-e96294de703a",
               "name": "Webhook successfully created",
               "originalRequest": {
                 "url": {
@@ -197,14 +185,6 @@
                   "variable": []
                 },
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
@@ -229,13 +209,13 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"4cc111e1-1da3-1d07-1e5c-73d760a5cc47\",\n  \"secret\": \"string\",\n  \"type\": \"string\",\n  \"url\": \"string\"\n}",
+              "body": "{\n  \"id\": \"1ccf1bf4-3f1a-a6d4-f39b-3021be9cdb19\",\n  \"secret\": \"string\",\n  \"type\": \"string\",\n  \"url\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "6105b32f-bc5a-47cc-a2e4-346c7b45ca31",
-              "name": "Bad Request - missing or invalid authentication",
+              "id": "992c26ff-3bd6-4219-a603-69c706bd584f",
+              "name": "INVALID_WEBHOOK - Invalid webhook data",
               "originalRequest": {
                 "url": {
                   "path": [
@@ -252,12 +232,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "POST",
@@ -276,12 +252,12 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -290,7 +266,7 @@
           }
         },
         {
-          "id": "078132d9-5b64-4efc-8e79-f959618eb23c",
+          "id": "79d250a0-d70e-49fa-9955-fb8f2ddcd412",
           "name": "Delete a webhook",
           "request": {
             "name": "Delete a webhook",
@@ -320,12 +296,18 @@
                 }
               ]
             },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "method": "DELETE",
             "auth": null
           },
           "response": [
             {
-              "id": "16fb64c9-f22f-4c11-b5ba-f5824ea62fb2",
+              "id": "c79a5f76-53ac-4c5e-885e-3f82593ae95a",
               "name": "Webhook successfully deleted",
               "originalRequest": {
                 "url": {
@@ -350,16 +332,6 @@
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
                 "method": "DELETE",
                 "body": {}
               },
@@ -376,7 +348,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "b8ce69ac-d989-43dd-ba2d-19c9181fb601",
+              "id": "d8a27428-5516-47e4-a131-9e07d4a8883b",
               "name": "Bad Request - missing or invalid authentication",
               "originalRequest": {
                 "url": {
@@ -403,12 +375,8 @@
                 },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
                 "method": "DELETE",
@@ -419,12 +387,12 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "_postman_previewlanguage": "json"
             }
           ],
           "event": [],
@@ -444,18 +412,9 @@
       "key": "baseUrl"
     }
   ],
-  "auth": {
-    "type": "bearer",
-    "bearer": [
-      {
-        "key": "token",
-        "value": "{{bearerToken}}"
-      }
-    ]
-  },
   "info": {
-    "_postman_id": "8c3c673f-e71e-4586-ab8e-d27853493017",
-    "name": "Phasio Activity Internal Webhooks API",
+    "_postman_id": "8b5b2a3a-5a94-49aa-a6e2-142fbd15c534",
+    "name": "Phasio Webhooks API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "This is the API documentation for the Phasio application.",

@@ -1,14 +1,8 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Phasio Activity Internal Webhooks API",
+    "name": "Phasio Webhooks API",
     "version": "1.0"
-  },
-  "request": {
-    "auth": {
-      "type": "bearer",
-      "token": "{{bearerToken}}"
-    }
   },
   "items": [
     {
@@ -41,7 +35,7 @@
               "data": "{}"
             }
           },
-          "docs": "Creates a new webhook on an account"
+          "docs": "Creates a webhook for one event type on the authenticated account. The URL must use HTTPS and resolve to a public address. Save the returned id for deletion and secret for decrypting deliveries. Deliveries contain a JSON payload field encrypted with AES-256-GCM and an X-Phasio-Signature HMAC-SHA256 header."
         },
         {
           "info": {

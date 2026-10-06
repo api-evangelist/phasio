@@ -1,14 +1,8 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Phasio Activity Internal Manufacturer Part Specification Controller API",
+    "name": "Phasio Manufacturer Part Specification Controller API",
     "version": "1.0"
-  },
-  "request": {
-    "auth": {
-      "type": "bearer",
-      "token": "{{bearerToken}}"
-    }
   },
   "items": [
     {
@@ -17,44 +11,6 @@
         "type": "folder"
       },
       "items": [
-        {
-          "info": {
-            "name": "Update customer article reference",
-            "type": "http"
-          },
-          "http": {
-            "method": "PUT",
-            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-specification/:partSpecificationId/customer-reference",
-            "params": [
-              {
-                "name": "partSpecificationId",
-                "value": "",
-                "type": "path",
-                "description": "ID of the part specification to update"
-              }
-            ],
-            "body": {
-              "type": "json",
-              "data": "{}"
-            }
-          },
-          "docs": "Updates the customer's article reference for a specific part specification"
-        },
-        {
-          "info": {
-            "name": "Get part specifications by IDs",
-            "type": "http"
-          },
-          "http": {
-            "method": "POST",
-            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-specification/bulk",
-            "body": {
-              "type": "json",
-              "data": "{}"
-            }
-          },
-          "docs": "Retrieves part specifications by a list of unique identifiers"
-        },
         {
           "info": {
             "name": "Get part specifications with filtering",
@@ -93,10 +49,46 @@
                 "value": "",
                 "type": "query",
                 "description": "Optional search term"
+              },
+              {
+                "name": "customerOrganisationId",
+                "value": "",
+                "type": "query",
+                "description": "Optional customer organisation. Restricts results to specifications whose part revision is claimed by that customer organisation."
               }
             ]
           },
           "docs": "Retrieves a paginated list of part specifications with optional filtering and search"
+        },
+        {
+          "info": {
+            "name": "Create a part specification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-specification",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a part specification from a part revision and a set of manufacturing parameters. If a part specification with the same manufacturing parameters already exists for the part revision, it is returned instead of creating a duplicate."
+        },
+        {
+          "info": {
+            "name": "Get part specifications by IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-specification/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves part specifications by a list of unique identifiers"
         },
         {
           "info": {
@@ -188,31 +180,6 @@
             ]
           },
           "docs": "Retrieves all part specifications associated with a specific customer organization"
-        },
-        {
-          "info": {
-            "name": "Delete customer article reference",
-            "type": "http"
-          },
-          "http": {
-            "method": "DELETE",
-            "url": "https://m-api.eu.phas.io/api/manufacturer/v1/part-specification/:partSpecificationId/customer-reference/:customerOrganisationId",
-            "params": [
-              {
-                "name": "partSpecificationId",
-                "value": "",
-                "type": "path",
-                "description": "ID of the part specification to update"
-              },
-              {
-                "name": "customerOrganisationId",
-                "value": "",
-                "type": "path",
-                "description": "ID of the customer organization whose reference should be deleted"
-              }
-            ]
-          },
-          "docs": "Removes the customer's article reference from a specific part specification"
         }
       ]
     }

@@ -37,78 +37,20 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PartSpecificationDto'
-        '400':
-          description: Invalid request data or referenced entities not found
         '401':
           description: Unauthorized - operator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Part revision or process prices not found (error codes PART_REVISION_NOT_FOUND, PROCESS_PRICES_NOT_FOUND)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
-    CustomerArticleReferenceDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        customerOrganisationId:
-          type: integer
-          format: int64
-        customerOrganisationName:
-          type: string
-        reference:
-          type: string
-        pricingTiers:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
-        showInCatalog:
-          type: boolean
-      required:
-      - customerOrganisationId
-      - pricingTiers
-      - reference
-    ConstraintDto:
-      type: object
-      discriminator:
-        propertyName: constraintType
-      properties:
-        id:
-          type: string
-          format: uuid
-        constraintType:
-          type: string
-        partSpecificationId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - updatedAt
-    FixedOrientationConstraintDto:
-      allOf:
-      - $ref: '#/components/schemas/ConstraintDto'
-      - type: object
-        properties:
-          rotationMatrix:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-      required:
-      - constraintType
-      - createdAt
-      - id
-      - partSpecificationId
-      - rotationMatrix
-      - updatedAt
     PartSpecificationDto:
       type: object
       properties:
@@ -164,6 +106,8 @@ components:
             oneOf:
             - $ref: '#/components/schemas/ConstraintDto'
             - $ref: '#/components/schemas/FixedOrientationConstraintDto'
+        weight:
+          type: number
       required:
       - createdAt
       - customerReferences
@@ -174,6 +118,48 @@ components:
       - partRevisionName
       - postProcessingIds
       - units
+      - weight
+    CustomerArticleReferenceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        customerOrganisationId:
+          type: integer
+          format: int64
+        customerOrganisationName:
+          type: string
+        reference:
+          type: string
+        pricingTiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticleReferencePricingTierDto'
+        showInCatalog:
+          type: boolean
+      required:
+      - customerOrganisationId
+      - pricingTiers
+      - reference
+    FixedOrientationConstraintDto:
+      allOf:
+      - $ref: '#/components/schemas/ConstraintDto'
+      - type: object
+        properties:
+          rotationMatrix:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - rotationMatrix
+      - updatedAt
     CreateCatalogItemDto:
       type: object
       properties:
@@ -226,6 +212,31 @@ components:
       - processPricesId
       - reference
       - units
+    ConstraintDto:
+      type: object
+      discriminator:
+        propertyName: constraintType
+      properties:
+        id:
+          type: string
+          format: uuid
+        constraintType:
+          type: string
+        partSpecificationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - constraintType
+      - createdAt
+      - id
+      - partSpecificationId
+      - updatedAt
     CustomerArticleReferencePricingTierDto:
       type: object
       properties:
@@ -240,6 +251,20 @@ components:
       required:
       - price
       - quantity
+    ApiError:
+      type: object
+      additionalProperties: true
+      description: Stable error contract. `error` is a SCREAMING_SNAKE code that clients match on; `message` is a human-readable sentence. Some errors add extra string fields (for example organisationId).
+      properties:
+        error:
+          type: string
+          example: ORDER_NOT_FOUND
+        message:
+          type: string
+          example: Order not found
+      required:
+      - error
+      - message
   securitySchemes:
     Phasio_API_Bearer_Token:
       type: http

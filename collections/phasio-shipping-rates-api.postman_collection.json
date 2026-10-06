@@ -1,0 +1,175 @@
+{
+  "item": [
+    {
+      "id": "4a9fbb97-364e-4469-9e3f-3dfb37b3e255",
+      "name": "Shipping Rates",
+      "description": {
+        "content": "API for retrieving shipping rates for parts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "43541935-d535-4aa9-bb2c-68e8ddd02b5c",
+          "name": "Calculate the shipping rates for a group of parts",
+          "request": {
+            "name": "Calculate the shipping rates for a group of parts",
+            "description": {
+              "content": "This endpoint calculates the shipping rates for a group of parts. The request body should contain the list of parts and their quantities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "manufacturer",
+                "v1",
+                "shipping-rates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"<string>\",\n  \"organisationId\": \"<long>\",\n  \"parts\": [\n    {\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"units\": \"<string>\"\n    },\n    {\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"units\": \"<string>\"\n    }\n  ],\n  \"toAddressId\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "26cd340a-d382-452f-8e35-6f7493ea77bd",
+              "name": "Shipping rates calculated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipping-rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"<string>\",\n  \"organisationId\": \"<long>\",\n  \"parts\": [\n    {\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"units\": \"<string>\"\n    },\n    {\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"units\": \"<string>\"\n    }\n  ],\n  \"toAddressId\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorWithCarrier\": true,\n    \"rates\": [\n      {\n        \"currency\": \"string\",\n        \"id\": \"string\",\n        \"rate\": 8570.458111302209,\n        \"serviceName\": \"string\",\n        \"serviceType\": \"string\",\n        \"shippingMethodId\": 6239\n      },\n      {\n        \"currency\": \"string\",\n        \"id\": \"string\",\n        \"rate\": 6360.853573757006,\n        \"serviceName\": \"string\",\n        \"serviceType\": \"string\",\n        \"shippingMethodId\": 3352\n      }\n    ],\n    \"shippingMethodId\": 2857,\n    \"tooLargeForBoxes\": false\n  },\n  {\n    \"errorWithCarrier\": false,\n    \"rates\": [\n      {\n        \"currency\": \"string\",\n        \"id\": \"string\",\n        \"rate\": 3011.5215522475246,\n        \"serviceName\": \"string\",\n        \"serviceType\": \"string\",\n        \"shippingMethodId\": 5808\n      },\n      {\n        \"currency\": \"string\",\n        \"id\": \"string\",\n        \"rate\": 9228.895264619143,\n        \"serviceName\": \"string\",\n        \"serviceType\": \"string\",\n        \"shippingMethodId\": 6264\n      }\n    ],\n    \"shippingMethodId\": 274,\n    \"tooLargeForBoxes\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c7b585d-5351-4097-aeea-2725766e3f4f",
+              "name": "Unauthorized - operator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "manufacturer",
+                    "v1",
+                    "shipping-rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"<string>\",\n  \"organisationId\": \"<long>\",\n  \"parts\": [\n    {\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"units\": \"<string>\"\n    },\n    {\n      \"materialId\": \"<long>\",\n      \"partRevisionId\": \"<uuid>\",\n      \"processPricesId\": \"<uuid>\",\n      \"quantity\": \"<integer>\",\n      \"units\": \"<string>\"\n    }\n  ],\n  \"toAddressId\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"ORDER_NOT_FOUND\",\n  \"message\": \"Order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://m-api.eu.phas.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4c474be3-5a1d-4aa6-96e3-733e64a22c72",
+    "name": "Phasio Shipping Rates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the API documentation for the Phasio application.",
+      "type": "text/plain"
+    }
+  }
+}
